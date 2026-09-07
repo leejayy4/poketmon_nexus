@@ -6,12 +6,12 @@
 - 상태: cycle-1 / 자동 운영 활성
 - 자동화: automation / ACTIVE / 5분 간격 / 현재 총괄 작업 heartbeat
 - 총괄: 01a07a27-f598-71a3-8ba7-dd8216556cae
-- 현재 담당: Map & Content Designer
-- 현재 회차: auto-0002-core 완료 / auto-0003-map 준비
+- 현재 담당: Art Director
+- 현재 회차: auto-0003-map 완료 / auto-0004-art 준비
 - 현재 배정 상태: ready / 다음 '포켓몬 게임 같이 구현' 호출 시 즉시 착수
-- 다음 순서: Map → Core → Art → QA → Story
-- 다음 정규 회차 번호: 3
-- 회차 보고: docs/autonomy/auto-0002-core.md (완료)
+- 다음 순서: Art → QA → Story → Map → Core
+- 다음 정규 회차 번호: 4
+- 회차 보고: docs/autonomy/auto-0003-map.md (완료)
 
 ## 운영 범위
 
@@ -24,4 +24,5 @@
 - 2026-09-07: 총괄 설정 검증 — 운영 문서와 링크 대상 존재 확인, npm.cmd run build 성공. 자동화 view 카드 확인. QA는 새 지침을 수신하고 첫 파트너 수령·출발·야생전·포획·회복의 실제 플레이 결과를 기록 중이라고 보고함. 아직 최종 회차 결과 및 전체 자동 순환은 미검증. 총괄은 런타임 코드를 변경하지 않음.
 - 2026-09-07: bootstrap QA 완료 보고 확인. 도움말·터치 뒤 키보드 포커스 버그 수정, 테스트 254개·빌드·실제 QA 검증 통과. 다음 후보는 첫 콜배지까지 자연 진행과 연속 입력 검증. Story 회차 auto-0001-story 배정 시작.
 - 2026-09-07: Story 담당 auto-0001-story 완료 확인. 네 관장·자료 전달·조사선 플래그 및 문서 정합성 정리.
-- 2026-09-07: Core 담당 auto-0002-core 완료. 장막 관측 연구원의 자료 전달 완료(researchDelivered) 후 대사 분기 및 안내 보완, 회귀 검증 assertion 추가. 테스트 296개 및 빌드 통과. 다음 담당은 Map & Content Designer.
+- 2026-09-07: Core 담당 auto-0002-core 완료. 장막 관측 연구원의 자료 전달 완료(researchDelivered) 후 대사 분기 및 안내 보완, 회귀 검증 assertion 추가. 테스트 296개 및 빌드 통과.
+- 2026-09-07: Map 담당 auto-0003-map 완료. 리조트데저트(tour_desert)의 유적 기둥·모래 언덕·석벽 레이아웃 및 북남 연결길 배치, TOWN_REVISION=22 상향, 전용 테스트 추가. 테스트 299개 및 빌드 통과. 다음 담당은 Art Director.

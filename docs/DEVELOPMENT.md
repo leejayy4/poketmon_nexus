@@ -1052,3 +1052,14 @@ TOWN_REVISION 16 / version 1을 유지한다. 모험 목표·회복 판단은 �
 프로젝트 Markdown 본문은 `docs/`에 모았다. 루트 `README.md`는 실행·문서 안내, 루트 `AGENTS.md`는 전체 작업 지침의 진입점이다. 이후 작업은 `docs/DEVELOPMENT.md`, `docs/STORY.md`, `docs/AGENTS.md`를 기준으로 한다. 자동 운영 배정은 `docs/PROJECT_STATE.md`에서 관리한다. 이 정리는 배정 상태나 게임 동작을 변경하지 않는다.
 
 문서의 소스·테스트·에셋 상대 링크를 새 위치에 맞췄다. 저장소 루트에서 실행하는 `scripts/export-world-tour.ts`는 `docs/WORLD_TOUR.md`에 쓰며, `scripts/design/build_databases.py`는 `docs/`의 초안을 읽고 같은 폴더에 Markdown을 생성한다. JSON 데이터 위치는 `docs/design-data/`를 유지한다.
+
+## 74. 리조트데저트의 유적 암반과 북남 연결길
+
+2026-09-07 Map 회차(auto-0003-map). 하나 지방의 리조트데저트는 북쪽 뇌문시티·남쪽 구름시티로만 연결되는 통로다. [배치 데이터](../src/explore-layouts.ts)에 실제 두 출구를 잇는 길과 유적 기둥·모래 언덕·외곽 석벽의 세 조사 구역을 배치했다.
+
+특징 배치는 유적 기둥 `(3,8,3,3)`, 모래 언덕 `(4,12,4,2)`, 외곽 석벽 `(14,6,3,3)` 세 곳이다. 길 안내원 `(12,7)`과 두 표지판 접근을 유지하며, 표시된 길을 따라 북남 출구를 자유롭게 왕복할 수 있다. 기존 사물 `tourOutdoor0`, `tourOutdoor1` 뒤로 새 조사 세 개를 추가해 전체 야외 조사 대상은 101→104개, 레이아웃은 10→11개다. 새 사건·조우·아이템은 추가하지 않았다.
+
+저장 version 1 / worldRevision 22. 개정 21 이하에서 새 암석에 겹친 위치만 같은 맵 안전점 `(10,10)`으로 옮긴다. 이전 유효 위치와 파티·도구·진행을 보존한다.
+
+검증: 전체 `npm.cmd test` **299/299**, `npm.cmd run build` 통과. [전용 검사](../tests/desert-layout.test.ts)는 북남 출구 연결길, 표지판 및 안내원 접근, 모든 새 암석 면, 개정 21 저장 보정과 기존 ID 보존을 검증한다.
+

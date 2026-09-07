@@ -7,8 +7,8 @@ import { TOUR_PLANS,TOUR_BUILDINGS,TOUR_FEATURES,TOUR_MAPS,TOUR_OUTDOORS,TOUR_SP
 import { canStand } from '../src/maps';
 import { TOWN_REVISION } from '../src/town';
 
-test('six towns and four trails have distinct investigable arrangements while facility doors stay aligned',()=>{
-  assert.equal(Object.keys(TOUR_LAYOUTS).length,10);
+test('six towns and five trails have distinct investigable arrangements while facility doors stay aligned',()=>{
+  assert.equal(Object.keys(TOUR_LAYOUTS).length,11);
   assert.equal(TOUR_FEATURES.tour_jubilife.filter(f=>f.kind==='fountain').length,1);
   assert(TOUR_FEATURES.tour_oreburgh.some(f=>f.kind==='rail'));assert(TOUR_FEATURES.tour_hearthome.every(f=>f.kind==='garden'));
   const names=new Set<string>();
@@ -25,7 +25,7 @@ test('six towns and four trails have distinct investigable arrangements while fa
       assert(TOUR_MAPS[door.to as TourId].warps.some(w=>w.to===id&&w.spawn.x===x&&w.spawn.y===y+1));
     }
   }
-  assert.equal(names.size,30);assert.equal(Object.values(TOUR_OUTDOORS).flatMap(o=>o.objects).length,101);
+  assert.equal(names.size,33);assert.equal(Object.values(TOUR_OUTDOORS).flatMap(o=>o.objects).length,104);
 });
 
 test('revision 10 plaza saves relocate only newly blocked positions and preserve visited interiors',()=>{

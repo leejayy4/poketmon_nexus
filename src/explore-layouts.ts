@@ -11,6 +11,14 @@ export const TOUR_LAYOUTS:Record<string,TourLayout>={
     // Only the north and east roads reach a boundary; the southwest spur ends at a grove.
     paths:[[9,3,2,5],[9,8,9,2],[9,9,2,2],[10,5,3,1],[4,9,5,2],[4,10,2,5],[4,14,7,1]],
   },
+  tour_desert:{
+    features:[
+      {x:3,y:8,w:3,h:3,kind:'rocks',name:'모래에 묻힌 유적 기둥',description:'고대 건축물의 기둥이 묻혀 있다.\n북쪽 흙길은 뇌문시티로 이어진다.'},
+      {x:4,y:12,w:4,h:2,kind:'rocks',name:'바람이 쌓은 모래 언덕',description:'바람에 실려 온 모래가 쌓였다.\n남쪽 출구는 구름시티로 이어진다.'},
+      {x:14,y:6,w:3,h:3,kind:'rocks',name:'유적 외곽 석벽',description:'단단한 석벽이 모래바람을 막는다.\n표지판 옆 길을 따라 걸을 수 있다.'},
+    ],
+    paths:[[9,3,2,4],[8,6,6,3],[9,8,3,5],[9,13,3,3],[11,5,2,1],[12,15,1,1],[6,8,3,1]],
+  },
   tour_viridian_forest:{
     features:[
       {x:8,y:6,w:3,h:4,kind:'grove',name:'갈림길의 큰 나무',description:'나무 양쪽으로 숲길이 갈라진다.\n두 길은 남쪽에서 다시 만난다.'},

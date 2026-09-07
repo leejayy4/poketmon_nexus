@@ -1,5 +1,5 @@
 // Tile coordinates are shared by the field artwork, collision, and entrances.
-export const TOWN_REVISION = 21;
+export const TOWN_REVISION = 22;
 export const TOWN_SIZE = { width:40, height:30 };
 export const TOWN_GRASS = { x:32,y:5,w:4,h:3,kind:'tallGrass' as const };
 export const TOWN_POND = { x:28,y:13,w:7,h:5 };
