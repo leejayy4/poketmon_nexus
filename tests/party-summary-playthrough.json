@@ -1,0 +1,1506 @@
+{
+  "url": "http://localhost:5173/?qa=core-party-summary-20260907",
+  "fixture": "tests/party-summary-save.json",
+  "checks": [
+    {
+      "name": "01-summary-start",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 20,
+          "map": "bedroom",
+          "player": {
+            "x": 6,
+            "y": 6,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "pikachuReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 25,
+              "level": 5,
+              "experience": 0,
+              "hp": 3,
+              "maxHp": 19,
+              "nature": "고집",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 0,
+              "maxHp": 18,
+              "experience": 12,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 1.2998000000000032
+        },
+        "panel": "summary",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#############",
+            "#############",
+            "#############",
+            "#############",
+            "##.........##",
+            "#..........##",
+            "#..........##",
+            "##.......####",
+            "##.......####",
+            "#############"
+          ],
+          "npcs": [],
+          "warps": [
+            {
+              "x": 8,
+              "y": 4,
+              "to": "home",
+              "spawn": {
+                "x": 10,
+                "y": 4
+              },
+              "facing": "down",
+              "entry": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 6,
+          "y": 6,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "02-keyboard-pikachu",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 20,
+          "map": "bedroom",
+          "player": {
+            "x": 6,
+            "y": 6,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "pikachuReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 25,
+              "level": 5,
+              "experience": 0,
+              "hp": 3,
+              "maxHp": 19,
+              "nature": "고집",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 0,
+              "maxHp": 18,
+              "experience": 12,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 2.5664999999999987
+        },
+        "panel": "summary",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 1,
+        "map": {
+          "walkable": [
+            "#############",
+            "#############",
+            "#############",
+            "#############",
+            "##.........##",
+            "#..........##",
+            "#..........##",
+            "##.......####",
+            "##.......####",
+            "#############"
+          ],
+          "npcs": [],
+          "warps": [
+            {
+              "x": 8,
+              "y": 4,
+              "to": "home",
+              "spawn": {
+                "x": 10,
+                "y": 4
+              },
+              "facing": "down",
+              "entry": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 6,
+          "y": 6,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "03-touch-fainted",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 20,
+          "map": "bedroom",
+          "player": {
+            "x": 6,
+            "y": 6,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "pikachuReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 25,
+              "level": 5,
+              "experience": 0,
+              "hp": 3,
+              "maxHp": 19,
+              "nature": "고집",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 0,
+              "maxHp": 18,
+              "experience": 12,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 3.333400000000005
+        },
+        "panel": "summary",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 2,
+        "map": {
+          "walkable": [
+            "#############",
+            "#############",
+            "#############",
+            "#############",
+            "##.........##",
+            "#..........##",
+            "#..........##",
+            "##.......####",
+            "##.......####",
+            "#############"
+          ],
+          "npcs": [],
+          "warps": [
+            {
+              "x": 8,
+              "y": 4,
+              "to": "home",
+              "spawn": {
+                "x": 10,
+                "y": 4
+              },
+              "facing": "down",
+              "entry": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 6,
+          "y": 6,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "04-wrap-first",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 20,
+          "map": "bedroom",
+          "player": {
+            "x": 6,
+            "y": 6,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "pikachuReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 25,
+              "level": 5,
+              "experience": 0,
+              "hp": 3,
+              "maxHp": 19,
+              "nature": "고집",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 0,
+              "maxHp": 18,
+              "experience": 12,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 4.233400000000003
+        },
+        "panel": "summary",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#############",
+            "#############",
+            "#############",
+            "#############",
+            "##.........##",
+            "#..........##",
+            "#..........##",
+            "##.......####",
+            "##.......####",
+            "#############"
+          ],
+          "npcs": [],
+          "warps": [
+            {
+              "x": 8,
+              "y": 4,
+              "to": "home",
+              "spawn": {
+                "x": 10,
+                "y": 4
+              },
+              "facing": "down",
+              "entry": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 6,
+          "y": 6,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "05-wrap-last",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 20,
+          "map": "bedroom",
+          "player": {
+            "x": 6,
+            "y": 6,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "pikachuReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 25,
+              "level": 5,
+              "experience": 0,
+              "hp": 3,
+              "maxHp": 19,
+              "nature": "고집",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 0,
+              "maxHp": 18,
+              "experience": 12,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 5.3999000000000015
+        },
+        "panel": "summary",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 2,
+        "map": {
+          "walkable": [
+            "#############",
+            "#############",
+            "#############",
+            "#############",
+            "##.........##",
+            "#..........##",
+            "#..........##",
+            "##.......####",
+            "##.......####",
+            "#############"
+          ],
+          "npcs": [],
+          "warps": [
+            {
+              "x": 8,
+              "y": 4,
+              "to": "home",
+              "spawn": {
+                "x": 10,
+                "y": 4
+              },
+              "facing": "down",
+              "entry": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 6,
+          "y": 6,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "06-action-preserved",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 20,
+          "map": "bedroom",
+          "player": {
+            "x": 6,
+            "y": 6,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "pikachuReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 25,
+              "level": 5,
+              "experience": 0,
+              "hp": 3,
+              "maxHp": 19,
+              "nature": "고집",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 0,
+              "maxHp": 18,
+              "experience": 12,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 7.799299999999964
+        },
+        "panel": "summary",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 1,
+        "map": {
+          "walkable": [
+            "#############",
+            "#############",
+            "#############",
+            "#############",
+            "##.........##",
+            "#..........##",
+            "#..........##",
+            "##.......####",
+            "##.......####",
+            "#############"
+          ],
+          "npcs": [],
+          "warps": [
+            {
+              "x": 8,
+              "y": 4,
+              "to": "home",
+              "spawn": {
+                "x": 10,
+                "y": 4
+              },
+              "facing": "down",
+              "entry": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 6,
+          "y": 6,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "07-healed-dialogue-locked",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0.8833000000000175,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 20,
+          "map": "bedroom",
+          "player": {
+            "x": 6,
+            "y": 6,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "pikachuReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 25,
+              "level": 5,
+              "experience": 0,
+              "hp": 19,
+              "maxHp": 19,
+              "nature": "고집",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 0,
+              "maxHp": 18,
+              "experience": 12,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 1
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 8.949299999999985
+        },
+        "panel": "summary",
+        "dialogue": {
+          "speaker": "포켓몬",
+          "pages": [
+            "피카츄의 HP를\n16 회복했어요."
+          ],
+          "page": 0,
+          "shown": 31.798800000000632,
+          "selected": 0
+        },
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 1,
+        "map": {
+          "walkable": [
+            "#############",
+            "#############",
+            "#############",
+            "#############",
+            "##.........##",
+            "#..........##",
+            "#..........##",
+            "##.......####",
+            "##.......####",
+            "#############"
+          ],
+          "npcs": [],
+          "warps": [
+            {
+              "x": 8,
+              "y": 4,
+              "to": "home",
+              "spawn": {
+                "x": 10,
+                "y": 4
+              },
+              "facing": "down",
+              "entry": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 6,
+          "y": 6,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "08-fainted-no-consumption",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0.48340000000000866,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 20,
+          "map": "bedroom",
+          "player": {
+            "x": 6,
+            "y": 6,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "pikachuReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 25,
+              "level": 5,
+              "experience": 0,
+              "hp": 19,
+              "maxHp": 19,
+              "nature": "고집",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 0,
+              "maxHp": 18,
+              "experience": 12,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 1
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 9.53259999999999
+        },
+        "panel": "summary",
+        "dialogue": {
+          "speaker": "포켓몬",
+          "pages": [
+            "쓰러진 포켓몬에게는 쓸 수 없어요.\n포켓몬센터에서 쉬게 해 주세요."
+          ],
+          "page": 0,
+          "shown": 17.402400000000316,
+          "selected": 0
+        },
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 2,
+        "map": {
+          "walkable": [
+            "#############",
+            "#############",
+            "#############",
+            "#############",
+            "##.........##",
+            "#..........##",
+            "#..........##",
+            "##.......####",
+            "##.......####",
+            "#############"
+          ],
+          "npcs": [],
+          "warps": [
+            {
+              "x": 8,
+              "y": 4,
+              "to": "home",
+              "spawn": {
+                "x": 10,
+                "y": 4
+              },
+              "facing": "down",
+              "entry": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 6,
+          "y": 6,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "09-lead-retains-member",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0.583,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 20,
+          "map": "bedroom",
+          "player": {
+            "x": 6,
+            "y": 6,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "pikachuReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 25,
+              "level": 5,
+              "experience": 0,
+              "hp": 19,
+              "maxHp": 19,
+              "nature": "고집",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 0,
+              "maxHp": 18,
+              "experience": 12,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 1
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 11.448600000000008
+        },
+        "panel": "summary",
+        "dialogue": {
+          "speaker": "포켓몬",
+          "pages": [
+            "피카츄를 선두로 세웠어요.\n다음 전투에 먼저 나갑니다."
+          ],
+          "page": 0,
+          "shown": 20.988000000000003,
+          "selected": 0
+        },
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#############",
+            "#############",
+            "#############",
+            "#############",
+            "##.........##",
+            "#..........##",
+            "#..........##",
+            "##.......####",
+            "##.......####",
+            "#############"
+          ],
+          "npcs": [],
+          "warps": [
+            {
+              "x": 8,
+              "y": 4,
+              "to": "home",
+              "spawn": {
+                "x": 10,
+                "y": 4
+              },
+              "facing": "down",
+              "entry": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 6,
+          "y": 6,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "10-return-selection",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 1.7165000000000008,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 20,
+          "map": "bedroom",
+          "player": {
+            "x": 6,
+            "y": 6,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "pikachuReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 25,
+              "level": 5,
+              "experience": 0,
+              "hp": 19,
+              "maxHp": 19,
+              "nature": "고집",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 0,
+              "maxHp": 18,
+              "experience": 12,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 1
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 12.932200000000028
+        },
+        "panel": "party",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 1,
+        "map": {
+          "walkable": [
+            "#############",
+            "#############",
+            "#############",
+            "#############",
+            "##.........##",
+            "#..........##",
+            "#..........##",
+            "##.......####",
+            "##.......####",
+            "#############"
+          ],
+          "npcs": [],
+          "warps": [
+            {
+              "x": 8,
+              "y": 4,
+              "to": "home",
+              "spawn": {
+                "x": 10,
+                "y": 4
+              },
+              "facing": "down",
+              "entry": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 6,
+          "y": 6,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "11-before-reload",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 1.7165000000000008,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 20,
+          "map": "bedroom",
+          "player": {
+            "x": 6,
+            "y": 6,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "pikachuReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 25,
+              "level": 5,
+              "experience": 0,
+              "hp": 19,
+              "maxHp": 19,
+              "nature": "고집",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 0,
+              "maxHp": 18,
+              "experience": 12,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 1
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 13.999000000000025
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 1,
+        "map": {
+          "walkable": [
+            "#############",
+            "#############",
+            "#############",
+            "#############",
+            "##.........##",
+            "#..........##",
+            "#..........##",
+            "##.......####",
+            "##.......####",
+            "#############"
+          ],
+          "npcs": [],
+          "warps": [
+            {
+              "x": 8,
+              "y": 4,
+              "to": "home",
+              "spawn": {
+                "x": 10,
+                "y": 4
+              },
+              "facing": "down",
+              "entry": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 6,
+          "y": 6,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "12-restored",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 20,
+          "map": "bedroom",
+          "player": {
+            "x": 6,
+            "y": 6,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "pikachuReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 25,
+              "level": 5,
+              "experience": 0,
+              "hp": 19,
+              "maxHp": 19,
+              "nature": "고집",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 0,
+              "maxHp": 18,
+              "experience": 12,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 1
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 15.53260000000004
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#############",
+            "#############",
+            "#############",
+            "#############",
+            "##.........##",
+            "#..........##",
+            "#..........##",
+            "##.......####",
+            "##.......####",
+            "#############"
+          ],
+          "npcs": [],
+          "warps": [
+            {
+              "x": 8,
+              "y": 4,
+              "to": "home",
+              "spawn": {
+                "x": 10,
+                "y": 4
+              },
+              "facing": "down",
+              "entry": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 6,
+          "y": 6,
+          "facing": "down"
+        }
+      }
+    }
+  ]
+}

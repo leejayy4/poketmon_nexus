@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-06",
+  "referenceCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+  "status": "PASS",
+  "species": 575,
+  "requestedCovered": 123,
+  "nodes": 90,
+  "wildPools": 84,
+  "evolutions": 295,
+  "gyms": 32,
+  "mandatoryGyms": 20,
+  "optionalGyms": 12,
+  "gymVariants": 82,
+  "items": 163,
+  "moves": 94,
+  "quests": 66,
+  "documentLinksChecked": 94,
+  "sourceEvolutionTagWarnings": 5,
+  "runtimeImplemented": false
+}

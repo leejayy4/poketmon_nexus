@@ -1,0 +1,852 @@
+{
+  "qa": "battle-polish-20260907-01",
+  "fixture": "tests/battle-polish-save.json",
+  "observations": [
+    {
+      "label": "행동 화면 X: 전투와 HP 유지",
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "party": [
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 20,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 7,
+          "level": 9,
+          "experience": 0,
+          "hp": 32,
+          "maxHp": 32,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "dialogue": null,
+      "panel": "field",
+      "partyIndex": 0
+    },
+    {
+      "label": "6마리 교대 목록에서 아래·오른쪽 이동",
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "menu": "party",
+        "selected": 5,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "party": [
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 20,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 7,
+          "level": 9,
+          "experience": 0,
+          "hp": 32,
+          "maxHp": 32,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "dialogue": null,
+      "panel": "field",
+      "partyIndex": 0
+    },
+    {
+      "label": "기절한 포켓몬 선택: 무효 안내",
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "party": [
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 20,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 7,
+          "level": 9,
+          "experience": 0,
+          "hp": 32,
+          "maxHp": 32,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "dialogue": null,
+      "panel": "field",
+      "partyIndex": 0
+    },
+    {
+      "label": "비버니에서 꼬부기로 교대, 참여 2마리",
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "party": [
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 20,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 7,
+          "level": 9,
+          "experience": 0,
+          "hp": 28,
+          "maxHp": 32,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "dialogue": null,
+      "panel": "field",
+      "partyIndex": 0
+    },
+    {
+      "label": "승리 시 비버니와 꼬부기에 경험치 분배",
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": true
+      },
+      "party": [
+        {
+          "species": 399,
+          "level": 4,
+          "hp": 21,
+          "maxHp": 21,
+          "experience": 5,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 7,
+          "level": 9,
+          "experience": 15,
+          "hp": 20,
+          "maxHp": 32,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "꼬부기의 몸통박치기!",
+          "비버니에게 8의 피해를 주었다!",
+          "야생 비버니가 쓰러졌다!",
+          "비버니는 경험치를\n15 얻었다!",
+          "비버니의 레벨이\n4(으)로 올랐다!",
+          "꼬부기는 경험치를\n15 얻었다!",
+          "싸움에서 이겼다!"
+        ],
+        "page": 0,
+        "shown": 2.3975999999996853,
+        "selected": 0
+      },
+      "panel": "field",
+      "partyIndex": 0
+    },
+    {
+      "label": "교대 전 비버니 레벨 4, 미참여 파티 경험치 0",
+      "battle": null,
+      "party": [
+        {
+          "species": 399,
+          "level": 4,
+          "hp": 21,
+          "maxHp": 21,
+          "experience": 5,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 7,
+          "level": 9,
+          "experience": 15,
+          "hp": 20,
+          "maxHp": 32,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "dialogue": null,
+      "panel": "field",
+      "partyIndex": 0
+    },
+    {
+      "label": "필드 2열 파티 메뉴도 화면 방향으로 이동",
+      "battle": null,
+      "party": [
+        {
+          "species": 399,
+          "level": 4,
+          "hp": 21,
+          "maxHp": 21,
+          "experience": 5,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 7,
+          "level": 9,
+          "experience": 15,
+          "hp": 20,
+          "maxHp": 32,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "dialogue": null,
+      "panel": "party",
+      "partyIndex": 3
+    },
+    {
+      "label": "참여 분배로 오른 레벨·경험치 재접속 유지",
+      "battle": null,
+      "party": [
+        {
+          "species": 399,
+          "level": 4,
+          "hp": 21,
+          "maxHp": 21,
+          "experience": 5,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 7,
+          "level": 9,
+          "experience": 15,
+          "hp": 20,
+          "maxHp": 32,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "dialogue": null,
+      "panel": "field",
+      "partyIndex": 0
+    },
+    {
+      "label": "새 전투 HUD에 경험치 참여 2마리 표시",
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "party": [
+        {
+          "species": 399,
+          "level": 4,
+          "hp": 21,
+          "maxHp": 21,
+          "experience": 5,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 7,
+          "level": 9,
+          "experience": 15,
+          "hp": 16,
+          "maxHp": 32,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "dialogue": null,
+      "panel": "field",
+      "partyIndex": 0
+    },
+    {
+      "label": "도망친다를 명시적으로 선택해 전투 종료",
+      "battle": null,
+      "party": [
+        {
+          "species": 399,
+          "level": 4,
+          "hp": 21,
+          "maxHp": 21,
+          "experience": 5,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 7,
+          "level": 9,
+          "experience": 15,
+          "hp": 16,
+          "maxHp": 32,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "dialogue": null,
+      "panel": "field",
+      "partyIndex": 0
+    }
+  ],
+  "consoleAfterReload": []
+}

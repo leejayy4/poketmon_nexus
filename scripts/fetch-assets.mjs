@@ -1,0 +1,5 @@
+import fs from 'node:fs/promises';
+const root='https://raw.githubusercontent.com/pret/pokeplatinum/main/res/graphics/field_sprites/';
+const jobs=[['town-reference.png','https://archives.bulbagarden.net/media/upload/4/48/Twinleaf_Town_Pt.png'],...['player/player_m','npc/mom','npc/prof_rowan','npc/scientist_m','npc/youngster','npc/lass','npc/old_man','npc/middle_aged_man'].map(n=>[n.split('/')[1]+'.png',root+n+'.png']),...[1,4,7,25].map(n=>['pokemon-'+n+'.png','https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/'+n+'.png'])];
+await Promise.all(jobs.map(async([name,url])=>{const r=await fetch(url);if(!r.ok)throw Error(name+': '+r.status);await fs.writeFile('public/assets/'+name,Buffer.from(await r.arrayBuffer()));console.log(name)}));
+const h=await(await fetch('https://bulbapedia.bulbagarden.net/wiki/Twinleaf_Town')).text(); console.log([...h.matchAll(/src="([^"]+\.png[^"]*)"/g)].map(x=>x[1]).filter(x=>/house|House|room|Room|interior/i.test(x)).slice(0,30));

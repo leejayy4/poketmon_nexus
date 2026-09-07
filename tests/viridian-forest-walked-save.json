@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "worldRevision": 20,
+  "map": "tour_viridian_forest",
+  "player": {
+    "x": 13,
+    "y": 11,
+    "facing": "right"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 7,
+      "level": 5,
+      "experience": 0,
+      "hp": 9,
+      "maxHp": 20,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소"
+    }
+  ],
+  "inventory": {
+    "pokeBalls": 4,
+    "potions": 3
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 292,
+  "seconds": 626.412100000053,
+  "tourVisited": [
+    "tour_viridian_forest",
+    "tour_pewter",
+    "tour_viridian"
+  ]
+}

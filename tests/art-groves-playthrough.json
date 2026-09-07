@@ -1,0 +1,3500 @@
+{
+  "qaUrl": "http://localhost:5173/?qa=direct-20260907-art-01",
+  "observations": [
+    {
+      "name": "tree-north-side",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_eterna_forest",
+          "player": {
+            "x": 12,
+            "y": 10,
+            "facing": "right"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 2,
+          "seconds": 82.18345799995406,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "####################",
+            "####################",
+            "##########.#########",
+            "##................##",
+            "##..####....#####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##................##",
+            "##................##",
+            "##................##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........#######.##",
+            "##................##",
+            "##########.#########",
+            "####################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 12,
+              "y": 7
+            }
+          ],
+          "warps": [
+            {
+              "x": 10,
+              "y": 16,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 10,
+              "y": 2,
+              "to": "tour_eterna",
+              "spawn": {
+                "x": 14,
+                "y": 31
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 4,
+              "y": 10,
+              "w": 4,
+              "h": 3
+            }
+          ]
+        },
+        "position": {
+          "x": 12,
+          "y": 10,
+          "facing": "right"
+        }
+      }
+    },
+    {
+      "name": "narrow-passage",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_eterna_forest",
+          "player": {
+            "x": 12,
+            "y": 11,
+            "facing": "down"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 3,
+          "seconds": 84.78345799995394,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "####################",
+            "####################",
+            "##########.#########",
+            "##................##",
+            "##..####....#####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##................##",
+            "##................##",
+            "##................##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........#######.##",
+            "##................##",
+            "##########.#########",
+            "####################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 12,
+              "y": 7
+            }
+          ],
+          "warps": [
+            {
+              "x": 10,
+              "y": 16,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 10,
+              "y": 2,
+              "to": "tour_eterna",
+              "spawn": {
+                "x": 14,
+                "y": 31
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 4,
+              "y": 10,
+              "w": 4,
+              "h": 3
+            }
+          ]
+        },
+        "position": {
+          "x": 12,
+          "y": 11,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "north-canopy-approach",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_eterna_forest",
+          "player": {
+            "x": 11,
+            "y": 10,
+            "facing": "left"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 5,
+          "seconds": 85.8503579999539,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "####################",
+            "####################",
+            "##########.#########",
+            "##................##",
+            "##..####....#####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##................##",
+            "##................##",
+            "##................##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........#######.##",
+            "##................##",
+            "##########.#########",
+            "####################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 12,
+              "y": 7
+            }
+          ],
+          "warps": [
+            {
+              "x": 10,
+              "y": 16,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 10,
+              "y": 2,
+              "to": "tour_eterna",
+              "spawn": {
+                "x": 14,
+                "y": 31
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 4,
+              "y": 10,
+              "w": 4,
+              "h": 3
+            }
+          ]
+        },
+        "position": {
+          "x": 11,
+          "y": 10,
+          "facing": "left"
+        }
+      }
+    },
+    {
+      "name": "tree-investigation-blocked-step",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 1.3166000000000064,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_eterna_forest",
+          "player": {
+            "x": 11,
+            "y": 10,
+            "facing": "down"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 5,
+          "seconds": 87.16695799995385,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest"
+          ]
+        },
+        "panel": "field",
+        "dialogue": {
+          "speaker": "풀밭 옆 나무",
+          "pages": [
+            "나무 왼쪽 샛길에 긴 풀이 자란다.\n풀밭에 들어가면 포켓몬을 만날지도."
+          ],
+          "page": 0,
+          "shown": 47.397600000000196,
+          "selected": 0
+        },
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "####################",
+            "####################",
+            "##########.#########",
+            "##................##",
+            "##..####....#####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##................##",
+            "##................##",
+            "##................##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........#######.##",
+            "##................##",
+            "##########.#########",
+            "####################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 12,
+              "y": 7
+            }
+          ],
+          "warps": [
+            {
+              "x": 10,
+              "y": 16,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 10,
+              "y": 2,
+              "to": "tour_eterna",
+              "spawn": {
+                "x": 14,
+                "y": 31
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 4,
+              "y": 10,
+              "w": 4,
+              "h": 3
+            }
+          ]
+        },
+        "position": {
+          "x": 11,
+          "y": 10,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "investigation-finished",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 1.4333000000000182,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": "Z 조사 · 풀밭 옆 나무",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_eterna_forest",
+          "player": {
+            "x": 11,
+            "y": 10,
+            "facing": "down"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 5,
+          "seconds": 88.90025799995384,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "####################",
+            "####################",
+            "##########.#########",
+            "##................##",
+            "##..####....#####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##................##",
+            "##................##",
+            "##................##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........#######.##",
+            "##................##",
+            "##########.#########",
+            "####################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 12,
+              "y": 7
+            }
+          ],
+          "warps": [
+            {
+              "x": 10,
+              "y": 16,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 10,
+              "y": 2,
+              "to": "tour_eterna",
+              "spawn": {
+                "x": 14,
+                "y": 31
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 4,
+              "y": 10,
+              "w": 4,
+              "h": 3
+            }
+          ]
+        },
+        "position": {
+          "x": 11,
+          "y": 10,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "after-left-input",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 1.4333000000000182,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_eterna_forest",
+          "player": {
+            "x": 10,
+            "y": 10,
+            "facing": "left"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 6,
+          "seconds": 89.7002579999538,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "####################",
+            "####################",
+            "##########.#########",
+            "##................##",
+            "##..####....#####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##................##",
+            "##................##",
+            "##................##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........#######.##",
+            "##................##",
+            "##########.#########",
+            "####################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 12,
+              "y": 7
+            }
+          ],
+          "warps": [
+            {
+              "x": 10,
+              "y": 16,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 10,
+              "y": 2,
+              "to": "tour_eterna",
+              "spawn": {
+                "x": 14,
+                "y": 31
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 4,
+              "y": 10,
+              "w": 4,
+              "h": 3
+            }
+          ]
+        },
+        "position": {
+          "x": 10,
+          "y": 10,
+          "facing": "left"
+        }
+      }
+    },
+    {
+      "name": "west-of-grove",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 1.4333000000000182,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_eterna_forest",
+          "player": {
+            "x": 9,
+            "y": 10,
+            "facing": "left"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 7,
+          "seconds": 91.38345799995369,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "####################",
+            "####################",
+            "##########.#########",
+            "##................##",
+            "##..####....#####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##................##",
+            "##................##",
+            "##................##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........#######.##",
+            "##................##",
+            "##########.#########",
+            "####################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 12,
+              "y": 7
+            }
+          ],
+          "warps": [
+            {
+              "x": 10,
+              "y": 16,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 10,
+              "y": 2,
+              "to": "tour_eterna",
+              "spawn": {
+                "x": 14,
+                "y": 31
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 4,
+              "y": 10,
+              "w": 4,
+              "h": 3
+            }
+          ]
+        },
+        "position": {
+          "x": 9,
+          "y": 10,
+          "facing": "left"
+        }
+      }
+    },
+    {
+      "name": "southbound-trail",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 1.4333000000000182,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_eterna_forest",
+          "player": {
+            "x": 9,
+            "y": 11,
+            "facing": "down"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 8,
+          "seconds": 92.01705799995369,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "####################",
+            "####################",
+            "##########.#########",
+            "##................##",
+            "##..####....#####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##................##",
+            "##................##",
+            "##................##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........#######.##",
+            "##................##",
+            "##########.#########",
+            "####################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 12,
+              "y": 7
+            }
+          ],
+          "warps": [
+            {
+              "x": 10,
+              "y": 16,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 10,
+              "y": 2,
+              "to": "tour_eterna",
+              "spawn": {
+                "x": 14,
+                "y": 31
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 4,
+              "y": 10,
+              "w": 4,
+              "h": 3
+            }
+          ]
+        },
+        "position": {
+          "x": 9,
+          "y": 11,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "visible-qa-start",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 1.4333000000000182,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_eterna_forest",
+          "player": {
+            "x": 9,
+            "y": 12,
+            "facing": "down"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 9,
+          "seconds": 92.65035799995364,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "####################",
+            "####################",
+            "##########.#########",
+            "##................##",
+            "##..####....#####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##................##",
+            "##................##",
+            "##................##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........#######.##",
+            "##................##",
+            "##########.#########",
+            "####################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 12,
+              "y": 7
+            }
+          ],
+          "warps": [
+            {
+              "x": 10,
+              "y": 16,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 10,
+              "y": 2,
+              "to": "tour_eterna",
+              "spawn": {
+                "x": 14,
+                "y": 31
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 4,
+              "y": 10,
+              "w": 4,
+              "h": 3
+            }
+          ]
+        },
+        "position": {
+          "x": 9,
+          "y": 12,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "trail-13",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 1.4333000000000182,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_eterna_forest",
+          "player": {
+            "x": 9,
+            "y": 13,
+            "facing": "down"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 10,
+          "seconds": 93.88345799995362,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "####################",
+            "####################",
+            "##########.#########",
+            "##................##",
+            "##..####....#####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##................##",
+            "##................##",
+            "##................##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........#######.##",
+            "##................##",
+            "##########.#########",
+            "####################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 12,
+              "y": 7
+            }
+          ],
+          "warps": [
+            {
+              "x": 10,
+              "y": 16,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 10,
+              "y": 2,
+              "to": "tour_eterna",
+              "spawn": {
+                "x": 14,
+                "y": 31
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 4,
+              "y": 10,
+              "w": 4,
+              "h": 3
+            }
+          ]
+        },
+        "position": {
+          "x": 9,
+          "y": 13,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "trail-14",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 1.4333000000000182,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_eterna_forest",
+          "player": {
+            "x": 9,
+            "y": 14,
+            "facing": "down"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 11,
+          "seconds": 104.28295799995574,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "####################",
+            "####################",
+            "##########.#########",
+            "##................##",
+            "##..####....#####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##................##",
+            "##................##",
+            "##................##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........#######.##",
+            "##................##",
+            "##########.#########",
+            "####################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 12,
+              "y": 7
+            }
+          ],
+          "warps": [
+            {
+              "x": 10,
+              "y": 16,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 10,
+              "y": 2,
+              "to": "tour_eterna",
+              "spawn": {
+                "x": 14,
+                "y": 31
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 4,
+              "y": 10,
+              "w": 4,
+              "h": 3
+            }
+          ]
+        },
+        "position": {
+          "x": 9,
+          "y": 14,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "trail-15",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 1.4333000000000182,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_eterna_forest",
+          "player": {
+            "x": 9,
+            "y": 15,
+            "facing": "down"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 12,
+          "seconds": 111.84985799995721,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "####################",
+            "####################",
+            "##########.#########",
+            "##................##",
+            "##..####....#####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##................##",
+            "##................##",
+            "##................##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........#######.##",
+            "##................##",
+            "##########.#########",
+            "####################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 12,
+              "y": 7
+            }
+          ],
+          "warps": [
+            {
+              "x": 10,
+              "y": 16,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 10,
+              "y": 2,
+              "to": "tour_eterna",
+              "spawn": {
+                "x": 14,
+                "y": 31
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 4,
+              "y": 10,
+              "w": 4,
+              "h": 3
+            }
+          ]
+        },
+        "position": {
+          "x": 9,
+          "y": 15,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "tree-south-side",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 1.4333000000000182,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_eterna_forest",
+          "player": {
+            "x": 11,
+            "y": 15,
+            "facing": "right"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 14,
+          "seconds": 116.76625799995799,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "####################",
+            "####################",
+            "##########.#########",
+            "##................##",
+            "##..####....#####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##................##",
+            "##................##",
+            "##................##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........#######.##",
+            "##................##",
+            "##########.#########",
+            "####################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 12,
+              "y": 7
+            }
+          ],
+          "warps": [
+            {
+              "x": 10,
+              "y": 16,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 10,
+              "y": 2,
+              "to": "tour_eterna",
+              "spawn": {
+                "x": 14,
+                "y": 31
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 4,
+              "y": 10,
+              "w": 4,
+              "h": 3
+            }
+          ]
+        },
+        "position": {
+          "x": 11,
+          "y": 15,
+          "facing": "right"
+        }
+      }
+    },
+    {
+      "name": "south-exit-to-jubilife",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 1.4333000000000182,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": {
+          "position": {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          "moving": false,
+          "tiles": [
+            {
+              "id": "tourPokemon",
+              "name": "피카츄",
+              "species": "pikachu",
+              "sprite": "field-pikachu",
+              "x": 22,
+              "y": 16,
+              "facing": "down",
+              "dialogue": "tourPokemon",
+              "pages": [
+                "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+              ]
+            },
+            {
+              "x": 23,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 17
+            },
+            {
+              "x": 21,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 16
+            },
+            {
+              "x": 23,
+              "y": 17
+            },
+            {
+              "x": 22,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 15
+            },
+            {
+              "x": 23,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 18
+            },
+            {
+              "x": 20,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 18
+            },
+            {
+              "x": 24,
+              "y": 14
+            },
+            {
+              "x": 20,
+              "y": 18
+            }
+          ]
+        },
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_jubilife",
+          "player": {
+            "x": 14,
+            "y": 3,
+            "facing": "down"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 16,
+          "seconds": 118.56575799995791,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "########################################",
+            "########################################",
+            "##############.#########################",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##....................................##",
+            "##....#####.......#####...............##",
+            "##....##.##.......#####...............##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##.#..................................##",
+            "##....................................##",
+            "#.....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...#####................##########..##",
+            "##........................##########..##",
+            "##............###.........##########..##",
+            "##............###.........#####.####..##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####..........................#.##",
+            "##...#####.............................#",
+            "##................####................##",
+            "##................####................##",
+            "##................####..#####.........##",
+            "##......................#####....###..##",
+            "##...............................###..##",
+            "##...............................###..##",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##############.#########################",
+            "########################################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "id": "tourResident0",
+              "x": 10,
+              "y": 13
+            },
+            {
+              "id": "tourResident1",
+              "x": 20,
+              "y": 12
+            },
+            {
+              "id": "tourPokemon",
+              "x": 22,
+              "y": 16
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 8,
+              "to": "tour_jubilife_center",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 31,
+              "y": 20,
+              "to": "tour_jubilife_hall",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 14,
+              "y": 34,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 14,
+              "y": 2,
+              "to": "tour_eterna_forest",
+              "spawn": {
+                "x": 10,
+                "y": 15
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 1,
+              "y": 14,
+              "to": "research_path",
+              "spawn": {
+                "x": 2,
+                "y": 12
+              },
+              "entry": "left",
+              "facing": "left"
+            },
+            {
+              "x": 38,
+              "y": 24,
+              "to": "route_s01",
+              "spawn": {
+                "x": 3,
+                "y": 12
+              },
+              "entry": "right",
+              "facing": "right"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 14,
+          "y": 3,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "south-exit-return",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 1.4333000000000182,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": "Z 조사 · 풀밭 옆 나무",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_eterna_forest",
+          "player": {
+            "x": 10,
+            "y": 15,
+            "facing": "up"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 17,
+          "seconds": 120.43255799995781,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "####################",
+            "####################",
+            "##########.#########",
+            "##................##",
+            "##..####....#####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##................##",
+            "##................##",
+            "##................##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........#######.##",
+            "##................##",
+            "##########.#########",
+            "####################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 12,
+              "y": 7
+            }
+          ],
+          "warps": [
+            {
+              "x": 10,
+              "y": 16,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 10,
+              "y": 2,
+              "to": "tour_eterna",
+              "spawn": {
+                "x": 14,
+                "y": 31
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 4,
+              "y": 10,
+              "w": 4,
+              "h": 3
+            }
+          ]
+        },
+        "position": {
+          "x": 10,
+          "y": 15,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "name": "reloaded-qa-save",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": "Z 조사 · 풀밭 옆 나무",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_eterna_forest",
+          "player": {
+            "x": 10,
+            "y": 15,
+            "facing": "up"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 17,
+          "seconds": 121.04925799995777,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "####################",
+            "####################",
+            "##########.#########",
+            "##................##",
+            "##..####....#####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##................##",
+            "##................##",
+            "##................##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........#######.##",
+            "##................##",
+            "##########.#########",
+            "####################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 12,
+              "y": 7
+            }
+          ],
+          "warps": [
+            {
+              "x": 10,
+              "y": 16,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 10,
+              "y": 2,
+              "to": "tour_eterna",
+              "spawn": {
+                "x": 14,
+                "y": 31
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 4,
+              "y": 10,
+              "w": 4,
+              "h": 3
+            }
+          ]
+        },
+        "position": {
+          "x": 10,
+          "y": 15,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "name": "eterna-garden",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": {
+          "position": {
+            "id": "tourPokemon",
+            "name": "삐삐",
+            "species": "clefairy",
+            "sprite": "field-clefairy",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "삐삐!\n가벼운 발걸음으로 빙글 돌아본다."
+            ]
+          },
+          "moving": false,
+          "tiles": [
+            {
+              "id": "tourPokemon",
+              "name": "삐삐",
+              "species": "clefairy",
+              "sprite": "field-clefairy",
+              "x": 22,
+              "y": 16,
+              "facing": "down",
+              "dialogue": "tourPokemon",
+              "pages": [
+                "삐삐!\n가벼운 발걸음으로 빙글 돌아본다."
+              ]
+            },
+            {
+              "x": 23,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 17
+            },
+            {
+              "x": 21,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 16
+            },
+            {
+              "x": 23,
+              "y": 17
+            },
+            {
+              "x": 22,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 15
+            },
+            {
+              "x": 23,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 18
+            },
+            {
+              "x": 20,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 18
+            },
+            {
+              "x": 24,
+              "y": 14
+            },
+            {
+              "x": 20,
+              "y": 18
+            }
+          ]
+        },
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_eterna",
+          "player": {
+            "x": 14,
+            "y": 11,
+            "facing": "down"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 17,
+          "seconds": 129.06585799995776,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest",
+            "tour_eterna"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "####################################",
+            "####################################",
+            "##############.#####################",
+            "##................................##",
+            "##..............#.................##",
+            "##................................##",
+            "##................................##",
+            "##....#####.......................##",
+            "##....##.##.............########..##",
+            "##......................########..##",
+            "##...####...............##.#####..##",
+            "##...####.........................##",
+            "##...####.........................##",
+            "##...####.........................##",
+            "##................................##",
+            "##................................##",
+            "##................................##",
+            "##................................##",
+            "##............###.................##",
+            "##............###.................##",
+            "##............###.................##",
+            "##................................##",
+            "##...........................##...##",
+            "##...####....................##...##",
+            "##...#.##.........................##",
+            "##................................##",
+            "##..............####..............##",
+            "##..............####....####......##",
+            "##......................####......##",
+            "##................................##",
+            "##..............#.................##",
+            "##................................##",
+            "##############.#####################",
+            "####################################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "id": "tourResident0",
+              "x": 10,
+              "y": 13
+            },
+            {
+              "id": "tourResident1",
+              "x": 20,
+              "y": 12
+            },
+            {
+              "id": "tourPokemon",
+              "x": 22,
+              "y": 16
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 8,
+              "to": "tour_eterna_center",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 26,
+              "y": 10,
+              "to": "tour_eterna_hall",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 14,
+              "y": 32,
+              "to": "tour_eterna_forest",
+              "spawn": {
+                "x": 10,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 14,
+              "y": 2,
+              "to": "tour_coronet",
+              "spawn": {
+                "x": 10,
+                "y": 3
+              },
+              "entry": "up",
+              "facing": "down"
+            },
+            {
+              "x": 6,
+              "y": 24,
+              "to": "eterna_gym",
+              "spawn": {
+                "x": 8,
+                "y": 13
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 14,
+          "y": 11,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "eterna-garden-side",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": {
+          "position": {
+            "id": "tourPokemon",
+            "name": "삐삐",
+            "species": "clefairy",
+            "sprite": "field-clefairy",
+            "x": 23,
+            "y": 17,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "삐삐!\n가벼운 발걸음으로 빙글 돌아본다."
+            ]
+          },
+          "moving": false,
+          "tiles": [
+            {
+              "id": "tourPokemon",
+              "name": "삐삐",
+              "species": "clefairy",
+              "sprite": "field-clefairy",
+              "x": 22,
+              "y": 16,
+              "facing": "down",
+              "dialogue": "tourPokemon",
+              "pages": [
+                "삐삐!\n가벼운 발걸음으로 빙글 돌아본다."
+              ]
+            },
+            {
+              "x": 23,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 17
+            },
+            {
+              "x": 21,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 16
+            },
+            {
+              "x": 23,
+              "y": 17
+            },
+            {
+              "x": 22,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 15
+            },
+            {
+              "x": 23,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 18
+            },
+            {
+              "x": 20,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 18
+            },
+            {
+              "x": 24,
+              "y": 14
+            },
+            {
+              "x": 20,
+              "y": 18
+            }
+          ]
+        },
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_eterna",
+          "player": {
+            "x": 11,
+            "y": 11,
+            "facing": "left"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 20,
+          "seconds": 132.31575799995838,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest",
+            "tour_eterna"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "####################################",
+            "####################################",
+            "##############.#####################",
+            "##................................##",
+            "##..............#.................##",
+            "##................................##",
+            "##................................##",
+            "##....#####.......................##",
+            "##....##.##.............########..##",
+            "##......................########..##",
+            "##...####...............##.#####..##",
+            "##...####.........................##",
+            "##...####.........................##",
+            "##...####.........................##",
+            "##................................##",
+            "##................................##",
+            "##................................##",
+            "##................................##",
+            "##............###.................##",
+            "##............###.................##",
+            "##............###.................##",
+            "##................................##",
+            "##...........................##...##",
+            "##...####....................##...##",
+            "##...#.##.........................##",
+            "##................................##",
+            "##..............####..............##",
+            "##..............####....####......##",
+            "##......................####......##",
+            "##................................##",
+            "##..............#.................##",
+            "##................................##",
+            "##############.#####################",
+            "####################################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "id": "tourResident0",
+              "x": 10,
+              "y": 13
+            },
+            {
+              "id": "tourResident1",
+              "x": 20,
+              "y": 12
+            },
+            {
+              "id": "tourPokemon",
+              "x": 23,
+              "y": 17
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 8,
+              "to": "tour_eterna_center",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 26,
+              "y": 10,
+              "to": "tour_eterna_hall",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 14,
+              "y": 32,
+              "to": "tour_eterna_forest",
+              "spawn": {
+                "x": 10,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 14,
+              "y": 2,
+              "to": "tour_coronet",
+              "spawn": {
+                "x": 10,
+                "y": 3
+              },
+              "entry": "up",
+              "facing": "down"
+            },
+            {
+              "x": 6,
+              "y": 24,
+              "to": "eterna_gym",
+              "spawn": {
+                "x": 8,
+                "y": 13
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 11,
+          "y": 11,
+          "facing": "left"
+        }
+      }
+    },
+    {
+      "name": "viridian-odd-height-grove",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": {
+          "position": {
+            "id": "tourPokemon",
+            "name": "파치리스",
+            "species": "pachirisu",
+            "sprite": "field-pachirisu",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "파치파치!\n풍성한 꼬리를 살랑살랑 흔든다."
+            ]
+          },
+          "moving": false,
+          "tiles": [
+            {
+              "id": "tourPokemon",
+              "name": "파치리스",
+              "species": "pachirisu",
+              "sprite": "field-pachirisu",
+              "x": 22,
+              "y": 16,
+              "facing": "down",
+              "dialogue": "tourPokemon",
+              "pages": [
+                "파치파치!\n풍성한 꼬리를 살랑살랑 흔든다."
+              ]
+            },
+            {
+              "x": 23,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 17
+            },
+            {
+              "x": 21,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 15
+            },
+            {
+              "x": 24,
+              "y": 16
+            },
+            {
+              "x": 23,
+              "y": 17
+            },
+            {
+              "x": 23,
+              "y": 15
+            },
+            {
+              "x": 22,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 16
+            },
+            {
+              "x": 21,
+              "y": 15
+            },
+            {
+              "x": 24,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 15
+            },
+            {
+              "x": 23,
+              "y": 18
+            },
+            {
+              "x": 23,
+              "y": 14
+            },
+            {
+              "x": 21,
+              "y": 18
+            },
+            {
+              "x": 20,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 15
+            },
+            {
+              "x": 24,
+              "y": 18
+            },
+            {
+              "x": 24,
+              "y": 14
+            },
+            {
+              "x": 20,
+              "y": 18
+            }
+          ]
+        },
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_viridian",
+          "player": {
+            "x": 14,
+            "y": 11,
+            "facing": "down"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 20,
+          "seconds": 143.6155579999563,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest",
+            "tour_eterna",
+            "tour_viridian"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "##################################",
+            "##################################",
+            "##############.###################",
+            "##..............................##",
+            "##..............#...............##",
+            "##..............................##",
+            "##..............................##",
+            "##....#####.....................##",
+            "##....##.##...........########..##",
+            "##....................########..##",
+            "##...####.............##.######.##",
+            "##...####.......................##",
+            "##...####........................#",
+            "##...####.......................##",
+            "##...####.......................##",
+            "##..............................##",
+            "##..............................##",
+            "##..............................##",
+            "##..............................##",
+            "##...####.....###...............##",
+            "##...####.....###...............##",
+            "##..............................##",
+            "##..............................##",
+            "##...................####.......##",
+            "##...................####.......##",
+            "##...####.......................##",
+            "##...####.......#...............##",
+            "##..............................##",
+            "##############.###################",
+            "##################################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "id": "tourResident0",
+              "x": 10,
+              "y": 13
+            },
+            {
+              "id": "tourResident1",
+              "x": 20,
+              "y": 12
+            },
+            {
+              "id": "tourPokemon",
+              "x": 22,
+              "y": 16
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 8,
+              "to": "tour_viridian_center",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 24,
+              "y": 10,
+              "to": "tour_viridian_hall",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 14,
+              "y": 28,
+              "to": "tour_pallet",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 14,
+              "y": 2,
+              "to": "tour_viridian_forest",
+              "spawn": {
+                "x": 10,
+                "y": 15
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 32,
+              "y": 12,
+              "to": "tour_celadon",
+              "spawn": {
+                "x": 2,
+                "y": 12
+              },
+              "entry": "right",
+              "facing": "right"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 14,
+          "y": 11,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "fuchsia-odd-height-grove",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": {
+          "position": {
+            "id": "tourPokemon",
+            "name": "파치리스",
+            "species": "pachirisu",
+            "sprite": "field-pachirisu",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "파치파치!\n풍성한 꼬리를 살랑살랑 흔든다."
+            ]
+          },
+          "moving": false,
+          "tiles": [
+            {
+              "id": "tourPokemon",
+              "name": "파치리스",
+              "species": "pachirisu",
+              "sprite": "field-pachirisu",
+              "x": 22,
+              "y": 16,
+              "facing": "down",
+              "dialogue": "tourPokemon",
+              "pages": [
+                "파치파치!\n풍성한 꼬리를 살랑살랑 흔든다."
+              ]
+            },
+            {
+              "x": 23,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 17
+            },
+            {
+              "x": 21,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 15
+            },
+            {
+              "x": 24,
+              "y": 16
+            },
+            {
+              "x": 23,
+              "y": 17
+            },
+            {
+              "x": 23,
+              "y": 15
+            },
+            {
+              "x": 22,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 16
+            },
+            {
+              "x": 21,
+              "y": 15
+            },
+            {
+              "x": 24,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 15
+            },
+            {
+              "x": 23,
+              "y": 18
+            },
+            {
+              "x": 23,
+              "y": 14
+            },
+            {
+              "x": 21,
+              "y": 18
+            },
+            {
+              "x": 20,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 15
+            },
+            {
+              "x": 24,
+              "y": 18
+            },
+            {
+              "x": 24,
+              "y": 14
+            },
+            {
+              "x": 20,
+              "y": 18
+            }
+          ]
+        },
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_fuchsia",
+          "player": {
+            "x": 14,
+            "y": 11,
+            "facing": "down"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 20,
+          "seconds": 144.51545799995654,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest",
+            "tour_eterna",
+            "tour_viridian",
+            "tour_fuchsia"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "##################################",
+            "##################################",
+            "##############.###################",
+            "##..............................##",
+            "##..............#...............##",
+            "##..............................##",
+            "##..............................##",
+            "##....#####.....................##",
+            "##....##.##...........########..##",
+            "##....................########..##",
+            "##...####.............##.######.##",
+            "##...####.......................##",
+            "##...####........................#",
+            "##...####.......................##",
+            "##...####.......................##",
+            "##..............................##",
+            "##..............................##",
+            "##..............................##",
+            "##..............................##",
+            "##...####.....###...............##",
+            "##...####.....###...............##",
+            "##..............................##",
+            "##..............................##",
+            "##...................####.......##",
+            "##...................####.......##",
+            "##...####.......................##",
+            "##...####.......................##",
+            "##..............................##",
+            "##################################",
+            "##################################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "id": "tourResident0",
+              "x": 10,
+              "y": 13
+            },
+            {
+              "id": "tourResident1",
+              "x": 20,
+              "y": 12
+            },
+            {
+              "id": "tourPokemon",
+              "x": 22,
+              "y": 16
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 8,
+              "to": "tour_fuchsia_center",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 24,
+              "y": 10,
+              "to": "tour_fuchsia_hall",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 14,
+              "y": 2,
+              "to": "tour_celadon",
+              "spawn": {
+                "x": 14,
+                "y": 27
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 32,
+              "y": 12,
+              "to": "tour_lavender",
+              "spawn": {
+                "x": 14,
+                "y": 31
+              },
+              "entry": "right",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 14,
+          "y": 11,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "name": "final-forest",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": "Z 조사 · 풀밭 옆 나무",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 18,
+          "map": "tour_eterna_forest",
+          "player": {
+            "x": 10,
+            "y": 10,
+            "facing": "down"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 20,
+          "seconds": 194.44595799996733,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_eterna_forest",
+            "tour_eterna",
+            "tour_viridian",
+            "tour_fuchsia"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "####################",
+            "####################",
+            "##########.#########",
+            "##................##",
+            "##..####....#####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##..####.....####.##",
+            "##................##",
+            "##................##",
+            "##................##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........##.####.##",
+            "##........#######.##",
+            "##................##",
+            "##########.#########",
+            "####################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 12,
+              "y": 7
+            }
+          ],
+          "warps": [
+            {
+              "x": 10,
+              "y": 16,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 10,
+              "y": 2,
+              "to": "tour_eterna",
+              "spawn": {
+                "x": 14,
+                "y": 31
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 4,
+              "y": 10,
+              "w": 4,
+              "h": 3
+            }
+          ]
+        },
+        "position": {
+          "x": 10,
+          "y": 10,
+          "facing": "down"
+        }
+      }
+    }
+  ],
+  "notes": [
+    "UI map travel prepares empty-party visual QA; no user save changed.",
+    "Continuous input waits in one tool call timed out; positions were then verified between individual UI steps.",
+    "Battle encounters covered by automated regression, not played in this art pass."
+  ]
+}

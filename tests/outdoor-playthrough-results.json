@@ -1,0 +1,320 @@
+{
+  "qa": "outdoors-20260906-01",
+  "method": "Public atlas buttons, keyboard movement and investigation, touch hint, actual exit walking, in-game report and reload. No runtime state injection.",
+  "observations": [
+    {
+      "map": "tour_jubilife",
+      "position": {
+        "x": 5,
+        "y": 16,
+        "facing": "up"
+      },
+      "hint": "Z 조사 · 마을 정원",
+      "dialogue": [
+        "꽃과 잎을 정성스럽게 가꾼 화단이다.\n마을의 작은 쉼터가 되어 준다."
+      ],
+      "speaker": "마을 정원"
+    },
+    {
+      "map": "tour_jubilife",
+      "position": {
+        "x": 12,
+        "y": 17,
+        "facing": "up"
+      },
+      "hint": "Z 조사 · 광장 분수",
+      "dialogue": [
+        "작은 물줄기가 광장 가운데 솟는다.\n여행자가 쉬어 가기 좋은 자리다."
+      ],
+      "speaker": "광장 분수"
+    },
+    {
+      "map": "tour_jubilife",
+      "position": {
+        "x": 16,
+        "y": 21,
+        "facing": "up"
+      },
+      "hint": "Z 읽기 · 무쇠시티 방면",
+      "dialogue": [
+        "↓ 남쪽 출구 → 무쇠시티\n마을 연결길 표지입니다.",
+        "표지 옆 길을 따라 출구로 걸어가세요.\n이 길은 돌아올 때도 이용할 수 있어요."
+      ],
+      "speaker": "무쇠시티"
+    },
+    {
+      "map": "tour_jubilife",
+      "position": {
+        "x": 16,
+        "y": 21,
+        "facing": "up"
+      },
+      "hint": "Z 읽기 · 무쇠시티 방면",
+      "dialogue": [
+        "↓ 남쪽 출구 → 무쇠시티\n마을 연결길 표지입니다.",
+        "표지 옆 길을 따라 출구로 걸어가세요.\n이 길은 돌아올 때도 이용할 수 있어요."
+      ],
+      "speaker": "무쇠시티"
+    },
+    {
+      "test": "touch interaction hint",
+      "speaker": "무쇠시티"
+    },
+    {
+      "test": "signed south exit",
+      "arrival": "tour_oreburgh"
+    },
+    {
+      "map": "tour_oreburgh",
+      "position": {
+        "x": 5,
+        "y": 16,
+        "facing": "up"
+      },
+      "hint": "Z 조사 · 광석과 운반 레일",
+      "dialogue": [
+        "광석 더미 옆으로 레일이 놓여 있다.\n전시관에서 광산의 구조를 볼 수 있다."
+      ],
+      "speaker": "광석과 운반 레일"
+    },
+    {
+      "map": "tour_oreburgh",
+      "position": {
+        "x": 16,
+        "y": 5,
+        "facing": "up"
+      },
+      "hint": "Z 읽기 · 축복시티 방면",
+      "dialogue": [
+        "↑ 북쪽 출구 → 축복시티\n마을 연결길 표지입니다.",
+        "표지 옆 길을 따라 출구로 걸어가세요.\n이 길은 돌아올 때도 이용할 수 있어요."
+      ],
+      "speaker": "축복시티"
+    },
+    {
+      "test": "signed north return",
+      "arrival": "tour_jubilife"
+    },
+    {
+      "map": "tour_jubilife",
+      "position": {
+        "x": 3,
+        "y": 11,
+        "facing": "up"
+      },
+      "hint": "Z 읽기 · 운하시티 방면",
+      "dialogue": [
+        "← 서쪽 출구 → 운하시티\n마을 연결길 표지입니다.",
+        "표지 옆 길을 따라 출구로 걸어가세요.\n이 길은 돌아올 때도 이용할 수 있어요."
+      ],
+      "speaker": "운하시티"
+    },
+    {
+      "map": "tour_jubilife",
+      "position": {
+        "x": 24,
+        "y": 12,
+        "facing": "up"
+      },
+      "hint": "Z 읽기 · 새잎마을 방면",
+      "dialogue": [
+        "→ 동쪽 출구 → 새잎마을\n마을 연결길 표지입니다.",
+        "표지 옆 길을 따라 출구로 걸어가세요.\n이 길은 돌아올 때도 이용할 수 있어요."
+      ],
+      "speaker": "새잎마을"
+    },
+    {
+      "map": "tour_eterna_forest",
+      "position": {
+        "x": 2,
+        "y": 6,
+        "facing": "left"
+      },
+      "hint": "Z 조사 · 숲의 나무",
+      "dialogue": [
+        "빽빽한 나뭇잎 사이로 빛이 스민다.\n짧은 숲길에 잎 스치는 소리가 난다."
+      ],
+      "speaker": "숲의 나무"
+    },
+    {
+      "map": "tour_coronet",
+      "position": {
+        "x": 4,
+        "y": 7,
+        "facing": "up"
+      },
+      "hint": "Z 조사 · 동굴 암반",
+      "dialogue": [
+        "서늘한 돌벽에 물기가 맺혀 있다.\n통로를 따라 다른 마을로 이어진다."
+      ],
+      "speaker": "동굴 암반"
+    },
+    {
+      "map": "tour_canalave",
+      "position": {
+        "x": 5,
+        "y": 16,
+        "facing": "up"
+      },
+      "hint": "Z 조사 · 항구 관찰 데크",
+      "dialogue": [
+        "나무 데크 아래로 물결이 밀려온다.\n멀리 정박한 배가 보인다."
+      ],
+      "speaker": "항구 관찰 데크"
+    },
+    {
+      "map": "tour_canalave",
+      "position": {
+        "x": 16,
+        "y": 5,
+        "facing": "up"
+      },
+      "hint": "Z 읽기 · 갈색시티 방면",
+      "dialogue": [
+        "↑ 북쪽 출구 → 갈색시티\n배 연결편 표지입니다.",
+        "표지 옆 길을 따라 출구로 걸어가세요.\n이 길은 돌아올 때도 이용할 수 있어요."
+      ],
+      "speaker": "갈색시티"
+    },
+    {
+      "test": "ship sign matches walking connection",
+      "arrival": "tour_vermilion"
+    },
+    {
+      "map": "tour_saffron",
+      "position": {
+        "x": 16,
+        "y": 21,
+        "facing": "up"
+      },
+      "hint": "Z 읽기 · 금빛시티 방면",
+      "dialogue": [
+        "↓ 남쪽 출구 → 금빛시티\n열차 연결편 표지입니다.",
+        "표지 옆 길을 따라 출구로 걸어가세요.\n이 길은 돌아올 때도 이용할 수 있어요."
+      ],
+      "speaker": "금빛시티"
+    },
+    {
+      "map": "tour_snowpoint",
+      "position": {
+        "x": 5,
+        "y": 16,
+        "facing": "up"
+      },
+      "hint": "Z 조사 · 눈꽃 정원",
+      "dialogue": [
+        "눈이 작은 기둥과 화단을 덮었다.\n발자국 너머로 신전이 보인다."
+      ],
+      "speaker": "눈꽃 정원"
+    },
+    {
+      "map": "tour_snowpoint",
+      "position": {
+        "x": 12,
+        "y": 17,
+        "facing": "up"
+      },
+      "hint": "Z 조사 · 얼어붙은 분수",
+      "dialogue": [
+        "분수 가장자리에 얇은 얼음이 맺혔다.\n눈 위에 햇빛이 반짝인다."
+      ],
+      "speaker": "얼어붙은 분수"
+    },
+    {
+      "map": "tour_lavender",
+      "position": {
+        "x": 5,
+        "y": 16,
+        "facing": "up"
+      },
+      "hint": "Z 조사 · 추모 정원",
+      "dialogue": [
+        "조용한 정원에 작은 비석이 서 있다.\n곁에 놓인 꽃이 바람에 흔들린다."
+      ],
+      "speaker": "추모 정원"
+    },
+    {
+      "map": "tour_nimbasa",
+      "position": {
+        "x": 5,
+        "y": 16,
+        "facing": "up"
+      },
+      "hint": "Z 조사 · 관람차 광장",
+      "dialogue": [
+        "색색의 객실이 둥글게 늘어서 있다.\n놀이공원 안내소에서 모형을 보자."
+      ],
+      "speaker": "관람차 광장"
+    },
+    {
+      "map": "tour_mistralton",
+      "position": {
+        "x": 5,
+        "y": 16,
+        "facing": "up"
+      },
+      "hint": "Z 조사 · 활주로 모형",
+      "dialogue": [
+        "흰 유도선 옆에 작은 비행기가 있다.\n공항 터미널에서 모형도 살펴보자."
+      ],
+      "speaker": "활주로 모형"
+    },
+    {
+      "map": "tour_mistralton_hall",
+      "position": {
+        "x": 3,
+        "y": 6,
+        "facing": "up"
+      },
+      "hint": "Z 조사 · 비행기 모형",
+      "dialogue": [
+        "긴 날개 아래 작은 바퀴가 있다.\n화물칸 문이 열려 있다."
+      ],
+      "speaker": "비행기 모형"
+    },
+    {
+      "test": "indoor NPC hint",
+      "hint": "Z 말걸기 · 시설 안내원"
+    },
+    {
+      "test": "save and reload after outdoor and interior investigation",
+      "map": "tour_mistralton_hall",
+      "player": {
+        "x": 8,
+        "y": 10,
+        "facing": "left"
+      }
+    },
+    {
+      "map": "tour_jubilife",
+      "position": {
+        "x": 16,
+        "y": 21,
+        "facing": "up"
+      },
+      "hint": "Z 읽기 · 무쇠시티 방면",
+      "dialogue": [
+        "↓ 남쪽 출구 → 무쇠시티\n마을 연결길 표지입니다.",
+        "표지 옆 길을 따라 출구로 걸어가세요.\n이 길은 돌아올 때도 이용할 수 있어요."
+      ],
+      "speaker": "무쇠시티"
+    }
+  ],
+  "observationCount": 26,
+  "visitedMaps": [
+    "tour_jubilife",
+    "tour_oreburgh",
+    "tour_eterna_forest",
+    "tour_coronet",
+    "tour_canalave",
+    "tour_vermilion",
+    "tour_saffron",
+    "tour_snowpoint",
+    "tour_lavender",
+    "tour_nimbasa",
+    "tour_mistralton",
+    "tour_mistralton_hall"
+  ],
+  "browserLogs": [],
+  "scope": "Representative outdoor kinds and sign directions, ship/train guidance, interior hint. All 43 outdoor maps, 83 objects and 99 signs covered by automated tests."
+}

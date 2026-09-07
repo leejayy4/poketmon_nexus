@@ -1,0 +1,239 @@
+{
+  "qa": "plazas-20260906-01",
+  "url": "http://localhost:5173/?explore=1&qa=plazas-20260906-01",
+  "scope": "8 objects, 3 facility walking roundtrips, revision 10 import, reconnect",
+  "observations": [
+    {
+      "test": "walked, faced and investigated plaza object",
+      "map": "tour_jubilife",
+      "name": "방송국 앞 정원",
+      "pages": [
+        "광장으로 들어오는 길에 꽃을 심었다.\n분수를 둘러보며 쉬어 갈 수 있다."
+      ],
+      "player": {
+        "x": 7,
+        "y": 14,
+        "facing": "up"
+      }
+    },
+    {
+      "test": "walked, faced and investigated plaza object",
+      "map": "tour_jubilife",
+      "name": "교류 광장 분수",
+      "pages": [
+        "물줄기를 중심으로 광장이 펼쳐진다.\n네 방향 길에서 여행자들이 모인다."
+      ],
+      "player": {
+        "x": 13,
+        "y": 16,
+        "facing": "up"
+      }
+    },
+    {
+      "test": "walked, faced and investigated plaza object",
+      "map": "tour_jubilife",
+      "name": "광장 모퉁이 화단",
+      "pages": [
+        "작은 화단이 광장 모퉁이를 꾸민다.\n방송국 쪽으로 난 길이 옆에 있다."
+      ],
+      "player": {
+        "x": 21,
+        "y": 14,
+        "facing": "right"
+      }
+    },
+    {
+      "test": "walked, faced and investigated plaza object",
+      "map": "tour_oreburgh",
+      "name": "광석 선별장",
+      "pages": [
+        "광석을 크기별로 나누어 쌓아 두었다.\n돌마다 색과 결이 조금씩 다르다."
+      ],
+      "player": {
+        "x": 9,
+        "y": 13,
+        "facing": "left"
+      }
+    },
+    {
+      "test": "walked, faced and investigated plaza object",
+      "map": "tour_oreburgh",
+      "name": "운반 레일과 광차",
+      "pages": [
+        "짧은 레일 위에 광차 모형이 놓였다.\n광산 전시관과 함께 둘러보는 자리다."
+      ],
+      "player": {
+        "x": 20,
+        "y": 16,
+        "facing": "up"
+      }
+    },
+    {
+      "test": "walked, faced and investigated plaza object",
+      "map": "tour_hearthome",
+      "name": "공연장 산책 정원",
+      "pages": [
+        "꽃들이 공연장으로 가는 길을 꾸민다.\n천천히 걸으며 색을 비교해 보자."
+      ],
+      "player": {
+        "x": 9,
+        "y": 13,
+        "facing": "left"
+      }
+    },
+    {
+      "test": "walked, faced and investigated plaza object",
+      "map": "tour_hearthome",
+      "name": "리본 화단",
+      "pages": [
+        "밝은 꽃을 리본처럼 모아 심었다.\n화단 양쪽으로 산책길이 이어진다."
+      ],
+      "player": {
+        "x": 13,
+        "y": 17,
+        "facing": "up"
+      }
+    },
+    {
+      "test": "walked, faced and investigated plaza object",
+      "map": "tour_hearthome",
+      "name": "휴식 화단",
+      "pages": [
+        "주택가 앞 작은 꽃밭이다.\n공연장을 둘러보고 잠깐 쉬어 가자."
+      ],
+      "player": {
+        "x": 16,
+        "y": 18,
+        "facing": "right"
+      }
+    },
+    {
+      "test": "walked guidance around redesigned plaza, entered facility and returned",
+      "map": "tour_jubilife",
+      "facility": "tour_jubilife_center",
+      "returnPlayer": {
+        "x": 8,
+        "y": 9,
+        "facing": "down"
+      },
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_hearthome",
+        "tour_jubilife_center"
+      ]
+    },
+    {
+      "test": "walked guidance around redesigned plaza, entered facility and returned",
+      "map": "tour_oreburgh",
+      "facility": "tour_oreburgh_hall",
+      "returnPlayer": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      },
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_hearthome",
+        "tour_jubilife_center",
+        "tour_oreburgh_hall"
+      ]
+    },
+    {
+      "test": "walked guidance around redesigned plaza, entered facility and returned",
+      "map": "tour_hearthome",
+      "facility": "tour_hearthome_hall",
+      "returnPlayer": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      },
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_hearthome",
+        "tour_jubilife_center",
+        "tour_oreburgh_hall",
+        "tour_hearthome_hall"
+      ]
+    },
+    {
+      "test": "revision 10 file import moves new rail overlap to safe city spawn and preserves progress",
+      "save": {
+        "version": 1,
+        "worldRevision": 11,
+        "map": "tour_oreburgh",
+        "player": {
+          "x": 14,
+          "y": 11,
+          "facing": "down"
+        },
+        "flags": {
+          "exploration": true
+        },
+        "party": [],
+        "inventory": {
+          "pokeBalls": 0,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 234,
+        "seconds": 567.2826999999993,
+        "tourVisited": [
+          "tour_oreburgh",
+          "tour_oreburgh_center"
+        ]
+      }
+    },
+    {
+      "test": "reconnect after Vite restart preserves migrated save and clears session navigation",
+      "save": {
+        "version": 1,
+        "worldRevision": 11,
+        "map": "tour_oreburgh",
+        "player": {
+          "x": 14,
+          "y": 11,
+          "facing": "down"
+        },
+        "flags": {
+          "exploration": true
+        },
+        "party": [],
+        "inventory": {
+          "pokeBalls": 0,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 234,
+        "seconds": 613.0300000001055,
+        "tourVisited": [
+          "tour_oreburgh",
+          "tour_oreburgh_center"
+        ]
+      },
+      "navigation": null
+    }
+  ],
+  "consoleAfterReconnect": [],
+  "environmentNote": "First reload encountered ERR_CONNECTION_REFUSED because Vite had stopped. Restarted Vite on port 5173 and reconnected to the same QA save in a new tab.",
+  "screenshots": [
+    "hearthome-rest-dialogue.png",
+    "hearthome-rest-field.png",
+    "hearthome-ribbon-dialogue.png",
+    "hearthome-ribbon-field.png",
+    "jubilife-fountain-dialogue.png",
+    "jubilife-fountain-field.png",
+    "oreburgh-quarry-dialogue.png",
+    "oreburgh-quarry-field.png",
+    "oreburgh-rail-dialogue.png",
+    "oreburgh-rail-field.png"
+  ]
+}

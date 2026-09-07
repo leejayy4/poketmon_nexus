@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "worldRevision": 16,
+  "map": "lab",
+  "player": {
+    "x": 6,
+    "y": 5,
+    "facing": "up"
+  },
+  "flags": {},
+  "party": [],
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 0
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 0,
+  "seconds": 0
+}

@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "worldRevision": 16,
+  "map": "oreburgh",
+  "player": {
+    "x": 12,
+    "y": 20,
+    "facing": "up"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 7,
+      "level": 25,
+      "experience": 0,
+      "hp": 65,
+      "maxHp": 80,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소"
+    }
+  ],
+  "inventory": {
+    "pokeBalls": 5,
+    "potions": 0
+  },
+  "badges": [
+    "BADGE-GS01"
+  ],
+  "keyItems": [
+    "TM-stealth-rock"
+  ],
+  "money": 1440,
+  "healingPoint": "oreburgh_center",
+  "steps": 19,
+  "seconds": 17.76755400004771,
+  "tourVisited": [
+    "tour_oreburgh"
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "qa": "ds-field-20260907-01",
+  "observations": [
+    {
+      "test": "walk through visible DS facade door and return",
+      "map": "tour_jubilife",
+      "interior": "tour_jubilife_hall",
+      "player": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      },
+      "worldRevision": 12
+    },
+    {
+      "test": "walk behind depth-sorted facade roof",
+      "save": {
+        "version": 1,
+        "worldRevision": 12,
+        "map": "tour_jubilife",
+        "player": {
+          "x": 19,
+          "y": 6,
+          "facing": "right"
+        },
+        "flags": {
+          "exploration": true
+        },
+        "party": [],
+        "inventory": {
+          "pokeBalls": 0,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 20,
+        "seconds": 78.63190199985824,
+        "tourVisited": [
+          "tour_jubilife",
+          "tour_jubilife_hall"
+        ]
+      }
+    },
+    {
+      "test": "walk through visible DS facade door and return",
+      "map": "tour_snowpoint",
+      "interior": "tour_snowpoint_hall",
+      "player": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      },
+      "worldRevision": 12
+    },
+    {
+      "test": "walk through visible DS facade door and return",
+      "map": "tour_canalave",
+      "interior": "tour_canalave_hall",
+      "player": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      },
+      "worldRevision": 12
+    },
+    {
+      "test": "wooden exit sign still explains destination without floating world label",
+      "map": "tour_canalave",
+      "dialogue": {
+        "speaker": "갈색시티",
+        "pages": [
+          "↑ 북쪽 출구 → 갈색시티\n배 연결편 표지입니다.",
+          "표지 옆 길을 따라 출구로 걸어가세요.\n이 길은 돌아올 때도 이용할 수 있어요."
+        ],
+        "page": 0,
+        "shown": 2.9952000000004193,
+        "selected": 0
+      }
+    },
+    {
+      "test": "walk among region tinted houses and textured mine paths",
+      "save": {
+        "version": 1,
+        "worldRevision": 12,
+        "map": "tour_oreburgh",
+        "player": {
+          "x": 15,
+          "y": 17,
+          "facing": "down"
+        },
+        "flags": {
+          "exploration": true
+        },
+        "party": [],
+        "inventory": {
+          "pokeBalls": 0,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 55,
+        "seconds": 92.34340199985839,
+        "tourVisited": [
+          "tour_jubilife",
+          "tour_jubilife_hall",
+          "tour_snowpoint",
+          "tour_snowpoint_hall",
+          "tour_canalave",
+          "tour_canalave_hall",
+          "tour_oreburgh"
+        ]
+      }
+    },
+    {
+      "test": "redrawn fountain retains investigation and collision",
+      "dialogue": {
+        "speaker": "교류 광장 분수",
+        "pages": [
+          "물줄기를 중심으로 광장이 펼쳐진다.\n네 방향 길에서 여행자들이 모인다."
+        ],
+        "page": 0,
+        "shown": 4.798799999999581,
+        "selected": 0
+      },
+      "save": {
+        "version": 1,
+        "worldRevision": 12,
+        "map": "tour_jubilife",
+        "player": {
+          "x": 13,
+          "y": 16,
+          "facing": "up"
+        },
+        "flags": {
+          "exploration": true
+        },
+        "party": [],
+        "inventory": {
+          "pokeBalls": 0,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 63,
+        "seconds": 134.8581019998646,
+        "tourVisited": [
+          "tour_jubilife",
+          "tour_jubilife_hall",
+          "tour_snowpoint",
+          "tour_snowpoint_hall",
+          "tour_canalave",
+          "tour_canalave_hall",
+          "tour_oreburgh"
+        ]
+      }
+    },
+    {
+      "test": "visual-only update and reload preserve position, steps and revision 12",
+      "save": {
+        "version": 1,
+        "worldRevision": 12,
+        "map": "tour_jubilife",
+        "player": {
+          "x": 13,
+          "y": 16,
+          "facing": "up"
+        },
+        "flags": {
+          "exploration": true
+        },
+        "party": [],
+        "inventory": {
+          "pokeBalls": 0,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 63,
+        "seconds": 135.39045199967393,
+        "tourVisited": [
+          "tour_jubilife",
+          "tour_jubilife_hall",
+          "tour_snowpoint",
+          "tour_snowpoint_hall",
+          "tour_canalave",
+          "tour_canalave_hall",
+          "tour_oreburgh"
+        ]
+      }
+    }
+  ],
+  "console": [],
+  "screenshots": [
+    "canalave-door.png",
+    "jubilife-behind-roof.png",
+    "jubilife-door.png",
+    "jubilife-finished.png",
+    "jubilife-fountain.png",
+    "oreburgh-houses.png",
+    "snowpoint-door.png"
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "qa": "battle-replacement-20260907-01",
+  "fixture": "tests/battle-replacement-save.json",
+  "recordingNote": "브라우저 도구 시간 제한으로 중간 상태 배열이 초기화되어 완료된 조작과 확인 결과를 요약했다. finalState는 도주 대사가 남아 있는 시점의 직접 관찰이다. 이후 탭 연결이 사라져 필드 복귀 기록은 없다.",
+  "observations": [
+    {
+      "label": "꼬부기 기절 후 다수 후보 선택",
+      "result": "6마리 목록, 기본 선택 2번, 기절 스프라이트 숨김",
+      "screenshot": "battle-replacement-screenshots/replacement-choice.png"
+    },
+    {
+      "label": "X 취소 방지",
+      "result": "선택 대기와 HP 유지"
+    },
+    {
+      "label": "기절한 4번 개체 거절",
+      "result": "대화 후 같은 선택 단계 유지"
+    },
+    {
+      "label": "6번 개체 포인터 출전",
+      "result": "HP 18 유지, 추가 반격 없음",
+      "screenshot": "battle-replacement-screenshots/replacement-entered.png"
+    },
+    {
+      "label": "선택한 개체로 승리",
+      "result": "6번 비버니 레벨 4, 기절/미참여 경험치 없음"
+    },
+    {
+      "label": "승리 후 저장 재접속",
+      "result": "6번 레벨 4, 기절 HP와 파티 순서 유지"
+    },
+    {
+      "label": "원래 QA 파일 재수입 후 선택 대기 저장 재접속",
+      "result": "전투 없는 필드로 복원, 꼬부기 HP 0 유지"
+    },
+    {
+      "label": "재접속 후 도보 조우",
+      "result": "건강한 2번 개체 출전, 기절 후 다시 후보 선택"
+    },
+    {
+      "label": "도망친다 버튼",
+      "result": "도주 대사와 result=true 확인. 대사 종료 후 필드 복귀는 도구 재연결 중 탭이 사라져 최종 화면을 기록하지 못했다."
+    }
+  ],
+  "finalState": {
+    "roaming": null,
+    "navigation": null,
+    "interactionHint": null,
+    "exploring": false,
+    "battle": {
+      "kind": "wild",
+      "gymId": "roark",
+      "opponents": [
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 12,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "enemyIndex": 0,
+      "enemy": {
+        "species": 399,
+        "level": 3,
+        "hp": 12,
+        "maxHp": 18,
+        "experience": 0,
+        "nature": "성실",
+        "met": "새잎 서쪽길"
+      },
+      "active": 1,
+      "participants": [
+        1
+      ],
+      "forcedSwitch": true,
+      "menu": "party",
+      "selected": 2,
+      "enemyAttackDrop": 0,
+      "enemyDefenseDrop": 0,
+      "result": true
+    },
+    "grassSteps": 0,
+    "save": {
+      "version": 1,
+      "worldRevision": 16,
+      "map": "route_s01",
+      "player": {
+        "x": 9,
+        "y": 15,
+        "facing": "right"
+      },
+      "flags": {
+        "starterReceived": true,
+        "departureCleared": true
+      },
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 0,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 20,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 5,
+        "potions": 2
+      },
+      "badges": [],
+      "keyItems": [],
+      "money": 0,
+      "healingPoint": "home",
+      "steps": 12,
+      "seconds": 14.534100000000043
+    },
+    "panel": "field",
+    "dialogue": {
+      "speaker": "",
+      "pages": [
+        "무사히 도망쳤다!"
+      ],
+      "page": 0,
+      "shown": 357.6384000000005,
+      "selected": 0
+    },
+    "moving": false,
+    "transition": 0,
+    "menuIndex": 0,
+    "starterIndex": 0,
+    "partyIndex": 0,
+    "map": {
+      "walkable": [
+        "################################",
+        "################################",
+        "################################",
+        "################################",
+        "###...........................##",
+        "###...........................##",
+        "###...........................##",
+        "###...........................##",
+        "###...........................##",
+        "###...........................##",
+        "###...#.......................##",
+        "###...........................##",
+        "##.............................#",
+        "###...........................##",
+        "###...........................##",
+        "###...........................##",
+        "###...........................##",
+        "###...........................##",
+        "###...........................##",
+        "###...........................##",
+        "###...........................##",
+        "################################",
+        "################################",
+        "################################"
+      ],
+      "npcs": [
+        {
+          "id": "routeGuide",
+          "x": 25,
+          "y": 10
+        },
+        {
+          "id": "roadworker",
+          "x": 3,
+          "y": 11
+        }
+      ],
+      "warps": [
+        {
+          "x": 2,
+          "y": 12,
+          "to": "jubilife",
+          "spawn": {
+            "x": 21,
+            "y": 12
+          },
+          "entry": "left",
+          "facing": "left"
+        },
+        {
+          "x": 30,
+          "y": 12,
+          "to": "town",
+          "spawn": {
+            "x": 4,
+            "y": 15
+          },
+          "facing": "right",
+          "entry": "right"
+        }
+      ],
+      "reserved": [],
+      "terrain": [
+        {
+          "kind": "tallGrass",
+          "x": 17,
+          "y": 6,
+          "w": 6,
+          "h": 4
+        },
+        {
+          "kind": "tallGrass",
+          "x": 7,
+          "y": 15,
+          "w": 8,
+          "h": 4
+        }
+      ]
+    },
+    "position": {
+      "x": 9,
+      "y": 15,
+      "facing": "right"
+    }
+  },
+  "consoleAfterReload": []
+}

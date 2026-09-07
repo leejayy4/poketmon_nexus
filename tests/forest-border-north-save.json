@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "worldRevision": 20,
+  "map": "tour_eterna_forest",
+  "player": {
+    "x": 10,
+    "y": 3,
+    "facing": "up"
+  },
+  "flags": {},
+  "party": [],
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 0
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 0,
+  "seconds": 0,
+  "tourVisited": [
+    "tour_eterna_forest"
+  ]
+}

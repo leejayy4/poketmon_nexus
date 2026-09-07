@@ -1,0 +1,143 @@
+{
+  "commit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+  "retrievedOn": "2026-09-06",
+  "files": [
+    {
+      "file": "pokemon_species.csv",
+      "sha256": "9878f19c0637095cdd9a4134b4aac8fb2b64776d3bdc599aa68f15c3a011b87c",
+      "bytes": 56884
+    },
+    {
+      "file": "pokemon_species_names.csv",
+      "sha256": "820cde17074cdb1c2b0595c997fb8f998e773bd5da3bb525dec85703c86c5fd9",
+      "bytes": 404502
+    },
+    {
+      "file": "pokemon.csv",
+      "sha256": "16c81c33188b0eac403aa2f759fcbe9e42c611f722d263f5b5a6a5bff9f8ce6b",
+      "bytes": 47082
+    },
+    {
+      "file": "pokemon_types.csv",
+      "sha256": "f1fc4bfd657a034ea3bf6972423b10276424aa068577b304a78a08996425ba05",
+      "bytes": 19058
+    },
+    {
+      "file": "type_names.csv",
+      "sha256": "685230c51074cf2f723debcf827a4df4c36ab0ec7e929c806ad65a3e40958705",
+      "bytes": 2843
+    },
+    {
+      "file": "pokemon_stats.csv",
+      "sha256": "fa2c44263a3706468682fefc3e0b3c4f5487fe9febed7d4ebcd6939c34b16aa8",
+      "bytes": 94392
+    },
+    {
+      "file": "pokemon_abilities.csv",
+      "sha256": "2fbec82223bbe19ca8634da911a1b53f7d3796b2adeb5b03d9a760230840a3a3",
+      "bytes": 37194
+    },
+    {
+      "file": "ability_names.csv",
+      "sha256": "8acb80c42210f86ae747dc3347b060d69cd2574a9dbfaf74774ae632ca6348da",
+      "bytes": 65239
+    },
+    {
+      "file": "pokemon_evolution.csv",
+      "sha256": "b39006d85cdaa9c4a464312077ead6f45969d5be038dbe84e894a77d942e75de",
+      "bytes": 26714
+    },
+    {
+      "file": "evolution_triggers.csv",
+      "sha256": "e279ceadb18d489d2a11ab364eb661136e688ab3df5127d0705523232369894c",
+      "bytes": 257
+    },
+    {
+      "file": "items.csv",
+      "sha256": "f08cd6dc30b447cb91cbe9232c79052e8521f32f6105bb1489b5bfabf4ca3241",
+      "bytes": 59564
+    },
+    {
+      "file": "item_names.csv",
+      "sha256": "7b1b4fe6edf7946110050a5dddabf62c3a1dc3e1616099c4ae97abcb5ebd0f97",
+      "bytes": 487794
+    },
+    {
+      "file": "item_categories.csv",
+      "sha256": "8bfcaaf1dfe45d33a8cc374a602f2424e1c37ad68bab222f090cd95c691660d7",
+      "bytes": 922
+    },
+    {
+      "file": "moves.csv",
+      "sha256": "8aafd37bf78f19471495c05b201545180f50f0a08a2a2a844d69f9837dd39ac9",
+      "bytes": 42322
+    },
+    {
+      "file": "move_names.csv",
+      "sha256": "99e23ee38ea53d1473474d463b87651deac3cd4928750f8186feae66da45c147",
+      "bytes": 202670
+    },
+    {
+      "file": "versions.csv",
+      "sha256": "70083465865a6a69a9aad2be3fc3915078c6ff740f14a090b1367d8ec9cfc3cd",
+      "bytes": 907
+    },
+    {
+      "file": "version_groups.csv",
+      "sha256": "28da8d89d8eb4966941f81a9e62b3990510ed4d76dd774158246551a8e7707a7",
+      "bytes": 726
+    },
+    {
+      "file": "locations.csv",
+      "sha256": "2af5d6a1151d5ae402f9da1d5513bc1c7437795e69b140787c7aab3f6ed7eaa3",
+      "bytes": 23389
+    },
+    {
+      "file": "location_names.csv",
+      "sha256": "4f901da13ab1fcd4cfeee99dd653652c2bd10afe21739f47a99ee906a99a004e",
+      "bytes": 116637
+    },
+    {
+      "file": "location_areas.csv",
+      "sha256": "4706b96842166a44ca619da0add34c212088669270a478d9e84bc78e9f581840",
+      "bytes": 26734
+    },
+    {
+      "file": "encounters.csv",
+      "sha256": "93ba8853ac871719d230a6406c91f8418754fdc773f2f4b9f476007f743b4955",
+      "bytes": 3172057
+    },
+    {
+      "file": "encounter_slots.csv",
+      "sha256": "597dc58df2b0a2c64cedce6d6a2a08feeecbd1cf860bdf926cd27f119417d87a",
+      "bytes": 57659
+    },
+    {
+      "file": "encounter_methods.csv",
+      "sha256": "99327ac41c463b8bcca18d04b56cad3d5532fec70dd7eb869b9ca650a007e291",
+      "bytes": 1299
+    },
+    {
+      "file": "encounter_condition_value_map.csv",
+      "sha256": "e7e566eb07f53aab34065869a245359cc8c0313ca97872de5fd07d1867a46c7a",
+      "bytes": 1122337
+    },
+    {
+      "file": "encounter_condition_values.csv",
+      "sha256": "f55fc7c4b4d821631695ff30d74f34b2122859c412d29b98d4d973cb6d2df902",
+      "bytes": 11345
+    },
+    {
+      "file": "languages.csv",
+      "sha256": "fbb60019a6a461783d5671a995d5f590db61792a273e90faa0ed630d102a19b8",
+      "bytes": 291
+    },
+    {
+      "file": "pokemon_moves.csv",
+      "sha256": "22a807cef26891eeac0d0c900bd363e66baf421f7ee795bc7bc3e718f23b939e",
+      "bytes": 10733699
+    }
+  ],
+  "source": "https://github.com/PokeAPI/pokeapi",
+  "scope": "design-reference, not runtime"
+}

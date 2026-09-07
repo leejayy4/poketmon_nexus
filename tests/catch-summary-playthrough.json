@@ -1,0 +1,442 @@
+{
+  "qa": "catch-summary-20260907-01",
+  "note": "First five observations are summaries of verified UI actions; intermediate in-memory snapshots were lost when the browser tool timed out. Screenshots were retained. Reconnected to the same tab for the remaining checks.",
+  "observations": [
+    {
+      "label": "caught-result",
+      "screenshot": "01-caught-result.png",
+      "result": "Walked six grass steps, attacked twice, caught Bidoof Lv3 HP6/18. Party slot2, total2, balls2, default continue."
+    },
+    {
+      "label": "captured-info",
+      "screenshot": "02-captured-info.png",
+      "result": "Touched information: newly caught Bidoof selected at index1, battle and catch preview closed."
+    },
+    {
+      "label": "captured-healed",
+      "screenshot": "03-captured-healed.png",
+      "result": "Healed the captured Bidoof HP6 to18; potions2 to1."
+    },
+    {
+      "label": "captured-leads-party",
+      "screenshot": "04-captured-leads-party.png",
+      "result": "Moved captured Bidoof to party slot1; selected index updated to0, HP18."
+    },
+    {
+      "label": "caught-pokemon-enters-next-battle",
+      "screenshot": "05-caught-pokemon-enters-next-battle.png",
+      "result": "Walked into the next encounter. Captured Bidoof entered at active index0."
+    },
+    {
+      "label": "second-catch-result",
+      "screenshot": "06-second-catch-result.png",
+      "state": {
+        "caughtPreview": 2,
+        "showingCatch": true,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": {
+          "enemy": {
+            "species": 399,
+            "level": 3,
+            "hp": 6,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          "player": {
+            "species": 399,
+            "level": 3,
+            "hp": 10,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          "enemyIndex": 0,
+          "active": 0,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0
+        },
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": {
+          "kind": "wild",
+          "gymId": "roark",
+          "opponents": [
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 6,
+              "maxHp": 18,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "enemyIndex": 0,
+          "enemy": {
+            "species": 399,
+            "level": 3,
+            "hp": 6,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          "active": 0,
+          "participants": [
+            0
+          ],
+          "forcedSwitch": false,
+          "betweenOpponents": false,
+          "moveSelections": [
+            0,
+            0
+          ],
+          "menu": "actions",
+          "selected": 0,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0,
+          "result": true
+        },
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "route_s01",
+          "player": {
+            "x": 17,
+            "y": 6,
+            "facing": "left"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 10,
+              "maxHp": 18,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            },
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 12,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 6,
+              "maxHp": 18,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 1,
+            "potions": 1
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 12,
+          "seconds": 185.30830000001336
+        },
+        "panel": "field",
+        "dialogue": {
+          "speaker": "",
+          "pages": [
+            "몬스터볼을 던졌다!",
+            "좋아! 비버니를 잡았다!\n비버니가 파티에 등록되었다."
+          ],
+          "page": 1,
+          "shown": 466.38200000000006,
+          "selected": 1,
+          "choices": [
+            "정보 보기",
+            "계속 모험하기"
+          ]
+        },
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################################",
+            "################################",
+            "################################",
+            "################################",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...#.......................##",
+            "###...........................##",
+            "##.............................#",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "################################",
+            "################################",
+            "################################"
+          ],
+          "npcs": [
+            {
+              "id": "routeGuide",
+              "x": 25,
+              "y": 10
+            },
+            {
+              "id": "roadworker",
+              "x": 3,
+              "y": 11
+            }
+          ],
+          "warps": [
+            {
+              "x": 2,
+              "y": 12,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 37,
+                "y": 24
+              },
+              "entry": "left",
+              "facing": "left"
+            },
+            {
+              "x": 30,
+              "y": 12,
+              "to": "town",
+              "spawn": {
+                "x": 4,
+                "y": 15
+              },
+              "facing": "right",
+              "entry": "right"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 17,
+              "y": 6,
+              "w": 6,
+              "h": 4
+            },
+            {
+              "kind": "tallGrass",
+              "x": 7,
+              "y": 15,
+              "w": 8,
+              "h": 4
+            }
+          ]
+        },
+        "position": {
+          "x": 17,
+          "y": 6,
+          "facing": "left"
+        }
+      }
+    },
+    {
+      "label": "reload-preserves-catch",
+      "screenshot": "07-reload-preserves-catch.png",
+      "state": {
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "route_s01",
+          "player": {
+            "x": 17,
+            "y": 6,
+            "facing": "left"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 10,
+              "maxHp": 18,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            },
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 12,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 6,
+              "maxHp": 18,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 1,
+            "potions": 1
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 12,
+          "seconds": 209.21010000015914
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################################",
+            "################################",
+            "################################",
+            "################################",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...#.......................##",
+            "###...........................##",
+            "##.............................#",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "################################",
+            "################################",
+            "################################"
+          ],
+          "npcs": [
+            {
+              "id": "routeGuide",
+              "x": 25,
+              "y": 10
+            },
+            {
+              "id": "roadworker",
+              "x": 3,
+              "y": 11
+            }
+          ],
+          "warps": [
+            {
+              "x": 2,
+              "y": 12,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 37,
+                "y": 24
+              },
+              "entry": "left",
+              "facing": "left"
+            },
+            {
+              "x": 30,
+              "y": 12,
+              "to": "town",
+              "spawn": {
+                "x": 4,
+                "y": 15
+              },
+              "facing": "right",
+              "entry": "right"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 17,
+              "y": 6,
+              "w": 6,
+              "h": 4
+            },
+            {
+              "kind": "tallGrass",
+              "x": 7,
+              "y": 15,
+              "w": 8,
+              "h": 4
+            }
+          ]
+        },
+        "position": {
+          "x": 17,
+          "y": 6,
+          "facing": "left"
+        }
+      }
+    }
+  ]
+}

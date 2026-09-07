@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "worldRevision": 6,
+  "map": "veilstone_gym",
+  "player": {
+    "x": 8,
+    "y": 5,
+    "facing": "up"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 7,
+      "level": 15,
+      "experience": 0,
+      "hp": 50,
+      "maxHp": 50,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소"
+    }
+  ],
+  "inventory": {
+    "pokeBalls": 5,
+    "potions": 2
+  },
+  "badges": [
+    "BADGE-GS01"
+  ],
+  "keyItems": [
+    "TM-stealth-rock"
+  ],
+  "money": 1440,
+  "healingPoint": "home",
+  "steps": 0,
+  "seconds": 0
+}

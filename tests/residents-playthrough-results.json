@@ -1,0 +1,210 @@
+{
+  "qa": "residents-20260906-01",
+  "url": "http://localhost:5173/?explore=1&qa=residents-20260906-01",
+  "scope": "12 recorded observations after reconnecting browser automation: 8 conversations in 4 regional towns, revision 9 import, conversation after migration, walking to center and reload. Additional exploratory conversations before the tool timeout are not counted here.",
+  "observations": [
+    {
+      "test": "walk, face collision, talk and resume without rewards",
+      "map": "tour_aspertia",
+      "id": "tourResident0",
+      "speaker": "언덕 주민",
+      "pages": [
+        "언덕에서 보면 지붕들이 작아 보여요.\n산책을 마치면 학교 앞을 지나가죠."
+      ],
+      "hint": "Z 말걸기 · 언덕 주민",
+      "steps": 117
+    },
+    {
+      "test": "walk, face collision, talk and resume without rewards",
+      "map": "tour_aspertia",
+      "id": "tourResident1",
+      "speaker": "학교 학생",
+      "pages": [
+        "운동장을 달리고 잠깐 쉬고 있어요.\n학교 안의 게시판도 구경해 보세요."
+      ],
+      "hint": "Z 말걸기 · 학교 학생",
+      "steps": 128
+    },
+    {
+      "test": "walk, face collision, talk and resume without rewards",
+      "map": "tour_cianwood",
+      "id": "tourResident0",
+      "speaker": "해변 산책객",
+      "pages": [
+        "파도 소리에 맞춰 천천히 걸어 봐.\n모래와 바위의 빛깔도 다르단다."
+      ],
+      "hint": "Z 말걸기 · 해변 산책객",
+      "steps": 135
+    },
+    {
+      "test": "walk, face collision, talk and resume without rewards",
+      "map": "tour_cianwood",
+      "id": "tourResident1",
+      "speaker": "도장 수련생",
+      "pages": [
+        "몸을 움직인 뒤에는 숨을 고르고 쉬어.\n오늘은 바다를 보며 어깨를 풀고 있어."
+      ],
+      "hint": "Z 말걸기 · 도장 수련생",
+      "steps": 146
+    },
+    {
+      "test": "walk, face collision, talk and resume without rewards",
+      "map": "tour_saffron",
+      "id": "tourResident0",
+      "speaker": "거리 직장인",
+      "pages": [
+        "빌딩 사이로 보이는 하늘도 좋지.\n점심 뒤에는 광장을 한 바퀴 돌아."
+      ],
+      "hint": "Z 말걸기 · 거리 직장인",
+      "steps": 153
+    },
+    {
+      "test": "walk, face collision, talk and resume without rewards",
+      "map": "tour_saffron",
+      "id": "tourResident1",
+      "speaker": "기술 연구원",
+      "pages": [
+        "실프 사옥 전시를 정리하고 나왔어요.\n작은 장치 하나에도 생각이 담겨 있죠."
+      ],
+      "hint": "Z 말걸기 · 기술 연구원",
+      "steps": 164
+    },
+    {
+      "test": "walk, face collision, talk and resume without rewards",
+      "map": "tour_oreburgh",
+      "id": "tourResident0",
+      "speaker": "광부",
+      "pages": [
+        "돌마다 색과 무게가 다르지.\n쉬는 날에도 반짝이는 돌이 눈에 들어와."
+      ],
+      "hint": "Z 말걸기 · 광부",
+      "steps": 171
+    },
+    {
+      "test": "walk, face collision, talk and resume without rewards",
+      "map": "tour_oreburgh",
+      "id": "tourResident1",
+      "speaker": "전시관 학생",
+      "pages": [
+        "광차 모형을 보러 왔어요.\n바퀴가 어떻게 움직이는지 궁금해요."
+      ],
+      "hint": "Z 말걸기 · 전시관 학생",
+      "steps": 182
+    },
+    {
+      "test": "public import of revision 9 resident overlap relocates and preserves progress",
+      "save": {
+        "version": 1,
+        "worldRevision": 10,
+        "map": "tour_jubilife",
+        "player": {
+          "x": 14,
+          "y": 11,
+          "facing": "down"
+        },
+        "flags": {
+          "exploration": true
+        },
+        "party": [],
+        "inventory": {
+          "pokeBalls": 0,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 123,
+        "seconds": 456.2999000000001,
+        "tourVisited": [
+          "tour_jubilife",
+          "tour_oreburgh",
+          "tour_oreburgh_center"
+        ]
+      }
+    },
+    {
+      "test": "walk, face collision, talk and resume without rewards",
+      "map": "tour_jubilife",
+      "id": "tourResident0",
+      "speaker": "광장 주민",
+      "pages": [
+        "분수 앞에서 잠깐 쉬는 중이야.\n방송국 시계를 보면 시간을 알 수 있지."
+      ],
+      "hint": "Z 말걸기 · 광장 주민",
+      "steps": 130
+    },
+    {
+      "test": "walked facility route from beside resident without collision",
+      "map": "tour_jubilife_center",
+      "status": "arrived",
+      "tiles": [
+        {
+          "x": 10,
+          "y": 14
+        },
+        {
+          "x": 9,
+          "y": 14
+        },
+        {
+          "x": 9,
+          "y": 13
+        },
+        {
+          "x": 9,
+          "y": 12
+        },
+        {
+          "x": 9,
+          "y": 11
+        },
+        {
+          "x": 9,
+          "y": 10
+        },
+        {
+          "x": 9,
+          "y": 9
+        },
+        {
+          "x": 8,
+          "y": 9
+        },
+        {
+          "x": 8,
+          "y": 8
+        }
+      ]
+    },
+    {
+      "test": "reload after migrated save and walking keeps progress",
+      "map": "tour_jubilife_center",
+      "revision": 10,
+      "steps": 138,
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_oreburgh_center",
+        "tour_jubilife_center"
+      ],
+      "navigation": null
+    }
+  ],
+  "console": [],
+  "screenshots": [
+    "aspertia-resident.png",
+    "aspertia-student.png",
+    "azalea-artisan.png",
+    "celadon-gardener.png",
+    "center-after-resident.png",
+    "cianwood-resident.png",
+    "cianwood-trainee.png",
+    "hearthome-gardener.png",
+    "migrated-resident.png",
+    "oreburgh-student.png",
+    "oreburgh-worker.png",
+    "saffron-researcher.png",
+    "saffron-worker.png"
+  ]
+}

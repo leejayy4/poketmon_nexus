@@ -1,0 +1,1492 @@
+{
+  "qa": "roaming-20260907-01",
+  "date": "2026-09-07",
+  "observations": [
+    {
+      "label": "축복 광장 산책 첫 위치",
+      "map": "tour_jubilife",
+      "player": {
+        "x": 18,
+        "y": 19,
+        "facing": "right"
+      },
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "피카츄",
+          "species": "pikachu",
+          "sprite": "field-pikachu",
+          "x": 23,
+          "y": 16,
+          "facing": "right",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+          ]
+        },
+        "moving": false,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 22,
+            "y": 17
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 23,
+            "y": 17
+          },
+          {
+            "x": 22,
+            "y": 18
+          },
+          {
+            "x": 21,
+            "y": 17
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 23,
+            "y": 18
+          },
+          {
+            "x": 21,
+            "y": 18
+          },
+          {
+            "x": 20,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 18
+          },
+          {
+            "x": 24,
+            "y": 14
+          },
+          {
+            "x": 20,
+            "y": 18
+          }
+        ]
+      },
+      "dialogue": null,
+      "navigation": null,
+      "steps": 12,
+      "revision": 15
+    },
+    {
+      "label": "축복 광장 산책 다음 위치",
+      "map": "tour_jubilife",
+      "player": {
+        "x": 18,
+        "y": 19,
+        "facing": "right"
+      },
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "피카츄",
+          "species": "pikachu",
+          "sprite": "field-pikachu",
+          "x": 22,
+          "y": 16,
+          "facing": "up",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+          ]
+        },
+        "moving": false,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 22,
+            "y": 17
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 23,
+            "y": 17
+          },
+          {
+            "x": 22,
+            "y": 18
+          },
+          {
+            "x": 21,
+            "y": 17
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 23,
+            "y": 18
+          },
+          {
+            "x": 21,
+            "y": 18
+          },
+          {
+            "x": 20,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 18
+          },
+          {
+            "x": 24,
+            "y": 14
+          },
+          {
+            "x": 20,
+            "y": 18
+          }
+        ]
+      },
+      "dialogue": null,
+      "navigation": null,
+      "steps": 12,
+      "revision": 15
+    },
+    {
+      "label": "산책 중인 피카츄에게 접근해 정지·대화",
+      "map": "tour_jubilife",
+      "player": {
+        "x": 21,
+        "y": 16,
+        "facing": "right"
+      },
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "피카츄",
+          "species": "pikachu",
+          "sprite": "field-pikachu",
+          "x": 22,
+          "y": 16,
+          "facing": "left",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+          ]
+        },
+        "moving": false,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 22,
+            "y": 17
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 23,
+            "y": 17
+          },
+          {
+            "x": 22,
+            "y": 18
+          },
+          {
+            "x": 21,
+            "y": 17
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 23,
+            "y": 18
+          },
+          {
+            "x": 21,
+            "y": 18
+          },
+          {
+            "x": 20,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 18
+          },
+          {
+            "x": 24,
+            "y": 14
+          },
+          {
+            "x": 20,
+            "y": 18
+          }
+        ]
+      },
+      "dialogue": {
+        "speaker": "피카츄",
+        "pages": [
+          "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+        ],
+        "page": 0,
+        "shown": 25.998800000000106,
+        "selected": 0
+      },
+      "navigation": null,
+      "steps": 18,
+      "revision": 15
+    },
+    {
+      "label": "대화 중 산책 위치 유지",
+      "map": "tour_jubilife",
+      "player": {
+        "x": 21,
+        "y": 16,
+        "facing": "right"
+      },
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "피카츄",
+          "species": "pikachu",
+          "sprite": "field-pikachu",
+          "x": 22,
+          "y": 16,
+          "facing": "left",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+          ]
+        },
+        "moving": false,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 22,
+            "y": 17
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 23,
+            "y": 17
+          },
+          {
+            "x": 22,
+            "y": 18
+          },
+          {
+            "x": 21,
+            "y": 17
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 23,
+            "y": 18
+          },
+          {
+            "x": 21,
+            "y": 18
+          },
+          {
+            "x": 20,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 18
+          },
+          {
+            "x": 24,
+            "y": 14
+          },
+          {
+            "x": 20,
+            "y": 18
+          }
+        ]
+      },
+      "dialogue": {
+        "speaker": "피카츄",
+        "pages": [
+          "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+        ],
+        "page": 0,
+        "shown": 2613.682400000019,
+        "selected": 0
+      },
+      "navigation": null,
+      "steps": 18,
+      "revision": 15
+    },
+    {
+      "label": "대화를 끝내고 떨어지면 산책 재개",
+      "map": "tour_jubilife",
+      "player": {
+        "x": 18,
+        "y": 19,
+        "facing": "left"
+      },
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "피카츄",
+          "species": "pikachu",
+          "sprite": "field-pikachu",
+          "x": 22.312187499999983,
+          "y": 16,
+          "facing": "right",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+          ]
+        },
+        "moving": true,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 22,
+            "y": 17
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 23,
+            "y": 17
+          },
+          {
+            "x": 22,
+            "y": 18
+          },
+          {
+            "x": 21,
+            "y": 17
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 23,
+            "y": 18
+          },
+          {
+            "x": 21,
+            "y": 18
+          },
+          {
+            "x": 20,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 18
+          },
+          {
+            "x": 24,
+            "y": 14
+          },
+          {
+            "x": 20,
+            "y": 18
+          }
+        ]
+      },
+      "dialogue": null,
+      "navigation": null,
+      "steps": 24,
+      "revision": 15
+    },
+    {
+      "label": "메뉴를 열었을 때 산책 정지",
+      "map": "tour_jubilife",
+      "player": {
+        "x": 18,
+        "y": 19,
+        "facing": "left"
+      },
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "피카츄",
+          "species": "pikachu",
+          "sprite": "field-pikachu",
+          "x": 22.364375000000017,
+          "y": 16,
+          "facing": "right",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+          ]
+        },
+        "moving": true,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 22,
+            "y": 17
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 23,
+            "y": 17
+          },
+          {
+            "x": 22,
+            "y": 18
+          },
+          {
+            "x": 21,
+            "y": 17
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 23,
+            "y": 18
+          },
+          {
+            "x": 21,
+            "y": 18
+          },
+          {
+            "x": 20,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 18
+          },
+          {
+            "x": 24,
+            "y": 14
+          },
+          {
+            "x": 20,
+            "y": 18
+          }
+        ]
+      },
+      "dialogue": null,
+      "navigation": null,
+      "steps": 24,
+      "revision": 15
+    },
+    {
+      "label": "메뉴 유지 중 위치 고정",
+      "map": "tour_jubilife",
+      "player": {
+        "x": 18,
+        "y": 19,
+        "facing": "left"
+      },
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "피카츄",
+          "species": "pikachu",
+          "sprite": "field-pikachu",
+          "x": 22.364375000000017,
+          "y": 16,
+          "facing": "right",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+          ]
+        },
+        "moving": true,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 22,
+            "y": 17
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 23,
+            "y": 17
+          },
+          {
+            "x": 22,
+            "y": 18
+          },
+          {
+            "x": 21,
+            "y": 17
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 23,
+            "y": 18
+          },
+          {
+            "x": 21,
+            "y": 18
+          },
+          {
+            "x": 20,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 18
+          },
+          {
+            "x": 24,
+            "y": 14
+          },
+          {
+            "x": 20,
+            "y": 18
+          }
+        ]
+      },
+      "dialogue": null,
+      "navigation": null,
+      "steps": 24,
+      "revision": 15
+    },
+    {
+      "label": "무쇠 알통몬 초기 위치",
+      "map": "tour_oreburgh",
+      "player": {
+        "x": 14,
+        "y": 11,
+        "facing": "down"
+      },
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "알통몬",
+          "species": "machop",
+          "sprite": "field-machop",
+          "x": 22,
+          "y": 16,
+          "facing": "down",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "알통! 알통!\n씩씩하게 팔을 들어 인사한다."
+          ]
+        },
+        "moving": false,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "알통몬",
+            "species": "machop",
+            "sprite": "field-machop",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "알통! 알통!\n씩씩하게 팔을 들어 인사한다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 24,
+            "y": 14
+          }
+        ]
+      },
+      "dialogue": null,
+      "navigation": null,
+      "steps": 24,
+      "revision": 15
+    },
+    {
+      "label": "무쇠 알통몬 산책 다음 위치",
+      "map": "tour_oreburgh",
+      "player": {
+        "x": 14,
+        "y": 11,
+        "facing": "down"
+      },
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "알통몬",
+          "species": "machop",
+          "sprite": "field-machop",
+          "x": 23,
+          "y": 16,
+          "facing": "right",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "알통! 알통!\n씩씩하게 팔을 들어 인사한다."
+          ]
+        },
+        "moving": false,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "알통몬",
+            "species": "machop",
+            "sprite": "field-machop",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "알통! 알통!\n씩씩하게 팔을 들어 인사한다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 24,
+            "y": 14
+          }
+        ]
+      },
+      "dialogue": null,
+      "navigation": null,
+      "steps": 24,
+      "revision": 15
+    },
+    {
+      "label": "습지 고라파덕 산책",
+      "map": "tour_pastoria",
+      "player": {
+        "x": 18,
+        "y": 19,
+        "facing": "right"
+      },
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "고라파덕",
+          "species": "psyduck",
+          "sprite": "field-psyduck",
+          "x": 23,
+          "y": 16,
+          "facing": "right",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "고라... 파덕?\n고개를 갸웃하다가 이쪽을 바라본다."
+          ]
+        },
+        "moving": false,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "고라파덕",
+            "species": "psyduck",
+            "sprite": "field-psyduck",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "고라... 파덕?\n고개를 갸웃하다가 이쪽을 바라본다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 24,
+            "y": 14
+          }
+        ]
+      },
+      "dialogue": null,
+      "navigation": null,
+      "steps": 36,
+      "revision": 15
+    },
+    {
+      "label": "실시간 위치를 반영한 습지 관찰소 안내",
+      "map": "tour_pastoria",
+      "player": {
+        "x": 18,
+        "y": 19,
+        "facing": "right"
+      },
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "고라파덕",
+          "species": "psyduck",
+          "sprite": "field-psyduck",
+          "x": 21,
+          "y": 16,
+          "facing": "right",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "고라... 파덕?\n고개를 갸웃하다가 이쪽을 바라본다."
+          ]
+        },
+        "moving": false,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "고라파덕",
+            "species": "psyduck",
+            "sprite": "field-psyduck",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "고라... 파덕?\n고개를 갸웃하다가 이쪽을 바라본다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 24,
+            "y": 14
+          }
+        ]
+      },
+      "dialogue": null,
+      "navigation": {
+        "destination": "tour_pastoria_hall",
+        "name": "들판시티 · 습지 관찰소",
+        "status": "walking",
+        "maps": [
+          "tour_pastoria",
+          "tour_pastoria_hall"
+        ],
+        "tiles": [
+          {
+            "x": 18,
+            "y": 19
+          },
+          {
+            "x": 18,
+            "y": 18
+          },
+          {
+            "x": 18,
+            "y": 17
+          },
+          {
+            "x": 18,
+            "y": 16
+          },
+          {
+            "x": 18,
+            "y": 15
+          },
+          {
+            "x": 19,
+            "y": 15
+          },
+          {
+            "x": 20,
+            "y": 15
+          },
+          {
+            "x": 21,
+            "y": 15
+          },
+          {
+            "x": 22,
+            "y": 15
+          },
+          {
+            "x": 23,
+            "y": 15
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 25,
+            "y": 15
+          },
+          {
+            "x": 26,
+            "y": 15
+          },
+          {
+            "x": 27,
+            "y": 15
+          },
+          {
+            "x": 28,
+            "y": 15
+          },
+          {
+            "x": 29,
+            "y": 15
+          },
+          {
+            "x": 30,
+            "y": 15
+          },
+          {
+            "x": 31,
+            "y": 15
+          },
+          {
+            "x": 31,
+            "y": 14
+          }
+        ],
+        "nextName": "들판시티 · 습지 관찰소",
+        "exit": {
+          "x": 31,
+          "y": 14,
+          "to": "tour_pastoria_hall",
+          "spawn": {
+            "x": 8,
+            "y": 10
+          },
+          "entry": "up",
+          "facing": "up"
+        }
+      },
+      "steps": 36,
+      "revision": 15
+    },
+    {
+      "label": "길안내를 따라 포켓몬 옆을 지나 실내 도착",
+      "map": "tour_pastoria_hall",
+      "player": {
+        "x": 8,
+        "y": 10,
+        "facing": "up"
+      },
+      "roaming": null,
+      "dialogue": null,
+      "navigation": {
+        "destination": "tour_pastoria_hall",
+        "name": "들판시티 · 습지 관찰소",
+        "status": "arrived",
+        "maps": [
+          "tour_pastoria_hall"
+        ],
+        "tiles": [],
+        "nextName": null,
+        "exit": null
+      },
+      "steps": 54,
+      "revision": 15
+    },
+    {
+      "label": "실내에서 나오면 산책 초기화",
+      "map": "tour_pastoria",
+      "player": {
+        "x": 31,
+        "y": 15,
+        "facing": "down"
+      },
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "고라파덕",
+          "species": "psyduck",
+          "sprite": "field-psyduck",
+          "x": 22,
+          "y": 16,
+          "facing": "down",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "고라... 파덕?\n고개를 갸웃하다가 이쪽을 바라본다."
+          ]
+        },
+        "moving": false,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "고라파덕",
+            "species": "psyduck",
+            "sprite": "field-psyduck",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "고라... 파덕?\n고개를 갸웃하다가 이쪽을 바라본다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 24,
+            "y": 14
+          }
+        ]
+      },
+      "dialogue": null,
+      "navigation": {
+        "destination": "tour_pastoria_hall",
+        "name": "들판시티 · 습지 관찰소",
+        "status": "walking",
+        "maps": [
+          "tour_pastoria",
+          "tour_pastoria_hall"
+        ],
+        "tiles": [
+          {
+            "x": 31,
+            "y": 15
+          },
+          {
+            "x": 31,
+            "y": 14
+          }
+        ],
+        "nextName": "들판시티 · 습지 관찰소",
+        "exit": {
+          "x": 31,
+          "y": 14,
+          "to": "tour_pastoria_hall",
+          "spawn": {
+            "x": 8,
+            "y": 10
+          },
+          "entry": "up",
+          "facing": "up"
+        }
+      },
+      "steps": 57,
+      "revision": 15
+    },
+    {
+      "label": "원래 포켓몬 자리 저장 복원: 플레이어 위치 유지, 포켓몬 비켜 배치",
+      "map": "tour_pastoria",
+      "player": {
+        "x": 22,
+        "y": 16,
+        "facing": "left"
+      },
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "고라파덕",
+          "species": "psyduck",
+          "sprite": "field-psyduck",
+          "x": 23,
+          "y": 16,
+          "facing": "down",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "고라... 파덕?\n고개를 갸웃하다가 이쪽을 바라본다."
+          ]
+        },
+        "moving": false,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "고라파덕",
+            "species": "psyduck",
+            "sprite": "field-psyduck",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "고라... 파덕?\n고개를 갸웃하다가 이쪽을 바라본다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 24,
+            "y": 14
+          }
+        ]
+      },
+      "dialogue": null,
+      "navigation": {
+        "destination": "tour_pastoria_hall",
+        "name": "들판시티 · 습지 관찰소",
+        "status": "walking",
+        "maps": [
+          "tour_pastoria",
+          "tour_pastoria_hall"
+        ],
+        "tiles": [
+          {
+            "x": 22,
+            "y": 16
+          },
+          {
+            "x": 22,
+            "y": 15
+          },
+          {
+            "x": 23,
+            "y": 15
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 25,
+            "y": 15
+          },
+          {
+            "x": 26,
+            "y": 15
+          },
+          {
+            "x": 27,
+            "y": 15
+          },
+          {
+            "x": 28,
+            "y": 15
+          },
+          {
+            "x": 29,
+            "y": 15
+          },
+          {
+            "x": 30,
+            "y": 15
+          },
+          {
+            "x": 31,
+            "y": 15
+          },
+          {
+            "x": 31,
+            "y": 14
+          }
+        ],
+        "nextName": "들판시티 · 습지 관찰소",
+        "exit": {
+          "x": 31,
+          "y": 14,
+          "to": "tour_pastoria_hall",
+          "spawn": {
+            "x": 8,
+            "y": 10
+          },
+          "entry": "up",
+          "facing": "up"
+        }
+      },
+      "steps": 678,
+      "revision": 15
+    },
+    {
+      "label": "같은 자리 재접속과 산책 충돌 회복",
+      "map": "tour_pastoria",
+      "player": {
+        "x": 22,
+        "y": 16,
+        "facing": "left"
+      },
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "고라파덕",
+          "species": "psyduck",
+          "sprite": "field-psyduck",
+          "x": 23,
+          "y": 16,
+          "facing": "down",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "고라... 파덕?\n고개를 갸웃하다가 이쪽을 바라본다."
+          ]
+        },
+        "moving": false,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "고라파덕",
+            "species": "psyduck",
+            "sprite": "field-psyduck",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "고라... 파덕?\n고개를 갸웃하다가 이쪽을 바라본다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 24,
+            "y": 14
+          }
+        ]
+      },
+      "dialogue": null,
+      "navigation": null,
+      "steps": 678,
+      "revision": 15
+    }
+  ],
+  "summary": {
+    "towns": 3,
+    "menuPositionVerified": true,
+    "noObservedPlayerOverlap": true,
+    "saveAnchorPreserved": true,
+    "consoleAfterReload": [],
+    "scope": "Representative runtime walking, approach and dialogue, resume, menu pause, guided facility roundtrip and save reload. All 35 patrol areas and exit paths are automated coverage."
+  }
+}

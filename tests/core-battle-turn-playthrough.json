@@ -1,0 +1,1326 @@
+{
+  "url": "http://localhost:5173/?qa=core-battle-turn-20260907",
+  "fixture": "tests/fixtures/core-battle-turn/faint.json",
+  "checks": [
+    {
+      "name": "01-counter-declaration",
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "꼬부기의 꼬리흔들기!",
+          "꼬마돌의 방어가 떨어졌다!",
+          "강석의 꼬마돌의 몸통박치기!",
+          "꼬부기에게 2의 피해!",
+          "꼬부기는 쓰러졌다!",
+          "힘내! 비버니!"
+        ],
+        "page": 2,
+        "shown": 824.3015999999948,
+        "selected": 0
+      },
+      "frame": {
+        "enemy": {
+          "species": 74,
+          "level": 10,
+          "maxHp": 22,
+          "hp": 22,
+          "experience": 0,
+          "nature": "성실",
+          "met": "체육관"
+        },
+        "player": {
+          "species": 7,
+          "level": 8,
+          "experience": 0,
+          "hp": 2,
+          "maxHp": 29,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        "enemyIndex": 0,
+        "active": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 1
+      },
+      "save": {
+        "version": 1,
+        "worldRevision": 19,
+        "map": "oreburgh_gym",
+        "player": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 8,
+            "experience": 0,
+            "hp": 0,
+            "maxHp": 29,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 8,
+            "hp": 33,
+            "maxHp": 33,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "tour_oreburgh_center",
+        "steps": 0,
+        "seconds": 95.39260000000495
+      },
+      "battle": {
+        "kind": "gym",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 22,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 95,
+            "level": 11,
+            "maxHp": 24,
+            "hp": 24,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 408,
+            "level": 12,
+            "maxHp": 26,
+            "hp": 26,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 74,
+          "level": 10,
+          "maxHp": 22,
+          "hp": 22,
+          "experience": 0,
+          "nature": "성실",
+          "met": "체육관"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          1,
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 1,
+        "result": false
+      }
+    },
+    {
+      "name": "02-exact-lethal-damage",
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "꼬부기의 꼬리흔들기!",
+          "꼬마돌의 방어가 떨어졌다!",
+          "강석의 꼬마돌의 몸통박치기!",
+          "꼬부기에게 2의 피해!",
+          "꼬부기는 쓰러졌다!",
+          "힘내! 비버니!"
+        ],
+        "page": 3,
+        "shown": 1604.2752000000376,
+        "selected": 0
+      },
+      "frame": {
+        "enemy": {
+          "species": 74,
+          "level": 10,
+          "maxHp": 22,
+          "hp": 22,
+          "experience": 0,
+          "nature": "성실",
+          "met": "체육관"
+        },
+        "player": {
+          "species": 7,
+          "level": 8,
+          "experience": 0,
+          "hp": 0,
+          "maxHp": 29,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        "enemyIndex": 0,
+        "active": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 1,
+        "effect": {
+          "target": "player",
+          "kind": "damage",
+          "amount": 2
+        }
+      },
+      "save": {
+        "version": 1,
+        "worldRevision": 19,
+        "map": "oreburgh_gym",
+        "player": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 8,
+            "experience": 0,
+            "hp": 0,
+            "maxHp": 29,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 8,
+            "hp": 33,
+            "maxHp": 33,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "tour_oreburgh_center",
+        "steps": 0,
+        "seconds": 140.3891000000128
+      },
+      "battle": {
+        "kind": "gym",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 22,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 95,
+            "level": 11,
+            "maxHp": 24,
+            "hp": 24,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 408,
+            "level": 12,
+            "maxHp": 26,
+            "hp": 26,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 74,
+          "level": 10,
+          "maxHp": 22,
+          "hp": 22,
+          "experience": 0,
+          "nature": "성실",
+          "met": "체육관"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          1,
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 1,
+        "result": false
+      }
+    },
+    {
+      "name": "03-fainted-before-replacement",
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "꼬부기의 꼬리흔들기!",
+          "꼬마돌의 방어가 떨어졌다!",
+          "강석의 꼬마돌의 몸통박치기!",
+          "꼬부기에게 2의 피해!",
+          "꼬부기는 쓰러졌다!",
+          "힘내! 비버니!"
+        ],
+        "page": 4,
+        "shown": 375.5844000000006,
+        "selected": 0
+      },
+      "frame": {
+        "enemy": {
+          "species": 74,
+          "level": 10,
+          "maxHp": 22,
+          "hp": 22,
+          "experience": 0,
+          "nature": "성실",
+          "met": "체육관"
+        },
+        "player": {
+          "species": 7,
+          "level": 8,
+          "experience": 0,
+          "hp": 0,
+          "maxHp": 29,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        "enemyIndex": 0,
+        "active": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 1
+      },
+      "save": {
+        "version": 1,
+        "worldRevision": 19,
+        "map": "oreburgh_gym",
+        "player": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 8,
+            "experience": 0,
+            "hp": 0,
+            "maxHp": 29,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 8,
+            "hp": 33,
+            "maxHp": 33,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "tour_oreburgh_center",
+        "steps": 0,
+        "seconds": 150.9386000000152
+      },
+      "battle": {
+        "kind": "gym",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 22,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 95,
+            "level": 11,
+            "maxHp": 24,
+            "hp": 24,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 408,
+            "level": 12,
+            "maxHp": 26,
+            "hp": 26,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 74,
+          "level": 10,
+          "maxHp": 22,
+          "hp": 22,
+          "experience": 0,
+          "nature": "성실",
+          "met": "체육관"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          1,
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 1,
+        "result": false
+      }
+    },
+    {
+      "name": "04-replacement-appears",
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "꼬부기의 꼬리흔들기!",
+          "꼬마돌의 방어가 떨어졌다!",
+          "강석의 꼬마돌의 몸통박치기!",
+          "꼬부기에게 2의 피해!",
+          "꼬부기는 쓰러졌다!",
+          "힘내! 비버니!"
+        ],
+        "page": 5,
+        "shown": 1012.1543999999897,
+        "selected": 0
+      },
+      "frame": {
+        "enemy": {
+          "species": 74,
+          "level": 10,
+          "maxHp": 22,
+          "hp": 22,
+          "experience": 0,
+          "nature": "성실",
+          "met": "체육관"
+        },
+        "player": {
+          "species": 399,
+          "level": 8,
+          "hp": 33,
+          "maxHp": 33,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "enemyIndex": 0,
+        "active": 1,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 1
+      },
+      "save": {
+        "version": 1,
+        "worldRevision": 19,
+        "map": "oreburgh_gym",
+        "player": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 8,
+            "experience": 0,
+            "hp": 0,
+            "maxHp": 29,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 8,
+            "hp": 33,
+            "maxHp": 33,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "tour_oreburgh_center",
+        "steps": 0,
+        "seconds": 179.12060000002162
+      },
+      "battle": {
+        "kind": "gym",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 22,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 95,
+            "level": 11,
+            "maxHp": 24,
+            "hp": 24,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 408,
+            "level": 12,
+            "maxHp": 26,
+            "hp": 26,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 74,
+          "level": 10,
+          "maxHp": 22,
+          "hp": 22,
+          "experience": 0,
+          "nature": "성실",
+          "met": "체육관"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          1,
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 1,
+        "result": false
+      }
+    },
+    {
+      "name": "05-potion-healed",
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "상처약을 사용했다!\n비버니의 HP가 10 회복되었다.",
+          "강석의 꼬마돌의 몸통박치기!",
+          "비버니에게 5의 피해!"
+        ],
+        "page": 0,
+        "shown": 283.1868000000003,
+        "selected": 0
+      },
+      "frame": {
+        "enemy": {
+          "species": 74,
+          "level": 10,
+          "maxHp": 22,
+          "hp": 4,
+          "experience": 0,
+          "nature": "성실",
+          "met": "체육관"
+        },
+        "player": {
+          "species": 399,
+          "level": 8,
+          "hp": 33,
+          "maxHp": 33,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "enemyIndex": 0,
+        "active": 1,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 1,
+        "effect": {
+          "target": "player",
+          "kind": "heal",
+          "amount": 10
+        }
+      },
+      "save": {
+        "version": 1,
+        "worldRevision": 19,
+        "map": "oreburgh_gym",
+        "player": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 8,
+            "experience": 0,
+            "hp": 0,
+            "maxHp": 29,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 8,
+            "hp": 28,
+            "maxHp": 33,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 1
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "tour_oreburgh_center",
+        "steps": 0,
+        "seconds": 270.26630000004235
+      },
+      "battle": {
+        "kind": "gym",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 4,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 95,
+            "level": 11,
+            "maxHp": 24,
+            "hp": 24,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 408,
+            "level": 12,
+            "maxHp": 26,
+            "hp": 26,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 74,
+          "level": 10,
+          "maxHp": 22,
+          "hp": 4,
+          "experience": 0,
+          "nature": "성실",
+          "met": "체육관"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          1,
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 1,
+        "result": false
+      }
+    },
+    {
+      "name": "06-heal-counter-declaration",
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "상처약을 사용했다!\n비버니의 HP가 10 회복되었다.",
+          "강석의 꼬마돌의 몸통박치기!",
+          "비버니에게 5의 피해!"
+        ],
+        "page": 1,
+        "shown": 454.75439999999577,
+        "selected": 0
+      },
+      "frame": {
+        "enemy": {
+          "species": 74,
+          "level": 10,
+          "maxHp": 22,
+          "hp": 4,
+          "experience": 0,
+          "nature": "성실",
+          "met": "체육관"
+        },
+        "player": {
+          "species": 399,
+          "level": 8,
+          "hp": 33,
+          "maxHp": 33,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "enemyIndex": 0,
+        "active": 1,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 1
+      },
+      "save": {
+        "version": 1,
+        "worldRevision": 19,
+        "map": "oreburgh_gym",
+        "player": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 8,
+            "experience": 0,
+            "hp": 0,
+            "maxHp": 29,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 8,
+            "hp": 28,
+            "maxHp": 33,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 1
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "tour_oreburgh_center",
+        "steps": 0,
+        "seconds": 282.5817000000451
+      },
+      "battle": {
+        "kind": "gym",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 4,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 95,
+            "level": 11,
+            "maxHp": 24,
+            "hp": 24,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 408,
+            "level": 12,
+            "maxHp": 26,
+            "hp": 26,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 74,
+          "level": 10,
+          "maxHp": 22,
+          "hp": 4,
+          "experience": 0,
+          "nature": "성실",
+          "met": "체육관"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          1,
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 1,
+        "result": false
+      }
+    },
+    {
+      "name": "07-heal-counter-damage",
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "상처약을 사용했다!\n비버니의 HP가 10 회복되었다.",
+          "강석의 꼬마돌의 몸통박치기!",
+          "비버니에게 5의 피해!"
+        ],
+        "page": 2,
+        "shown": 407.98439999999647,
+        "selected": 0
+      },
+      "frame": {
+        "enemy": {
+          "species": 74,
+          "level": 10,
+          "maxHp": 22,
+          "hp": 4,
+          "experience": 0,
+          "nature": "성실",
+          "met": "체육관"
+        },
+        "player": {
+          "species": 399,
+          "level": 8,
+          "hp": 28,
+          "maxHp": 33,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "enemyIndex": 0,
+        "active": 1,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 1,
+        "effect": {
+          "target": "player",
+          "kind": "damage",
+          "amount": 5
+        }
+      },
+      "save": {
+        "version": 1,
+        "worldRevision": 19,
+        "map": "oreburgh_gym",
+        "player": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 8,
+            "experience": 0,
+            "hp": 0,
+            "maxHp": 29,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 8,
+            "hp": 28,
+            "maxHp": 33,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 1
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "tour_oreburgh_center",
+        "steps": 0,
+        "seconds": 294.1645000000477
+      },
+      "battle": {
+        "kind": "gym",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 4,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 95,
+            "level": 11,
+            "maxHp": 24,
+            "hp": 24,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 408,
+            "level": 12,
+            "maxHp": 26,
+            "hp": 26,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 74,
+          "level": 10,
+          "maxHp": 22,
+          "hp": 4,
+          "experience": 0,
+          "nature": "성실",
+          "met": "체육관"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          1,
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 1,
+        "result": false
+      }
+    },
+    {
+      "name": "08-finishing-move-preview",
+      "dialogue": null,
+      "frame": null,
+      "save": {
+        "version": 1,
+        "worldRevision": 19,
+        "map": "oreburgh_gym",
+        "player": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 8,
+            "experience": 0,
+            "hp": 0,
+            "maxHp": 29,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 8,
+            "hp": 28,
+            "maxHp": 33,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 1
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "tour_oreburgh_center",
+        "steps": 0,
+        "seconds": 303.29730000004986
+      },
+      "battle": {
+        "kind": "gym",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 4,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 95,
+            "level": 11,
+            "maxHp": 24,
+            "hp": 24,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 408,
+            "level": 12,
+            "maxHp": 26,
+            "hp": 26,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 74,
+          "level": 10,
+          "maxHp": 22,
+          "hp": 4,
+          "experience": 0,
+          "nature": "성실",
+          "met": "체육관"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          1,
+          0
+        ],
+        "menu": "moves",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 1,
+        "result": false
+      }
+    },
+    {
+      "name": "09-finishing-damage",
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "비버니의 몸통박치기!",
+          "꼬마돌에게 4의 피해를 주었다!",
+          "강석의 꼬마돌가 쓰러졌다!",
+          "비버니는 경험치를\n50 얻었다!",
+          "강석는 롱스톤를\n내보냈다!"
+        ],
+        "page": 1,
+        "shown": 740.3687999999969,
+        "selected": 0
+      },
+      "frame": {
+        "enemy": {
+          "species": 74,
+          "level": 10,
+          "maxHp": 22,
+          "hp": 0,
+          "experience": 0,
+          "nature": "성실",
+          "met": "체육관"
+        },
+        "player": {
+          "species": 399,
+          "level": 8,
+          "hp": 28,
+          "maxHp": 33,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "enemyIndex": 0,
+        "active": 1,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 1,
+        "effect": {
+          "target": "enemy",
+          "kind": "damage",
+          "amount": 4
+        }
+      },
+      "save": {
+        "version": 1,
+        "worldRevision": 19,
+        "map": "oreburgh_gym",
+        "player": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 8,
+            "experience": 0,
+            "hp": 0,
+            "maxHp": 29,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 8,
+            "hp": 28,
+            "maxHp": 33,
+            "experience": 50,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 1
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "tour_oreburgh_center",
+        "steps": 0,
+        "seconds": 332.36270000005646
+      },
+      "battle": {
+        "kind": "gym",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 0,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 95,
+            "level": 11,
+            "maxHp": 24,
+            "hp": 24,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 408,
+            "level": 12,
+            "maxHp": 26,
+            "hp": 26,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          }
+        ],
+        "enemyIndex": 1,
+        "enemy": {
+          "species": 95,
+          "level": 11,
+          "maxHp": 24,
+          "hp": 24,
+          "experience": 0,
+          "nature": "성실",
+          "met": "체육관"
+        },
+        "active": 1,
+        "participants": [
+          1
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          1,
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      }
+    },
+    {
+      "name": "10-reload-committed-turn",
+      "dialogue": null,
+      "frame": null,
+      "save": {
+        "version": 1,
+        "worldRevision": 19,
+        "map": "oreburgh_gym",
+        "player": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 8,
+            "experience": 0,
+            "hp": 0,
+            "maxHp": 29,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 8,
+            "hp": 28,
+            "maxHp": 33,
+            "experience": 50,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 1
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "tour_oreburgh_center",
+        "steps": 0,
+        "seconds": 342.9149200001521
+      },
+      "battle": null
+    }
+  ],
+  "logs": []
+}

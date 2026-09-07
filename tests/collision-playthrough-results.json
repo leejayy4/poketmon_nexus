@@ -1,0 +1,43 @@
+{
+  "testedAt": "2026-09-05T18:06:44.192Z",
+  "worldRevision": 3,
+  "automatedTests": 24,
+  "build": "PASS",
+  "browser": "http://localhost:5173/?qa=collision-v3",
+  "checks": [
+    {
+      "name": "Bedroom and home stairs: side approach blocked; front approach changes floor",
+      "result": "PASS"
+    },
+    {
+      "name": "All four town buildings: enter, explore, exit",
+      "result": "PASS"
+    },
+    {
+      "name": "Lab annex: reach upper-right (19,4), lower-right (19,6), bottom floor (16,6); next row remains blocked",
+      "result": "PASS"
+    },
+    {
+      "name": "New researcher and Eevee dialogue through normal keyboard interaction",
+      "result": "PASS"
+    },
+    {
+      "name": "Professor story, Squirtle received, party menu, free exploration",
+      "result": "PASS"
+    },
+    {
+      "name": "Building rear at (10,6) and side at (7,8), depth occlusion visually inspected",
+      "result": "PASS"
+    },
+    {
+      "name": "All 12 meadow cells and forest boundary at (36,4)",
+      "result": "PASS"
+    },
+    {
+      "name": "Runtime browser error log",
+      "result": "PASS",
+      "errors": []
+    }
+  ],
+  "scope": "User save storage kept separate from QA. Eevee is an ambient NPC; no battles or encounters added."
+}

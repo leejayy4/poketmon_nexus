@@ -1,0 +1,163 @@
+{
+  "qa": "facility-guide-20260906-01",
+  "url": "http://localhost:5173/?explore=1&qa=facility-guide-20260906-01",
+  "scope": "Public journal buttons, map buttons, keyboard walking, cancellation and reload. Representative facilities; all 76 facility entrances are covered separately by automated tests.",
+  "observations": [
+    {
+      "test": "facility selection from original town guides without visiting",
+      "route": [
+        "town",
+        "tour_jubilife",
+        "tour_jubilife_center"
+      ],
+      "visits": []
+    },
+    {
+      "test": "town arrival keeps facility guidance active",
+      "route": [
+        "tour_jubilife",
+        "tour_jubilife_center"
+      ],
+      "status": "walking",
+      "visits": [
+        "tour_jubilife"
+      ]
+    },
+    {
+      "test": "walking into center completes guidance and records visit",
+      "map": "tour_jubilife_center",
+      "status": "arrived",
+      "visits": [
+        "tour_jubilife",
+        "tour_jubilife_center"
+      ]
+    },
+    {
+      "test": "other facility starts through the room exit",
+      "route": [
+        "tour_jubilife_center",
+        "tour_jubilife",
+        "tour_jubilife_hall"
+      ],
+      "entry": "down"
+    },
+    {
+      "test": "walked center to broadcast hall through exterior",
+      "map": "tour_jubilife_hall",
+      "visits": [
+        "tour_jubilife",
+        "tour_jubilife_center",
+        "tour_jubilife_hall"
+      ]
+    },
+    {
+      "test": "cross-region facility destination uses connected route",
+      "maps": [
+        "tour_jubilife_hall",
+        "tour_jubilife",
+        "tour_canalave",
+        "tour_vermilion",
+        "tour_cerulean",
+        "tour_saffron",
+        "tour_goldenrod",
+        "tour_ecruteak",
+        "tour_olivine",
+        "tour_castelia",
+        "tour_castelia_hall"
+      ]
+    },
+    {
+      "test": "walked cross-region route through hall doorway",
+      "passed": [
+        "tour_jubilife",
+        "tour_canalave",
+        "tour_vermilion",
+        "tour_cerulean",
+        "tour_saffron",
+        "tour_goldenrod",
+        "tour_ecruteak",
+        "tour_olivine",
+        "tour_castelia",
+        "tour_castelia_hall"
+      ],
+      "visits": [
+        "tour_jubilife",
+        "tour_jubilife_center",
+        "tour_jubilife_hall",
+        "tour_canalave",
+        "tour_vermilion",
+        "tour_cerulean",
+        "tour_saffron",
+        "tour_goldenrod",
+        "tour_ecruteak",
+        "tour_olivine",
+        "tour_castelia",
+        "tour_castelia_hall"
+      ]
+    },
+    {
+      "test": "fast travel to parent town resumes facility entrance route",
+      "maps": [
+        "tour_castelia",
+        "tour_castelia_hall"
+      ],
+      "visits": [
+        "tour_jubilife",
+        "tour_jubilife_center",
+        "tour_jubilife_hall",
+        "tour_canalave",
+        "tour_vermilion",
+        "tour_cerulean",
+        "tour_saffron",
+        "tour_goldenrod",
+        "tour_ecruteak",
+        "tour_olivine",
+        "tour_castelia",
+        "tour_castelia_hall"
+      ]
+    },
+    {
+      "test": "cancel keeps position and visits",
+      "map": "tour_castelia",
+      "visits": [
+        "tour_jubilife",
+        "tour_jubilife_center",
+        "tour_jubilife_hall",
+        "tour_canalave",
+        "tour_vermilion",
+        "tour_cerulean",
+        "tour_saffron",
+        "tour_goldenrod",
+        "tour_ecruteak",
+        "tour_olivine",
+        "tour_castelia",
+        "tour_castelia_hall"
+      ]
+    },
+    {
+      "test": "reload clears facility guidance but retains visited rooms",
+      "map": "tour_castelia",
+      "navigation": null,
+      "visits": [
+        "tour_jubilife",
+        "tour_jubilife_center",
+        "tour_jubilife_hall",
+        "tour_canalave",
+        "tour_vermilion",
+        "tour_cerulean",
+        "tour_saffron",
+        "tour_goldenrod",
+        "tour_ecruteak",
+        "tour_olivine",
+        "tour_castelia",
+        "tour_castelia_hall"
+      ]
+    }
+  ],
+  "console": [],
+  "screenshots": [
+    "facility-navigation-screenshots/center-door-route.png",
+    "facility-navigation-screenshots/broadcast-arrival.png",
+    "facility-navigation-screenshots/cross-region-facility.png"
+  ]
+}

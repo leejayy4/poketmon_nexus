@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "worldRevision": 13,
+  "map": "tour_pastoria",
+  "player": {
+    "x": 22,
+    "y": 16,
+    "facing": "left"
+  },
+  "flags": {
+    "exploration": true
+  },
+  "party": [],
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 0
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 543,
+  "seconds": 876,
+  "tourVisited": [
+    "tour_jubilife",
+    "tour_oreburgh",
+    "tour_eterna",
+    "tour_hearthome",
+    "tour_pastoria",
+    "tour_snowpoint",
+    "tour_viridian",
+    "tour_pallet"
+  ]
+}

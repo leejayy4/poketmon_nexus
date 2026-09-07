@@ -1,0 +1,1271 @@
+{
+  "qa": "halls-ds-20260907-01",
+  "styles": [
+    "studio",
+    "museum",
+    "shrine",
+    "stage",
+    "shop",
+    "garden",
+    "terminal",
+    "lab",
+    "workshop",
+    "dojo",
+    "gallery",
+    "school"
+  ],
+  "observations": [
+    {
+      "label": "studio 실내 도보 진입",
+      "map": "tour_jubilife_hall",
+      "player": {
+        "x": 8,
+        "y": 7,
+        "facing": "up"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "studio 전시 조사",
+      "map": "tour_jubilife_hall",
+      "player": {
+        "x": 3,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "방송 조정석",
+        "pages": [
+          "화면에 마을 풍경이 비친다.\n작은 조절 손잡이가 줄지어 있다."
+        ],
+        "page": 0,
+        "shown": 38.802400000000006,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "studio 전시 조사",
+      "map": "tour_jubilife_hall",
+      "player": {
+        "x": 10,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "스튜디오 카메라",
+        "pages": [
+          "광장을 소개하는 방송 세트다.\n카메라 앞에 빈 인터뷰 자리가 있다."
+        ],
+        "page": 0,
+        "shown": 41.197600000000016,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "studio 전시 조사",
+      "map": "tour_jubilife_hall",
+      "player": {
+        "x": 3,
+        "y": 10,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "방송 자료실",
+        "pages": [
+          "여행과 포켓몬 생활을 다룬\n방송 기록이 날짜별로 꽂혀 있다."
+        ],
+        "page": 0,
+        "shown": 37.201199999999986,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "studio 안내원 대화",
+      "map": "tour_jubilife_hall",
+      "player": {
+        "x": 10,
+        "y": 9,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "시설 안내원",
+        "pages": [
+          "축복시티의 방송국입니다.",
+          "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+        ],
+        "page": 0,
+        "shown": 17.795200000000026,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "studio 도보 복귀",
+      "map": "tour_jubilife",
+      "player": {
+        "x": 31,
+        "y": 21,
+        "facing": "down"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "museum 실내 도보 진입",
+      "map": "tour_oreburgh_hall",
+      "player": {
+        "x": 8,
+        "y": 7,
+        "facing": "up"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "museum 전시 조사",
+      "map": "tour_oreburgh_hall",
+      "player": {
+        "x": 3,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "광석 표본",
+        "pages": [
+          "반짝이는 광물과 검은 석탄이\n채굴한 깊이에 따라 놓여 있다."
+        ],
+        "page": 0,
+        "shown": 37.19760000000008,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "museum 전시 조사",
+      "map": "tour_oreburgh_hall",
+      "player": {
+        "x": 10,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "탄광 모형",
+        "pages": [
+          "작은 광차가 레일 위에 있다.\n갱도와 운반 길을 한눈에 볼 수 있다."
+        ],
+        "page": 0,
+        "shown": 42.20119999999989,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "museum 전시 조사",
+      "map": "tour_oreburgh_hall",
+      "player": {
+        "x": 3,
+        "y": 10,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "광부의 도구",
+        "pages": [
+          "곡괭이와 작업등에\n오랫동안 사용한 흔적이 남아 있다."
+        ],
+        "page": 0,
+        "shown": 33.80239999999993,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "museum 안내원 대화",
+      "map": "tour_oreburgh_hall",
+      "player": {
+        "x": 10,
+        "y": 9,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "시설 안내원",
+        "pages": [
+          "무쇠시티의 광산 전시관입니다.",
+          "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+        ],
+        "page": 0,
+        "shown": 20.806000000000004,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "museum 도보 복귀",
+      "map": "tour_oreburgh",
+      "player": {
+        "x": 24,
+        "y": 11,
+        "facing": "down"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "shrine 실내 도보 진입",
+      "map": "tour_eterna_hall",
+      "player": {
+        "x": 8,
+        "y": 7,
+        "facing": "up"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "shrine 전시 조사",
+      "map": "tour_eterna_hall",
+      "player": {
+        "x": 6,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "오래된 석상",
+        "pages": [
+          "바람에 닳은 석상을 옮겨 놓았다.\n받침에 오래된 문양이 남아 있다."
+        ],
+        "page": 0,
+        "shown": 41.79520000000004,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "shrine 전시 조사",
+      "map": "tour_eterna_hall",
+      "player": {
+        "x": 11,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "옛 도시 지도",
+        "pages": [
+          "숲과 사원을 중심으로 자란\n영원시티의 옛 모습이 그려져 있다."
+        ],
+        "page": 0,
+        "shown": 38.798799999999986,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "shrine 전시 조사",
+      "map": "tour_eterna_hall",
+      "player": {
+        "x": 3,
+        "y": 10,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "이끼 정원",
+        "pages": [
+          "축축한 돌 사이로 이끼가 자란다.\n오래된 숲 냄새가 난다."
+        ],
+        "page": 0,
+        "shown": 36.21920000000003,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "shrine 안내원 대화",
+      "map": "tour_eterna_hall",
+      "player": {
+        "x": 10,
+        "y": 9,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "시설 안내원",
+        "pages": [
+          "영원시티의 역사관입니다.",
+          "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+        ],
+        "page": 0,
+        "shown": 17.19759999999995,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "shrine 도보 복귀",
+      "map": "tour_eterna",
+      "player": {
+        "x": 26,
+        "y": 11,
+        "facing": "down"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "stage 실내 도보 진입",
+      "map": "tour_hearthome_hall",
+      "player": {
+        "x": 8,
+        "y": 7,
+        "facing": "up"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "stage 전시 조사",
+      "map": "tour_hearthome_hall",
+      "player": {
+        "x": 4,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "콘테스트 무대",
+        "pages": [
+          "분홍 커튼 아래 작은 무대다.\n리본 장식이 조명을 받아 반짝인다."
+        ],
+        "page": 0,
+        "shown": 40.20119999999989,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "stage 전시 조사",
+      "map": "tour_hearthome_hall",
+      "player": {
+        "x": 10,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "리본 전시대",
+        "pages": [
+          "색과 모양이 다른 리본을\n유리 안에 가지런히 전시했다."
+        ],
+        "page": 0,
+        "shown": 34.78439999999979,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "stage 전시 조사",
+      "map": "tour_hearthome_hall",
+      "player": {
+        "x": 4,
+        "y": 10,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "무대 조명석",
+        "pages": [
+          "빛의 색을 표시한 조절판이다.\n지금은 견학용 화면이 켜져 있다."
+        ],
+        "page": 0,
+        "shown": 39.201199999999886,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "stage 안내원 대화",
+      "map": "tour_hearthome_hall",
+      "player": {
+        "x": 10,
+        "y": 9,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "시설 안내원",
+        "pages": [
+          "연고시티의 콘테스트 홀입니다.",
+          "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+        ],
+        "page": 0,
+        "shown": 20.201199999999893,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "stage 도보 복귀",
+      "map": "tour_hearthome",
+      "player": {
+        "x": 24,
+        "y": 11,
+        "facing": "down"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "shop 실내 도보 진입",
+      "map": "tour_veilstone_hall",
+      "player": {
+        "x": 8,
+        "y": 7,
+        "facing": "up"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "shop 전시 조사",
+      "map": "tour_veilstone_hall",
+      "player": {
+        "x": 3,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "여행용품 진열대",
+        "pages": [
+          "가방과 물통, 접이식 지도가 있다.\n탐방 전시품이라 구매할 수는 없다."
+        ],
+        "page": 0,
+        "shown": 43.79880000000011,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "shop 전시 조사",
+      "map": "tour_veilstone_hall",
+      "player": {
+        "x": 10,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "인형 코너",
+        "pages": [
+          "포켓몬 모양의 인형들이\n크기 순서대로 앉아 있다."
+        ],
+        "page": 0,
+        "shown": 31.806,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "shop 전시 조사",
+      "map": "tour_veilstone_hall",
+      "player": {
+        "x": 3,
+        "y": 10,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "층별 안내판",
+        "pages": [
+          "백화점의 층별 안내 그림이다.\n탐방에서는 이 전시층을 둘러본다."
+        ],
+        "page": 0,
+        "shown": 39.81319999999989,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "shop 안내원 대화",
+      "map": "tour_veilstone_hall",
+      "player": {
+        "x": 10,
+        "y": 9,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "시설 안내원",
+        "pages": [
+          "장막시티의 백화점입니다.",
+          "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+        ],
+        "page": 0,
+        "shown": 17.204799999999583,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "shop 도보 복귀",
+      "map": "tour_veilstone",
+      "player": {
+        "x": 31,
+        "y": 21,
+        "facing": "down"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "garden 실내 도보 진입",
+      "map": "tour_pastoria_hall",
+      "player": {
+        "x": 8,
+        "y": 7,
+        "facing": "up"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "garden 전시 조사",
+      "map": "tour_pastoria_hall",
+      "player": {
+        "x": 3,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "습지 단면 수조",
+        "pages": [
+          "갈대 뿌리 아래의 물길까지\n투명한 유리 너머로 보인다."
+        ],
+        "page": 0,
+        "shown": 34.79879999999959,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "garden 전시 조사",
+      "map": "tour_pastoria_hall",
+      "player": {
+        "x": 10,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "갈대 표본",
+        "pages": [
+          "물가에 자라는 풀을 모아 놓았다.\n잎 끝에 작은 물방울이 맺혀 있다."
+        ],
+        "page": 0,
+        "shown": 42.80239999999979,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "garden 전시 조사",
+      "map": "tour_pastoria_hall",
+      "player": {
+        "x": 3,
+        "y": 10,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "습지 관찰 지도",
+        "pages": [
+          "나무 데크와 관찰 지점이\n지도에 표시되어 있다."
+        ],
+        "page": 0,
+        "shown": 30.798800000000107,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "garden 안내원 대화",
+      "map": "tour_pastoria_hall",
+      "player": {
+        "x": 10,
+        "y": 9,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "시설 안내원",
+        "pages": [
+          "들판시티의 습지 관찰소입니다.",
+          "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+        ],
+        "page": 0,
+        "shown": 20.798800000000107,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "garden 도보 복귀",
+      "map": "tour_pastoria",
+      "player": {
+        "x": 31,
+        "y": 15,
+        "facing": "down"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "terminal 실내 도보 진입",
+      "map": "tour_canalave_hall",
+      "player": {
+        "x": 8,
+        "y": 7,
+        "facing": "up"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "terminal 전시 조사",
+      "map": "tour_canalave_hall",
+      "player": {
+        "x": 3,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "운하 선박 모형",
+        "pages": [
+          "화물선과 여객선 모형이 있다.\n배마다 갑판의 모양이 다르다."
+        ],
+        "page": 0,
+        "shown": 37.79879999999959,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "terminal 전시 조사",
+      "map": "tour_canalave_hall",
+      "player": {
+        "x": 10,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "지방 항로도",
+        "pages": [
+          "갈색시티와 기하시티로 잇는\n탐방 항로가 그려져 있다."
+        ],
+        "page": 0,
+        "shown": 33.79879999999958,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "terminal 전시 조사",
+      "map": "tour_canalave_hall",
+      "player": {
+        "x": 3,
+        "y": 10,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "항만 작업대",
+        "pages": [
+          "굵은 밧줄과 신호 깃발이다.\n매듭 묶는 법도 붙어 있다."
+        ],
+        "page": 0,
+        "shown": 34.60000000000001,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "terminal 안내원 대화",
+      "map": "tour_canalave_hall",
+      "player": {
+        "x": 10,
+        "y": 9,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "시설 안내원",
+        "pages": [
+          "운하시티의 항만 사무소입니다.",
+          "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+        ],
+        "page": 0,
+        "shown": 20.79880000000063,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "terminal 도보 복귀",
+      "map": "tour_canalave",
+      "player": {
+        "x": 31,
+        "y": 15,
+        "facing": "down"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "lab 실내 도보 진입",
+      "map": "tour_pallet_hall",
+      "player": {
+        "x": 8,
+        "y": 7,
+        "facing": "up"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "lab 전시 조사",
+      "map": "tour_pallet_hall",
+      "player": {
+        "x": 3,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "관찰 장치",
+        "pages": [
+          "표본을 확대해 보는 장치다.\n렌즈 옆에 관찰 노트가 있다."
+        ],
+        "page": 0,
+        "shown": 33.800000000000004,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "lab 전시 조사",
+      "map": "tour_pallet_hall",
+      "player": {
+        "x": 10,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "생태 연구 서가",
+        "pages": [
+          "포켓몬의 생활 환경을 기록한\n책과 노트가 꽂혀 있다."
+        ],
+        "page": 0,
+        "shown": 31.401200000000415,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "lab 전시 조사",
+      "map": "tour_pallet_hall",
+      "player": {
+        "x": 3,
+        "y": 10,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "연구용 화분",
+        "pages": [
+          "작은 새싹 옆에 성장 날짜를\n적은 팻말이 꽂혀 있다."
+        ],
+        "page": 0,
+        "shown": 30.79639999999979,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "lab 안내원 대화",
+      "map": "tour_pallet_hall",
+      "player": {
+        "x": 10,
+        "y": 9,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "시설 안내원",
+        "pages": [
+          "태초마을의 연구소입니다.",
+          "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+        ],
+        "page": 0,
+        "shown": 15.401199999999372,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "lab 도보 복귀",
+      "map": "tour_pallet",
+      "player": {
+        "x": 24,
+        "y": 11,
+        "facing": "down"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "workshop 실내 도보 진입",
+      "map": "tour_azalea_hall",
+      "player": {
+        "x": 8,
+        "y": 7,
+        "facing": "up"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "workshop 전시 조사",
+      "map": "tour_azalea_hall",
+      "player": {
+        "x": 3,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "규토리 작업대",
+        "pages": [
+          "속을 다듬는 도구와\n반쯤 가공한 규토리가 있다."
+        ],
+        "page": 0,
+        "shown": 27.79639999999979,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "workshop 전시 조사",
+      "map": "tour_azalea_hall",
+      "player": {
+        "x": 10,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "규토리 보관함",
+        "pages": [
+          "색이 다른 규토리를\n작은 칸마다 나누어 담았다."
+        ],
+        "page": 0,
+        "shown": 28.397600000000207,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "workshop 전시 조사",
+      "map": "tour_azalea_hall",
+      "player": {
+        "x": 3,
+        "y": 10,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "규토리 묘목",
+        "pages": [
+          "둥근 열매를 맺는 묘목이다.\n잎 아래 작은 열매가 숨어 있다."
+        ],
+        "page": 0,
+        "shown": 35.800000000000004,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "workshop 안내원 대화",
+      "map": "tour_azalea_hall",
+      "player": {
+        "x": 10,
+        "y": 9,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "시설 안내원",
+        "pages": [
+          "고동마을의 규토리 공방입니다.",
+          "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+        ],
+        "page": 0,
+        "shown": 17.79639999999979,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "workshop 도보 복귀",
+      "map": "tour_azalea",
+      "player": {
+        "x": 24,
+        "y": 11,
+        "facing": "down"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "dojo 실내 도보 진입",
+      "map": "tour_cianwood_hall",
+      "player": {
+        "x": 8,
+        "y": 7,
+        "facing": "up"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "dojo 전시 조사",
+      "map": "tour_cianwood_hall",
+      "player": {
+        "x": 3,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "수련 마루",
+        "pages": [
+          "바닷바람이 드는 나무 마루다.\n도복과 수건이 단정히 놓여 있다."
+        ],
+        "page": 0,
+        "shown": 37.40119999999938,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "dojo 전시 조사",
+      "map": "tour_cianwood_hall",
+      "player": {
+        "x": 10,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "수련용 바위",
+        "pages": [
+          "둥글게 닳은 해변 바위다.\n밀리지 않게 받침으로 고정했다."
+        ],
+        "page": 0,
+        "shown": 33.800000000000004,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "dojo 전시 조사",
+      "map": "tour_cianwood_hall",
+      "player": {
+        "x": 3,
+        "y": 10,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "호흡법 족자",
+        "pages": [
+          "자세를 가다듬고 천천히 호흡하는\n방법을 그림으로 안내한다."
+        ],
+        "page": 0,
+        "shown": 33.800000000000004,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "dojo 안내원 대화",
+      "map": "tour_cianwood_hall",
+      "player": {
+        "x": 10,
+        "y": 9,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "시설 안내원",
+        "pages": [
+          "진청시티의 바다 도장입니다.",
+          "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+        ],
+        "page": 0,
+        "shown": 16.79639999999979,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "dojo 도보 복귀",
+      "map": "tour_cianwood",
+      "player": {
+        "x": 31,
+        "y": 15,
+        "facing": "down"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "gallery 실내 도보 진입",
+      "map": "tour_castelia_hall",
+      "player": {
+        "x": 8,
+        "y": 7,
+        "facing": "up"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "gallery 전시 조사",
+      "map": "tour_castelia_hall",
+      "player": {
+        "x": 3,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "항구의 아침",
+        "pages": [
+          "높은 건물 사이로 배가 들어오는\n구름시티의 아침 풍경화다."
+        ],
+        "page": 0,
+        "shown": 33.803599999999165,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "gallery 전시 조사",
+      "map": "tour_castelia_hall",
+      "player": {
+        "x": 10,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "도시 조각",
+        "pages": [
+          "빌딩과 부두를 기하학 모양으로\n표현한 작은 조각 작품이다."
+        ],
+        "page": 0,
+        "shown": 34.39760000000022,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "gallery 전시 조사",
+      "map": "tour_castelia_hall",
+      "player": {
+        "x": 3,
+        "y": 10,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "감상 의자",
+        "pages": [
+          "벽의 작품을 천천히 감상할 수\n있도록 놓아 둔 의자다."
+        ],
+        "page": 0,
+        "shown": 31.799999999999997,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "gallery 안내원 대화",
+      "map": "tour_castelia_hall",
+      "player": {
+        "x": 10,
+        "y": 9,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "시설 안내원",
+        "pages": [
+          "구름시티의 항구 갤러리입니다.",
+          "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+        ],
+        "page": 0,
+        "shown": 18.404800000000627,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "gallery 도보 복귀",
+      "map": "tour_castelia",
+      "player": {
+        "x": 31,
+        "y": 21,
+        "facing": "down"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "school 실내 도보 진입",
+      "map": "tour_aspertia_hall",
+      "player": {
+        "x": 8,
+        "y": 7,
+        "facing": "up"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "school 전시 조사",
+      "map": "tour_aspertia_hall",
+      "player": {
+        "x": 3,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "교실 칠판",
+        "pages": [
+          "지도 읽는 법과 포켓몬을\n관찰할 때의 예절이 적혀 있다."
+        ],
+        "page": 0,
+        "shown": 33.40119999999938,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "school 전시 조사",
+      "map": "tour_aspertia_hall",
+      "player": {
+        "x": 10,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "학교 도서 코너",
+        "pages": [
+          "초보 여행자를 위한\n그림책과 지도책이 있다."
+        ],
+        "page": 0,
+        "shown": 26.39759999999916,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "school 전시 조사",
+      "map": "tour_aspertia_hall",
+      "player": {
+        "x": 3,
+        "y": 10,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "학생 책상",
+        "pages": [
+          "공책 위에 마을의 전망 언덕을\n그린 그림이 펼쳐져 있다."
+        ],
+        "page": 0,
+        "shown": 33.998799999999584,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "school 안내원 대화",
+      "map": "tour_aspertia_hall",
+      "player": {
+        "x": 10,
+        "y": 9,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "시설 안내원",
+        "pages": [
+          "부채시티의 트레이너 학교입니다.",
+          "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+        ],
+        "page": 0,
+        "shown": 18.799999999999997,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "school 도보 복귀",
+      "map": "tour_aspertia",
+      "player": {
+        "x": 24,
+        "y": 11,
+        "facing": "down"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "갤러리 유효 위치 저장 준비",
+      "map": "tour_castelia_hall",
+      "player": {
+        "x": 8,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "빠른 저장 후 재접속: 위치·방문·진행 유지",
+      "map": "tour_castelia_hall",
+      "player": {
+        "x": 8,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "재접속 후 항구 풍경화 재조사",
+      "map": "tour_castelia_hall",
+      "player": {
+        "x": 3,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "항구의 아침",
+        "pages": [
+          "높은 건물 사이로 배가 들어오는\n구름시티의 아침 풍경화다."
+        ],
+        "page": 0,
+        "shown": 35.6,
+        "selected": 0
+      },
+      "hint": null
+    },
+    {
+      "label": "전시물 뒤쪽 접근",
+      "map": "tour_castelia_hall",
+      "player": {
+        "x": 3,
+        "y": 3,
+        "facing": "right"
+      },
+      "dialogue": null,
+      "hint": null
+    },
+    {
+      "label": "전시물 앞쪽 접근",
+      "map": "tour_castelia_hall",
+      "player": {
+        "x": 3,
+        "y": 6,
+        "facing": "up"
+      },
+      "dialogue": null,
+      "hint": "Z 조사 · 항구의 아침"
+    }
+  ],
+  "consoleAfterReload": []
+}

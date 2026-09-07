@@ -1,0 +1,1520 @@
+{
+  "qa": "item-supply-20260907-01",
+  "observations": [
+    {
+      "label": "empty-potion-prompt",
+      "state": {
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0.1832999999999993,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "tour_oreburgh_center",
+          "player": {
+            "x": 8,
+            "y": 10,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 1,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 0.6667000000000005,
+          "tourVisited": [
+            "tour_oreburgh",
+            "tour_oreburgh_center"
+          ]
+        },
+        "panel": "bag",
+        "dialogue": {
+          "speaker": "상처약",
+          "pages": [
+            "상처약이 없어요.\n보충: 무쇠시티 · 포켓몬센터",
+            "상처약 2개까지 무료로 채워 줘요.\n보충 장소까지 길을 안내할까요?"
+          ],
+          "page": 1,
+          "shown": 40.603600000000085,
+          "selected": 1,
+          "choices": [
+            "보충 장소 안내",
+            "가방으로 돌아가기"
+          ]
+        },
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 1,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################",
+            "################",
+            "################",
+            "##............##",
+            "##.##......##.##",
+            "##.##......##.##",
+            "##....####....##",
+            "##............##",
+            "##.###........##",
+            "##.###........##",
+            "##............##",
+            "##............##",
+            "########.#######",
+            "########.#######"
+          ],
+          "npcs": [
+            {
+              "id": "tourHost",
+              "x": 8,
+              "y": 5
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 13,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 8,
+                "y": 9
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 10,
+          "facing": "down"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/item-supply-screenshots/01-empty-potion-prompt.png"
+    },
+    {
+      "label": "cancel-keeps-bag",
+      "state": {
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 14.249499999999987,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "tour_oreburgh_center",
+          "player": {
+            "x": 8,
+            "y": 10,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 1,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 14.832699999999988,
+          "tourVisited": [
+            "tour_oreburgh",
+            "tour_oreburgh_center"
+          ]
+        },
+        "panel": "bag",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 1,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################",
+            "################",
+            "################",
+            "##............##",
+            "##.##......##.##",
+            "##.##......##.##",
+            "##....####....##",
+            "##............##",
+            "##.###........##",
+            "##.###........##",
+            "##............##",
+            "##............##",
+            "########.#######",
+            "########.#######"
+          ],
+          "npcs": [
+            {
+              "id": "tourHost",
+              "x": 8,
+              "y": 5
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 13,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 8,
+                "y": 9
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 10,
+          "facing": "down"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/item-supply-screenshots/02-cancel-keeps-bag.png"
+    },
+    {
+      "label": "potion-counter-route",
+      "state": {
+        "tourEvent": "nurse",
+        "battleEffect": null,
+        "dialogueElapsed": 0.13330000000000292,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": true,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": {
+          "destination": "tour_oreburgh_center",
+          "name": "무쇠시티 · 포켓몬센터",
+          "status": "walking",
+          "maps": [
+            "tour_oreburgh_center"
+          ],
+          "tiles": [
+            {
+              "x": 8,
+              "y": 10
+            },
+            {
+              "x": 8,
+              "y": 9
+            },
+            {
+              "x": 8,
+              "y": 8
+            },
+            {
+              "x": 8,
+              "y": 7
+            }
+          ],
+          "nextName": null,
+          "exit": null,
+          "interaction": {
+            "x": 8,
+            "y": 6,
+            "facing": "up"
+          }
+        },
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "tour_oreburgh_center",
+          "player": {
+            "x": 8,
+            "y": 10,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 1,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 15.782699999999991,
+          "tourVisited": [
+            "tour_oreburgh",
+            "tour_oreburgh_center"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 1,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################",
+            "################",
+            "################",
+            "##............##",
+            "##.##......##.##",
+            "##.##......##.##",
+            "##....####....##",
+            "##............##",
+            "##.###........##",
+            "##.###........##",
+            "##............##",
+            "##............##",
+            "########.#######",
+            "########.#######"
+          ],
+          "npcs": [
+            {
+              "id": "tourHost",
+              "x": 8,
+              "y": 5
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 13,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 8,
+                "y": 9
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 10,
+          "facing": "down"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/item-supply-screenshots/03-potion-counter-route.png"
+    },
+    {
+      "label": "nurse-refilled-potions",
+      "state": {
+        "tourEvent": "nurse",
+        "battleEffect": null,
+        "dialogueElapsed": 0.6499000000000015,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": true,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": {
+          "destination": "tour_oreburgh_center",
+          "name": "무쇠시티 · 포켓몬센터",
+          "status": "arrived",
+          "maps": [
+            "tour_oreburgh_center"
+          ],
+          "tiles": [
+            {
+              "x": 8,
+              "y": 7
+            }
+          ],
+          "nextName": null,
+          "exit": null,
+          "interaction": {
+            "x": 8,
+            "y": 6,
+            "facing": "up"
+          }
+        },
+        "interactionHint": "Z 말걸기 · 간호사",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "tour_oreburgh_center",
+          "player": {
+            "x": 8,
+            "y": 7,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 3,
+          "seconds": 18.46589999999995,
+          "tourVisited": [
+            "tour_oreburgh",
+            "tour_oreburgh_center"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 1,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################",
+            "################",
+            "################",
+            "##............##",
+            "##.##......##.##",
+            "##.##......##.##",
+            "##....####....##",
+            "##............##",
+            "##.###........##",
+            "##.###........##",
+            "##............##",
+            "##............##",
+            "########.#######",
+            "########.#######"
+          ],
+          "npcs": [
+            {
+              "id": "tourHost",
+              "x": 8,
+              "y": 5
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 13,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 8,
+                "y": 9
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 7,
+          "facing": "up"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/item-supply-screenshots/04-nurse-refilled-potions.png"
+    },
+    {
+      "label": "resume-gym-objective",
+      "state": {
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0.6499000000000015,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": true,
+        "followingObjective": true,
+        "roaming": null,
+        "navigation": {
+          "destination": "oreburgh_gym",
+          "name": "무쇠체육관",
+          "status": "walking",
+          "maps": [
+            "tour_oreburgh_center",
+            "tour_oreburgh",
+            "oreburgh_gym"
+          ],
+          "tiles": [
+            {
+              "x": 8,
+              "y": 7
+            },
+            {
+              "x": 8,
+              "y": 8
+            },
+            {
+              "x": 8,
+              "y": 9
+            },
+            {
+              "x": 8,
+              "y": 10
+            },
+            {
+              "x": 8,
+              "y": 11
+            },
+            {
+              "x": 8,
+              "y": 12
+            },
+            {
+              "x": 8,
+              "y": 13
+            }
+          ],
+          "nextName": "무쇠시티",
+          "exit": {
+            "x": 8,
+            "y": 13,
+            "to": "tour_oreburgh",
+            "spawn": {
+              "x": 8,
+              "y": 9
+            },
+            "entry": "down",
+            "facing": "down"
+          }
+        },
+        "interactionHint": "Z 말걸기 · 간호사",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "tour_oreburgh_center",
+          "player": {
+            "x": 8,
+            "y": 7,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 3,
+          "seconds": 69.31360000000168,
+          "tourVisited": [
+            "tour_oreburgh",
+            "tour_oreburgh_center"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 1,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################",
+            "################",
+            "################",
+            "##............##",
+            "##.##......##.##",
+            "##.##......##.##",
+            "##....####....##",
+            "##............##",
+            "##.###........##",
+            "##.###........##",
+            "##............##",
+            "##............##",
+            "########.#######",
+            "########.#######"
+          ],
+          "npcs": [
+            {
+              "id": "tourHost",
+              "x": 8,
+              "y": 5
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 13,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 8,
+                "y": 9
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 7,
+          "facing": "up"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/item-supply-screenshots/05-resume-gym-objective.png"
+    },
+    {
+      "label": "empty-ball-prompt",
+      "state": {
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0.6666000000000057,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": true,
+        "followingObjective": true,
+        "roaming": null,
+        "navigation": {
+          "destination": "oreburgh_gym",
+          "name": "무쇠체육관",
+          "status": "walking",
+          "maps": [
+            "route_s01",
+            "tour_jubilife",
+            "tour_oreburgh",
+            "oreburgh_gym"
+          ],
+          "tiles": [
+            {
+              "x": 29,
+              "y": 12
+            },
+            {
+              "x": 28,
+              "y": 12
+            },
+            {
+              "x": 27,
+              "y": 12
+            },
+            {
+              "x": 26,
+              "y": 12
+            },
+            {
+              "x": 25,
+              "y": 12
+            },
+            {
+              "x": 24,
+              "y": 12
+            },
+            {
+              "x": 23,
+              "y": 12
+            },
+            {
+              "x": 22,
+              "y": 12
+            },
+            {
+              "x": 21,
+              "y": 12
+            },
+            {
+              "x": 20,
+              "y": 12
+            },
+            {
+              "x": 19,
+              "y": 12
+            },
+            {
+              "x": 18,
+              "y": 12
+            },
+            {
+              "x": 17,
+              "y": 12
+            },
+            {
+              "x": 16,
+              "y": 12
+            },
+            {
+              "x": 15,
+              "y": 12
+            },
+            {
+              "x": 14,
+              "y": 12
+            },
+            {
+              "x": 13,
+              "y": 12
+            },
+            {
+              "x": 12,
+              "y": 12
+            },
+            {
+              "x": 11,
+              "y": 12
+            },
+            {
+              "x": 10,
+              "y": 12
+            },
+            {
+              "x": 9,
+              "y": 12
+            },
+            {
+              "x": 8,
+              "y": 12
+            },
+            {
+              "x": 7,
+              "y": 12
+            },
+            {
+              "x": 6,
+              "y": 12
+            },
+            {
+              "x": 5,
+              "y": 12
+            },
+            {
+              "x": 4,
+              "y": 12
+            },
+            {
+              "x": 3,
+              "y": 12
+            },
+            {
+              "x": 2,
+              "y": 12
+            }
+          ],
+          "nextName": "축복시티",
+          "exit": {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          }
+        },
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "route_s01",
+          "player": {
+            "x": 29,
+            "y": 12,
+            "facing": "left"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 123,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 1.9499000000000066
+        },
+        "panel": "bag",
+        "dialogue": {
+          "speaker": "몬스터볼",
+          "pages": [
+            "몬스터볼이 없어요.\n보충: 새잎 서쪽길",
+            "몬스터볼 5개까지 무료로 채워 줘요.\n보충 장소까지 길을 안내할까요?"
+          ],
+          "page": 1,
+          "shown": 60.7988000000001,
+          "selected": 1,
+          "choices": [
+            "보충 장소 안내",
+            "가방으로 돌아가기"
+          ]
+        },
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 1,
+        "bagIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################################",
+            "################################",
+            "################################",
+            "################################",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...#.......................##",
+            "###...........................##",
+            "##.............................#",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "################################",
+            "################################",
+            "################################"
+          ],
+          "npcs": [
+            {
+              "id": "routeGuide",
+              "x": 25,
+              "y": 10
+            },
+            {
+              "id": "roadworker",
+              "x": 3,
+              "y": 11
+            }
+          ],
+          "warps": [
+            {
+              "x": 2,
+              "y": 12,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 37,
+                "y": 24
+              },
+              "entry": "left",
+              "facing": "left"
+            },
+            {
+              "x": 30,
+              "y": 12,
+              "to": "town",
+              "spawn": {
+                "x": 4,
+                "y": 15
+              },
+              "facing": "right",
+              "entry": "right"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 17,
+              "y": 6,
+              "w": 6,
+              "h": 4
+            },
+            {
+              "kind": "tallGrass",
+              "x": 7,
+              "y": 15,
+              "w": 8,
+              "h": 4
+            }
+          ]
+        },
+        "position": {
+          "x": 29,
+          "y": 12,
+          "facing": "left"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/item-supply-screenshots/06-empty-ball-prompt.png"
+    },
+    {
+      "label": "ball-provider-reached",
+      "state": {
+        "tourEvent": "routeGuide",
+        "battleEffect": null,
+        "dialogueElapsed": 0.9999000000000081,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": true,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": {
+          "destination": "route_s01",
+          "name": "새잎 서쪽길",
+          "status": "arrived",
+          "maps": [
+            "route_s01"
+          ],
+          "tiles": [
+            {
+              "x": 26,
+              "y": 10
+            }
+          ],
+          "nextName": null,
+          "exit": null,
+          "interaction": {
+            "x": 25,
+            "y": 10,
+            "facing": "left"
+          }
+        },
+        "interactionHint": "Z 말걸기 · 길 안내원",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "route_s01",
+          "player": {
+            "x": 26,
+            "y": 10,
+            "facing": "left"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 123,
+          "healingPoint": "home",
+          "steps": 5,
+          "seconds": 4.582999999999996
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 1,
+        "bagIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################################",
+            "################################",
+            "################################",
+            "################################",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...#.......................##",
+            "###...........................##",
+            "##.............................#",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "################################",
+            "################################",
+            "################################"
+          ],
+          "npcs": [
+            {
+              "id": "routeGuide",
+              "x": 25,
+              "y": 10
+            },
+            {
+              "id": "roadworker",
+              "x": 3,
+              "y": 11
+            }
+          ],
+          "warps": [
+            {
+              "x": 2,
+              "y": 12,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 37,
+                "y": 24
+              },
+              "entry": "left",
+              "facing": "left"
+            },
+            {
+              "x": 30,
+              "y": 12,
+              "to": "town",
+              "spawn": {
+                "x": 4,
+                "y": 15
+              },
+              "facing": "right",
+              "entry": "right"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 17,
+              "y": 6,
+              "w": 6,
+              "h": 4
+            },
+            {
+              "kind": "tallGrass",
+              "x": 7,
+              "y": 15,
+              "w": 8,
+              "h": 4
+            }
+          ]
+        },
+        "position": {
+          "x": 26,
+          "y": 10,
+          "facing": "left"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/item-supply-screenshots/07-ball-provider-reached.png"
+    },
+    {
+      "label": "balls-refilled",
+      "state": {
+        "tourEvent": "routeGuide",
+        "battleEffect": null,
+        "dialogueElapsed": 0.3499000000000088,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": true,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": {
+          "destination": "route_s01",
+          "name": "새잎 서쪽길",
+          "status": "arrived",
+          "maps": [
+            "route_s01"
+          ],
+          "tiles": [
+            {
+              "x": 26,
+              "y": 10
+            }
+          ],
+          "nextName": null,
+          "exit": null,
+          "interaction": {
+            "x": 25,
+            "y": 10,
+            "facing": "left"
+          }
+        },
+        "interactionHint": "Z 말걸기 · 길 안내원",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "route_s01",
+          "player": {
+            "x": 26,
+            "y": 10,
+            "facing": "left"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 123,
+          "healingPoint": "home",
+          "steps": 5,
+          "seconds": 21.9324
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 1,
+        "bagIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################################",
+            "################################",
+            "################################",
+            "################################",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...#.......................##",
+            "###...........................##",
+            "##.............................#",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "################################",
+            "################################",
+            "################################"
+          ],
+          "npcs": [
+            {
+              "id": "routeGuide",
+              "x": 25,
+              "y": 10
+            },
+            {
+              "id": "roadworker",
+              "x": 3,
+              "y": 11
+            }
+          ],
+          "warps": [
+            {
+              "x": 2,
+              "y": 12,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 37,
+                "y": 24
+              },
+              "entry": "left",
+              "facing": "left"
+            },
+            {
+              "x": 30,
+              "y": 12,
+              "to": "town",
+              "spawn": {
+                "x": 4,
+                "y": 15
+              },
+              "facing": "right",
+              "entry": "right"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 17,
+              "y": 6,
+              "w": 6,
+              "h": 4
+            },
+            {
+              "kind": "tallGrass",
+              "x": 7,
+              "y": 15,
+              "w": 8,
+              "h": 4
+            }
+          ]
+        },
+        "position": {
+          "x": 26,
+          "y": 10,
+          "facing": "left"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/item-supply-screenshots/08-balls-refilled.png"
+    },
+    {
+      "label": "reload-keeps-supplies",
+      "state": {
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": "Z 말걸기 · 길 안내원",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "route_s01",
+          "player": {
+            "x": 26,
+            "y": 10,
+            "facing": "left"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 123,
+          "healingPoint": "home",
+          "steps": 5,
+          "seconds": 22.774799999952318
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################################",
+            "################################",
+            "################################",
+            "################################",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...#.......................##",
+            "###...........................##",
+            "##.............................#",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "################################",
+            "################################",
+            "################################"
+          ],
+          "npcs": [
+            {
+              "id": "routeGuide",
+              "x": 25,
+              "y": 10
+            },
+            {
+              "id": "roadworker",
+              "x": 3,
+              "y": 11
+            }
+          ],
+          "warps": [
+            {
+              "x": 2,
+              "y": 12,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 37,
+                "y": 24
+              },
+              "entry": "left",
+              "facing": "left"
+            },
+            {
+              "x": 30,
+              "y": 12,
+              "to": "town",
+              "spawn": {
+                "x": 4,
+                "y": 15
+              },
+              "facing": "right",
+              "entry": "right"
+            }
+          ],
+          "reserved": [],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 17,
+              "y": 6,
+              "w": 6,
+              "h": 4
+            },
+            {
+              "kind": "tallGrass",
+              "x": 7,
+              "y": 15,
+              "w": 8,
+              "h": 4
+            }
+          ]
+        },
+        "position": {
+          "x": 26,
+          "y": 10,
+          "facing": "left"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/item-supply-screenshots/09-reload-keeps-supplies.png"
+    }
+  ]
+}

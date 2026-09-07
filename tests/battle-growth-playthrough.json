@@ -1,0 +1,2144 @@
+[
+  {
+    "name": "01-final-attack-before-growth",
+    "screenshot": "tests/battle-growth-screenshots/01-final-attack-before-growth.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 0.15009999999999854,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": {
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 6,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "player": {
+          "species": 399,
+          "level": 3,
+          "hp": 6,
+          "maxHp": 18,
+          "experience": 20,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "enemyIndex": 0,
+        "active": 1,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0
+      },
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          0,
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": true
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 17,
+          "y": 6,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 6,
+            "experience": 5,
+            "hp": 23,
+            "maxHp": 23,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 4,
+            "hp": 9,
+            "maxHp": 21,
+            "experience": 5,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 4.499999999999994
+      },
+      "panel": "field",
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "비버니의 몸통박치기!",
+          "비버니에게 6의 피해를 주었다!",
+          "야생 비버니가 쓰러졌다!",
+          "꼬부기는 경험치를\n15 얻었다!",
+          "꼬부기의 레벨이\n6(으)로 올랐다!",
+          "비버니는 경험치를\n15 얻었다!",
+          "비버니의 레벨이\n4(으)로 올랐다!",
+          "싸움에서 이겼다!"
+        ],
+        "page": 0,
+        "shown": 5.403599999999948,
+        "selected": 0
+      },
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 17,
+        "y": 6,
+        "facing": "left"
+      }
+    }
+  },
+  {
+    "name": "02-reserve-experience",
+    "screenshot": "tests/battle-growth-screenshots/02-reserve-experience.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 0.2166000000000058,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": {
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "player": {
+          "species": 399,
+          "level": 3,
+          "hp": 6,
+          "maxHp": 18,
+          "experience": 20,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "enemyIndex": 0,
+        "active": 1,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "growth": {
+          "kind": "experience",
+          "amount": 15,
+          "before": {
+            "species": 7,
+            "level": 5,
+            "experience": 40,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          "after": {
+            "species": 7,
+            "level": 5,
+            "experience": 55,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          "index": 0
+        }
+      },
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          0,
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": true
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 17,
+          "y": 6,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 6,
+            "experience": 5,
+            "hp": 23,
+            "maxHp": 23,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 4,
+            "hp": 9,
+            "maxHp": 21,
+            "experience": 5,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 5.549899999999999
+      },
+      "panel": "field",
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "비버니의 몸통박치기!",
+          "비버니에게 6의 피해를 주었다!",
+          "야생 비버니가 쓰러졌다!",
+          "꼬부기는 경험치를\n15 얻었다!",
+          "꼬부기의 레벨이\n6(으)로 올랐다!",
+          "비버니는 경험치를\n15 얻었다!",
+          "비버니의 레벨이\n4(으)로 올랐다!",
+          "싸움에서 이겼다!"
+        ],
+        "page": 3,
+        "shown": 19.998800000000106,
+        "selected": 0
+      },
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 17,
+        "y": 6,
+        "facing": "left"
+      }
+    }
+  },
+  {
+    "name": "03-reserve-level-up",
+    "screenshot": "tests/battle-growth-screenshots/03-reserve-level-up.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 0.25000000000000006,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": {
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "player": {
+          "species": 399,
+          "level": 3,
+          "hp": 6,
+          "maxHp": 18,
+          "experience": 20,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "enemyIndex": 0,
+        "active": 1,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "growth": {
+          "kind": "level",
+          "amount": 15,
+          "before": {
+            "species": 7,
+            "level": 5,
+            "experience": 55,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          "after": {
+            "species": 7,
+            "level": 6,
+            "experience": 5,
+            "hp": 23,
+            "maxHp": 23,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          "index": 0
+        }
+      },
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          0,
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": true
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 17,
+          "y": 6,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 6,
+            "experience": 5,
+            "hp": 23,
+            "maxHp": 23,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 4,
+            "hp": 9,
+            "maxHp": 21,
+            "experience": 5,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 6.549900000000002
+      },
+      "panel": "field",
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "비버니의 몸통박치기!",
+          "비버니에게 6의 피해를 주었다!",
+          "야생 비버니가 쓰러졌다!",
+          "꼬부기는 경험치를\n15 얻었다!",
+          "꼬부기의 레벨이\n6(으)로 올랐다!",
+          "비버니는 경험치를\n15 얻었다!",
+          "비버니의 레벨이\n4(으)로 올랐다!",
+          "싸움에서 이겼다!"
+        ],
+        "page": 4,
+        "shown": 22.60359999999995,
+        "selected": 0
+      },
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 17,
+        "y": 6,
+        "facing": "left"
+      }
+    }
+  },
+  {
+    "name": "04-active-experience",
+    "screenshot": "tests/battle-growth-screenshots/04-active-experience.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 0.23260000000000586,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": {
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "player": {
+          "species": 399,
+          "level": 3,
+          "hp": 6,
+          "maxHp": 18,
+          "experience": 35,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "enemyIndex": 0,
+        "active": 1,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "growth": {
+          "kind": "experience",
+          "amount": 15,
+          "before": {
+            "species": 399,
+            "level": 3,
+            "hp": 6,
+            "maxHp": 18,
+            "experience": 20,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          "after": {
+            "species": 399,
+            "level": 3,
+            "hp": 6,
+            "maxHp": 18,
+            "experience": 35,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          "index": 1
+        }
+      },
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          0,
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": true
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 17,
+          "y": 6,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 6,
+            "experience": 5,
+            "hp": 23,
+            "maxHp": 23,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 4,
+            "hp": 9,
+            "maxHp": 21,
+            "experience": 5,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 7.032200000000013
+      },
+      "panel": "field",
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "비버니의 몸통박치기!",
+          "비버니에게 6의 피해를 주었다!",
+          "야생 비버니가 쓰러졌다!",
+          "꼬부기는 경험치를\n15 얻었다!",
+          "꼬부기의 레벨이\n6(으)로 올랐다!",
+          "비버니는 경험치를\n15 얻었다!",
+          "비버니의 레벨이\n4(으)로 올랐다!",
+          "싸움에서 이겼다!"
+        ],
+        "page": 5,
+        "shown": 19.97,
+        "selected": 0
+      },
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 17,
+        "y": 6,
+        "facing": "left"
+      }
+    }
+  },
+  {
+    "name": "05-active-level-up",
+    "screenshot": "tests/battle-growth-screenshots/05-active-level-up.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 0.09990000000000146,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": {
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "player": {
+          "species": 399,
+          "level": 4,
+          "hp": 9,
+          "maxHp": 21,
+          "experience": 5,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "enemyIndex": 0,
+        "active": 1,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "growth": {
+          "kind": "level",
+          "amount": 15,
+          "before": {
+            "species": 399,
+            "level": 3,
+            "hp": 6,
+            "maxHp": 18,
+            "experience": 35,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          "after": {
+            "species": 399,
+            "level": 4,
+            "hp": 9,
+            "maxHp": 21,
+            "experience": 5,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          "index": 1
+        }
+      },
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          0,
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": true
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 17,
+          "y": 6,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 6,
+            "experience": 5,
+            "hp": 23,
+            "maxHp": 23,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 4,
+            "hp": 9,
+            "maxHp": 21,
+            "experience": 5,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 7.298900000000011
+      },
+      "panel": "field",
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "비버니의 몸통박치기!",
+          "비버니에게 6의 피해를 주었다!",
+          "야생 비버니가 쓰러졌다!",
+          "꼬부기는 경험치를\n15 얻었다!",
+          "꼬부기의 레벨이\n6(으)로 올랐다!",
+          "비버니는 경험치를\n15 얻었다!",
+          "비버니의 레벨이\n4(으)로 올랐다!",
+          "싸움에서 이겼다!"
+        ],
+        "page": 6,
+        "shown": 21.998799999999843,
+        "selected": 0
+      },
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 17,
+        "y": 6,
+        "facing": "left"
+      }
+    }
+  },
+  {
+    "name": "06-victory-without-growth-card",
+    "screenshot": "tests/battle-growth-screenshots/06-victory-without-growth-card.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 0.1331999999999971,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": {
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "player": {
+          "species": 399,
+          "level": 4,
+          "hp": 9,
+          "maxHp": 21,
+          "experience": 5,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "enemyIndex": 0,
+        "active": 1,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0
+      },
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          0,
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": true
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 17,
+          "y": 6,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 6,
+            "experience": 5,
+            "hp": 23,
+            "maxHp": 23,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 4,
+            "hp": 9,
+            "maxHp": 21,
+            "experience": 5,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 8.665100000000024
+      },
+      "panel": "field",
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "비버니의 몸통박치기!",
+          "비버니에게 6의 피해를 주었다!",
+          "야생 비버니가 쓰러졌다!",
+          "꼬부기는 경험치를\n15 얻었다!",
+          "꼬부기의 레벨이\n6(으)로 올랐다!",
+          "비버니는 경험치를\n15 얻었다!",
+          "비버니의 레벨이\n4(으)로 올랐다!",
+          "싸움에서 이겼다!"
+        ],
+        "page": 7,
+        "shown": 4.7951999999998955,
+        "selected": 0
+      },
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 17,
+        "y": 6,
+        "facing": "left"
+      }
+    }
+  },
+  {
+    "name": "07-field-after-shared-growth",
+    "screenshot": "tests/battle-growth-screenshots/07-field-after-shared-growth.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 0.29990000000000877,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": null,
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 17,
+          "y": 6,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 6,
+            "experience": 5,
+            "hp": 23,
+            "maxHp": 23,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 4,
+            "hp": 9,
+            "maxHp": 21,
+            "experience": 5,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 9.031900000000054
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 17,
+        "y": 6,
+        "facing": "left"
+      }
+    }
+  },
+  {
+    "name": "08-experience-without-level-up",
+    "screenshot": "tests/battle-growth-screenshots/08-experience-without-level-up.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 0.19999999999999998,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": {
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "player": {
+          "species": 7,
+          "level": 6,
+          "experience": 35,
+          "hp": 15,
+          "maxHp": 23,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        "enemyIndex": 0,
+        "active": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "growth": {
+          "kind": "experience",
+          "amount": 30,
+          "before": {
+            "species": 7,
+            "level": 6,
+            "experience": 5,
+            "hp": 15,
+            "maxHp": 23,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          "after": {
+            "species": 7,
+            "level": 6,
+            "experience": 35,
+            "hp": 15,
+            "maxHp": 23,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          "index": 0
+        }
+      },
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          0,
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": true
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 17,
+          "y": 6,
+          "facing": "right"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 6,
+            "experience": 35,
+            "hp": 15,
+            "maxHp": 23,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 4,
+            "hp": 9,
+            "maxHp": 21,
+            "experience": 5,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 18,
+        "seconds": 14.764699999999994
+      },
+      "panel": "field",
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "꼬부기의 몸통박치기!",
+          "비버니에게 6의 피해를 주었다!",
+          "야생 비버니가 쓰러졌다!",
+          "꼬부기는 경험치를\n30 얻었다!",
+          "싸움에서 이겼다!"
+        ],
+        "page": 3,
+        "shown": 19.998800000000106,
+        "selected": 0
+      },
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 17,
+        "y": 6,
+        "facing": "right"
+      }
+    }
+  },
+  {
+    "name": "09-reload-during-experience",
+    "screenshot": "tests/battle-growth-screenshots/09-reload-during-experience.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 0,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": null,
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 17,
+          "y": 6,
+          "facing": "right"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 6,
+            "experience": 35,
+            "hp": 15,
+            "maxHp": 23,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 4,
+            "hp": 9,
+            "maxHp": 21,
+            "experience": 5,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 18,
+        "seconds": 15.864400000000016
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 17,
+        "y": 6,
+        "facing": "right"
+      }
+    }
+  }
+]

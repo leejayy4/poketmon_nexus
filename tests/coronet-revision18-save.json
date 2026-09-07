@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "worldRevision": 18,
+  "map": "tour_coronet",
+  "player": {
+    "x": 9,
+    "y": 6,
+    "facing": "left"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 7,
+      "level": 5,
+      "experience": 0,
+      "hp": 9,
+      "maxHp": 20,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소"
+    }
+  ],
+  "inventory": {
+    "pokeBalls": 5,
+    "potions": 3
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 234,
+  "seconds": 567
+}

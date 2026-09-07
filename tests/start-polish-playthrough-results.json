@@ -1,0 +1,202 @@
+{
+  "testedAt": "2026-09-06T06:59:37.255Z",
+  "url": "http://localhost:5173/?qa=start-polish-20260906-01",
+  "method": "Existing save-file UI imports into isolated QA storage, keyboard walking from entrance, front-facing interactions, observed Canvas screenshots and field.dataset.state. No direct engine mutation. Pokemon acquisition itself covered by automated regression tests, not replayed here.",
+  "automatedTests": 26,
+  "build": "PASS",
+  "checks": [
+    {
+      "name": "mother-none",
+      "status": "PASS",
+      "map": "home",
+      "player": {
+        "x": 4,
+        "y": 5,
+        "facing": "up"
+      },
+      "party": [],
+      "flags": {},
+      "pages": [
+        "잘 잤니? 박사님이 연구소에서\n너를 기다리고 계신단다.",
+        "집 앞길을 따라 위쪽으로 가 보렴.\n파란 지붕의 건물이 연구소야."
+      ],
+      "speaker": "엄마"
+    },
+    {
+      "name": "mother-starter",
+      "status": "PASS",
+      "map": "home",
+      "player": {
+        "x": 4,
+        "y": 5,
+        "facing": "up"
+      },
+      "party": [
+        7
+      ],
+      "flags": {
+        "starterReceived": true
+      },
+      "pages": [
+        "어머, 새로운 친구가 생겼구나!\n앞으로 서로 아껴 주렴."
+      ],
+      "speaker": "엄마"
+    },
+    {
+      "name": "mother-pikachu",
+      "status": "PASS",
+      "map": "home",
+      "player": {
+        "x": 4,
+        "y": 5,
+        "facing": "up"
+      },
+      "party": [
+        25
+      ],
+      "flags": {
+        "pikachuReceived": true
+      },
+      "pages": [
+        "어머, 피카츄와 친구가 되었구나!\n정말 반갑다, 피카츄야.",
+        "서두르지 말고 천천히 친해지렴.\n앞으로 서로 아껴 주고."
+      ],
+      "speaker": "엄마"
+    },
+    {
+      "name": "mother-both",
+      "status": "PASS",
+      "map": "home",
+      "player": {
+        "x": 4,
+        "y": 5,
+        "facing": "up"
+      },
+      "party": [
+        7,
+        25
+      ],
+      "flags": {
+        "starterReceived": true,
+        "pikachuReceived": true
+      },
+      "pages": [
+        "어머, 새 친구가 둘이나 생겼구나!\n피카츄도 함께 왔네.",
+        "두 친구 모두 소중히 아껴 주렴.\n서로 알아가는 시간도 필요하단다."
+      ],
+      "speaker": "엄마"
+    },
+    {
+      "name": "home-kitchen",
+      "status": "PASS",
+      "map": "home",
+      "player": {
+        "x": 2,
+        "y": 5,
+        "facing": "up"
+      },
+      "party": [
+        7,
+        25
+      ],
+      "flags": {
+        "starterReceived": true,
+        "pikachuReceived": true
+      },
+      "pages": [
+        "맛있는 냄새가 난다.\n엄마가 아침을 준비해 두셨다."
+      ],
+      "speaker": "부엌"
+    },
+    {
+      "name": "lab-researchBooks",
+      "status": "PASS",
+      "map": "lab",
+      "player": {
+        "x": 3,
+        "y": 5,
+        "facing": "up"
+      },
+      "party": [],
+      "flags": {},
+      "pages": [
+        "포켓몬과 사람의 관계에 대한\n연구 자료가 빼곡하게 적혀 있다."
+      ],
+      "speaker": "연구 자료"
+    },
+    {
+      "name": "lab-computer",
+      "status": "PASS",
+      "map": "lab",
+      "player": {
+        "x": 11,
+        "y": 4,
+        "facing": "up"
+      },
+      "party": [],
+      "flags": {},
+      "pages": [
+        "새로운 트레이너의 등록을\n준비하고 있다."
+      ],
+      "speaker": "연구용 컴퓨터"
+    },
+    {
+      "name": "neighbor-tv",
+      "status": "PASS",
+      "map": "neighbor",
+      "player": {
+        "x": 6,
+        "y": 5,
+        "facing": "up"
+      },
+      "party": [],
+      "flags": {},
+      "pages": [
+        "신오지방의 풍경이 나오고 있다.\n멀리서 포켓몬의 울음소리가 들린다."
+      ],
+      "speaker": "텔레비전"
+    },
+    {
+      "name": "cottage-tv",
+      "status": "PASS",
+      "map": "cottage",
+      "player": {
+        "x": 6,
+        "y": 5,
+        "facing": "up"
+      },
+      "party": [],
+      "flags": {},
+      "pages": [
+        "신오지방의 풍경이 나오고 있다.\n멀리서 포켓몬의 울음소리가 들린다."
+      ],
+      "speaker": "텔레비전"
+    },
+    {
+      "name": "mother-pikachu-reload",
+      "status": "PASS",
+      "map": "home",
+      "player": {
+        "x": 4,
+        "y": 5,
+        "facing": "up"
+      },
+      "party": [
+        25
+      ],
+      "flags": {
+        "pikachuReceived": true
+      },
+      "pages": [
+        "어머, 피카츄와 친구가 되었구나!\n정말 반갑다, 피카츄야.",
+        "서두르지 말고 천천히 친해지렴.\n앞으로 서로 아껴 주고."
+      ],
+      "speaker": "엄마"
+    }
+  ],
+  "screenshots": [
+    "start-polish-screenshots/mother-pikachu.png",
+    "start-polish-screenshots/neighbor-tv.png"
+  ],
+  "consoleErrors": []
+}

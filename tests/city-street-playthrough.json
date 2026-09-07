@@ -1,0 +1,2424 @@
+{
+  "url": "http://localhost:5173/?qa=direct-20260907-art-02",
+  "scope": "Visual QA with isolated empty-party fixtures; not campaign acceptance",
+  "observations": [
+    {
+      "label": "Shared city junction after integration",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": {
+          "position": {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 22,
+            "y": 16.479062499999998,
+            "facing": "up",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          "moving": true,
+          "tiles": [
+            {
+              "id": "tourPokemon",
+              "name": "피카츄",
+              "species": "pikachu",
+              "sprite": "field-pikachu",
+              "x": 22,
+              "y": 16,
+              "facing": "down",
+              "dialogue": "tourPokemon",
+              "pages": [
+                "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+              ]
+            },
+            {
+              "x": 23,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 17
+            },
+            {
+              "x": 21,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 16
+            },
+            {
+              "x": 23,
+              "y": 17
+            },
+            {
+              "x": 22,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 15
+            },
+            {
+              "x": 23,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 18
+            },
+            {
+              "x": 20,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 18
+            },
+            {
+              "x": 24,
+              "y": 14
+            },
+            {
+              "x": 20,
+              "y": 18
+            }
+          ]
+        },
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 19,
+          "map": "tour_jubilife",
+          "player": {
+            "x": 14,
+            "y": 11,
+            "facing": "down"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 40.73516399995163,
+          "tourVisited": [
+            "tour_jubilife"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "########################################",
+            "########################################",
+            "##############.#########################",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##....................................##",
+            "##....#####.......#####...............##",
+            "##....##.##.......#####...............##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##.#..................................##",
+            "##....................................##",
+            "#.....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...#####................##########..##",
+            "##........................##########..##",
+            "##............###.........##########..##",
+            "##............###.........#####.####..##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####..........................#.##",
+            "##...#####.............................#",
+            "##................####................##",
+            "##................####................##",
+            "##................####..#####.........##",
+            "##......................#####....###..##",
+            "##...............................###..##",
+            "##...............................###..##",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##############.#########################",
+            "########################################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "id": "tourResident0",
+              "x": 10,
+              "y": 13
+            },
+            {
+              "id": "tourResident1",
+              "x": 20,
+              "y": 12
+            },
+            {
+              "id": "tourPokemon",
+              "x": 22,
+              "y": 17
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 8,
+              "to": "tour_jubilife_center",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 31,
+              "y": 20,
+              "to": "tour_jubilife_hall",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 14,
+              "y": 34,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 14,
+              "y": 2,
+              "to": "tour_eterna_forest",
+              "spawn": {
+                "x": 10,
+                "y": 15
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 1,
+              "y": 14,
+              "to": "research_path",
+              "spawn": {
+                "x": 2,
+                "y": 12
+              },
+              "entry": "left",
+              "facing": "left"
+            },
+            {
+              "x": 38,
+              "y": 24,
+              "to": "route_s01",
+              "spawn": {
+                "x": 3,
+                "y": 12
+              },
+              "entry": "right",
+              "facing": "right"
+            }
+          ],
+          "reserved": [
+            {
+              "x": 22,
+              "y": 16
+            }
+          ],
+          "terrain": []
+        },
+        "position": {
+          "x": 14,
+          "y": 11,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "label": "Crosswalk tile",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": {
+          "position": {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 23,
+            "y": 16,
+            "facing": "right",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          "moving": false,
+          "tiles": [
+            {
+              "id": "tourPokemon",
+              "name": "피카츄",
+              "species": "pikachu",
+              "sprite": "field-pikachu",
+              "x": 22,
+              "y": 16,
+              "facing": "down",
+              "dialogue": "tourPokemon",
+              "pages": [
+                "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+              ]
+            },
+            {
+              "x": 23,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 17
+            },
+            {
+              "x": 21,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 16
+            },
+            {
+              "x": 23,
+              "y": 17
+            },
+            {
+              "x": 22,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 15
+            },
+            {
+              "x": 23,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 18
+            },
+            {
+              "x": 20,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 18
+            },
+            {
+              "x": 24,
+              "y": 14
+            },
+            {
+              "x": 20,
+              "y": 18
+            }
+          ]
+        },
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 19,
+          "map": "tour_jubilife",
+          "player": {
+            "x": 14,
+            "y": 10,
+            "facing": "up"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 1,
+          "seconds": 71.69956399995044,
+          "tourVisited": [
+            "tour_jubilife"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "########################################",
+            "########################################",
+            "##############.#########################",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##....................................##",
+            "##....#####.......#####...............##",
+            "##....##.##.......#####...............##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##.#..................................##",
+            "##....................................##",
+            "#.....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...#####................##########..##",
+            "##........................##########..##",
+            "##............###.........##########..##",
+            "##............###.........#####.####..##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####..........................#.##",
+            "##...#####.............................#",
+            "##................####................##",
+            "##................####................##",
+            "##................####..#####.........##",
+            "##......................#####....###..##",
+            "##...............................###..##",
+            "##...............................###..##",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##############.#########################",
+            "########################################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "id": "tourResident0",
+              "x": 10,
+              "y": 13
+            },
+            {
+              "id": "tourResident1",
+              "x": 20,
+              "y": 12
+            },
+            {
+              "id": "tourPokemon",
+              "x": 23,
+              "y": 16
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 8,
+              "to": "tour_jubilife_center",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 31,
+              "y": 20,
+              "to": "tour_jubilife_hall",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 14,
+              "y": 34,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 14,
+              "y": 2,
+              "to": "tour_eterna_forest",
+              "spawn": {
+                "x": 10,
+                "y": 15
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 1,
+              "y": 14,
+              "to": "research_path",
+              "spawn": {
+                "x": 2,
+                "y": 12
+              },
+              "entry": "left",
+              "facing": "left"
+            },
+            {
+              "x": 38,
+              "y": 24,
+              "to": "route_s01",
+              "spawn": {
+                "x": 3,
+                "y": 12
+              },
+              "entry": "right",
+              "facing": "right"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 14,
+          "y": 10,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "label": "Crossed western curb onto pavement",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": {
+          "position": {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 23,
+            "y": 17,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          "moving": false,
+          "tiles": [
+            {
+              "id": "tourPokemon",
+              "name": "피카츄",
+              "species": "pikachu",
+              "sprite": "field-pikachu",
+              "x": 22,
+              "y": 16,
+              "facing": "down",
+              "dialogue": "tourPokemon",
+              "pages": [
+                "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+              ]
+            },
+            {
+              "x": 23,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 17
+            },
+            {
+              "x": 21,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 16
+            },
+            {
+              "x": 23,
+              "y": 17
+            },
+            {
+              "x": 22,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 15
+            },
+            {
+              "x": 23,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 18
+            },
+            {
+              "x": 20,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 18
+            },
+            {
+              "x": 24,
+              "y": 14
+            },
+            {
+              "x": 20,
+              "y": 18
+            }
+          ]
+        },
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 19,
+          "map": "tour_jubilife",
+          "player": {
+            "x": 11,
+            "y": 10,
+            "facing": "left"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 4,
+          "seconds": 129.74476399995217,
+          "tourVisited": [
+            "tour_jubilife"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "########################################",
+            "########################################",
+            "##############.#########################",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##....................................##",
+            "##....#####.......#####...............##",
+            "##....##.##.......#####...............##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##.#..................................##",
+            "##....................................##",
+            "#.....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...#####................##########..##",
+            "##........................##########..##",
+            "##............###.........##########..##",
+            "##............###.........#####.####..##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####..........................#.##",
+            "##...#####.............................#",
+            "##................####................##",
+            "##................####................##",
+            "##................####..#####.........##",
+            "##......................#####....###..##",
+            "##...............................###..##",
+            "##...............................###..##",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##############.#########################",
+            "########################################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "id": "tourResident0",
+              "x": 10,
+              "y": 13
+            },
+            {
+              "id": "tourResident1",
+              "x": 20,
+              "y": 12
+            },
+            {
+              "id": "tourPokemon",
+              "x": 23,
+              "y": 17
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 8,
+              "to": "tour_jubilife_center",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 31,
+              "y": 20,
+              "to": "tour_jubilife_hall",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 14,
+              "y": 34,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 14,
+              "y": 2,
+              "to": "tour_eterna_forest",
+              "spawn": {
+                "x": 10,
+                "y": 15
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 1,
+              "y": 14,
+              "to": "research_path",
+              "spawn": {
+                "x": 2,
+                "y": 12
+              },
+              "entry": "left",
+              "facing": "left"
+            },
+            {
+              "x": 38,
+              "y": 24,
+              "to": "route_s01",
+              "spawn": {
+                "x": 3,
+                "y": 12
+              },
+              "entry": "right",
+              "facing": "right"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 11,
+          "y": 10,
+          "facing": "left"
+        }
+      }
+    },
+    {
+      "label": "Center approach",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": {
+          "position": {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 23,
+            "y": 16,
+            "facing": "right",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          "moving": false,
+          "tiles": [
+            {
+              "id": "tourPokemon",
+              "name": "피카츄",
+              "species": "pikachu",
+              "sprite": "field-pikachu",
+              "x": 22,
+              "y": 16,
+              "facing": "down",
+              "dialogue": "tourPokemon",
+              "pages": [
+                "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+              ]
+            },
+            {
+              "x": 23,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 17
+            },
+            {
+              "x": 21,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 16
+            },
+            {
+              "x": 23,
+              "y": 17
+            },
+            {
+              "x": 22,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 15
+            },
+            {
+              "x": 23,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 18
+            },
+            {
+              "x": 20,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 18
+            },
+            {
+              "x": 24,
+              "y": 14
+            },
+            {
+              "x": 20,
+              "y": 18
+            }
+          ]
+        },
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 19,
+          "map": "tour_jubilife",
+          "player": {
+            "x": 8,
+            "y": 9,
+            "facing": "up"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 17.115799999999947,
+          "tourVisited": [
+            "tour_jubilife"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "########################################",
+            "########################################",
+            "##############.#########################",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##....................................##",
+            "##....#####.......#####...............##",
+            "##....##.##.......#####...............##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##.#..................................##",
+            "##....................................##",
+            "#.....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...#####................##########..##",
+            "##........................##########..##",
+            "##............###.........##########..##",
+            "##............###.........#####.####..##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####..........................#.##",
+            "##...#####.............................#",
+            "##................####................##",
+            "##................####................##",
+            "##................####..#####.........##",
+            "##......................#####....###..##",
+            "##...............................###..##",
+            "##...............................###..##",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##############.#########################",
+            "########################################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "id": "tourResident0",
+              "x": 10,
+              "y": 13
+            },
+            {
+              "id": "tourResident1",
+              "x": 20,
+              "y": 12
+            },
+            {
+              "id": "tourPokemon",
+              "x": 23,
+              "y": 16
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 8,
+              "to": "tour_jubilife_center",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 31,
+              "y": 20,
+              "to": "tour_jubilife_hall",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 14,
+              "y": 34,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 14,
+              "y": 2,
+              "to": "tour_eterna_forest",
+              "spawn": {
+                "x": 10,
+                "y": 15
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 1,
+              "y": 14,
+              "to": "research_path",
+              "spawn": {
+                "x": 2,
+                "y": 12
+              },
+              "entry": "left",
+              "facing": "left"
+            },
+            {
+              "x": 38,
+              "y": 24,
+              "to": "route_s01",
+              "spawn": {
+                "x": 3,
+                "y": 12
+              },
+              "entry": "right",
+              "facing": "right"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 9,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "label": "Entered center through existing door",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 19,
+          "map": "tour_jubilife_center",
+          "player": {
+            "x": 8,
+            "y": 10,
+            "facing": "up"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 1,
+          "seconds": 26.598799999999883,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_jubilife_center"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################",
+            "################",
+            "################",
+            "##............##",
+            "##.##......##.##",
+            "##.##......##.##",
+            "##....####....##",
+            "##............##",
+            "##.###........##",
+            "##.###........##",
+            "##............##",
+            "##............##",
+            "########.#######",
+            "########.#######"
+          ],
+          "npcs": [
+            {
+              "id": "tourHost",
+              "x": 8,
+              "y": 5
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 13,
+              "to": "tour_jubilife",
+              "spawn": {
+                "x": 8,
+                "y": 9
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 10,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "label": "Returned to city through center exit",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": {
+          "position": {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 23,
+            "y": 17,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          "moving": false,
+          "tiles": [
+            {
+              "id": "tourPokemon",
+              "name": "피카츄",
+              "species": "pikachu",
+              "sprite": "field-pikachu",
+              "x": 22,
+              "y": 16,
+              "facing": "down",
+              "dialogue": "tourPokemon",
+              "pages": [
+                "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+              ]
+            },
+            {
+              "x": 23,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 17
+            },
+            {
+              "x": 21,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 16
+            },
+            {
+              "x": 23,
+              "y": 17
+            },
+            {
+              "x": 22,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 15
+            },
+            {
+              "x": 23,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 18
+            },
+            {
+              "x": 20,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 18
+            },
+            {
+              "x": 24,
+              "y": 14
+            },
+            {
+              "x": 20,
+              "y": 18
+            }
+          ]
+        },
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 19,
+          "map": "tour_jubilife",
+          "player": {
+            "x": 8,
+            "y": 9,
+            "facing": "down"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 4,
+          "seconds": 65.18030000000213,
+          "tourVisited": [
+            "tour_jubilife",
+            "tour_jubilife_center"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "########################################",
+            "########################################",
+            "##############.#########################",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##....................................##",
+            "##....#####.......#####...............##",
+            "##....##.##.......#####...............##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##.#..................................##",
+            "##....................................##",
+            "#.....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...#####................##########..##",
+            "##........................##########..##",
+            "##............###.........##########..##",
+            "##............###.........#####.####..##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####..........................#.##",
+            "##...#####.............................#",
+            "##................####................##",
+            "##................####................##",
+            "##................####..#####.........##",
+            "##......................#####....###..##",
+            "##...............................###..##",
+            "##...............................###..##",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##############.#########################",
+            "########################################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "id": "tourResident0",
+              "x": 10,
+              "y": 13
+            },
+            {
+              "id": "tourResident1",
+              "x": 20,
+              "y": 12
+            },
+            {
+              "id": "tourPokemon",
+              "x": 23,
+              "y": 17
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 8,
+              "to": "tour_jubilife_center",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 31,
+              "y": 20,
+              "to": "tour_jubilife_hall",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 14,
+              "y": 34,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 14,
+              "y": 2,
+              "to": "tour_eterna_forest",
+              "spawn": {
+                "x": 10,
+                "y": 15
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 1,
+              "y": 14,
+              "to": "research_path",
+              "spawn": {
+                "x": 2,
+                "y": 12
+              },
+              "entry": "left",
+              "facing": "left"
+            },
+            {
+              "x": 38,
+              "y": 24,
+              "to": "route_s01",
+              "spawn": {
+                "x": 3,
+                "y": 12
+              },
+              "entry": "right",
+              "facing": "right"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 9,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "label": "Veilstone intersection",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": {
+          "position": {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 23,
+            "y": 16,
+            "facing": "right",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          "moving": false,
+          "tiles": [
+            {
+              "id": "tourPokemon",
+              "name": "피카츄",
+              "species": "pikachu",
+              "sprite": "field-pikachu",
+              "x": 22,
+              "y": 16,
+              "facing": "down",
+              "dialogue": "tourPokemon",
+              "pages": [
+                "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+              ]
+            },
+            {
+              "x": 23,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 17
+            },
+            {
+              "x": 21,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 16
+            },
+            {
+              "x": 23,
+              "y": 17
+            },
+            {
+              "x": 22,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 15
+            },
+            {
+              "x": 23,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 18
+            },
+            {
+              "x": 20,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 18
+            },
+            {
+              "x": 24,
+              "y": 14
+            },
+            {
+              "x": 20,
+              "y": 18
+            }
+          ]
+        },
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 19,
+          "map": "tour_veilstone",
+          "player": {
+            "x": 14,
+            "y": 11,
+            "facing": "up"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 9.882899999999946,
+          "tourVisited": [
+            "tour_veilstone"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "########################################",
+            "########################################",
+            "##############.#########################",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##....................................##",
+            "##....#####.......#####...............##",
+            "##....##.##.......#####...............##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...#####................##########..##",
+            "##........................##########..##",
+            "##..............###.......##########..##",
+            "##..............###.......#####.####..##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...##.##............................##",
+            "##....................#####...........##",
+            "##...####.............#####...........##",
+            "##...####.............................##",
+            "##...####.............................##",
+            "##...####.............................##",
+            "##...####.......#.....................##",
+            "##....................................##",
+            "##############.#########################",
+            "########################################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "id": "tourResident0",
+              "x": 10,
+              "y": 13
+            },
+            {
+              "id": "tourResident1",
+              "x": 20,
+              "y": 12
+            },
+            {
+              "id": "tourPokemon",
+              "x": 23,
+              "y": 16
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 8,
+              "to": "tour_veilstone_center",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 31,
+              "y": 20,
+              "to": "tour_veilstone_hall",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 14,
+              "y": 34,
+              "to": "tour_hearthome",
+              "spawn": {
+                "x": 31,
+                "y": 12
+              },
+              "entry": "down",
+              "facing": "left"
+            },
+            {
+              "x": 14,
+              "y": 2,
+              "to": "tour_sunyshore",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "up",
+              "facing": "down"
+            },
+            {
+              "x": 7,
+              "y": 26,
+              "to": "veilstone_gym",
+              "spawn": {
+                "x": 8,
+                "y": 13
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 14,
+          "y": 11,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "label": "Veilstone one step east",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": {
+          "position": {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 22,
+            "y": 17,
+            "facing": "left",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          "moving": false,
+          "tiles": [
+            {
+              "id": "tourPokemon",
+              "name": "피카츄",
+              "species": "pikachu",
+              "sprite": "field-pikachu",
+              "x": 22,
+              "y": 16,
+              "facing": "down",
+              "dialogue": "tourPokemon",
+              "pages": [
+                "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+              ]
+            },
+            {
+              "x": 23,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 17
+            },
+            {
+              "x": 21,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 16
+            },
+            {
+              "x": 23,
+              "y": 17
+            },
+            {
+              "x": 22,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 15
+            },
+            {
+              "x": 23,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 18
+            },
+            {
+              "x": 20,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 18
+            },
+            {
+              "x": 24,
+              "y": 14
+            },
+            {
+              "x": 20,
+              "y": 18
+            }
+          ]
+        },
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 19,
+          "map": "tour_veilstone",
+          "player": {
+            "x": 15,
+            "y": 11,
+            "facing": "right"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 1,
+          "seconds": 20.532399999999882,
+          "tourVisited": [
+            "tour_veilstone"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "########################################",
+            "########################################",
+            "##############.#########################",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##....................................##",
+            "##....#####.......#####...............##",
+            "##....##.##.......#####...............##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...#####................##########..##",
+            "##........................##########..##",
+            "##..............###.......##########..##",
+            "##..............###.......#####.####..##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...##.##............................##",
+            "##....................#####...........##",
+            "##...####.............#####...........##",
+            "##...####.............................##",
+            "##...####.............................##",
+            "##...####.............................##",
+            "##...####.......#.....................##",
+            "##....................................##",
+            "##############.#########################",
+            "########################################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "id": "tourResident0",
+              "x": 10,
+              "y": 13
+            },
+            {
+              "id": "tourResident1",
+              "x": 20,
+              "y": 12
+            },
+            {
+              "id": "tourPokemon",
+              "x": 22,
+              "y": 17
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 8,
+              "to": "tour_veilstone_center",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 31,
+              "y": 20,
+              "to": "tour_veilstone_hall",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 14,
+              "y": 34,
+              "to": "tour_hearthome",
+              "spawn": {
+                "x": 31,
+                "y": 12
+              },
+              "entry": "down",
+              "facing": "left"
+            },
+            {
+              "x": 14,
+              "y": 2,
+              "to": "tour_sunyshore",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "up",
+              "facing": "down"
+            },
+            {
+              "x": 7,
+              "y": 26,
+              "to": "veilstone_gym",
+              "spawn": {
+                "x": 8,
+                "y": 13
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 15,
+          "y": 11,
+          "facing": "right"
+        }
+      }
+    },
+    {
+      "label": "Reconnected after quick-save",
+      "state": {
+        "captureMotion": null,
+        "tourEvent": null,
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": {
+          "position": {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 23,
+            "y": 16.4684375,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          "moving": true,
+          "tiles": [
+            {
+              "id": "tourPokemon",
+              "name": "피카츄",
+              "species": "pikachu",
+              "sprite": "field-pikachu",
+              "x": 22,
+              "y": 16,
+              "facing": "down",
+              "dialogue": "tourPokemon",
+              "pages": [
+                "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+              ]
+            },
+            {
+              "x": 23,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 17
+            },
+            {
+              "x": 21,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 16
+            },
+            {
+              "x": 23,
+              "y": 17
+            },
+            {
+              "x": 22,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 15
+            },
+            {
+              "x": 23,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 18
+            },
+            {
+              "x": 20,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 18
+            },
+            {
+              "x": 24,
+              "y": 14
+            },
+            {
+              "x": 20,
+              "y": 18
+            }
+          ]
+        },
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 19,
+          "map": "tour_veilstone",
+          "player": {
+            "x": 15,
+            "y": 11,
+            "facing": "right"
+          },
+          "flags": {},
+          "party": [],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 1,
+          "seconds": 30.971374000000004,
+          "tourVisited": [
+            "tour_veilstone"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "########################################",
+            "########################################",
+            "##############.#########################",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##....................................##",
+            "##....#####.......#####...............##",
+            "##....##.##.......#####...............##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...#####................##########..##",
+            "##........................##########..##",
+            "##..............###.......##########..##",
+            "##..............###.......#####.####..##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...##.##............................##",
+            "##....................#####...........##",
+            "##...####.............#####...........##",
+            "##...####.............................##",
+            "##...####.............................##",
+            "##...####.............................##",
+            "##...####.......#.....................##",
+            "##....................................##",
+            "##############.#########################",
+            "########################################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "id": "tourResident0",
+              "x": 10,
+              "y": 13
+            },
+            {
+              "id": "tourResident1",
+              "x": 20,
+              "y": 12
+            },
+            {
+              "id": "tourPokemon",
+              "x": 23,
+              "y": 16
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 8,
+              "to": "tour_veilstone_center",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 31,
+              "y": 20,
+              "to": "tour_veilstone_hall",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 14,
+              "y": 34,
+              "to": "tour_hearthome",
+              "spawn": {
+                "x": 31,
+                "y": 12
+              },
+              "entry": "down",
+              "facing": "left"
+            },
+            {
+              "x": 14,
+              "y": 2,
+              "to": "tour_sunyshore",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "up",
+              "facing": "down"
+            },
+            {
+              "x": 7,
+              "y": 26,
+              "to": "veilstone_gym",
+              "spawn": {
+                "x": 8,
+                "y": 13
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [
+            {
+              "x": 23,
+              "y": 17
+            }
+          ],
+          "terrain": []
+        },
+        "position": {
+          "x": 15,
+          "y": 11,
+          "facing": "right"
+        }
+      },
+      "checks": {
+        "version": true,
+        "worldRevision": true,
+        "map": true,
+        "player": true,
+        "party": true,
+        "flags": true,
+        "inventory": true,
+        "badges": true,
+        "keyItems": true,
+        "money": true,
+        "healingPoint": true,
+        "steps": true,
+        "tourVisited": true
+      }
+    }
+  ]
+}

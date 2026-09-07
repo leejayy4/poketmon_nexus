@@ -1,0 +1,247 @@
+{
+  "qa": "centers-ds-20260907-01",
+  "centers": [
+    "tour_jubilife_center",
+    "tour_pallet_center",
+    "tour_castelia_center"
+  ],
+  "observations": [
+    {
+      "label": "축복 센터 접수대 간호사 인사",
+      "map": "tour_jubilife_center",
+      "player": {
+        "x": 8,
+        "y": 7,
+        "facing": "up"
+      },
+      "hint": null,
+      "dialogue": {
+        "speaker": "간호사",
+        "pages": [
+          "축복시티의 포켓몬센터입니다.",
+          "어서 오세요! 편하게 쉬어 가세요.\n장치와 안내 PC도 살펴보세요."
+        ],
+        "page": 0,
+        "shown": 18.6,
+        "selected": 0
+      },
+      "worldRevision": 16
+    },
+    {
+      "label": "축복 회복 장치 조사",
+      "map": "tour_jubilife_center",
+      "player": {
+        "x": 3,
+        "y": 6,
+        "facing": "up"
+      },
+      "hint": null,
+      "dialogue": {
+        "speaker": "회복 장치",
+        "pages": [
+          "몬스터볼을 올리는 홈이 있는\n포켓몬센터의 회복 장치다."
+        ],
+        "page": 0,
+        "shown": 33.6,
+        "selected": 0
+      },
+      "worldRevision": 16
+    },
+    {
+      "label": "축복 센터 안내 단말 조사",
+      "map": "tour_jubilife_center",
+      "player": {
+        "x": 11,
+        "y": 6,
+        "facing": "up"
+      },
+      "hint": null,
+      "dialogue": {
+        "speaker": "센터 안내 단말",
+        "pages": [
+          "축복시티의 안내 화면이다.\n주변 장소와 쉼터를 소개한다."
+        ],
+        "page": 0,
+        "shown": 35.20120000000042,
+        "selected": 0
+      },
+      "worldRevision": 16
+    },
+    {
+      "label": "축복 대기 의자 조사",
+      "map": "tour_jubilife_center",
+      "player": {
+        "x": 3,
+        "y": 10,
+        "facing": "up"
+      },
+      "hint": null,
+      "dialogue": {
+        "speaker": "대기 의자",
+        "pages": [
+          "여행자가 잠시 쉬어 가는 자리다.\n옆에 여행 안내 책자가 있다."
+        ],
+        "page": 0,
+        "shown": 39.20119999999989,
+        "selected": 0
+      },
+      "worldRevision": 16
+    },
+    {
+      "label": "축복 센터 도보 복귀",
+      "map": "tour_jubilife",
+      "player": {
+        "x": 8,
+        "y": 9,
+        "facing": "down"
+      },
+      "hint": null,
+      "dialogue": null,
+      "worldRevision": 16
+    },
+    {
+      "label": "태초마을 센터 접수 대화",
+      "map": "tour_pallet_center",
+      "player": {
+        "x": 8,
+        "y": 7,
+        "facing": "up"
+      },
+      "hint": null,
+      "dialogue": {
+        "speaker": "간호사",
+        "pages": [
+          "태초마을의 포켓몬센터입니다.",
+          "어서 오세요! 편하게 쉬어 가세요.\n장치와 안내 PC도 살펴보세요."
+        ],
+        "page": 0,
+        "shown": 16.8,
+        "selected": 0
+      },
+      "worldRevision": 16
+    },
+    {
+      "label": "회복 장치 뒤쪽 바닥 접근과 가림",
+      "map": "tour_pallet_center",
+      "player": {
+        "x": 3,
+        "y": 3,
+        "facing": "left"
+      },
+      "hint": null,
+      "dialogue": null,
+      "worldRevision": 16
+    },
+    {
+      "label": "태초 센터 도보 왕복",
+      "map": "tour_pallet",
+      "player": {
+        "x": 8,
+        "y": 9,
+        "facing": "down"
+      },
+      "hint": "Z 조사 · 마을 정원",
+      "dialogue": null,
+      "worldRevision": 16
+    },
+    {
+      "label": "구름시티 센터 접수 대화",
+      "map": "tour_castelia_center",
+      "player": {
+        "x": 8,
+        "y": 7,
+        "facing": "up"
+      },
+      "hint": null,
+      "dialogue": {
+        "speaker": "간호사",
+        "pages": [
+          "구름시티의 포켓몬센터입니다.",
+          "어서 오세요! 편하게 쉬어 가세요.\n장치와 안내 PC도 살펴보세요."
+        ],
+        "page": 0,
+        "shown": 16.8,
+        "selected": 0
+      },
+      "worldRevision": 16
+    },
+    {
+      "label": "구름시티 지역 안내 PC",
+      "map": "tour_castelia_center",
+      "player": {
+        "x": 11,
+        "y": 6,
+        "facing": "up"
+      },
+      "hint": null,
+      "dialogue": {
+        "speaker": "센터 안내 단말",
+        "pages": [
+          "구름시티의 안내 화면이다.\n주변 장소와 쉼터를 소개한다."
+        ],
+        "page": 0,
+        "shown": 32.19879999999958,
+        "selected": 0
+      },
+      "worldRevision": 16
+    },
+    {
+      "label": "구름 센터 도보 왕복",
+      "map": "tour_castelia",
+      "player": {
+        "x": 8,
+        "y": 9,
+        "facing": "down"
+      },
+      "hint": null,
+      "dialogue": null,
+      "worldRevision": 16
+    },
+    {
+      "label": "개정 15 접수대 위치 파일 가져오기 → 안전점 복원, 진행 유지",
+      "map": "tour_jubilife_center",
+      "player": {
+        "x": 8,
+        "y": 10,
+        "facing": "down"
+      },
+      "hint": null,
+      "dialogue": null,
+      "worldRevision": 16
+    },
+    {
+      "label": "복원 후 재접속 위치 유지",
+      "map": "tour_jubilife_center",
+      "player": {
+        "x": 8,
+        "y": 10,
+        "facing": "down"
+      },
+      "hint": null,
+      "dialogue": null,
+      "worldRevision": 16
+    },
+    {
+      "label": "복원 후 간호사 재대화",
+      "map": "tour_jubilife_center",
+      "player": {
+        "x": 8,
+        "y": 7,
+        "facing": "up"
+      },
+      "hint": null,
+      "dialogue": {
+        "speaker": "간호사",
+        "pages": [
+          "축복시티의 포켓몬센터입니다.",
+          "어서 오세요! 편하게 쉬어 가세요.\n장치와 안내 PC도 살펴보세요."
+        ],
+        "page": 0,
+        "shown": 18.599999999999998,
+        "selected": 0
+      },
+      "worldRevision": 16
+    }
+  ],
+  "consoleAfterReload": []
+}

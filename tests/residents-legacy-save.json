@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "worldRevision": 9,
+  "map": "tour_jubilife",
+  "player": {
+    "x": 10,
+    "y": 13,
+    "facing": "right"
+  },
+  "flags": {
+    "exploration": true
+  },
+  "party": [],
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 0
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 123,
+  "seconds": 456,
+  "tourVisited": [
+    "tour_jubilife",
+    "tour_oreburgh",
+    "tour_oreburgh_center"
+  ]
+}

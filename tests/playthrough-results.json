@@ -1,0 +1,33 @@
+{
+  "worldRevision": 2,
+  "date": "2026-09-06",
+  "url": "http://localhost:5173/?qa=world-v2",
+  "method": "Actual in-app browser keyboard input, screenshots inspected, read-only DOM state assertions. QA save is isolated from the player's save. No teleport or event shortcuts.",
+  "browserChecks": {
+    "bedroom_home_stairs_roundtrip": "PASS",
+    "home_town_roundtrip": "PASS",
+    "town_lab_roundtrip": "PASS",
+    "town_neighbor_roundtrip_and_dialogue": "PASS",
+    "town_cottage_roundtrip": "PASS",
+    "professor_dialogue_and_starter_preview": "PASS",
+    "starter_cancel_without_grant": "PASS",
+    "charmander_choice_party_and_summary": "PASS",
+    "assistant_four_conversations": "PASS",
+    "pikachu_offer_and_party_registration": "PASS",
+    "repeat_assistant_no_duplicate_grant": "PASS",
+    "north_east_south_west_shift_run": "PASS",
+    "12_tile_meadow_enter_and_leave_without_encounter": "PASS",
+    "west_neighbor_collision_and_dialogue": "PASS",
+    "manual_save_and_reload": "PASS",
+    "browser_console_errors": 0
+  },
+  "restoredState": {
+    "map": "town",
+    "player": { "x": 17, "y": 15, "facing": "right" },
+    "partySpecies": [4, 25],
+    "flags": { "starterReceived": true, "pikachuReceived": true, "assistantTalks": 4, "professorMet": true }
+  },
+  "automatedTests": { "command": "npm.cmd test", "passed": 9, "failed": 0 },
+  "productionBuild": "PASS",
+  "scope": "No battles, wild encounters, capture, or accessible next region. Bulbasaur and Squirtle grant/save behavior covered by automated tests; manual starter playthrough used Charmander."
+}

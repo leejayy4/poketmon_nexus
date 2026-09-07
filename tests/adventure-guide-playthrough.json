@@ -1,0 +1,1282 @@
+[
+  {
+    "label": "new-game-lab-via-home",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 16,
+        "map": "bedroom",
+        "player": {
+          "x": 6,
+          "y": 6,
+          "facing": "down"
+        },
+        "flags": {},
+        "party": [],
+        "inventory": {
+          "pokeBalls": 0,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 0,
+        "seconds": 18.05119
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "#############",
+          "#############",
+          "#############",
+          "#############",
+          "##.........##",
+          "#..........##",
+          "#..........##",
+          "##.......####",
+          "##.......####",
+          "#############"
+        ],
+        "npcs": [],
+        "warps": [
+          {
+            "x": 8,
+            "y": 4,
+            "to": "home",
+            "spawn": {
+              "x": 10,
+              "y": 4
+            },
+            "facing": "down",
+            "entry": "up"
+          }
+        ],
+        "reserved": [],
+        "terrain": []
+      },
+      "position": {
+        "x": 6,
+        "y": 6,
+        "facing": "down"
+      }
+    }
+  },
+  {
+    "label": "lab-arrival-talk-hint",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": "Z 말걸기 · 은솔박사",
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 16,
+        "map": "lab",
+        "player": {
+          "x": 6,
+          "y": 5,
+          "facing": "up"
+        },
+        "flags": {},
+        "party": [],
+        "inventory": {
+          "pokeBalls": 0,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 0,
+        "seconds": 0.34960000000000213
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "#####################",
+          "#####################",
+          "#####################",
+          "#####################",
+          "####................#",
+          "#............#.....##",
+          "##...###...#........#",
+          "##.........##########",
+          "#...........#########",
+          "##.........##########",
+          "##.........##########",
+          "###.......###########",
+          "###.......###########",
+          "######.##############"
+        ],
+        "npcs": [
+          {
+            "id": "professor",
+            "x": 6,
+            "y": 4
+          },
+          {
+            "id": "assistant",
+            "x": 9,
+            "y": 4
+          },
+          {
+            "id": "eeveeResearcher",
+            "x": 15,
+            "y": 4
+          },
+          {
+            "id": "eevee",
+            "x": 17,
+            "y": 4
+          }
+        ],
+        "warps": [
+          {
+            "x": 6,
+            "y": 13,
+            "to": "town",
+            "spawn": {
+              "x": 10,
+              "y": 10
+            },
+            "facing": "down",
+            "entry": "down"
+          }
+        ],
+        "reserved": [],
+        "terrain": []
+      },
+      "position": {
+        "x": 6,
+        "y": 5,
+        "facing": "up"
+      }
+    }
+  },
+  {
+    "label": "pointer-talks-to-professor",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 16,
+        "map": "lab",
+        "player": {
+          "x": 6,
+          "y": 5,
+          "facing": "up"
+        },
+        "flags": {
+          "professorMet": true
+        },
+        "party": [],
+        "inventory": {
+          "pokeBalls": 0,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 0,
+        "seconds": 7.465900000000015
+      },
+      "panel": "field",
+      "dialogue": {
+        "speaker": "은솔박사",
+        "pages": [
+          "어서 오너라. 나는 은솔박사란다.\n너희 엄마한테 이야기는 들었단다.",
+          "포켓몬과 함께 모험을 시작하려고\n오늘을 손꼽아 기다렸다지?",
+          "네 엄마도 처음 여행을 떠나던 날,\n꼭 너처럼 설레는 얼굴이었단다.",
+          "모험은 서두를 필요가 없단다.\n서로 믿을 친구를 만나는 게 먼저지.",
+          "여기 너의 첫 파트너가 될\n세 친구가 기다리고 있단다.",
+          "천천히 살펴보거라.\n마음이 끌리는 포켓몬을 골라 보렴."
+        ],
+        "page": 0,
+        "shown": 12.600000000000003,
+        "selected": 0
+      },
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "#####################",
+          "#####################",
+          "#####################",
+          "#####################",
+          "####................#",
+          "#............#.....##",
+          "##...###...#........#",
+          "##.........##########",
+          "#...........#########",
+          "##.........##########",
+          "##.........##########",
+          "###.......###########",
+          "###.......###########",
+          "######.##############"
+        ],
+        "npcs": [
+          {
+            "id": "professor",
+            "x": 6,
+            "y": 4
+          },
+          {
+            "id": "assistant",
+            "x": 9,
+            "y": 4
+          },
+          {
+            "id": "eeveeResearcher",
+            "x": 15,
+            "y": 4
+          },
+          {
+            "id": "eevee",
+            "x": 17,
+            "y": 4
+          }
+        ],
+        "warps": [
+          {
+            "x": 6,
+            "y": 13,
+            "to": "town",
+            "spawn": {
+              "x": 10,
+              "y": 10
+            },
+            "facing": "down",
+            "entry": "down"
+          }
+        ],
+        "reserved": [],
+        "terrain": []
+      },
+      "position": {
+        "x": 6,
+        "y": 5,
+        "facing": "up"
+      }
+    }
+  },
+  {
+    "label": "partner-received-next-departure",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": "Z 말걸기 · 은솔박사",
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 16,
+        "map": "lab",
+        "player": {
+          "x": 6,
+          "y": 5,
+          "facing": "up"
+        },
+        "flags": {
+          "professorMet": true,
+          "professorIntroHeard": true,
+          "starterReceived": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 0,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 0,
+        "seconds": 29.931599999999722
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "#####################",
+          "#####################",
+          "#####################",
+          "#####################",
+          "####................#",
+          "#............#.....##",
+          "##...###...#........#",
+          "##.........##########",
+          "#...........#########",
+          "##.........##########",
+          "##.........##########",
+          "###.......###########",
+          "###.......###########",
+          "######.##############"
+        ],
+        "npcs": [
+          {
+            "id": "professor",
+            "x": 6,
+            "y": 4
+          },
+          {
+            "id": "assistant",
+            "x": 9,
+            "y": 4
+          },
+          {
+            "id": "eeveeResearcher",
+            "x": 15,
+            "y": 4
+          },
+          {
+            "id": "eevee",
+            "x": 17,
+            "y": 4
+          }
+        ],
+        "warps": [
+          {
+            "x": 6,
+            "y": 13,
+            "to": "town",
+            "spawn": {
+              "x": 10,
+              "y": 10
+            },
+            "facing": "down",
+            "entry": "down"
+          }
+        ],
+        "reserved": [],
+        "terrain": []
+      },
+      "position": {
+        "x": 6,
+        "y": 5,
+        "facing": "up"
+      }
+    }
+  },
+  {
+    "label": "faced-object-investigate-hint",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": "Z 조사하기",
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 16,
+        "map": "lab",
+        "player": {
+          "x": 6,
+          "y": 5,
+          "facing": "down"
+        },
+        "flags": {
+          "professorMet": true,
+          "professorIntroHeard": true,
+          "starterReceived": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 0,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 0,
+        "seconds": 42.64770000000019
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "#####################",
+          "#####################",
+          "#####################",
+          "#####################",
+          "####................#",
+          "#............#.....##",
+          "##...###...#........#",
+          "##.........##########",
+          "#...........#########",
+          "##.........##########",
+          "##.........##########",
+          "###.......###########",
+          "###.......###########",
+          "######.##############"
+        ],
+        "npcs": [
+          {
+            "id": "professor",
+            "x": 6,
+            "y": 4
+          },
+          {
+            "id": "assistant",
+            "x": 9,
+            "y": 4
+          },
+          {
+            "id": "eeveeResearcher",
+            "x": 15,
+            "y": 4
+          },
+          {
+            "id": "eevee",
+            "x": 17,
+            "y": 4
+          }
+        ],
+        "warps": [
+          {
+            "x": 6,
+            "y": 13,
+            "to": "town",
+            "spawn": {
+              "x": 10,
+              "y": 10
+            },
+            "facing": "down",
+            "entry": "down"
+          }
+        ],
+        "reserved": [],
+        "terrain": []
+      },
+      "position": {
+        "x": 6,
+        "y": 5,
+        "facing": "down"
+      }
+    }
+  },
+  {
+    "label": "keyboard-investigates-object",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 16,
+        "map": "lab",
+        "player": {
+          "x": 6,
+          "y": 5,
+          "facing": "down"
+        },
+        "flags": {
+          "professorMet": true,
+          "professorIntroHeard": true,
+          "starterReceived": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 0,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 0,
+        "seconds": 43.03100000000021
+      },
+      "panel": "field",
+      "dialogue": {
+        "speaker": "은솔박사",
+        "pages": [
+          "너와 포켓몬이 함께할 이야기가\n이 작은 마을에서 시작되는 거란다.",
+          "오늘은 마을을 천천히 둘러보렴.\n엄마에게 새 친구도 소개해 드리고."
+        ],
+        "page": 0,
+        "shown": 13.19760000000021,
+        "selected": 0
+      },
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "#####################",
+          "#####################",
+          "#####################",
+          "#####################",
+          "####................#",
+          "#............#.....##",
+          "##...###...#........#",
+          "##.........##########",
+          "#...........#########",
+          "##.........##########",
+          "##.........##########",
+          "###.......###########",
+          "###.......###########",
+          "######.##############"
+        ],
+        "npcs": [
+          {
+            "id": "professor",
+            "x": 6,
+            "y": 4
+          },
+          {
+            "id": "assistant",
+            "x": 9,
+            "y": 4
+          },
+          {
+            "id": "eeveeResearcher",
+            "x": 15,
+            "y": 4
+          },
+          {
+            "id": "eevee",
+            "x": 17,
+            "y": 4
+          }
+        ],
+        "warps": [
+          {
+            "x": 6,
+            "y": 13,
+            "to": "town",
+            "spawn": {
+              "x": 10,
+              "y": 10
+            },
+            "facing": "down",
+            "entry": "down"
+          }
+        ],
+        "reserved": [],
+        "terrain": []
+      },
+      "position": {
+        "x": 6,
+        "y": 5,
+        "facing": "down"
+      }
+    }
+  },
+  {
+    "label": "departure-npc-hint",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": "Z 말걸기 · 이웃 도윤",
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 16,
+        "map": "town",
+        "player": {
+          "x": 4,
+          "y": 15,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 0,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 0,
+        "seconds": 0.31669999999999715
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "####.................................###",
+          "####.................................###",
+          "####.................................###",
+          "####....########.....................###",
+          "####....########.......######........###",
+          "####....##.#####.......######........###",
+          "####...................#.####........###",
+          "####.................................###",
+          "####.................................###",
+          "####.....................##########..###",
+          "####...............###......#######..###",
+          "##.................###......#######..###",
+          "####........................#######..###",
+          "####.............#..........#######..###",
+          "####.................................###",
+          "####.................................###",
+          "####.................................###",
+          "####.................................###",
+          "####...######........................###",
+          "####...#######...............####....###",
+          "####...#.####................#.##....###",
+          "####.................................###",
+          "####.................................###",
+          "########################################",
+          "########################################",
+          "########################################"
+        ],
+        "npcs": [
+          {
+            "id": "gatekeeper",
+            "x": 3,
+            "y": 15
+          },
+          {
+            "id": "girl",
+            "x": 18,
+            "y": 12
+          },
+          {
+            "id": "boy",
+            "x": 33,
+            "y": 9
+          },
+          {
+            "id": "elder",
+            "x": 26,
+            "y": 17
+          }
+        ],
+        "warps": [
+          {
+            "x": 8,
+            "y": 24,
+            "to": "home",
+            "spawn": {
+              "x": 6,
+              "y": 7
+            },
+            "facing": "up",
+            "entry": "up"
+          },
+          {
+            "x": 10,
+            "y": 9,
+            "to": "lab",
+            "spawn": {
+              "x": 6,
+              "y": 11
+            },
+            "facing": "up",
+            "entry": "up"
+          },
+          {
+            "x": 24,
+            "y": 10,
+            "to": "neighbor",
+            "spawn": {
+              "x": 6,
+              "y": 7
+            },
+            "facing": "up",
+            "entry": "up"
+          },
+          {
+            "x": 30,
+            "y": 24,
+            "to": "cottage",
+            "spawn": {
+              "x": 6,
+              "y": 7
+            },
+            "facing": "up",
+            "entry": "up"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "x": 32,
+            "y": 5,
+            "w": 4,
+            "h": 3,
+            "kind": "tallGrass"
+          }
+        ]
+      },
+      "position": {
+        "x": 4,
+        "y": 15,
+        "facing": "left"
+      }
+    }
+  },
+  {
+    "label": "departure-cleared-next-gym",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 16,
+        "map": "town",
+        "player": {
+          "x": 4,
+          "y": 15,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 0,
+        "seconds": 1.7165999999999892
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "########################################",
+          "########################################",
+          "########################################",
+          "########################################",
+          "####.................................###",
+          "####.................................###",
+          "####.................................###",
+          "####....########.....................###",
+          "####....########.......######........###",
+          "####....##.#####.......######........###",
+          "####...................#.####........###",
+          "####.................................###",
+          "####.................................###",
+          "####.....................##########..###",
+          "####...............###......#######..###",
+          "##.................###......#######..###",
+          "####........................#######..###",
+          "####.............#..........#######..###",
+          "####.................................###",
+          "####.................................###",
+          "####.................................###",
+          "####.................................###",
+          "####...######........................###",
+          "####...#######...............####....###",
+          "####...#.####................#.##....###",
+          "####.................................###",
+          "####.................................###",
+          "########################################",
+          "########################################",
+          "########################################"
+        ],
+        "npcs": [
+          {
+            "id": "gatekeeper",
+            "x": 4,
+            "y": 14
+          },
+          {
+            "id": "girl",
+            "x": 18,
+            "y": 12
+          },
+          {
+            "id": "boy",
+            "x": 33,
+            "y": 9
+          },
+          {
+            "id": "elder",
+            "x": 26,
+            "y": 17
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 15,
+            "to": "route_s01",
+            "spawn": {
+              "x": 29,
+              "y": 12
+            },
+            "facing": "left",
+            "entry": "left",
+            "requiresFlag": "departureCleared"
+          },
+          {
+            "x": 8,
+            "y": 24,
+            "to": "home",
+            "spawn": {
+              "x": 6,
+              "y": 7
+            },
+            "facing": "up",
+            "entry": "up"
+          },
+          {
+            "x": 10,
+            "y": 9,
+            "to": "lab",
+            "spawn": {
+              "x": 6,
+              "y": 11
+            },
+            "facing": "up",
+            "entry": "up"
+          },
+          {
+            "x": 24,
+            "y": 10,
+            "to": "neighbor",
+            "spawn": {
+              "x": 6,
+              "y": 7
+            },
+            "facing": "up",
+            "entry": "up"
+          },
+          {
+            "x": 30,
+            "y": 24,
+            "to": "cottage",
+            "spawn": {
+              "x": 6,
+              "y": 7
+            },
+            "facing": "up",
+            "entry": "up"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "x": 32,
+            "y": 5,
+            "w": 4,
+            "h": 3,
+            "kind": "tallGrass"
+          }
+        ]
+      },
+      "position": {
+        "x": 4,
+        "y": 15,
+        "facing": "left"
+      }
+    }
+  },
+  {
+    "label": "walked-exit-next-jubilife",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 16,
+        "map": "route_s01",
+        "player": {
+          "x": 29,
+          "y": 12,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 2,
+        "seconds": 22.765799999999988
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "jubilife",
+            "spawn": {
+              "x": 21,
+              "y": 12
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 29,
+        "y": 12,
+        "facing": "left"
+      }
+    }
+  },
+  {
+    "label": "restored-progress-guide",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 16,
+        "map": "route_s01",
+        "player": {
+          "x": 29,
+          "y": 12,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 2,
+        "seconds": 23.555800000047665
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "jubilife",
+            "spawn": {
+              "x": 21,
+              "y": 12
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 29,
+        "y": 12,
+        "facing": "left"
+      }
+    }
+  }
+]

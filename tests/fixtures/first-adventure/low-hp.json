@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "worldRevision": 4,
+  "map": "route_s01",
+  "player": {
+    "x": 23,
+    "y": 9,
+    "facing": "left"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 7,
+      "level": 5,
+      "hp": 1,
+      "maxHp": 20,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소"
+    }
+  ],
+  "inventory": {
+    "pokeBalls": 5,
+    "potions": 2
+  },
+  "steps": 0,
+  "seconds": 0
+}

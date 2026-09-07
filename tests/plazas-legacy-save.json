@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "worldRevision": 10,
+  "map": "tour_oreburgh",
+  "player": {
+    "x": 18,
+    "y": 14,
+    "facing": "right"
+  },
+  "flags": {
+    "exploration": true
+  },
+  "party": [],
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 0
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 234,
+  "seconds": 567,
+  "tourVisited": [
+    "tour_oreburgh",
+    "tour_oreburgh_center"
+  ]
+}

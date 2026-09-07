@@ -1,0 +1,374 @@
+{
+  "url": "http://localhost:5173/?qa=user-20260907-coronet",
+  "method": "Summarized from the DOM snapshots and screenshots observed during this browser session; positions and step counts below were read from #field data-state.",
+  "observations": [
+    {
+      "label": "before",
+      "map": "tour_coronet",
+      "position": [
+        10,
+        10
+      ],
+      "steps": 0,
+      "revision": 18
+    },
+    {
+      "label": "revision18-migrated",
+      "map": "tour_coronet",
+      "position": [
+        10,
+        10
+      ],
+      "steps": 234,
+      "revision": 19,
+      "hp": 9,
+      "inventory": {
+        "pokeBalls": 5,
+        "potions": 3
+      }
+    },
+    {
+      "label": "rock-collision",
+      "position": [
+        10,
+        10
+      ],
+      "steps": 234
+    },
+    {
+      "label": "rock-investigation",
+      "speaker": "풀밭 옆 바위턱",
+      "position": [
+        10,
+        10
+      ],
+      "steps": 234
+    },
+    {
+      "label": "guide-three-exits-and-healing",
+      "position": [
+        12,
+        8
+      ],
+      "steps": 238,
+      "hp": 20,
+      "potions": 3,
+      "directions": [
+        "북쪽 영원시티",
+        "남쪽 연고시티",
+        "동쪽 신오 호수"
+      ]
+    },
+    {
+      "label": "north-arrival-eterna",
+      "map": "tour_eterna",
+      "position": [
+        14,
+        3
+      ],
+      "steps": 248
+    },
+    {
+      "label": "north-return-coronet",
+      "map": "tour_coronet",
+      "position": [
+        10,
+        3
+      ],
+      "steps": 249
+    },
+    {
+      "label": "lake-exit-sign",
+      "speaker": "신오 호수",
+      "position": [
+        16,
+        8
+      ],
+      "steps": 260
+    },
+    {
+      "label": "east-arrival-lake",
+      "map": "tour_lake",
+      "position": [
+        14,
+        21
+      ],
+      "steps": 263
+    },
+    {
+      "label": "east-return-coronet",
+      "map": "tour_coronet",
+      "position": [
+        17,
+        9
+      ],
+      "steps": 264
+    },
+    {
+      "label": "south-exit-sign",
+      "speaker": "연고시티",
+      "position": [
+        12,
+        15
+      ],
+      "steps": 283
+    },
+    {
+      "label": "south-arrival-hearthome",
+      "map": "tour_hearthome",
+      "position": [
+        14,
+        3
+      ],
+      "steps": 286
+    },
+    {
+      "label": "south-return-coronet",
+      "map": "tour_coronet",
+      "position": [
+        10,
+        15
+      ],
+      "steps": 287
+    },
+    {
+      "label": "optional-grass-entry",
+      "position": [
+        7,
+        11
+      ],
+      "steps": 294
+    },
+    {
+      "label": "coronet-wild-encounter",
+      "position": [
+        6,
+        11
+      ],
+      "steps": 299,
+      "enemy": "비버니",
+      "enemyLevel": 10
+    },
+    {
+      "label": "wild-battle-exit",
+      "position": [
+        6,
+        11
+      ],
+      "steps": 299,
+      "dialogue": "무사히 도망쳤다!"
+    },
+    {
+      "label": "southern-rock-detour-guidance",
+      "position": [
+        10,
+        10
+      ],
+      "steps": 304,
+      "tiles": [
+        [
+          10,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          9,
+          11
+        ],
+        [
+          9,
+          12
+        ],
+        [
+          9,
+          13
+        ],
+        [
+          9,
+          14
+        ],
+        [
+          10,
+          14
+        ],
+        [
+          10,
+          15
+        ],
+        [
+          10,
+          16
+        ]
+      ]
+    },
+    {
+      "label": "revision19-reload",
+      "map": "tour_coronet",
+      "position": [
+        10,
+        10
+      ],
+      "steps": 304,
+      "revision": 19,
+      "hp": 20,
+      "inventory": {
+        "pokeBalls": 5,
+        "potions": 3
+      }
+    }
+  ],
+  "finalSnapshot": {
+    "captureMotion": null,
+    "tourEvent": null,
+    "battleEffect": null,
+    "dialogueElapsed": 0,
+    "gymReward": null,
+    "showingGymReward": false,
+    "caughtPreview": null,
+    "showingCatch": false,
+    "confirmingBattleExit": false,
+    "defeatScene": null,
+    "recoveryPreview": false,
+    "battleFrame": null,
+    "gymPreview": null,
+    "fieldMap": false,
+    "followingObjective": false,
+    "roaming": null,
+    "navigation": null,
+    "interactionHint": null,
+    "exploring": false,
+    "battle": null,
+    "grassSteps": 0,
+    "save": {
+      "version": 1,
+      "worldRevision": 19,
+      "map": "tour_coronet",
+      "player": {
+        "x": 10,
+        "y": 10,
+        "facing": "right"
+      },
+      "flags": {
+        "starterReceived": true,
+        "departureCleared": true
+      },
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 20,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 5,
+        "potions": 3
+      },
+      "badges": [],
+      "keyItems": [],
+      "money": 0,
+      "healingPoint": "home",
+      "steps": 304,
+      "seconds": 697.4970000001138,
+      "tourVisited": [
+        "tour_coronet",
+        "tour_eterna",
+        "tour_lake",
+        "tour_hearthome"
+      ]
+    },
+    "panel": "field",
+    "dialogue": null,
+    "moving": false,
+    "transition": 0,
+    "menuIndex": 0,
+    "bagIndex": 1,
+    "starterIndex": 0,
+    "partyIndex": 0,
+    "map": {
+      "walkable": [
+        "####################",
+        "####################",
+        "##########.#########",
+        "##................##",
+        "##..........#.....##",
+        "##..##........##..##",
+        "##..##..###...##..##",
+        "##......###.....#.##",
+        "##................##",
+        "##.................#",
+        "##................##",
+        "##........##......##",
+        "##........##..##..##",
+        "##........##..##..##",
+        "##..........#.....##",
+        "##................##",
+        "##########.#########",
+        "####################"
+      ],
+      "npcs": [
+        {
+          "id": "tourGuide",
+          "x": 12,
+          "y": 7
+        }
+      ],
+      "warps": [
+        {
+          "x": 10,
+          "y": 2,
+          "to": "tour_eterna",
+          "spawn": {
+            "x": 14,
+            "y": 3
+          },
+          "entry": "up",
+          "facing": "down"
+        },
+        {
+          "x": 10,
+          "y": 16,
+          "to": "tour_hearthome",
+          "spawn": {
+            "x": 14,
+            "y": 3
+          },
+          "entry": "down",
+          "facing": "down"
+        },
+        {
+          "x": 18,
+          "y": 9,
+          "to": "tour_lake",
+          "spawn": {
+            "x": 14,
+            "y": 21
+          },
+          "entry": "right",
+          "facing": "up"
+        }
+      ],
+      "reserved": [],
+      "terrain": [
+        {
+          "kind": "tallGrass",
+          "x": 4,
+          "y": 10,
+          "w": 4,
+          "h": 3
+        }
+      ]
+    },
+    "position": {
+      "x": 10,
+      "y": 10,
+      "facing": "right"
+    }
+  }
+}

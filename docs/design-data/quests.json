@@ -1,0 +1,714 @@
+[
+  {
+    "id": "CH00",
+    "name": "첫 번째 파트너",
+    "kind": "본편",
+    "places": "새잎마을 S01",
+    "action": "현재 시작 흐름 유지. 모험 준비를 마치고 도윤의 길 정비 소식",
+    "condition": "사용 가능한 파티 + 새 출발 안내 완료",
+    "result": "S02 첫 도로. 출구 해금은 신규 구현 대상"
+  },
+  {
+    "id": "CH01",
+    "name": "멈춘 세 초",
+    "kind": "본편",
+    "places": "S02~S08",
+    "action": "무쇠·영원·연고·장막 체육관. 주민의 시계와 열차 기록이 같은 순간 어긋남",
+    "condition": "GS01~GS04 + 장막 관측 자료 회수",
+    "result": "S20 운하행 연구 통로"
+  },
+  {
+    "id": "CH02",
+    "name": "바다 건너의 신호",
+    "kind": "본편",
+    "places": "S20 → S10 → K01",
+    "action": "운하 항구에서 연구 선단과 관동으로 출발. 운하 체육관은 아직 필수가 아님",
+    "condition": "은솔의 공동조사 소개 + CH01",
+    "result": "관동 왕복 항로"
+  },
+  {
+    "id": "CH03",
+    "name": "인간이 만든 생명",
+    "kind": "본편",
+    "places": "K01~K13",
+    "action": "관동 핵심 체육관 4개. 숲의 흡수 장치, 실프 데이터 위조, 홍련 기록을 조사",
+    "condition": "GK01~GK04 + 실프 송신 중단 + 홍련 실험체 구조",
+    "result": "금빛행 자기부상열차, 성도 방문"
+  },
+  {
+    "id": "CH04",
+    "name": "붉은 호수",
+    "kind": "본편",
+    "places": "J01 → J04 → J08 → J09",
+    "action": "분노의호수에서 갸라도스를 진정시키고 황토 송신기 해체. 색과 폭주 원인을 구분",
+    "condition": "호수 구조 + 송신기 정지",
+    "result": "불탄탑 공동조사"
+  },
+  {
+    "id": "CH05",
+    "name": "돌아온 세 발자국",
+    "kind": "본편",
+    "places": "J02~J07, J10, J12",
+    "action": "성도 핵심 체육관 4개. 세 전설의 흔적을 따라 생태 회복, 탑과 섬의 장치 해체",
+    "condition": "GJ01~GJ04 + 세 흔적 구조 + 방울탑·소용돌이섬 사건 해결",
+    "result": "담청→구름 왕복 항로"
+  },
+  {
+    "id": "CH06",
+    "name": "진실을 말하는 도시",
+    "kind": "본편",
+    "places": "U01~U08",
+    "action": "하나 핵심 체육관 4개와 지역 시민들의 선택. 유진이 공개 사업과 비밀 명령의 차이를 발견",
+    "condition": "GU03~GU05·GU07 + 공개 원자료 확보",
+    "result": "U14 용나선 조사"
+  },
+  {
+    "id": "CH07",
+    "name": "둘이 고른 미래",
+    "kind": "본편",
+    "places": "U14, U15",
+    "action": "레시라무·제크로무가 서로 다른 사람의 의지에 응답. 강제 합일 장치 파괴",
+    "condition": "용의 충돌 완화 + 동의 없는 세계 설계 자료 폐기",
+    "result": "기하→운하 귀환 항로"
+  },
+  {
+    "id": "CH08",
+    "name": "돌아온 길의 균열",
+    "kind": "본편",
+    "places": "S09~S18",
+    "action": "익숙한 길에 다른 지방의 풍경이 겹침. 남은 신오 4개 체육관과 지역 구조 작전",
+    "condition": "GS05~GS08 + 호수·항구·설원 안정화",
+    "result": "창기둥 공동 진입"
+  },
+  {
+    "id": "CH09",
+    "name": "깨어진세계",
+    "kind": "본편",
+    "places": "S16 → X01",
+    "action": "디아루가·펄기아 접점 폭주. 기라티나 개입. 네 지방의 중계기 차단과 최종 선택",
+    "condition": "최종 장치 정지 + 출구 복원 + 전원 귀환",
+    "result": "사건 엔딩, 모든 기본 교통"
+  },
+  {
+    "id": "CH10",
+    "name": "각자의 여행",
+    "kind": "본편",
+    "places": "전 지방",
+    "action": "복구된 마을 재방문, 선택 배지·지역 리그·전설 후일담",
+    "condition": "목표별 독립 완료",
+    "result": "월드 마스터즈·시작의 방 등"
+  },
+  {
+    "id": "SQ01",
+    "name": "작은 불빛들의 숲",
+    "kind": "지역 사건",
+    "places": "K05",
+    "condition": "CH03; 숨은 숲 발견",
+    "speciesRewards": [
+      172
+    ],
+    "itemRewards": [
+      "IT-light-ball",
+      "KEY-mending-cloth"
+    ],
+    "result": "사건 해결과 포켓몬 수령 분리. 패배·거절·가방 가득 참 뒤 재제안 가능"
+  },
+  {
+    "id": "SQ02",
+    "name": "여덟 개의 길",
+    "kind": "지역 사건",
+    "places": "K08",
+    "condition": "CH03; 하린 소개",
+    "speciesRewards": [
+      133
+    ],
+    "itemRewards": [],
+    "result": "사건 해결과 포켓몬 수령 분리. 패배·거절·가방 가득 참 뒤 재제안 가능"
+  },
+  {
+    "id": "SQ03",
+    "name": "천 아래의 친구",
+    "kind": "지역 사건",
+    "places": "K11",
+    "condition": "CH03; 밤 방문; 천 대체 의뢰 가능",
+    "speciesRewards": [
+      778
+    ],
+    "itemRewards": [],
+    "result": "사건 해결과 포켓몬 수령 분리. 패배·거절·가방 가득 참 뒤 재제안 가능"
+  },
+  {
+    "id": "SQ04",
+    "name": "호수의 오래된 목격담",
+    "kind": "지역 사건",
+    "places": "J09",
+    "condition": "CH04; 송신기 정지·구조",
+    "speciesRewards": [
+      130
+    ],
+    "itemRewards": [],
+    "result": "사건 해결과 포켓몬 수령 분리. 패배·거절·가방 가득 참 뒤 재제안 가능"
+  },
+  {
+    "id": "SQ05",
+    "name": "말보다 먼저 닿는 것",
+    "kind": "지역 사건",
+    "places": "S11",
+    "condition": "CH02; 갱도 구조",
+    "speciesRewards": [
+      447
+    ],
+    "itemRewards": [],
+    "result": "사건 해결과 포켓몬 수령 분리. 패배·거절·가방 가득 참 뒤 재제안 가능"
+  },
+  {
+    "id": "SQ06",
+    "name": "돌아오지 않는 마을",
+    "kind": "지역 사건",
+    "places": "U13",
+    "condition": "CH06; 환상·보호처 조사",
+    "speciesRewards": [
+      570
+    ],
+    "itemRewards": [],
+    "result": "사건 해결과 포켓몬 수령 분리. 패배·거절·가방 가득 참 뒤 재제안 가능"
+  },
+  {
+    "id": "SQ07",
+    "name": "유령열차",
+    "kind": "지역 사건",
+    "places": "U04",
+    "condition": "CH06; 밤/게임 내 예약",
+    "speciesRewards": [
+      607
+    ],
+    "itemRewards": [],
+    "result": "사건 해결과 포켓몬 수령 분리. 패배·거절·가방 가득 참 뒤 재제안 가능"
+  },
+  {
+    "id": "SQ08",
+    "name": "검이 지키는 빈 왕좌",
+    "kind": "지역 사건",
+    "places": "U15",
+    "condition": "CH06; 유적 시험",
+    "speciesRewards": [
+      679
+    ],
+    "itemRewards": [
+      "IT-dusk-stone"
+    ],
+    "result": "사건 해결과 포켓몬 수령 분리. 패배·거절·가방 가득 참 뒤 재제안 가능"
+  },
+  {
+    "id": "SQ09",
+    "name": "비가 그친 수련장",
+    "kind": "지역 사건",
+    "places": "U12",
+    "condition": "CH06; 수상·은신·구조 시험",
+    "speciesRewards": [
+      656
+    ],
+    "itemRewards": [],
+    "result": "사건 해결과 포켓몬 수령 분리. 패배·거절·가방 가득 참 뒤 재제안 가능"
+  },
+  {
+    "id": "SQ10",
+    "name": "산이 화낸 이유",
+    "kind": "지역 사건",
+    "places": "J16",
+    "condition": "CH05; 산기슭 구조",
+    "speciesRewards": [
+      246
+    ],
+    "itemRewards": [],
+    "result": "사건 해결과 포켓몬 수령 분리. 패배·거절·가방 가득 참 뒤 재제안 가능"
+  },
+  {
+    "id": "SQ11",
+    "name": "서로 다른 두 약속",
+    "kind": "지역 사건",
+    "places": "S07",
+    "condition": "CH01; 두 트레이너 보호 의뢰",
+    "speciesRewards": [
+      280
+    ],
+    "itemRewards": [],
+    "result": "사건 해결과 포켓몬 수령 분리. 패배·거절·가방 가득 참 뒤 재제안 가능"
+  },
+  {
+    "id": "SQ12",
+    "name": "잘못 배달된 프로그램",
+    "kind": "지역 사건",
+    "places": "K09",
+    "condition": "CH03; 데이터 복구",
+    "speciesRewards": [
+      137
+    ],
+    "itemRewards": [],
+    "result": "사건 해결과 포켓몬 수령 분리. 패배·거절·가방 가득 참 뒤 재제안 가능"
+  },
+  {
+    "id": "SQ13",
+    "name": "꺼지지 않는 TV",
+    "kind": "지역 사건",
+    "places": "S05",
+    "condition": "CH03; TV·배선 조사",
+    "speciesRewards": [
+      479
+    ],
+    "itemRewards": [],
+    "result": "사건 해결과 포켓몬 수령 분리. 패배·거절·가방 가득 참 뒤 재제안 가능"
+  },
+  {
+    "id": "SQ14",
+    "name": "돌틈에 남은 목소리",
+    "kind": "지역 사건",
+    "places": "S18",
+    "condition": "CH08; 사연 기록·쐐기돌",
+    "speciesRewards": [
+      442
+    ],
+    "itemRewards": [],
+    "result": "사건 해결과 포켓몬 수령 분리. 패배·거절·가방 가득 참 뒤 재제안 가능"
+  },
+  {
+    "id": "SQ15",
+    "name": "돌아오는 배",
+    "kind": "지역 사건",
+    "places": "J07/S18",
+    "condition": "지역 도착; 게임 내 시간 예약",
+    "speciesRewards": [
+      131,
+      425
+    ],
+    "itemRewards": [],
+    "result": "사건 해결과 포켓몬 수령 분리. 패배·거절·가방 가득 참 뒤 재제안 가능"
+  },
+  {
+    "id": "SQ16",
+    "name": "읽을 수 없는 문장",
+    "kind": "지역 사건",
+    "places": "J14",
+    "condition": "CH04; 탁본 조사",
+    "speciesRewards": [
+      201
+    ],
+    "itemRewards": [
+      "KEY-rubbing-kit"
+    ],
+    "result": "사건 해결과 포켓몬 수령 분리. 패배·거절·가방 가득 참 뒤 재제안 가능"
+  },
+  {
+    "id": "PG01",
+    "name": "원본을 찾아서",
+    "kind": "후일담",
+    "places": "X02 원시의 작은 섬",
+    "condition": "뮤츠 후일담 해결. 연구 결과가 아닌 자연 속 개체를 관찰한 뒤 조우",
+    "result": "뮤"
+  },
+  {
+    "id": "PG02",
+    "name": "숲의 어제",
+    "kind": "후일담",
+    "places": "J15 너도밤나무숲",
+    "condition": "CH09 + 숲 복구. 과거 장면을 관찰하고 현재 의뢰 해결, 전체 세이브를 과거로 되감지 않음",
+    "result": "세레비"
+  },
+  {
+    "id": "PG03",
+    "name": "잠들지 못한 항구",
+    "kind": "후일담",
+    "places": "S10→X03 꿈의 섬",
+    "condition": "CH09. 악몽과 피난민의 불안을 조사, 양쪽 모두 이해하고 만남",
+    "result": "다크라이·크레세리아"
+  },
+  {
+    "id": "PG04",
+    "name": "축제의 별",
+    "kind": "후일담",
+    "places": "X04 별 관측섬",
+    "condition": "CH09 + 관측 의뢰. 두 사건을 별도 조우로 나누고 한 종 획득으로 다른 종 소멸 없음",
+    "result": "지라치·테오키스"
+  },
+  {
+    "id": "PG05",
+    "name": "바다와 하늘의 균형",
+    "kind": "후일담",
+    "places": "X05 기후 관측해역",
+    "condition": "루기아 후일담 해결. 해역·지열·고공의 서로 다른 조사 구역",
+    "result": "가이오가·그란돈·레쿠쟈·라티아스·라티오스"
+  },
+  {
+    "id": "PG06",
+    "name": "남겨진 하나의 기록",
+    "kind": "후일담",
+    "places": "U16·U17·U18",
+    "condition": "CH09. 큐레무만 양쪽 용 후일담 추가 요구, 나머지는 독립 의뢰",
+    "result": "큐레무·케르디오·비크티니·메로엣타·게노세크트·랜드로스·볼트로스"
+  },
+  {
+    "id": "PG07",
+    "name": "오래된 신오의 약속",
+    "kind": "후일담",
+    "places": "S12·S17·S18",
+    "condition": "CH09. 설원 유적, 호수, 해안, 꽃길의 별개 사건. 목록 밖 전설 3종을 반드시 잡아야 하는 잠금은 두지 않음",
+    "result": "레지기가스·아그놈·마나피·쉐이미"
+  },
+  {
+    "id": "PG08",
+    "name": "바깥의 생태",
+    "kind": "후일담",
+    "places": "X06 생태 교류섬",
+    "condition": "CH09 + 네 지방 복구 보고. 창작 원정지, 생명·휴면·생태 조사로 분리",
+    "result": "제르네아스·이벨타르·지가르데·디안시"
+  },
+  {
+    "id": "PG09",
+    "name": "접힌 문 너머",
+    "kind": "후일담",
+    "places": "X07 경계 관측소",
+    "condition": "CH09 + 신오 접점 후일담. 후파 조우와 울트라비스트 조사 원인은 구분하고 각각 출입구 복원",
+    "result": "후파·매시붕"
+  },
+  {
+    "id": "PG10",
+    "name": "세 날개의 길",
+    "kind": "후일담",
+    "places": "K15·K16",
+    "condition": "CH09. 해빙·전력·지열 후속 의뢰, 분리된 고정 조우",
+    "result": "프리져·썬더·파이어"
+  },
+  {
+    "id": "PG11",
+    "name": "시작의 방",
+    "kind": "후일담",
+    "places": "X10 시작의 방",
+    "condition": "CH09 + 배지 32개 + 지역 리그 4개 + 핵심 11종 사건 해결. 모든 종 포획·온라인 배포·기간 이벤트 불필요",
+    "result": "아르세우스"
+  },
+  {
+    "id": "LEG-0150",
+    "name": "뮤츠 후일담",
+    "kind": "핵심 전설",
+    "places": "K14 블루 동굴",
+    "condition": "CH09 + 관동 실험체 후속 보호 완료. 대화·대결 후 포획 선택",
+    "encounterSpecies": [
+      150
+    ],
+    "result": "사건 해결 후 포획 선택. 해결 플래그와 소유 플래그 분리, 패배·도주 후 재도전"
+  },
+  {
+    "id": "LEG-0243",
+    "name": "라이코 후일담",
+    "kind": "핵심 전설",
+    "places": "J20 성도 순환로",
+    "condition": "CH09 + 전기 흔적 3개. 로밍 또는 고정 만남 선택",
+    "encounterSpecies": [
+      243
+    ],
+    "result": "사건 해결 후 포획 선택. 해결 플래그와 소유 플래그 분리, 패배·도주 후 재도전"
+  },
+  {
+    "id": "LEG-0244",
+    "name": "앤테이 후일담",
+    "kind": "핵심 전설",
+    "places": "J20 성도 순환로",
+    "condition": "CH09 + 산길 흔적 3개. 로밍 또는 고정 만남 선택",
+    "encounterSpecies": [
+      244
+    ],
+    "result": "사건 해결 후 포획 선택. 해결 플래그와 소유 플래그 분리, 패배·도주 후 재도전"
+  },
+  {
+    "id": "LEG-0245",
+    "name": "스이쿤 후일담",
+    "kind": "핵심 전설",
+    "places": "J09→J07 물길",
+    "condition": "CH09 + 수질 복구 의뢰. 고정 연속 추적",
+    "encounterSpecies": [
+      245
+    ],
+    "result": "사건 해결 후 포획 선택. 해결 플래그와 소유 플래그 분리, 패배·도주 후 재도전"
+  },
+  {
+    "id": "LEG-0250",
+    "name": "칠색조 후일담",
+    "kind": "핵심 전설",
+    "places": "J06 방울탑",
+    "condition": "CH09 + 세 전설의 추적 사건 해결. 세 종 포획은 불필요",
+    "encounterSpecies": [
+      250
+    ],
+    "result": "사건 해결 후 포획 선택. 해결 플래그와 소유 플래그 분리, 패배·도주 후 재도전"
+  },
+  {
+    "id": "LEG-0249",
+    "name": "루기아 후일담",
+    "kind": "핵심 전설",
+    "places": "J12 소용돌이섬",
+    "condition": "CH09 + 해상 구조 후일담. 칠색조 포획에 종속되지 않음",
+    "encounterSpecies": [
+      249
+    ],
+    "result": "사건 해결 후 포획 선택. 해결 플래그와 소유 플래그 분리, 패배·도주 후 재도전"
+  },
+  {
+    "id": "LEG-0643",
+    "name": "레시라무 후일담",
+    "kind": "핵심 전설",
+    "places": "U14 용나선탑 백의 제단",
+    "condition": "CH09 + 하나 기록 공개 후일담. 본편 선택과 무관하게 가능",
+    "encounterSpecies": [
+      643
+    ],
+    "result": "사건 해결 후 포획 선택. 해결 플래그와 소유 플래그 분리, 패배·도주 후 재도전"
+  },
+  {
+    "id": "LEG-0644",
+    "name": "제크로무 후일담",
+    "kind": "핵심 전설",
+    "places": "U14 용나선탑 흑의 제단",
+    "condition": "CH09 + 하나 기록 공개 후일담. 반대 제단과 동시 소유 가능",
+    "encounterSpecies": [
+      644
+    ],
+    "result": "사건 해결 후 포획 선택. 해결 플래그와 소유 플래그 분리, 패배·도주 후 재도전"
+  },
+  {
+    "id": "LEG-0483",
+    "name": "디아루가 후일담",
+    "kind": "핵심 전설",
+    "places": "S16 창기둥 시간 접점",
+    "condition": "CH09 + 신오 세 호수 관측 완료",
+    "encounterSpecies": [
+      483
+    ],
+    "result": "사건 해결 후 포획 선택. 해결 플래그와 소유 플래그 분리, 패배·도주 후 재도전"
+  },
+  {
+    "id": "LEG-0484",
+    "name": "펄기아 후일담",
+    "kind": "핵심 전설",
+    "places": "S16 창기둥 공간 접점",
+    "condition": "CH09 + 신오 세 호수 관측 완료",
+    "encounterSpecies": [
+      484
+    ],
+    "result": "사건 해결 후 포획 선택. 해결 플래그와 소유 플래그 분리, 패배·도주 후 재도전"
+  },
+  {
+    "id": "LEG-0487",
+    "name": "기라티나 후일담",
+    "kind": "핵심 전설",
+    "places": "X01 깨어진세계 재탐사",
+    "condition": "시간·공간 접점 사건 해결. 두 종 포획은 불필요",
+    "encounterSpecies": [
+      487
+    ],
+    "result": "사건 해결 후 포획 선택. 해결 플래그와 소유 플래그 분리, 패배·도주 후 재도전"
+  },
+  {
+    "id": "CARE-0174",
+    "name": "푸푸린 보호 의뢰",
+    "kind": "도감 보완",
+    "places": "K18",
+    "condition": "CH03",
+    "speciesRewards": [
+      174
+    ],
+    "itemRewards": [],
+    "result": "보호소 현장에서 푸푸린 관찰·먹이 분류 → 위탁. 사전 도감·소유 불필요; 종별 첫 보상 후 보호구역 반복 조우"
+  },
+  {
+    "id": "CARE-0050",
+    "name": "디그다 보호 의뢰",
+    "kind": "도감 보완",
+    "places": "K03",
+    "condition": "CH03",
+    "speciesRewards": [
+      50
+    ],
+    "itemRewards": [],
+    "result": "보호소 현장에서 디그다 관찰·먹이 분류 → 위탁. 사전 도감·소유 불필요; 종별 첫 보상 후 보호구역 반복 조우"
+  },
+  {
+    "id": "CARE-0083",
+    "name": "파오리 보호 의뢰",
+    "kind": "도감 보완",
+    "places": "J02",
+    "condition": "CH04",
+    "speciesRewards": [
+      83
+    ],
+    "itemRewards": [],
+    "result": "보호소 현장에서 파오리 관찰·먹이 분류 → 위탁. 사전 도감·소유 불필요; 종별 첫 보상 후 보호구역 반복 조우"
+  },
+  {
+    "id": "CARE-0236",
+    "name": "배루키 보호 의뢰",
+    "kind": "도감 보완",
+    "places": "J11",
+    "condition": "CH04",
+    "speciesRewards": [
+      236
+    ],
+    "itemRewards": [],
+    "result": "보호소 현장에서 배루키 관찰·먹이 분류 → 위탁. 사전 도감·소유 불필요; 종별 첫 보상 후 보호구역 반복 조우"
+  },
+  {
+    "id": "CARE-0440",
+    "name": "핑복 보호 의뢰",
+    "kind": "도감 보완",
+    "places": "K12",
+    "condition": "CH03",
+    "speciesRewards": [
+      440
+    ],
+    "itemRewards": [],
+    "result": "보호소 현장에서 핑복 관찰·먹이 분류 → 위탁. 사전 도감·소유 불필요; 종별 첫 보상 후 보호구역 반복 조우"
+  },
+  {
+    "id": "CARE-0238",
+    "name": "뽀뽀라 보호 의뢰",
+    "kind": "도감 보완",
+    "places": "K15",
+    "condition": "CH03",
+    "speciesRewards": [
+      238
+    ],
+    "itemRewards": [],
+    "result": "보호소 현장에서 뽀뽀라 관찰·먹이 분류 → 위탁. 사전 도감·소유 불필요; 종별 첫 보상 후 보호구역 반복 조우"
+  },
+  {
+    "id": "CARE-0446",
+    "name": "먹고자 보호 의뢰",
+    "kind": "도감 보완",
+    "places": "K18",
+    "condition": "CH03",
+    "speciesRewards": [
+      446
+    ],
+    "itemRewards": [],
+    "result": "보호소 현장에서 먹고자 관찰·먹이 분류 → 위탁. 사전 도감·소유 불필요; 종별 첫 보상 후 보호구역 반복 조우"
+  },
+  {
+    "id": "CARE-0360",
+    "name": "마자 보호 의뢰",
+    "kind": "도감 보완",
+    "places": "J04",
+    "condition": "CH04",
+    "speciesRewards": [
+      360
+    ],
+    "itemRewards": [],
+    "result": "보호소 현장에서 마자 관찰·먹이 분류 → 위탁. 사전 도감·소유 불필요; 종별 첫 보상 후 보호구역 반복 조우"
+  },
+  {
+    "id": "CARE-0278",
+    "name": "갈모매 보호 의뢰",
+    "kind": "도감 보완",
+    "places": "S13",
+    "condition": "CH08",
+    "speciesRewards": [
+      278
+    ],
+    "itemRewards": [],
+    "result": "보호소 현장에서 갈모매 관찰·먹이 분류 → 위탁. 사전 도감·소유 불필요; 종별 첫 보상 후 보호구역 반복 조우"
+  },
+  {
+    "id": "CARE-0333",
+    "name": "파비코 보호 의뢰",
+    "kind": "도감 보완",
+    "places": "J17",
+    "condition": "CH04",
+    "speciesRewards": [
+      333
+    ],
+    "itemRewards": [],
+    "result": "보호소 현장에서 파비코 관찰·먹이 분류 → 위탁. 사전 도감·소유 불필요; 종별 첫 보상 후 보호구역 반복 조우"
+  },
+  {
+    "id": "CARE-0433",
+    "name": "랑딸랑 보호 의뢰",
+    "kind": "도감 보완",
+    "places": "S06",
+    "condition": "CH01",
+    "speciesRewards": [
+      433
+    ],
+    "itemRewards": [],
+    "result": "보호소 현장에서 랑딸랑 관찰·먹이 분류 → 위탁. 사전 도감·소유 불필요; 종별 첫 보상 후 보호구역 반복 조우"
+  },
+  {
+    "id": "CARE-0436",
+    "name": "동미러 보호 의뢰",
+    "kind": "도감 보완",
+    "places": "S10",
+    "condition": "CH02",
+    "speciesRewards": [
+      436
+    ],
+    "itemRewards": [],
+    "result": "보호소 현장에서 동미러 관찰·먹이 분류 → 위탁. 사전 도감·소유 불필요; 종별 첫 보상 후 보호구역 반복 조우"
+  },
+  {
+    "id": "CARE-0535",
+    "name": "동챙이 보호 의뢰",
+    "kind": "도감 보완",
+    "places": "U05",
+    "condition": "CH06",
+    "speciesRewards": [
+      535
+    ],
+    "itemRewards": [],
+    "result": "보호소 현장에서 동챙이 관찰·먹이 분류 → 위탁. 사전 도감·소유 불필요; 종별 첫 보상 후 보호구역 반복 조우"
+  },
+  {
+    "id": "CARE-0557",
+    "name": "돌살이 보호 의뢰",
+    "kind": "도감 보완",
+    "places": "U01",
+    "condition": "CH06",
+    "speciesRewards": [
+      557
+    ],
+    "itemRewards": [],
+    "result": "보호소 현장에서 돌살이 관찰·먹이 분류 → 위탁. 사전 도감·소유 불필요; 종별 첫 보상 후 보호구역 반복 조우"
+  },
+  {
+    "id": "CARE-0602",
+    "name": "저리어 보호 의뢰",
+    "kind": "도감 보완",
+    "places": "U04",
+    "condition": "CH06",
+    "speciesRewards": [
+      602
+    ],
+    "itemRewards": [],
+    "result": "보호소 현장에서 저리어 관찰·먹이 분류 → 위탁. 사전 도감·소유 불필요; 종별 첫 보상 후 보호구역 반복 조우"
+  },
+  {
+    "id": "CARE-0610",
+    "name": "터검니 보호 의뢰",
+    "kind": "도감 보완",
+    "places": "U07",
+    "condition": "CH06",
+    "speciesRewards": [
+      610
+    ],
+    "itemRewards": [],
+    "result": "보호소 현장에서 터검니 관찰·먹이 분류 → 위탁. 사전 도감·소유 불필요; 종별 첫 보상 후 보호구역 반복 조우"
+  },
+  {
+    "id": "CARE-0627",
+    "name": "수리둥보 보호 의뢰",
+    "kind": "도감 보완",
+    "places": "U17",
+    "condition": "CH10",
+    "speciesRewards": [
+      627
+    ],
+    "itemRewards": [],
+    "result": "보호소 현장에서 수리둥보 관찰·먹이 분류 → 위탁. 사전 도감·소유 불필요; 종별 첫 보상 후 보호구역 반복 조우"
+  }
+]

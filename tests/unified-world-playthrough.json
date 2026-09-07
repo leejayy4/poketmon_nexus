@@ -1,0 +1,2728 @@
+[
+  {
+    "label": "route-start",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 3,
+          "y": 12,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 4,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 0,
+        "seconds": 0.19999999999999998
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 3,
+        "y": 12,
+        "facing": "left"
+      }
+    }
+  },
+  {
+    "label": "expanded-jubilife-entry",
+    "state": {
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "피카츄",
+          "species": "pikachu",
+          "sprite": "field-pikachu",
+          "x": 22,
+          "y": 16,
+          "facing": "down",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+          ]
+        },
+        "moving": false,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 22,
+            "y": 17
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 23,
+            "y": 17
+          },
+          {
+            "x": 22,
+            "y": 18
+          },
+          {
+            "x": 21,
+            "y": 17
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 23,
+            "y": 18
+          },
+          {
+            "x": 21,
+            "y": 18
+          },
+          {
+            "x": 20,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 18
+          },
+          {
+            "x": 24,
+            "y": 14
+          },
+          {
+            "x": 20,
+            "y": 18
+          }
+        ]
+      },
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "tour_jubilife",
+        "player": {
+          "x": 37,
+          "y": 24,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 4,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 1,
+        "seconds": 1.696999999999994,
+        "tourVisited": [
+          "tour_jubilife"
+        ]
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "########################################",
+          "########################################",
+          "##############.#########################",
+          "##....................................##",
+          "##..............#.....................##",
+          "##....................................##",
+          "##....................................##",
+          "##....#####.......#####...............##",
+          "##....##.##.......#####...............##",
+          "##....................................##",
+          "##....................................##",
+          "##....................................##",
+          "##.#..................................##",
+          "##....................................##",
+          "#.....................................##",
+          "##....................................##",
+          "##...#####............................##",
+          "##...#####................##########..##",
+          "##........................##########..##",
+          "##............###.........##########..##",
+          "##............###.........#####.####..##",
+          "##....................................##",
+          "##....................................##",
+          "##...#####..........................#.##",
+          "##...#####.............................#",
+          "##................####................##",
+          "##................####................##",
+          "##................####..#####.........##",
+          "##......................#####....###..##",
+          "##...............................###..##",
+          "##...............................###..##",
+          "##....................................##",
+          "##..............#.....................##",
+          "##....................................##",
+          "##############.#########################",
+          "########################################"
+        ],
+        "npcs": [
+          {
+            "id": "tourGuide",
+            "x": 16,
+            "y": 14
+          },
+          {
+            "id": "tourResident0",
+            "x": 10,
+            "y": 13
+          },
+          {
+            "id": "tourResident1",
+            "x": 20,
+            "y": 12
+          },
+          {
+            "id": "tourPokemon",
+            "x": 22,
+            "y": 16
+          }
+        ],
+        "warps": [
+          {
+            "x": 8,
+            "y": 8,
+            "to": "tour_jubilife_center",
+            "spawn": {
+              "x": 8,
+              "y": 10
+            },
+            "entry": "up",
+            "facing": "up"
+          },
+          {
+            "x": 31,
+            "y": 20,
+            "to": "tour_jubilife_hall",
+            "spawn": {
+              "x": 8,
+              "y": 10
+            },
+            "entry": "up",
+            "facing": "up"
+          },
+          {
+            "x": 14,
+            "y": 34,
+            "to": "tour_oreburgh",
+            "spawn": {
+              "x": 14,
+              "y": 3
+            },
+            "entry": "down",
+            "facing": "down"
+          },
+          {
+            "x": 14,
+            "y": 2,
+            "to": "tour_eterna_forest",
+            "spawn": {
+              "x": 10,
+              "y": 15
+            },
+            "entry": "up",
+            "facing": "up"
+          },
+          {
+            "x": 1,
+            "y": 14,
+            "to": "research_path",
+            "spawn": {
+              "x": 2,
+              "y": 12
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 38,
+            "y": 24,
+            "to": "route_s01",
+            "spawn": {
+              "x": 3,
+              "y": 12
+            },
+            "entry": "right",
+            "facing": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": []
+      },
+      "position": {
+        "x": 37,
+        "y": 24,
+        "facing": "left"
+      }
+    }
+  },
+  {
+    "label": "expanded-center-entry",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "tour_jubilife_center",
+        "player": {
+          "x": 8,
+          "y": 10,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 4,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 46,
+        "seconds": 15.277499999999966,
+        "tourVisited": [
+          "tour_jubilife",
+          "tour_jubilife_center"
+        ]
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################",
+          "################",
+          "################",
+          "##............##",
+          "##.##......##.##",
+          "##.##......##.##",
+          "##....####....##",
+          "##............##",
+          "##.###........##",
+          "##.###........##",
+          "##............##",
+          "##............##",
+          "########.#######",
+          "########.#######"
+        ],
+        "npcs": [
+          {
+            "id": "tourHost",
+            "x": 8,
+            "y": 5
+          }
+        ],
+        "warps": [
+          {
+            "x": 8,
+            "y": 13,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 8,
+              "y": 9
+            },
+            "entry": "down",
+            "facing": "down"
+          }
+        ],
+        "reserved": [],
+        "terrain": []
+      },
+      "position": {
+        "x": 8,
+        "y": 10,
+        "facing": "up"
+      }
+    }
+  },
+  {
+    "label": "center-approach-before-recovery",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "tour_jubilife_center",
+        "player": {
+          "x": 8,
+          "y": 9,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 4,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 47,
+        "seconds": 15.927399999999974,
+        "tourVisited": [
+          "tour_jubilife",
+          "tour_jubilife_center"
+        ]
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################",
+          "################",
+          "################",
+          "##............##",
+          "##.##......##.##",
+          "##.##......##.##",
+          "##....####....##",
+          "##............##",
+          "##.###........##",
+          "##.###........##",
+          "##............##",
+          "##............##",
+          "########.#######",
+          "########.#######"
+        ],
+        "npcs": [
+          {
+            "id": "tourHost",
+            "x": 8,
+            "y": 5
+          }
+        ],
+        "warps": [
+          {
+            "x": 8,
+            "y": 13,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 8,
+              "y": 9
+            },
+            "entry": "down",
+            "facing": "down"
+          }
+        ],
+        "reserved": [],
+        "terrain": []
+      },
+      "position": {
+        "x": 8,
+        "y": 9,
+        "facing": "up"
+      }
+    }
+  },
+  {
+    "label": "center-recovery-complete",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "tour_jubilife_center",
+        "player": {
+          "x": 8,
+          "y": 7,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "tour_jubilife_center",
+        "steps": 49,
+        "seconds": 17.793999999999983,
+        "tourVisited": [
+          "tour_jubilife",
+          "tour_jubilife_center"
+        ]
+      },
+      "panel": "field",
+      "dialogue": {
+        "speaker": "간호사",
+        "pages": [
+          "포켓몬들이 모두 건강해졌어요!\n상처약도 2개까지 보충했어요.",
+          "모험 중 쓰러지면 여기로 데려올게요.\n언제든 편히 쉬러 오세요."
+        ],
+        "page": 0,
+        "shown": 9.597599999999685,
+        "selected": 0
+      },
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################",
+          "################",
+          "################",
+          "##............##",
+          "##.##......##.##",
+          "##.##......##.##",
+          "##....####....##",
+          "##............##",
+          "##.###........##",
+          "##.###........##",
+          "##............##",
+          "##............##",
+          "########.#######",
+          "########.#######"
+        ],
+        "npcs": [
+          {
+            "id": "tourHost",
+            "x": 8,
+            "y": 5
+          }
+        ],
+        "warps": [
+          {
+            "x": 8,
+            "y": 13,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 8,
+              "y": 9
+            },
+            "entry": "down",
+            "facing": "down"
+          }
+        ],
+        "reserved": [],
+        "terrain": []
+      },
+      "position": {
+        "x": 8,
+        "y": 7,
+        "facing": "up"
+      }
+    }
+  },
+  {
+    "label": "center-reload",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": "Z 말걸기 · 간호사",
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "tour_jubilife_center",
+        "player": {
+          "x": 8,
+          "y": 7,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "tour_jubilife_center",
+        "steps": 49,
+        "seconds": 18.5277,
+        "tourVisited": [
+          "tour_jubilife",
+          "tour_jubilife_center"
+        ]
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################",
+          "################",
+          "################",
+          "##............##",
+          "##.##......##.##",
+          "##.##......##.##",
+          "##....####....##",
+          "##............##",
+          "##.###........##",
+          "##.###........##",
+          "##............##",
+          "##............##",
+          "########.#######",
+          "########.#######"
+        ],
+        "npcs": [
+          {
+            "id": "tourHost",
+            "x": 8,
+            "y": 5
+          }
+        ],
+        "warps": [
+          {
+            "x": 8,
+            "y": 13,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 8,
+              "y": 9
+            },
+            "entry": "down",
+            "facing": "down"
+          }
+        ],
+        "reserved": [],
+        "terrain": []
+      },
+      "position": {
+        "x": 8,
+        "y": 7,
+        "facing": "up"
+      }
+    }
+  },
+  {
+    "label": "expanded-gym-door",
+    "state": {
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "알통몬",
+          "species": "machop",
+          "sprite": "field-machop",
+          "x": 22,
+          "y": 16,
+          "facing": "down",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "알통! 알통!\n씩씩하게 팔을 들어 인사한다."
+          ]
+        },
+        "moving": false,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "알통몬",
+            "species": "machop",
+            "sprite": "field-machop",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "알통! 알통!\n씩씩하게 팔을 들어 인사한다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 24,
+            "y": 14
+          }
+        ]
+      },
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "tour_oreburgh",
+        "player": {
+          "x": 6,
+          "y": 26,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 25,
+            "experience": 0,
+            "hp": 80,
+            "maxHp": 80,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 0,
+        "seconds": 0.2167000000000025,
+        "tourVisited": [
+          "tour_oreburgh"
+        ]
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "##################################",
+          "##################################",
+          "##############.###################",
+          "##..............................##",
+          "##..............#...............##",
+          "##..............................##",
+          "##..............................##",
+          "##....#####.....................##",
+          "##....##.##...........########..##",
+          "##....................########..##",
+          "##...####.............##.#####..##",
+          "##...####.......................##",
+          "##...####.......................##",
+          "##...####.......................##",
+          "##...####.......................##",
+          "##..............................##",
+          "##..............................##",
+          "##..............................##",
+          "##.................#####........##",
+          "##.................#####........##",
+          "##..............................##",
+          "##..............................##",
+          "##..............................##",
+          "##..............................##",
+          "##...####.......................##",
+          "##...#.##..............####.....##",
+          "##............####.....####.....##",
+          "##............####..............##",
+          "##..............................##",
+          "##..............................##",
+          "##################################",
+          "##################################"
+        ],
+        "npcs": [
+          {
+            "id": "tourGuide",
+            "x": 16,
+            "y": 14
+          },
+          {
+            "id": "tourResident0",
+            "x": 10,
+            "y": 13
+          },
+          {
+            "id": "tourResident1",
+            "x": 20,
+            "y": 12
+          },
+          {
+            "id": "tourPokemon",
+            "x": 22,
+            "y": 16
+          }
+        ],
+        "warps": [
+          {
+            "x": 8,
+            "y": 8,
+            "to": "tour_oreburgh_center",
+            "spawn": {
+              "x": 8,
+              "y": 10
+            },
+            "entry": "up",
+            "facing": "up"
+          },
+          {
+            "x": 24,
+            "y": 10,
+            "to": "tour_oreburgh_hall",
+            "spawn": {
+              "x": 8,
+              "y": 10
+            },
+            "entry": "up",
+            "facing": "up"
+          },
+          {
+            "x": 14,
+            "y": 2,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 14,
+              "y": 33
+            },
+            "entry": "up",
+            "facing": "up"
+          },
+          {
+            "x": 6,
+            "y": 25,
+            "to": "oreburgh_gym",
+            "spawn": {
+              "x": 8,
+              "y": 13
+            },
+            "entry": "up",
+            "facing": "up"
+          }
+        ],
+        "reserved": [],
+        "terrain": []
+      },
+      "position": {
+        "x": 6,
+        "y": 26,
+        "facing": "up"
+      }
+    }
+  },
+  {
+    "label": "gym-entered",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "oreburgh_gym",
+        "player": {
+          "x": 8,
+          "y": 13,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 25,
+            "experience": 0,
+            "hp": 80,
+            "maxHp": 80,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 1,
+        "seconds": 1.3174000000000037,
+        "tourVisited": [
+          "tour_oreburgh"
+        ]
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "#################",
+          "#################",
+          "#################",
+          "##.............##",
+          "##.............##",
+          "##.............##",
+          "##..###........##",
+          "##..###........##",
+          "##.............##",
+          "##........###..##",
+          "##........###..##",
+          "##.............##",
+          "##..##.........##",
+          "##..##.........##",
+          "########.########",
+          "########.########"
+        ],
+        "npcs": [
+          {
+            "id": "roark",
+            "x": 8,
+            "y": 4
+          },
+          {
+            "id": "gymGuide",
+            "x": 12,
+            "y": 12
+          }
+        ],
+        "warps": [
+          {
+            "x": 8,
+            "y": 15,
+            "to": "tour_oreburgh",
+            "spawn": {
+              "x": 6,
+              "y": 26
+            },
+            "entry": "down",
+            "facing": "down"
+          }
+        ],
+        "reserved": [],
+        "terrain": []
+      },
+      "position": {
+        "x": 8,
+        "y": 13,
+        "facing": "up"
+      }
+    }
+  },
+  {
+    "label": "gym-challenge",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "gym",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 22,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 95,
+            "level": 11,
+            "maxHp": 24,
+            "hp": 24,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          {
+            "species": 408,
+            "level": 12,
+            "maxHp": 26,
+            "hp": 26,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 74,
+          "level": 10,
+          "maxHp": 22,
+          "hp": 22,
+          "experience": 0,
+          "nature": "성실",
+          "met": "체육관"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "forcedSwitch": false,
+        "moveSelections": [
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "oreburgh_gym",
+        "player": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 25,
+            "experience": 0,
+            "hp": 80,
+            "maxHp": 80,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 9,
+        "seconds": 5.959954000047688,
+        "tourVisited": [
+          "tour_oreburgh"
+        ]
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "#################",
+          "#################",
+          "#################",
+          "##.............##",
+          "##.............##",
+          "##.............##",
+          "##..###........##",
+          "##..###........##",
+          "##.............##",
+          "##........###..##",
+          "##........###..##",
+          "##.............##",
+          "##..##.........##",
+          "##..##.........##",
+          "########.########",
+          "########.########"
+        ],
+        "npcs": [
+          {
+            "id": "roark",
+            "x": 8,
+            "y": 4
+          },
+          {
+            "id": "gymGuide",
+            "x": 12,
+            "y": 12
+          }
+        ],
+        "warps": [
+          {
+            "x": 8,
+            "y": 15,
+            "to": "tour_oreburgh",
+            "spawn": {
+              "x": 6,
+              "y": 26
+            },
+            "entry": "down",
+            "facing": "down"
+          }
+        ],
+        "reserved": [],
+        "terrain": []
+      },
+      "position": {
+        "x": 8,
+        "y": 5,
+        "facing": "up"
+      }
+    }
+  },
+  {
+    "label": "first-badge-in-unified-world",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": "Z 말걸기 · 관장 강석",
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "oreburgh_gym",
+        "player": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 25,
+            "experience": 0,
+            "hp": 65,
+            "maxHp": 80,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 0
+        },
+        "badges": [
+          "BADGE-GS01"
+        ],
+        "keyItems": [
+          "TM-stealth-rock"
+        ],
+        "money": 1440,
+        "healingPoint": "home",
+        "steps": 9,
+        "seconds": 14.00265400004772,
+        "tourVisited": [
+          "tour_oreburgh"
+        ]
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "#################",
+          "#################",
+          "#################",
+          "##.............##",
+          "##.............##",
+          "##.............##",
+          "##..###........##",
+          "##..###........##",
+          "##.............##",
+          "##........###..##",
+          "##........###..##",
+          "##.............##",
+          "##..##.........##",
+          "##..##.........##",
+          "########.########",
+          "########.########"
+        ],
+        "npcs": [
+          {
+            "id": "roark",
+            "x": 8,
+            "y": 4
+          },
+          {
+            "id": "gymGuide",
+            "x": 12,
+            "y": 12
+          }
+        ],
+        "warps": [
+          {
+            "x": 8,
+            "y": 15,
+            "to": "tour_oreburgh",
+            "spawn": {
+              "x": 6,
+              "y": 26
+            },
+            "entry": "down",
+            "facing": "down"
+          }
+        ],
+        "reserved": [],
+        "terrain": []
+      },
+      "position": {
+        "x": 8,
+        "y": 5,
+        "facing": "up"
+      }
+    }
+  },
+  {
+    "label": "badge-city-reload",
+    "state": {
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "알통몬",
+          "species": "machop",
+          "sprite": "field-machop",
+          "x": 22,
+          "y": 16,
+          "facing": "down",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "알통! 알통!\n씩씩하게 팔을 들어 인사한다."
+          ]
+        },
+        "moving": false,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "알통몬",
+            "species": "machop",
+            "sprite": "field-machop",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "알통! 알통!\n씩씩하게 팔을 들어 인사한다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 24,
+            "y": 14
+          }
+        ]
+      },
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "tour_oreburgh",
+        "player": {
+          "x": 6,
+          "y": 26,
+          "facing": "down"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 25,
+            "experience": 0,
+            "hp": 65,
+            "maxHp": 80,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 0
+        },
+        "badges": [
+          "BADGE-GS01"
+        ],
+        "keyItems": [
+          "TM-stealth-rock"
+        ],
+        "money": 1440,
+        "healingPoint": "home",
+        "steps": 19,
+        "seconds": 17.76755400004771,
+        "tourVisited": [
+          "tour_oreburgh"
+        ]
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "##################################",
+          "##################################",
+          "##############.###################",
+          "##..............................##",
+          "##..............#...............##",
+          "##..............................##",
+          "##..............................##",
+          "##....#####.....................##",
+          "##....##.##...........########..##",
+          "##....................########..##",
+          "##...####.............##.#####..##",
+          "##...####.......................##",
+          "##...####.......................##",
+          "##...####.......................##",
+          "##...####.......................##",
+          "##..............................##",
+          "##..............................##",
+          "##..............................##",
+          "##.................#####........##",
+          "##.................#####........##",
+          "##..............................##",
+          "##..............................##",
+          "##..............................##",
+          "##..............................##",
+          "##...####.......................##",
+          "##...#.##..............####.....##",
+          "##............####.....####.....##",
+          "##............####..............##",
+          "##..............................##",
+          "##..............................##",
+          "##################################",
+          "##################################"
+        ],
+        "npcs": [
+          {
+            "id": "tourGuide",
+            "x": 16,
+            "y": 14
+          },
+          {
+            "id": "tourResident0",
+            "x": 10,
+            "y": 13
+          },
+          {
+            "id": "tourResident1",
+            "x": 20,
+            "y": 12
+          },
+          {
+            "id": "tourPokemon",
+            "x": 22,
+            "y": 16
+          }
+        ],
+        "warps": [
+          {
+            "x": 8,
+            "y": 8,
+            "to": "tour_oreburgh_center",
+            "spawn": {
+              "x": 8,
+              "y": 10
+            },
+            "entry": "up",
+            "facing": "up"
+          },
+          {
+            "x": 24,
+            "y": 10,
+            "to": "tour_oreburgh_hall",
+            "spawn": {
+              "x": 8,
+              "y": 10
+            },
+            "entry": "up",
+            "facing": "up"
+          },
+          {
+            "x": 14,
+            "y": 2,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 14,
+              "y": 33
+            },
+            "entry": "up",
+            "facing": "up"
+          },
+          {
+            "x": 6,
+            "y": 25,
+            "to": "oreburgh_gym",
+            "spawn": {
+              "x": 8,
+              "y": 13
+            },
+            "entry": "up",
+            "facing": "up"
+          }
+        ],
+        "reserved": [],
+        "terrain": []
+      },
+      "position": {
+        "x": 6,
+        "y": 26,
+        "facing": "down"
+      }
+    }
+  },
+  {
+    "label": "expanded-forest-grass",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "tour_eterna_forest",
+        "player": {
+          "x": 4,
+          "y": 10,
+          "facing": "right"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 25,
+            "experience": 0,
+            "hp": 80,
+            "maxHp": 80,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 0,
+        "seconds": 0.21609999999999857,
+        "tourVisited": [
+          "tour_eterna_forest"
+        ]
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "####################",
+          "####################",
+          "##########.#########",
+          "##................##",
+          "##..........#.....##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##..........#.....##",
+          "##................##",
+          "##########.#########",
+          "####################"
+        ],
+        "npcs": [
+          {
+            "id": "tourGuide",
+            "x": 12,
+            "y": 7
+          }
+        ],
+        "warps": [
+          {
+            "x": 10,
+            "y": 16,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 14,
+              "y": 3
+            },
+            "entry": "down",
+            "facing": "down"
+          },
+          {
+            "x": 10,
+            "y": 2,
+            "to": "tour_eterna",
+            "spawn": {
+              "x": 14,
+              "y": 31
+            },
+            "entry": "up",
+            "facing": "up"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 4,
+            "y": 10,
+            "w": 4,
+            "h": 3
+          }
+        ]
+      },
+      "position": {
+        "x": 4,
+        "y": 10,
+        "facing": "right"
+      }
+    }
+  },
+  {
+    "label": "expanded-forest-encounter",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 7,
+            "hp": 30,
+            "maxHp": 30,
+            "experience": 0,
+            "nature": "성실",
+            "met": "영원숲"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 7,
+          "hp": 30,
+          "maxHp": 30,
+          "experience": 0,
+          "nature": "성실",
+          "met": "영원숲"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "forcedSwitch": false,
+        "moveSelections": [
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "tour_eterna_forest",
+        "player": {
+          "x": 4,
+          "y": 10,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 25,
+            "experience": 0,
+            "hp": 80,
+            "maxHp": 80,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 2.2819999999999943,
+        "tourVisited": [
+          "tour_eterna_forest"
+        ]
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "####################",
+          "####################",
+          "##########.#########",
+          "##................##",
+          "##..........#.....##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##..........#.....##",
+          "##................##",
+          "##########.#########",
+          "####################"
+        ],
+        "npcs": [
+          {
+            "id": "tourGuide",
+            "x": 12,
+            "y": 7
+          }
+        ],
+        "warps": [
+          {
+            "x": 10,
+            "y": 16,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 14,
+              "y": 3
+            },
+            "entry": "down",
+            "facing": "down"
+          },
+          {
+            "x": 10,
+            "y": 2,
+            "to": "tour_eterna",
+            "spawn": {
+              "x": 14,
+              "y": 31
+            },
+            "entry": "up",
+            "facing": "up"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 4,
+            "y": 10,
+            "w": 4,
+            "h": 3
+          }
+        ]
+      },
+      "position": {
+        "x": 4,
+        "y": 10,
+        "facing": "left"
+      }
+    }
+  },
+  {
+    "label": "forest-capture",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "tour_eterna_forest",
+        "player": {
+          "x": 4,
+          "y": 10,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 25,
+            "experience": 0,
+            "hp": 75,
+            "maxHp": 80,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 7,
+            "hp": 14,
+            "maxHp": 30,
+            "experience": 0,
+            "nature": "성실",
+            "met": "영원숲"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 4,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 5.4322,
+        "tourVisited": [
+          "tour_eterna_forest"
+        ]
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "####################",
+          "####################",
+          "##########.#########",
+          "##................##",
+          "##..........#.....##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##..........#.....##",
+          "##................##",
+          "##########.#########",
+          "####################"
+        ],
+        "npcs": [
+          {
+            "id": "tourGuide",
+            "x": 12,
+            "y": 7
+          }
+        ],
+        "warps": [
+          {
+            "x": 10,
+            "y": 16,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 14,
+              "y": 3
+            },
+            "entry": "down",
+            "facing": "down"
+          },
+          {
+            "x": 10,
+            "y": 2,
+            "to": "tour_eterna",
+            "spawn": {
+              "x": 14,
+              "y": 31
+            },
+            "entry": "up",
+            "facing": "up"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 4,
+            "y": 10,
+            "w": 4,
+            "h": 3
+          }
+        ]
+      },
+      "position": {
+        "x": 4,
+        "y": 10,
+        "facing": "left"
+      }
+    }
+  },
+  {
+    "label": "forest-party-reload",
+    "state": {
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "tour_eterna_forest",
+        "player": {
+          "x": 4,
+          "y": 10,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 25,
+            "experience": 0,
+            "hp": 75,
+            "maxHp": 80,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 7,
+            "hp": 14,
+            "maxHp": 30,
+            "experience": 0,
+            "nature": "성실",
+            "met": "영원숲"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 4,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 5.833599999999998,
+        "tourVisited": [
+          "tour_eterna_forest"
+        ]
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "####################",
+          "####################",
+          "##########.#########",
+          "##................##",
+          "##..........#.....##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##................##",
+          "##..........#.....##",
+          "##................##",
+          "##########.#########",
+          "####################"
+        ],
+        "npcs": [
+          {
+            "id": "tourGuide",
+            "x": 12,
+            "y": 7
+          }
+        ],
+        "warps": [
+          {
+            "x": 10,
+            "y": 16,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 14,
+              "y": 3
+            },
+            "entry": "down",
+            "facing": "down"
+          },
+          {
+            "x": 10,
+            "y": 2,
+            "to": "tour_eterna",
+            "spawn": {
+              "x": 14,
+              "y": 31
+            },
+            "entry": "up",
+            "facing": "up"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 4,
+            "y": 10,
+            "w": 4,
+            "h": 3
+          }
+        ]
+      },
+      "position": {
+        "x": 4,
+        "y": 10,
+        "facing": "left"
+      }
+    }
+  },
+  {
+    "label": "legacy-city-progress-migrated",
+    "state": {
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "알통몬",
+          "species": "machop",
+          "sprite": "field-machop",
+          "x": 22,
+          "y": 16,
+          "facing": "down",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "알통! 알통!\n씩씩하게 팔을 들어 인사한다."
+          ]
+        },
+        "moving": false,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "알통몬",
+            "species": "machop",
+            "sprite": "field-machop",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "알통! 알통!\n씩씩하게 팔을 들어 인사한다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 24,
+            "y": 14
+          }
+        ]
+      },
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "tour_oreburgh",
+        "player": {
+          "x": 14,
+          "y": 11,
+          "facing": "down"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 25,
+            "experience": 0,
+            "hp": 65,
+            "maxHp": 80,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 0
+        },
+        "badges": [
+          "BADGE-GS01"
+        ],
+        "keyItems": [
+          "TM-stealth-rock"
+        ],
+        "money": 1440,
+        "healingPoint": "tour_oreburgh_center",
+        "steps": 19,
+        "seconds": 17.98435400004776,
+        "tourVisited": [
+          "tour_oreburgh"
+        ]
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "##################################",
+          "##################################",
+          "##############.###################",
+          "##..............................##",
+          "##..............#...............##",
+          "##..............................##",
+          "##..............................##",
+          "##....#####.....................##",
+          "##....##.##...........########..##",
+          "##....................########..##",
+          "##...####.............##.#####..##",
+          "##...####.......................##",
+          "##...####.......................##",
+          "##...####.......................##",
+          "##...####.......................##",
+          "##..............................##",
+          "##..............................##",
+          "##..............................##",
+          "##.................#####........##",
+          "##.................#####........##",
+          "##..............................##",
+          "##..............................##",
+          "##..............................##",
+          "##..............................##",
+          "##...####.......................##",
+          "##...#.##..............####.....##",
+          "##............####.....####.....##",
+          "##............####..............##",
+          "##..............................##",
+          "##..............................##",
+          "##################################",
+          "##################################"
+        ],
+        "npcs": [
+          {
+            "id": "tourGuide",
+            "x": 16,
+            "y": 14
+          },
+          {
+            "id": "tourResident0",
+            "x": 10,
+            "y": 13
+          },
+          {
+            "id": "tourResident1",
+            "x": 20,
+            "y": 12
+          },
+          {
+            "id": "tourPokemon",
+            "x": 22,
+            "y": 16
+          }
+        ],
+        "warps": [
+          {
+            "x": 8,
+            "y": 8,
+            "to": "tour_oreburgh_center",
+            "spawn": {
+              "x": 8,
+              "y": 10
+            },
+            "entry": "up",
+            "facing": "up"
+          },
+          {
+            "x": 24,
+            "y": 10,
+            "to": "tour_oreburgh_hall",
+            "spawn": {
+              "x": 8,
+              "y": 10
+            },
+            "entry": "up",
+            "facing": "up"
+          },
+          {
+            "x": 14,
+            "y": 2,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 14,
+              "y": 33
+            },
+            "entry": "up",
+            "facing": "up"
+          },
+          {
+            "x": 6,
+            "y": 25,
+            "to": "oreburgh_gym",
+            "spawn": {
+              "x": 8,
+              "y": 13
+            },
+            "entry": "up",
+            "facing": "up"
+          }
+        ],
+        "reserved": [],
+        "terrain": []
+      },
+      "position": {
+        "x": 14,
+        "y": 11,
+        "facing": "down"
+      }
+    }
+  },
+  {
+    "label": "same-party-graphics-tool",
+    "state": {
+      "roaming": {
+        "position": {
+          "id": "tourPokemon",
+          "name": "고라파덕",
+          "species": "psyduck",
+          "sprite": "field-psyduck",
+          "x": 22,
+          "y": 16,
+          "facing": "down",
+          "dialogue": "tourPokemon",
+          "pages": [
+            "고라... 파덕?\n고개를 갸웃하다가 이쪽을 바라본다."
+          ]
+        },
+        "moving": false,
+        "tiles": [
+          {
+            "id": "tourPokemon",
+            "name": "고라파덕",
+            "species": "psyduck",
+            "sprite": "field-psyduck",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "고라... 파덕?\n고개를 갸웃하다가 이쪽을 바라본다."
+            ]
+          },
+          {
+            "x": 23,
+            "y": 16
+          },
+          {
+            "x": 21,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 16
+          },
+          {
+            "x": 23,
+            "y": 17
+          },
+          {
+            "x": 20,
+            "y": 16
+          },
+          {
+            "x": 24,
+            "y": 17
+          },
+          {
+            "x": 24,
+            "y": 15
+          },
+          {
+            "x": 24,
+            "y": 18
+          },
+          {
+            "x": 24,
+            "y": 14
+          }
+        ]
+      },
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "tour_vermilion",
+        "player": {
+          "x": 14,
+          "y": 11,
+          "facing": "down"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 25,
+            "experience": 0,
+            "hp": 65,
+            "maxHp": 80,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 0
+        },
+        "badges": [
+          "BADGE-GS01"
+        ],
+        "keyItems": [
+          "TM-stealth-rock"
+        ],
+        "money": 1440,
+        "healingPoint": "tour_oreburgh_center",
+        "steps": 19,
+        "seconds": 21.434354000047794,
+        "tourVisited": [
+          "tour_oreburgh",
+          "tour_vermilion"
+        ]
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "########################################",
+          "########################################",
+          "##############.#########################",
+          "##....................................##",
+          "##..............#.....................##",
+          "##....................................##",
+          "##....................................##",
+          "##....#####.......#####...............##",
+          "##....##.##.......#####...............##",
+          "##....................................##",
+          "##.#................................#.##",
+          "##........................##########..##",
+          "#.........................##########...#",
+          "##...####.................##########..##",
+          "##...####.................#####.####..##",
+          "##...####.............................##",
+          "##...####.............................##",
+          "##...####.............................##",
+          "##..................###...............##",
+          "##..................###...............##",
+          "##....................................##",
+          "##....................................##",
+          "##....................................##",
+          "##....................................##",
+          "##....................................##",
+          "##...#####............................##",
+          "##...#####................#####.......##",
+          "##........................#####.......##",
+          "##....................................##",
+          "##....................................##",
+          "########################################",
+          "########################################"
+        ],
+        "npcs": [
+          {
+            "id": "tourGuide",
+            "x": 16,
+            "y": 14
+          },
+          {
+            "id": "tourResident0",
+            "x": 10,
+            "y": 13
+          },
+          {
+            "id": "tourResident1",
+            "x": 20,
+            "y": 12
+          },
+          {
+            "id": "tourPokemon",
+            "x": 22,
+            "y": 16
+          }
+        ],
+        "warps": [
+          {
+            "x": 8,
+            "y": 8,
+            "to": "tour_vermilion_center",
+            "spawn": {
+              "x": 8,
+              "y": 10
+            },
+            "entry": "up",
+            "facing": "up"
+          },
+          {
+            "x": 31,
+            "y": 14,
+            "to": "tour_vermilion_hall",
+            "spawn": {
+              "x": 8,
+              "y": 10
+            },
+            "entry": "up",
+            "facing": "up"
+          },
+          {
+            "x": 14,
+            "y": 2,
+            "to": "tour_cerulean",
+            "spawn": {
+              "x": 14,
+              "y": 29
+            },
+            "entry": "up",
+            "facing": "up"
+          },
+          {
+            "x": 1,
+            "y": 12,
+            "to": "tour_cinnabar",
+            "spawn": {
+              "x": 31,
+              "y": 12
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 38,
+            "y": 12,
+            "to": "tour_canalave",
+            "spawn": {
+              "x": 14,
+              "y": 3
+            },
+            "entry": "right",
+            "facing": "down"
+          }
+        ],
+        "reserved": [],
+        "terrain": []
+      },
+      "position": {
+        "x": 14,
+        "y": 11,
+        "facing": "down"
+      }
+    }
+  }
+]

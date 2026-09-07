@@ -1,0 +1,12 @@
+✔ city rendering preserves all live road footprints and never paints outside the paved tiles (597.3885ms)
+✔ intersection asphalt is seamless across tiles while inner and outer corners retain a curb (1.6555ms)
+✔ complete grove trees stay inside the blocked footprint except for the northern canopy (7.0485ms)
+✔ world renderer paints trees in front of northern actors and behind southern actors without changing progress (3.8548ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 882.2737

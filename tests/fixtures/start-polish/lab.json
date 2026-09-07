@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "worldRevision": 3,
+  "map": "lab",
+  "player": {
+    "x": 6,
+    "y": 11,
+    "facing": "up"
+  },
+  "flags": {},
+  "party": [],
+  "steps": 0,
+  "seconds": 0
+}

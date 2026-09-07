@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "worldRevision": 17,
+  "map": "oreburgh_gym",
+  "player": {
+    "x": 8,
+    "y": 5,
+    "facing": "up"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 7,
+      "level": 8,
+      "experience": 0,
+      "hp": 1,
+      "maxHp": 29,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소"
+    },
+    {
+      "species": 399,
+      "level": 8,
+      "hp": 33,
+      "maxHp": 33,
+      "experience": 0,
+      "nature": "성실",
+      "met": "새잎 서쪽길"
+    }
+  ],
+  "inventory": {
+    "pokeBalls": 5,
+    "potions": 2
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "tour_oreburgh_center",
+  "steps": 0,
+  "seconds": 0
+}

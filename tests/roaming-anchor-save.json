@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "worldRevision": 15,
+  "map": "tour_pastoria",
+  "player": {
+    "x": 22,
+    "y": 16,
+    "facing": "left"
+  },
+  "flags": {
+    "exploration": true
+  },
+  "party": [],
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 0
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 678,
+  "seconds": 197.8221739999687,
+  "tourVisited": [
+    "tour_jubilife",
+    "tour_oreburgh",
+    "tour_pastoria",
+    "tour_pastoria_hall"
+  ]
+}

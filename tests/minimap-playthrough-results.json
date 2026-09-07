@@ -1,0 +1,148 @@
+{
+  "qa": "minimap-20260906-01",
+  "url": "http://localhost:5173/?explore=1&qa=minimap-20260906-01",
+  "scope": "Public lower-canvas pointer input, map travel buttons, keyboard walking and reload. Representative town, two interiors and short forest; full marker geometry tested automatically.",
+  "observations": [
+    {
+      "test": "person marker tap only identifies resident",
+      "map": "tour_jubilife",
+      "player": {
+        "x": 14,
+        "y": 11,
+        "facing": "down"
+      },
+      "dialogue": null,
+      "navigation": null,
+      "screenshot": "resident-name.png"
+    },
+    {
+      "test": "center marker starts guidance without visit",
+      "route": {
+        "destination": "tour_jubilife_center",
+        "name": "축복시티 · 포켓몬센터",
+        "status": "walking",
+        "maps": [
+          "tour_jubilife",
+          "tour_jubilife_center"
+        ],
+        "tiles": [
+          {
+            "x": 14,
+            "y": 11
+          },
+          {
+            "x": 14,
+            "y": 10
+          },
+          {
+            "x": 14,
+            "y": 9
+          },
+          {
+            "x": 13,
+            "y": 9
+          },
+          {
+            "x": 12,
+            "y": 9
+          },
+          {
+            "x": 11,
+            "y": 9
+          },
+          {
+            "x": 10,
+            "y": 9
+          },
+          {
+            "x": 9,
+            "y": 9
+          },
+          {
+            "x": 8,
+            "y": 9
+          },
+          {
+            "x": 8,
+            "y": 8
+          }
+        ],
+        "nextName": "축복시티 · 포켓몬센터",
+        "exit": {
+          "x": 8,
+          "y": 8,
+          "to": "tour_jubilife_center",
+          "spawn": {
+            "x": 8,
+            "y": 10
+          },
+          "entry": "up",
+          "facing": "up"
+        }
+      },
+      "visits": [
+        "tour_jubilife"
+      ]
+    },
+    {
+      "test": "walked touched-center route and recorded arrival",
+      "map": "tour_jubilife_center",
+      "visits": [
+        "tour_jubilife",
+        "tour_jubilife_center"
+      ]
+    },
+    {
+      "test": "indoor host marker identifies nurse without dialogue or healing",
+      "map": "tour_jubilife_center",
+      "dialogue": null,
+      "screenshot": "indoor-host-name.png"
+    },
+    {
+      "test": "landmark marker selects broadcast hall",
+      "map": "tour_jubilife",
+      "destination": "tour_jubilife_hall",
+      "visits": [
+        "tour_jubilife",
+        "tour_jubilife_center"
+      ]
+    },
+    {
+      "test": "walked landmark marker route",
+      "map": "tour_jubilife_hall",
+      "visits": [
+        "tour_jubilife",
+        "tour_jubilife_center",
+        "tour_jubilife_hall"
+      ]
+    },
+    {
+      "test": "short forest marker identifies guide at different map scale",
+      "map": "tour_eterna_forest",
+      "player": {
+        "x": 10,
+        "y": 10,
+        "facing": "down"
+      },
+      "screenshot": "short-forest-guide.png"
+    },
+    {
+      "test": "reload retains visits and map but clears temporary guidance",
+      "map": "tour_eterna_forest",
+      "navigation": null,
+      "visits": [
+        "tour_jubilife",
+        "tour_jubilife_center",
+        "tour_jubilife_hall",
+        "tour_eterna_forest"
+      ]
+    }
+  ],
+  "console": [],
+  "screenshots": [
+    "indoor-host-name.png",
+    "landmark-route.png",
+    "resident-name.png",
+    "short-forest-guide.png"
+  ]
+}

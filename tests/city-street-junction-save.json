@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "worldRevision": 19,
+  "map": "tour_jubilife",
+  "player": {
+    "x": 14,
+    "y": 11,
+    "facing": "up"
+  },
+  "flags": {},
+  "party": [],
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 0
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 0,
+  "seconds": 0,
+  "tourVisited": [
+    "tour_jubilife"
+  ]
+}

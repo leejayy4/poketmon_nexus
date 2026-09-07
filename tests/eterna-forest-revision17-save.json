@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "worldRevision": 17,
+  "map": "tour_eterna_forest",
+  "player": {
+    "x": 10,
+    "y": 12,
+    "facing": "left"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 7,
+      "level": 5,
+      "experience": 0,
+      "hp": 20,
+      "maxHp": 20,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소"
+    }
+  ],
+  "inventory": {
+    "pokeBalls": 5,
+    "potions": 2
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 123,
+  "seconds": 456
+}

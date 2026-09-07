@@ -1,0 +1,83 @@
+{
+  "qa": "tour-journal-20260906-01",
+  "url": "http://localhost:5173/?explore=1&qa=tour-journal-20260906-01",
+  "scope": "Public keyboard walking, map buttons, journal controls, reload and legacy file import. Representative play, not all 119 maps.",
+  "observations": [
+    {
+      "test": "journal guidance does not record a visit",
+      "visits": []
+    },
+    {
+      "test": "walked arrival records town",
+      "visits": [
+        "tour_jubilife"
+      ],
+      "summary": "야외 1/43 · 실내 0/76 방문\n신오 1/12 · 초록: 방문"
+    },
+    {
+      "test": "unvisited filter hides visited town",
+      "rows": 11
+    },
+    {
+      "test": "walked center arrival records interior",
+      "visits": [
+        "tour_jubilife",
+        "tour_jubilife_center"
+      ]
+    },
+    {
+      "test": "walked landmark arrival records separately",
+      "visits": [
+        "tour_jubilife",
+        "tour_jubilife_center",
+        "tour_jubilife_hall"
+      ]
+    },
+    {
+      "test": "public fast travel revisit does not duplicate",
+      "visits": [
+        "tour_jubilife",
+        "tour_jubilife_center",
+        "tour_jubilife_hall"
+      ]
+    },
+    {
+      "test": "public fast travel records a new town",
+      "visits": [
+        "tour_jubilife",
+        "tour_jubilife_center",
+        "tour_jubilife_hall",
+        "tour_oreburgh"
+      ],
+      "visitedNode": "tour-node visited"
+    },
+    {
+      "test": "reload retains visits and clears session guidance",
+      "visits": [
+        "tour_jubilife",
+        "tour_jubilife_center",
+        "tour_jubilife_hall",
+        "tour_oreburgh"
+      ],
+      "navigation": null
+    },
+    {
+      "test": "legacy import replaces history with known current interior and parent only",
+      "visits": [
+        "tour_mistralton",
+        "tour_mistralton_center"
+      ],
+      "steps": 668,
+      "flags": {
+        "exploration": true
+      },
+      "summary": "야외 1/43 · 실내 1/76 방문\n하나 1/10 · 초록: 방문"
+    }
+  ],
+  "console": [],
+  "screenshots": [
+    "journal-screenshots/facility-visits.png",
+    "journal-screenshots/visited-map.png",
+    "journal-screenshots/legacy-import.png"
+  ]
+}

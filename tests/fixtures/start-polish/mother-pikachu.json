@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "worldRevision": 3,
+  "map": "home",
+  "player": {
+    "x": 6,
+    "y": 7,
+    "facing": "up"
+  },
+  "flags": {
+    "pikachuReceived": true
+  },
+  "party": [
+    {
+      "species": 25,
+      "level": 5,
+      "hp": 19,
+      "maxHp": 19,
+      "nature": "고집",
+      "met": "새잎마을 · 포켓몬 연구소"
+    }
+  ],
+  "steps": 0,
+  "seconds": 0
+}

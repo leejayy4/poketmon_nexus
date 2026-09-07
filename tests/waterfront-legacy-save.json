@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "worldRevision": 11,
+  "map": "tour_canalave",
+  "player": {
+    "x": 5,
+    "y": 10,
+    "facing": "left"
+  },
+  "flags": {
+    "exploration": true
+  },
+  "party": [],
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 0
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 345,
+  "seconds": 678,
+  "tourVisited": [
+    "tour_canalave",
+    "tour_canalave_hall"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "worldRevision": 17,
+  "map": "oreburgh_gym",
+  "player": {
+    "x": 8,
+    "y": 5,
+    "facing": "up"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 7,
+      "level": 5,
+      "experience": 17,
+      "hp": 1,
+      "maxHp": 20,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소"
+    },
+    {
+      "species": 399,
+      "level": 3,
+      "maxHp": 18,
+      "hp": 0,
+      "experience": 0,
+      "nature": "성실",
+      "met": "새잎 서쪽길"
+    },
+    {
+      "species": 399,
+      "level": 3,
+      "maxHp": 18,
+      "hp": 0,
+      "experience": 0,
+      "nature": "성실",
+      "met": "새잎 서쪽길"
+    },
+    {
+      "species": 399,
+      "level": 3,
+      "maxHp": 18,
+      "hp": 0,
+      "experience": 0,
+      "nature": "성실",
+      "met": "새잎 서쪽길"
+    },
+    {
+      "species": 399,
+      "level": 3,
+      "maxHp": 18,
+      "hp": 0,
+      "experience": 0,
+      "nature": "성실",
+      "met": "새잎 서쪽길"
+    },
+    {
+      "species": 399,
+      "level": 3,
+      "maxHp": 18,
+      "hp": 0,
+      "experience": 0,
+      "nature": "성실",
+      "met": "새잎 서쪽길"
+    }
+  ],
+  "inventory": {
+    "pokeBalls": 3,
+    "potions": 0
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 123,
+  "healingPoint": "home",
+  "steps": 0,
+  "seconds": 0
+}

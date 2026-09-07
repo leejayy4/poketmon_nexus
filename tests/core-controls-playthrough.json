@@ -1,0 +1,121 @@
+{
+  "url": "http://localhost:5173/?qa=core-controls-20260907",
+  "baseline": {
+    "action": "ArrowRight+x",
+    "player": {
+      "x": 7,
+      "y": 6,
+      "facing": "right"
+    },
+    "steps": 1,
+    "panel": "field"
+  },
+  "checks": [
+    {
+      "check": "walking-menu",
+      "player": {
+        "x": 8,
+        "y": 6,
+        "facing": "right"
+      },
+      "panel": "menu",
+      "steps": 2
+    },
+    {
+      "check": "menu-direction-does-not-walk",
+      "steps": 2,
+      "panel": "field",
+      "player": {
+        "x": 8,
+        "y": 6
+      }
+    },
+    {
+      "check": "walking-investigation",
+      "player": {
+        "x": 6,
+        "y": 4,
+        "facing": "up"
+      },
+      "steps": 6,
+      "dialogue": {
+        "speaker": "창문",
+        "pages": [
+          "햇살이 방 안으로 들어온다.\n마을은 벌써 하루를 시작한 모양이다."
+        ],
+        "page": 0,
+        "shown": 37.8,
+        "selected": 0
+      }
+    },
+    {
+      "check": "dialogue-direction-does-not-walk",
+      "panel": "field",
+      "dialogue": null,
+      "player": {
+        "x": 6,
+        "y": 4,
+        "facing": "up"
+      },
+      "steps": 6
+    },
+    {
+      "check": "walking-map",
+      "player": {
+        "x": 6,
+        "y": 5,
+        "facing": "down"
+      },
+      "steps": 7,
+      "fieldMap": true
+    },
+    {
+      "check": "door-priority",
+      "map": "home",
+      "player": {
+        "x": 10,
+        "y": 4,
+        "facing": "down"
+      },
+      "panel": "field",
+      "dialogue": null,
+      "steps": 10,
+      "transition": 0
+    },
+    {
+      "check": "reload",
+      "map": "home",
+      "player": {
+        "x": 10,
+        "y": 4,
+        "facing": "down"
+      },
+      "panel": "field",
+      "steps": 10,
+      "flags": {}
+    }
+  ],
+  "finalSave": {
+    "version": 1,
+    "worldRevision": 18,
+    "map": "home",
+    "player": {
+      "x": 10,
+      "y": 4,
+      "facing": "down"
+    },
+    "flags": {},
+    "party": [],
+    "inventory": {
+      "pokeBalls": 0,
+      "potions": 0
+    },
+    "badges": [],
+    "keyItems": [],
+    "money": 0,
+    "healingPoint": "home",
+    "steps": 10,
+    "seconds": 29.724684000095714
+  },
+  "logs": []
+}

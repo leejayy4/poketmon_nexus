@@ -1,0 +1,281 @@
+{
+  "qa": "gym-preparation-20260907-01",
+  "method": "Public file import, keyboard/touch interaction, screenshots and read-only data-state. Summaries retained where REPL array rebinding did not retain the intermediate snapshot. Progress comparisons exclude elapsed seconds.",
+  "observations": [
+    {
+      "label": "underlevel-choice",
+      "screenshot": "03-underlevel-choice.png",
+      "result": "Roark team Geodude Lv10, Onix Lv11, Cranidos Lv12; available 1/1, highest Lv5, recommended Lv8, potions 0. Challenge remains available.",
+      "state": {
+        "gymPreview": "roark",
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 0,
+          "seconds": 25.282199999999623
+        },
+        "panel": "field",
+        "dialogue": {
+          "speaker": "관장 강석",
+          "pages": [
+            "나는 이 체육관의 관장 강석이야.\n파트너와 쌓은 믿음을 보여 줘!",
+            "꼬마돌, 롱스톤, 두개도스!\n준비가 되었다면 도전해 볼래?",
+            "권장 레벨은 8이야. 풀밭에서\n연습하거나 지금 도전해도 좋아."
+          ],
+          "page": 2,
+          "shown": 223.192799999999,
+          "selected": 0,
+          "choices": [
+            "도전한다",
+            "준비하고 온다"
+          ]
+        },
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "label": "cancel-preserves-save",
+      "screenshot": "04-cancel-preserves-save.png",
+      "result": "Touch prepare-and-return cleared dialogue/preview, did not start battle, and preserved progress except elapsed seconds."
+    },
+    {
+      "label": "underlevel-battle-start",
+      "screenshot": "05-underlevel-battle-start.png",
+      "result": "Touch challenge started Roark with Geodude species 74 and Squirtle Lv5, cleared preview, and preserved HP/items/progress."
+    },
+    {
+      "label": "injured-party-advice",
+      "screenshot": "06-injured-party-advice.png",
+      "result": "Squirtle HP7 and fainted Bidoof: available 1/2, highest/recommended Lv8, recovery needed 2, potions 2; dialogue recommends the center."
+    },
+    {
+      "label": "keyboard-cancel",
+      "screenshot": "07-keyboard-cancel.png",
+      "result": "X cleared preview and dialogue without starting battle."
+    },
+    {
+      "label": "missing-badge",
+      "screenshot": "08-missing-badge.png",
+      "result": "Gardenia named Roark and Coal Badge as the missing requirement; no preview or battle."
+    },
+    {
+      "label": "ready-party-preview",
+      "screenshot": "09-ready-party-preview.png",
+      "result": "Full-health Squirtle/Bidoof Lv8: available 2/2, highest/recommended Lv8, recovery needed 0, potions 2."
+    },
+    {
+      "label": "reload-clears-preview",
+      "screenshot": "10-reload-clears-preview.png",
+      "result": "Saved and reloaded: field restored with no preview/dialogue/battle and identical progress excluding elapsed seconds.",
+      "state": {
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": "Z 말걸기 · 관장 강석",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 0,
+              "hp": 29,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 8,
+              "hp": 33,
+              "maxHp": 33,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 0,
+          "seconds": 136.13378600004432
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    }
+  ]
+}

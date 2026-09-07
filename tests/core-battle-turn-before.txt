@@ -1,0 +1,123 @@
+✖ counterattack declares the move before changing displayed HP for every action that spends a turn (8.0192ms)
+✖ lethal counter keeps the outgoing Pokemon alive through the attack declaration, then shows exact loss before fainting (0.8639ms)
+✖ finishing blow reports actual HP loss in hint, dialogue and effect while preserving victory XP (0.6954ms)
+✖ low-HP counter previews report at most the HP the selected Pokemon can lose (1.1156ms)
+✖ counter playback and reload never apply damage or item use for a second time (1.8734ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 495.7237
+
+✖ failing tests:
+
+test at tests\battle-counter-order.test.ts:12:1
+✖ counterattack declares the move before changing displayed HP for every action that spends a turn (8.0192ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(!t.pages[attack].includes('피해'))
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-counter-order.test.ts:16:23)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\battle-counter-order.test.ts:25:1
+✖ lethal counter keeps the outgoing Pokemon alive through the attack declaration, then shows exact loss before fainting (0.8639ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 2
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-counter-order.test.ts:28:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\battle-counter-order.test.ts:34:1
+✖ finishing blow reports actual HP loss in hint, dialogue and effect while preserving victory XP (0.6954ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '상대에게 6 피해'
+  - '상대에게 1 피해'
+          ^
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-counter-order.test.ts:36:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '상대에게 6 피해',
+    expected: '상대에게 1 피해',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\battle-counter-order.test.ts:42:1
+✖ low-HP counter previews report at most the HP the selected Pokemon can lose (1.1156ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(battleHint(s,b)[1].endsWith('HP -1'))
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-counter-order.test.ts:44:16)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\battle-counter-order.test.ts:51:1
+✖ counter playback and reload never apply damage or item use for a second time (1.8734ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  16 !== 20
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\battle-counter-order.test.ts:55:34)
+      at dom (C:\my_play\poketmon_demo\tests\battle-counter-order.test.ts:10:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-counter-order.test.ts:51:89)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 16,
+    expected: 20,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

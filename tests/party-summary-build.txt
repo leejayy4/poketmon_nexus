@@ -1,0 +1,13 @@
+
+> first-partner-platinum@0.1.0 build
+> tsc && vite build
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 50 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   2.09 kB │ gzip:  1.09 kB
+dist/assets/index-C0Y0wOUK.css    9.12 kB │ gzip:  2.94 kB
+dist/assets/index-BTumdnku.js   215.28 kB │ gzip: 76.72 kB
+✓ built in 606ms

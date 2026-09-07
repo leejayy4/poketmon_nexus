@@ -1,0 +1,963 @@
+{
+  "qa": "battle-healing-20260907-01",
+  "fixture": "tests/battle-healing-save.json",
+  "observations": [
+    {
+      "label": "가방 상처약에서 회복 대상 선택, 소비 없음",
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "menu": "heal",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 20,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 2,
+          "maxHp": 18,
+          "experience": 20,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 6,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 5,
+        "potions": 2
+      },
+      "dialogue": null
+    },
+    {
+      "label": "6번 대기 포켓몬 선택: 회복량과 출전 반격 예측",
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "menu": "heal",
+        "selected": 5,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 20,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 2,
+          "maxHp": 18,
+          "experience": 20,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 6,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 5,
+        "potions": 2
+      },
+      "dialogue": null
+    },
+    {
+      "label": "회복 대상 → 가방 → 행동 취소: HP·약 유지",
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 20,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 2,
+          "maxHp": 18,
+          "experience": 20,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 6,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 5,
+        "potions": 2
+      },
+      "dialogue": null
+    },
+    {
+      "label": "기절 대상 거절: HP·약·반격 없음",
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 20,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 2,
+          "maxHp": 18,
+          "experience": 20,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 6,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 5,
+        "potions": 2
+      },
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "쓰러진 포켓몬에게는 쓸 수 없다.\n센터에서 회복해 주자."
+        ],
+        "page": 0,
+        "shown": 15.001199999999894,
+        "selected": 0
+      }
+    },
+    {
+      "label": "만피 대상 거절: HP·약·반격 없음",
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 20,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 2,
+          "maxHp": 18,
+          "experience": 20,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 6,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 5,
+        "potions": 2
+      },
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "아직 상처약을 쓸 필요가 없다."
+        ],
+        "page": 0,
+        "shown": 7.7940000000000005,
+        "selected": 0
+      }
+    },
+    {
+      "label": "포인터로 6번 회복: 비버니 HP 18, 꼬부기 HP 16",
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 16,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 2,
+          "maxHp": 18,
+          "experience": 20,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 5,
+        "potions": 1
+      },
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "상처약을 사용했다!\n비버니의 HP가 12 회복되었다.",
+          "야생 비버니의 몸통박치기!\n꼬부기에게 4의 피해!"
+        ],
+        "page": 0,
+        "shown": 11.995199999999896,
+        "selected": 0
+      }
+    },
+    {
+      "label": "키보드로 2번 회복: 비버니 HP 18, 꼬부기 HP 12",
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 12,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 20,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 5,
+        "potions": 0
+      },
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "상처약을 사용했다!\n비버니의 HP가 16 회복되었다.",
+          "야생 비버니의 몸통박치기!\n꼬부기에게 4의 피해!"
+        ],
+        "page": 0,
+        "shown": 30.6071999999999,
+        "selected": 0
+      }
+    },
+    {
+      "label": "상처약 부족 거절: HP·약·반격 없음",
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 12,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 20,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 5,
+        "potions": 0
+      },
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "상처약이 없다. 길 안내원에게\n도구를 보충받을 수 있다."
+        ],
+        "page": 0,
+        "shown": 22.798800000000114,
+        "selected": 0
+      }
+    },
+    {
+      "label": "승리: 회복만 받은 대기 포켓몬은 경험치 유지",
+      "battle": null,
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 30,
+          "hp": 4,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 20,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 5,
+        "potions": 0
+      },
+      "dialogue": null
+    },
+    {
+      "label": "재접속 후 회복된 HP·약·파티 순서 유지",
+      "battle": null,
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 30,
+          "hp": 4,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 20,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 0,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 5,
+        "potions": 0
+      },
+      "dialogue": null
+    }
+  ],
+  "consoleAfterReload": []
+}

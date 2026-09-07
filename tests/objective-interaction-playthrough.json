@@ -1,0 +1,1849 @@
+{
+  "qa": "objective-interaction-20260907-01",
+  "initialIssue": "Developer panel assumed every walking route had a warp. Fixed and regression-tested before these observations.",
+  "observations": [
+    {
+      "label": "center-counter-route",
+      "state": {
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": true,
+        "followingObjective": true,
+        "roaming": null,
+        "navigation": {
+          "destination": "tour_oreburgh_center",
+          "name": "무쇠시티 · 포켓몬센터",
+          "status": "walking",
+          "maps": [
+            "tour_oreburgh_center"
+          ],
+          "tiles": [
+            {
+              "x": 8,
+              "y": 10
+            },
+            {
+              "x": 8,
+              "y": 9
+            },
+            {
+              "x": 8,
+              "y": 8
+            },
+            {
+              "x": 8,
+              "y": 7
+            }
+          ],
+          "nextName": null,
+          "exit": null,
+          "interaction": {
+            "x": 8,
+            "y": 6,
+            "facing": "up"
+          }
+        },
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "tour_oreburgh_center",
+          "player": {
+            "x": 8,
+            "y": 10,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 1,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 40.75159200014286,
+          "tourVisited": [
+            "tour_oreburgh",
+            "tour_oreburgh_center"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################",
+            "################",
+            "################",
+            "##............##",
+            "##.##......##.##",
+            "##.##......##.##",
+            "##....####....##",
+            "##............##",
+            "##.###........##",
+            "##.###........##",
+            "##............##",
+            "##............##",
+            "########.#######",
+            "########.#######"
+          ],
+          "npcs": [
+            {
+              "id": "tourHost",
+              "x": 8,
+              "y": 5
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 13,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 8,
+                "y": 9
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 10,
+          "facing": "down"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/objective-interaction-screenshots/01-center-counter-route.png"
+    },
+    {
+      "label": "counter-speaking-position",
+      "state": {
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": true,
+        "followingObjective": true,
+        "roaming": null,
+        "navigation": {
+          "destination": "tour_oreburgh_center",
+          "name": "무쇠시티 · 포켓몬센터",
+          "status": "arrived",
+          "maps": [
+            "tour_oreburgh_center"
+          ],
+          "tiles": [
+            {
+              "x": 8,
+              "y": 7
+            }
+          ],
+          "nextName": null,
+          "exit": null,
+          "interaction": {
+            "x": 8,
+            "y": 6,
+            "facing": "up"
+          }
+        },
+        "interactionHint": "Z 말걸기 · 간호사",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "tour_oreburgh_center",
+          "player": {
+            "x": 8,
+            "y": 7,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 1,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 3,
+          "seconds": 42.40159200014281,
+          "tourVisited": [
+            "tour_oreburgh",
+            "tour_oreburgh_center"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################",
+            "################",
+            "################",
+            "##............##",
+            "##.##......##.##",
+            "##.##......##.##",
+            "##....####....##",
+            "##............##",
+            "##.###........##",
+            "##.###........##",
+            "##............##",
+            "##............##",
+            "########.#######",
+            "########.#######"
+          ],
+          "npcs": [
+            {
+              "id": "tourHost",
+              "x": 8,
+              "y": 5
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 13,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 8,
+                "y": 9
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 7,
+          "facing": "up"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/objective-interaction-screenshots/02-counter-speaking-position.png"
+    },
+    {
+      "label": "healed-gym-route",
+      "state": {
+        "battleEffect": null,
+        "dialogueElapsed": 0.3833000000000029,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": true,
+        "followingObjective": true,
+        "roaming": null,
+        "navigation": {
+          "destination": "oreburgh_gym",
+          "name": "무쇠체육관",
+          "status": "walking",
+          "maps": [
+            "tour_oreburgh_center",
+            "tour_oreburgh",
+            "oreburgh_gym"
+          ],
+          "tiles": [
+            {
+              "x": 8,
+              "y": 7
+            },
+            {
+              "x": 8,
+              "y": 8
+            },
+            {
+              "x": 8,
+              "y": 9
+            },
+            {
+              "x": 8,
+              "y": 10
+            },
+            {
+              "x": 8,
+              "y": 11
+            },
+            {
+              "x": 8,
+              "y": 12
+            },
+            {
+              "x": 8,
+              "y": 13
+            }
+          ],
+          "nextName": "무쇠시티",
+          "exit": {
+            "x": 8,
+            "y": 13,
+            "to": "tour_oreburgh",
+            "spawn": {
+              "x": 8,
+              "y": 9
+            },
+            "entry": "down",
+            "facing": "down"
+          }
+        },
+        "interactionHint": "Z 말걸기 · 간호사",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "tour_oreburgh_center",
+          "player": {
+            "x": 8,
+            "y": 7,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 3,
+          "seconds": 43.78509200014283,
+          "tourVisited": [
+            "tour_oreburgh",
+            "tour_oreburgh_center"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################",
+            "################",
+            "################",
+            "##............##",
+            "##.##......##.##",
+            "##.##......##.##",
+            "##....####....##",
+            "##............##",
+            "##.###........##",
+            "##.###........##",
+            "##............##",
+            "##............##",
+            "########.#######",
+            "########.#######"
+          ],
+          "npcs": [
+            {
+              "id": "tourHost",
+              "x": 8,
+              "y": 5
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 13,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 8,
+                "y": 9
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 7,
+          "facing": "up"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/objective-interaction-screenshots/03-healed-gym-route.png"
+    },
+    {
+      "label": "city-researcher-route",
+      "state": {
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": true,
+        "followingObjective": true,
+        "roaming": {
+          "position": {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          "moving": false,
+          "tiles": [
+            {
+              "id": "tourPokemon",
+              "name": "피카츄",
+              "species": "pikachu",
+              "sprite": "field-pikachu",
+              "x": 22,
+              "y": 16,
+              "facing": "down",
+              "dialogue": "tourPokemon",
+              "pages": [
+                "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+              ]
+            },
+            {
+              "x": 23,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 17
+            },
+            {
+              "x": 21,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 16
+            },
+            {
+              "x": 23,
+              "y": 17
+            },
+            {
+              "x": 22,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 15
+            },
+            {
+              "x": 23,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 18
+            },
+            {
+              "x": 20,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 18
+            },
+            {
+              "x": 24,
+              "y": 14
+            },
+            {
+              "x": 20,
+              "y": 18
+            }
+          ]
+        },
+        "navigation": {
+          "destination": "tour_veilstone",
+          "name": "장막시티",
+          "status": "walking",
+          "maps": [
+            "tour_veilstone"
+          ],
+          "tiles": [
+            {
+              "x": 14,
+              "y": 11
+            },
+            {
+              "x": 15,
+              "y": 11
+            },
+            {
+              "x": 16,
+              "y": 11
+            },
+            {
+              "x": 16,
+              "y": 12
+            },
+            {
+              "x": 16,
+              "y": 13
+            }
+          ],
+          "nextName": null,
+          "exit": null,
+          "interaction": {
+            "x": 16,
+            "y": 14,
+            "facing": "down"
+          }
+        },
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "tour_veilstone",
+          "player": {
+            "x": 14,
+            "y": 11,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [
+            "BADGE-GS01",
+            "BADGE-GS02",
+            "BADGE-GS03",
+            "BADGE-GS04"
+          ],
+          "keyItems": [
+            "TM-stealth-rock",
+            "TM-grass-knot",
+            "TM-shadow-ball",
+            "TM-drain-punch"
+          ],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 0.5496999999999973,
+          "tourVisited": [
+            "tour_veilstone"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "########################################",
+            "########################################",
+            "##############.#########################",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##....................................##",
+            "##....#####.......#####...............##",
+            "##....##.##.......#####...............##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...#####................##########..##",
+            "##........................##########..##",
+            "##..............###.......##########..##",
+            "##..............###.......#####.####..##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...##.##............................##",
+            "##....................#####...........##",
+            "##...####.............#####...........##",
+            "##...####.............................##",
+            "##...####.............................##",
+            "##...####.............................##",
+            "##...####.......#.....................##",
+            "##....................................##",
+            "##############.#########################",
+            "########################################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "id": "tourResident0",
+              "x": 10,
+              "y": 13
+            },
+            {
+              "id": "tourResident1",
+              "x": 20,
+              "y": 12
+            },
+            {
+              "id": "tourPokemon",
+              "x": 22,
+              "y": 16
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 8,
+              "to": "tour_veilstone_center",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 31,
+              "y": 20,
+              "to": "tour_veilstone_hall",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 14,
+              "y": 34,
+              "to": "tour_hearthome",
+              "spawn": {
+                "x": 31,
+                "y": 12
+              },
+              "entry": "down",
+              "facing": "left"
+            },
+            {
+              "x": 14,
+              "y": 2,
+              "to": "tour_sunyshore",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "up",
+              "facing": "down"
+            },
+            {
+              "x": 7,
+              "y": 26,
+              "to": "veilstone_gym",
+              "spawn": {
+                "x": 8,
+                "y": 13
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 14,
+          "y": 11,
+          "facing": "down"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/objective-interaction-screenshots/04-city-researcher-route.png"
+    },
+    {
+      "label": "researcher-speaking-position",
+      "state": {
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": true,
+        "followingObjective": true,
+        "roaming": {
+          "position": {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 22,
+            "y": 16,
+            "facing": "up",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          "moving": false,
+          "tiles": [
+            {
+              "id": "tourPokemon",
+              "name": "피카츄",
+              "species": "pikachu",
+              "sprite": "field-pikachu",
+              "x": 22,
+              "y": 16,
+              "facing": "down",
+              "dialogue": "tourPokemon",
+              "pages": [
+                "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+              ]
+            },
+            {
+              "x": 23,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 17
+            },
+            {
+              "x": 21,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 16
+            },
+            {
+              "x": 23,
+              "y": 17
+            },
+            {
+              "x": 22,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 15
+            },
+            {
+              "x": 23,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 18
+            },
+            {
+              "x": 20,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 18
+            },
+            {
+              "x": 24,
+              "y": 14
+            },
+            {
+              "x": 20,
+              "y": 18
+            }
+          ]
+        },
+        "navigation": {
+          "destination": "tour_veilstone",
+          "name": "장막시티",
+          "status": "arrived",
+          "maps": [
+            "tour_veilstone"
+          ],
+          "tiles": [
+            {
+              "x": 16,
+              "y": 13
+            }
+          ],
+          "nextName": null,
+          "exit": null,
+          "interaction": {
+            "x": 16,
+            "y": 14,
+            "facing": "down"
+          }
+        },
+        "interactionHint": "Z 말걸기 · 관측 연구원",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "tour_veilstone",
+          "player": {
+            "x": 16,
+            "y": 13,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [
+            "BADGE-GS01",
+            "BADGE-GS02",
+            "BADGE-GS03",
+            "BADGE-GS04"
+          ],
+          "keyItems": [
+            "TM-stealth-rock",
+            "TM-grass-knot",
+            "TM-shadow-ball",
+            "TM-drain-punch"
+          ],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 4,
+          "seconds": 21.565399999999865,
+          "tourVisited": [
+            "tour_veilstone"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "########################################",
+            "########################################",
+            "##############.#########################",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##....................................##",
+            "##....#####.......#####...............##",
+            "##....##.##.......#####...............##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...#####................##########..##",
+            "##........................##########..##",
+            "##..............###.......##########..##",
+            "##..............###.......#####.####..##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...##.##............................##",
+            "##....................#####...........##",
+            "##...####.............#####...........##",
+            "##...####.............................##",
+            "##...####.............................##",
+            "##...####.............................##",
+            "##...####.......#.....................##",
+            "##....................................##",
+            "##############.#########################",
+            "########################################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "id": "tourResident0",
+              "x": 10,
+              "y": 13
+            },
+            {
+              "id": "tourResident1",
+              "x": 20,
+              "y": 12
+            },
+            {
+              "id": "tourPokemon",
+              "x": 22,
+              "y": 16
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 8,
+              "to": "tour_veilstone_center",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 31,
+              "y": 20,
+              "to": "tour_veilstone_hall",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 14,
+              "y": 34,
+              "to": "tour_hearthome",
+              "spawn": {
+                "x": 31,
+                "y": 12
+              },
+              "entry": "down",
+              "facing": "left"
+            },
+            {
+              "x": 14,
+              "y": 2,
+              "to": "tour_sunyshore",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "up",
+              "facing": "down"
+            },
+            {
+              "x": 7,
+              "y": 26,
+              "to": "veilstone_gym",
+              "spawn": {
+                "x": 8,
+                "y": 13
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 16,
+          "y": 13,
+          "facing": "down"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/objective-interaction-screenshots/05-researcher-speaking-position.png"
+    },
+    {
+      "label": "collected-next-city-route",
+      "state": {
+        "battleEffect": null,
+        "dialogueElapsed": 0.3500000000000001,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": true,
+        "followingObjective": true,
+        "roaming": {
+          "position": {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 22.26031250000001,
+            "y": 16,
+            "facing": "right",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          "moving": true,
+          "tiles": [
+            {
+              "id": "tourPokemon",
+              "name": "피카츄",
+              "species": "pikachu",
+              "sprite": "field-pikachu",
+              "x": 22,
+              "y": 16,
+              "facing": "down",
+              "dialogue": "tourPokemon",
+              "pages": [
+                "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+              ]
+            },
+            {
+              "x": 23,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 17
+            },
+            {
+              "x": 21,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 16
+            },
+            {
+              "x": 23,
+              "y": 17
+            },
+            {
+              "x": 22,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 15
+            },
+            {
+              "x": 23,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 18
+            },
+            {
+              "x": 20,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 18
+            },
+            {
+              "x": 24,
+              "y": 14
+            },
+            {
+              "x": 20,
+              "y": 18
+            }
+          ]
+        },
+        "navigation": {
+          "destination": "tour_jubilife",
+          "name": "축복시티",
+          "status": "walking",
+          "maps": [
+            "tour_veilstone",
+            "tour_hearthome",
+            "tour_coronet",
+            "tour_eterna",
+            "tour_eterna_forest",
+            "tour_jubilife"
+          ],
+          "tiles": [
+            {
+              "x": 16,
+              "y": 13
+            },
+            {
+              "x": 15,
+              "y": 13
+            },
+            {
+              "x": 15,
+              "y": 14
+            },
+            {
+              "x": 15,
+              "y": 15
+            },
+            {
+              "x": 15,
+              "y": 16
+            },
+            {
+              "x": 15,
+              "y": 17
+            },
+            {
+              "x": 15,
+              "y": 18
+            },
+            {
+              "x": 15,
+              "y": 19
+            },
+            {
+              "x": 15,
+              "y": 20
+            },
+            {
+              "x": 15,
+              "y": 21
+            },
+            {
+              "x": 15,
+              "y": 22
+            },
+            {
+              "x": 15,
+              "y": 23
+            },
+            {
+              "x": 15,
+              "y": 24
+            },
+            {
+              "x": 15,
+              "y": 25
+            },
+            {
+              "x": 15,
+              "y": 26
+            },
+            {
+              "x": 15,
+              "y": 27
+            },
+            {
+              "x": 15,
+              "y": 28
+            },
+            {
+              "x": 15,
+              "y": 29
+            },
+            {
+              "x": 15,
+              "y": 30
+            },
+            {
+              "x": 15,
+              "y": 31
+            },
+            {
+              "x": 15,
+              "y": 32
+            },
+            {
+              "x": 15,
+              "y": 33
+            },
+            {
+              "x": 14,
+              "y": 33
+            },
+            {
+              "x": 14,
+              "y": 34
+            }
+          ],
+          "nextName": "연고시티",
+          "exit": {
+            "x": 14,
+            "y": 34,
+            "to": "tour_hearthome",
+            "spawn": {
+              "x": 31,
+              "y": 12
+            },
+            "entry": "down",
+            "facing": "left"
+          }
+        },
+        "interactionHint": "Z 말걸기 · 관측 연구원",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "tour_veilstone",
+          "player": {
+            "x": 16,
+            "y": 13,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true,
+            "observationCollected": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [
+            "BADGE-GS01",
+            "BADGE-GS02",
+            "BADGE-GS03",
+            "BADGE-GS04"
+          ],
+          "keyItems": [
+            "TM-stealth-rock",
+            "TM-grass-knot",
+            "TM-shadow-ball",
+            "TM-drain-punch"
+          ],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 4,
+          "seconds": 22.932099999999814,
+          "tourVisited": [
+            "tour_veilstone"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "########################################",
+            "########################################",
+            "##############.#########################",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##....................................##",
+            "##....#####.......#####...............##",
+            "##....##.##.......#####...............##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...#####................##########..##",
+            "##........................##########..##",
+            "##..............###.......##########..##",
+            "##..............###.......#####.####..##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...##.##............................##",
+            "##....................#####...........##",
+            "##...####.............#####...........##",
+            "##...####.............................##",
+            "##...####.............................##",
+            "##...####.............................##",
+            "##...####.......#.....................##",
+            "##....................................##",
+            "##############.#########################",
+            "########################################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "id": "tourResident0",
+              "x": 10,
+              "y": 13
+            },
+            {
+              "id": "tourResident1",
+              "x": 20,
+              "y": 12
+            },
+            {
+              "id": "tourPokemon",
+              "x": 22,
+              "y": 16
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 8,
+              "to": "tour_veilstone_center",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 31,
+              "y": 20,
+              "to": "tour_veilstone_hall",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 14,
+              "y": 34,
+              "to": "tour_hearthome",
+              "spawn": {
+                "x": 31,
+                "y": 12
+              },
+              "entry": "down",
+              "facing": "left"
+            },
+            {
+              "x": 14,
+              "y": 2,
+              "to": "tour_sunyshore",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "up",
+              "facing": "down"
+            },
+            {
+              "x": 7,
+              "y": 26,
+              "to": "veilstone_gym",
+              "spawn": {
+                "x": 8,
+                "y": 13
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [
+            {
+              "x": 23,
+              "y": 16
+            }
+          ],
+          "terrain": []
+        },
+        "position": {
+          "x": 16,
+          "y": 13,
+          "facing": "down"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/objective-interaction-screenshots/06-collected-next-city-route.png"
+    },
+    {
+      "label": "reload-preserves-story",
+      "state": {
+        "battleEffect": null,
+        "dialogueElapsed": 0,
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": {
+          "position": {
+            "id": "tourPokemon",
+            "name": "피카츄",
+            "species": "pikachu",
+            "sprite": "field-pikachu",
+            "x": 22,
+            "y": 16,
+            "facing": "down",
+            "dialogue": "tourPokemon",
+            "pages": [
+              "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+            ]
+          },
+          "moving": false,
+          "tiles": [
+            {
+              "id": "tourPokemon",
+              "name": "피카츄",
+              "species": "pikachu",
+              "sprite": "field-pikachu",
+              "x": 22,
+              "y": 16,
+              "facing": "down",
+              "dialogue": "tourPokemon",
+              "pages": [
+                "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+              ]
+            },
+            {
+              "x": 23,
+              "y": 16
+            },
+            {
+              "x": 22,
+              "y": 17
+            },
+            {
+              "x": 21,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 16
+            },
+            {
+              "x": 23,
+              "y": 17
+            },
+            {
+              "x": 22,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 16
+            },
+            {
+              "x": 24,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 15
+            },
+            {
+              "x": 23,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 18
+            },
+            {
+              "x": 20,
+              "y": 17
+            },
+            {
+              "x": 24,
+              "y": 18
+            },
+            {
+              "x": 24,
+              "y": 14
+            },
+            {
+              "x": 20,
+              "y": 18
+            }
+          ]
+        },
+        "navigation": null,
+        "interactionHint": "Z 말걸기 · 관측 연구원",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "tour_veilstone",
+          "player": {
+            "x": 16,
+            "y": 13,
+            "facing": "down"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true,
+            "observationCollected": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [
+            "BADGE-GS01",
+            "BADGE-GS02",
+            "BADGE-GS03",
+            "BADGE-GS04"
+          ],
+          "keyItems": [
+            "TM-stealth-rock",
+            "TM-grass-knot",
+            "TM-shadow-ball",
+            "TM-drain-punch"
+          ],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 4,
+          "seconds": 23.512500000095173,
+          "tourVisited": [
+            "tour_veilstone"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "########################################",
+            "########################################",
+            "##############.#########################",
+            "##....................................##",
+            "##..............#.....................##",
+            "##....................................##",
+            "##....................................##",
+            "##....#####.......#####...............##",
+            "##....##.##.......#####...............##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...#####................##########..##",
+            "##........................##########..##",
+            "##..............###.......##########..##",
+            "##..............###.......#####.####..##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##....................................##",
+            "##...#####............................##",
+            "##...##.##............................##",
+            "##....................#####...........##",
+            "##...####.............#####...........##",
+            "##...####.............................##",
+            "##...####.............................##",
+            "##...####.............................##",
+            "##...####.......#.....................##",
+            "##....................................##",
+            "##############.#########################",
+            "########################################"
+          ],
+          "npcs": [
+            {
+              "id": "tourGuide",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "id": "tourResident0",
+              "x": 10,
+              "y": 13
+            },
+            {
+              "id": "tourResident1",
+              "x": 20,
+              "y": 12
+            },
+            {
+              "id": "tourPokemon",
+              "x": 22,
+              "y": 16
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 8,
+              "to": "tour_veilstone_center",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 31,
+              "y": 20,
+              "to": "tour_veilstone_hall",
+              "spawn": {
+                "x": 8,
+                "y": 10
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 14,
+              "y": 34,
+              "to": "tour_hearthome",
+              "spawn": {
+                "x": 31,
+                "y": 12
+              },
+              "entry": "down",
+              "facing": "left"
+            },
+            {
+              "x": 14,
+              "y": 2,
+              "to": "tour_sunyshore",
+              "spawn": {
+                "x": 14,
+                "y": 3
+              },
+              "entry": "up",
+              "facing": "down"
+            },
+            {
+              "x": 7,
+              "y": 26,
+              "to": "veilstone_gym",
+              "spawn": {
+                "x": 8,
+                "y": 13
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 16,
+          "y": 13,
+          "facing": "down"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/objective-interaction-screenshots/07-reload-preserves-story.png"
+    }
+  ]
+}

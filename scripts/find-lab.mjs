@@ -1,0 +1,2 @@
+const h=await(await fetch('https://bulbapedia.bulbagarden.net/wiki/Sandgem_Town')).text();console.log([...h.matchAll(/(?:src|href)="([^"]+(?:png|jpg)[^"]*)"/g)].map(x=>x[1]).filter(x=>/lab|Lab|House|house/.test(x)).slice(0,40));
+const tree=JSON.parse(await(await import('node:fs/promises')).readFile('scripts/platinum-tree.json','utf8')).tree; console.log(tree.filter(x=>/res\//.test(x.path)&&/bedroom|furniture|land_data|build_model|map_tex|area_data/.test(x.path)).map(x=>x.path).slice(0,40).join('\n'));

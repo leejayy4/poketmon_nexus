@@ -1,0 +1,3330 @@
+{
+  "version": "0.1",
+  "items": [
+    {"category":"FOSSIL","slug":"helix-fossil","effect":"조개화석을 박물관에서 암나이트로 복원. 복원 확정 때 소모","buy":0,"unlock":"CH03","node":"K15"},
+    {"category":"FOSSIL","slug":"dome-fossil","effect":"껍질화석을 박물관에서 투구로 복원. 복원 확정 때 소모","buy":0,"unlock":"CH03","node":"K15"},
+    {"category":"FOSSIL","slug":"old-amber","effect":"비밀의호박을 박물관에서 프테라로 복원. 복원 확정 때 소모","buy":0,"unlock":"CH03","node":"K04"},
+    {"category":"FOSSIL","slug":"root-fossil","effect":"뿌리화석을 박물관에서 릴링으로 복원. 복원 확정 때 소모","buy":0,"unlock":"CH03","node":"K15"},
+    {"category":"FOSSIL","slug":"claw-fossil","effect":"발톱화석을 박물관에서 아노딥스로 복원. 복원 확정 때 소모","buy":0,"unlock":"CH03","node":"K15"},
+    {"category":"FOSSIL","slug":"skull-fossil","effect":"두개의화석을 박물관에서 두개도스로 복원. 복원 확정 때 소모","buy":0,"unlock":"CH03","node":"K04"},
+    {"category":"FOSSIL","slug":"armor-fossil","effect":"방패의화석을 박물관에서 방패톱스로 복원. 복원 확정 때 소모","buy":0,"unlock":"CH03","node":"K04"},
+    {"category":"FOSSIL","slug":"cover-fossil","effect":"덮개화석을 박물관에서 프로토가로 복원. 복원 확정 때 소모","buy":0,"unlock":"CH06","node":"U20"},
+    {"category":"FOSSIL","slug":"plume-fossil","effect":"깃털화석을 박물관에서 아켄으로 복원. 복원 확정 때 소모","buy":0,"unlock":"CH06","node":"U20"},
+    {
+      "category": "BALL",
+      "slug": "poke-ball",
+      "effect": "기본 포획 보정 1배",
+      "buy": 200,
+      "unlock": "CH01",
+      "node": "S03"
+    },
+    {
+      "category": "BALL",
+      "slug": "great-ball",
+      "effect": "포획 보정 1.5배",
+      "buy": 600,
+      "unlock": "GS02",
+      "node": "S06"
+    },
+    {
+      "category": "BALL",
+      "slug": "ultra-ball",
+      "effect": "포획 보정 2배",
+      "buy": 1200,
+      "unlock": "CH03",
+      "node": "K01"
+    },
+    {
+      "category": "BALL",
+      "slug": "premier-ball",
+      "effect": "기본 1배, 일반 볼 10개 구매 시 1개 보너스",
+      "buy": 0,
+      "unlock": "CH01",
+      "node": "S03"
+    },
+    {
+      "category": "BALL",
+      "slug": "heal-ball",
+      "effect": "포획 성공 후 대상 HP·주요 상태 회복, 1배",
+      "buy": 300,
+      "unlock": "CH01",
+      "node": "S03"
+    },
+    {
+      "category": "BALL",
+      "slug": "net-ball",
+      "effect": "물 또는 벌레 타입 대상 3.5배, 그 외 1배",
+      "buy": 1000,
+      "unlock": "CH03",
+      "node": "K01"
+    },
+    {
+      "category": "BALL",
+      "slug": "dive-ball",
+      "effect": "수면·낚시 전투 3.5배, 그 외 1배",
+      "buy": 1000,
+      "unlock": "CH03",
+      "node": "K01"
+    },
+    {
+      "category": "BALL",
+      "slug": "nest-ball",
+      "effect": "야생 레벨 1~19:3배, 20~29:2배, 그 외 1배인 NEXUS 간소화",
+      "buy": 1000,
+      "unlock": "CH03",
+      "node": "K07"
+    },
+    {
+      "category": "BALL",
+      "slug": "repeat-ball",
+      "effect": "이미 도감에 소유 등록한 종 3.5배, 그 외 1배",
+      "buy": 1000,
+      "unlock": "CH03",
+      "node": "K07"
+    },
+    {
+      "category": "BALL",
+      "slug": "timer-ball",
+      "effect": "첫 턴 1배, 경과 턴마다 0.3 증가, 최대 4배",
+      "buy": 1000,
+      "unlock": "CH05",
+      "node": "J01"
+    },
+    {
+      "category": "BALL",
+      "slug": "luxury-ball",
+      "effect": "기본 1배, 해당 개체 친밀도 획득 보너스는 +1",
+      "buy": 1500,
+      "unlock": "CH03",
+      "node": "K07"
+    },
+    {
+      "category": "BALL",
+      "slug": "dusk-ball",
+      "effect": "밤 또는 동굴 3배, 그 외 1배",
+      "buy": 1000,
+      "unlock": "CH03",
+      "node": "K10"
+    },
+    {
+      "category": "BALL",
+      "slug": "quick-ball",
+      "effect": "첫 턴 5배, 이후 1배",
+      "buy": 1000,
+      "unlock": "CH06",
+      "node": "U01"
+    },
+    {
+      "category": "BALL",
+      "slug": "master-ball",
+      "effect": "포획 허용 상태의 야생 대상 확정 포획, 트레이너·잠긴 사건에는 사용 불가",
+      "buy": 0,
+      "unlock": "CH10",
+      "node": "S10"
+    },
+    {
+      "category": "HEAL",
+      "slug": "potion",
+      "effect": "기절하지 않은 1마리 HP 20 회복",
+      "buy": 200,
+      "unlock": "CH01",
+      "node": "S03"
+    },
+    {
+      "category": "HEAL",
+      "slug": "super-potion",
+      "effect": "기절하지 않은 1마리 HP 60 회복",
+      "buy": 700,
+      "unlock": "GS02",
+      "node": "S06"
+    },
+    {
+      "category": "HEAL",
+      "slug": "hyper-potion",
+      "effect": "기절하지 않은 1마리 HP 120 회복",
+      "buy": 1500,
+      "unlock": "CH03",
+      "node": "K01"
+    },
+    {
+      "category": "HEAL",
+      "slug": "max-potion",
+      "effect": "기절하지 않은 1마리 HP 전부 회복",
+      "buy": 2500,
+      "unlock": "CH06",
+      "node": "U01"
+    },
+    {
+      "category": "HEAL",
+      "slug": "full-restore",
+      "effect": "기절하지 않은 1마리 HP 전부·주요 상태·혼란 회복",
+      "buy": 3000,
+      "unlock": "CH08",
+      "node": "S10"
+    },
+    {
+      "category": "HEAL",
+      "slug": "revive",
+      "effect": "기절한 1마리를 최대 HP의 1/2로 회복",
+      "buy": 1500,
+      "unlock": "CH03",
+      "node": "K01"
+    },
+    {
+      "category": "HEAL",
+      "slug": "max-revive",
+      "effect": "기절한 1마리를 최대 HP로 회복",
+      "buy": 0,
+      "unlock": "CH08",
+      "node": "S10"
+    },
+    {
+      "category": "HEAL",
+      "slug": "antidote",
+      "effect": "독·맹독 회복",
+      "buy": 200,
+      "unlock": "CH01",
+      "node": "S03"
+    },
+    {
+      "category": "HEAL",
+      "slug": "paralyze-heal",
+      "effect": "마비 회복",
+      "buy": 200,
+      "unlock": "CH01",
+      "node": "S03"
+    },
+    {
+      "category": "HEAL",
+      "slug": "awakening",
+      "effect": "잠듦 회복",
+      "buy": 200,
+      "unlock": "CH01",
+      "node": "S03"
+    },
+    {
+      "category": "HEAL",
+      "slug": "burn-heal",
+      "effect": "화상 회복",
+      "buy": 200,
+      "unlock": "CH01",
+      "node": "S03"
+    },
+    {
+      "category": "HEAL",
+      "slug": "ice-heal",
+      "effect": "얼음 상태 회복",
+      "buy": 200,
+      "unlock": "CH01",
+      "node": "S03"
+    },
+    {
+      "category": "HEAL",
+      "slug": "full-heal",
+      "effect": "주요 상태·혼란 회복, HP는 변화 없음",
+      "buy": 400,
+      "unlock": "CH03",
+      "node": "K01"
+    },
+    {
+      "category": "HEAL",
+      "slug": "ether",
+      "effect": "선택한 기술 PP 10 회복",
+      "buy": 0,
+      "unlock": "CH01",
+      "node": "S04"
+    },
+    {
+      "category": "HEAL",
+      "slug": "max-ether",
+      "effect": "선택한 기술 PP 전부 회복",
+      "buy": 0,
+      "unlock": "CH03",
+      "node": "K13"
+    },
+    {
+      "category": "HEAL",
+      "slug": "elixir",
+      "effect": "대상 1마리 모든 기술 PP 각각 10 회복",
+      "buy": 0,
+      "unlock": "CH06",
+      "node": "U15"
+    },
+    {
+      "category": "HEAL",
+      "slug": "max-elixir",
+      "effect": "대상 1마리 모든 기술 PP 전부 회복",
+      "buy": 0,
+      "unlock": "CH08",
+      "node": "S15"
+    },
+    {
+      "category": "HEAL",
+      "slug": "fresh-water",
+      "effect": "HP 30 회복",
+      "buy": 200,
+      "unlock": "CH03",
+      "node": "K07"
+    },
+    {
+      "category": "HEAL",
+      "slug": "soda-pop",
+      "effect": "HP 50 회복",
+      "buy": 300,
+      "unlock": "CH03",
+      "node": "K07"
+    },
+    {
+      "category": "HEAL",
+      "slug": "lemonade",
+      "effect": "HP 70 회복",
+      "buy": 400,
+      "unlock": "CH03",
+      "node": "K07"
+    },
+    {
+      "category": "HEAL",
+      "slug": "moomoo-milk",
+      "effect": "HP 100 회복",
+      "buy": 600,
+      "unlock": "CH04",
+      "node": "J13"
+    },
+    {
+      "category": "BERRY",
+      "slug": "oran-berry",
+      "effect": "HP 절반 이하일 때 HP 10 자동 회복",
+      "buy": 80,
+      "unlock": "CH01",
+      "node": "S18"
+    },
+    {
+      "category": "BERRY",
+      "slug": "sitrus-berry",
+      "effect": "HP 절반 이하일 때 최대 HP의 1/4 자동 회복",
+      "buy": 300,
+      "unlock": "CH03",
+      "node": "K07"
+    },
+    {
+      "category": "BERRY",
+      "slug": "cheri-berry",
+      "effect": "마비 시 자동 회복",
+      "buy": 80,
+      "unlock": "CH01",
+      "node": "S18"
+    },
+    {
+      "category": "BERRY",
+      "slug": "chesto-berry",
+      "effect": "잠듦 시 자동 회복",
+      "buy": 80,
+      "unlock": "CH01",
+      "node": "S18"
+    },
+    {
+      "category": "BERRY",
+      "slug": "pecha-berry",
+      "effect": "독·맹독 시 자동 회복",
+      "buy": 80,
+      "unlock": "CH01",
+      "node": "S18"
+    },
+    {
+      "category": "BERRY",
+      "slug": "rawst-berry",
+      "effect": "화상 시 자동 회복",
+      "buy": 80,
+      "unlock": "CH01",
+      "node": "S18"
+    },
+    {
+      "category": "BERRY",
+      "slug": "aspear-berry",
+      "effect": "얼음 상태 시 자동 회복",
+      "buy": 80,
+      "unlock": "CH01",
+      "node": "S18"
+    },
+    {
+      "category": "BERRY",
+      "slug": "persim-berry",
+      "effect": "혼란 시 자동 회복",
+      "buy": 80,
+      "unlock": "CH03",
+      "node": "K07"
+    },
+    {
+      "category": "BERRY",
+      "slug": "lum-berry",
+      "effect": "주요 상태 또는 혼란 시 자동 회복",
+      "buy": 500,
+      "unlock": "CH05",
+      "node": "J01"
+    },
+    {
+      "category": "BERRY",
+      "slug": "leppa-berry",
+      "effect": "기술 PP가 0이면 해당 기술 PP 10 자동 회복",
+      "buy": 300,
+      "unlock": "CH03",
+      "node": "K07"
+    },
+    {
+      "category": "HELD",
+      "slug": "leftovers",
+      "effect": "턴 종료 때 최대 HP의 1/16 회복",
+      "buy": 10000,
+      "unlock": "CH06",
+      "node": "U05"
+    },
+    {
+      "category": "HELD",
+      "slug": "black-sludge",
+      "effect": "독 타입은 매 턴 HP 1/16 회복, 독 이외는 1/8 손실",
+      "buy": 10000,
+      "unlock": "CH06",
+      "node": "U03"
+    },
+    {
+      "category": "HELD",
+      "slug": "shell-bell",
+      "effect": "유효 피해를 준 뒤 실제 준 피해의 1/8 HP 회복",
+      "buy": 6000,
+      "unlock": "CH03",
+      "node": "K12"
+    },
+    {
+      "category": "HELD",
+      "slug": "quick-claw",
+      "effect": "같은 우선도에서 20% 확률로 먼저 행동, 우선도 자체는 바꾸지 않음",
+      "buy": 4000,
+      "unlock": "CH03",
+      "node": "K07"
+    },
+    {
+      "category": "HELD",
+      "slug": "focus-sash",
+      "effect": "HP 가득한 상태에서 한 번의 치명 피해를 HP1로 버티고 소모",
+      "buy": 0,
+      "unlock": "CH10",
+      "node": "X08"
+    },
+    {
+      "category": "HELD",
+      "slug": "focus-band",
+      "effect": "치명 피해 때 10% 확률로 HP1 유지, 소모 안 됨",
+      "buy": 6000,
+      "unlock": "CH06",
+      "node": "U12"
+    },
+    {
+      "category": "HELD",
+      "slug": "choice-band",
+      "effect": "공격 1.5배, 교체 전 첫 사용 기술로 고정",
+      "buy": 20000,
+      "unlock": "CH10",
+      "node": "X08"
+    },
+    {
+      "category": "HELD",
+      "slug": "choice-specs",
+      "effect": "특수공격 1.5배, 교체 전 첫 사용 기술로 고정",
+      "buy": 20000,
+      "unlock": "CH10",
+      "node": "X08"
+    },
+    {
+      "category": "HELD",
+      "slug": "choice-scarf",
+      "effect": "스피드 1.5배, 교체 전 첫 사용 기술로 고정",
+      "buy": 20000,
+      "unlock": "CH10",
+      "node": "X08"
+    },
+    {
+      "category": "HELD",
+      "slug": "life-orb",
+      "effect": "공격 피해 1.3배, 공격 뒤 최대 HP의 1/10 반동",
+      "buy": 20000,
+      "unlock": "CH10",
+      "node": "X08"
+    },
+    {
+      "category": "HELD",
+      "slug": "eviolite",
+      "effect": "진화 가능 종의 방어·특수방어 1.5배",
+      "buy": 12000,
+      "unlock": "CH06",
+      "node": "U02"
+    },
+    {
+      "category": "HELD",
+      "slug": "light-ball",
+      "effect": "피카츄가 지니면 공격·특수공격 2배, 다른 종 효과 없음",
+      "buy": 0,
+      "unlock": "SQ01",
+      "node": "K05"
+    },
+    {
+      "category": "HELD",
+      "slug": "soothe-bell",
+      "effect": "친밀도 증가량 1.5배, 내림 후 최소 원래 증가량 유지",
+      "buy": 3000,
+      "unlock": "CH03",
+      "node": "K08"
+    },
+    {
+      "category": "HELD",
+      "slug": "everstone",
+      "effect": "자동 진화 제안을 중지, 도구 제거 후 조건 충족 시 재제안",
+      "buy": 1000,
+      "unlock": "CH01",
+      "node": "S04"
+    },
+    {
+      "category": "HELD",
+      "slug": "miracle-seed",
+      "effect": "풀 기술 피해 1.2배",
+      "buy": 3000,
+      "unlock": "CH01",
+      "node": "S06"
+    },
+    {
+      "category": "HELD",
+      "slug": "charcoal",
+      "effect": "불꽃 기술 피해 1.2배",
+      "buy": 3000,
+      "unlock": "CH03",
+      "node": "K13"
+    },
+    {
+      "category": "HELD",
+      "slug": "mystic-water",
+      "effect": "물 기술 피해 1.2배",
+      "buy": 3000,
+      "unlock": "CH03",
+      "node": "K06"
+    },
+    {
+      "category": "HELD",
+      "slug": "magnet",
+      "effect": "전기 기술 피해 1.2배",
+      "buy": 3000,
+      "unlock": "CH03",
+      "node": "K16"
+    },
+    {
+      "category": "HELD",
+      "slug": "black-belt",
+      "effect": "격투 기술 피해 1.2배",
+      "buy": 3000,
+      "unlock": "CH01",
+      "node": "S08"
+    },
+    {
+      "category": "HELD",
+      "slug": "spell-tag",
+      "effect": "고스트 기술 피해 1.2배",
+      "buy": 3000,
+      "unlock": "CH03",
+      "node": "K10"
+    },
+    {
+      "category": "HELD",
+      "slug": "never-melt-ice",
+      "effect": "얼음 기술 피해 1.2배",
+      "buy": 3000,
+      "unlock": "CH08",
+      "node": "S12"
+    },
+    {
+      "category": "HELD",
+      "slug": "dragon-fang",
+      "effect": "드래곤 기술 피해 1.2배",
+      "buy": 5000,
+      "unlock": "CH05",
+      "node": "J19"
+    },
+    {
+      "category": "FIELD",
+      "slug": "repel",
+      "effect": "선두보다 낮은 레벨의 무작위 조우를 100걸음 억제",
+      "buy": 350,
+      "unlock": "CH01",
+      "node": "S03"
+    },
+    {
+      "category": "FIELD",
+      "slug": "super-repel",
+      "effect": "같은 조우 억제를 200걸음 유지",
+      "buy": 500,
+      "unlock": "CH03",
+      "node": "K01"
+    },
+    {
+      "category": "FIELD",
+      "slug": "max-repel",
+      "effect": "같은 조우 억제를 250걸음 유지",
+      "buy": 700,
+      "unlock": "CH06",
+      "node": "U01"
+    },
+    {
+      "category": "FIELD",
+      "slug": "escape-rope",
+      "effect": "허용 던전의 마지막 입구 안전점으로 귀환",
+      "buy": 550,
+      "unlock": "CH01",
+      "node": "S04"
+    },
+    {
+      "category": "GROWTH",
+      "slug": "rare-candy",
+      "effect": "대상 레벨 +1, 최대100, 새 기술·진화 제안 처리",
+      "buy": 0,
+      "unlock": "CH01",
+      "node": "S04"
+    },
+    {
+      "category": "GROWTH",
+      "slug": "pp-up",
+      "effect": "선택 기술 최대 PP를 기본 PP의 20% 증가, 기술당 최대3회",
+      "buy": 0,
+      "unlock": "CH06",
+      "node": "U12"
+    },
+    {
+      "category": "GROWTH",
+      "slug": "pp-max",
+      "effect": "선택 기술 PP 증가 단계를 3으로 설정",
+      "buy": 0,
+      "unlock": "CH10",
+      "node": "X08"
+    },
+    {
+      "category": "VALUE",
+      "slug": "nugget",
+      "effect": "판매용. 퀘스트 필수품으로 쓰지 않음",
+      "buy": 0,
+      "unlock": "CH03",
+      "node": "K13"
+    },
+    {
+      "category": "VALUE",
+      "slug": "pearl",
+      "effect": "판매용. 퀘스트 필수품으로 쓰지 않음",
+      "buy": 0,
+      "unlock": "CH03",
+      "node": "K15"
+    },
+    {
+      "category": "VALUE",
+      "slug": "big-pearl",
+      "effect": "판매용. 퀘스트 필수품으로 쓰지 않음",
+      "buy": 0,
+      "unlock": "CH05",
+      "node": "J12"
+    },
+    {
+      "category": "VALUE",
+      "slug": "stardust",
+      "effect": "판매용. 퀘스트 필수품으로 쓰지 않음",
+      "buy": 0,
+      "unlock": "CH03",
+      "node": "K15"
+    },
+    {
+      "category": "VALUE",
+      "slug": "star-piece",
+      "effect": "판매용. 퀘스트 필수품으로 쓰지 않음",
+      "buy": 0,
+      "unlock": "CH08",
+      "node": "S19"
+    }
+  ],
+  "keyItems": [
+    {
+      "slug": "adventure-notebook",
+      "name": "모험 수첩",
+      "effect": "현재 가방 설명에서 보이는 물건. 실제 퀘스트 수첩 기능은 신규",
+      "node": "S01",
+      "unlock": "CH00"
+    },
+    {
+      "slug": "pokedex",
+      "name": "포켓몬도감",
+      "effect": "종별 발견·소유·서식지·진화 연구 기록",
+      "node": "S03",
+      "unlock": "CH01"
+    },
+    {
+      "slug": "town-map",
+      "name": "타운맵",
+      "effect": "방문 노드·개통 노선 표시",
+      "node": "S03",
+      "unlock": "CH01"
+    },
+    {
+      "slug": "old-rod",
+      "name": "초보 낚싯대",
+      "effect": "기본 낚시 풀 해금",
+      "node": "S10",
+      "unlock": "CH02"
+    },
+    {
+      "slug": "good-rod",
+      "name": "좋은 낚싯대",
+      "effect": "중급 낚시 의뢰 해금, 초보 낚시 풀도 선택 가능",
+      "node": "K06",
+      "unlock": "CH03"
+    },
+    {
+      "slug": "super-rod",
+      "name": "대단한 낚싯대",
+      "effect": "후일담 고급 낚시 풀 해금",
+      "node": "S13",
+      "unlock": "CH08"
+    },
+    {
+      "slug": "bicycle",
+      "name": "자전거",
+      "effect": "허용 도로 이동, 실내·사건 중 사용 불가",
+      "node": "K07",
+      "unlock": "CH03"
+    },
+    {
+      "slug": "resonance-scanner",
+      "name": "공명 관측기",
+      "effect": "필수 공명 흔적 탐색, 특정 포켓몬 불필요",
+      "node": "S08",
+      "unlock": "CH01"
+    },
+    {
+      "slug": "research-pass",
+      "name": "공동조사 승선권",
+      "effect": "TR01 왕복 권한, 사용해도 소모되지 않음",
+      "node": "S10",
+      "unlock": "CH02"
+    },
+    {
+      "slug": "rail-pass",
+      "name": "지방 연결 철도권",
+      "effect": "TR02 왕복 권한",
+      "node": "K09",
+      "unlock": "CH03"
+    },
+    {
+      "slug": "sea-pass",
+      "name": "국제 정기선권",
+      "effect": "TR03 왕복 권한",
+      "node": "J10",
+      "unlock": "CH05"
+    },
+    {
+      "slug": "return-pass",
+      "name": "신오 귀환선권",
+      "effect": "TR04 왕복 권한",
+      "node": "U08",
+      "unlock": "CH07"
+    },
+    {
+      "slug": "poke-flute",
+      "name": "포켓몬피리",
+      "effect": "잠만보 쉼터 의뢰, 다른 기본 통로는 항상 개방",
+      "node": "K10",
+      "unlock": "CH03"
+    },
+    {
+      "slug": "mending-cloth",
+      "name": "수선용 천",
+      "effect": "따라큐 천 수선, SQ01 보상 또는 K07 무료 대체 의뢰",
+      "node": "K05",
+      "unlock": "SQ01"
+    },
+    {
+      "slug": "sewing-kit",
+      "name": "수선 도구",
+      "effect": "SQ03 수선 상호작용용, 수선사에게 재발급",
+      "node": "K11",
+      "unlock": "SQ03"
+    },
+    {
+      "slug": "odd-keystone",
+      "name": "쐐기돌",
+      "effect": "SQ14 돌탑 사건용, 보관·재발급 가능",
+      "node": "S18",
+      "unlock": "SQ14"
+    },
+    {
+      "slug": "rubbing-kit",
+      "name": "탁본 도구",
+      "effect": "SQ16 안농 문자 기록, 필수 던전 열쇠 아님",
+      "node": "J14",
+      "unlock": "SQ16"
+    },
+    {
+      "slug": "lunar-wing",
+      "name": "초승달의날개",
+      "effect": "PG03 악몽 연작, 사건 해결 후 기념 기록",
+      "node": "X03",
+      "unlock": "PG03"
+    },
+    {
+      "slug": "boundary-anchor",
+      "name": "경계 닻",
+      "effect": "X01 접점·안전 귀환 기록",
+      "node": "S16",
+      "unlock": "CH09"
+    },
+    {
+      "slug": "azure-flute",
+      "name": "천계의피리",
+      "effect": "PG11 시작의 방, 조건 충족 전 사용 불가",
+      "node": "S16",
+      "unlock": "PG11"
+    }
+  ],
+  "date": "2026-09-06",
+  "referenceCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+  "wildPools": [
+    {
+      "node": "S02",
+      "chapter": "CH01",
+      "levels": [
+        3,
+        6
+      ],
+      "method": "풀숲",
+      "condition": "상시",
+      "species": [
+        "비버니",
+        "찌르꼬",
+        "꼬링크",
+      "귀뚤뚜기",
+        "꼬몽울"
+      ]
+    },
+    {
+      "node": "S03",
+      "chapter": "CH01",
+      "levels": [
+        4,
+        7
+      ],
+      "method": "외곽풀숲",
+      "condition": "상시",
+      "species": [
+        "비버니",
+        "찌르꼬",
+        "꼬몽울",
+        "캐이시"
+      ]
+    },
+    {
+      "node": "S04",
+      "chapter": "CH01",
+      "levels": [
+        7,
+        10
+      ],
+      "method": "동굴",
+      "condition": "상시",
+      "species": [
+        "꼬마돌",
+        "주뱃",
+        "알통몬",
+        "롱스톤",
+        "코코파스"
+      ]
+    },
+    {
+      "node": "S05",
+      "chapter": "CH01",
+      "levels": [
+        10,
+        14
+      ],
+      "method": "풀숲",
+      "condition": "낮",
+      "species": [
+        "개무소",
+        "실쿤",
+        "카스쿤",
+        "꼬몽울",
+        "이어롤",
+        "세꿀버리"
+      ]
+    },
+    {
+      "node": "S05",
+      "chapter": "CH01",
+      "levels": [
+        10,
+        14
+      ],
+      "method": "풀숲",
+      "condition": "밤",
+      "species": [
+        "부우부",
+        "무우마",
+        "니로우",
+        "주뱃",
+        "고오스"
+      ]
+    },
+    {
+      "node": "S06",
+      "chapter": "CH01",
+      "levels": [
+        12,
+        15
+      ],
+      "method": "외곽풀숲",
+      "condition": "상시",
+      "species": [
+        "꼬몽울",
+        "치렁",
+        "로젤리아",
+        "파치리스"
+      ]
+    },
+    {
+      "node": "S07",
+      "chapter": "CH01",
+      "levels": [
+        15,
+        18
+      ],
+      "method": "외곽풀숲",
+      "condition": "상시",
+      "species": [
+        "랄토스",
+        "흉내내",
+        "이어롤",
+        "럭시오"
+      ]
+    },
+    {
+      "node": "S08",
+      "chapter": "CH01",
+      "levels": [
+        18,
+        21
+      ],
+      "method": "외곽풀숲",
+      "condition": "상시",
+      "species": [
+        "요가랑",
+        "스컹뿡",
+        "포니타",
+        "델빌"
+      ]
+    },
+    {
+      "node": "S09",
+      "chapter": "CH08",
+      "levels": [
+        46,
+        50
+      ],
+      "method": "습지",
+      "condition": "상시",
+      "species": [
+        "우파",
+        "삐딱구리",
+        "무스틈니",
+        "왕자리",
+        "미끄메라"
+      ]
+    },
+    {
+      "node": "S09",
+      "chapter": "CH08",
+      "levels": [
+        46,
+        50
+      ],
+      "method": "수면",
+      "condition": "상시",
+      "species": [
+        "누오",
+        "브이젤",
+        "비버통",
+        "고라파덕"
+      ]
+    },
+    {
+      "node": "S10",
+      "chapter": "CH02",
+      "levels": [
+        18,
+        22
+      ],
+      "method": "낚시",
+      "condition": "상시",
+      "species": [
+        "잉어킹",
+        "형광어",
+        "총어"
+      ]
+    },
+    {
+      "node": "S11",
+      "chapter": "CH02",
+      "levels": [
+        18,
+        22
+      ],
+      "method": "동굴",
+      "condition": "상시",
+      "species": [
+        "주뱃",
+        "꼬마돌",
+        "롱스톤",
+        "입치트"
+      ]
+    },
+    {
+      "node": "S12",
+      "chapter": "CH08",
+      "levels": [
+        49,
+        53
+      ],
+      "method": "외곽눈길",
+      "condition": "상시",
+      "species": [
+        "눈쓰개",
+        "눈꼬마",
+        "포푸니",
+        "코고미"
+      ]
+    },
+    {
+      "node": "S13",
+      "chapter": "CH08",
+      "levels": [
+        51,
+        55
+      ],
+      "method": "외곽풀숲",
+      "condition": "상시",
+      "species": [
+        "럭시오",
+        "에레브",
+        "레어코일",
+        "패리퍼"
+      ]
+    },
+    {
+      "node": "S14",
+      "chapter": "CH10",
+      "levels": [
+        58,
+        63
+      ],
+      "method": "동굴",
+      "condition": "상시",
+      "species": [
+        "골뱃",
+        "근육몬",
+        "데구리",
+        "한바이트",
+        "강철톤"
+      ]
+    },
+    {
+      "node": "S15",
+      "chapter": "CH01",
+      "levels": [
+        13,
+        17
+      ],
+      "method": "하부동굴",
+      "condition": "상시",
+      "species": [
+        "주뱃",
+        "꼬마돌",
+        "요가랑",
+        "삐",
+        "딥상어동"
+      ]
+    },
+    {
+      "node": "S15",
+      "chapter": "CH03",
+      "levels": [
+        15,
+        20
+      ],
+      "method": "낚시",
+      "condition": "상시",
+      "species": [
+        "미꾸리",
+        "잉어킹",
+        "빈티나"
+      ]
+    },
+    {
+      "node": "S17",
+      "chapter": "CH08",
+      "levels": [
+        46,
+        51
+      ],
+      "method": "호숫가풀숲",
+      "condition": "상시",
+      "species": [
+        "찌르버드",
+        "비버통",
+        "고라파덕",
+        "키링키",
+        "에이팜"
+      ]
+    },
+    {
+      "node": "S17",
+      "chapter": "CH08",
+      "levels": [
+        46,
+        51
+      ],
+      "method": "낚시",
+      "condition": "상시",
+      "species": [
+        "잉어킹",
+        "콘치",
+        "왕콘치"
+      ]
+    },
+    {
+      "node": "S18",
+      "chapter": "CH01",
+      "levels": [
+        8,
+        12
+      ],
+      "method": "꽃밭",
+      "condition": "상시",
+      "species": [
+        "꼬몽울",
+        "파치리스",
+        "세꿀버리",
+        "체리버",
+        "꼬지지"
+      ]
+    },
+    {
+      "node": "S19",
+      "chapter": "CH08",
+      "levels": [
+        47,
+        52
+      ],
+      "method": "눈길",
+      "condition": "상시",
+      "species": [
+        "눈쓰개",
+        "눈꼬마",
+        "꾸꾸리",
+        "포푸니",
+        "앱솔"
+      ]
+    },
+    {
+      "node": "S20",
+      "chapter": "CH02",
+      "levels": [
+        18,
+        22
+      ],
+      "method": "풀숲",
+      "condition": "상시",
+      "species": [
+        "찌르버드",
+        "비버통",
+        "브이젤",
+        "마임맨"
+      ]
+    },
+    {
+      "node": "K01",
+      "chapter": "CH03",
+      "levels": [
+        20,
+        24
+      ],
+      "method": "낚시",
+      "condition": "상시",
+      "species": [
+        "잉어킹",
+        "왕눈해",
+        "크랩"
+      ]
+    },
+    {
+      "node": "K02",
+      "chapter": "CH03",
+      "levels": [
+        18,
+        22
+      ],
+      "method": "수면",
+      "condition": "상시",
+      "species": [
+        "왕눈해",
+        "별가사리",
+        "쏘드라"
+      ]
+    },
+    {
+      "node": "K03",
+      "chapter": "CH03",
+      "levels": [
+        20,
+        23
+      ],
+      "method": "외곽풀숲",
+      "condition": "상시",
+      "species": [
+        "구구",
+        "꼬렛",
+        "깨비참",
+        "니드런♀",
+        "니드런♂"
+      ]
+    },
+    {
+      "node": "K04",
+      "chapter": "CH03",
+      "levels": [
+        21,
+        24
+      ],
+      "method": "산길",
+      "condition": "상시",
+      "species": [
+        "꼬마돌",
+        "주뱃",
+        "파라스",
+        "삐삐"
+      ]
+    },
+    {
+      "node": "K05",
+      "chapter": "CH03",
+      "levels": [
+        20,
+        24
+      ],
+      "method": "풀숲",
+      "condition": "낮",
+      "species": [
+        "캐터피",
+        "뿔충이",
+        "단데기",
+        "딱충이",
+        "피카츄"
+      ]
+    },
+    {
+      "node": "K05",
+      "chapter": "CH03",
+      "levels": [
+        20,
+        24
+      ],
+      "method": "풀숲",
+      "condition": "밤",
+      "species": [
+        "부우부",
+        "페이검",
+        "콘팡",
+        "피츄"
+      ]
+    },
+    {
+      "node": "K06",
+      "chapter": "CH03",
+      "levels": [
+        22,
+        26
+      ],
+      "method": "낚시",
+      "condition": "상시",
+      "species": [
+        "잉어킹",
+        "콘치",
+        "고라파덕",
+        "발챙이"
+      ]
+    },
+    {
+      "node": "K07",
+      "chapter": "CH03",
+      "levels": [
+        23,
+        27
+      ],
+      "method": "외곽풀숲",
+      "condition": "상시",
+      "species": [
+        "뚜벅쵸",
+        "모다피",
+        "나옹",
+        "식스테일"
+      ]
+    },
+    {
+      "node": "K08",
+      "chapter": "CH03",
+      "levels": [
+        15,
+        20
+      ],
+      "method": "보호구역",
+      "condition": "연구진척",
+      "species": [
+        "이브이"
+      ]
+    },
+    {
+      "node": "K10",
+      "chapter": "CH03",
+      "levels": [
+        24,
+        28
+      ],
+      "method": "탑지하",
+      "condition": "밤",
+      "species": [
+        "고오스",
+        "탕구리",
+        "깜까미",
+        "무우마"
+      ]
+    },
+    {
+      "node": "K12",
+      "chapter": "CH03",
+      "levels": [
+        25,
+        29
+      ],
+      "method": "보호구역",
+      "condition": "상시",
+      "species": [
+        "아라리",
+        "뿔카노",
+        "럭키",
+        "캥카",
+        "켄타로스",
+        "스라크",
+        "쁘사이저",
+        "메타몽"
+      ]
+    },
+    {
+      "node": "K12",
+      "chapter": "CH03",
+      "levels": [
+        24,
+        28
+      ],
+      "method": "낚시",
+      "condition": "상시",
+      "species": [
+        "쏘드라",
+        "콘치",
+        "미뇽"
+      ]
+    },
+    {
+      "node": "K13",
+      "chapter": "CH03",
+      "levels": [
+        27,
+        31
+      ],
+      "method": "폐저택",
+      "condition": "상시",
+      "species": [
+        "가디",
+        "질퍽이",
+        "또가스",
+        "마그마"
+      ]
+    },
+    {
+      "node": "K15",
+      "chapter": "CH03",
+      "levels": [
+        26,
+        30
+      ],
+      "method": "얼음동굴",
+      "condition": "상시",
+      "species": [
+        "쥬쥬",
+        "야돈",
+        "루주라",
+        "골뱃"
+      ]
+    },
+    {
+      "node": "K15",
+      "chapter": "CH03",
+      "levels": [
+        25,
+        29
+      ],
+      "method": "수면",
+      "condition": "상시",
+      "species": [
+        "왕눈해",
+        "쏘드라",
+        "셀러",
+        "별가사리"
+      ]
+    },
+    {
+      "node": "K16",
+      "chapter": "CH03",
+      "levels": [
+        24,
+        28
+      ],
+      "method": "시설외곽",
+      "condition": "상시",
+      "species": [
+        "코일",
+        "찌리리공",
+        "피카츄",
+        "에레키드"
+      ]
+    },
+    {
+      "node": "K18",
+      "chapter": "CH03",
+      "levels": [
+        22,
+        27
+      ],
+      "method": "풀숲",
+      "condition": "상시",
+      "species": [
+        "꼬렛",
+        "나옹",
+        "깨비참",
+        "아보",
+        "푸린",
+        "슬리프"
+      ]
+    },
+    {
+      "node": "K19",
+      "chapter": "CH03",
+      "levels": [
+        15,
+        20
+      ],
+      "method": "교류보호구역",
+      "condition": "의뢰해금",
+      "species": [
+        "데덴네",
+        "파라꼬",
+        "나몰빼미"
+      ]
+    },
+    {
+      "node": "K20",
+      "chapter": "CH03",
+      "levels": [
+        24,
+        28
+      ],
+      "method": "산길",
+      "condition": "상시",
+      "species": [
+        "알통몬",
+        "망키",
+        "모래두지",
+        "롱스톤"
+      ]
+    },
+    {
+      "node": "J02",
+      "chapter": "CH04",
+      "levels": [
+        28,
+        32
+      ],
+      "method": "외곽풀숲",
+      "condition": "낮",
+      "species": [
+        "구구",
+        "모다피",
+        "통통코",
+        "메리프"
+      ]
+    },
+    {
+      "node": "J02",
+      "chapter": "CH04",
+      "levels": [
+        28,
+        32
+      ],
+      "method": "외곽풀숲",
+      "condition": "밤",
+      "species": [
+        "부우부",
+        "페이검",
+        "꼬렛"
+      ]
+    },
+    {
+      "node": "J03",
+      "chapter": "CH04",
+      "levels": [
+        29,
+        33
+      ],
+      "method": "외곽풀숲",
+      "condition": "상시",
+      "species": [
+        "파라스",
+        "레디바",
+        "페이검",
+        "야돈"
+      ]
+    },
+    {
+      "node": "J04",
+      "chapter": "CH04",
+      "levels": [
+        31,
+        35
+      ],
+      "method": "외곽풀숲",
+      "condition": "밤",
+      "species": [
+        "부우부",
+        "노라키",
+        "니로우",
+        "마자용"
+      ]
+    },
+    {
+      "node": "J05",
+      "chapter": "CH05",
+      "levels": [
+        32,
+        36
+      ],
+      "method": "탑지하",
+      "condition": "상시",
+      "species": [
+        "고오스",
+        "주뱃",
+        "또가스"
+      ]
+    },
+    {
+      "node": "J07",
+      "chapter": "CH04",
+      "levels": [
+        29,
+        33
+      ],
+      "method": "동굴",
+      "condition": "상시",
+      "species": [
+        "주뱃",
+        "꼬마돌",
+        "우파",
+        "노고치"
+      ]
+    },
+    {
+      "node": "J07",
+      "chapter": "CH04",
+      "levels": [
+        29,
+        33
+      ],
+      "method": "수면",
+      "condition": "상시",
+      "species": [
+        "야돈",
+        "우파",
+        "발챙이"
+      ]
+    },
+    {
+      "node": "J08",
+      "chapter": "CH04",
+      "levels": [
+        32,
+        36
+      ],
+      "method": "산길",
+      "condition": "상시",
+      "species": [
+        "망키",
+        "에이팜",
+        "깜지곰",
+        "꾸꾸리"
+      ]
+    },
+    {
+      "node": "J09",
+      "chapter": "CH04",
+      "levels": [
+        32,
+        36
+      ],
+      "method": "낚시",
+      "condition": "상시",
+      "species": [
+        "잉어킹",
+        "콘치",
+        "왕콘치"
+      ]
+    },
+    {
+      "node": "J10",
+      "chapter": "CH05",
+      "levels": [
+        33,
+        37
+      ],
+      "method": "외곽풀숲",
+      "condition": "상시",
+      "species": [
+        "코일",
+        "밀탱크",
+        "켄타로스",
+        "메리프"
+      ]
+    },
+    {
+      "node": "J11",
+      "chapter": "CH05",
+      "levels": [
+        33,
+        37
+      ],
+      "method": "해변",
+      "condition": "상시",
+      "species": [
+        "단단지",
+        "크랩",
+        "별가사리"
+      ]
+    },
+    {
+      "node": "J12",
+      "chapter": "CH05",
+      "levels": [
+        34,
+        38
+      ],
+      "method": "동굴",
+      "condition": "상시",
+      "species": [
+        "주뱃",
+        "쥬쥬",
+        "왕눈해",
+        "쏘드라"
+      ]
+    },
+    {
+      "node": "J13",
+      "chapter": "CH04",
+      "levels": [
+        29,
+        34
+      ],
+      "method": "목장풀숲",
+      "condition": "상시",
+      "species": [
+        "메리프",
+        "통통코",
+        "해너츠",
+        "노라키",
+        "밀탱크",
+        "에몽가",
+        "치라미"
+      ]
+    },
+    {
+      "node": "J14",
+      "chapter": "CH04",
+      "levels": [
+        25,
+        30
+      ],
+      "method": "유적",
+      "condition": "SQ16",
+      "species": [
+        "안농"
+      ]
+    },
+    {
+      "node": "J15",
+      "chapter": "CH04",
+      "levels": [
+        29,
+        33
+      ],
+      "method": "숲",
+      "condition": "상시",
+      "species": [
+        "캐터피",
+        "뿔충이",
+        "파라스",
+        "두르보",
+        "피콘",
+        "헤라크로스"
+      ]
+    },
+    {
+      "node": "J16",
+      "chapter": "CH05",
+      "levels": [
+        34,
+        38
+      ],
+      "method": "산기슭",
+      "condition": "구조의뢰",
+      "species": [
+        "애버라스",
+        "아공이",
+        "깜지곰",
+        "마그비"
+      ]
+    },
+    {
+      "node": "J17",
+      "chapter": "CH05",
+      "levels": [
+        34,
+        38
+      ],
+      "method": "외곽산길",
+      "condition": "상시",
+      "species": [
+        "글라이거",
+        "코코리",
+        "무장조",
+        "골뱃"
+      ]
+    },
+    {
+      "node": "J18",
+      "chapter": "CH05",
+      "levels": [
+        34,
+        39
+      ],
+      "method": "산길",
+      "condition": "상시",
+      "species": [
+        "덩쿠리",
+        "포니타",
+        "두두",
+        "링곰"
+      ]
+    },
+    {
+      "node": "J19",
+      "chapter": "CH05",
+      "levels": [
+        33,
+        37
+      ],
+      "method": "동굴",
+      "condition": "상시",
+      "species": [
+        "미뇽",
+        "음뱃",
+        "암멍이"
+      ]
+    },
+    {
+      "node": "U01",
+      "chapter": "CH06",
+      "levels": [
+        37,
+        41
+      ],
+      "method": "도시공원",
+      "condition": "상시",
+      "species": [
+        "콩둘기",
+        "소미안",
+        "치릴리",
+        "치라미"
+      ]
+    },
+    {
+      "node": "U02",
+      "chapter": "CH06",
+      "levels": [
+        35,
+        39
+      ],
+      "method": "외곽풀숲",
+      "condition": "상시",
+      "species": [
+        "보르쥐",
+        "요테리",
+        "콩둘기",
+        "쌔비냥"
+      ]
+    },
+    {
+      "node": "U03",
+      "chapter": "CH06",
+      "levels": [
+        36,
+        40
+      ],
+      "method": "공장외곽",
+      "condition": "상시",
+      "species": [
+        "또가스",
+        "코일",
+        "마디네",
+        "깨봉이"
+      ]
+    },
+    {
+      "node": "U04",
+      "chapter": "CH06",
+      "levels": [
+        38,
+        42
+      ],
+      "method": "외곽풀숲",
+      "condition": "상시",
+      "species": [
+        "줄뮤마",
+        "에몽가",
+        "파쪼옥",
+        "도토링"
+      ]
+    },
+    {
+      "node": "U05",
+      "chapter": "CH06",
+      "levels": [
+        40,
+        44
+      ],
+      "method": "외곽풀숲",
+      "condition": "상시",
+      "species": [
+        "꼬지보리",
+        "사철록",
+        "깜놀버슬",
+        "두까비"
+      ]
+    },
+    {
+      "node": "U06",
+      "chapter": "CH06",
+      "levels": [
+        41,
+        45
+      ],
+      "method": "외곽풀숲",
+      "condition": "상시",
+      "species": [
+        "꼬지보리",
+        "소미안",
+        "치릴리",
+        "맘박쥐"
+      ]
+    },
+    {
+      "node": "U06",
+      "chapter": "CH06",
+      "levels": [
+        40,
+        44
+      ],
+      "method": "묘지탑",
+      "condition": "밤",
+      "species": [
+        "불켜미",
+        "리그레",
+        "또르박쥐"
+      ]
+    },
+    {
+      "node": "U07",
+      "chapter": "CH06",
+      "levels": [
+        43,
+        47
+      ],
+      "method": "외곽풀숲",
+      "condition": "상시",
+      "species": [
+        "크리만",
+        "버프론",
+        "자망칼",
+        "미끄메라"
+      ]
+    },
+    {
+      "node": "U08",
+      "chapter": "CH07",
+      "levels": [
+        43,
+        47
+      ],
+      "method": "낚시",
+      "condition": "상시",
+      "species": [
+        "탱그릴",
+        "맘복치",
+        "총어"
+      ]
+    },
+    {
+      "node": "U09",
+      "chapter": "CH10",
+      "levels": [
+        58,
+        63
+      ],
+      "method": "동굴",
+      "condition": "상시",
+      "species": [
+        "아이앤트",
+        "앤티골",
+        "크리만",
+        "모노두",
+        "골비람"
+      ]
+    },
+    {
+      "node": "U10",
+      "chapter": "CH06",
+      "levels": [
+        38,
+        43
+      ],
+      "method": "풀숲",
+      "condition": "상시",
+      "species": [
+        "두르보",
+        "마디네",
+        "치라미",
+        "다부니",
+        "사철록"
+      ]
+    },
+    {
+      "node": "U10",
+      "chapter": "CH06",
+      "levels": [
+        38,
+        43
+      ],
+      "method": "흔들리는풀",
+      "condition": "상시",
+      "species": [
+        "다부니",
+        "야나프",
+        "바오프",
+        "앗차프"
+      ]
+    },
+    {
+      "node": "U11",
+      "chapter": "CH06",
+      "levels": [
+        39,
+        43
+      ],
+      "method": "모래",
+      "condition": "상시",
+      "species": [
+        "깜눈크",
+        "달막화",
+        "곤율랭",
+        "심보러",
+        "마라카치",
+        "톱치"
+      ]
+    },
+    {
+      "node": "U12",
+      "chapter": "CH06",
+      "levels": [
+        20,
+        30
+      ],
+      "method": "교류보호구역",
+      "condition": "의뢰해금",
+      "species": [
+        "드라꼰",
+        "랄토스",
+        "일레즌"
+      ]
+    },
+    {
+      "node": "U13",
+      "chapter": "CH06",
+      "levels": [
+        40,
+        44
+      ],
+      "method": "숲",
+      "condition": "상시",
+      "species": [
+        "두르보",
+        "소미안",
+        "치릴리",
+        "주리비얀",
+        "조로아"
+      ]
+    },
+    {
+      "node": "U14",
+      "chapter": "CH07",
+      "levels": [
+        44,
+        48
+      ],
+      "method": "탑외곽",
+      "condition": "상시",
+      "species": [
+        "골비람",
+        "크리만",
+        "비조푸"
+      ]
+    },
+    {
+      "node": "U15",
+      "chapter": "CH06",
+      "levels": [
+        40,
+        44
+      ],
+      "method": "유적",
+      "condition": "상시",
+      "species": [
+        "데스마스",
+        "깜눈크",
+        "단굴",
+        "오뚝군"
+      ]
+    },
+    {
+      "node": "U16",
+      "chapter": "CH06",
+      "levels": [
+        42,
+        46
+      ],
+      "method": "외곽동굴",
+      "condition": "상시",
+      "species": [
+        "모노두",
+        "삐삐",
+        "메탕",
+        "골뱃",
+        "메타몽"
+      ]
+    },
+    {
+      "node": "U17",
+      "chapter": "CH10",
+      "levels": [
+        55,
+        60
+      ],
+      "method": "평야",
+      "condition": "상시",
+      "species": [
+        "버프론",
+        "워글",
+        "소미안",
+        "치릴리"
+      ]
+    },
+    {
+      "node": "U19",
+      "chapter": "CH07",
+      "levels": [
+        43,
+        47
+      ],
+      "method": "눈해안",
+      "condition": "상시",
+      "species": [
+        "누니머기",
+        "대굴레오",
+        "거북손손",
+        "코고미",
+        "바닐프티"
+      ]
+    },
+    {
+      "node": "U20",
+      "chapter": "CH06",
+      "levels": [
+        40,
+        44
+      ],
+      "method": "동굴",
+      "condition": "상시",
+      "species": [
+        "단굴",
+        "두더류",
+        "으랏차",
+        "소곤룡",
+        "메탕",
+        "기어르"
+      ]
+    },
+    {
+      "node": "X05",
+      "chapter": "CH10",
+      "levels": [
+        55,
+        60
+      ],
+      "method": "수면",
+      "condition": "상시",
+      "species": [
+        "고래왕자",
+        "초라기",
+        "진주몽",
+        "시라칸"
+      ]
+    },
+    {
+      "node": "X06",
+      "chapter": "CH10",
+      "levels": [
+        55,
+        60
+      ],
+      "method": "숲",
+      "condition": "상시",
+      "species": [
+        "나목령",
+        "호바귀",
+        "멜리시",
+        "클레피"
+      ]
+    },
+    {
+      "node": "X09",
+      "chapter": "CH10",
+      "levels": [
+        40,
+        45
+      ],
+      "method": "보호구역",
+      "condition": "원정해금",
+      "species": [
+        "아켄",
+        "아노딥스",
+        "투구",
+        "암나이트",
+        "릴링",
+        "두개도스",
+        "방패톱스"
+      ]
+    }
+  ],
+  "gyms": [
+    {
+      "id": "GS01",
+      "leader": "강석",
+      "leaderEnglish": "Roark",
+      "rewardMove": "stealth-rock",
+      "party": [
+        {
+          "name": "꼬마돌",
+          "level": 10
+        },
+        {
+          "name": "롱스톤",
+          "level": 11
+        },
+        {
+          "name": "두개도스",
+          "level": 12
+        }
+      ]
+    },
+    {
+      "id": "GS02",
+      "leader": "유채",
+      "leaderEnglish": "Gardenia",
+      "rewardMove": "grass-knot",
+      "party": [
+        {
+          "name": "꼬몽울",
+          "level": 14
+        },
+        {
+          "name": "체리버",
+          "level": 15
+        },
+        {
+          "name": "로젤리아",
+          "level": 16
+        }
+      ]
+    },
+    {
+      "id": "GS03",
+      "leader": "멜리사",
+      "leaderEnglish": "Fantina",
+      "rewardMove": "shadow-ball",
+      "party": [
+        {
+          "name": "흔들풍손",
+          "level": 17
+        },
+        {
+          "name": "고오스",
+          "level": 18
+        },
+        {
+          "name": "무우마",
+          "level": 19
+        }
+      ]
+    },
+    {
+      "id": "GS04",
+      "leader": "자두",
+      "leaderEnglish": "Maylene",
+      "rewardMove": "drain-punch",
+      "party": [
+        {
+          "name": "요가랑",
+          "level": 21
+        },
+        {
+          "name": "알통몬",
+          "level": 22
+        },
+        {
+          "name": "루카리오",
+          "level": 23
+        }
+      ]
+    },
+    {
+      "id": "GS05",
+      "leader": "맥실러",
+      "leaderEnglish": "Crasher Wake",
+      "rewardMove": "brine",
+      "party": [
+        {
+          "name": "누오",
+          "level": 49
+        },
+        {
+          "name": "플로젤",
+          "level": 50
+        },
+        {
+          "name": "엠페르트",
+          "level": 51
+        },
+        {
+          "name": "갸라도스",
+          "level": 52
+        }
+      ]
+    },
+    {
+      "id": "GS06",
+      "leader": "동관",
+      "leaderEnglish": "Byron",
+      "rewardMove": "flash-cannon",
+      "party": [
+        {
+          "name": "동탁군",
+          "level": 51
+        },
+        {
+          "name": "강철톤",
+          "level": 52
+        },
+        {
+          "name": "자포코일",
+          "level": 53
+        },
+        {
+          "name": "바리톱스",
+          "level": 54
+        }
+      ]
+    },
+    {
+      "id": "GS07",
+      "leader": "무청",
+      "leaderEnglish": "Candice",
+      "rewardMove": "avalanche",
+      "party": [
+        {
+          "name": "포푸니",
+          "level": 54
+        },
+        {
+          "name": "메꾸리",
+          "level": 55
+        },
+        {
+          "name": "글레이시아",
+          "level": 56
+        },
+        {
+          "name": "눈설왕",
+          "level": 57
+        }
+      ]
+    },
+    {
+      "id": "GS08",
+      "leader": "전진",
+      "leaderEnglish": "Volkner",
+      "rewardMove": "charge-beam",
+      "party": [
+        {
+          "name": "라이츄",
+          "level": 57
+        },
+        {
+          "name": "쥬피썬더",
+          "level": 58
+        },
+        {
+          "name": "에레키블",
+          "level": 59
+        },
+        {
+          "name": "렌트라",
+          "level": 60
+        }
+      ]
+    },
+    {
+      "id": "GK01",
+      "leader": "웅",
+      "leaderEnglish": "Brock",
+      "rewardMove": "rock-tomb",
+      "party": [
+        {
+          "name": "꼬마돌",
+          "level": 23
+        },
+        {
+          "name": "뿔카노",
+          "level": 24
+        },
+        {
+          "name": "롱스톤",
+          "level": 25
+        }
+      ]
+    },
+    {
+      "id": "GK02",
+      "leader": "이슬",
+      "leaderEnglish": "Misty",
+      "rewardMove": "water-pulse",
+      "party": [
+        {
+          "name": "콘치",
+          "level": 26
+        },
+        {
+          "name": "고라파덕",
+          "level": 26
+        },
+        {
+          "name": "별가사리",
+          "level": 27
+        },
+        {
+          "name": "아쿠스타",
+          "level": 28
+        }
+      ]
+    },
+    {
+      "id": "GK03",
+      "leader": "마티스",
+      "leaderEnglish": "Lt. Surge",
+      "rewardMove": "thunderbolt",
+      "party": [
+        {
+          "name": "코일",
+          "level": 28
+        },
+        {
+          "name": "찌리리공",
+          "level": 29
+        },
+        {
+          "name": "에레브",
+          "level": 30
+        },
+        {
+          "name": "라이츄",
+          "level": 31
+        }
+      ]
+    },
+    {
+      "id": "GK04",
+      "leader": "민화",
+      "leaderEnglish": "Erika",
+      "rewardMove": "giga-drain",
+      "party": [
+        {
+          "name": "덩쿠리",
+          "level": 31
+        },
+        {
+          "name": "냄새꼬",
+          "level": 32
+        },
+        {
+          "name": "우츠동",
+          "level": 33
+        },
+        {
+          "name": "이상해꽃",
+          "level": 34
+        }
+      ]
+    },
+    {
+      "id": "GK05",
+      "leader": "도희",
+      "leaderEnglish": "Janine",
+      "rewardMove": "sludge-bomb",
+      "party": [
+        {
+          "name": "아리아도스",
+          "level": 62
+        },
+        {
+          "name": "또도가스",
+          "level": 63
+        },
+        {
+          "name": "니드퀸",
+          "level": 64
+        },
+        {
+          "name": "크로뱃",
+          "level": 65
+        }
+      ]
+    },
+    {
+      "id": "GK06",
+      "leader": "초련",
+      "leaderEnglish": "Sabrina",
+      "rewardMove": "psychic",
+      "party": [
+        {
+          "name": "마임맨",
+          "level": 62
+        },
+        {
+          "name": "에브이",
+          "level": 63
+        },
+        {
+          "name": "가디안",
+          "level": 64
+        },
+        {
+          "name": "후딘",
+          "level": 65
+        }
+      ]
+    },
+    {
+      "id": "GK07",
+      "leader": "강연",
+      "leaderEnglish": "Blaine",
+      "rewardMove": "flamethrower",
+      "party": [
+        {
+          "name": "마그마",
+          "level": 62
+        },
+        {
+          "name": "날쌩마",
+          "level": 63
+        },
+        {
+          "name": "윈디",
+          "level": 64
+        },
+        {
+          "name": "리자몽",
+          "level": 65
+        }
+      ]
+    },
+    {
+      "id": "GK08",
+      "leader": "그린",
+      "leaderEnglish": "Blue",
+      "rewardMove": "earthquake",
+      "party": [
+        {
+          "name": "니드퀸",
+          "level": 62
+        },
+        {
+          "name": "닥트리오",
+          "level": 63
+        },
+        {
+          "name": "코뿌리",
+          "level": 64
+        },
+        {
+          "name": "니드킹",
+          "level": 65
+        }
+      ]
+    },
+    {
+      "id": "GJ01",
+      "leader": "비상",
+      "leaderEnglish": "Falkner",
+      "rewardMove": "aerial-ace",
+      "party": [
+        {
+          "name": "피죤",
+          "level": 33
+        },
+        {
+          "name": "야부엉",
+          "level": 34
+        },
+        {
+          "name": "파오리",
+          "level": 35
+        },
+        {
+          "name": "피죤투",
+          "level": 36
+        }
+      ]
+    },
+    {
+      "id": "GJ02",
+      "leader": "호일",
+      "leaderEnglish": "Bugsy",
+      "rewardMove": "u-turn",
+      "party": [
+        {
+          "name": "아리아도스",
+          "level": 35
+        },
+        {
+          "name": "레디안",
+          "level": 36
+        },
+        {
+          "name": "쁘사이저",
+          "level": 37
+        },
+        {
+          "name": "스라크",
+          "level": 38
+        }
+      ]
+    },
+    {
+      "id": "GJ03",
+      "leader": "꼭두",
+      "leaderEnglish": "Whitney",
+      "rewardMove": "attract",
+      "party": [
+        {
+          "name": "푸크린",
+          "level": 37
+        },
+        {
+          "name": "키링키",
+          "level": 38
+        },
+        {
+          "name": "치라치노",
+          "level": 39
+        },
+        {
+          "name": "밀탱크",
+          "level": 40
+        }
+      ]
+    },
+    {
+      "id": "GJ04",
+      "leader": "유빈",
+      "leaderEnglish": "Morty",
+      "rewardMove": "shadow-claw",
+      "party": [
+        {
+          "name": "고우스트",
+          "level": 39
+        },
+        {
+          "name": "무우마",
+          "level": 40
+        },
+        {
+          "name": "둥실라이드",
+          "level": 41
+        },
+        {
+          "name": "팬텀",
+          "level": 42
+        }
+      ]
+    },
+    {
+      "id": "GJ05",
+      "leader": "사도",
+      "leaderEnglish": "Chuck",
+      "rewardMove": "brick-break",
+      "party": [
+        {
+          "name": "시라소몬",
+          "level": 62
+        },
+        {
+          "name": "홍수몬",
+          "level": 63
+        },
+        {
+          "name": "성원숭",
+          "level": 64
+        },
+        {
+          "name": "강챙이",
+          "level": 65
+        }
+      ]
+    },
+    {
+      "id": "GJ06",
+      "leader": "규리",
+      "leaderEnglish": "Jasmine",
+      "rewardMove": "iron-tail",
+      "party": [
+        {
+          "name": "레어코일",
+          "level": 62
+        },
+        {
+          "name": "무장조",
+          "level": 63
+        },
+        {
+          "name": "핫삼",
+          "level": 64
+        },
+        {
+          "name": "강철톤",
+          "level": 65
+        }
+      ]
+    },
+    {
+      "id": "GJ07",
+      "lowLevelReplacements": {"쥬레곤": "눈꼬마"},
+      "leader": "류옹",
+      "leaderEnglish": "Pryce",
+      "rewardMove": "ice-beam",
+      "party": [
+        {
+          "name": "쥬레곤",
+          "level": 62
+        },
+        {
+          "name": "루주라",
+          "level": 63
+        },
+        {
+          "name": "메꾸리",
+          "level": 64
+        },
+        {
+          "name": "맘모꾸리",
+          "level": 65
+        }
+      ]
+    },
+    {
+      "id": "GJ08",
+      "lowLevelReplacements": {"파비코리": "터검니", "킹드라": "한바이트"},
+      "leader": "이향",
+      "leaderEnglish": "Clair",
+      "rewardMove": "dragon-pulse",
+      "party": [
+        {
+          "name": "신뇽",
+          "level": 62
+        },
+        {
+          "name": "파비코리",
+          "level": 63
+        },
+        {
+          "name": "망나뇽",
+          "level": 64
+        },
+        {
+          "name": "킹드라",
+          "level": 65
+        }
+      ]
+    },
+    {
+      "id": "GU01",
+      "leader": "체렌",
+      "leaderEnglish": "Cheren",
+      "rewardMove": "work-up",
+      "party": [
+        {
+          "name": "다부니",
+          "level": 62
+        },
+        {
+          "name": "치라치노",
+          "level": 63
+        },
+        {
+          "name": "버프론",
+          "level": 64
+        },
+        {
+          "name": "바랜드",
+          "level": 65
+        }
+      ]
+    },
+    {
+      "id": "GU02",
+      "leader": "보미",
+      "leaderEnglish": "Roxie",
+      "rewardMove": "venoshock",
+      "party": [
+        {
+          "name": "더스트나",
+          "level": 62
+        },
+        {
+          "name": "골뱃",
+          "level": 63
+        },
+        {
+          "name": "스트린더",
+          "level": 64
+        },
+        {
+          "name": "펜드라",
+          "level": 65
+        }
+      ]
+    },
+    {
+      "id": "GU03",
+      "leader": "아티",
+      "leaderEnglish": "Burgh",
+      "rewardMove": "x-scissor",
+      "party": [
+        {
+          "name": "모아머",
+          "level": 41
+        },
+        {
+          "name": "암팰리스",
+          "level": 42
+        },
+        {
+          "name": "비퀸",
+          "level": 43
+        },
+        {
+          "name": "펜드라",
+          "level": 44
+        }
+      ]
+    },
+    {
+      "id": "GU04",
+      "leader": "카밀레",
+      "leaderEnglish": "Elesa",
+      "rewardMove": "volt-switch",
+      "party": [
+        {
+          "name": "에몽가",
+          "level": 43
+        },
+        {
+          "name": "전툴라",
+          "level": 44
+        },
+        {
+          "name": "저리릴",
+          "level": 45
+        },
+        {
+          "name": "제브라이카",
+          "level": 46
+        }
+      ]
+    },
+    {
+      "id": "GU05",
+      "leader": "야콘",
+      "leaderEnglish": "Clay",
+      "rewardMove": "bulldoze",
+      "party": [
+        {
+          "name": "두까비",
+          "level": 45
+        },
+        {
+          "name": "악비르",
+          "level": 46
+        },
+        {
+          "name": "닥트리오",
+          "level": 47
+        },
+        {
+          "name": "몰드류",
+          "level": 48
+        }
+      ]
+    },
+    {
+      "id": "GU06",
+      "leader": "풍란",
+      "leaderEnglish": "Skyla",
+      "rewardMove": "acrobatics",
+      "party": [
+        {
+          "name": "켄호로우",
+          "level": 62
+        },
+        {
+          "name": "맘박쥐",
+          "level": 63
+        },
+        {
+          "name": "아머까오",
+          "level": 64
+        },
+        {
+          "name": "스완나",
+          "level": 65
+        }
+      ]
+    },
+    {
+      "id": "GU07",
+      "leader": "사간",
+      "leaderEnglish": "Drayden",
+      "rewardMove": "dragon-tail",
+      "party": [
+        {
+          "name": "크리만",
+          "level": 47
+        },
+        {
+          "name": "액슨도",
+          "level": 48
+        },
+        {
+          "name": "파비코리",
+          "level": 49
+        },
+        {
+          "name": "액스라이즈",
+          "level": 50
+        }
+      ]
+    },
+    {
+      "id": "GU08",
+      "leader": "시즈",
+      "leaderEnglish": "Marlon",
+      "rewardMove": "scald",
+      "party": [
+        {
+          "name": "탱탱겔",
+          "level": 62
+        },
+        {
+          "name": "맘복치",
+          "level": 63
+        },
+        {
+          "name": "거북손데스",
+          "level": 64
+        },
+        {
+          "name": "늑골라",
+          "level": 65
+        }
+      ]
+    }
+  ],
+  "originalLocationPrefixes": {
+    "S01": [
+      "lake-verity"
+    ],
+    "S02": [
+      "sinnoh-route-201",
+      "sinnoh-route-202"
+    ],
+    "S03": [
+      "jubilife-city",
+      "sinnoh-route-203"
+    ],
+    "S04": [
+      "oreburgh",
+      "oreburgh-mine"
+    ],
+    "S05": [
+      "eterna-forest",
+      "old-chateau"
+    ],
+    "S06": [
+      "eterna-city",
+      "sinnoh-route-211"
+    ],
+    "S07": [
+      "sinnoh-route-209",
+      "sinnoh-route-208"
+    ],
+    "S08": [
+      "sinnoh-route-214",
+      "sinnoh-route-215"
+    ],
+    "S09": [
+      "great-marsh",
+      "pastoria-city"
+    ],
+    "S10": [
+      "canalave-city"
+    ],
+    "S11": [
+      "iron-island"
+    ],
+    "S12": [
+      "snowpoint"
+    ],
+    "S13": [
+      "sunyshore",
+      "sinnoh-route-222"
+    ],
+    "S14": [
+      "sinnoh-victory-road"
+    ],
+    "S15": [
+      "mt-coronet",
+      "wayward-cave"
+    ],
+    "S17": [
+      "lake-verity",
+      "lake-valor",
+      "lake-acuity"
+    ],
+    "S18": [
+      "valley-windworks",
+      "sinnoh-route-205"
+    ],
+    "S19": [
+      "sinnoh-route-216",
+      "sinnoh-route-217"
+    ],
+    "S20": [
+      "sinnoh-route-218"
+    ],
+    "K01": [
+      "vermillion-city"
+    ],
+    "K02": [
+      "pallet-town",
+      "kanto-route-21"
+    ],
+    "K03": [
+      "kanto-route-1",
+      "kanto-route-2"
+    ],
+    "K04": [
+      "mt-moon",
+      "kanto-route-3"
+    ],
+    "K05": [
+      "viridian-forest"
+    ],
+    "K06": [
+      "cerulean-city",
+      "kanto-route-24",
+      "kanto-route-25"
+    ],
+    "K07": [
+      "kanto-route-7",
+      "kanto-route-8"
+    ],
+    "K10": [
+      "pokemon-tower"
+    ],
+    "K12": [
+      "kanto-safari-zone"
+    ],
+    "K13": [
+      "pokemon-mansion"
+    ],
+    "K15": [
+      "seafoam-islands"
+    ],
+    "K16": [
+      "power-plant"
+    ],
+    "K18": [
+      "kanto-route-5",
+      "kanto-route-6",
+      "kanto-route-11"
+    ],
+    "K20": [
+      "rock-tunnel"
+    ],
+    "J02": [
+      "johto-route-31",
+      "johto-route-32"
+    ],
+    "J03": [
+      "slowpoke-well",
+      "johto-route-33"
+    ],
+    "J04": [
+      "johto-route-37",
+      "johto-route-38"
+    ],
+    "J05": [
+      "burned-tower"
+    ],
+    "J07": [
+      "union-cave"
+    ],
+    "J08": [
+      "johto-route-42"
+    ],
+    "J09": [
+      "lake-of-rage"
+    ],
+    "J10": [
+      "johto-route-39"
+    ],
+    "J11": [
+      "cianwood-city"
+    ],
+    "J12": [
+      "whirl-islands"
+    ],
+    "J13": [
+      "johto-route-35",
+      "johto-route-36",
+      "johto-route-38",
+      "johto-route-39"
+    ],
+    "J14": [
+      "ruins-of-alph"
+    ],
+    "J15": [
+      "ilex-forest"
+    ],
+    "J16": [
+      "mt-silver"
+    ],
+    "J17": [
+      "johto-route-45"
+    ],
+    "J18": [
+      "johto-route-46",
+      "johto-route-28"
+    ],
+    "J19": [
+      "dragons-den"
+    ],
+    "U01": [
+      "castelia-city"
+    ],
+    "U02": [
+      "unova-route-19",
+      "unova-route-20"
+    ],
+    "U03": [
+      "virbank-complex"
+    ],
+    "U04": [
+      "unova-route-5",
+      "unova-route-16"
+    ],
+    "U05": [
+      "unova-route-6"
+    ],
+    "U06": [
+      "unova-route-7",
+      "celestial-tower"
+    ],
+    "U07": [
+      "unova-route-9",
+      "unova-route-10"
+    ],
+    "U08": [
+      "humilau-city",
+      "unova-route-21"
+    ],
+    "U09": [
+      "unova-victory-road"
+    ],
+    "U10": [
+      "unova-route-1",
+      "unova-route-2",
+      "unova-route-3",
+      "unova-route-6"
+    ],
+    "U11": [
+      "desert-resort"
+    ],
+    "U13": [
+      "lostlorn-forest"
+    ],
+    "U14": [
+      "dragonspiral-tower"
+    ],
+    "U15": [
+      "relic-castle"
+    ],
+    "U16": [
+      "giant-chasm"
+    ],
+    "U20": [
+      "chargestone-cave",
+      "clay-tunnel"
+    ]
+  },
+  "extraDirect": [
+    {
+      "names": "매시붕",
+      "node": "X07",
+      "chapter": "CH10",
+      "method": "특별조우",
+      "detail": "PG09 울트라비스트 조사 후 고정 조우. 포획 실패 재도전, 고유 개체 1회 획득"
+    },
+    {
+      "names": "피오네",
+      "node": "S18",
+      "chapter": "CH10",
+      "method": "선물",
+      "detail": "PG07 마나피 보호 후 해안 연구소의 피오네 알 위탁. 마나피의 진화형으로 처리하지 않음"
+    },
+    {
+      "names": "앤테이",
+      "node": "J20",
+      "chapter": "CH10",
+      "method": "전설",
+      "detail": "핵심 전설 산길 흔적 후일담"
+    },
+    {
+      "names": "샤미드 쥬피썬더",
+      "node": "K08",
+      "chapter": "CH03",
+      "method": "진화",
+      "detail": "이브이 진화 연구"
+    },
+    {
+      "names": "로토무",
+      "node": "S05",
+      "chapter": "CH03",
+      "method": "고정",
+      "detail": "SQ13 TV 조사"
+    },
+    {
+      "names": "화강돌",
+      "node": "S18",
+      "chapter": "CH08",
+      "method": "고정",
+      "detail": "SQ14 사연·쐐기돌 조사"
+    },
+    {
+      "names": "흔들풍손",
+      "node": "S18",
+      "chapter": "CH01",
+      "method": "고정",
+      "detail": "SQ15 게임 내 금요일/예약"
+    },
+    {
+      "names": "폴리곤2 폴리곤Z",
+      "node": "K09",
+      "chapter": "CH06",
+      "method": "진화",
+      "detail": "SQ12 후속 연구"
+    },
+    {
+      "names": "치코리타 브케인 리아코",
+      "node": "J01",
+      "chapter": "CH04",
+      "method": "선물",
+      "detail": "성도 교류 의뢰, 종별 1회"
+    },
+    {
+      "names": "모부기 불꽃숭이 팽도리",
+      "node": "S10",
+      "chapter": "CH02",
+      "method": "선물",
+      "detail": "신오 공동 연구 교류, 종별 1회"
+    },
+    {
+      "names": "파이리 꼬부기 이상해씨 나무지기 아차모 물짱이 도치마론 푸호꼬 나몰빼미 파라꼬",
+      "node": "K19",
+      "chapter": "CH03",
+      "method": "선물",
+      "detail": "국제 교류 의뢰, 종별 1회"
+    },
+    {
+      "names": "주리비얀 뚜꾸리 수댕이 개구마르 울머기",
+      "node": "U12",
+      "chapter": "CH06",
+      "method": "선물",
+      "detail": "국제 수련·교류 의뢰, 종별 1회"
+    },
+    {
+      "names": "리오르",
+      "node": "S11",
+      "chapter": "CH02",
+      "method": "선물",
+      "detail": "SQ05 알 위탁·부화"
+    },
+    {
+      "names": "피츄",
+      "node": "K05",
+      "chapter": "CH03",
+      "method": "선물",
+      "detail": "SQ01 보호 의뢰"
+    },
+    {
+      "names": "이브이",
+      "node": "K08",
+      "chapter": "CH03",
+      "method": "선물",
+      "detail": "SQ02 위탁"
+    },
+    {
+      "names": "폴리곤",
+      "node": "K09",
+      "chapter": "CH03",
+      "method": "선물",
+      "detail": "SQ12 복구"
+    },
+    {
+      "names": "따라큐",
+      "node": "K11",
+      "chapter": "CH03",
+      "method": "선물",
+      "detail": "SQ03 천 수선 후 동행"
+    },
+    {
+      "names": "조로아",
+      "node": "U13",
+      "chapter": "CH06",
+      "method": "선물",
+      "detail": "SQ06 해결 후 보호 위탁"
+    },
+    {
+      "names": "단칼빙",
+      "node": "U15",
+      "chapter": "CH06",
+      "method": "고정",
+      "detail": "SQ08 유적 시험"
+    },
+    {
+      "names": "드라꼰",
+      "node": "U12",
+      "chapter": "CH06",
+      "method": "선물",
+      "detail": "야간 습지 보호"
+    },
+    {
+      "names": "일레즌",
+      "node": "U03",
+      "chapter": "CH06",
+      "method": "선물",
+      "detail": "공장 소음 구조"
+    },
+    {
+      "names": "불켜미",
+      "node": "U04",
+      "chapter": "CH06",
+      "method": "고정",
+      "detail": "SQ07 유령열차"
+    },
+    {
+      "names": "잠만보",
+      "node": "K18",
+      "chapter": "CH03",
+      "method": "고정",
+      "detail": "피리 의뢰 후 쉼터 재조우"
+    },
+    {
+      "names": "라프라스",
+      "node": "J07",
+      "chapter": "CH04",
+      "method": "고정",
+      "detail": "SQ15 게임 내 시간 예약"
+    },
+    {
+      "names": "갸라도스",
+      "node": "J09",
+      "chapter": "CH04",
+      "method": "고정",
+      "detail": "SQ04 붉은 개체, 종과 색 상태 분리"
+    },
+    {
+      "names": "두개도스 방패톱스 프테라 투구 암나이트 아노딥스 릴링",
+      "node": "K04",
+      "chapter": "CH03",
+      "method": "화석",
+      "detail": "박물관 복원, 모든 화석 반복 획득"
+    },
+    {
+      "names": "아켄 프로토가",
+      "node": "K04",
+      "chapter": "CH06",
+      "method": "화석",
+      "detail": "U20 발굴 후 박물관 복원"
+    }
+  ]
+}

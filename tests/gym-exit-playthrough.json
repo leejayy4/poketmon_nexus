@@ -1,0 +1,1756 @@
+{
+  "qa": "gym-exit-20260907-01",
+  "observations": [
+    {
+      "label": "default-continue",
+      "screenshot": "01-default-continue.png",
+      "state": {
+        "confirmingBattleExit": true,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": {
+          "kind": "gym",
+          "gymId": "roark",
+          "opponents": [
+            {
+              "species": 74,
+              "level": 10,
+              "maxHp": 22,
+              "hp": 22,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 95,
+              "level": 11,
+              "maxHp": 24,
+              "hp": 24,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 408,
+              "level": 12,
+              "maxHp": 26,
+              "hp": 26,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            }
+          ],
+          "enemyIndex": 0,
+          "enemy": {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 22,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          "active": 0,
+          "participants": [
+            0
+          ],
+          "forcedSwitch": false,
+          "betweenOpponents": false,
+          "moveSelections": [
+            0,
+            0
+          ],
+          "menu": "actions",
+          "selected": 3,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0,
+          "result": false
+        },
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 0,
+              "hp": 29,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 8,
+              "hp": 33,
+              "maxHp": 33,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 0,
+          "seconds": 1.6810999999999994
+        },
+        "panel": "field",
+        "dialogue": {
+          "speaker": "도전 중단",
+          "pages": [
+            "중단하면 다음 도전은 처음부터야.\n얻은 경험치와 현재 HP는 유지돼.",
+            "이번 배지와 승리 보상은 받을 수 없어.\n도전을 중단할까?"
+          ],
+          "page": 1,
+          "shown": 35.60000000000013,
+          "selected": 1,
+          "choices": [
+            "도전을 중단한다",
+            "계속 싸운다"
+          ]
+        },
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "label": "cancel-keeps-battle",
+      "screenshot": "02-cancel-keeps-battle.png",
+      "state": {
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": {
+          "kind": "gym",
+          "gymId": "roark",
+          "opponents": [
+            {
+              "species": 74,
+              "level": 10,
+              "maxHp": 22,
+              "hp": 22,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 95,
+              "level": 11,
+              "maxHp": 24,
+              "hp": 24,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 408,
+              "level": 12,
+              "maxHp": 26,
+              "hp": 26,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            }
+          ],
+          "enemyIndex": 0,
+          "enemy": {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 22,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          "active": 0,
+          "participants": [
+            0
+          ],
+          "forcedSwitch": false,
+          "betweenOpponents": false,
+          "moveSelections": [
+            0,
+            0
+          ],
+          "menu": "actions",
+          "selected": 3,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0,
+          "result": false
+        },
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 0,
+              "hp": 29,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 8,
+              "hp": 33,
+              "maxHp": 33,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 0,
+          "seconds": 2.9633999999999925
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "label": "default-confirm-continues",
+      "screenshot": "03-default-confirm-continues.png",
+      "state": {
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": {
+          "kind": "gym",
+          "gymId": "roark",
+          "opponents": [
+            {
+              "species": 74,
+              "level": 10,
+              "maxHp": 22,
+              "hp": 22,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 95,
+              "level": 11,
+              "maxHp": 24,
+              "hp": 24,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 408,
+              "level": 12,
+              "maxHp": 26,
+              "hp": 26,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            }
+          ],
+          "enemyIndex": 0,
+          "enemy": {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 22,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          "active": 0,
+          "participants": [
+            0
+          ],
+          "forcedSwitch": false,
+          "betweenOpponents": false,
+          "moveSelections": [
+            0,
+            0
+          ],
+          "menu": "actions",
+          "selected": 3,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0,
+          "result": false
+        },
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 0,
+              "hp": 29,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 8,
+              "hp": 33,
+              "maxHp": 33,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 0,
+          "seconds": 3.6275999999999966
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "label": "earned-xp-before-exit",
+      "screenshot": "04-earned-xp-before-exit.png",
+      "state": {
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": {
+          "kind": "gym",
+          "gymId": "roark",
+          "opponents": [
+            {
+              "species": 74,
+              "level": 10,
+              "maxHp": 22,
+              "hp": 0,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 95,
+              "level": 11,
+              "maxHp": 24,
+              "hp": 24,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 408,
+              "level": 12,
+              "maxHp": 26,
+              "hp": 26,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            }
+          ],
+          "enemyIndex": 1,
+          "enemy": {
+            "species": 95,
+            "level": 11,
+            "maxHp": 24,
+            "hp": 24,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          "active": 0,
+          "participants": [
+            0
+          ],
+          "forcedSwitch": false,
+          "betweenOpponents": true,
+          "moveSelections": [
+            0,
+            0
+          ],
+          "menu": "between",
+          "selected": 0,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0,
+          "result": false
+        },
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 50,
+              "hp": 14,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 8,
+              "hp": 33,
+              "maxHp": 33,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 0,
+          "seconds": 7.223099999999979
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "label": "confirmed-exit-keeps-progress",
+      "screenshot": "05-confirmed-exit-keeps-progress.png",
+      "state": {
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": "Z 말걸기 · 관장 강석",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 50,
+              "hp": 14,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 8,
+              "hp": 33,
+              "maxHp": 33,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 0,
+          "seconds": 9.238999999999992
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "label": "rechallenge-first-opponent",
+      "screenshot": "06-rechallenge-first-opponent.png",
+      "state": {
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": {
+          "kind": "gym",
+          "gymId": "roark",
+          "opponents": [
+            {
+              "species": 74,
+              "level": 10,
+              "maxHp": 22,
+              "hp": 22,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 95,
+              "level": 11,
+              "maxHp": 24,
+              "hp": 24,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 408,
+              "level": 12,
+              "maxHp": 26,
+              "hp": 26,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            }
+          ],
+          "enemyIndex": 0,
+          "enemy": {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 22,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          "active": 0,
+          "participants": [
+            0
+          ],
+          "forcedSwitch": false,
+          "betweenOpponents": false,
+          "moveSelections": [
+            0,
+            0
+          ],
+          "menu": "actions",
+          "selected": 0,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0,
+          "result": false
+        },
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 50,
+              "hp": 14,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 8,
+              "hp": 33,
+              "maxHp": 33,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 0,
+          "seconds": 10.288400000000019
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "label": "forced-replacement-selected",
+      "screenshot": "07-forced-replacement-selected.png",
+      "state": {
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": {
+          "kind": "gym",
+          "gymId": "roark",
+          "opponents": [
+            {
+              "species": 74,
+              "level": 10,
+              "maxHp": 22,
+              "hp": 22,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 95,
+              "level": 11,
+              "maxHp": 24,
+              "hp": 24,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 408,
+              "level": 12,
+              "maxHp": 26,
+              "hp": 26,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            }
+          ],
+          "enemyIndex": 0,
+          "enemy": {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 22,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          "active": 0,
+          "participants": [
+            0
+          ],
+          "forcedSwitch": true,
+          "betweenOpponents": false,
+          "moveSelections": [
+            1,
+            0,
+            0
+          ],
+          "menu": "party",
+          "selected": 2,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 1,
+          "result": false
+        },
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 0,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 18,
+              "maxHp": 18,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 18,
+              "maxHp": 18,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 3,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 123,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 0,
+          "seconds": 5.421999999999995
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "label": "forced-cancel-keeps-selection",
+      "screenshot": "08-forced-cancel-keeps-selection.png",
+      "state": {
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": {
+          "kind": "gym",
+          "gymId": "roark",
+          "opponents": [
+            {
+              "species": 74,
+              "level": 10,
+              "maxHp": 22,
+              "hp": 22,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 95,
+              "level": 11,
+              "maxHp": 24,
+              "hp": 24,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 408,
+              "level": 12,
+              "maxHp": 26,
+              "hp": 26,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            }
+          ],
+          "enemyIndex": 0,
+          "enemy": {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 22,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          "active": 0,
+          "participants": [
+            0
+          ],
+          "forcedSwitch": true,
+          "betweenOpponents": false,
+          "moveSelections": [
+            1,
+            0,
+            0
+          ],
+          "menu": "party",
+          "selected": 2,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 1,
+          "result": false
+        },
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 0,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 18,
+              "maxHp": 18,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 18,
+              "maxHp": 18,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 3,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 123,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 0,
+          "seconds": 6.230300000000039
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "label": "save-during-confirmation",
+      "screenshot": "09-save-during-confirmation.png",
+      "state": {
+        "confirmingBattleExit": true,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": {
+          "kind": "gym",
+          "gymId": "roark",
+          "opponents": [
+            {
+              "species": 74,
+              "level": 10,
+              "maxHp": 22,
+              "hp": 22,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 95,
+              "level": 11,
+              "maxHp": 24,
+              "hp": 24,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 408,
+              "level": 12,
+              "maxHp": 26,
+              "hp": 26,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            }
+          ],
+          "enemyIndex": 0,
+          "enemy": {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 22,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          "active": 0,
+          "participants": [
+            0
+          ],
+          "forcedSwitch": true,
+          "betweenOpponents": false,
+          "moveSelections": [
+            1,
+            0,
+            0
+          ],
+          "menu": "party",
+          "selected": 2,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 1,
+          "result": false
+        },
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 0,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 18,
+              "maxHp": 18,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 18,
+              "maxHp": 18,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 3,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 123,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 0,
+          "seconds": 6.745900000000043
+        },
+        "panel": "field",
+        "dialogue": {
+          "speaker": "도전 중단",
+          "pages": [
+            "중단하면 다음 도전은 처음부터야.\n얻은 경험치와 현재 HP는 유지돼.",
+            "이번 배지와 승리 보상은 받을 수 없어.\n도전을 중단할까?"
+          ],
+          "page": 1,
+          "shown": 35.589200000000424,
+          "selected": 1,
+          "choices": [
+            "도전을 중단한다",
+            "계속 싸운다"
+          ]
+        },
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "label": "reload-clears-confirmation",
+      "screenshot": "10-reload-clears-confirmation.png",
+      "state": {
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": "Z 말걸기 · 관장 강석",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 0,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 18,
+              "maxHp": 18,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            },
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 18,
+              "maxHp": 18,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 3,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 123,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 0,
+          "seconds": 7.828599999904651
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    }
+  ]
+}

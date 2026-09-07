@@ -1,0 +1,110 @@
+✔ counterattack declares the move before changing displayed HP for every action that spends a turn (3.9503ms)
+✔ lethal counter keeps the outgoing Pokemon alive through the attack declaration, then shows exact loss before fainting (0.4789ms)
+✔ finishing blow reports actual HP loss in hint, dialogue and effect while preserving victory XP (0.8843ms)
+✔ low-HP counter previews report at most the HP the selected Pokemon can lose (0.4335ms)
+✔ counter playback and reload never apply damage or item use for a second time (3.7373ms)
+✔ attack damage and counterattack carry separate visual targets on the matching pages (6.3019ms)
+✔ healing uses the actual recovered HP and never puts a reserve heal effect on the active Pokemon (1.3166ms)
+✖ page effects expire independently of text speed and revealing text does not replay an effect (3.8406ms)
+✔ fast forwarding, replacement dialogue and reload drop effects without repeating damage or items (1.6896ms)
+✔ knockout, next opponent and appended reward pages do not replay the final hit (27.6901ms)
+✔ renderer draws a short damage label and displaced sprite, then restores the original pose (2.5858ms)
+✔ rejected actions and non-finite or expired clocks produce no effect (0.6126ms)
+✖ move damage previews agree with resolved wild and gym turns across levels and debuffs (22.5643ms)
+✔ finishing blow preview promises no retaliation and resolution preserves HP (0.8864ms)
+✔ status previews reflect next damage and capped effects report failure but still cost a turn (1.3441ms)
+✔ potion and switch previews include the retaliation and invalid action reasons (0.5996ms)
+✔ catch preview follows HP threshold and eligibility without consuming resources (0.5515ms)
+✔ attack, damage, knockout and next opponent retain distinct detached display states (5.2729ms)
+✔ normal and free switches show outgoing then incoming Pokemon and only the normal switch takes a counter (0.5957ms)
+✔ healing and debuffs appear before the counterattack in their respective dialogue pages (0.7223ms)
+✔ fainting keeps the defeated Pokemon visible in status until automatic or chosen replacement (1.4287ms)
+✔ advancing display dialogue never reapplies committed damage, items or XP and restore drops playback (4.1876ms)
+✔ renderer hides future opponent and choices during playback and uses current data afterwards (4.9074ms)
+✔ rejected actions, a replaced dialogue and final battle completion leave no stale frame (1.4515ms)
+✔ successful and failed throws share the same initial scene without revealing the result (4.2062ms)
+✔ the ball follows an arc, hides the target on contact and comes to rest without modifying game data (0.7728ms)
+✖ failed escape restores the enemy before counterattack and success opens the existing catch card (3.668ms)
+✔ renderer draws the ball in flight and keeps the opponent hidden only during the throw page (1.7246ms)
+✔ fast forwarding and reload cannot replay a throw or grant another Pokemon (1.622ms)
+✔ empty balls, full party and gym capture rejection never animate or consume a ball (1.4076ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 27
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 932.9597
+
+✖ failing tests:
+
+test at tests\battle-effects.test.ts:25:1
+✖ page effects expire independently of text speed and revealing text does not replay an effect (3.8406ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'player'
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\battle-effects.test.ts:26:340)
+      at dom (C:\my_play\poketmon_demo\tests\battle-effects.test.ts:10:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-effects.test.ts:25:105)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'player',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\battle-hints.test.ts:11:1
+✖ move damage previews agree with resolved wild and gym turns across levels and debuffs (22.5643ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '상대에게 18 피해'
+  - '상대에게 19 피해'
+           ^
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-hints.test.ts:16:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '상대에게 18 피해',
+    expected: '상대에게 19 피해',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\capture-motion.test.ts:22:1
+✖ failed escape restores the enemy before counterattack and success opens the existing catch card (3.668ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  20 !== 16
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\capture-motion.test.ts:23:365)
+      at dom (C:\my_play\poketmon_demo\tests\capture-motion.test.ts:9:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\capture-motion.test.ts:22:108)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 20,
+    expected: 16,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

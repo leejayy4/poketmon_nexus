@@ -1,0 +1,566 @@
+{
+  "qa": "team-play-20260907-01",
+  "fixture": "tests/fixtures/first-badge/entry.json",
+  "observations": [
+    {
+      "label": "기존 스타터 저장으로 풀밭 도보 조우",
+      "map": "route_s01",
+      "player": {
+        "x": 9,
+        "y": 15,
+        "facing": "right"
+      },
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 20,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 5,
+        "potions": 2
+      },
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "dialogue": null
+    },
+    {
+      "label": "HP를 줄여 비버니 포획",
+      "map": "route_s01",
+      "player": {
+        "x": 9,
+        "y": 15,
+        "facing": "right"
+      },
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 12,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 6,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 4,
+        "potions": 2
+      },
+      "battle": null,
+      "dialogue": null
+    },
+    {
+      "label": "파티 정보에서 비버니 회복, 상처약 1개 사용",
+      "map": "route_s01",
+      "player": {
+        "x": 9,
+        "y": 15,
+        "facing": "right"
+      },
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 12,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 4,
+        "potions": 1
+      },
+      "battle": null,
+      "dialogue": null
+    },
+    {
+      "label": "이미 전투 중인 포켓몬 선택 시 턴 소비 없음",
+      "map": "route_s01",
+      "player": {
+        "x": 9,
+        "y": 15,
+        "facing": "right"
+      },
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 12,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 4,
+        "potions": 1
+      },
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "dialogue": null
+    },
+    {
+      "label": "비버니로 교대 후 상대 공격 한 번",
+      "map": "route_s01",
+      "player": {
+        "x": 9,
+        "y": 15,
+        "facing": "right"
+      },
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 12,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 3,
+          "hp": 14,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 4,
+        "potions": 1
+      },
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 1,
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "dialogue": null
+    },
+    {
+      "label": "잡은 비버니로 승리, 레벨 4 성장",
+      "map": "route_s01",
+      "player": {
+        "x": 9,
+        "y": 15,
+        "facing": "right"
+      },
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 12,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 4,
+          "hp": 9,
+          "maxHp": 21,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 4,
+        "potions": 1
+      },
+      "battle": null,
+      "dialogue": null
+    },
+    {
+      "label": "성장한 비버니를 선두로 변경",
+      "map": "route_s01",
+      "player": {
+        "x": 9,
+        "y": 15,
+        "facing": "right"
+      },
+      "party": [
+        {
+          "species": 399,
+          "level": 4,
+          "hp": 9,
+          "maxHp": 21,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 12,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 4,
+        "potions": 1
+      },
+      "battle": null,
+      "dialogue": null
+    },
+    {
+      "label": "선두·HP·도구·성장 상태 저장 후 재접속 유지",
+      "map": "route_s01",
+      "player": {
+        "x": 9,
+        "y": 15,
+        "facing": "right"
+      },
+      "party": [
+        {
+          "species": 399,
+          "level": 4,
+          "hp": 21,
+          "maxHp": 21,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 12,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 4,
+        "potions": 0
+      },
+      "battle": null,
+      "dialogue": null
+    },
+    {
+      "label": "다음 조우에 비버니가 선두로 출전",
+      "map": "route_s01",
+      "player": {
+        "x": 9,
+        "y": 15,
+        "facing": "right"
+      },
+      "party": [
+        {
+          "species": 399,
+          "level": 4,
+          "hp": 21,
+          "maxHp": 21,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 12,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 4,
+        "potions": 0
+      },
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "dialogue": null
+    },
+    {
+      "label": "가방 취소 후 행동 선택 복귀",
+      "map": "route_s01",
+      "player": {
+        "x": 9,
+        "y": 15,
+        "facing": "right"
+      },
+      "party": [
+        {
+          "species": 399,
+          "level": 4,
+          "hp": 21,
+          "maxHp": 21,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 12,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 4,
+        "potions": 0
+      },
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "dialogue": null
+    },
+    {
+      "label": "전투 종료 후 탐험 복귀",
+      "map": "route_s01",
+      "player": {
+        "x": 9,
+        "y": 15,
+        "facing": "right"
+      },
+      "party": [
+        {
+          "species": 399,
+          "level": 4,
+          "hp": 21,
+          "maxHp": 21,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 12,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        }
+      ],
+      "inventory": {
+        "pokeBalls": 4,
+        "potions": 0
+      },
+      "battle": null,
+      "dialogue": null
+    },
+    {
+      "label": "포인터로 선두 변경 버튼 클릭, 꼬부기 선두 및 안내 확인",
+      "map": "route_s01",
+      "party": [
+        {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 12,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        {
+          "species": 399,
+          "level": 4,
+          "hp": 21,
+          "maxHp": 21,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        }
+      ],
+      "dialogue": {
+        "speaker": "포켓몬",
+        "pages": [
+          "꼬부기를 선두로 세웠어요.\n다음 전투에 먼저 나갑니다."
+        ],
+        "page": 0,
+        "shown": 1283.3388000000089,
+        "selected": 0
+      }
+    }
+  ],
+  "consoleAfterReload": []
+}

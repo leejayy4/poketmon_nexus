@@ -1,0 +1,241 @@
+{
+  "forest_border_art": {
+    "source": "sandgem-reference.png (existing Platinum tree)",
+    "sample": [24, 88, 32, 48],
+    "processing": "Reuses the native-size stepped whole-tree crop and shadow from explore-tree-art.ts along the blocked perimeter of Eterna Forest, Viridian Forest and Ilex Forest. Overlapping final trees finish odd northern/southern runs. Canopies exclude all warp tiles; depth follows tree feet. Low forest ground replaces sliced leaf tiles. No new downloads or collision changes."
+  },
+  "city_street_art": {
+    "source": "jubilife-reference.png (existing Jubilife City Platinum material)",
+    "samples": { "paving": [464, 112, 16, 16], "drain": [632, 224, 16, 16] },
+    "processing": "Native-size paving and drain covers with authored four-tone pixel curbs, chamfered outer corners, connected inner corners and lowered crossing ends in src/city-street-art.ts. Existing asphalt color, road footprints and collision are retained across eight urban maps. No new downloads."
+  },
+  "grove_tree_art": {
+    "source": "sandgem-reference.png (existing Platinum field material)",
+    "sample": [24, 88, 32, 48],
+    "processing": "Native-size whole-tree crop with stepped canopy/trunk clipping in src/explore-tree-art.ts. Complete trees overlap for odd-sized groves and are depth-sorted with actors. Ground cover retains existing collision footprints. Forest ground tint reuses town-reference.png. No new downloads."
+  },
+  "field_materials": [
+    "https://archives.bulbagarden.net/media/upload/4/48/Twinleaf_Town_Pt.png",
+    "https://archives.bulbagarden.net/media/upload/f/f3/Sandgem_Town_Pt.png",
+    "https://archives.bulbagarden.net/media/upload/4/43/Sinnoh_Route_201_Pt.png",
+    "https://archives.bulbagarden.net/media/upload/a/aa/Player_Bedroom_DPPt.png",
+    "https://archives.bulbagarden.net/media/upload/1/1d/Player_House_1F_DPPt.png",
+    "https://archives.bulbagarden.net/media/upload/c/c4/Rowan_Lab_DPPt.png",
+    "https://archives.bulbagarden.net/media/upload/4/44/Jubilife_City_Pt.png",
+    "https://archives.bulbagarden.net/media/upload/1/14/Pok%C3%A9mon_Center_inside_DPPt.png"
+  ],
+  "character_sheets": "https://github.com/pret/pokeplatinum/tree/main/res/graphics/field_sprites",
+  "pokemon_sprites": "https://github.com/PokeAPI/sprites/tree/master/sprites/pokemon/versions/generation-iv/platinum",
+  "font": "https://github.com/quiple/galmuri",
+  "processing": "Original DS material samples are composed into a new town in src/town.ts. Character palette variants and direction mapping are defined in src/sprites.ts and src/renderer.ts. No ROM is required to run the prototype.",
+  "pokemon_rightsholders": "Nintendo / Creatures / GAME FREAK",
+  "eevee_icon": "https://github.com/pret/pokeplatinum/blob/main/res/pokemon/eevee/icon.png",
+  "d1_assets": {
+    "files": {
+      "pokemon-399.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/399.png",
+      "pokemon-back-1.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/back/1.png",
+      "pokemon-back-4.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/back/4.png",
+      "pokemon-back-7.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/back/7.png",
+      "pokemon-back-25.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/back/25.png",
+      "pokemon-back-399.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/back/399.png"
+    },
+    "processing": "Unmodified Platinum front Bidoof and back battle sprites. Route terrain reuses existing town-reference and grass-reference samples in src/route.ts."
+  },
+  "d2_assets": {
+    "files": {
+      "pokemon-74.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/74.png",
+      "pokemon-95.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/95.png",
+      "pokemon-408.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/408.png",
+      "pokemon-back-74.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/back/74.png",
+      "pokemon-back-95.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/back/95.png",
+      "pokemon-back-408.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/back/408.png"
+    },
+    "processing": "Unmodified Platinum gym opponent sprites. City center and gym facades reuse clipped Sandgem DS sources in src/badge-maps.ts; interior floors and rocks drawn on Canvas."
+  },
+  "d3_assets": {
+    "files": {
+      "pokemon-406.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/406.png",
+      "pokemon-back-406.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/back/406.png",
+      "pokemon-420.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/420.png",
+      "pokemon-back-420.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/back/420.png",
+      "pokemon-315.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/315.png",
+      "pokemon-back-315.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/back/315.png",
+      "pokemon-425.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/425.png",
+      "pokemon-back-425.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/back/425.png",
+      "pokemon-92.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/92.png",
+      "pokemon-back-92.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/back/92.png",
+      "pokemon-200.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/200.png",
+      "pokemon-back-200.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/back/200.png",
+      "pokemon-307.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/307.png",
+      "pokemon-back-307.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/back/307.png",
+      "pokemon-66.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/66.png",
+      "pokemon-back-66.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/back/66.png",
+      "pokemon-448.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/448.png",
+      "pokemon-back-448.png": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iv/platinum/back/448.png"
+    },
+    "processing": "Unmodified Platinum trainer sprites; new field maps reuse existing DS samples and Canvas surfaces in sinnoh-maps.ts."
+  },
+  "world_tour": {
+    "processing": "Expanded 35 tour towns on 2026-09-07. Jubilife TV tower, civic facade, two apartment variants and paving are polygon-clipped at native pixel size from jubilife-reference.png in explore-jubilife.ts. Other civic and waterfront towns reuse the civic/apartment facade; remaining landmarks reuse the Sandgem lab with theme roof overlays. Existing Twinleaf grass, sand, small houses and wooden signs remain. Asphalt, crossings, water, gardens, fountains and interiors include Canvas compositions; unique architecture for every landmark remains unfinished.",
+    "interiors": "38 centers use native DPPt samples and a nurse reception counter. 38 landmark rooms now compose native DS floor, wood, shelf, desk, monitor and window samples with twelve authored wall/floor themes and depth-sorted Canvas exhibit art in explore-interior-art.ts. Some props remain code-drawn. Dialogue, collision, warps and revision 16 saves are unchanged. Not final user-approved graphics.",
+    "outdoor_signs": "Existing town-reference.png wooden sign sampled at (244,156,24,28) with polygon clipping in explore-art.ts, depth-sorted in renderer.ts. No new downloaded assets.",
+    "expansion_assets": {
+      "original": "https://archives.bulbagarden.net/media/upload/4/44/Jubilife_City_Pt.png",
+      "samples": {
+        "paving": [
+          464,
+          112,
+          16,
+          16
+        ],
+        "civic": [
+          518,
+          14,
+          148,
+          188
+        ],
+        "apartmentA": [
+          166,
+          546,
+          81,
+          108
+        ],
+        "tv": [
+          266,
+          232,
+          175,
+          296
+        ],
+        "apartmentB": [
+          601,
+          546,
+          83,
+          111
+        ]
+      },
+      "file": "jubilife-reference.png",
+      "sourceSize": [
+        1056,
+        798
+      ],
+      "page": "https://archives.bulbagarden.net/wiki/File:Jubilife_City_Pt.png"
+    },
+    "town_pokemon": {
+      "processing": "Unmodified native 32px DS field sheets. N/S/W/E direction groups contain four frames each, except Starly with one per direction. Runtime crops frames for idle and facing reactions in explore-life-art.ts. These eight display species do not extend capturable party data. Heart bubbles and water ripples are Canvas compositions.",
+      "files": {
+        "field-machop.png": "https://raw.githubusercontent.com/pret/pokeplatinum/bca37652996330898fdd2408281ea419b8c995c7/res/graphics/field_sprites/pokemon/machop.png",
+        "field-piplup.png": "https://raw.githubusercontent.com/pret/pokeplatinum/bca37652996330898fdd2408281ea419b8c995c7/res/graphics/field_sprites/pokemon/piplup.png",
+        "field-clefairy.png": "https://raw.githubusercontent.com/pret/pokeplatinum/bca37652996330898fdd2408281ea419b8c995c7/res/graphics/field_sprites/pokemon/clefairy.png",
+        "field-buneary.png": "https://raw.githubusercontent.com/pret/pokeplatinum/bca37652996330898fdd2408281ea419b8c995c7/res/graphics/field_sprites/pokemon/buneary.png",
+        "field-psyduck.png": "https://raw.githubusercontent.com/pret/pokeplatinum/bca37652996330898fdd2408281ea419b8c995c7/res/graphics/field_sprites/pokemon/psyduck.png",
+        "field-pikachu.png": "https://raw.githubusercontent.com/pret/pokeplatinum/bca37652996330898fdd2408281ea419b8c995c7/res/graphics/field_sprites/pokemon/pikachu.png",
+        "field-starly.png": "https://raw.githubusercontent.com/pret/pokeplatinum/bca37652996330898fdd2408281ea419b8c995c7/res/graphics/field_sprites/pokemon/starly.png",
+        "field-pachirisu.png": "https://raw.githubusercontent.com/pret/pokeplatinum/bca37652996330898fdd2408281ea419b8c995c7/res/graphics/field_sprites/pokemon/pachirisu.png"
+      },
+      "source": "https://github.com/pret/pokeplatinum/tree/bca37652996330898fdd2408281ea419b8c995c7/res/graphics/field_sprites/pokemon"
+    },
+    "center_assets": {
+      "referencePage": "https://archives.bulbagarden.net/wiki/File:Pok%C3%A9mon_Center_inside_DPPt.png",
+      "files": {
+        "center-reference.png": "https://archives.bulbagarden.net/media/upload/1/14/Pok%C3%A9mon_Center_inside_DPPt.png",
+        "pokecenter_nurse.png": "https://raw.githubusercontent.com/pret/pokeplatinum/bca37652996330898fdd2408281ea419b8c995c7/res/graphics/field_sprites/npc/pokecenter_nurse.png"
+      },
+      "samples": {
+        "floor": [
+          77,
+          145,
+          16,
+          16
+        ],
+        "wall": [
+          73,
+          10,
+          24,
+          22
+        ],
+        "healer": [
+          90,
+          29,
+          28,
+          38
+        ],
+        "pc": [
+          180,
+          28,
+          22,
+          36
+        ],
+        "seat": [
+          41,
+          127,
+          15,
+          31
+        ],
+        "counter": [
+          80,
+          65,
+          32,
+          21
+        ],
+        "emblem": [
+          101,
+          106,
+          53,
+          41
+        ]
+      },
+      "processing": "Original 254x189 reference is sampled without resizing into the existing 256x224 tour room. Canvas borders and threshold join native samples. Nurse is the original 32x512 direction sheet; no characters are baked into the sampled furniture. Source art remains copyright Nintendo / Creatures / GAME FREAK; download is not a license grant."
+    },
+    "hall_assets": {
+      "files": {
+        "lab-reference.png": "https://archives.bulbagarden.net/media/upload/c/c4/Rowan_Lab_DPPt.png",
+        "home-reference.png": "https://archives.bulbagarden.net/media/upload/1/1d/Player_House_1F_DPPt.png"
+      },
+      "samples": {
+        "tile": [
+          "lab-reference",
+          80,
+          80,
+          16,
+          16
+        ],
+        "wood": [
+          "home-reference",
+          160,
+          80,
+          16,
+          16
+        ],
+        "shelf": [
+          "lab-reference",
+          42,
+          20,
+          30,
+          32
+        ],
+        "desk": [
+          "lab-reference",
+          24,
+          55,
+          48,
+          24
+        ],
+        "monitor": [
+          "home-reference",
+          94,
+          48,
+          30,
+          28
+        ],
+        "window": [
+          "lab-reference",
+          105,
+          13,
+          26,
+          17
+        ]
+      },
+      "processing": "Existing source images only; no new downloads. Native-size crops for floors and common furniture; authored Canvas walls, floor finishes, camera, mine cart, ribbons, dolls and other exhibit details. Furnishings are clipped to their footprint horizontally and at the south edge, with up to 12px raised art above the footprint, and depth-sorted with actors. All 38 landmark room layouts and investigation IDs are retained."
+    }
+  }
+}

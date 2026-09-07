@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "worldRevision": 3,
+  "map": "neighbor",
+  "player": {
+    "x": 6,
+    "y": 7,
+    "facing": "up"
+  },
+  "flags": {},
+  "party": [],
+  "steps": 0,
+  "seconds": 0
+}

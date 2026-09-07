@@ -1,0 +1,2677 @@
+[
+  {
+    "name": "01-low-hp-switch",
+    "screenshot": "tests/battle-selection-screenshots/01-low-hp-switch.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 0.7332000000000009,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": null,
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "menu": "party",
+        "selected": 1,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 19,
+          "y": 6,
+          "facing": "right"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 2,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 3.599999999999997
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 19,
+        "y": 6,
+        "facing": "right"
+      }
+    }
+  },
+  {
+    "name": "02-sixth-party-member",
+    "screenshot": "tests/battle-selection-screenshots/02-sixth-party-member.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 0.7332000000000009,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": null,
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "menu": "party",
+        "selected": 5,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 19,
+          "y": 6,
+          "facing": "right"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 2,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 4.633299999999999
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 19,
+        "y": 6,
+        "facing": "right"
+      }
+    }
+  },
+  {
+    "name": "03-fainted-target",
+    "screenshot": "tests/battle-selection-screenshots/03-fainted-target.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 0.7332000000000009,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": null,
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "menu": "party",
+        "selected": 2,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 19,
+          "y": 6,
+          "facing": "right"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 2,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 4.816700000000003
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 19,
+        "y": 6,
+        "facing": "right"
+      }
+    }
+  },
+  {
+    "name": "04-cancel-battlefield",
+    "screenshot": "tests/battle-selection-screenshots/04-cancel-battlefield.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 0.14979999999999566,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": null,
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "menu": "actions",
+        "selected": 2,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 19,
+          "y": 6,
+          "facing": "right"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 2,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 5.233199999999997
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 19,
+        "y": 6,
+        "facing": "right"
+      }
+    }
+  },
+  {
+    "name": "05-full-hp-healing",
+    "screenshot": "tests/battle-selection-screenshots/05-full-hp-healing.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 2.966900000000003,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": null,
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "menu": "heal",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 19,
+          "y": 6,
+          "facing": "right"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 2,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 9.132900000000022
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 19,
+        "y": 6,
+        "facing": "right"
+      }
+    }
+  },
+  {
+    "name": "06-reserve-healing-preview",
+    "screenshot": "tests/battle-selection-screenshots/06-reserve-healing-preview.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 2.966900000000003,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": null,
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "menu": "heal",
+        "selected": 1,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 19,
+          "y": 6,
+          "facing": "right"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 2,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 2
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 9.383100000000033
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 19,
+        "y": 6,
+        "facing": "right"
+      }
+    }
+  },
+  {
+    "name": "07-touch-healing-battlefield",
+    "screenshot": "tests/battle-selection-screenshots/07-touch-healing-battlefield.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 0.2166000000000204,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": {
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "player": {
+          "species": 7,
+          "level": 5,
+          "experience": 0,
+          "hp": 20,
+          "maxHp": 20,
+          "nature": "성실",
+          "met": "새잎마을 · 포켓몬 연구소"
+        },
+        "enemyIndex": 0,
+        "active": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0
+      },
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 19,
+          "y": 6,
+          "facing": "right"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 16,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 1
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 10.532900000000058
+      },
+      "panel": "field",
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "상처약을 사용했다!\n비버니의 HP가 16 회복되었다.",
+          "야생 비버니의 몸통박치기!\n꼬부기에게 4의 피해!"
+        ],
+        "page": 0,
+        "shown": 7.797600000000734,
+        "selected": 0
+      },
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 19,
+        "y": 6,
+        "facing": "right"
+      }
+    }
+  },
+  {
+    "name": "08-healed-switch-preview",
+    "screenshot": "tests/battle-selection-screenshots/08-healed-switch-preview.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 0.2331999999999971,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": null,
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "participants": [
+          0
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "menu": "party",
+        "selected": 1,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 19,
+          "y": 6,
+          "facing": "right"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 16,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 1
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 11.180600000000045
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 19,
+        "y": 6,
+        "facing": "right"
+      }
+    }
+  },
+  {
+    "name": "09-touch-switch-counter",
+    "screenshot": "tests/battle-selection-screenshots/09-touch-switch-counter.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 0.2666999999999825,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": null,
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 19,
+          "y": 6,
+          "facing": "right"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 16,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 14,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 1
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 12.21220000000004
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 19,
+        "y": 6,
+        "facing": "right"
+      }
+    }
+  },
+  {
+    "name": "10-reload-before-selection",
+    "screenshot": "tests/battle-selection-screenshots/10-reload-before-selection.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 0.2666999999999825,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": null,
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": {
+        "kind": "wild",
+        "gymId": "roark",
+        "opponents": [
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "enemyIndex": 0,
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "experience": 0,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 1,
+        "participants": [
+          0,
+          1
+        ],
+        "forcedSwitch": false,
+        "betweenOpponents": false,
+        "moveSelections": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "menu": "party",
+        "selected": 1,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 19,
+          "y": 6,
+          "facing": "right"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 16,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 14,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 1
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 13.47780000000006
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 19,
+        "y": 6,
+        "facing": "right"
+      }
+    }
+  },
+  {
+    "name": "11-restored-field",
+    "screenshot": "tests/battle-selection-screenshots/11-restored-field.png",
+    "state": {
+      "captureMotion": null,
+      "tourEvent": null,
+      "battleEffect": null,
+      "dialogueElapsed": 0,
+      "gymReward": null,
+      "showingGymReward": false,
+      "caughtPreview": null,
+      "showingCatch": false,
+      "confirmingBattleExit": false,
+      "defeatScene": null,
+      "recoveryPreview": false,
+      "battleFrame": null,
+      "gymPreview": null,
+      "fieldMap": false,
+      "followingObjective": false,
+      "roaming": null,
+      "navigation": null,
+      "interactionHint": null,
+      "exploring": false,
+      "battle": null,
+      "grassSteps": 0,
+      "save": {
+        "version": 1,
+        "worldRevision": 17,
+        "map": "route_s01",
+        "player": {
+          "x": 19,
+          "y": 6,
+          "facing": "right"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "experience": 0,
+            "hp": 16,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 14,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 0,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 3,
+          "potions": 1
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 6,
+        "seconds": 13.91324800004774
+      },
+      "panel": "field",
+      "dialogue": null,
+      "moving": false,
+      "transition": 0,
+      "menuIndex": 0,
+      "bagIndex": 1,
+      "starterIndex": 0,
+      "partyIndex": 0,
+      "map": {
+        "walkable": [
+          "################################",
+          "################################",
+          "################################",
+          "################################",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...#.......................##",
+          "###...........................##",
+          "##.............................#",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "###...........................##",
+          "################################",
+          "################################",
+          "################################"
+        ],
+        "npcs": [
+          {
+            "id": "routeGuide",
+            "x": 25,
+            "y": 10
+          },
+          {
+            "id": "roadworker",
+            "x": 3,
+            "y": 11
+          }
+        ],
+        "warps": [
+          {
+            "x": 2,
+            "y": 12,
+            "to": "tour_jubilife",
+            "spawn": {
+              "x": 37,
+              "y": 24
+            },
+            "entry": "left",
+            "facing": "left"
+          },
+          {
+            "x": 30,
+            "y": 12,
+            "to": "town",
+            "spawn": {
+              "x": 4,
+              "y": 15
+            },
+            "facing": "right",
+            "entry": "right"
+          }
+        ],
+        "reserved": [],
+        "terrain": [
+          {
+            "kind": "tallGrass",
+            "x": 17,
+            "y": 6,
+            "w": 6,
+            "h": 4
+          },
+          {
+            "kind": "tallGrass",
+            "x": 7,
+            "y": 15,
+            "w": 8,
+            "h": 4
+          }
+        ]
+      },
+      "position": {
+        "x": 19,
+        "y": 6,
+        "facing": "right"
+      }
+    }
+  }
+]

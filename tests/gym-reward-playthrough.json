@@ -1,0 +1,1657 @@
+{
+  "qa": "gym-reward-20260907-01",
+  "observations": [
+    {
+      "label": "last-hit-before-reward",
+      "state": {
+        "gymReward": {
+          "id": "roark",
+          "money": 1440,
+          "page": 6
+        },
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": {
+          "enemy": {
+            "species": 408,
+            "level": 12,
+            "maxHp": 26,
+            "hp": 2,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          "player": {
+            "species": 399,
+            "level": 8,
+            "hp": 18,
+            "maxHp": 33,
+            "experience": 50,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          "enemyIndex": 2,
+          "active": 1,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0
+        },
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": {
+          "kind": "gym",
+          "gymId": "roark",
+          "opponents": [
+            {
+              "species": 74,
+              "level": 10,
+              "maxHp": 22,
+              "hp": 0,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 95,
+              "level": 11,
+              "maxHp": 24,
+              "hp": 0,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 408,
+              "level": 12,
+              "maxHp": 26,
+              "hp": 0,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            }
+          ],
+          "enemyIndex": 2,
+          "enemy": {
+            "species": 408,
+            "level": 12,
+            "maxHp": 26,
+            "hp": 0,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          "active": 1,
+          "participants": [
+            1
+          ],
+          "forcedSwitch": false,
+          "betweenOpponents": false,
+          "moveSelections": [
+            0,
+            0
+          ],
+          "menu": "actions",
+          "selected": 0,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0,
+          "result": true
+        },
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 50,
+              "hp": 0,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 9,
+              "hp": 21,
+              "maxHp": 36,
+              "experience": 20,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [
+            "BADGE-GS01"
+          ],
+          "keyItems": [
+            "TM-stealth-rock"
+          ],
+          "money": 1440,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 0,
+          "seconds": 48.56440000000051
+        },
+        "panel": "field",
+        "dialogue": {
+          "speaker": "",
+          "pages": [
+            "비버니의 몸통박치기!",
+            "두개도스에게 8의 피해를 주었다!",
+            "강석의 두개도스가 쓰러졌다!",
+            "비버니는 경험치를\n50 얻었다!",
+            "비버니의 레벨이\n9(으)로 올랐다!",
+            "체육관 관장 강석에게 이겼다!",
+            "강석에게 콜배지를 받았다!",
+            "기술머신 스텔스록을 받았다!\n상금 1,440원을 받았다!"
+          ],
+          "page": 0,
+          "shown": 1.7999999999999998,
+          "selected": 1,
+          "choices": [
+            "목표 안내",
+            "계속 모험하기"
+          ]
+        },
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/gym-reward-screenshots/01-last-hit-before-reward.png"
+    },
+    {
+      "label": "badge-reward-and-recovery",
+      "state": {
+        "gymReward": {
+          "id": "roark",
+          "money": 1440,
+          "page": 6
+        },
+        "showingGymReward": true,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": {
+          "enemy": {
+            "species": 408,
+            "level": 12,
+            "maxHp": 26,
+            "hp": 0,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          "player": {
+            "species": 399,
+            "level": 9,
+            "hp": 21,
+            "maxHp": 36,
+            "experience": 20,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          "enemyIndex": 2,
+          "active": 1,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0
+        },
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": {
+          "kind": "gym",
+          "gymId": "roark",
+          "opponents": [
+            {
+              "species": 74,
+              "level": 10,
+              "maxHp": 22,
+              "hp": 0,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 95,
+              "level": 11,
+              "maxHp": 24,
+              "hp": 0,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 408,
+              "level": 12,
+              "maxHp": 26,
+              "hp": 0,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            }
+          ],
+          "enemyIndex": 2,
+          "enemy": {
+            "species": 408,
+            "level": 12,
+            "maxHp": 26,
+            "hp": 0,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          "active": 1,
+          "participants": [
+            1
+          ],
+          "forcedSwitch": false,
+          "betweenOpponents": false,
+          "moveSelections": [
+            0,
+            0
+          ],
+          "menu": "actions",
+          "selected": 0,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0,
+          "result": true
+        },
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 50,
+              "hp": 0,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 9,
+              "hp": 21,
+              "maxHp": 36,
+              "experience": 20,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [
+            "BADGE-GS01"
+          ],
+          "keyItems": [
+            "TM-stealth-rock"
+          ],
+          "money": 1440,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 0,
+          "seconds": 54.164100000000786
+        },
+        "panel": "field",
+        "dialogue": {
+          "speaker": "",
+          "pages": [
+            "비버니의 몸통박치기!",
+            "두개도스에게 8의 피해를 주었다!",
+            "강석의 두개도스가 쓰러졌다!",
+            "비버니는 경험치를\n50 얻었다!",
+            "비버니의 레벨이\n9(으)로 올랐다!",
+            "체육관 관장 강석에게 이겼다!",
+            "강석에게 콜배지를 받았다!",
+            "기술머신 스텔스록을 받았다!\n상금 1,440원을 받았다!"
+          ],
+          "page": 7,
+          "shown": 35.197600000000214,
+          "selected": 1,
+          "choices": [
+            "목표 안내",
+            "계속 모험하기"
+          ]
+        },
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/gym-reward-screenshots/02-badge-reward-and-recovery.png"
+    },
+    {
+      "label": "touch-opens-recovery-route",
+      "state": {
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": true,
+        "followingObjective": true,
+        "roaming": null,
+        "navigation": {
+          "destination": "tour_oreburgh_center",
+          "name": "무쇠시티 · 포켓몬센터",
+          "status": "walking",
+          "maps": [
+            "oreburgh_gym",
+            "tour_oreburgh",
+            "tour_oreburgh_center"
+          ],
+          "tiles": [
+            {
+              "x": 8,
+              "y": 5
+            },
+            {
+              "x": 8,
+              "y": 6
+            },
+            {
+              "x": 8,
+              "y": 7
+            },
+            {
+              "x": 8,
+              "y": 8
+            },
+            {
+              "x": 8,
+              "y": 9
+            },
+            {
+              "x": 8,
+              "y": 10
+            },
+            {
+              "x": 8,
+              "y": 11
+            },
+            {
+              "x": 8,
+              "y": 12
+            },
+            {
+              "x": 8,
+              "y": 13
+            },
+            {
+              "x": 8,
+              "y": 14
+            },
+            {
+              "x": 8,
+              "y": 15
+            }
+          ],
+          "nextName": "무쇠시티",
+          "exit": {
+            "x": 8,
+            "y": 15,
+            "to": "tour_oreburgh",
+            "spawn": {
+              "x": 6,
+              "y": 26
+            },
+            "entry": "down",
+            "facing": "down"
+          }
+        },
+        "interactionHint": "Z 말걸기 · 관장 강석",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 50,
+              "hp": 0,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 9,
+              "hp": 21,
+              "maxHp": 36,
+              "experience": 20,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [
+            "BADGE-GS01"
+          ],
+          "keyItems": [
+            "TM-stealth-rock"
+          ],
+          "money": 1440,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 0,
+          "seconds": 64.63060000000128
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/gym-reward-screenshots/03-touch-opens-recovery-route.png"
+    },
+    {
+      "label": "walked-to-center",
+      "state": {
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": true,
+        "followingObjective": true,
+        "roaming": null,
+        "navigation": {
+          "destination": "tour_oreburgh_center",
+          "name": "무쇠시티 · 포켓몬센터",
+          "status": "arrived",
+          "maps": [
+            "tour_oreburgh_center"
+          ],
+          "tiles": [],
+          "nextName": null,
+          "exit": null
+        },
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "tour_oreburgh_center",
+          "player": {
+            "x": 8,
+            "y": 10,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 50,
+              "hp": 0,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 9,
+              "hp": 21,
+              "maxHp": 36,
+              "experience": 20,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [
+            "BADGE-GS01"
+          ],
+          "keyItems": [
+            "TM-stealth-rock"
+          ],
+          "money": 1440,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 32,
+          "seconds": 115.57810000000492,
+          "tourVisited": [
+            "tour_oreburgh",
+            "tour_oreburgh_center"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################",
+            "################",
+            "################",
+            "##............##",
+            "##.##......##.##",
+            "##.##......##.##",
+            "##....####....##",
+            "##............##",
+            "##.###........##",
+            "##.###........##",
+            "##............##",
+            "##............##",
+            "########.#######",
+            "########.#######"
+          ],
+          "npcs": [
+            {
+              "id": "tourHost",
+              "x": 8,
+              "y": 5
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 13,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 8,
+                "y": 9
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 10,
+          "facing": "up"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/gym-reward-screenshots/04-walked-to-center.png"
+    },
+    {
+      "label": "healed-next-gym-route",
+      "state": {
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": true,
+        "followingObjective": true,
+        "roaming": null,
+        "navigation": {
+          "destination": "eterna_gym",
+          "name": "영원체육관",
+          "status": "walking",
+          "maps": [
+            "tour_oreburgh_center",
+            "tour_oreburgh",
+            "tour_jubilife",
+            "tour_eterna_forest",
+            "tour_eterna",
+            "eterna_gym"
+          ],
+          "tiles": [
+            {
+              "x": 8,
+              "y": 7
+            },
+            {
+              "x": 8,
+              "y": 8
+            },
+            {
+              "x": 8,
+              "y": 9
+            },
+            {
+              "x": 8,
+              "y": 10
+            },
+            {
+              "x": 8,
+              "y": 11
+            },
+            {
+              "x": 8,
+              "y": 12
+            },
+            {
+              "x": 8,
+              "y": 13
+            }
+          ],
+          "nextName": "무쇠시티",
+          "exit": {
+            "x": 8,
+            "y": 13,
+            "to": "tour_oreburgh",
+            "spawn": {
+              "x": 8,
+              "y": 9
+            },
+            "entry": "down",
+            "facing": "down"
+          }
+        },
+        "interactionHint": "Z 말걸기 · 간호사",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "tour_oreburgh_center",
+          "player": {
+            "x": 8,
+            "y": 7,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 50,
+              "hp": 29,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            },
+            {
+              "species": 399,
+              "level": 9,
+              "hp": 36,
+              "maxHp": 36,
+              "experience": 20,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [
+            "BADGE-GS01"
+          ],
+          "keyItems": [
+            "TM-stealth-rock"
+          ],
+          "money": 1440,
+          "healingPoint": "tour_oreburgh_center",
+          "steps": 35,
+          "seconds": 129.41070000000633,
+          "tourVisited": [
+            "tour_oreburgh",
+            "tour_oreburgh_center"
+          ]
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################",
+            "################",
+            "################",
+            "##............##",
+            "##.##......##.##",
+            "##.##......##.##",
+            "##....####....##",
+            "##............##",
+            "##.###........##",
+            "##.###........##",
+            "##............##",
+            "##............##",
+            "########.#######",
+            "########.#######"
+          ],
+          "npcs": [
+            {
+              "id": "tourHost",
+              "x": 8,
+              "y": 5
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 13,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 8,
+                "y": 9
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 7,
+          "facing": "up"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/gym-reward-screenshots/05-healed-next-gym-route.png"
+    },
+    {
+      "label": "money-cap-nine-won",
+      "state": {
+        "gymReward": {
+          "id": "roark",
+          "money": 9,
+          "page": 4
+        },
+        "showingGymReward": true,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": {
+          "enemy": {
+            "species": 408,
+            "level": 12,
+            "maxHp": 26,
+            "hp": 0,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          "player": {
+            "species": 7,
+            "level": 25,
+            "experience": 0,
+            "hp": 65,
+            "maxHp": 80,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          "enemyIndex": 2,
+          "active": 0,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0
+        },
+        "gymPreview": null,
+        "fieldMap": true,
+        "followingObjective": true,
+        "roaming": null,
+        "navigation": {
+          "destination": "eterna_gym",
+          "name": "영원체육관",
+          "status": "walking",
+          "maps": [
+            "oreburgh_gym",
+            "tour_oreburgh",
+            "tour_jubilife",
+            "tour_eterna_forest",
+            "tour_eterna",
+            "eterna_gym"
+          ],
+          "tiles": [
+            {
+              "x": 8,
+              "y": 5
+            },
+            {
+              "x": 8,
+              "y": 6
+            },
+            {
+              "x": 8,
+              "y": 7
+            },
+            {
+              "x": 8,
+              "y": 8
+            },
+            {
+              "x": 8,
+              "y": 9
+            },
+            {
+              "x": 8,
+              "y": 10
+            },
+            {
+              "x": 8,
+              "y": 11
+            },
+            {
+              "x": 8,
+              "y": 12
+            },
+            {
+              "x": 8,
+              "y": 13
+            },
+            {
+              "x": 8,
+              "y": 14
+            },
+            {
+              "x": 8,
+              "y": 15
+            }
+          ],
+          "nextName": "무쇠시티",
+          "exit": {
+            "x": 8,
+            "y": 15,
+            "to": "tour_oreburgh",
+            "spawn": {
+              "x": 6,
+              "y": 26
+            },
+            "entry": "down",
+            "facing": "down"
+          }
+        },
+        "interactionHint": null,
+        "exploring": false,
+        "battle": {
+          "kind": "gym",
+          "gymId": "roark",
+          "opponents": [
+            {
+              "species": 74,
+              "level": 10,
+              "maxHp": 22,
+              "hp": 0,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 95,
+              "level": 11,
+              "maxHp": 24,
+              "hp": 0,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            },
+            {
+              "species": 408,
+              "level": 12,
+              "maxHp": 26,
+              "hp": 0,
+              "experience": 0,
+              "nature": "성실",
+              "met": "체육관"
+            }
+          ],
+          "enemyIndex": 2,
+          "enemy": {
+            "species": 408,
+            "level": 12,
+            "maxHp": 26,
+            "hp": 0,
+            "experience": 0,
+            "nature": "성실",
+            "met": "체육관"
+          },
+          "active": 0,
+          "participants": [
+            0
+          ],
+          "forcedSwitch": false,
+          "betweenOpponents": false,
+          "moveSelections": [
+            0
+          ],
+          "menu": "actions",
+          "selected": 0,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0,
+          "result": true
+        },
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 25,
+              "experience": 0,
+              "hp": 65,
+              "maxHp": 80,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [
+            "BADGE-GS01"
+          ],
+          "keyItems": [
+            "TM-stealth-rock"
+          ],
+          "money": 999999,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 21.28219999999996
+        },
+        "panel": "field",
+        "dialogue": {
+          "speaker": "",
+          "pages": [
+            "꼬부기의 몸통박치기!",
+            "두개도스에게 16의 피해를 주었다!",
+            "강석의 두개도스가 쓰러졌다!",
+            "체육관 관장 강석에게 이겼다!",
+            "강석에게 콜배지를 받았다!",
+            "기술머신 스텔스록을 받았다!\n상금 9원을 받았다!"
+          ],
+          "page": 5,
+          "shown": 50.997599999999174,
+          "selected": 1,
+          "choices": [
+            "목표 안내",
+            "계속 모험하기"
+          ]
+        },
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/gym-reward-screenshots/06-money-cap-nine-won.png"
+    },
+    {
+      "label": "reload-preserves-reward-once",
+      "state": {
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": "Z 말걸기 · 관장 강석",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 25,
+              "experience": 0,
+              "hp": 65,
+              "maxHp": 80,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [
+            "BADGE-GS01"
+          ],
+          "keyItems": [
+            "TM-stealth-rock"
+          ],
+          "money": 999999,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 49.35095600014313
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/gym-reward-screenshots/07-reload-preserves-reward-once.png"
+    },
+    {
+      "label": "awarded-leader-no-repeat",
+      "state": {
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": null,
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 25,
+              "experience": 0,
+              "hp": 65,
+              "maxHp": 80,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [
+            "BADGE-GS01"
+          ],
+          "keyItems": [
+            "TM-stealth-rock"
+          ],
+          "money": 999999,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 49.617556000143125
+        },
+        "panel": "field",
+        "dialogue": {
+          "speaker": "관장 강석",
+          "pages": [
+            "콜배지는 함께 이뤄 낸 증거야.\n다음 여행에서도 서로를 믿어 줘."
+          ],
+          "page": 0,
+          "shown": 4.798799999999974,
+          "selected": 0
+        },
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/gym-reward-screenshots/08-awarded-leader-no-repeat.png"
+    },
+    {
+      "label": "leader-dialogue-finished",
+      "state": {
+        "gymReward": null,
+        "showingGymReward": false,
+        "caughtPreview": null,
+        "showingCatch": false,
+        "confirmingBattleExit": false,
+        "defeatScene": null,
+        "recoveryPreview": false,
+        "battleFrame": null,
+        "gymPreview": null,
+        "fieldMap": false,
+        "followingObjective": false,
+        "roaming": null,
+        "navigation": null,
+        "interactionHint": "Z 말걸기 · 관장 강석",
+        "exploring": false,
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 17,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 25,
+              "experience": 0,
+              "hp": 65,
+              "maxHp": 80,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 0,
+            "potions": 0
+          },
+          "badges": [
+            "BADGE-GS01"
+          ],
+          "keyItems": [
+            "TM-stealth-rock"
+          ],
+          "money": 999999,
+          "healingPoint": "home",
+          "steps": 0,
+          "seconds": 59.70055600014287
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "bagIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "tour_oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 26
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "reserved": [],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      },
+      "screenshot": "C:/my_play/poketmon_demo/tests/gym-reward-screenshots/09-leader-dialogue-finished.png"
+    }
+  ]
+}

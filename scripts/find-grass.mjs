@@ -1,0 +1,1 @@
+const h=await(await fetch('https://bulbapedia.bulbagarden.net/wiki/Sinnoh_Route_201')).text();console.log([...h.matchAll(/src="([^"]+\.png[^"]*)"/g)].map(x=>x[1]).filter(x=>/201.*Pt|201.*DP|Pt.*201/.test(x)).slice(0,10));

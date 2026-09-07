@@ -1,0 +1,893 @@
+{
+  "tour_jubilife": {
+    "id": "tour_jubilife",
+    "name": "축복시티",
+    "width": 40,
+    "height": 36,
+    "background": "tour_jubilife",
+    "walkable": [
+      "########################################",
+      "########################################",
+      "##############.#########################",
+      "##....................................##",
+      "##..............#.....................##",
+      "##....................................##",
+      "##....................................##",
+      "##....#####.......#####...............##",
+      "##....##.##.......#####...............##",
+      "##....................................##",
+      "##....................................##",
+      "##....................................##",
+      "##.#..................................##",
+      "##....................................##",
+      "#.....................................##",
+      "##....................................##",
+      "##...#####............................##",
+      "##...#####................##########..##",
+      "##........................##########..##",
+      "##............###.........##########..##",
+      "##............###.........#####.####..##",
+      "##....................................##",
+      "##....................................##",
+      "##...#####..........................#.##",
+      "##...#####.............................#",
+      "##................####................##",
+      "##................####................##",
+      "##................####..#####.........##",
+      "##......................#####....###..##",
+      "##...............................###..##",
+      "##...............................###..##",
+      "##....................................##",
+      "##..............#.....................##",
+      "##....................................##",
+      "##############.#########################",
+      "########################################"
+    ],
+    "warps": [
+      {
+        "x": 8,
+        "y": 8,
+        "to": "tour_jubilife_center",
+        "spawn": {
+          "x": 8,
+          "y": 10
+        },
+        "entry": "up",
+        "facing": "up"
+      },
+      {
+        "x": 31,
+        "y": 20,
+        "to": "tour_jubilife_hall",
+        "spawn": {
+          "x": 8,
+          "y": 10
+        },
+        "entry": "up",
+        "facing": "up"
+      },
+      {
+        "x": 14,
+        "y": 34,
+        "to": "tour_oreburgh",
+        "spawn": {
+          "x": 14,
+          "y": 3
+        },
+        "entry": "down",
+        "facing": "down"
+      },
+      {
+        "x": 14,
+        "y": 2,
+        "to": "tour_eterna_forest",
+        "spawn": {
+          "x": 10,
+          "y": 15
+        },
+        "entry": "up",
+        "facing": "up"
+      },
+      {
+        "x": 1,
+        "y": 14,
+        "to": "research_path",
+        "spawn": {
+          "x": 2,
+          "y": 12
+        },
+        "entry": "left",
+        "facing": "left"
+      },
+      {
+        "x": 38,
+        "y": 24,
+        "to": "route_s01",
+        "spawn": {
+          "x": 3,
+          "y": 12
+        },
+        "entry": "right",
+        "facing": "right"
+      }
+    ],
+    "npcs": [
+      {
+        "id": "tourGuide",
+        "name": "연구 통로 안내원",
+        "sprite": "ace_trainer_f",
+        "x": 16,
+        "y": 14,
+        "facing": "left",
+        "dialogue": "researchGate"
+      },
+      {
+        "id": "tourResident0",
+        "dialogue": "tourResident0",
+        "name": "광장 주민",
+        "sprite": "middle_aged_man",
+        "x": 10,
+        "y": 13,
+        "facing": "right",
+        "pages": [
+          "분수 앞에서 잠깐 쉬는 중이야.\n방송국 시계를 보면 시간을 알 수 있지."
+        ]
+      },
+      {
+        "id": "tourResident1",
+        "dialogue": "tourResident1",
+        "name": "방송국 직원",
+        "sprite": "ace_trainer_f",
+        "x": 20,
+        "y": 12,
+        "facing": "down",
+        "pages": [
+          "카메라 앞에 서면 괜히 긴장돼요.\n오늘은 광장 풍경을 담고 싶네요."
+        ]
+      },
+      {
+        "id": "tourPokemon",
+        "name": "피카츄",
+        "species": "pikachu",
+        "sprite": "field-pikachu",
+        "x": 22,
+        "y": 16,
+        "facing": "down",
+        "dialogue": "tourPokemon",
+        "pages": [
+          "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+        ]
+      }
+    ],
+    "props": [
+      {
+        "x": 7,
+        "y": 24,
+        "dialogue": "tourHouse"
+      },
+      {
+        "x": 26,
+        "y": 28,
+        "dialogue": "tourHouse"
+      },
+      {
+        "x": 7,
+        "y": 17,
+        "dialogue": "tourHouse"
+      },
+      {
+        "x": 20,
+        "y": 8,
+        "dialogue": "tourHouse"
+      },
+      {
+        "x": 18,
+        "y": 25,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 19,
+        "y": 25,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 20,
+        "y": 25,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 21,
+        "y": 25,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 18,
+        "y": 26,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 21,
+        "y": 26,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 18,
+        "y": 27,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 19,
+        "y": 27,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 20,
+        "y": 27,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 21,
+        "y": 27,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 14,
+        "y": 19,
+        "dialogue": "tourOutdoor1"
+      },
+      {
+        "x": 15,
+        "y": 19,
+        "dialogue": "tourOutdoor1"
+      },
+      {
+        "x": 16,
+        "y": 19,
+        "dialogue": "tourOutdoor1"
+      },
+      {
+        "x": 14,
+        "y": 20,
+        "dialogue": "tourOutdoor1"
+      },
+      {
+        "x": 15,
+        "y": 20,
+        "dialogue": "tourOutdoor1"
+      },
+      {
+        "x": 16,
+        "y": 20,
+        "dialogue": "tourOutdoor1"
+      },
+      {
+        "x": 33,
+        "y": 28,
+        "dialogue": "tourOutdoor2"
+      },
+      {
+        "x": 34,
+        "y": 28,
+        "dialogue": "tourOutdoor2"
+      },
+      {
+        "x": 35,
+        "y": 28,
+        "dialogue": "tourOutdoor2"
+      },
+      {
+        "x": 33,
+        "y": 29,
+        "dialogue": "tourOutdoor2"
+      },
+      {
+        "x": 35,
+        "y": 29,
+        "dialogue": "tourOutdoor2"
+      },
+      {
+        "x": 33,
+        "y": 30,
+        "dialogue": "tourOutdoor2"
+      },
+      {
+        "x": 34,
+        "y": 30,
+        "dialogue": "tourOutdoor2"
+      },
+      {
+        "x": 35,
+        "y": 30,
+        "dialogue": "tourOutdoor2"
+      },
+      {
+        "x": 16,
+        "y": 32,
+        "dialogue": "tourExit0"
+      },
+      {
+        "x": 16,
+        "y": 4,
+        "dialogue": "tourExit1"
+      },
+      {
+        "x": 3,
+        "y": 12,
+        "dialogue": "tourExit2"
+      },
+      {
+        "x": 36,
+        "y": 23,
+        "dialogue": "tourExit3"
+      }
+    ]
+  },
+  "tour_jubilife_center": {
+    "id": "tour_jubilife_center",
+    "name": "축복시티 · 포켓몬센터",
+    "width": 16,
+    "height": 14,
+    "background": "tour_jubilife_center",
+    "walkable": [
+      "################",
+      "################",
+      "################",
+      "##............##",
+      "##.##......##.##",
+      "##.##......##.##",
+      "##....####....##",
+      "##............##",
+      "##.###........##",
+      "##.###........##",
+      "##............##",
+      "##............##",
+      "########.#######",
+      "########.#######"
+    ],
+    "warps": [
+      {
+        "x": 8,
+        "y": 13,
+        "to": "tour_jubilife",
+        "spawn": {
+          "x": 8,
+          "y": 9
+        },
+        "entry": "down",
+        "facing": "down"
+      }
+    ],
+    "npcs": [
+      {
+        "id": "tourHost",
+        "name": "간호사",
+        "sprite": "pokecenter_nurse",
+        "x": 8,
+        "y": 5,
+        "facing": "down",
+        "dialogue": "nurse"
+      }
+    ],
+    "props": [
+      {
+        "x": 6,
+        "y": 6,
+        "dialogue": "tourHost"
+      },
+      {
+        "x": 7,
+        "y": 6,
+        "dialogue": "tourHost"
+      },
+      {
+        "x": 8,
+        "y": 6,
+        "dialogue": "tourHost"
+      },
+      {
+        "x": 9,
+        "y": 6,
+        "dialogue": "tourHost"
+      },
+      {
+        "x": 3,
+        "y": 4,
+        "dialogue": "tourExhibit0"
+      },
+      {
+        "x": 4,
+        "y": 4,
+        "dialogue": "tourExhibit0"
+      },
+      {
+        "x": 3,
+        "y": 5,
+        "dialogue": "tourExhibit0"
+      },
+      {
+        "x": 4,
+        "y": 5,
+        "dialogue": "tourExhibit0"
+      },
+      {
+        "x": 11,
+        "y": 4,
+        "dialogue": "tourExhibit1"
+      },
+      {
+        "x": 12,
+        "y": 4,
+        "dialogue": "tourExhibit1"
+      },
+      {
+        "x": 11,
+        "y": 5,
+        "dialogue": "tourExhibit1"
+      },
+      {
+        "x": 12,
+        "y": 5,
+        "dialogue": "tourExhibit1"
+      },
+      {
+        "x": 3,
+        "y": 8,
+        "dialogue": "tourExhibit2"
+      },
+      {
+        "x": 4,
+        "y": 8,
+        "dialogue": "tourExhibit2"
+      },
+      {
+        "x": 5,
+        "y": 8,
+        "dialogue": "tourExhibit2"
+      },
+      {
+        "x": 3,
+        "y": 9,
+        "dialogue": "tourExhibit2"
+      },
+      {
+        "x": 4,
+        "y": 9,
+        "dialogue": "tourExhibit2"
+      },
+      {
+        "x": 5,
+        "y": 9,
+        "dialogue": "tourExhibit2"
+      }
+    ]
+  },
+  "tour_oreburgh": {
+    "id": "tour_oreburgh",
+    "name": "무쇠시티",
+    "width": 34,
+    "height": 32,
+    "background": "tour_oreburgh",
+    "walkable": [
+      "##################################",
+      "##################################",
+      "##############.###################",
+      "##..............................##",
+      "##..............#...............##",
+      "##..............................##",
+      "##..............................##",
+      "##....#####.....................##",
+      "##....##.##...........########..##",
+      "##....................########..##",
+      "##...####.............##.#####..##",
+      "##...####.......................##",
+      "##...####.......................##",
+      "##...####.......................##",
+      "##...####.......................##",
+      "##..............................##",
+      "##..............................##",
+      "##..............................##",
+      "##.................#####........##",
+      "##.................#####........##",
+      "##..............................##",
+      "##..............................##",
+      "##..............................##",
+      "##..............................##",
+      "##...####.......................##",
+      "##...#.##..............####.....##",
+      "##............####.....####.....##",
+      "##............####..............##",
+      "##..............................##",
+      "##..............................##",
+      "##################################",
+      "##################################"
+    ],
+    "warps": [
+      {
+        "x": 8,
+        "y": 8,
+        "to": "tour_oreburgh_center",
+        "spawn": {
+          "x": 8,
+          "y": 10
+        },
+        "entry": "up",
+        "facing": "up"
+      },
+      {
+        "x": 24,
+        "y": 10,
+        "to": "tour_oreburgh_hall",
+        "spawn": {
+          "x": 8,
+          "y": 10
+        },
+        "entry": "up",
+        "facing": "up"
+      },
+      {
+        "x": 14,
+        "y": 2,
+        "to": "tour_jubilife",
+        "spawn": {
+          "x": 14,
+          "y": 33
+        },
+        "entry": "up",
+        "facing": "up"
+      },
+      {
+        "x": 6,
+        "y": 25,
+        "to": "oreburgh_gym",
+        "spawn": {
+          "x": 8,
+          "y": 13
+        },
+        "entry": "up",
+        "facing": "up"
+      }
+    ],
+    "npcs": [
+      {
+        "id": "tourGuide",
+        "name": "마을 안내원",
+        "sprite": "rancher",
+        "x": 16,
+        "y": 14,
+        "facing": "left",
+        "dialogue": "tourGuide"
+      },
+      {
+        "id": "tourResident0",
+        "dialogue": "tourResident0",
+        "name": "광부",
+        "sprite": "worker",
+        "x": 10,
+        "y": 13,
+        "facing": "right",
+        "pages": [
+          "돌마다 색과 무게가 다르지.\n쉬는 날에도 반짝이는 돌이 눈에 들어와."
+        ]
+      },
+      {
+        "id": "tourResident1",
+        "dialogue": "tourResident1",
+        "name": "전시관 학생",
+        "sprite": "school_kid_m",
+        "x": 20,
+        "y": 12,
+        "facing": "down",
+        "pages": [
+          "광차 모형을 보러 왔어요.\n바퀴가 어떻게 움직이는지 궁금해요."
+        ]
+      },
+      {
+        "id": "tourPokemon",
+        "name": "알통몬",
+        "species": "machop",
+        "sprite": "field-machop",
+        "x": 22,
+        "y": 16,
+        "facing": "down",
+        "dialogue": "tourPokemon",
+        "pages": [
+          "알통! 알통!\n씩씩하게 팔을 들어 인사한다."
+        ]
+      }
+    ],
+    "props": [
+      {
+        "x": 24,
+        "y": 26,
+        "dialogue": "tourHouse"
+      },
+      {
+        "x": 15,
+        "y": 27,
+        "dialogue": "tourHouse"
+      },
+      {
+        "x": 5,
+        "y": 10,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 6,
+        "y": 10,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 7,
+        "y": 10,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 8,
+        "y": 10,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 5,
+        "y": 11,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 8,
+        "y": 11,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 5,
+        "y": 12,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 8,
+        "y": 12,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 5,
+        "y": 13,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 8,
+        "y": 13,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 5,
+        "y": 14,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 6,
+        "y": 14,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 7,
+        "y": 14,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 8,
+        "y": 14,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 19,
+        "y": 18,
+        "dialogue": "tourOutdoor1"
+      },
+      {
+        "x": 20,
+        "y": 18,
+        "dialogue": "tourOutdoor1"
+      },
+      {
+        "x": 21,
+        "y": 18,
+        "dialogue": "tourOutdoor1"
+      },
+      {
+        "x": 22,
+        "y": 18,
+        "dialogue": "tourOutdoor1"
+      },
+      {
+        "x": 23,
+        "y": 18,
+        "dialogue": "tourOutdoor1"
+      },
+      {
+        "x": 19,
+        "y": 19,
+        "dialogue": "tourOutdoor1"
+      },
+      {
+        "x": 20,
+        "y": 19,
+        "dialogue": "tourOutdoor1"
+      },
+      {
+        "x": 21,
+        "y": 19,
+        "dialogue": "tourOutdoor1"
+      },
+      {
+        "x": 22,
+        "y": 19,
+        "dialogue": "tourOutdoor1"
+      },
+      {
+        "x": 23,
+        "y": 19,
+        "dialogue": "tourOutdoor1"
+      },
+      {
+        "x": 16,
+        "y": 4,
+        "dialogue": "tourExit0"
+      }
+    ]
+  },
+  "oreburgh_gym": {
+    "id": "oreburgh_gym",
+    "name": "무쇠체육관",
+    "width": 17,
+    "height": 16,
+    "background": "oreburgh_gym",
+    "walkable": [
+      "#################",
+      "#################",
+      "#################",
+      "##.............##",
+      "##.............##",
+      "##.............##",
+      "##..###........##",
+      "##..###........##",
+      "##.............##",
+      "##........###..##",
+      "##........###..##",
+      "##.............##",
+      "##..##.........##",
+      "##..##.........##",
+      "########.########",
+      "########.########"
+    ],
+    "warps": [
+      {
+        "x": 8,
+        "y": 15,
+        "to": "tour_oreburgh",
+        "spawn": {
+          "x": 6,
+          "y": 26
+        },
+        "entry": "down",
+        "facing": "down"
+      }
+    ],
+    "npcs": [
+      {
+        "id": "roark",
+        "name": "관장 강석",
+        "sprite": "worker",
+        "x": 8,
+        "y": 4,
+        "facing": "down",
+        "dialogue": "roark"
+      },
+      {
+        "id": "gymGuide",
+        "name": "체육관 안내원",
+        "sprite": "rancher",
+        "x": 12,
+        "y": 12,
+        "facing": "left",
+        "dialogue": "gymGuide"
+      }
+    ],
+    "props": []
+  },
+  "tour_eterna_forest": {
+    "id": "tour_eterna_forest",
+    "name": "영원숲",
+    "width": 20,
+    "height": 18,
+    "background": "tour_eterna_forest",
+    "walkable": [
+      "####################",
+      "####################",
+      "##########.#########",
+      "##................##",
+      "##..........#.....##",
+      "##................##",
+      "##................##",
+      "##................##",
+      "##................##",
+      "##................##",
+      "##................##",
+      "##................##",
+      "##................##",
+      "##................##",
+      "##..........#.....##",
+      "##................##",
+      "##########.#########",
+      "####################"
+    ],
+    "warps": [
+      {
+        "x": 10,
+        "y": 16,
+        "to": "tour_jubilife",
+        "spawn": {
+          "x": 14,
+          "y": 3
+        },
+        "entry": "down",
+        "facing": "down"
+      },
+      {
+        "x": 10,
+        "y": 2,
+        "to": "tour_eterna",
+        "spawn": {
+          "x": 14,
+          "y": 31
+        },
+        "entry": "up",
+        "facing": "up"
+      }
+    ],
+    "npcs": [
+      {
+        "id": "tourGuide",
+        "name": "길 안내원",
+        "sprite": "rancher",
+        "x": 12,
+        "y": 7,
+        "facing": "down",
+        "dialogue": "trailGuide"
+      }
+    ],
+    "props": [
+      {
+        "x": 1,
+        "y": 5,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 1,
+        "y": 6,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 1,
+        "y": 7,
+        "dialogue": "tourOutdoor0"
+      },
+      {
+        "x": 12,
+        "y": 14,
+        "dialogue": "tourExit0"
+      },
+      {
+        "x": 12,
+        "y": 4,
+        "dialogue": "tourExit1"
+      }
+    ],
+    "terrain": [
+      {
+        "kind": "tallGrass",
+        "x": 4,
+        "y": 10,
+        "w": 4,
+        "h": 3
+      }
+    ]
+  }
+}

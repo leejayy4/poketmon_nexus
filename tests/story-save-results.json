@@ -1,0 +1,27 @@
+{
+  "date": "2026-09-06",
+  "testUrl": "http://localhost:5173/?qa=save-story-v3",
+  "method": "Actual browser movement and conversations, native save panel controls, downloaded JSON file reselected through the file chooser and imported. QA storage isolated from the user's game.",
+  "checks": {
+    "mother_adventure_intro_before_starter_selection": "PASS",
+    "pikachu_received_before_professor": "PASS",
+    "requested_greedy_joke_and_refusal_visible": "PASS",
+    "no_starter_panel_or_grant_after_pikachu": "PASS",
+    "reset_during_starter_selection": "PASS",
+    "three_independent_save_slots": "PASS",
+    "slot_overwrite_preserves_other_slots": "PASS",
+    "slot_load_restores_position_and_party": "PASS",
+    "actual_json_download_and_reimport": "PASS",
+    "reset_keeps_slots": "PASS",
+    "undo_restores_previous_state": "PASS",
+    "invalid_file_disables_load_and_preserves_progress": "PASS",
+    "quick_save_and_reload": "PASS",
+    "keyboard_slot_selection_does_not_move_player": "PASS",
+    "browser_console_errors": 0
+  },
+  "downloadedFile": "first-partner-2026-09-05T17-41-30-186Z.json",
+  "importedPartySpecies": [25],
+  "importedMap": "lab",
+  "automatedTests": { "passed": 18, "failed": 0 },
+  "productionBuild": "PASS"
+}

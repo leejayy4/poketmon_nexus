@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "worldRevision": 17,
+  "map": "tour_veilstone",
+  "player": {
+    "x": 14,
+    "y": 11,
+    "facing": "down"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 7,
+      "level": 5,
+      "experience": 0,
+      "hp": 20,
+      "maxHp": 20,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소"
+    }
+  ],
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 0
+  },
+  "badges": [
+    "BADGE-GS01",
+    "BADGE-GS02",
+    "BADGE-GS03",
+    "BADGE-GS04"
+  ],
+  "keyItems": [
+    "TM-stealth-rock",
+    "TM-grass-knot",
+    "TM-shadow-ball",
+    "TM-drain-punch"
+  ],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 0,
+  "seconds": 0
+}

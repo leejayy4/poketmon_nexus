@@ -1,0 +1,750 @@
+{
+  "qa": "town-life-20260907-01",
+  "date": "2026-09-07",
+  "observations": [
+    {
+      "label": "축복시티 포켓몬 정면 반응",
+      "map": "tour_jubilife",
+      "player": {
+        "x": 22,
+        "y": 17,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "피카츄",
+        "pages": [
+          "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+        ],
+        "page": 0,
+        "shown": 25.998800000000106,
+        "selected": 0
+      },
+      "steps": 28,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife"
+      ]
+    },
+    {
+      "label": "축복시티 반복 반응",
+      "map": "tour_jubilife",
+      "player": {
+        "x": 22,
+        "y": 17,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "피카츄",
+        "pages": [
+          "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+        ],
+        "page": 0,
+        "shown": 26.002399999999792,
+        "selected": 0
+      },
+      "steps": 28,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife"
+      ]
+    },
+    {
+      "label": "무쇠시티 포켓몬 정면 반응",
+      "map": "tour_oreburgh",
+      "player": {
+        "x": 22,
+        "y": 17,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "알통몬",
+        "pages": [
+          "알통! 알통!\n씩씩하게 팔을 들어 인사한다."
+        ],
+        "page": 0,
+        "shown": 26.397600000000207,
+        "selected": 0
+      },
+      "steps": 42,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh"
+      ]
+    },
+    {
+      "label": "무쇠시티 반복 반응",
+      "map": "tour_oreburgh",
+      "player": {
+        "x": 22,
+        "y": 17,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "알통몬",
+        "pages": [
+          "알통! 알통!\n씩씩하게 팔을 들어 인사한다."
+        ],
+        "page": 0,
+        "shown": 26.401200000000415,
+        "selected": 0
+      },
+      "steps": 42,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh"
+      ]
+    },
+    {
+      "label": "영원시티 포켓몬 정면 반응",
+      "map": "tour_eterna",
+      "player": {
+        "x": 22,
+        "y": 17,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "삐삐",
+        "pages": [
+          "삐삐!\n가벼운 발걸음으로 빙글 돌아본다."
+        ],
+        "page": 0,
+        "shown": 25.002399999999785,
+        "selected": 0
+      },
+      "steps": 56,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna"
+      ]
+    },
+    {
+      "label": "영원시티 반복 반응",
+      "map": "tour_eterna",
+      "player": {
+        "x": 22,
+        "y": 17,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "삐삐",
+        "pages": [
+          "삐삐!\n가벼운 발걸음으로 빙글 돌아본다."
+        ],
+        "page": 0,
+        "shown": 25.002399999999792,
+        "selected": 0
+      },
+      "steps": 56,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna"
+      ]
+    },
+    {
+      "label": "연고시티 포켓몬 정면 반응",
+      "map": "tour_hearthome",
+      "player": {
+        "x": 22,
+        "y": 17,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "이어롤",
+        "pages": [
+          "이어! 이어롤!\n접었던 귀를 펴고 반갑게 인사한다."
+        ],
+        "page": 0,
+        "shown": 30.998800000000625,
+        "selected": 0
+      },
+      "steps": 70,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome"
+      ]
+    },
+    {
+      "label": "연고시티 반복 반응",
+      "map": "tour_hearthome",
+      "player": {
+        "x": 22,
+        "y": 17,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "이어롤",
+        "pages": [
+          "이어! 이어롤!\n접었던 귀를 펴고 반갑게 인사한다."
+        ],
+        "page": 0,
+        "shown": 31.002399999999785,
+        "selected": 0
+      },
+      "steps": 70,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome"
+      ]
+    },
+    {
+      "label": "들판시티 포켓몬 정면 반응",
+      "map": "tour_pastoria",
+      "player": {
+        "x": 22,
+        "y": 17,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "고라파덕",
+        "pages": [
+          "고라... 파덕?\n고개를 갸웃하다가 이쪽을 바라본다."
+        ],
+        "page": 0,
+        "shown": 31.397599999999162,
+        "selected": 0
+      },
+      "steps": 84,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria"
+      ]
+    },
+    {
+      "label": "들판시티 반복 반응",
+      "map": "tour_pastoria",
+      "player": {
+        "x": 22,
+        "y": 17,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "고라파덕",
+        "pages": [
+          "고라... 파덕?\n고개를 갸웃하다가 이쪽을 바라본다."
+        ],
+        "page": 0,
+        "shown": 31.998799999999576,
+        "selected": 0
+      },
+      "steps": 84,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria"
+      ]
+    },
+    {
+      "label": "선단시티 포켓몬 정면 반응",
+      "map": "tour_snowpoint",
+      "player": {
+        "x": 22,
+        "y": 17,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "팽도리",
+        "pages": [
+          "팽도!\n가슴을 펴고 의젓하게 고개를 끄덕인다."
+        ],
+        "page": 0,
+        "shown": 28.00239999999979,
+        "selected": 0
+      },
+      "steps": 98,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria",
+        "tour_snowpoint"
+      ]
+    },
+    {
+      "label": "선단시티 반복 반응",
+      "map": "tour_snowpoint",
+      "player": {
+        "x": 22,
+        "y": 17,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "팽도리",
+        "pages": [
+          "팽도!\n가슴을 펴고 의젓하게 고개를 끄덕인다."
+        ],
+        "page": 0,
+        "shown": 27.99520000000042,
+        "selected": 0
+      },
+      "steps": 98,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria",
+        "tour_snowpoint"
+      ]
+    },
+    {
+      "label": "상록시티 포켓몬 정면 반응",
+      "map": "tour_viridian",
+      "player": {
+        "x": 22,
+        "y": 17,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "파치리스",
+        "pages": [
+          "파치파치!\n풍성한 꼬리를 살랑살랑 흔든다."
+        ],
+        "page": 0,
+        "shown": 25.99879999999958,
+        "selected": 0
+      },
+      "steps": 112,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria",
+        "tour_snowpoint",
+        "tour_viridian"
+      ]
+    },
+    {
+      "label": "상록시티 반복 반응",
+      "map": "tour_viridian",
+      "player": {
+        "x": 22,
+        "y": 17,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "파치리스",
+        "pages": [
+          "파치파치!\n풍성한 꼬리를 살랑살랑 흔든다."
+        ],
+        "page": 0,
+        "shown": 26.002399999999785,
+        "selected": 0
+      },
+      "steps": 112,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria",
+        "tour_snowpoint",
+        "tour_viridian"
+      ]
+    },
+    {
+      "label": "태초마을 포켓몬 정면 반응",
+      "map": "tour_pallet",
+      "player": {
+        "x": 22,
+        "y": 17,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "찌르꼬",
+        "pages": [
+          "찌르르!\n날개를 퍼덕이며 주위를 살핀다."
+        ],
+        "page": 0,
+        "shown": 24.40120000000042,
+        "selected": 0
+      },
+      "steps": 126,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria",
+        "tour_snowpoint",
+        "tour_viridian",
+        "tour_pallet"
+      ]
+    },
+    {
+      "label": "태초마을 반복 반응",
+      "map": "tour_pallet",
+      "player": {
+        "x": 22,
+        "y": 17,
+        "facing": "up"
+      },
+      "dialogue": {
+        "speaker": "찌르꼬",
+        "pages": [
+          "찌르르!\n날개를 퍼덕이며 주위를 살핀다."
+        ],
+        "page": 0,
+        "shown": 25.002399999999785,
+        "selected": 0
+      },
+      "steps": 126,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria",
+        "tour_snowpoint",
+        "tour_viridian",
+        "tour_pallet"
+      ]
+    },
+    {
+      "label": "찌르꼬 측면 대화와 네 프레임 시트 표시",
+      "map": "tour_pallet",
+      "player": {
+        "x": 21,
+        "y": 16,
+        "facing": "right"
+      },
+      "dialogue": {
+        "speaker": "찌르꼬",
+        "pages": [
+          "찌르르!\n날개를 퍼덕이며 주위를 살핀다."
+        ],
+        "page": 0,
+        "shown": 25.002399999999792,
+        "selected": 0
+      },
+      "steps": 128,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria",
+        "tour_snowpoint",
+        "tour_viridian",
+        "tour_pallet"
+      ]
+    },
+    {
+      "label": "피카츄 방향 반응 ArrowRight",
+      "map": "tour_jubilife",
+      "player": {
+        "x": 21,
+        "y": 16,
+        "facing": "right"
+      },
+      "dialogue": {
+        "speaker": "피카츄",
+        "pages": [
+          "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+        ],
+        "page": 0,
+        "shown": 26.002399999999785,
+        "selected": 0
+      },
+      "steps": 140,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria",
+        "tour_snowpoint",
+        "tour_viridian",
+        "tour_pallet"
+      ]
+    },
+    {
+      "label": "피카츄 방향 반응 ArrowDown",
+      "map": "tour_jubilife",
+      "player": {
+        "x": 22,
+        "y": 15,
+        "facing": "down"
+      },
+      "dialogue": {
+        "speaker": "피카츄",
+        "pages": [
+          "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+        ],
+        "page": 0,
+        "shown": 26.00239999999979,
+        "selected": 0
+      },
+      "steps": 142,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria",
+        "tour_snowpoint",
+        "tour_viridian",
+        "tour_pallet"
+      ]
+    },
+    {
+      "label": "피카츄 방향 반응 ArrowLeft",
+      "map": "tour_jubilife",
+      "player": {
+        "x": 23,
+        "y": 16,
+        "facing": "left"
+      },
+      "dialogue": {
+        "speaker": "피카츄",
+        "pages": [
+          "피카피카!\n반갑다는 듯 귀를 쫑긋 세웠다."
+        ],
+        "page": 0,
+        "shown": 26.599999999999994,
+        "selected": 0
+      },
+      "steps": 144,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria",
+        "tour_snowpoint",
+        "tour_viridian",
+        "tour_pallet"
+      ]
+    },
+    {
+      "label": "습지 데크와 물결 첫 화면",
+      "map": "tour_pastoria",
+      "player": {
+        "x": 19,
+        "y": 19,
+        "facing": "right"
+      },
+      "dialogue": null,
+      "steps": 161,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria",
+        "tour_snowpoint",
+        "tour_viridian",
+        "tour_pallet"
+      ]
+    },
+    {
+      "label": "습지 물결 다음 화면",
+      "map": "tour_pastoria",
+      "player": {
+        "x": 19,
+        "y": 19,
+        "facing": "right"
+      },
+      "dialogue": null,
+      "steps": 161,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria",
+        "tour_snowpoint",
+        "tour_viridian",
+        "tour_pallet"
+      ]
+    },
+    {
+      "label": "개정 13 포켓몬 겹침 저장 보정: 543걸음·방문 유지",
+      "map": "tour_pastoria",
+      "player": {
+        "x": 14,
+        "y": 11,
+        "facing": "down"
+      },
+      "dialogue": null,
+      "steps": 543,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria",
+        "tour_snowpoint",
+        "tour_viridian",
+        "tour_pallet"
+      ]
+    },
+    {
+      "label": "재접속 후 보정 위치와 진행 유지",
+      "map": "tour_pastoria",
+      "player": {
+        "x": 14,
+        "y": 11,
+        "facing": "down"
+      },
+      "dialogue": null,
+      "steps": 543,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria",
+        "tour_snowpoint",
+        "tour_viridian",
+        "tour_pallet"
+      ]
+    },
+    {
+      "label": "재접속 후 고라파덕 반응",
+      "map": "tour_pastoria",
+      "player": {
+        "x": 21,
+        "y": 16,
+        "facing": "right"
+      },
+      "dialogue": {
+        "speaker": "고라파덕",
+        "pages": [
+          "고라... 파덕?\n고개를 갸웃하다가 이쪽을 바라본다."
+        ],
+        "page": 0,
+        "shown": 33.19760000000002,
+        "selected": 0
+      },
+      "steps": 555,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria",
+        "tour_snowpoint",
+        "tour_viridian",
+        "tour_pallet"
+      ]
+    },
+    {
+      "label": "포켓몬 주변을 지나 습지 관찰소 입장",
+      "map": "tour_pastoria_hall",
+      "player": {
+        "x": 8,
+        "y": 10,
+        "facing": "up"
+      },
+      "dialogue": null,
+      "steps": 567,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria",
+        "tour_snowpoint",
+        "tour_viridian",
+        "tour_pallet",
+        "tour_pastoria_hall"
+      ]
+    },
+    {
+      "label": "습지 관찰소 복귀",
+      "map": "tour_pastoria",
+      "player": {
+        "x": 31,
+        "y": 15,
+        "facing": "down"
+      },
+      "dialogue": null,
+      "steps": 570,
+      "revision": 14,
+      "party": [],
+      "visits": [
+        "tour_jubilife",
+        "tour_oreburgh",
+        "tour_eterna",
+        "tour_hearthome",
+        "tour_pastoria",
+        "tour_snowpoint",
+        "tour_viridian",
+        "tour_pallet",
+        "tour_pastoria_hall"
+      ]
+    }
+  ],
+  "summary": {
+    "species": 8,
+    "repeatedGreetings": true,
+    "pikachuDirections": 4,
+    "oldRevisionImported": 13,
+    "currentRevision": 14,
+    "consoleAfterReload": [],
+    "scope": "Eight species in eight representative towns; public movement and interactions, wetlands and facility roundtrip. All 35 Pokemon and every route are covered by automated tests, not a browser claim."
+  }
+}

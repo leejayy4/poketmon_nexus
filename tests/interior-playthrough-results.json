@@ -1,0 +1,546 @@
+{
+  "qa": "interiors-check-20260906-03",
+  "method": "Public regional atlas buttons, keyboard walking, Z investigation, in-game Report menu and page reload. No runtime state injection.",
+  "roomsVisited": 14,
+  "stylesChecked": [
+    "studio",
+    "museum",
+    "shrine",
+    "stage",
+    "shop",
+    "garden",
+    "terminal",
+    "lab",
+    "workshop",
+    "dojo",
+    "gallery",
+    "school",
+    "center"
+  ],
+  "exhibitsInvestigated": 42,
+  "rooms": [
+    {
+      "map": "tour_jubilife_hall",
+      "style": "studio",
+      "exhibits": [
+        {
+          "speaker": "방송 조정석",
+          "pages": [
+            "화면에 마을 풍경이 비친다.\n작은 조절 손잡이가 줄지어 있다."
+          ]
+        },
+        {
+          "speaker": "스튜디오 카메라",
+          "pages": [
+            "광장을 소개하는 방송 세트다.\n카메라 앞에 빈 인터뷰 자리가 있다."
+          ]
+        },
+        {
+          "speaker": "방송 자료실",
+          "pages": [
+            "여행과 포켓몬 생활을 다룬\n방송 기록이 날짜별로 꽂혀 있다."
+          ]
+        }
+      ],
+      "host": [
+        "축복시티의 방송국입니다.",
+        "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+      ],
+      "exit": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      }
+    },
+    {
+      "map": "tour_oreburgh_hall",
+      "style": "museum",
+      "exhibits": [
+        {
+          "speaker": "광석 표본",
+          "pages": [
+            "반짝이는 광물과 검은 석탄이\n채굴한 깊이에 따라 놓여 있다."
+          ]
+        },
+        {
+          "speaker": "탄광 모형",
+          "pages": [
+            "작은 광차가 레일 위에 있다.\n갱도와 운반 길을 한눈에 볼 수 있다."
+          ]
+        },
+        {
+          "speaker": "광부의 도구",
+          "pages": [
+            "곡괭이와 작업등에\n오랫동안 사용한 흔적이 남아 있다."
+          ]
+        }
+      ],
+      "host": [
+        "무쇠시티의 광산 전시관입니다.",
+        "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+      ],
+      "exit": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      }
+    },
+    {
+      "map": "tour_eterna_hall",
+      "style": "shrine",
+      "exhibits": [
+        {
+          "speaker": "오래된 석상",
+          "pages": [
+            "바람에 닳은 석상을 옮겨 놓았다.\n받침에 오래된 문양이 남아 있다."
+          ]
+        },
+        {
+          "speaker": "옛 도시 지도",
+          "pages": [
+            "숲과 사원을 중심으로 자란\n영원시티의 옛 모습이 그려져 있다."
+          ]
+        },
+        {
+          "speaker": "이끼 정원",
+          "pages": [
+            "축축한 돌 사이로 이끼가 자란다.\n오래된 숲 냄새가 난다."
+          ]
+        }
+      ],
+      "host": [
+        "영원시티의 역사관입니다.",
+        "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+      ],
+      "exit": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      }
+    },
+    {
+      "map": "tour_hearthome_hall",
+      "style": "stage",
+      "exhibits": [
+        {
+          "speaker": "콘테스트 무대",
+          "pages": [
+            "분홍 커튼 아래 작은 무대다.\n리본 장식이 조명을 받아 반짝인다."
+          ]
+        },
+        {
+          "speaker": "리본 전시대",
+          "pages": [
+            "색과 모양이 다른 리본을\n유리 안에 가지런히 전시했다."
+          ]
+        },
+        {
+          "speaker": "무대 조명석",
+          "pages": [
+            "빛의 색을 표시한 조절판이다.\n지금은 견학용 화면이 켜져 있다."
+          ]
+        }
+      ],
+      "host": [
+        "연고시티의 콘테스트 홀입니다.",
+        "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+      ],
+      "exit": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      }
+    },
+    {
+      "map": "tour_veilstone_hall",
+      "style": "shop",
+      "exhibits": [
+        {
+          "speaker": "여행용품 진열대",
+          "pages": [
+            "가방과 물통, 접이식 지도가 있다.\n탐방 전시품이라 구매할 수는 없다."
+          ]
+        },
+        {
+          "speaker": "인형 코너",
+          "pages": [
+            "포켓몬 모양의 인형들이\n크기 순서대로 앉아 있다."
+          ]
+        },
+        {
+          "speaker": "층별 안내판",
+          "pages": [
+            "백화점의 층별 안내 그림이다.\n탐방에서는 이 전시층을 둘러본다."
+          ]
+        }
+      ],
+      "host": [
+        "장막시티의 백화점입니다.",
+        "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+      ],
+      "exit": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      }
+    },
+    {
+      "map": "tour_pastoria_hall",
+      "style": "garden",
+      "exhibits": [
+        {
+          "speaker": "습지 단면 수조",
+          "pages": [
+            "갈대 뿌리 아래의 물길까지\n투명한 유리 너머로 보인다."
+          ]
+        },
+        {
+          "speaker": "갈대 표본",
+          "pages": [
+            "물가에 자라는 풀을 모아 놓았다.\n잎 끝에 작은 물방울이 맺혀 있다."
+          ]
+        },
+        {
+          "speaker": "습지 관찰 지도",
+          "pages": [
+            "나무 데크와 관찰 지점이\n지도에 표시되어 있다."
+          ]
+        }
+      ],
+      "host": [
+        "들판시티의 습지 관찰소입니다.",
+        "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+      ],
+      "exit": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      }
+    },
+    {
+      "map": "tour_canalave_hall",
+      "style": "terminal",
+      "exhibits": [
+        {
+          "speaker": "운하 선박 모형",
+          "pages": [
+            "화물선과 여객선 모형이 있다.\n배마다 갑판의 모양이 다르다."
+          ]
+        },
+        {
+          "speaker": "지방 항로도",
+          "pages": [
+            "갈색시티와 기하시티로 잇는\n탐방 항로가 그려져 있다."
+          ]
+        },
+        {
+          "speaker": "항만 작업대",
+          "pages": [
+            "굵은 밧줄과 신호 깃발이다.\n매듭 묶는 법도 붙어 있다."
+          ]
+        }
+      ],
+      "host": [
+        "운하시티의 항만 사무소입니다.",
+        "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+      ],
+      "exit": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      }
+    },
+    {
+      "map": "tour_pallet_hall",
+      "style": "lab",
+      "exhibits": [
+        {
+          "speaker": "관찰 장치",
+          "pages": [
+            "표본을 확대해 보는 장치다.\n렌즈 옆에 관찰 노트가 있다."
+          ]
+        },
+        {
+          "speaker": "생태 연구 서가",
+          "pages": [
+            "포켓몬의 생활 환경을 기록한\n책과 노트가 꽂혀 있다."
+          ]
+        },
+        {
+          "speaker": "연구용 화분",
+          "pages": [
+            "작은 새싹 옆에 성장 날짜를\n적은 팻말이 꽂혀 있다."
+          ]
+        }
+      ],
+      "host": [
+        "태초마을의 연구소입니다.",
+        "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+      ],
+      "exit": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      }
+    },
+    {
+      "map": "tour_azalea_hall",
+      "style": "workshop",
+      "exhibits": [
+        {
+          "speaker": "규토리 작업대",
+          "pages": [
+            "속을 다듬는 도구와\n반쯤 가공한 규토리가 있다."
+          ]
+        },
+        {
+          "speaker": "규토리 보관함",
+          "pages": [
+            "색이 다른 규토리를\n작은 칸마다 나누어 담았다."
+          ]
+        },
+        {
+          "speaker": "규토리 묘목",
+          "pages": [
+            "둥근 열매를 맺는 묘목이다.\n잎 아래 작은 열매가 숨어 있다."
+          ]
+        }
+      ],
+      "host": [
+        "고동마을의 규토리 공방입니다.",
+        "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+      ],
+      "exit": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      }
+    },
+    {
+      "map": "tour_cianwood_hall",
+      "style": "dojo",
+      "exhibits": [
+        {
+          "speaker": "수련 마루",
+          "pages": [
+            "바닷바람이 드는 나무 마루다.\n도복과 수건이 단정히 놓여 있다."
+          ]
+        },
+        {
+          "speaker": "수련용 바위",
+          "pages": [
+            "둥글게 닳은 해변 바위다.\n밀리지 않게 받침으로 고정했다."
+          ]
+        },
+        {
+          "speaker": "호흡법 족자",
+          "pages": [
+            "자세를 가다듬고 천천히 호흡하는\n방법을 그림으로 안내한다."
+          ]
+        }
+      ],
+      "host": [
+        "진청시티의 바다 도장입니다.",
+        "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+      ],
+      "exit": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      }
+    },
+    {
+      "map": "tour_castelia_hall",
+      "style": "gallery",
+      "exhibits": [
+        {
+          "speaker": "항구의 아침",
+          "pages": [
+            "높은 건물 사이로 배가 들어오는\n구름시티의 아침 풍경화다."
+          ]
+        },
+        {
+          "speaker": "도시 조각",
+          "pages": [
+            "빌딩과 부두를 기하학 모양으로\n표현한 작은 조각 작품이다."
+          ]
+        },
+        {
+          "speaker": "감상 의자",
+          "pages": [
+            "벽의 작품을 천천히 감상할 수\n있도록 놓아 둔 의자다."
+          ]
+        }
+      ],
+      "host": [
+        "구름시티의 항구 갤러리입니다.",
+        "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+      ],
+      "exit": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      }
+    },
+    {
+      "map": "tour_aspertia_hall",
+      "style": "school",
+      "exhibits": [
+        {
+          "speaker": "교실 칠판",
+          "pages": [
+            "지도 읽는 법과 포켓몬을\n관찰할 때의 예절이 적혀 있다."
+          ]
+        },
+        {
+          "speaker": "학교 도서 코너",
+          "pages": [
+            "초보 여행자를 위한\n그림책과 지도책이 있다."
+          ]
+        },
+        {
+          "speaker": "학생 책상",
+          "pages": [
+            "공책 위에 마을의 전망 언덕을\n그린 그림이 펼쳐져 있다."
+          ]
+        }
+      ],
+      "host": [
+        "부채시티의 트레이너 학교입니다.",
+        "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+      ],
+      "exit": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      }
+    },
+    {
+      "map": "tour_mistralton_hall",
+      "style": "terminal",
+      "exhibits": [
+        {
+          "speaker": "비행기 모형",
+          "pages": [
+            "긴 날개 아래 작은 바퀴가 있다.\n화물칸 문이 열려 있다."
+          ]
+        },
+        {
+          "speaker": "운항 안내 단말",
+          "pages": [
+            "활주로와 화물 창고를 소개하는\n견학용 화면이다."
+          ]
+        },
+        {
+          "speaker": "출발 대합실",
+          "pages": [
+            "큰 창 옆에 줄지어 놓인 의자다.\n활주로 표시가 창에 비친다."
+          ]
+        }
+      ],
+      "host": [
+        "궐수시티의 공항 터미널입니다.",
+        "전시물 앞에서 Z 또는 Enter로\n안내 글을 읽어 보세요."
+      ],
+      "exit": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      }
+    },
+    {
+      "map": "tour_mistralton_center",
+      "style": "center",
+      "exhibits": [
+        {
+          "speaker": "회복 장치",
+          "pages": [
+            "몬스터볼을 올리는 홈이 있는\n포켓몬센터의 회복 장치다."
+          ]
+        },
+        {
+          "speaker": "센터 안내 단말",
+          "pages": [
+            "궐수시티의 안내 화면이다.\n주변 장소와 쉼터를 소개한다."
+          ]
+        },
+        {
+          "speaker": "대기 의자",
+          "pages": [
+            "여행자가 잠시 쉬어 가는 자리다.\n옆에 여행 안내 책자가 있다."
+          ]
+        }
+      ],
+      "host": [
+        "궐수시티의 포켓몬센터입니다.",
+        "편하게 시설을 둘러보세요.\n이곳은 자유 탐방용 쉼터예요."
+      ],
+      "exit": {
+        "x": 8,
+        "y": 9,
+        "facing": "down"
+      }
+    }
+  ],
+  "saveReload": {
+    "before": {
+      "version": 1,
+      "worldRevision": 8,
+      "map": "tour_mistralton_center",
+      "player": {
+        "x": 8,
+        "y": 9,
+        "facing": "up"
+      },
+      "flags": {
+        "exploration": true
+      },
+      "party": [],
+      "inventory": {
+        "pokeBalls": 0,
+        "potions": 0
+      },
+      "badges": [],
+      "keyItems": [],
+      "money": 0,
+      "healingPoint": "home",
+      "steps": 668,
+      "seconds": 252.38927800008207
+    },
+    "after": {
+      "version": 1,
+      "worldRevision": 8,
+      "map": "tour_mistralton_center",
+      "player": {
+        "x": 8,
+        "y": 9,
+        "facing": "up"
+      },
+      "flags": {
+        "exploration": true
+      },
+      "party": [],
+      "inventory": {
+        "pokeBalls": 0,
+        "potions": 0
+      },
+      "badges": [],
+      "keyItems": [],
+      "money": 0,
+      "healingPoint": "home",
+      "steps": 668,
+      "seconds": 252.6299959998914
+    },
+    "investigation": {
+      "speaker": "대기 의자",
+      "pages": [
+        "여행자가 잠시 쉬어 가는 자리다.\n옆에 여행 안내 책자가 있다."
+      ],
+      "page": 0,
+      "shown": 3.5999999999999996,
+      "selected": 0
+    }
+  },
+  "browserLogs": [],
+  "scope": "Representative 14 interiors visited through actual doors; all 76 interiors and save migration covered by automated tests. Graphics retain placeholders, not final visual acceptance."
+}

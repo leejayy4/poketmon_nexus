@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "worldRevision": 15,
+  "map": "tour_jubilife_center",
+  "player": {
+    "x": 6,
+    "y": 6,
+    "facing": "up"
+  },
+  "flags": {
+    "exploration": true
+  },
+  "party": [],
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 0
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 116,
+  "seconds": 206.89901599998697,
+  "tourVisited": [
+    "tour_jubilife",
+    "tour_jubilife_center",
+    "tour_pallet",
+    "tour_pallet_center",
+    "tour_castelia",
+    "tour_castelia_center"
+  ]
+}

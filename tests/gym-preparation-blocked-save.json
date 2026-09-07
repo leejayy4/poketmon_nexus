@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "worldRevision": 17,
+  "map": "eterna_gym",
+  "player": {
+    "x": 8,
+    "y": 5,
+    "facing": "up"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 7,
+      "level": 5,
+      "experience": 0,
+      "hp": 20,
+      "maxHp": 20,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소"
+    }
+  ],
+  "inventory": {
+    "pokeBalls": 5,
+    "potions": 2
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "tour_oreburgh_center",
+  "steps": 0,
+  "seconds": 0
+}

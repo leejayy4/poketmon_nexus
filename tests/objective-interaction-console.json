@@ -1,0 +1,8 @@
+[
+  {
+    "level": "error",
+    "message": "TypeError: Cannot read properties of null (reading 'entry')\n    at update (http://localhost:5173/src/explore-panel.ts?t=1788751898292:84:301)\n    at http://localhost:5173/src/test-panel.ts?t=1788751898292:137:5\n    at frame (http://localhost:5173/src/main.ts?t=1788751898391:77:5)",
+    "timestamp": "2026-09-07T03:34:11.140Z",
+    "url": "http://localhost:5173/src/explore-panel.ts?t=1788751898292"
+  }
+]

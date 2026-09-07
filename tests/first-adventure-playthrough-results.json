@@ -1,0 +1,1084 @@
+{
+  "testedAt": "2026-09-06T07:22:48.096Z",
+  "qaUrl": "http://localhost:5173/?qa=first-adventure-20260906-01",
+  "method": "Existing file import and slot UI, keyboard walking and dialogue, Canvas touch battle actions; field.dataset.state read-only observations. Partner/low-HP/full-party fixtures seed scenarios; no engine mutation and no replay of initial partner acquisition.",
+  "automatedTests": {
+    "passed": 36,
+    "failed": 0
+  },
+  "build": "PASS",
+  "scope": "D1 route, Bidoof only, fixed-damage battle, capture, healing; no experience, leveling, trainer battles or next city",
+  "observations": [
+    {
+      "name": "no-partner-blocked",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "town",
+        "player": {
+          "x": 4,
+          "y": 15,
+          "facing": "left"
+        },
+        "flags": {},
+        "party": [],
+        "inventory": {
+          "pokeBalls": 0,
+          "potions": 0
+        },
+        "steps": 0,
+        "seconds": 53.41400000000098
+      },
+      "battle": null,
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "departure-starter",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "town",
+        "player": {
+          "x": 4,
+          "y": 15,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "steps": 0,
+        "seconds": 2.366499999999997
+      },
+      "battle": null,
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "route-entry",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "route_s01",
+        "player": {
+          "x": 29,
+          "y": 12,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "steps": 2,
+        "seconds": 3.0830999999999875
+      },
+      "battle": null,
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "route-guide",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "route_s01",
+        "player": {
+          "x": 25,
+          "y": 11,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "steps": 7,
+        "seconds": 43.36450000000045
+      },
+      "battle": null,
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "wild-encounter",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "route_s01",
+        "player": {
+          "x": 17,
+          "y": 9,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "steps": 17,
+        "seconds": 46.61440000000062
+      },
+      "battle": {
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "battle-damage",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "route_s01",
+        "player": {
+          "x": 17,
+          "y": 9,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "hp": 12,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "steps": 17,
+        "seconds": 82.46270000000364
+      },
+      "battle": {
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 6,
+          "maxHp": 18,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "capture-committed",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "route_s01",
+        "player": {
+          "x": 17,
+          "y": 9,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "hp": 12,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 6,
+            "maxHp": 18,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 4,
+          "potions": 2
+        },
+        "steps": 17,
+        "seconds": 82.64600000000365
+      },
+      "battle": {
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 6,
+          "maxHp": 18,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": true
+      },
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "몬스터볼을 던졌다!",
+          "좋아! 비버니를 잡았다!\n비버니가 파티에 등록되었다."
+        ],
+        "page": 0,
+        "shown": 5.396399999999792,
+        "selected": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "capture-reload",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "route_s01",
+        "player": {
+          "x": 17,
+          "y": 9,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "hp": 12,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 6,
+            "maxHp": 18,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 4,
+          "potions": 2
+        },
+        "steps": 17,
+        "seconds": 84.62590000005149
+      },
+      "battle": null,
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "healing-and-restock",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "route_s01",
+        "player": {
+          "x": 25,
+          "y": 11,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "steps": 27,
+        "seconds": 116.99110000004971
+      },
+      "battle": null,
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "western-end",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "route_s01",
+        "player": {
+          "x": 4,
+          "y": 12,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "steps": 49,
+        "seconds": 122.75760000004954
+      },
+      "battle": null,
+      "dialogue": {
+        "speaker": "도로 정비원",
+        "pages": [
+          "축복 방면 다리는 점검 중이야.\n오늘은 이 길까지만 둘러보렴.",
+          "새잎마을로는 동쪽 흙길을 따라가면 돼."
+        ],
+        "page": 0,
+        "shown": 4.201200000000157,
+        "selected": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "route-sign",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "route_s01",
+        "player": {
+          "x": 6,
+          "y": 11,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "steps": 52,
+        "seconds": 126.12410000004945
+      },
+      "battle": null,
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "battle-victory",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "route_s01",
+        "player": {
+          "x": 12,
+          "y": 15,
+          "facing": "right"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "hp": 12,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "steps": 62,
+        "seconds": 174.75540000004497
+      },
+      "battle": null,
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "return-town",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "town",
+        "player": {
+          "x": 4,
+          "y": 15,
+          "facing": "right"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "hp": 12,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "steps": 93,
+        "seconds": 183.1050000000429
+      },
+      "battle": null,
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "defeat-home-recovery",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "home",
+        "player": {
+          "x": 4,
+          "y": 5,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "steps": 6,
+        "seconds": 6.0991
+      },
+      "battle": null,
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "departure-pikachu",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "town",
+        "player": {
+          "x": 4,
+          "y": 15,
+          "facing": "left"
+        },
+        "flags": {
+          "pikachuReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 25,
+            "level": 5,
+            "hp": 19,
+            "maxHp": 19,
+            "nature": "고집",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "steps": 0,
+        "seconds": 2.182999999999997
+      },
+      "battle": null,
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "mid-battle",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "route_s01",
+        "player": {
+          "x": 17,
+          "y": 9,
+          "facing": "left"
+        },
+        "flags": {
+          "pikachuReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 25,
+            "level": 5,
+            "hp": 15,
+            "maxHp": 19,
+            "nature": "고집",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "steps": 17,
+        "seconds": 9.53269999999997
+      },
+      "battle": {
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 11,
+          "maxHp": 18,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "mid-battle-reload",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "route_s01",
+        "player": {
+          "x": 17,
+          "y": 9,
+          "facing": "left"
+        },
+        "flags": {
+          "pikachuReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 25,
+            "level": 5,
+            "hp": 15,
+            "maxHp": 19,
+            "nature": "고집",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "steps": 17,
+        "seconds": 10.237699999809228
+      },
+      "battle": null,
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "battle-potion",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "route_s01",
+        "player": {
+          "x": 21,
+          "y": 9,
+          "facing": "left"
+        },
+        "flags": {
+          "pikachuReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 25,
+            "level": 5,
+            "hp": 15,
+            "maxHp": 19,
+            "nature": "고집",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 1
+        },
+        "steps": 23,
+        "seconds": 50.86919999980936
+      },
+      "battle": {
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "battle-escape",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "route_s01",
+        "player": {
+          "x": 21,
+          "y": 9,
+          "facing": "left"
+        },
+        "flags": {
+          "pikachuReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 25,
+            "level": 5,
+            "hp": 15,
+            "maxHp": 19,
+            "nature": "고집",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 1
+        },
+        "steps": 23,
+        "seconds": 51.7191999998094
+      },
+      "battle": null,
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "departure-both",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "town",
+        "player": {
+          "x": 4,
+          "y": 15,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "pikachuReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 25,
+            "level": 5,
+            "hp": 19,
+            "maxHp": 19,
+            "nature": "고집",
+            "met": "새잎마을 · 포켓몬 연구소"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "steps": 0,
+        "seconds": 2.3331999999999957
+      },
+      "battle": null,
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "full-party-capture-blocked",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "route_s01",
+        "player": {
+          "x": 17,
+          "y": 9,
+          "facing": "left"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "steps": 6,
+        "seconds": 2.715900000000026
+      },
+      "battle": {
+        "enemy": {
+          "species": 399,
+          "level": 3,
+          "hp": 18,
+          "maxHp": 18,
+          "nature": "성실",
+          "met": "새잎 서쪽길"
+        },
+        "active": 0,
+        "menu": "actions",
+        "selected": 0,
+        "enemyAttackDrop": 0,
+        "enemyDefenseDrop": 0,
+        "result": false
+      },
+      "dialogue": {
+        "speaker": "",
+        "pages": [
+          "파티에 빈자리가 없다.\n다른 행동을 선택하자."
+        ],
+        "page": 0,
+        "shown": 6.001200000000421,
+        "selected": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "slot-restore",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "town",
+        "player": {
+          "x": 4,
+          "y": 15,
+          "facing": "right"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "hp": 12,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "steps": 93,
+        "seconds": 183.45450000004294
+      },
+      "battle": null,
+      "dialogue": null,
+      "status": "PASS"
+    },
+    {
+      "name": "mother-caught-friend",
+      "save": {
+        "version": 1,
+        "worldRevision": 4,
+        "map": "home",
+        "player": {
+          "x": 4,
+          "y": 5,
+          "facing": "up"
+        },
+        "flags": {
+          "starterReceived": true,
+          "departureCleared": true
+        },
+        "party": [
+          {
+            "species": 7,
+            "level": 5,
+            "hp": 20,
+            "maxHp": 20,
+            "nature": "성실",
+            "met": "새잎마을 · 포켓몬 연구소"
+          },
+          {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          }
+        ],
+        "inventory": {
+          "pokeBalls": 5,
+          "potions": 2
+        },
+        "steps": 112,
+        "seconds": 188.6877000000438
+      },
+      "battle": null,
+      "dialogue": {
+        "speaker": "엄마",
+        "pages": [
+          "모험길에서 새 친구를 만났구나!\n함께하는 친구들을 모두 아껴 주렴.",
+          "조금 쉬었다 가렴.\n포켓몬들이 모두 건강해졌단다."
+        ],
+        "page": 0,
+        "shown": 4.204799999999581,
+        "selected": 0
+      },
+      "status": "PASS"
+    }
+  ],
+  "screenshots": [
+    "first-adventure-screenshots/battle.png",
+    "first-adventure-screenshots/captured-summary.png",
+    "first-adventure-screenshots/route.png",
+    "first-adventure-screenshots/defeat-recovery.png",
+    "first-adventure-screenshots/full-party.png",
+    "first-adventure-screenshots/mother-after-adventure.png"
+  ],
+  "console": []
+}

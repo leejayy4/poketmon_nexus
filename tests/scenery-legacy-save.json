@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "worldRevision": 11,
+  "map": "tour_pastoria",
+  "player": {
+    "x": 18,
+    "y": 14,
+    "facing": "right"
+  },
+  "flags": {
+    "exploration": true
+  },
+  "party": [],
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 0
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 345,
+  "seconds": 678,
+  "tourVisited": [
+    "tour_pastoria",
+    "tour_pastoria_hall"
+  ]
+}

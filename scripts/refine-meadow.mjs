@@ -1,0 +1,1 @@
+import fs from 'node:fs/promises';let s=await fs.readFile('src/renderer.ts','utf8');s=s.replace("'sandgem-reference','player_m'","'sandgem-reference','grass-reference','player_m'");s=s.replace('paintTallGrass(c,x*16,y*16,true,g.clock*2+x)','paintTallGrass(c,x*16,y*16,true,g.clock*2+x,this.images[\'grass-reference\'])');await fs.writeFile('src/renderer.ts',s);

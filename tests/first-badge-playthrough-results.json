@@ -1,0 +1,2218 @@
+{
+  "date": "2026-09-06",
+  "url": "http://localhost:5173/?qa=first-badge-20260906-01",
+  "method": "Existing save-file import UI, keyboard and dialogue clicks; no runtime state injection. Trained and low-HP fixtures isolate battle checks; entry fixture is level 5.",
+  "observations": [
+    {
+      "name": "western route opens Jubilife",
+      "state": {
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 5,
+          "map": "jubilife",
+          "player": {
+            "x": 21,
+            "y": 12,
+            "facing": "left"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 1,
+          "seconds": 29.065399999999766
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "########################",
+            "########################",
+            "############.###########",
+            "##....................##",
+            "##....................##",
+            "##....................##",
+            "##....................##",
+            "##...#####............##",
+            "##...##.##............##",
+            "##....................##",
+            "##....................##",
+            "##....................##",
+            "##.....................#",
+            "##....................##",
+            "##....................##",
+            "##....................##",
+            "##....................##",
+            "##....................##",
+            "########################",
+            "########################"
+          ],
+          "npcs": [
+            {
+              "id": "cityGuide",
+              "x": 13,
+              "y": 10
+            }
+          ],
+          "warps": [
+            {
+              "x": 22,
+              "y": 12,
+              "to": "route_s01",
+              "spawn": {
+                "x": 3,
+                "y": 12
+              },
+              "entry": "right",
+              "facing": "right"
+            },
+            {
+              "x": 12,
+              "y": 2,
+              "to": "oreburgh",
+              "spawn": {
+                "x": 12,
+                "y": 20
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 7,
+              "y": 8,
+              "to": "jubilife_center",
+              "spawn": {
+                "x": 8,
+                "y": 11
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "terrain": []
+        },
+        "position": {
+          "x": 21,
+          "y": 12,
+          "facing": "left"
+        }
+      }
+    },
+    {
+      "name": "Jubilife nurse sets recovery point",
+      "state": {
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 5,
+          "map": "jubilife_center",
+          "player": {
+            "x": 8,
+            "y": 7,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "jubilife_center",
+          "steps": 23,
+          "seconds": 36.614999999999846
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################",
+            "################",
+            "################",
+            "##............##",
+            "##............##",
+            "##.##########.##",
+            "##............##",
+            "##............##",
+            "##............##",
+            "##............##",
+            "##............##",
+            "##............##",
+            "########.#######",
+            "########.#######"
+          ],
+          "npcs": [
+            {
+              "id": "nurse",
+              "x": 8,
+              "y": 6
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 13,
+              "to": "jubilife",
+              "spawn": {
+                "x": 7,
+                "y": 9
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 7,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "name": "north connection reaches Oreburgh",
+      "state": {
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 5,
+          "map": "oreburgh",
+          "player": {
+            "x": 12,
+            "y": 20,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "jubilife_center",
+          "steps": 41,
+          "seconds": 54.4974000000006
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "############################",
+            "############################",
+            "############################",
+            "##........................##",
+            "##........................##",
+            "##........................##",
+            "##........................##",
+            "##..#####.......########..##",
+            "##..##.##.......########..##",
+            "##..............##.#####..##",
+            "##........................##",
+            "##........................##",
+            "##........................##",
+            "##........................##",
+            "##........................##",
+            "##........................##",
+            "##........................##",
+            "##........................##",
+            "##........................##",
+            "##........................##",
+            "##........................##",
+            "##........................##",
+            "############.###############",
+            "############################"
+          ],
+          "npcs": [
+            {
+              "id": "miner",
+              "x": 21,
+              "y": 17
+            }
+          ],
+          "warps": [
+            {
+              "x": 12,
+              "y": 22,
+              "to": "jubilife",
+              "spawn": {
+                "x": 12,
+                "y": 3
+              },
+              "entry": "down",
+              "facing": "down"
+            },
+            {
+              "x": 6,
+              "y": 8,
+              "to": "oreburgh_center",
+              "spawn": {
+                "x": 8,
+                "y": 11
+              },
+              "entry": "up",
+              "facing": "up"
+            },
+            {
+              "x": 18,
+              "y": 9,
+              "to": "oreburgh_gym",
+              "spawn": {
+                "x": 8,
+                "y": 13
+              },
+              "entry": "up",
+              "facing": "up"
+            }
+          ],
+          "terrain": []
+        },
+        "position": {
+          "x": 12,
+          "y": 20,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "name": "Oreburgh nurse replaces recovery point",
+      "state": {
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 5,
+          "map": "oreburgh_center",
+          "player": {
+            "x": 8,
+            "y": 7,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "oreburgh_center",
+          "steps": 63,
+          "seconds": 61.5638000000009
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################",
+            "################",
+            "################",
+            "##............##",
+            "##............##",
+            "##.##########.##",
+            "##............##",
+            "##............##",
+            "##............##",
+            "##............##",
+            "##............##",
+            "##............##",
+            "########.#######",
+            "########.#######"
+          ],
+          "npcs": [
+            {
+              "id": "nurse",
+              "x": 8,
+              "y": 6
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 13,
+              "to": "oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 9
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 7,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "name": "Roark choice cancel leaves field",
+      "state": {
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 5,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 0,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "oreburgh_center",
+          "steps": 91,
+          "seconds": 80.74620000000283
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "oreburgh",
+              "spawn": {
+                "x": 18,
+                "y": 10
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "name": "Roark battle starts with Geodude",
+      "state": {
+        "battle": {
+          "kind": "gym",
+          "opponents": [
+            {
+              "species": 74,
+              "level": 10,
+              "maxHp": 22,
+              "hp": 22,
+              "experience": 0,
+              "nature": "성실",
+              "met": "무쇠체육관"
+            },
+            {
+              "species": 95,
+              "level": 11,
+              "maxHp": 24,
+              "hp": 24,
+              "experience": 0,
+              "nature": "성실",
+              "met": "무쇠체육관"
+            },
+            {
+              "species": 408,
+              "level": 12,
+              "maxHp": 26,
+              "hp": 26,
+              "experience": 0,
+              "nature": "성실",
+              "met": "무쇠체육관"
+            }
+          ],
+          "enemyIndex": 0,
+          "enemy": {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 22,
+            "experience": 0,
+            "nature": "성실",
+            "met": "무쇠체육관"
+          },
+          "active": 0,
+          "menu": "actions",
+          "selected": 0,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0,
+          "result": false
+        },
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 5,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 0,
+              "hp": 29,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "oreburgh_center",
+          "steps": 0,
+          "seconds": 2.2832000000000092
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "oreburgh",
+              "spawn": {
+                "x": 18,
+                "y": 10
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "name": "trainer capture rejected",
+      "state": {
+        "battle": {
+          "kind": "gym",
+          "opponents": [
+            {
+              "species": 74,
+              "level": 10,
+              "maxHp": 22,
+              "hp": 22,
+              "experience": 0,
+              "nature": "성실",
+              "met": "무쇠체육관"
+            },
+            {
+              "species": 95,
+              "level": 11,
+              "maxHp": 24,
+              "hp": 24,
+              "experience": 0,
+              "nature": "성실",
+              "met": "무쇠체육관"
+            },
+            {
+              "species": 408,
+              "level": 12,
+              "maxHp": 26,
+              "hp": 26,
+              "experience": 0,
+              "nature": "성실",
+              "met": "무쇠체육관"
+            }
+          ],
+          "enemyIndex": 0,
+          "enemy": {
+            "species": 74,
+            "level": 10,
+            "maxHp": 22,
+            "hp": 22,
+            "experience": 0,
+            "nature": "성실",
+            "met": "무쇠체육관"
+          },
+          "active": 0,
+          "menu": "actions",
+          "selected": 0,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0,
+          "result": false
+        },
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 5,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 0,
+              "hp": 29,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "oreburgh_center",
+          "steps": 0,
+          "seconds": 2.3497000000000092
+        },
+        "panel": "field",
+        "dialogue": {
+          "speaker": "",
+          "pages": [
+            "다른 트레이너의 포켓몬은\n잡을 수 없다."
+          ],
+          "page": 0,
+          "shown": 0.5976000000002096,
+          "selected": 0
+        },
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "oreburgh",
+              "spawn": {
+                "x": 18,
+                "y": 10
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "name": "next opponent 95",
+      "state": {
+        "battle": {
+          "kind": "gym",
+          "opponents": [
+            {
+              "species": 74,
+              "level": 10,
+              "maxHp": 22,
+              "hp": 0,
+              "experience": 0,
+              "nature": "성실",
+              "met": "무쇠체육관"
+            },
+            {
+              "species": 95,
+              "level": 11,
+              "maxHp": 24,
+              "hp": 24,
+              "experience": 0,
+              "nature": "성실",
+              "met": "무쇠체육관"
+            },
+            {
+              "species": 408,
+              "level": 12,
+              "maxHp": 26,
+              "hp": 26,
+              "experience": 0,
+              "nature": "성실",
+              "met": "무쇠체육관"
+            }
+          ],
+          "enemyIndex": 1,
+          "enemy": {
+            "species": 95,
+            "level": 11,
+            "maxHp": 24,
+            "hp": 24,
+            "experience": 0,
+            "nature": "성실",
+            "met": "무쇠체육관"
+          },
+          "active": 0,
+          "menu": "actions",
+          "selected": 0,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0,
+          "result": false
+        },
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 5,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 50,
+              "hp": 14,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "oreburgh_center",
+          "steps": 0,
+          "seconds": 31.09840000000001
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "oreburgh",
+              "spawn": {
+                "x": 18,
+                "y": 10
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "name": "next opponent 408",
+      "state": {
+        "battle": {
+          "kind": "gym",
+          "opponents": [
+            {
+              "species": 74,
+              "level": 10,
+              "maxHp": 22,
+              "hp": 0,
+              "experience": 0,
+              "nature": "성실",
+              "met": "무쇠체육관"
+            },
+            {
+              "species": 95,
+              "level": 11,
+              "maxHp": 24,
+              "hp": 0,
+              "experience": 0,
+              "nature": "성실",
+              "met": "무쇠체육관"
+            },
+            {
+              "species": 408,
+              "level": 12,
+              "maxHp": 26,
+              "hp": 26,
+              "experience": 0,
+              "nature": "성실",
+              "met": "무쇠체육관"
+            }
+          ],
+          "enemyIndex": 2,
+          "enemy": {
+            "species": 408,
+            "level": 12,
+            "maxHp": 26,
+            "hp": 26,
+            "experience": 0,
+            "nature": "성실",
+            "met": "무쇠체육관"
+          },
+          "active": 0,
+          "menu": "actions",
+          "selected": 0,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0,
+          "result": false
+        },
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 5,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 9,
+              "experience": 20,
+              "hp": 17,
+              "maxHp": 32,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 1
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "oreburgh_center",
+          "steps": 0,
+          "seconds": 42.7645000000005
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "oreburgh",
+              "spawn": {
+                "x": 18,
+                "y": 10
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "name": "full gym victory",
+      "state": {
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 5,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 9,
+              "experience": 70,
+              "hp": 17,
+              "maxHp": 32,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 0
+          },
+          "badges": [
+            "BADGE-GS01"
+          ],
+          "keyItems": [
+            "TM-stealth-rock"
+          ],
+          "money": 1440,
+          "healingPoint": "oreburgh_center",
+          "steps": 0,
+          "seconds": 55.04730000000105
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "oreburgh",
+              "spawn": {
+                "x": 18,
+                "y": 10
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "name": "TM stored in bag",
+      "state": {
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 5,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 9,
+              "experience": 70,
+              "hp": 17,
+              "maxHp": 32,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 0
+          },
+          "badges": [
+            "BADGE-GS01"
+          ],
+          "keyItems": [
+            "TM-stealth-rock"
+          ],
+          "money": 1440,
+          "healingPoint": "oreburgh_center",
+          "steps": 0,
+          "seconds": 73.46320000000271
+        },
+        "panel": "bag",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 1,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "oreburgh",
+              "spawn": {
+                "x": 18,
+                "y": 10
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "name": "reload and Roark revisit keep single reward",
+      "state": {
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 5,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 9,
+              "experience": 70,
+              "hp": 17,
+              "maxHp": 32,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 0
+          },
+          "badges": [
+            "BADGE-GS01"
+          ],
+          "keyItems": [
+            "TM-stealth-rock"
+          ],
+          "money": 1440,
+          "healingPoint": "oreburgh_center",
+          "steps": 0,
+          "seconds": 75.30730000000271
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "oreburgh",
+              "spawn": {
+                "x": 18,
+                "y": 10
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "name": "defeat returns to Oreburgh center fully healed",
+      "state": {
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 5,
+          "map": "oreburgh_center",
+          "player": {
+            "x": 8,
+            "y": 7,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 0,
+              "hp": 29,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "oreburgh_center",
+          "steps": 0,
+          "seconds": 6.016400000000009
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################",
+            "################",
+            "################",
+            "##............##",
+            "##............##",
+            "##.##########.##",
+            "##............##",
+            "##............##",
+            "##............##",
+            "##............##",
+            "##............##",
+            "##............##",
+            "########.#######",
+            "########.#######"
+          ],
+          "npcs": [
+            {
+              "id": "nurse",
+              "x": 8,
+              "y": 6
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 13,
+              "to": "oreburgh",
+              "spawn": {
+                "x": 6,
+                "y": 9
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 7,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "name": "second opponent before reload",
+      "state": {
+        "battle": {
+          "kind": "gym",
+          "opponents": [
+            {
+              "species": 74,
+              "level": 10,
+              "maxHp": 22,
+              "hp": 0,
+              "experience": 0,
+              "nature": "성실",
+              "met": "무쇠체육관"
+            },
+            {
+              "species": 95,
+              "level": 11,
+              "maxHp": 24,
+              "hp": 24,
+              "experience": 0,
+              "nature": "성실",
+              "met": "무쇠체육관"
+            },
+            {
+              "species": 408,
+              "level": 12,
+              "maxHp": 26,
+              "hp": 26,
+              "experience": 0,
+              "nature": "성실",
+              "met": "무쇠체육관"
+            }
+          ],
+          "enemyIndex": 1,
+          "enemy": {
+            "species": 95,
+            "level": 11,
+            "maxHp": 24,
+            "hp": 24,
+            "experience": 0,
+            "nature": "성실",
+            "met": "무쇠체육관"
+          },
+          "active": 0,
+          "menu": "actions",
+          "selected": 0,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0,
+          "result": false
+        },
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 5,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 50,
+              "hp": 14,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "oreburgh_center",
+          "steps": 0,
+          "seconds": 11.849499999999999
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "oreburgh",
+              "spawn": {
+                "x": 18,
+                "y": 10
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "name": "mid-battle reload cancels battle but retains XP",
+      "state": {
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 5,
+          "map": "oreburgh_gym",
+          "player": {
+            "x": 8,
+            "y": 5,
+            "facing": "up"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 50,
+              "hp": 14,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "oreburgh_center",
+          "steps": 0,
+          "seconds": 11.958800000047683
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "#################",
+            "#################",
+            "#################",
+            "##.............##",
+            "##.............##",
+            "##.............##",
+            "##..###........##",
+            "##..###........##",
+            "##.............##",
+            "##........###..##",
+            "##........###..##",
+            "##.............##",
+            "##..##.........##",
+            "##..##.........##",
+            "########.########",
+            "########.########"
+          ],
+          "npcs": [
+            {
+              "id": "roark",
+              "x": 8,
+              "y": 4
+            },
+            {
+              "id": "gymGuide",
+              "x": 12,
+              "y": 12
+            }
+          ],
+          "warps": [
+            {
+              "x": 8,
+              "y": 15,
+              "to": "oreburgh",
+              "spawn": {
+                "x": 18,
+                "y": 10
+              },
+              "entry": "down",
+              "facing": "down"
+            }
+          ],
+          "terrain": []
+        },
+        "position": {
+          "x": 8,
+          "y": 5,
+          "facing": "up"
+        }
+      }
+    },
+    {
+      "name": "wild battle before level up",
+      "state": {
+        "battle": {
+          "kind": "wild",
+          "opponents": [
+            {
+              "species": 399,
+              "level": 3,
+              "hp": 18,
+              "maxHp": 18,
+              "experience": 0,
+              "nature": "성실",
+              "met": "새잎 서쪽길"
+            }
+          ],
+          "enemyIndex": 0,
+          "enemy": {
+            "species": 399,
+            "level": 3,
+            "hp": 18,
+            "maxHp": 18,
+            "experience": 0,
+            "nature": "성실",
+            "met": "새잎 서쪽길"
+          },
+          "active": 0,
+          "menu": "actions",
+          "selected": 0,
+          "enemyAttackDrop": 0,
+          "enemyDefenseDrop": 0,
+          "result": false
+        },
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 5,
+          "map": "route_s01",
+          "player": {
+            "x": 22,
+            "y": 9,
+            "facing": "left"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 5,
+              "experience": 40,
+              "hp": 20,
+              "maxHp": 20,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 11,
+          "seconds": 3.9997000000000034
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################################",
+            "################################",
+            "################################",
+            "################################",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...#.......................##",
+            "###...........................##",
+            "##.............................#",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "################################",
+            "################################",
+            "################################"
+          ],
+          "npcs": [
+            {
+              "id": "routeGuide",
+              "x": 25,
+              "y": 10
+            },
+            {
+              "id": "roadworker",
+              "x": 3,
+              "y": 11
+            }
+          ],
+          "warps": [
+            {
+              "x": 2,
+              "y": 12,
+              "to": "jubilife",
+              "spawn": {
+                "x": 21,
+                "y": 12
+              },
+              "entry": "left",
+              "facing": "left"
+            },
+            {
+              "x": 30,
+              "y": 12,
+              "to": "town",
+              "spawn": {
+                "x": 4,
+                "y": 15
+              },
+              "facing": "right",
+              "entry": "right"
+            }
+          ],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 17,
+              "y": 6,
+              "w": 6,
+              "h": 4
+            },
+            {
+              "kind": "tallGrass",
+              "x": 7,
+              "y": 15,
+              "w": 8,
+              "h": 4
+            }
+          ]
+        },
+        "position": {
+          "x": 22,
+          "y": 9,
+          "facing": "left"
+        }
+      }
+    },
+    {
+      "name": "wild victory raises level 5 to 6",
+      "state": {
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 5,
+          "map": "route_s01",
+          "player": {
+            "x": 22,
+            "y": 9,
+            "facing": "left"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 6,
+              "experience": 20,
+              "hp": 15,
+              "maxHp": 23,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "home",
+          "steps": 11,
+          "seconds": 11.732600000000023
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################################",
+            "################################",
+            "################################",
+            "################################",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...#.......................##",
+            "###...........................##",
+            "##.............................#",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "################################",
+            "################################",
+            "################################"
+          ],
+          "npcs": [
+            {
+              "id": "routeGuide",
+              "x": 25,
+              "y": 10
+            },
+            {
+              "id": "roadworker",
+              "x": 3,
+              "y": 11
+            }
+          ],
+          "warps": [
+            {
+              "x": 2,
+              "y": 12,
+              "to": "jubilife",
+              "spawn": {
+                "x": 21,
+                "y": 12
+              },
+              "entry": "left",
+              "facing": "left"
+            },
+            {
+              "x": 30,
+              "y": 12,
+              "to": "town",
+              "spawn": {
+                "x": 4,
+                "y": 15
+              },
+              "facing": "right",
+              "entry": "right"
+            }
+          ],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 17,
+              "y": 6,
+              "w": 6,
+              "h": 4
+            },
+            {
+              "kind": "tallGrass",
+              "x": 7,
+              "y": 15,
+              "w": 8,
+              "h": 4
+            }
+          ]
+        },
+        "position": {
+          "x": 22,
+          "y": 9,
+          "facing": "left"
+        }
+      }
+    },
+    {
+      "name": "gym and both cities return to western route",
+      "state": {
+        "battle": null,
+        "grassSteps": 0,
+        "save": {
+          "version": 1,
+          "worldRevision": 5,
+          "map": "route_s01",
+          "player": {
+            "x": 3,
+            "y": 12,
+            "facing": "right"
+          },
+          "flags": {
+            "starterReceived": true,
+            "departureCleared": true
+          },
+          "party": [
+            {
+              "species": 7,
+              "level": 8,
+              "experience": 0,
+              "hp": 29,
+              "maxHp": 29,
+              "nature": "성실",
+              "met": "새잎마을 · 포켓몬 연구소"
+            }
+          ],
+          "inventory": {
+            "pokeBalls": 5,
+            "potions": 2
+          },
+          "badges": [],
+          "keyItems": [],
+          "money": 0,
+          "healingPoint": "oreburgh_center",
+          "steps": 47,
+          "seconds": 13.615599999999986
+        },
+        "panel": "field",
+        "dialogue": null,
+        "moving": false,
+        "transition": 0,
+        "menuIndex": 0,
+        "starterIndex": 0,
+        "partyIndex": 0,
+        "map": {
+          "walkable": [
+            "################################",
+            "################################",
+            "################################",
+            "################################",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...#.......................##",
+            "###...........................##",
+            "##.............................#",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "###...........................##",
+            "################################",
+            "################################",
+            "################################"
+          ],
+          "npcs": [
+            {
+              "id": "routeGuide",
+              "x": 25,
+              "y": 10
+            },
+            {
+              "id": "roadworker",
+              "x": 3,
+              "y": 11
+            }
+          ],
+          "warps": [
+            {
+              "x": 2,
+              "y": 12,
+              "to": "jubilife",
+              "spawn": {
+                "x": 21,
+                "y": 12
+              },
+              "entry": "left",
+              "facing": "left"
+            },
+            {
+              "x": 30,
+              "y": 12,
+              "to": "town",
+              "spawn": {
+                "x": 4,
+                "y": 15
+              },
+              "facing": "right",
+              "entry": "right"
+            }
+          ],
+          "terrain": [
+            {
+              "kind": "tallGrass",
+              "x": 17,
+              "y": 6,
+              "w": 6,
+              "h": 4
+            },
+            {
+              "kind": "tallGrass",
+              "x": 7,
+              "y": 15,
+              "w": 8,
+              "h": 4
+            }
+          ]
+        },
+        "position": {
+          "x": 3,
+          "y": 12,
+          "facing": "right"
+        }
+      }
+    }
+  ]
+}

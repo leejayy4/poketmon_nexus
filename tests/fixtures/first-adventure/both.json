@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "worldRevision": 4,
+  "map": "town",
+  "player": {
+    "x": 4,
+    "y": 15,
+    "facing": "left"
+  },
+  "flags": {
+    "starterReceived": true,
+    "pikachuReceived": true
+  },
+  "party": [
+    {
+      "species": 7,
+      "level": 5,
+      "hp": 20,
+      "maxHp": 20,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소"
+    },
+    {
+      "species": 25,
+      "level": 5,
+      "hp": 19,
+      "maxHp": 19,
+      "nature": "고집",
+      "met": "새잎마을 · 포켓몬 연구소"
+    }
+  ],
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 0
+  },
+  "steps": 0,
+  "seconds": 0
+}

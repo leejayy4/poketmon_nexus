@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "worldRevision": 8,
+  "map": "tour_mistralton_center",
+  "player": {
+    "x": 8,
+    "y": 9,
+    "facing": "up"
+  },
+  "flags": {
+    "exploration": true
+  },
+  "party": [],
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 0
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 668,
+  "seconds": 252.38927800008207
+}

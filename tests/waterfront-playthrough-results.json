@@ -1,0 +1,258 @@
+{
+  "qa": "waterfront-20260906-01",
+  "scope": "8 object investigations, 3 facility guided roundtrips, Canalave-Vermilion exit roundtrip, legacy import and reload",
+  "observations": [
+    {
+      "test": "walk, face, investigate and return to field",
+      "map": "tour_eterna",
+      "name": "오래된 석상",
+      "pages": [
+        "세월에 닳은 석상이 광장을 지킨다.\n받침돌에 이끼가 조금 남아 있다."
+      ],
+      "player": {
+        "x": 13,
+        "y": 17,
+        "facing": "up"
+      }
+    },
+    {
+      "test": "walk, face, investigate and return to field",
+      "map": "tour_eterna",
+      "name": "역사관 나무 정원",
+      "pages": [
+        "오래 자란 나무들이 그늘을 만든다.\n정원 옆 길이 석상 광장으로 이어진다."
+      ],
+      "player": {
+        "x": 9,
+        "y": 12,
+        "facing": "left"
+      }
+    },
+    {
+      "test": "walk, face, investigate and return to field",
+      "map": "tour_eterna",
+      "name": "역사관 옆 화단",
+      "pages": [
+        "역사관 옆에 작은 꽃밭을 가꾸었다.\n나무 정원과 다른 꽃들이 피어 있다."
+      ],
+      "player": {
+        "x": 21,
+        "y": 14,
+        "facing": "right"
+      }
+    },
+    {
+      "test": "walk, face, investigate and return to field",
+      "map": "tour_pastoria",
+      "name": "갈대 습지",
+      "pages": [
+        "얕은 물가에 갈대가 모여 자란다.\n옆의 나무 데크에서 살펴볼 수 있다."
+      ],
+      "player": {
+        "x": 9,
+        "y": 14,
+        "facing": "left"
+      }
+    },
+    {
+      "test": "walk, face, investigate and return to field",
+      "map": "tour_pastoria",
+      "name": "수초 관찰 연못",
+      "pages": [
+        "수면 사이로 수초가 고개를 내민다.\n연못 둘레로 관찰 데크가 이어진다."
+      ],
+      "player": {
+        "x": 20,
+        "y": 17,
+        "facing": "up"
+      }
+    },
+    {
+      "test": "walk, face, investigate and return to field",
+      "map": "tour_pastoria",
+      "name": "습지 입구 화단",
+      "pages": [
+        "습지 입구에 작은 꽃들이 피었다.\n관찰을 마친 여행자가 쉬어 가는 곳."
+      ],
+      "player": {
+        "x": 16,
+        "y": 18,
+        "facing": "right"
+      }
+    },
+    {
+      "test": "walk, face, investigate and return to field",
+      "map": "tour_canalave",
+      "name": "창고 옆 운하",
+      "pages": [
+        "창고 거리 옆으로 긴 물길이 놓였다.\n물가를 따라 부두 산책길이 이어진다."
+      ],
+      "player": {
+        "x": 9,
+        "y": 13,
+        "facing": "left"
+      }
+    },
+    {
+      "test": "walk, face, investigate and return to field",
+      "map": "tour_canalave",
+      "name": "항만 계류장",
+      "pages": [
+        "배를 묶어 두는 나무 말뚝이 보인다.\n지방 연결편은 마을 출구로 향하자."
+      ],
+      "player": {
+        "x": 20,
+        "y": 17,
+        "facing": "up"
+      }
+    },
+    {
+      "test": "follow facility guidance on foot and walk back through entrance",
+      "room": "tour_canalave_hall",
+      "map": "tour_canalave",
+      "player": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      },
+      "visited": [
+        "tour_eterna",
+        "tour_pastoria",
+        "tour_canalave",
+        "tour_canalave_hall"
+      ]
+    },
+    {
+      "test": "follow facility guidance on foot and walk back through entrance",
+      "room": "tour_pastoria_hall",
+      "map": "tour_pastoria",
+      "player": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      },
+      "visited": [
+        "tour_eterna",
+        "tour_pastoria",
+        "tour_canalave",
+        "tour_canalave_hall",
+        "tour_pastoria_hall"
+      ]
+    },
+    {
+      "test": "follow facility guidance on foot and walk back through entrance",
+      "room": "tour_eterna_hall",
+      "map": "tour_eterna",
+      "player": {
+        "x": 19,
+        "y": 10,
+        "facing": "down"
+      },
+      "visited": [
+        "tour_eterna",
+        "tour_pastoria",
+        "tour_canalave",
+        "tour_canalave_hall",
+        "tour_pastoria_hall",
+        "tour_eterna_hall"
+      ]
+    },
+    {
+      "test": "walk through Canalave to Vermilion transport exit and back",
+      "outbound": {
+        "map": "tour_vermilion",
+        "player": {
+          "x": 25,
+          "y": 12,
+          "facing": "left"
+        }
+      },
+      "returned": {
+        "map": "tour_canalave",
+        "player": {
+          "x": 14,
+          "y": 3,
+          "facing": "down"
+        }
+      }
+    },
+    {
+      "test": "import revision 11 canal overlap save, recover same city spawn and preserve progress",
+      "save": {
+        "version": 1,
+        "worldRevision": 12,
+        "map": "tour_canalave",
+        "player": {
+          "x": 14,
+          "y": 11,
+          "facing": "down"
+        },
+        "flags": {
+          "exploration": true
+        },
+        "party": [],
+        "inventory": {
+          "pokeBalls": 0,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 345,
+        "seconds": 678.4666,
+        "tourVisited": [
+          "tour_canalave",
+          "tour_canalave_hall"
+        ]
+      }
+    },
+    {
+      "test": "reload preserves migrated save and clears session navigation",
+      "save": {
+        "version": 1,
+        "worldRevision": 12,
+        "map": "tour_canalave",
+        "player": {
+          "x": 14,
+          "y": 11,
+          "facing": "down"
+        },
+        "flags": {
+          "exploration": true
+        },
+        "party": [],
+        "inventory": {
+          "pokeBalls": 0,
+          "potions": 0
+        },
+        "badges": [],
+        "keyItems": [],
+        "money": 0,
+        "healingPoint": "home",
+        "steps": 345,
+        "seconds": 678.9724859999046,
+        "tourVisited": [
+          "tour_canalave",
+          "tour_canalave_hall"
+        ]
+      },
+      "navigation": null
+    }
+  ],
+  "console": [],
+  "screenshots": [
+    "canalave-canal-dialogue.png",
+    "canalave-canal-field.png",
+    "canalave-mooring-dialogue.png",
+    "canalave-mooring-field.png",
+    "eterna-grove-dialogue.png",
+    "eterna-grove-field.png",
+    "eterna-statue-dialogue.png",
+    "eterna-statue-field.png",
+    "pastoria-pond-dialogue.png",
+    "pastoria-pond-field.png",
+    "pastoria-reeds-dialogue.png",
+    "pastoria-reeds-field.png"
+  ]
+}

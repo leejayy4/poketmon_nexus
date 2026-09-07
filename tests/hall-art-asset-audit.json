@@ -1,0 +1,82 @@
+{
+  "checks": [
+    {
+      "sample": "tile",
+      "image": "lab-reference",
+      "width": 336,
+      "height": 223,
+      "source": [
+        80,
+        80,
+        16,
+        16
+      ],
+      "valid": true
+    },
+    {
+      "sample": "wood",
+      "image": "home-reference",
+      "width": 200,
+      "height": 150,
+      "source": [
+        160,
+        80,
+        16,
+        16
+      ],
+      "valid": true
+    },
+    {
+      "sample": "shelf",
+      "image": "lab-reference",
+      "width": 336,
+      "height": 223,
+      "source": [
+        42,
+        20,
+        30,
+        32
+      ],
+      "valid": true
+    },
+    {
+      "sample": "desk",
+      "image": "lab-reference",
+      "width": 336,
+      "height": 223,
+      "source": [
+        24,
+        55,
+        48,
+        24
+      ],
+      "valid": true
+    },
+    {
+      "sample": "monitor",
+      "image": "home-reference",
+      "width": 200,
+      "height": 150,
+      "source": [
+        94,
+        48,
+        30,
+        28
+      ],
+      "valid": true
+    },
+    {
+      "sample": "window",
+      "image": "lab-reference",
+      "width": 336,
+      "height": 223,
+      "source": [
+        105,
+        13,
+        26,
+        17
+      ],
+      "valid": true
+    }
+  ]
+}
