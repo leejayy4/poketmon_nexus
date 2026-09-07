@@ -9,7 +9,7 @@
 좌/우는 선두 지정·상처약 선택에 사용한다. 정보를 넘겨도 행동 선택을 유지하고 확인은 현재 개체에 적용한다. 선두 변경 뒤에도 같은 개체를 보여 주며 X로 목록에 돌아갈 때 선택을 유지한다. 대화·전투·이동·전환 중과 다른 패널에서는 넘기기 콜백을 차단한다. 한 마리 파티에는 넘기기 버튼이 없다.
 
 - 코드: [Engine](../../src/engine.ts), [Renderer](../../src/renderer.ts)의 정보 화면 부분만 수정했다. Art의 숲 import·월드 레이어를 보존한 것을 반영 전 파일과 비교했다.
-- 안내: [DEVELOPMENT 70절](../../DEVELOPMENT.md#70-파티-정보-화면에서-이전다음-비교), [GAMEPLAY](../../GAMEPLAY.md).
+- 안내: [DEVELOPMENT 70절](../DEVELOPMENT.md#70-파티-정보-화면에서-이전다음-비교), [GAMEPLAY](../GAMEPLAY.md).
 - 기존 파티·HP·도구의 저장 구조와 version 1 / worldRevision 20, 스토리·맵·전투 규칙은 유지한다. 비교 동작 자체는 진행을 변경하지 않는다.
 
 ## 자동 검증
@@ -34,7 +34,7 @@
 | 10 | 꼬부기를 비교한 뒤 X로 목록 복귀. 두 번째 꼬부기 선택 유지 |
 | 11~12 | 필드 복귀·빠른 저장·재접속. 순서 25/7/399, HP 19/20/0, 상처약 1 유지 |
 
-[관찰 상태 12건](../../tests/party-summary-playthrough.json)과 [화면 12개](../../tests/party-summary-screenshots/), [오류·경고 0건](../../tests/party-summary-console.json)을 남겼다. 비교만 한 01~06의 저장은 경과 시간 외에 시작 상태와 동일함을 검사했다. 임시 작업본의 5177 화면 검증과 별도로 공용 게임에서 위 절차를 수행했다. 임시 서버는 종료했다.
+[관찰 상태 12건](../../tests/party-summary-playthrough.json)과 [화면 12개](../../tests/party-summary-screenshots), [오류·경고 0건](../../tests/party-summary-console.json)을 남겼다. 비교만 한 01~06의 저장은 경과 시간 외에 시작 상태와 동일함을 검사했다. 임시 작업본의 5177 화면 검증과 별도로 공용 게임에서 위 절차를 수행했다. 임시 서버는 종료했다.
 
 ## 남은 범위와 다음 후보
 

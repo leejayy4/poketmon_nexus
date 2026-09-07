@@ -29,7 +29,7 @@
 - 지도에서 남쪽 축복시티 경로가 새 나무 왼쪽을 우회하는 것 확인.
 - 개정 18 빠른 저장·새로고침 후 위치 `(10,10)`·파티·도구·방문 기록 보존 확인.
 
-[관찰 20건](../../tests/eterna-forest-playthrough.json), [화면 4장](../../tests/eterna-forest-screenshots/), [브라우저 경고·오류 0건](../../tests/eterna-forest-console.json).
+[관찰 20건](../../tests/eterna-forest-playthrough.json), [화면 4장](../../tests/eterna-forest-screenshots), [브라우저 경고·오류 0건](../../tests/eterna-forest-console.json).
 브라우저 자동화 중 프레임이 늦게 갱신되어 한 이동 완료 대기가 만료됐지만, 최신 DOM과 화면에서 이동 완료를 확인하고 이후에는 각 걸음의 실제 완료를 관찰하며 진행했다. 게임 코드 오류로 판정하지 않았다.
 
 ## 남은 범위와 다음 후보

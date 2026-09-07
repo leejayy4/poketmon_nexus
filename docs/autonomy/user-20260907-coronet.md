@@ -32,7 +32,7 @@
 - 동쪽 호수/남쪽 연고 표지 조사, 선택 풀밭 여섯 걸음 후 비버니 Lv.10 조우·도주 확인.
 - 남쪽 지도 경로가 새 암반을 우회. 빠른 저장·새로고침 후 `(10,10)`, 걸음 304, 파티·도구·방문 기록 보존.
 
-[브라우저 관찰 요약 18건과 최종 원본 상태](../../tests/coronet-playthrough.json), [전후 화면 등 5장](../../tests/coronet-screenshots/), [브라우저 경고·오류 0건](../../tests/coronet-console.json).
+[브라우저 관찰 요약 18건과 최종 원본 상태](../../tests/coronet-playthrough.json), [전후 화면 등 5장](../../tests/coronet-screenshots), [브라우저 경고·오류 0건](../../tests/coronet-console.json).
 관찰 요약은 도구가 출력한 DOM 좌표·걸음·대사·실제 화면에서 정리했으며 자동 시나리오 테스트 결과와 구분한다.
 
 ## 남은 범위와 다음 후보

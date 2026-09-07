@@ -30,44 +30,44 @@ TypeScript strict 모드, Vite, 브라우저 Canvas 2D 기반이다. Phaser, Thr
 
 | 파일 | 실제 책임 |
 | --- | --- |
-| [src/main.ts](src/main.ts) | Engine/Renderer 생성, DOM·키보드·터치 연결, 리소스 로딩, RAF 루프, 화면 관찰용 상태 공개 |
-| [src/types.ts](src/types.ts) | 좌표, 방향, 맵, NPC, 대화, 포켓몬, 세이브, 패널 타입 |
-| [src/engine.ts](src/engine.ts) | 이동, 입력, 전환, 대화 진행, 이벤트 분기, 메뉴 상태, 저장·복원 |
-| [src/renderer.ts](src/renderer.ts) | 두 화면의 월드·UI 렌더링, 카메라, 깊이 정렬, 터치 버튼 영역 |
-| [src/maps.ts](src/maps.ts) | 원본 145개 중 작은 도시·센터 ID 14개를 확장 도시로 이행, 실제 맵 131개, 충돌·NPC·사물·워프, `getMap`의 저장별 출구 상태, `canStand`/`canEnter` |
-| [src/route.ts](src/route.ts) | 32×24 서쪽길 그림·충돌·풀밭·표지판 좌표 |
-| [src/battle.ts](src/battle.ts) | 야생전·관장 연전 상태와 한 턴의 공격·포획·도구·도주 결과 |
-| [src/badge-maps.ts](src/badge-maps.ts) | 축복·무쇠와 센터·체육관 5개 맵 및 배경 합성 |
-| [src/growth.ts](src/growth.ts) | 현재 코드의 레벨 25까지 경험치·최대 HP 성장 |
-| [src/menu-grid.ts](src/menu-grid.ts) | 전투·필드 파티의 두 열 방향키 선택, 마지막 줄 빈칸 제외 |
-| [src/adventure-guide.ts](src/adventure-guide.ts) | 기존 진행 상태의 모험 목적지·위험 HP 회복 우선 안내·연결 구역, 저장 변경 없음 |
-| [src/battle-hints.ts](src/battle-hints.ts) | 선택한 기술·포획·회복·교대의 효과와 반격 미리보기 |
-| [src/first-badge.ts](src/first-badge.ts) | 기존 첫 배지 상수·테스트 호환 함수 |
-| [src/gyms.ts](src/gyms.ts) / [src/sinnoh-story.ts](src/sinnoh-story.ts) | 중단 전 작성된 D3 관장 팀·자료 전달·왕복선 처리. 전체 플레이 수용 미완료 |
-| [src/sinnoh-maps.ts](src/sinnoh-maps.ts) | D3 도시·연결길·센터·체육관·항구 14개 맵 |
-| [src/explore-world.ts](src/explore-world.ts) | 탐방 장소·연결·충돌·출입구·안전 시작점 119개 맵 |
-| [src/explore-layouts.ts](src/explore-layouts.ts) | 신오 6개 마을의 야외 사물 배치·조사 문구·포장 길·나무 데크 좌표 |
-| [src/explore-art.ts](src/explore-art.ts) | 마을 지형·사물과 DS 건물 합성 |
-| [src/explore-tree-art.ts](src/explore-tree-art.ts) | 기존 DS 나무 원자료의 수관·줄기 클리핑, 군락의 완전한 나무 배치·발 기준 깊이·지면 덮개 |
-| [src/explore-materials.ts](src/explore-materials.ts) | DS 대표 시설·주택 지붕 색과 지면·길 경계 표현 |
-| [src/explore-interiors.ts](src/explore-interiors.ts) / [src/explore-interior-art.ts](src/explore-interior-art.ts) | 탐방 실내 76곳의 가구 좌표·조사 대사, 대표 시설의 DS 재질과 픽셀 가구 |
-| [src/unified-world.ts](src/unified-world.ts) | 기존 맵 ID 이행, 확장 도시의 체육관·센터·숲·연구 연결길 통합 |
-| [src/explore-panel.ts](src/explore-panel.ts) | 지방 지도·목적지 바로 이동·길안내·탐방 수첩 표시 |
-| [src/explore-journal.ts](src/explore-journal.ts) | 탐방 방문 ID 검증·이전 저장의 현재 장소 기록·방문 집계 |
-| [src/explore-navigation.ts](src/explore-navigation.ts) | 야외·실내 목적지의 구역 연결과 문까지 도보 경로, 도착 판정 |
-| [src/explore-residents.ts](src/explore-residents.ts) | 주요 마을 35곳의 주민 70명·개별 생활 대화·기존 DS 캐릭터 선택 |
-| [src/explore-pokemon.ts](src/explore-pokemon.ts) / [src/explore-life-art.ts](src/explore-life-art.ts) | 마을 포켓몬 35마리·8종의 배치와 반응, DS 프레임·마주보기·하트·수면 움직임 |
-| [src/explore-minimap.ts](src/explore-minimap.ts) | 현재 탐방 맵의 시설·사람 표식, 아래 지도 축척과 터치 범위 |
-| [src/town.ts](src/town.ts) | 마을 크기, 건물의 바닥 범위·그림·윤곽, 길·풀·연못·꽃섬, 배경 합성 |
-| [src/sprites.ts](src/sprites.ts) | 방향별 프레임 계산, 팔레트 치환 |
-| [src/story.ts](src/story.ts) | 저장 상태에 따른 박사·엄마 대사와 스타팅 제안 여부 계산 |
-| [src/dialogues.ts](src/dialogues.ts) | 일반 NPC와 사물의 정적 대사 사전 |
-| [src/pokemon.ts](src/pokemon.ts) | 종 데이터, 스타팅 순서, 중복 수령 방지와 파티 등록 |
-| [src/save.ts](src/save.ts) | 새 게임, 저장 키, 세이브 검증, 이전 맵 개정의 위치 보정 |
-| [src/save-library.ts](src/save-library.ts) | 안정된 체크포인트, JSON 입출력, 저장 슬롯 접근 |
-| [src/test-panel.ts](src/test-panel.ts) | 게임 외부의 테스트·저장 관리 UI |
-| [src/audio.ts](src/audio.ts) | Web Audio 합성 효과음과 짧은 반복 멜로디 |
-| [index.html](index.html), [src/style.css](src/style.css) | Canvas 크기, DS 형태의 외부 화면 틀, 반응형 배치, 폰트 |
+| [src/main.ts](../src/main.ts) | Engine/Renderer 생성, DOM·키보드·터치 연결, 리소스 로딩, RAF 루프, 화면 관찰용 상태 공개 |
+| [src/types.ts](../src/types.ts) | 좌표, 방향, 맵, NPC, 대화, 포켓몬, 세이브, 패널 타입 |
+| [src/engine.ts](../src/engine.ts) | 이동, 입력, 전환, 대화 진행, 이벤트 분기, 메뉴 상태, 저장·복원 |
+| [src/renderer.ts](../src/renderer.ts) | 두 화면의 월드·UI 렌더링, 카메라, 깊이 정렬, 터치 버튼 영역 |
+| [src/maps.ts](../src/maps.ts) | 원본 145개 중 작은 도시·센터 ID 14개를 확장 도시로 이행, 실제 맵 131개, 충돌·NPC·사물·워프, `getMap`의 저장별 출구 상태, `canStand`/`canEnter` |
+| [src/route.ts](../src/route.ts) | 32×24 서쪽길 그림·충돌·풀밭·표지판 좌표 |
+| [src/battle.ts](../src/battle.ts) | 야생전·관장 연전 상태와 한 턴의 공격·포획·도구·도주 결과 |
+| [src/badge-maps.ts](../src/badge-maps.ts) | 축복·무쇠와 센터·체육관 5개 맵 및 배경 합성 |
+| [src/growth.ts](../src/growth.ts) | 현재 코드의 레벨 25까지 경험치·최대 HP 성장 |
+| [src/menu-grid.ts](../src/menu-grid.ts) | 전투·필드 파티의 두 열 방향키 선택, 마지막 줄 빈칸 제외 |
+| [src/adventure-guide.ts](../src/adventure-guide.ts) | 기존 진행 상태의 모험 목적지·위험 HP 회복 우선 안내·연결 구역, 저장 변경 없음 |
+| [src/battle-hints.ts](../src/battle-hints.ts) | 선택한 기술·포획·회복·교대의 효과와 반격 미리보기 |
+| [src/first-badge.ts](../src/first-badge.ts) | 기존 첫 배지 상수·테스트 호환 함수 |
+| [src/gyms.ts](../src/gyms.ts) / [src/sinnoh-story.ts](../src/sinnoh-story.ts) | 중단 전 작성된 D3 관장 팀·자료 전달·왕복선 처리. 전체 플레이 수용 미완료 |
+| [src/sinnoh-maps.ts](../src/sinnoh-maps.ts) | D3 도시·연결길·센터·체육관·항구 14개 맵 |
+| [src/explore-world.ts](../src/explore-world.ts) | 탐방 장소·연결·충돌·출입구·안전 시작점 119개 맵 |
+| [src/explore-layouts.ts](../src/explore-layouts.ts) | 신오 6개 마을의 야외 사물 배치·조사 문구·포장 길·나무 데크 좌표 |
+| [src/explore-art.ts](../src/explore-art.ts) | 마을 지형·사물과 DS 건물 합성 |
+| [src/explore-tree-art.ts](../src/explore-tree-art.ts) | 기존 DS 나무 원자료의 수관·줄기 클리핑, 군락의 완전한 나무 배치·발 기준 깊이·지면 덮개 |
+| [src/explore-materials.ts](../src/explore-materials.ts) | DS 대표 시설·주택 지붕 색과 지면·길 경계 표현 |
+| [src/explore-interiors.ts](../src/explore-interiors.ts) / [src/explore-interior-art.ts](../src/explore-interior-art.ts) | 탐방 실내 76곳의 가구 좌표·조사 대사, 대표 시설의 DS 재질과 픽셀 가구 |
+| [src/unified-world.ts](../src/unified-world.ts) | 기존 맵 ID 이행, 확장 도시의 체육관·센터·숲·연구 연결길 통합 |
+| [src/explore-panel.ts](../src/explore-panel.ts) | 지방 지도·목적지 바로 이동·길안내·탐방 수첩 표시 |
+| [src/explore-journal.ts](../src/explore-journal.ts) | 탐방 방문 ID 검증·이전 저장의 현재 장소 기록·방문 집계 |
+| [src/explore-navigation.ts](../src/explore-navigation.ts) | 야외·실내 목적지의 구역 연결과 문까지 도보 경로, 도착 판정 |
+| [src/explore-residents.ts](../src/explore-residents.ts) | 주요 마을 35곳의 주민 70명·개별 생활 대화·기존 DS 캐릭터 선택 |
+| [src/explore-pokemon.ts](../src/explore-pokemon.ts) / [src/explore-life-art.ts](../src/explore-life-art.ts) | 마을 포켓몬 35마리·8종의 배치와 반응, DS 프레임·마주보기·하트·수면 움직임 |
+| [src/explore-minimap.ts](../src/explore-minimap.ts) | 현재 탐방 맵의 시설·사람 표식, 아래 지도 축척과 터치 범위 |
+| [src/town.ts](../src/town.ts) | 마을 크기, 건물의 바닥 범위·그림·윤곽, 길·풀·연못·꽃섬, 배경 합성 |
+| [src/sprites.ts](../src/sprites.ts) | 방향별 프레임 계산, 팔레트 치환 |
+| [src/story.ts](../src/story.ts) | 저장 상태에 따른 박사·엄마 대사와 스타팅 제안 여부 계산 |
+| [src/dialogues.ts](../src/dialogues.ts) | 일반 NPC와 사물의 정적 대사 사전 |
+| [src/pokemon.ts](../src/pokemon.ts) | 종 데이터, 스타팅 순서, 중복 수령 방지와 파티 등록 |
+| [src/save.ts](../src/save.ts) | 새 게임, 저장 키, 세이브 검증, 이전 맵 개정의 위치 보정 |
+| [src/save-library.ts](../src/save-library.ts) | 안정된 체크포인트, JSON 입출력, 저장 슬롯 접근 |
+| [src/test-panel.ts](../src/test-panel.ts) | 게임 외부의 테스트·저장 관리 UI |
+| [src/audio.ts](../src/audio.ts) | Web Audio 합성 효과음과 짧은 반복 멜로디 |
+| [index.html](../index.html), [src/style.css](../src/style.css) | Canvas 크기, DS 형태의 외부 화면 틀, 반응형 배치, 폰트 |
 | `scripts/` | 기존 자료 탐색·다운로드·가공·진단용 스크립트와 결과물. 런타임 진입점이 아님 |
 | `tests/` | 자동 회귀 테스트와 이전 실제 브라우저 검증 기록 |
 
@@ -84,7 +84,7 @@ TypeScript strict 모드, Vite, 브라우저 Canvas 2D 기반이다. Phaser, Thr
 - 필드 캐릭터의 일반 프레임은 32×32다. 파티·선택 화면의 포켓몬 이미지는 80×80 기준으로 그린다.
 - 이브이는 `eevee-play.png`의 32×32 두 프레임을 사용하는 특수 NPC 표현이다. 일반 4방향 필드 시트가 아니다.
 - `imageSmoothingEnabled=false`, CSS `image-rendering: pixelated`, Galmuri 폰트를 유지한다. 대화창과 메뉴 프레임은 Canvas 코드로 그린다.
-- 원작 스프라이트·맵·UI 자료의 직접 사용은 사용자가 허용한 방향이다. 현재 자산 출처는 [sources.json](public/assets/sources.json)에 기록되어 있다. 새 자산도 출처와 가공 내용을 남긴다. 이 기록을 배포 라이선스 취득 기록으로 해석하지 않는다.
+- 원작 스프라이트·맵·UI 자료의 직접 사용은 사용자가 허용한 방향이다. 현재 자산 출처는 [sources.json](../public/assets/sources.json)에 기록되어 있다. 새 자산도 출처와 가공 내용을 남긴다. 이 기록을 배포 라이선스 취득 기록으로 해석하지 않는다.
 
 ### 깊이 표현
 
@@ -124,7 +124,7 @@ CSS가 화면을 뷰포트에 맞춰 확대·축소하므로 표시 배율은 �
 - 걸음 중 Z/Enter/Space·X/Esc·M을 누르면 첫 요청 하나를 보관해 한 칸 이동을 마친 뒤 조사·메뉴·지도 동작을 실행한다. 이동 방향을 유지하며 추가 걸음은 시작하지 않는다. 같은 칸에서 문 전환·야생 조우가 발생하면 그것을 우선하고 요청은 버린다.
 - 대화·메뉴·전투 선택과 문 전환 중 누른 방향키는 필드 보행 키로 보관하지 않는다. 입력을 정리한 뒤 들어오는 OS 자동 반복은 새 보행을 시작하지 않으며 다시 눌러 이동한다. 포커스 이탈·저장 패널 진입·저장 복원 때는 보관한 요청도 지운다. 상세와 검증은 63절을 따른다.
 - 대화, 필드 이외 패널, 맵 전환 중에는 필드 이동을 시작할 수 없다. 대화 시작과 메뉴 조작, 포커스 이탈 시 눌린 키를 정리하는 경로가 있다.
-- 조작 안내를 열거나 아래 터치 화면·모바일 조작 버튼을 누르면 위 게임 Canvas로 포커스를 돌린다(`preventScroll: true`). 저장 패널·헤더 버튼에 남은 포커스 때문에 이후 Z/X/Enter·방향키가 차단되지 않도록 한다. 저장 슬롯 등 HTML 폼 자체를 조작하는 동안의 게임 키 차단은 유지한다. 재현과 검증은 [QA 회차 기록](docs/autonomy/bootstrap-qa-20260907.md)을 따른다.
+- 조작 안내를 열거나 아래 터치 화면·모바일 조작 버튼을 누르면 위 게임 Canvas로 포커스를 돌린다(`preventScroll: true`). 저장 패널·헤더 버튼에 남은 포커스 때문에 이후 Z/X/Enter·방향키가 차단되지 않도록 한다. 저장 슬롯 등 HTML 폼 자체를 조작하는 동안의 게임 키 차단은 유지한다. 재현과 검증은 [QA 회차 기록](autonomy/bootstrap-qa-20260907.md)을 따른다.
 - 스프라이트 시작 프레임은 `up:0`, `down:4`, `left:8`, `right:12`. 32프레임 이상인 시트만 달리기 프레임에 16을 더한다. 현재 주인공의 16프레임 시트는 달리기에서도 걷기 그림을 사용한다.
 
 ## 6. 타일·충돌 시스템
@@ -365,13 +365,13 @@ npm.cmd run build
 
 | 검사 | 현재 다루는 범위 |
 | --- | --- |
-| [game.test.ts](tests/game.test.ts) | 워프 도착점, 마을 도달성, 풀밭, 출구 차단, 저장 이행, 프레임 방향, 짧은 입력, 포켓몬 수령 |
-| [story-save.test.ts](tests/story-save.test.ts) | 박사·피카츄 분기, 수령 제한, 3슬롯, JSON 검증, 전환 저장, 복원 정리 |
-| [collision.test.ts](tests/collision.test.ts) | 모든 문·계단 방향, 문 앞 평행 이동, 연구소 오른쪽 방, 건물 뒤옆, 숲 경계, 맵별 모든 이동 가능 바닥 연결 |
+| [game.test.ts](../tests/game.test.ts) | 워프 도착점, 마을 도달성, 풀밭, 출구 차단, 저장 이행, 프레임 방향, 짧은 입력, 포켓몬 수령 |
+| [story-save.test.ts](../tests/story-save.test.ts) | 박사·피카츄 분기, 수령 제한, 3슬롯, JSON 검증, 전환 저장, 복원 정리 |
+| [collision.test.ts](../tests/collision.test.ts) | 모든 문·계단 방향, 문 앞 평행 이동, 연구소 오른쪽 방, 건물 뒤옆, 숲 경계, 맵별 모든 이동 가능 바닥 연결 |
 
-이전 시작 구간 보완에서는 자동 테스트 **26개 통과**, 프로덕션 빌드 통과를 확인했다. 추가한 [시작 구간 테스트](tests/start-polish.test.ts)는 가능한 파티 조합 8가지의 엄마 대화·저장 왕복·반복 시 진행 보존과, 모든 사물의 입구부터 이동·조사 동작을 검사한다.
+이전 시작 구간 보완에서는 자동 테스트 **26개 통과**, 프로덕션 빌드 통과를 확인했다. 추가한 [시작 구간 테스트](../tests/start-polish.test.ts)는 가능한 파티 조합 8가지의 엄마 대화·저장 왕복·반복 시 진행 보존과, 모든 사물의 입구부터 이동·조사 동작을 검사한다.
 
-실제 브라우저에서는 고유 `?qa=start-polish-20260906-01`에서 테스트 저장을 기존 파일 불러오기 UI로 가져온 뒤 걸어서 엄마의 4가지 분기와 수정한 사물 5곳을 확인했다. 피카츄 저장 후 새로고침·재대화도 확인했다. [이번 플레이 기록](tests/start-polish-playthrough-results.json)과 [재현용 저장 생성 스크립트](scripts/start-polish-fixtures.ts)를 참고한다. 수령 이벤트 전체를 새로 플레이한 검증은 아니며, 이전 전체 경로 기록은 [충돌·이동 검증](tests/collision-playthrough-results.json)·[스토리·저장 검증](tests/story-save-results.json)에 남아 있다.
+실제 브라우저에서는 고유 `?qa=start-polish-20260906-01`에서 테스트 저장을 기존 파일 불러오기 UI로 가져온 뒤 걸어서 엄마의 4가지 분기와 수정한 사물 5곳을 확인했다. 피카츄 저장 후 새로고침·재대화도 확인했다. [이번 플레이 기록](../tests/start-polish-playthrough-results.json)과 [재현용 저장 생성 스크립트](../scripts/start-polish-fixtures.ts)를 참고한다. 수령 이벤트 전체를 새로 플레이한 검증은 아니며, 이전 전체 경로 기록은 [충돌·이동 검증](../tests/collision-playthrough-results.json)·[스토리·저장 검증](../tests/story-save-results.json)에 남아 있다.
 
 관찰용 `window.__game.snapshot()`과 `#field.dataset.state`는 읽기 전용 상태 확인 경로다. 플레이어를 순간 이동시키거나 이벤트를 건너뛰는 게임 API가 아니다. 자동 연결 검사는 NPC 도윤이 지키는 마을 `(2,15)`를 의도된 예외로 둔다.
 
@@ -388,7 +388,7 @@ npm.cmd run build
 - 회복: 상처약은 선택한 파티 개체의 HP를 최대 20 회복하고 현재 출전 개체가 적 반격을 받는다(40절). 최대 HP·기절·약 부족이면 소모하지 않는다. 길 안내원은 전원 회복과 볼 5·약 2까지 부족분을 무료 보충한다. 엄마도 다친 파티를 회복한다.
 - 도주: 항상 성공하며 도구·HP를 소모하지 않는다. X는 하위 선택에서 행동 선택으로 돌아오며 행동 선택에서는 전투를 유지한다. 도주는 행동 항목을 직접 선택한다(38절). 방향키·Z/Enter와 아래 화면 터치를 모두 지원한다.
 
-D1 당시 검증: `npm.cmd test` **36개 통과**, `npm.cmd run build` 통과. [D1 회귀 테스트](tests/first-adventure.test.ts)는 출발·슬롯 복원·왕복 워프·조우·파트너별 승리·포획/실패/만원·도구·기절 교대·패배·이전 저장 이행을 검사한다. [실제 브라우저 기록](tests/first-adventure-playthrough-results.json)은 고유 `?qa=first-adventure-20260906-01`에서 기존 파일 불러오기 UI와 키보드·터치를 사용한 결과다. [재현 저장 생성](scripts/first-adventure-fixtures.ts)은 이미 파트너가 있는 시작점과 패배 확인용 낮은 HP를 제공하며 수령 이벤트 자체를 새로 플레이했다는 뜻은 아니다.
+D1 당시 검증: `npm.cmd test` **36개 통과**, `npm.cmd run build` 통과. [D1 회귀 테스트](../tests/first-adventure.test.ts)는 출발·슬롯 복원·왕복 워프·조우·파트너별 승리·포획/실패/만원·도구·기절 교대·패배·이전 저장 이행을 검사한다. [실제 브라우저 기록](../tests/first-adventure-playthrough-results.json)은 고유 `?qa=first-adventure-20260906-01`에서 기존 파일 불러오기 UI와 키보드·터치를 사용한 결과다. [재현 저장 생성](../scripts/first-adventure-fixtures.ts)은 이미 파트너가 있는 시작점과 패배 확인용 낮은 HP를 제공하며 수령 이벤트 자체를 새로 플레이했다는 뜻은 아니다.
 
 
 ## 20. D2 첫 배지 완료 당시 규칙과 검증
@@ -403,9 +403,9 @@ D1 당시 검증: `npm.cmd test` **36개 통과**, `npm.cmd run build` 통과. [
 - 완료: 세 번째 개체를 쓰러뜨린 턴에 콜배지 BADGE-GS01, TM-stealth-rock, 상금 1440원을 함께 저장한다. 트레이너 카드에서 배지·돈, 가방에서 스텔스록 기술머신을 표시한다. 기술머신은 현재 보유 기록만 있으며 기술을 배우는 기능은 없다. 승리 후 강석은 축하 대사만 하고 재전투·중복 보상을 제공하지 않는다.
 - 중간 저장: HP·도구·XP·레벨·완료 보상은 대화 전에 확정한다. 전투 자체는 저장하지 않으므로 재접속하면 필드로 돌아온다. 일부 상대만 이긴 뒤 중단해도 얻은 XP는 유지하지만 배지·상금·TM은 받지 못한다. 다시 도전하면 꼬마돌부터 시작한다.
 
-자동 검증은 [D2 회귀 테스트](tests/first-badge.test.ts)를 포함해 **46개 통과**, 빌드 통과다. 레벨 성장·이전 저장 이행·네 파트너의 레벨 8 승리·포획 제한·취소·센터 복귀·3마리 완료 보상·대화 중 저장/재방문·왕복 워프를 검사한다.
+자동 검증은 [D2 회귀 테스트](../tests/first-badge.test.ts)를 포함해 **46개 통과**, 빌드 통과다. 레벨 성장·이전 저장 이행·네 파트너의 레벨 8 승리·포획 제한·취소·센터 복귀·3마리 완료 보상·대화 중 저장/재방문·왕복 워프를 검사한다.
 
-[실제 브라우저 기록](tests/first-badge-playthrough-results.json)은 고유 ?qa=first-badge-20260906-01에서 파일 가져오기 UI와 키보드·대화 클릭으로 확인한 18건이다. 도시·센터 이동, 강석전 꼬부기 승리, 관장 포획 거절, 재접속·재방문, 패배 복귀, 중간 전투 재접속, 야생전 레벨업을 확인했다. 브라우저 오류·경고는 없었다. [재현 저장 생성기](scripts/first-badge-fixtures.ts)의 entry(레벨 5), trained(레벨 8), low-hp(HP 1), level-up(레벨 5 XP40)을 사용했다. 처음부터 레벨 8까지 육성하거나 네 파트너 모두를 브라우저로 플레이한 기록은 아니다. 화면 기록은 [콜배지 카드](tests/first-badge-screenshots/first-badge-card.png)와 tests/first-badge-screenshots/에 둔다.
+[실제 브라우저 기록](../tests/first-badge-playthrough-results.json)은 고유 ?qa=first-badge-20260906-01에서 파일 가져오기 UI와 키보드·대화 클릭으로 확인한 18건이다. 도시·센터 이동, 강석전 꼬부기 승리, 관장 포획 거절, 재접속·재방문, 패배 복귀, 중간 전투 재접속, 야생전 레벨업을 확인했다. 브라우저 오류·경고는 없었다. [재현 저장 생성기](../scripts/first-badge-fixtures.ts)의 entry(레벨 5), trained(레벨 8), low-hp(HP 1), level-up(레벨 5 XP40)을 사용했다. 처음부터 레벨 8까지 육성하거나 네 파트너 모두를 브라우저로 플레이한 기록은 아니다. 화면 기록은 [콜배지 카드](../tests/first-badge-screenshots/first-badge-card.png)와 tests/first-badge-screenshots/에 둔다.
 
 
 ## 21. 지도 우선 개발 이력과 중단된 D3 검증
@@ -422,7 +422,7 @@ D1 당시 검증: `npm.cmd test` **36개 통과**, `npm.cmd run build` 통과. [
 
 현재 종 데이터에는 관장 전용 406/420/315/425/92/200/307/66/448도 있다. 소유 가능한 종은 기존 1/4/7/25/399로 유지한다. 성장 상한은 25로 늘렸고, 영원숲 비버니는 Lv7/HP30/XP60, 천관산 하부는 Lv10/HP39/XP80이며 기본 반격 피해 5다. 신규 관장 권장 레벨은 10/12/15, 반격 피해 5/6/7, 개체당 XP70/90/110이다. D3 팀·보상은 gyms.ts를 따른다. 네 배지와 TM 보유 표시를 지원한다. 이 코드는 자동 회귀 테스트 대상이지만 D3 전체 브라우저 플레이는 중단되었으므로 D3 수용 완료를 주장하지 않는다.
 
-최신 자동 테스트 108개와 빌드 통과. 실제 탐방 검증은 [탐방 기록](tests/world-tour-playthrough-results.json)에 별도로 남긴다. 기존 D1/D2의 36/46개 테스트 숫자는 해당 시점의 역사적 검증이다.
+최신 자동 테스트 108개와 빌드 통과. 실제 탐방 검증은 [탐방 기록](../tests/world-tour-playthrough-results.json)에 별도로 남긴다. 기존 D1/D2의 36/46개 테스트 숫자는 해당 시점의 역사적 검증이다.
 
 
 ## 22. 탐방 실내 배치·조사 보완
@@ -859,9 +859,9 @@ TOWN_REVISION 16 / version 1을 유지한다. 모험 목표·회복 판단은 �
 
 `awardGym`은 승리 확정 때 기존 조건에 따라 배지·기술머신·상금을 한 번 지급하고 즉시 저장한다. 표시·선택 콜백에서 다시 지급하지 않는다. 소지금 한도 999,999원 근처에서는 명목 상금 대신 지급 전후 차이를 표시한다. 이미 받은 배지, 야생 승리, 중간 상대 격파, 패배, 중단에는 이 화면을 띄우지 않는다. `gymReward`는 관장 ID·실제 상금·보상 시작 페이지를 담는 임시 표시 상태이며 다른 대화·저장 복원에서 정리한다. 복원 전 남은 선택 콜백은 새 전투나 지도에 영향을 주지 않는다. 저장 version 1 / worldRevision 17과 모든 기존 진행 ID는 유지한다. 기술머신 학습이나 새로운 배지 효과는 추가하지 않았다.
 
-자동 테스트 **216개**와 프로덕션 빌드 통과. [일곱 보상 검사](tests/gym-reward.test.ts)는 네 관장 단일 지급, 전투/보상 표시 순서, 다음 체육관·회복·네 번째 배지 후 목표, 터치·X·계속, 돈 상한과 0원, 중복 보상 방지, 대사 전/중 복원을 확인한다. 출력은 [gym-reward-test-output.txt](tests/gym-reward-test-output.txt)다.
+자동 테스트 **216개**와 프로덕션 빌드 통과. [일곱 보상 검사](../tests/gym-reward.test.ts)는 네 관장 단일 지급, 전투/보상 표시 순서, 다음 체육관·회복·네 번째 배지 후 목표, 터치·X·계속, 돈 상한과 0원, 중복 보상 방지, 대사 전/중 복원을 확인한다. 출력은 [gym-reward-test-output.txt](../tests/gym-reward-test-output.txt)다.
 
-실제 브라우저는 고유 `?qa=gym-reward-20260907-01`에서 기존 Lv.8 두 마리 [공개 파일](tests/gym-switch-save.json)을 UI로 가져와 강석전을 진행했다. 마지막 격파 대사 → 콜배지·스텔스록·1,440원 → 목표 안내 터치 → 체육관과 도시를 걸어 센터 도착 → 간호사 회복 → 영원체육관 경로 갱신을 확인했다. [보상 검증 파일 생성기](scripts/gym-reward-fixture.ts)의 Lv.25·소지금 999,990원 파일로 별도 실제 전투를 완료해 증가액 9원, 보상 화면 중 새로고침, 관장 재대화 후 배지·TM 각 1개와 돈·HP 보존을 확인했다. [직접 관찰 9건](tests/gym-reward-playthrough.json), [화면](tests/gym-reward-screenshots/), [재접속 후 경고·오류 0건](tests/gym-reward-console.json)을 남겼다. 다른 세 관장·X·계속·0원 경계는 자동 테스트 범위다. D3 전체 캠페인 수용 검증은 여전히 미완료다.
+실제 브라우저는 고유 `?qa=gym-reward-20260907-01`에서 기존 Lv.8 두 마리 [공개 파일](../tests/gym-switch-save.json)을 UI로 가져와 강석전을 진행했다. 마지막 격파 대사 → 콜배지·스텔스록·1,440원 → 목표 안내 터치 → 체육관과 도시를 걸어 센터 도착 → 간호사 회복 → 영원체육관 경로 갱신을 확인했다. [보상 검증 파일 생성기](../scripts/gym-reward-fixture.ts)의 Lv.25·소지금 999,990원 파일로 별도 실제 전투를 완료해 증가액 9원, 보상 화면 중 새로고침, 관장 재대화 후 배지·TM 각 1개와 돈·HP 보존을 확인했다. [직접 관찰 9건](../tests/gym-reward-playthrough.json), [화면](../tests/gym-reward-screenshots), [재접속 후 경고·오류 0건](../tests/gym-reward-console.json)을 남겼다. 다른 세 관장·X·계속·0원 경계는 자동 테스트 범위다. D3 전체 캠페인 수용 검증은 여전히 미완료다.
 
 
 ## 56. 전투 피격과 회복 연출
@@ -872,9 +872,9 @@ TOWN_REVISION 16 / version 1을 유지한다. 모험 목표·회복 판단은 �
 
 전투 피해·회복·도구 소비·기절·경험치는 기존대로 턴 확정 때 한 번 처리한다. 연출에는 타이머 콜백이나 저장 변경이 없으며 연출 중 재접속해도 확정된 HP와 도구를 보존한다. 새 기술·타입 상성·PP·전투 밸런스·이야기 조건을 추가하지 않고 version 1 / worldRevision 17을 유지한다.
 
-자동 테스트 **223개**와 프로덕션 빌드 통과. [일곱 연출 검사](tests/battle-effects.test.ts)는 공격/반격의 대상 분리, 실제 회복량·대기 포켓몬 예외, 텍스트 속도와 독립된 종료, 즉시 넘김·대화 교체·복원, 기절·다음 상대·보상 무반복, 실제 렌더러의 표시·위치 복귀, 거절·시간 경계를 확인한다. 출력은 [battle-effects-test-output.txt](tests/battle-effects-test-output.txt)다.
+자동 테스트 **223개**와 프로덕션 빌드 통과. [일곱 연출 검사](../tests/battle-effects.test.ts)는 공격/반격의 대상 분리, 실제 회복량·대기 포켓몬 예외, 텍스트 속도와 독립된 종료, 즉시 넘김·대화 교체·복원, 기절·다음 상대·보상 무반복, 실제 렌더러의 표시·위치 복귀, 거절·시간 경계를 확인한다. 출력은 [battle-effects-test-output.txt](../tests/battle-effects-test-output.txt)다.
 
-실제 브라우저는 고유 `?qa=battle-effects-20260907-01`과 기존 [Lv.8 두 마리 파일](tests/gym-switch-save.json)을 사용해 강석전을 플레이했다. 꼬마돌 피격 −7, 꼬부기 반격 피해 −5, 상처약 +5와 이어지는 반격, 같은 대사에서 시간 경과로 연출 종료, 행동 메뉴 복귀와 다음 공격 입력, 피해 대사 중 재접속의 HP 19·상처약 1 보존을 확인했다. [전체 관찰 10건](tests/battle-effects-playthrough.json) 중 4~10번은 최종 배치 검증이며 1~3번은 위치 조정 전 참고다. 첫 화면은 캡처 갱신 지연으로 직전 공격 대사를 담았고 최종 피격 화면은 4번에 다시 기록했다. [화면](tests/battle-effects-screenshots/)과 [재접속 후 경고·오류 0건](tests/battle-effects-console.json)을 남겼다. 다른 관장·야생전·기절/교대 예외는 자동 테스트 범위이며 D3 전체 캠페인 수용 검증은 여전히 미완료다.
+실제 브라우저는 고유 `?qa=battle-effects-20260907-01`과 기존 [Lv.8 두 마리 파일](../tests/gym-switch-save.json)을 사용해 강석전을 플레이했다. 꼬마돌 피격 −7, 꼬부기 반격 피해 −5, 상처약 +5와 이어지는 반격, 같은 대사에서 시간 경과로 연출 종료, 행동 메뉴 복귀와 다음 공격 입력, 피해 대사 중 재접속의 HP 19·상처약 1 보존을 확인했다. [전체 관찰 10건](../tests/battle-effects-playthrough.json) 중 4~10번은 최종 배치 검증이며 1~3번은 위치 조정 전 참고다. 첫 화면은 캡처 갱신 지연으로 직전 공격 대사를 담았고 최종 피격 화면은 4번에 다시 기록했다. [화면](../tests/battle-effects-screenshots)과 [재접속 후 경고·오류 0건](../tests/battle-effects-console.json)을 남겼다. 다른 관장·야생전·기절/교대 예외는 자동 테스트 범위이며 D3 전체 캠페인 수용 검증은 여전히 미완료다.
 
 
 ## 57. 목표 인물과 대화하는 자리까지 길안내
@@ -885,9 +885,9 @@ TOWN_REVISION 16 / version 1을 유지한다. 모험 목표·회복 판단은 �
 
 수동 마을·시설 선택은 기존 입구/도착 안내를 유지한다. 목표 인물이 야외에 있는데 플레이어가 같은 도시의 실내에 있다면 먼저 건물 밖으로 안내한다. 센터 회복과 연구원 대화로 실제 진행이 바뀌면 다음 기존 목표를 추적한다. 안내 자체는 보상·이벤트·파티를 변경하지 않는다. 재접속 시 지도 추적은 초기화되고 저장된 모험은 유지하며 version 1 / worldRevision 17은 그대로다.
 
-자동 테스트 **230개**와 프로덕션 빌드 통과. [목표 대화 자리 검사](tests/objective-interaction.test.ts) 일곱 개는 관장 앞까지 실제 이동·대화, 센터 38곳의 합법적인 경로, 회복 후 목표 갱신, 기존 진행 대상 도달 가능성, 막힌/없는 대상·수동 목적지 유지, 지도 렌더러·저장 복원, 개발 도구 패널의 같은 맵 경로 처리를 확인한다. 출력은 [objective-interaction-test-output.txt](tests/objective-interaction-test-output.txt)다.
+자동 테스트 **230개**와 프로덕션 빌드 통과. [목표 대화 자리 검사](../tests/objective-interaction.test.ts) 일곱 개는 관장 앞까지 실제 이동·대화, 센터 38곳의 합법적인 경로, 회복 후 목표 갱신, 기존 진행 대상 도달 가능성, 막힌/없는 대상·수동 목적지 유지, 지도 렌더러·저장 복원, 개발 도구 패널의 같은 맵 경로 처리를 확인한다. 출력은 [objective-interaction-test-output.txt](../tests/objective-interaction-test-output.txt)다.
 
-실제 브라우저는 고유 `?qa=objective-interaction-20260907-01`에서 [공개 검증 파일 생성기](scripts/objective-interaction-fixture.ts)의 센터 HP 1 파일과 네 배지 보유 장막시티 파일을 UI로 가져왔다. 센터 목표 버튼 터치 → 카운터 앞 세 걸음 → Z 회복 → 무쇠체육관 목표 갱신, 장막 연구원 표식 → 네 걸음 → 자료 수령 → 축복시티 경로 갱신, 재접속의 파티·배지·자료 보존을 확인했다. [관찰 7건](tests/objective-interaction-playthrough.json)과 [화면](tests/objective-interaction-screenshots/)을 남겼다. 초기 검증에서 개발 도구 패널이 같은 맵 경로의 null 출구를 읽어 프레임 갱신을 멈추는 오류를 발견해 수정하고 회귀 검사를 추가했다. [콘솔 기록](tests/objective-interaction-console.json)에는 수정 전 오류 한 건이 남아 있으며 수정 후 재검증에서는 추가 오류가 없었다. 다른 목표 인물·센터 37곳은 자동 테스트 범위다. 네 배지 파일은 위치 안내 검증용이며 D3 전체 캠페인 수용 완료를 뜻하지 않는다.
+실제 브라우저는 고유 `?qa=objective-interaction-20260907-01`에서 [공개 검증 파일 생성기](../scripts/objective-interaction-fixture.ts)의 센터 HP 1 파일과 네 배지 보유 장막시티 파일을 UI로 가져왔다. 센터 목표 버튼 터치 → 카운터 앞 세 걸음 → Z 회복 → 무쇠체육관 목표 갱신, 장막 연구원 표식 → 네 걸음 → 자료 수령 → 축복시티 경로 갱신, 재접속의 파티·배지·자료 보존을 확인했다. [관찰 7건](../tests/objective-interaction-playthrough.json)과 [화면](../tests/objective-interaction-screenshots)을 남겼다. 초기 검증에서 개발 도구 패널이 같은 맵 경로의 null 출구를 읽어 프레임 갱신을 멈추는 오류를 발견해 수정하고 회귀 검사를 추가했다. [콘솔 기록](../tests/objective-interaction-console.json)에는 수정 전 오류 한 건이 남아 있으며 수정 후 재검증에서는 추가 오류가 없었다. 다른 목표 인물·센터 37곳은 자동 테스트 범위다. 네 배지 파일은 위치 안내 검증용이며 D3 전체 캠페인 수용 완료를 뜻하지 않는다.
 
 
 ## 58. 가방에서 도구 보충 장소 안내
@@ -898,9 +898,9 @@ TOWN_REVISION 16 / version 1을 유지한다. 모험 목표·회복 판단은 �
 
 안내를 선택하면 가방을 닫고 수동 지도 목적지와 `tourEvent`를 설정해 NPC 또는 센터 카운터 앞까지 안내한다. 안내만으로 이동·도구 지급·돈 차감·파티 변경을 하지 않는다. 도구는 실제 기존 NPC 대화에서 몬스터볼 5개/상처약 2개까지 보충한다. 보충 후 **목표 안내**를 눌러 체육관 등 원래 모험 목표로 돌아갈 수 있다. 다른 수동 목적지·안내 해제·목표 추적은 보충 이벤트를 지우며 저장 복원도 이전 보충 이벤트와 대화 콜백을 무효화한다. `tourEvent`는 저장 필드가 아니며 version 1 / worldRevision 17과 기존 진행·보충 수량을 유지한다.
 
-자동 테스트 **237개**와 프로덕션 빌드 통과. [보충 안내 검사](tests/item-supply.test.ts) 일곱 개는 활성 맵 전체의 도구별 제공자·출발 제한, 기본 취소·기존 경로 보존, 실제 카운터 이동 후 보충, 터치/키보드, 모험 목표 복귀, 복원 전 선택 무효화, 재고 보유 시 기존 행동·전투 잠금을 확인한다. 기존 필드 가방의 몬스터볼 사용 설명 검사는 재고가 있는 조건을 명시했다. 출력은 [item-supply-test-output.txt](tests/item-supply-test-output.txt)다.
+자동 테스트 **237개**와 프로덕션 빌드 통과. [보충 안내 검사](../tests/item-supply.test.ts) 일곱 개는 활성 맵 전체의 도구별 제공자·출발 제한, 기본 취소·기존 경로 보존, 실제 카운터 이동 후 보충, 터치/키보드, 모험 목표 복귀, 복원 전 선택 무효화, 재고 보유 시 기존 행동·전투 잠금을 확인한다. 기존 필드 가방의 몬스터볼 사용 설명 검사는 재고가 있는 조건을 명시했다. 출력은 [item-supply-test-output.txt](../tests/item-supply-test-output.txt)다.
 
-실제 브라우저는 고유 `?qa=item-supply-20260907-01`에서 [기존 센터 파일](tests/objective-center-save.json)과 [서쪽길 보충 검증 파일 생성기](scripts/item-supply-fixture.ts)의 저장을 UI로 가져왔다. 빈 상처약 선택 → X 취소 → 터치로 보충 안내 → 센터 카운터 도보 이동 → 상처약 2개·HP 20 회복 → 체육관 목표 재선택, 빈 몬스터볼 선택 → 키보드로 길 안내 → 안내원 앞 도보 이동 → 몬스터볼 5개·상처약 2개 보충을 확인했다. 재접속 후 소지금 123원·도구·파티가 유지되고 지도·보충 이벤트는 초기화됐다. [관찰 9건](tests/item-supply-playthrough.json), [화면](tests/item-supply-screenshots/), [경고·오류 0건](tests/item-supply-console.json)을 남겼다. 다른 지역의 제공자 선택·출발 전·이전 콜백 예외는 자동 테스트 범위다. D3 전체 캠페인 수용 검증은 여전히 미완료다.
+실제 브라우저는 고유 `?qa=item-supply-20260907-01`에서 [기존 센터 파일](../tests/objective-center-save.json)과 [서쪽길 보충 검증 파일 생성기](../scripts/item-supply-fixture.ts)의 저장을 UI로 가져왔다. 빈 상처약 선택 → X 취소 → 터치로 보충 안내 → 센터 카운터 도보 이동 → 상처약 2개·HP 20 회복 → 체육관 목표 재선택, 빈 몬스터볼 선택 → 키보드로 길 안내 → 안내원 앞 도보 이동 → 몬스터볼 5개·상처약 2개 보충을 확인했다. 재접속 후 소지금 123원·도구·파티가 유지되고 지도·보충 이벤트는 초기화됐다. [관찰 9건](../tests/item-supply-playthrough.json), [화면](../tests/item-supply-screenshots), [경고·오류 0건](../tests/item-supply-console.json)을 남겼다. 다른 지역의 제공자 선택·출발 전·이전 콜백 예외는 자동 테스트 범위다. D3 전체 캠페인 수용 검증은 여전히 미완료다.
 
 
 ## 59. 몬스터볼 던지기와 포획 결과 연출
@@ -911,9 +911,9 @@ TOWN_REVISION 16 / version 1을 유지한다. 모험 목표·회복 판단은 �
 
 포획 확률은 HP 절반 이하 확정, 그 외 55%를 유지한다. 볼 소비·파티 등록·실패 반격은 기존대로 턴 확정 때 한 번 처리하며 연출은 이를 다시 실행하지 않는다. 재접속은 확정된 포켓몬·HP·도구를 복원하고 연출은 초기화한다. 기존 종·파티 한도·경험치·배지·저장 version 1 / worldRevision 17을 유지한다.
 
-자동 테스트 **243개**와 프로덕션 빌드 통과. [포획 연출 검사](tests/capture-motion.test.ts) 여섯 개는 성공/실패 공통 시작, 궤적·접촉·정지와 무변경, 탈출/반격과 결과 카드 전환, 실제 렌더러의 공·상대 표시, 빠르게 넘김·대화 교체·복원, 포획 거절의 무연출을 확인한다. 출력은 [capture-motion-test-output.txt](tests/capture-motion-test-output.txt)다.
+자동 테스트 **243개**와 프로덕션 빌드 통과. [포획 연출 검사](../tests/capture-motion.test.ts) 여섯 개는 성공/실패 공통 시작, 궤적·접촉·정지와 무변경, 탈출/반격과 결과 카드 전환, 실제 렌더러의 공·상대 표시, 빠르게 넘김·대화 교체·복원, 포획 거절의 무연출을 확인한다. 출력은 [capture-motion-test-output.txt](../tests/capture-motion-test-output.txt)다.
 
-실제 브라우저는 고유 `?qa=capture-motion-20260907-01`에서 [기존 포획 검증 파일](tests/catch-summary-save.json)을 UI로 가져와 풀밭 여섯 걸음으로 실제 조우했다. 첫 포획의 공 비행·착지와 상대 숨김·결과 카드, 두 번째 포획의 던지기 대사 중 새로고침과 파티 3마리·볼 1개 보존을 확인했다. 세 번째 시도에서는 실제 포획 실패가 나와 탈출 페이지의 상대 재등장·반격 전 HP 20, 다음 페이지의 HP 16, 볼 0개 재시도의 무연출·무추가 피해를 확인했다. 마지막 재접속은 파티 3마리·HP 16·볼 0개를 유지했다. [관찰 10건](tests/capture-motion-playthrough.json), [화면](tests/capture-motion-screenshots/), [경고·오류 0건](tests/capture-motion-console.json)을 남겼다. 최대 파티·관장 포획 거절과 시간 경계는 자동 테스트 범위이며 D3 전체 캠페인 수용 검증은 여전히 미완료다.
+실제 브라우저는 고유 `?qa=capture-motion-20260907-01`에서 [기존 포획 검증 파일](../tests/catch-summary-save.json)을 UI로 가져와 풀밭 여섯 걸음으로 실제 조우했다. 첫 포획의 공 비행·착지와 상대 숨김·결과 카드, 두 번째 포획의 던지기 대사 중 새로고침과 파티 3마리·볼 1개 보존을 확인했다. 세 번째 시도에서는 실제 포획 실패가 나와 탈출 페이지의 상대 재등장·반격 전 HP 20, 다음 페이지의 HP 16, 볼 0개 재시도의 무연출·무추가 피해를 확인했다. 마지막 재접속은 파티 3마리·HP 16·볼 0개를 유지했다. [관찰 10건](../tests/capture-motion-playthrough.json), [화면](../tests/capture-motion-screenshots), [경고·오류 0건](../tests/capture-motion-console.json)을 남겼다. 최대 파티·관장 포획 거절과 시간 경계는 자동 테스트 범위이며 D3 전체 캠페인 수용 검증은 여전히 미완료다.
 
 
 ## 60. 전투 교대·회복 대상 미리보기
@@ -922,9 +922,9 @@ TOWN_REVISION 16 / version 1을 유지한다. 모험 목표·회복 판단은 �
 
 `Renderer.battleSelectionTop`은 선택 화면만 그린다. 실행 또는 거절 대사가 시작되면 기존 전투 화면으로 돌아가며, 선택 취소 후에도 실제 출전 포켓몬을 표시한다. 확인·터치 실행, 턴·도구 소비·피해 계산·파티 순서·저장 계약은 기존 규칙을 유지한다. 새 기술 효과·이야기·종을 추가하지 않으며 version 1 / worldRevision 17은 그대로다.
 
-자동 테스트 **248개**와 프로덕션 빌드 통과. [대상 미리보기 검사](tests/battle-selection-preview.test.ts) 다섯 개는 여섯 자리의 정보·무변경 표시, 일반/무료/기절 교대와 터치 실행, 대기 개체 회복과 출전 개체 반격의 구분, 만피·기절 거절, 취소·복원을 확인한다. [현재 테스트 출력](tests/battle-selection-test-output.txt)을 남겼다.
+자동 테스트 **248개**와 프로덕션 빌드 통과. [대상 미리보기 검사](../tests/battle-selection-preview.test.ts) 다섯 개는 여섯 자리의 정보·무변경 표시, 일반/무료/기절 교대와 터치 실행, 대기 개체 회복과 출전 개체 반격의 구분, 만피·기절 거절, 취소·복원을 확인한다. [현재 테스트 출력](../tests/battle-selection-test-output.txt)을 남겼다.
 
-실제 브라우저는 고유 `?qa=battle-selection-20260907-01`에서 [검증 파일 생성기](scripts/battle-selection-fixture.ts)의 [여섯 마리 저장](tests/battle-selection-save.json)을 공개 UI로 가져와 풀숲을 걸어 야생전에 들어갔다. HP 2 교대의 기절 위험, 여섯 번째 개체 선택, 기절 대상 거절, X 취소와 전투 화면 복귀, 만피 회복 안내를 확인했다. 대기 비버니의 회복 예상 HP 2→18과 꼬부기의 반격 후 HP 16을 확인한 뒤 터치 실행으로 일치함을 확인했다. 이어 회복된 비버니를 터치 교대해 HP 14, 상처약 1개를 확인하고 선택 화면에서 새로고침해 파티 순서·HP·도구가 유지되는 필드 복원을 확인했다. [관찰 11건](tests/battle-selection-playthrough.json), [화면](tests/battle-selection-screenshots/), [경고·오류 0건](tests/battle-selection-console.json)을 남겼다. 무료/기절 후 교대는 자동 테스트 범위이며 D3 전체 캠페인 수용 검증은 여전히 미완료다.
+실제 브라우저는 고유 `?qa=battle-selection-20260907-01`에서 [검증 파일 생성기](../scripts/battle-selection-fixture.ts)의 [여섯 마리 저장](../tests/battle-selection-save.json)을 공개 UI로 가져와 풀숲을 걸어 야생전에 들어갔다. HP 2 교대의 기절 위험, 여섯 번째 개체 선택, 기절 대상 거절, X 취소와 전투 화면 복귀, 만피 회복 안내를 확인했다. 대기 비버니의 회복 예상 HP 2→18과 꼬부기의 반격 후 HP 16을 확인한 뒤 터치 실행으로 일치함을 확인했다. 이어 회복된 비버니를 터치 교대해 HP 14, 상처약 1개를 확인하고 선택 화면에서 새로고침해 파티 순서·HP·도구가 유지되는 필드 복원을 확인했다. [관찰 11건](../tests/battle-selection-playthrough.json), [화면](../tests/battle-selection-screenshots), [경고·오류 0건](../tests/battle-selection-console.json)을 남겼다. 무료/기절 후 교대는 자동 테스트 범위이며 D3 전체 캠페인 수용 검증은 여전히 미완료다.
 
 
 ## 61. 경험치·레벨업의 순서와 성장 카드
@@ -935,23 +935,23 @@ TOWN_REVISION 16 / version 1을 유지한다. 모험 목표·회복 판단은 �
 
 기존 Z/Enter와 아래 화면 터치로 대사를 진행하며 별도 확인 단계나 성장 보상을 추가하지 않는다. 경험치 분배·기절 개체 제외·레벨당 HP 증가·레벨 상한·포획/도주 무경험치 규칙은 유지한다. 새 성장 데이터는 전투 표시 전용이며 저장 version 1 / worldRevision 17과 기존 진행을 유지한다. 재접속하면 확정된 성장 결과를 가진 필드로 돌아간다.
 
-자동 테스트 **254개**와 프로덕션 빌드 통과. [성장 순서 검사](tests/battle-growth.test.ts) 여섯 개는 조기 레벨 노출 방지, 참여자별 분배와 대기 개체 표시, 연속 레벨업·상한·복사 독립성, 실제 렌더러 카드와 터치 진행, 관장 다음 상대/보상 순서, 저장 복원과 무중복·도주/포획 제외를 확인한다. [현재 테스트 출력](tests/battle-growth-test-output.txt)을 남겼다.
+자동 테스트 **254개**와 프로덕션 빌드 통과. [성장 순서 검사](../tests/battle-growth.test.ts) 여섯 개는 조기 레벨 노출 방지, 참여자별 분배와 대기 개체 표시, 연속 레벨업·상한·복사 독립성, 실제 렌더러 카드와 터치 진행, 관장 다음 상대/보상 순서, 저장 복원과 무중복·도주/포획 제외를 확인한다. [현재 테스트 출력](../tests/battle-growth-test-output.txt)을 남겼다.
 
-실제 브라우저는 고유 `?qa=battle-growth-20260907-01`에서 [생성기](scripts/battle-growth-fixture.ts)의 [두 마리 저장](tests/battle-growth-save.json)을 공개 UI로 가져와 도보 조우·비버니 교대·세 번 공격을 진행했다. 대기 꼬부기 EXP +15 → Lv.5에서 6·HP 20에서 23, 출전 비버니 EXP +15 → Lv.3에서 4·HP 6에서 9를 대사 순서대로 확인했다. 카드가 대기 꼬부기를 표시할 때 위 화면의 비버니는 Lv.3·HP 6을 유지했다. 터치 대사 진행, 승리 후 카드 종료·필드 복귀도 확인했다. 두 번째 전투에서는 꼬부기의 레벨 상승 없는 EXP +30을 확인하고 그 대사 중 재접속해 Lv.6·EXP 35·HP 15, 비버니 Lv.4·EXP 5·HP 9와 기존 도구가 유지됨을 확인했다. [관찰 9건](tests/battle-growth-playthrough.json), [화면](tests/battle-growth-screenshots/), [경고·오류 0건](tests/battle-growth-console.json)을 남겼다. 관장전·연속 레벨업·상한은 자동 테스트 범위이며 D3 전체 캠페인 수용 검증은 여전히 미완료다.
+실제 브라우저는 고유 `?qa=battle-growth-20260907-01`에서 [생성기](../scripts/battle-growth-fixture.ts)의 [두 마리 저장](../tests/battle-growth-save.json)을 공개 UI로 가져와 도보 조우·비버니 교대·세 번 공격을 진행했다. 대기 꼬부기 EXP +15 → Lv.5에서 6·HP 20에서 23, 출전 비버니 EXP +15 → Lv.3에서 4·HP 6에서 9를 대사 순서대로 확인했다. 카드가 대기 꼬부기를 표시할 때 위 화면의 비버니는 Lv.3·HP 6을 유지했다. 터치 대사 진행, 승리 후 카드 종료·필드 복귀도 확인했다. 두 번째 전투에서는 꼬부기의 레벨 상승 없는 EXP +30을 확인하고 그 대사 중 재접속해 Lv.6·EXP 35·HP 15, 비버니 Lv.4·EXP 5·HP 9와 기존 도구가 유지됨을 확인했다. [관찰 9건](../tests/battle-growth-playthrough.json), [화면](../tests/battle-growth-screenshots), [경고·오류 0건](../tests/battle-growth-console.json)을 남겼다. 관장전·연속 레벨업·상한은 자동 테스트 범위이며 D3 전체 캠페인 수용 검증은 여전히 미완료다.
 
 ## 62. 영원숲의 굽은 길과 선택 탐험
 
-2026-09-07 사용자의 “포켓몬 게임 같이 수정 및 구현” 요청을 Map & Content Designer 범위에 적용했다. 기존 영원숲은 테두리 나무·넓은 십자형 길·작은 풀밭으로 구성되어 있었다. [배치 데이터](src/explore-layouts.ts)의 `tour_eterna_forest`에 나무 군락 네 곳과 굽은 흙길을 배치했다. [맵 생성](src/explore-world.ts)은 같은 feature 좌표로 충돌을 만들고 기존 `buildExploreArt`는 같은 데이터를 기존 DS 나무 자료로 그린다. 숲의 크기는 20×18이며 새로운 맵이나 자산을 추가하지 않았다.
+2026-09-07 사용자의 “포켓몬 게임 같이 수정 및 구현” 요청을 Map & Content Designer 범위에 적용했다. 기존 영원숲은 테두리 나무·넓은 십자형 길·작은 풀밭으로 구성되어 있었다. [배치 데이터](../src/explore-layouts.ts)의 `tour_eterna_forest`에 나무 군락 네 곳과 굽은 흙길을 배치했다. [맵 생성](../src/explore-world.ts)은 같은 feature 좌표로 충돌을 만들고 기존 `buildExploreArt`는 같은 데이터를 기존 DS 나무 자료로 그린다. 숲의 크기는 20×18이며 새로운 맵이나 자산을 추가하지 않았다.
 
 남쪽 `(10,16)` 축복시티·북쪽 `(10,2)` 영원시티 출구를 유지한다. 흙길만 따라 양쪽 출구를 왕복할 수 있고 `(8,10~12)`에서 기존 풀밭 `(4,10,4,3)`으로 빠질 수 있다. 안내원 `(12,7)`과 두 출구 표지는 기존 위치에 있다. 흙길 밖의 짧은 잔디도 통행할 수 있으며 지도는 기존 규칙대로 통행 가능한 최단 경로를 보여 준다. 흙길 우선 경로 탐색이나 이동 강제는 추가하지 않는다.
 
-[야외 조사](src/explore-outdoors.ts)는 기존 `tourOutdoor0`과 `tourExit0/1`을 유지하고 네 군락의 설명을 뒤에 붙인다. 야외 조사 대상은 87→91개다. 나무 조사는 풍경·풀밭·출구 단서를 설명하며 선물·퀘스트·플래그를 지급하지 않는다. 기존 [숲 안내원](src/sinnoh-story.ts)의 잘못된 ‘서쪽’ 안내는 영원숲에서만 ‘북쪽 영원시티 / 남쪽 축복시티’로 수정했다. 회복·약 보충·비버니 조우와 본편 조건은 그대로다.
+[야외 조사](../src/explore-outdoors.ts)는 기존 `tourOutdoor0`과 `tourExit0/1`을 유지하고 네 군락의 설명을 뒤에 붙인다. 야외 조사 대상은 87→91개다. 나무 조사는 풍경·풀밭·출구 단서를 설명하며 선물·퀘스트·플래그를 지급하지 않는다. 기존 [숲 안내원](../src/sinnoh-story.ts)의 잘못된 ‘서쪽’ 안내는 영원숲에서만 ‘북쪽 영원시티 / 남쪽 축복시티’로 수정했다. 회복·약 보충·비버니 조우와 본편 조건은 그대로다.
 
 저장 형식 version 1, 맵 개정은 18이다. 기존 `parseSave` 이행 경로를 사용해 개정 17 이하에서 새 나무와 겹친 위치만 같은 숲 안전점 `(10,10)`으로 옮긴다. 여전히 통행 가능한 위치와 파티·HP·경험치·도구·배지·플래그·걸음·시간·방문 기록은 보존한다. 개정 17의 탐방 방문 병합 조건을 다시 열지 않는다. 새 저장 필드는 없다.
 
-검증: 전체 자동 테스트 **258개**와 `npm.cmd run build` 통과. [숲 회귀 검사](tests/eterna-forest-layout.test.ts)는 조우 없는 흙길 양방향 연결, 기존 풀밭·NPC 접근, 개정 17의 모든 종전 바닥 위치 보정과 진행 보존, 기존 조사 ID와 안내 대사·회복을 확인한다. 기존 맵·워프·야외 조사·지도·저장 테스트도 통과했다. [테스트 출력](tests/eterna-forest-test-output.txt)과 [빌드 출력](tests/eterna-forest-build-output.txt)을 남겼다.
+검증: 전체 자동 테스트 **258개**와 `npm.cmd run build` 통과. [숲 회귀 검사](../tests/eterna-forest-layout.test.ts)는 조우 없는 흙길 양방향 연결, 기존 풀밭·NPC 접근, 개정 17의 모든 종전 바닥 위치 보정과 진행 보존, 기존 조사 ID와 안내 대사·회복을 확인한다. 기존 맵·워프·야외 조사·지도·저장 테스트도 통과했다. [테스트 출력](../tests/eterna-forest-test-output.txt)과 [빌드 출력](../tests/eterna-forest-build-output.txt)을 남겼다.
 
-실제 브라우저: `http://localhost:5173/?qa=user-20260907-map-feel`에서 [개정 17 QA 저장](tests/eterna-forest-revision17-save.json)을 공개 UI로 가져왔다. 새 나무 위 `(10,12)`에서 안전점 이행, 나무 충돌·조사, 축복시티와 영원시티 양쪽 왕복, 안내원 수정 대사와 북쪽 표지, 기존 풀밭 비버니 조우·도주, 나무를 우회하는 지도 경로, 개정 18 저장 재접속을 확인했다. [관찰 20건](tests/eterna-forest-playthrough.json), [화면 4장](tests/eterna-forest-screenshots/), [브라우저 경고·오류 0건](tests/eterna-forest-console.json)을 기록했다. 이 검증은 준비된 QA 저장을 이용한 영원숲 범위이며 새 게임부터의 자연 진행·D3 전체 수용·다른 숲의 시각 품질 검증은 아니다.
+실제 브라우저: `http://localhost:5173/?qa=user-20260907-map-feel`에서 [개정 17 QA 저장](../tests/eterna-forest-revision17-save.json)을 공개 UI로 가져왔다. 새 나무 위 `(10,12)`에서 안전점 이행, 나무 충돌·조사, 축복시티와 영원시티 양쪽 왕복, 안내원 수정 대사와 북쪽 표지, 기존 풀밭 비버니 조우·도주, 나무를 우회하는 지도 경로, 개정 18 저장 재접속을 확인했다. [관찰 20건](../tests/eterna-forest-playthrough.json), [화면 4장](../tests/eterna-forest-screenshots), [브라우저 경고·오류 0건](../tests/eterna-forest-console.json)을 기록했다. 이 검증은 준비된 QA 저장을 이용한 영원숲 범위이며 새 게임부터의 자연 진행·D3 전체 수용·다른 숲의 시각 품질 검증은 아니다.
 
 
 ## 63. 걷기와 조사·메뉴 입력 연결
@@ -960,39 +960,39 @@ TOWN_REVISION 16 / version 1을 유지한다. 모험 목표·회복 판단은 �
 
 `clearInput()`은 보행 키와 보관 요청을 함께 지운다. 대화·전투·메뉴·맵 전환·저장 복원·전멸 귀환과 브라우저 blur/visibilitychange, 저장 패널·헤더·조작 안내로 포커스가 이동할 때 적용한다. 대화/메뉴 방향 입력과 이미 정리된 키의 자동 반복이 필드로 새지 않도록 한다. 일반 보행·달리기 시간, 짧은 입력의 한 칸 완주, 충돌·워프·조우 조건은 유지한다. 요청은 메모리에만 있고 저장 형식·ID·이야기 플래그는 바꾸지 않는다.
 
-검증: `npm.cmd test` 269개 통과(입력 회귀 11개 포함), `npm.cmd run build` 성공. 실제 브라우저 근거와 한계는 [Core 회차 기록](docs/autonomy/user-20260907-core-controls.md)을 따른다. 이 검증은 D3 전체 플레이 수용 완료를 뜻하지 않는다.
+검증: `npm.cmd test` 269개 통과(입력 회귀 11개 포함), `npm.cmd run build` 성공. 실제 브라우저 근거와 한계는 [Core 회차 기록](autonomy/user-20260907-core-controls.md)을 따른다. 이 검증은 D3 전체 플레이 수용 완료를 뜻하지 않는다.
 
 ## 64. 나무 군락의 DS 윤곽과 앞뒤 가림
 
-2026-09-07 사용자 직접 요청에 따른 Art 개선. 영원숲에서 `grove` 사물의 잎 타일이 사각형 경계로 잘리고 캐릭터가 항상 그 위에 그려지는 문제를 확인했다. 기존 `sandgem-reference.png`의 `(24,88,32,48)`에서 수관과 줄기를 원래 픽셀 크기로 잘라 사용한다. 계단형 윤곽으로 배경을 제외하고, 나무 밑에는 낮은 지면 덮개와 그림자를 둔다. 출처와 가공 내용은 [sources.json](public/assets/sources.json)에 기록한다.
+2026-09-07 사용자 직접 요청에 따른 Art 개선. 영원숲에서 `grove` 사물의 잎 타일이 사각형 경계로 잘리고 캐릭터가 항상 그 위에 그려지는 문제를 확인했다. 기존 `sandgem-reference.png`의 `(24,88,32,48)`에서 수관과 줄기를 원래 픽셀 크기로 잘라 사용한다. 계단형 윤곽으로 배경을 제외하고, 나무 밑에는 낮은 지면 덮개와 그림자를 둔다. 출처와 가공 내용은 [sources.json](../public/assets/sources.json)에 기록한다.
 
 `groveTrees`는 기존 군락 안에 2×2칸 간격으로 완전한 나무를 배치한다. 홀수 크기는 마지막 행·열을 겹쳐 끝을 맞추며 나무를 중간에서 자르지 않는다. 수관은 북쪽으로 최대 16픽셀 올라가고 좌우·남쪽 끝은 기존 사물 범위를 지킨다. 줄기 발 위치에 따라 캐릭터·표지·건물과 같은 레이어 목록에서 정렬하므로 북쪽 인물은 수관에 일부 가려지고 남쪽 인물은 나무 앞에 보인다.
 
 현재 적용은 영원숲·영원시티·상록시티·연분홍시티의 군락 7곳이다. `forest` 테마의 기존 잔디에는 낮은 채도의 녹색을 합성하고 흙길 가장자리도 맞췄다. 숲 테두리·다른 사물 전체를 새 나무 체계로 바꾸지는 않았다. 길·충돌·조우·NPC·조사 대사·워프·저장 계약은 유지하며 version 1 / worldRevision 18을 그대로 사용한다. 새로운 이야기나 게임 규칙은 없다.
 
-검증: 전체 자동 테스트 **271개**와 `npm.cmd run build` 통과. [나무 검사](tests/explore-tree-art.test.ts)는 모든 적용 군락의 그림 범위·홀수 크기·원본 데이터 보존과 실제 Renderer의 인물/나무 그리기 순서·저장 무변경을 검사한다. 영원숲의 기존 길·충돌·조우·저장 회귀도 통과했다. 실제 브라우저에서는 분리된 QA 저장으로 영원숲 앞뒤 보행·조사·남쪽 출구 왕복·저장 재접속, 영원시티 정원 옆 보행 및 상록·연분홍 군락의 화면을 확인했다. [회차 기록](docs/autonomy/direct-20260907-art-01.md)과 [관찰 상태](tests/art-groves-playthrough.json)를 따른다. 이번에는 전투를 실제로 재검증하지 않았으며 모든 지역의 그래픽 완성이나 D3 전체 수용을 뜻하지 않는다.
+검증: 전체 자동 테스트 **271개**와 `npm.cmd run build` 통과. [나무 검사](../tests/explore-tree-art.test.ts)는 모든 적용 군락의 그림 범위·홀수 크기·원본 데이터 보존과 실제 Renderer의 인물/나무 그리기 순서·저장 무변경을 검사한다. 영원숲의 기존 길·충돌·조우·저장 회귀도 통과했다. 실제 브라우저에서는 분리된 QA 저장으로 영원숲 앞뒤 보행·조사·남쪽 출구 왕복·저장 재접속, 영원시티 정원 옆 보행 및 상록·연분홍 군락의 화면을 확인했다. [회차 기록](autonomy/direct-20260907-art-01.md)과 [관찰 상태](../tests/art-groves-playthrough.json)를 따른다. 이번에는 전투를 실제로 재검증하지 않았으며 모든 지역의 그래픽 완성이나 D3 전체 수용을 뜻하지 않는다.
 
 ## 65. 천관산 암반 통로와 세 갈래 출구
 
-2026-09-07 사용자 직접 요청에 따라 기존 천관산 하부의 넓은 십자형 길을 암반 사이의 굽은 길과 호수 갈림길로 보완했다. [TOUR_LAYOUTS](src/explore-layouts.ts)의 `tour_coronet`에 암반 세 곳 `(8,6,3,2)`, `(10,11,2,3)`, `(14,5,2,2)`와 흙길을 둔다. 기존 맵 생성·배경 합성·사물 조사가 같은 배치 데이터를 읽는다. 기존 암석 두 곳과 조사 ID를 유지하고 새 설명을 뒤에 붙여 야외 조사 대상은 91→94개다.
+2026-09-07 사용자 직접 요청에 따라 기존 천관산 하부의 넓은 십자형 길을 암반 사이의 굽은 길과 호수 갈림길로 보완했다. [TOUR_LAYOUTS](../src/explore-layouts.ts)의 `tour_coronet`에 암반 세 곳 `(8,6,3,2)`, `(10,11,2,3)`, `(14,5,2,2)`와 흙길을 둔다. 기존 맵 생성·배경 합성·사물 조사가 같은 배치 데이터를 읽는다. 기존 암석 두 곳과 조사 ID를 유지하고 새 설명을 뒤에 붙여 야외 조사 대상은 91→94개다.
 
 20×18 크기, 북쪽 `(10,2)` 영원시티·남쪽 `(10,16)` 연고시티·동쪽 `(18,9)` 신오 호수 출구와 도착 좌표는 그대로다. 세 출구는 모두 조우 없는 흙길로 연결하며 안내원 `(12,7)`과 표지의 접근 자리를 남긴다. 기존 풀밭 `(4,10,4,3)`은 `(8,10~12)`의 샛길에서 선택해 들어간다. 통행 가능한 일반 바닥도 유지하며 지도는 기존 최단 경로를 사용한다.
 
-[paintCoronetRock](src/explore-art.ts)은 기존 암석의 작은 그림 대신 실제 32×32 충돌 범위까지 그림자와 암반을 그리고, 새 암반도 지정 범위 안에 불규칙한 윤곽·돌의 층을 표시한다. 기존 Canvas 픽셀 표현을 보완한 것으로 새 외부 자산이나 렌더링 엔진은 없다. 사막·도시·숲 나무의 그림은 변경하지 않는다. [길 안내원](src/sinnoh-story.ts)은 천관산에서만 세 출구와 안전한 흙길·선택 풀밭을 설명하도록 수정했다. 기존 회복·보충·야생전·배지·자료 전달 조건은 유지한다.
+[paintCoronetRock](../src/explore-art.ts)은 기존 암석의 작은 그림 대신 실제 32×32 충돌 범위까지 그림자와 암반을 그리고, 새 암반도 지정 범위 안에 불규칙한 윤곽·돌의 층을 표시한다. 기존 Canvas 픽셀 표현을 보완한 것으로 새 외부 자산이나 렌더링 엔진은 없다. 사막·도시·숲 나무의 그림은 변경하지 않는다. [길 안내원](../src/sinnoh-story.ts)은 천관산에서만 세 출구와 안전한 흙길·선택 풀밭을 설명하도록 수정했다. 기존 회복·보충·야생전·배지·자료 전달 조건은 유지한다.
 
 저장 version 1 / worldRevision 19. 기존 `parseSave`의 개정 이행으로 개정 18 이하에서 새 암반에 겹친 위치만 같은 맵 안전점 `(10,10)`으로 보정한다. 유효한 위치와 기존 파티·HP·경험치·도구·플래그·배지·방문·걸음·시간은 보존한다. 저장 필드·맵 ID·새 지역·사건·아이템 보상은 추가하지 않는다.
 
-검증: 전체 자동 테스트 **275개**, `npm.cmd run build` 통과. [천관산 검사](tests/coronet-layout.test.ts) 네 개와 기존 맵·조사·지도·저장·숲·입력 회귀를 확인했다. 실제 브라우저의 고유 `?qa=user-20260907-coronet`에서 이전 QA 저장 이행, 암반 충돌·조사, 안내원 회복·대사, 세 출구 왕복, 호수/연고 표지, 기존 비버니 Lv.10 조우·도주, 지도 우회 경로, 빠른 저장·재접속을 확인했다. [회차 기록](docs/autonomy/user-20260907-coronet.md), [관찰 요약 18건](tests/coronet-playthrough.json), [전후 화면](tests/coronet-screenshots/), [경고·오류 0건](tests/coronet-console.json)에 근거를 남겼다. 준비된 저장의 천관산 검증이며 D3 전체 플레이 수용이나 전체 지역의 그래픽 완성은 아니다.
+검증: 전체 자동 테스트 **275개**, `npm.cmd run build` 통과. [천관산 검사](../tests/coronet-layout.test.ts) 네 개와 기존 맵·조사·지도·저장·숲·입력 회귀를 확인했다. 실제 브라우저의 고유 `?qa=user-20260907-coronet`에서 이전 QA 저장 이행, 암반 충돌·조사, 안내원 회복·대사, 세 출구 왕복, 호수/연고 표지, 기존 비버니 Lv.10 조우·도주, 지도 우회 경로, 빠른 저장·재접속을 확인했다. [회차 기록](autonomy/user-20260907-coronet.md), [관찰 요약 18건](../tests/coronet-playthrough.json), [전후 화면](../tests/coronet-screenshots), [경고·오류 0건](../tests/coronet-console.json)에 근거를 남겼다. 준비된 저장의 천관산 검증이며 D3 전체 플레이 수용이나 전체 지역의 그래픽 완성은 아니다.
 
 ## 66. 도시 보도와 연석의 DS 연결 표현
 
-2026-09-07 사용자 직접 요청에 따른 Art 개선. [city-street-art.ts](src/city-street-art.ts)는 기존 도로 색과 좌표를 유지하면서 네 단계 명암의 연석·안쪽 교차로 연결·바깥쪽 모서리의 픽셀 마감을 그린다. 타일 사이에 이음선이 반복되지 않으며 안티앨리어싱 곡선을 사용하지 않는다. 보도 바깥에는 얇은 마감선을 두고 횡단보도 끝은 낮은 연석으로 이어 준다.
+2026-09-07 사용자 직접 요청에 따른 Art 개선. [city-street-art.ts](../src/city-street-art.ts)는 기존 도로 색과 좌표를 유지하면서 네 단계 명암의 연석·안쪽 교차로 연결·바깥쪽 모서리의 픽셀 마감을 그린다. 타일 사이에 이음선이 반복되지 않으며 안티앨리어싱 곡선을 사용하지 않는다. 보도 바깥에는 얇은 마감선을 두고 횡단보도 끝은 낮은 연석으로 이어 준다.
 
-기존 `jubilife-reference.png`의 보도 `(464,112,16,16)`와 배수구 덮개 `(632,224,16,16)`를 원래 픽셀 크기로 재사용한다. 배수구는 기존 횡단보도 옆의 통행 가능한 보도에만 그리는 평면 장식이다. [sources.json](public/assets/sources.json)에 출처·가공 내용을 기록했다. [explore-jubilife.ts](src/explore-jubilife.ts)는 기존 도로 직사각형·보행 가능한 타일 선택을 유지하며 그림만 위임한다.
+기존 `jubilife-reference.png`의 보도 `(464,112,16,16)`와 배수구 덮개 `(632,224,16,16)`를 원래 픽셀 크기로 재사용한다. 배수구는 기존 횡단보도 옆의 통행 가능한 보도에만 그리는 평면 장식이다. [sources.json](../public/assets/sources.json)에 출처·가공 내용을 기록했다. [explore-jubilife.ts](../src/explore-jubilife.ts)는 기존 도로 직사각형·보행 가능한 타일 선택을 유지하며 그림만 위임한다.
 
 적용 대상은 `urban` 스타일의 축복·장막·노랑·금빛·구름·모란만·뇌문·궐수시티 8곳이다. 길·충돌·건물·출입구·NPC·조사·스토리·게임 규칙·저장 계약은 바꾸지 않는다. version 1 / worldRevision 19를 유지한다.
 
-검증: 전체 자동 테스트 **282개** 통과. [도시 그림 검사](tests/city-street-art.test.ts)는 적용 도시 전체의 그림 범위·입력 데이터 보존과 교차로 타일의 연결을 검사한다. 빌드·실제 화면·보행 검증 및 남은 범위는 [Art 회차 기록](docs/autonomy/direct-20260907-art-02.md)에 기록한다. 전체 지역 그래픽의 최종 승인이나 D3 전체 수용을 뜻하지 않는다.
+검증: 전체 자동 테스트 **282개** 통과. [도시 그림 검사](../tests/city-street-art.test.ts)는 적용 도시 전체의 그림 범위·입력 데이터 보존과 교차로 타일의 연결을 검사한다. 빌드·실제 화면·보행 검증 및 남은 범위는 [Art 회차 기록](autonomy/direct-20260907-art-02.md)에 기록한다. 전체 지역 그래픽의 최종 승인이나 D3 전체 수용을 뜻하지 않는다.
 
 
 ## 67. 반격 선언·실제 피해·기절의 순서
@@ -1003,27 +1003,27 @@ TOWN_REVISION 16 / version 1을 유지한다. 모험 목표·회복 판단은 �
 
 턴의 결과는 기존처럼 대사 전에 한 번 확정·저장하고, 페이지 진행은 표시만 수행한다. 저장 구조나 스토리 플래그를 추가하지 않는다. 기존 51절의 페이지별 프레임과 56절의 피격 효과를 사용하며 Renderer와 아트 자료는 수정하지 않았다.
 
-검증: 새 경계 회귀 5개와 관련 기존 검사를 포함한 `npm.cmd test` 282개 통과, `npm.cmd run build` 성공. 테스트 수에는 같은 시점의 Map/Art 검사도 포함된다. 실제 전투·저장 검증과 한계는 [Core 회차 기록](docs/autonomy/user-20260907-core-battle-turn.md)을 따른다. D3 전체 모험 수용은 별도다.
+검증: 새 경계 회귀 5개와 관련 기존 검사를 포함한 `npm.cmd test` 282개 통과, `npm.cmd run build` 성공. 테스트 수에는 같은 시점의 Map/Art 검사도 포함된다. 실제 전투·저장 검증과 한계는 [Core 회차 기록](autonomy/user-20260907-core-battle-turn.md)을 따른다. D3 전체 모험 수용은 별도다.
 
 ## 68. 상록숲의 두 갈래 관찰 동선
 
-2026-09-07 사용자 직접 요청에 따른 Map 개선. 기존 상록숲의 넓은 십자 길에 [배치 데이터](src/explore-layouts.ts)로 나무 군락 네 곳을 추가했다. 중앙 `(8,6,3,4)`, 서쪽 `(3,5,2,4)`, 남쪽 `(4,12,4,2)`, 동쪽 `(14,10,2,4)`이며 기존 DS 나무 표현과 깊이 정렬을 사용한다. 서쪽의 넓은 길과 안내원 옆 동쪽 샛길은 중앙 군락 아래에서 다시 합류한다. 중앙 군락과 안내원 사이에는 조사 접근 공간을 남긴다.
+2026-09-07 사용자 직접 요청에 따른 Map 개선. 기존 상록숲의 넓은 십자 길에 [배치 데이터](../src/explore-layouts.ts)로 나무 군락 네 곳을 추가했다. 중앙 `(8,6,3,4)`, 서쪽 `(3,5,2,4)`, 남쪽 `(4,12,4,2)`, 동쪽 `(14,10,2,4)`이며 기존 DS 나무 표현과 깊이 정렬을 사용한다. 서쪽의 넓은 길과 안내원 옆 동쪽 샛길은 중앙 군락 아래에서 다시 합류한다. 중앙 군락과 안내원 사이에는 조사 접근 공간을 남긴다.
 
 20×18 크기, 북쪽 회색시티·남쪽 상록시티 출구와 복귀 지점, 안내원 `(12,7)` 및 기존 대사를 유지한다. 양쪽 출구 표지는 흙길에서 접근한다. 새 나무 네 곳은 주변 풍경과 길만 설명하며, 기존 가장자리 `tourOutdoor0` 뒤로 조사 ID를 추가한다. 전체 야외 조사 대상은 94→98개다. 상록숲의 야생 조우·회복·보상·새 사건은 추가하지 않는다.
 
 저장 version 1 / worldRevision 20. 기존 `parseSave`로 개정 19 이하에서 새 나무에 겹친 위치만 같은 맵 안전점 `(10,10)`으로 옮긴다. 유효한 위치와 기존 진행을 보존하며 새 저장 필드는 없다.
 
-검증: `npm.cmd test` **285/285**, `npm.cmd run build` 통과. [전용 검사](tests/viridian-forest-layout.test.ts)는 두 갈래 각각의 출구 연결, 표지·안내원 접근, 이전 바닥 전체의 저장 보정과 기존 ID를 검사한다. 기존 전체 조사면 접근 회귀에서 발견한 안내원 옆 한 면의 접근 문제를 중앙 군락 폭 조정으로 해결했다. 실제 고유 QA에서 양쪽 길·두 도시 왕복·네 나무 조사·기존 안내원·표지·지도 우회·292걸음과 방문 기록의 저장 복원을 확인했다. [회차 기록](docs/autonomy/user-20260907-viridian-forest.md)과 [관찰 상태](tests/viridian-forest-playthrough.json)를 따른다. D3 전체 모험 수용과 다른 지역의 최종 그래픽 승인은 별도다.
+검증: `npm.cmd test` **285/285**, `npm.cmd run build` 통과. [전용 검사](../tests/viridian-forest-layout.test.ts)는 두 갈래 각각의 출구 연결, 표지·안내원 접근, 이전 바닥 전체의 저장 보정과 기존 ID를 검사한다. 기존 전체 조사면 접근 회귀에서 발견한 안내원 옆 한 면의 접근 문제를 중앙 군락 폭 조정으로 해결했다. 실제 고유 QA에서 양쪽 길·두 도시 왕복·네 나무 조사·기존 안내원·표지·지도 우회·292걸음과 방문 기록의 저장 복원을 확인했다. [회차 기록](autonomy/user-20260907-viridian-forest.md)과 [관찰 상태](../tests/viridian-forest-playthrough.json)를 따른다. D3 전체 모험 수용과 다른 지역의 최종 그래픽 승인은 별도다.
 
 ## 69. 숲 테두리의 수관과 앞뒤 가림
 
-2026-09-07 사용자 직접 요청에 따른 Art 개선. 영원숲·상록숲·너도밤나무숲의 잘린 잎 타일 테두리를 기존 Sandgem DS 나무의 완전한 32×48 윤곽으로 바꿨다. [forest-border-art.ts](src/forest-border-art.ts)는 세 숲의 기존 막힌 테두리에서 2×2칸 줄기 범위를 고르고, 북쪽·남쪽 연속 구간이 홀수 길이면 마지막 나무를 겹친다. 수관은 줄기보다 북쪽으로 16px 올라가지만 모든 출구 타일과는 겹치지 않는다.
+2026-09-07 사용자 직접 요청에 따른 Art 개선. 영원숲·상록숲·너도밤나무숲의 잘린 잎 타일 테두리를 기존 Sandgem DS 나무의 완전한 32×48 윤곽으로 바꿨다. [forest-border-art.ts](../src/forest-border-art.ts)는 세 숲의 기존 막힌 테두리에서 2×2칸 줄기 범위를 고르고, 북쪽·남쪽 연속 구간이 홀수 길이면 마지막 나무를 겹친다. 수관은 줄기보다 북쪽으로 16px 올라가지만 모든 출구 타일과는 겹치지 않는다.
 
-[explore-art.ts](src/explore-art.ts)는 해당 테두리의 바닥을 내부 군락과 맞추고 [Renderer.world](src/renderer.ts)는 기존 나무 그림·그림자·발 위치 정렬을 재사용한다. 남쪽 수관은 북쪽 인물 앞에 그려져 깊이를 주며 북쪽 테두리는 아래 인물 뒤에 보인다. 원본·가공 내용은 [sources.json](public/assets/sources.json)에 기록했다. 다른 도시/테마 테두리와 내부 군락은 유지한다.
+[explore-art.ts](../src/explore-art.ts)는 해당 테두리의 바닥을 내부 군락과 맞추고 [Renderer.world](../src/renderer.ts)는 기존 나무 그림·그림자·발 위치 정렬을 재사용한다. 남쪽 수관은 북쪽 인물 앞에 그려져 깊이를 주며 북쪽 테두리는 아래 인물 뒤에 보인다. 원본·가공 내용은 [sources.json](../public/assets/sources.json)에 기록했다. 다른 도시/테마 테두리와 내부 군락은 유지한다.
 
 길·충돌·워프·표지·NPC·조사·조우·스토리·게임 규칙은 바꾸지 않는다. Map이 반영한 상록숲 배치와 저장 version 1 / worldRevision 20을 보존한다. 새 저장 필드나 맵 개정은 없다.
 
-검증: 전체 자동 테스트 **287개**와 `npm.cmd run build` 통과. [테두리 검사](tests/forest-border-art.test.ts)는 세 숲의 기존 충돌 범위·모든 출구의 수관 제외·그림 경계·Renderer 앞뒤 순서·저장 무변경을 검사한다. 기존 군락 정렬 검사는 전체 나무 중 특정 군락을 구분해 기존 북/남 인물 검증을 유지했다. 실제 화면·출구 왕복·저장 재접속의 근거와 한계는 [Art 회차 기록](docs/autonomy/direct-20260907-art-03.md)을 따른다.
+검증: 전체 자동 테스트 **287개**와 `npm.cmd run build` 통과. [테두리 검사](../tests/forest-border-art.test.ts)는 세 숲의 기존 충돌 범위·모든 출구의 수관 제외·그림 경계·Renderer 앞뒤 순서·저장 무변경을 검사한다. 기존 군락 정렬 검사는 전체 나무 중 특정 군락을 구분해 기존 북/남 인물 검증을 유지했다. 실제 화면·출구 왕복·저장 재접속의 근거와 한계는 [Art 회차 기록](autonomy/direct-20260907-art-03.md)을 따른다.
 
 ## 70. 파티 정보 화면에서 이전·다음 비교
 
@@ -1033,15 +1033,22 @@ TOWN_REVISION 16 / version 1을 유지한다. 모험 목표·회복 판단은 �
 
 정보를 넘기는 동작은 저장 진행을 바꾸지 않는다. HP·도구·파티 순서는 기존 회복·선두 지정에서만 변경하며, 저장 version 1 / worldRevision 20과 스토리·맵·전투 규칙을 유지한다. 37절과 38절의 정보 화면 방향키 설명 중 위/아래 동작은 이 절을 따른다.
 
-검증: `npm.cmd test` **293/293**와 `npm.cmd run build` 통과. 새 파티 정보 회귀 6개와 기존 파티·회복·포획 결과·전투·입력·저장·맵 검사를 포함한다. 실제 고유 QA에서 키보드/터치 양방향 순환·기절 개체 표시·행동 선택 유지·회복 대상/거절·대화 잠금·선두 변경·목록 선택 유지·저장 재접속을 확인했다. [Core 회차 기록](docs/autonomy/user-20260907-core-party-summary.md)에 근거와 한계를 남긴다. D3 전체 모험 수용은 별도다.
+검증: `npm.cmd test` **293/293**와 `npm.cmd run build` 통과. 새 파티 정보 회귀 6개와 기존 파티·회복·포획 결과·전투·입력·저장·맵 검사를 포함한다. 실제 고유 QA에서 키보드/터치 양방향 순환·기절 개체 표시·행동 선택 유지·회복 대상/거절·대화 잠금·선두 변경·목록 선택 유지·저장 재접속을 확인했다. [Core 회차 기록](autonomy/user-20260907-core-party-summary.md)에 근거와 한계를 남긴다. D3 전체 모험 수용은 별도다.
 
 
 ## 71. 너도밤나무숲의 실제 출구와 관찰 산책길
 
-2026-09-07 사용자 직접 요청에 따른 Map 개선. 기존 너도밤나무숲은 북쪽 금빛시티·동쪽 고동마을로만 연결되지만 기본 십자형 흙길이 서쪽·남쪽 막힌 경계까지 이어졌다. [배치 데이터](src/explore-layouts.ts)에 실제 두 출구를 잇는 길과 남서쪽 내부에서 끝나는 관찰 산책길을 지정했다. 서쪽 첫 바닥 열 `(x=2)`과 남쪽 마지막 바닥 행 `(y=15)`까지 출구처럼 흙길을 그리지 않는다.
+2026-09-07 사용자 직접 요청에 따른 Map 개선. 기존 너도밤나무숲은 북쪽 금빛시티·동쪽 고동마을로만 연결되지만 기본 십자형 흙길이 서쪽·남쪽 막힌 경계까지 이어졌다. [배치 데이터](../src/explore-layouts.ts)에 실제 두 출구를 잇는 길과 남서쪽 내부에서 끝나는 관찰 산책길을 지정했다. 서쪽 첫 바닥 열 `(x=2)`과 남쪽 마지막 바닥 행 `(y=15)`까지 출구처럼 흙길을 그리지 않는다.
 
 나무 군락은 북서 `(4,4,4,4)`, 남쪽 `(7,11,6,3)`, 북동 `(14,4,3,2)` 세 곳이다. 기존 DS 내부 나무·테두리·깊이 정렬을 재사용한다. 산책길 끝의 나무를 조사하면 실제 출구가 북쪽·동쪽임을 읽는다. 길 안내원 `(12,7)`, 두 표지와 출구·복귀 좌표, 20×18 크기를 유지한다. 기존 가장자리 `tourOutdoor0` 뒤로 새 조사 세 개를 추가해 전체 야외 조사 대상은 98→101개다. 새 사건·조우·아이템·회복 기능은 없다.
 
 저장 version 1 / worldRevision 21. 기존 저장 이행으로 개정 20 이하에서 새 나무와 겹친 위치만 같은 맵 안전점 `(10,10)`으로 옮긴다. 이전 유효 위치와 파티·도구·진행을 보존하며 새 저장 필드는 없다.
 
-검증: 전체 `npm.cmd test` **296/296**, `npm.cmd run build` 통과. [전용 검사](tests/ilex-layout.test.ts)는 실제 출구까지의 표시된 길, 산책길 끝의 양쪽 출구 접근, 모든 새 나무 면, 기존 바닥 전체의 저장 보정과 기존 ID를 검사한다. 실제 공용 QA에서 개정20 저장 이행·충돌·세 나무/안내원/표지 조사·금빛/고동 왕복·산책길 귀환·지도·308걸음과 세 방문의 저장 복원을 확인했다. [회차 기록](docs/autonomy/user-20260907-ilex.md), [관찰 상태 19건](tests/ilex-playthrough.json), [전후 화면](tests/ilex-screenshots/)을 따른다. D3 전체 모험과 성도 본편 사건의 구현 완료를 뜻하지 않는다.
+검증: 전체 `npm.cmd test` **296/296**, `npm.cmd run build` 통과. [전용 검사](../tests/ilex-layout.test.ts)는 실제 출구까지의 표시된 길, 산책길 끝의 양쪽 출구 접근, 모든 새 나무 면, 기존 바닥 전체의 저장 보정과 기존 ID를 검사한다. 실제 공용 QA에서 개정20 저장 이행·충돌·세 나무/안내원/표지 조사·금빛/고동 왕복·산책길 귀환·지도·308걸음과 세 방문의 저장 복원을 확인했다. [회차 기록](autonomy/user-20260907-ilex.md), [관찰 상태 19건](../tests/ilex-playthrough.json), [전후 화면](../tests/ilex-screenshots)을 따른다. D3 전체 모험과 성도 본편 사건의 구현 완료를 뜻하지 않는다.
+
+
+## 문서 위치 정리 — Antigravity 이전 체크포인트
+
+프로젝트 Markdown 본문은 `docs/`에 모았다. 루트 `README.md`는 실행·문서 안내, 루트 `AGENTS.md`는 전체 작업 지침의 진입점이다. 이후 작업은 `docs/DEVELOPMENT.md`, `docs/STORY.md`, `docs/AGENTS.md`를 기준으로 한다. 자동 운영 배정은 `docs/PROJECT_STATE.md`에서 관리한다. 이 정리는 배정 상태나 게임 동작을 변경하지 않는다.
+
+문서의 소스·테스트·에셋 상대 링크를 새 위치에 맞췄다. 저장소 루트에서 실행하는 `scripts/export-world-tour.ts`는 `docs/WORLD_TOUR.md`에 쓰며, `scripts/design/build_databases.py`는 `docs/`의 초안을 읽고 같은 폴더에 Markdown을 생성한다. JSON 데이터 위치는 `docs/design-data/`를 유지한다.

@@ -159,66 +159,66 @@ HP 막대는 **50% 초과 초록 → 50% 이하 노랑 → 20% 이하 빨강**�
 
 통합 지도에서 기존 전투·파티·성장·스토리를 이어 가는 단계다. 타입 상성·PP·진화·새 출현 종·새 장기 스토리는 추가하지 않았다. D3 전체 플레이 수용은 아직 미완료다.
 
-현재 자동 테스트 **254개**, 프로덕션 빌드 통과. [성장 순서 검사](tests/battle-growth.test.ts)는 성장 단계·공동 참여·대기 개체·연속 레벨업·상한·화면·관장전 순서·복원을 확인한다. 실제 야생전에서 두 친구의 경험치 분배와 레벨업, 터치 진행, 다음 승리의 레벨 상승 없는 경험치와 재접속 보존을 확인했다. [관찰 9건](tests/battle-growth-playthrough.json), [화면](tests/battle-growth-screenshots/), [경고·오류 0건](tests/battle-growth-console.json)을 남겼다.
+현재 자동 테스트 **254개**, 프로덕션 빌드 통과. [성장 순서 검사](../tests/battle-growth.test.ts)는 성장 단계·공동 참여·대기 개체·연속 레벨업·상한·화면·관장전 순서·복원을 확인한다. 실제 야생전에서 두 친구의 경험치 분배와 레벨업, 터치 진행, 다음 승리의 레벨 상승 없는 경험치와 재접속 보존을 확인했다. [관찰 9건](../tests/battle-growth-playthrough.json), [화면](../tests/battle-growth-screenshots), [경고·오류 0건](../tests/battle-growth-console.json)을 남겼다.
 
-이전 교대·회복 미리보기 보완에서는 자동 테스트 **248개**, 프로덕션 빌드 통과. [교대·회복 대상 검사](tests/battle-selection-preview.test.ts)는 여섯 자리 표시·교대 종류·회복·거절·취소·복원을 확인한다. 실제 야생전에서 대상 미리보기, 기절 거절, X 취소, 터치 회복·교대와 반격, 선택 중 재접속의 HP·도구·파티 보존을 확인했다. [관찰 11건](tests/battle-selection-playthrough.json), [화면](tests/battle-selection-screenshots/), [경고·오류 0건](tests/battle-selection-console.json)을 남겼다.
+이전 교대·회복 미리보기 보완에서는 자동 테스트 **248개**, 프로덕션 빌드 통과. [교대·회복 대상 검사](../tests/battle-selection-preview.test.ts)는 여섯 자리 표시·교대 종류·회복·거절·취소·복원을 확인한다. 실제 야생전에서 대상 미리보기, 기절 거절, X 취소, 터치 회복·교대와 반격, 선택 중 재접속의 HP·도구·파티 보존을 확인했다. [관찰 11건](../tests/battle-selection-playthrough.json), [화면](../tests/battle-selection-screenshots), [경고·오류 0건](../tests/battle-selection-console.json)을 남겼다.
 
-이전 포획 연출 보완에서는 자동 테스트 **243개**, 프로덕션 빌드 통과. [포획 연출 검사](tests/capture-motion.test.ts)는 궤적·대상 숨김·성공/실패 순서·입력·복원을 확인한다. 실제 세 번의 시도에서 성공 두 번과 실패 한 번, 볼 부족 거절, 재접속의 파티·HP·볼 보존을 확인했다. [관찰 10건](tests/capture-motion-playthrough.json), [화면](tests/capture-motion-screenshots/), [경고·오류 0건](tests/capture-motion-console.json)을 남겼다.
+이전 포획 연출 보완에서는 자동 테스트 **243개**, 프로덕션 빌드 통과. [포획 연출 검사](../tests/capture-motion.test.ts)는 궤적·대상 숨김·성공/실패 순서·입력·복원을 확인한다. 실제 세 번의 시도에서 성공 두 번과 실패 한 번, 볼 부족 거절, 재접속의 파티·HP·볼 보존을 확인했다. [관찰 10건](../tests/capture-motion-playthrough.json), [화면](../tests/capture-motion-screenshots), [경고·오류 0건](../tests/capture-motion-console.json)을 남겼다.
 
-이전 도구 보충 안내 보완에서는 자동 테스트 237개가 통과했다. [도구 보충 안내 검사](tests/item-supply.test.ts)는 제공자·취소·입력·기존 행동·복원을 확인한다. 실제 빈 도구 선택·취소·센터/서쪽길 도보 이동·보충·모험 목표 복귀·저장 복원을 확인했다. [관찰 9건](tests/item-supply-playthrough.json), [화면](tests/item-supply-screenshots/), [경고·오류 0건](tests/item-supply-console.json)을 남겼다.
+이전 도구 보충 안내 보완에서는 자동 테스트 237개가 통과했다. [도구 보충 안내 검사](../tests/item-supply.test.ts)는 제공자·취소·입력·기존 행동·복원을 확인한다. 실제 빈 도구 선택·취소·센터/서쪽길 도보 이동·보충·모험 목표 복귀·저장 복원을 확인했다. [관찰 9건](../tests/item-supply-playthrough.json), [화면](../tests/item-supply-screenshots), [경고·오류 0건](../tests/item-supply-console.json)을 남겼다.
 
-이전 목표 인물 길안내 보완에서는 자동 테스트 230개가 통과했다. [목표 인물 길안내 검사](tests/objective-interaction.test.ts)는 실제 대화 자리·센터 38곳·진행 갱신·막힌 경로·수동 목적지·지도/개발 패널 처리를 확인한다. 실제 센터 카운터 이동·회복과 장막 연구원 도보 접근·자료 수령·다음 도시 안내·저장 복원을 확인했다. [관찰 7건](tests/objective-interaction-playthrough.json), [화면](tests/objective-interaction-screenshots/)을 남겼다. [콘솔 기록](tests/objective-interaction-console.json)의 초기 null 출구 오류는 수정했으며 재검증에서 추가 오류는 없었다.
+이전 목표 인물 길안내 보완에서는 자동 테스트 230개가 통과했다. [목표 인물 길안내 검사](../tests/objective-interaction.test.ts)는 실제 대화 자리·센터 38곳·진행 갱신·막힌 경로·수동 목적지·지도/개발 패널 처리를 확인한다. 실제 센터 카운터 이동·회복과 장막 연구원 도보 접근·자료 수령·다음 도시 안내·저장 복원을 확인했다. [관찰 7건](../tests/objective-interaction-playthrough.json), [화면](../tests/objective-interaction-screenshots)을 남겼다. [콘솔 기록](../tests/objective-interaction-console.json)의 초기 null 출구 오류는 수정했으며 재검증에서 추가 오류는 없었다.
 
-이전 전투 연출 보완에서는 자동 테스트 223개가 통과했다. [전투 연출 검사](tests/battle-effects.test.ts)는 대상·회복량·시간·입력·복원·렌더링을 확인한다. 실제 강석전에서 피격·상처약 회복·반격·연출 종료·다음 행동·재접속을 확인했다. [관찰 기록](tests/battle-effects-playthrough.json)의 4~10번이 최종 배치 검증이며, [화면](tests/battle-effects-screenshots/)과 [재접속 후 경고·오류 0건](tests/battle-effects-console.json)을 남겼다.
+이전 전투 연출 보완에서는 자동 테스트 223개가 통과했다. [전투 연출 검사](../tests/battle-effects.test.ts)는 대상·회복량·시간·입력·복원·렌더링을 확인한다. 실제 강석전에서 피격·상처약 회복·반격·연출 종료·다음 행동·재접속을 확인했다. [관찰 기록](../tests/battle-effects-playthrough.json)의 4~10번이 최종 배치 검증이며, [화면](../tests/battle-effects-screenshots)과 [재접속 후 경고·오류 0건](../tests/battle-effects-console.json)을 남겼다.
 
-이전 체육관 보상 보완에서는 자동 테스트 216개가 통과했다. [체육관 보상 테스트](tests/gym-reward.test.ts)는 네 관장·보상 순서·지도 연결·취소·소지금 상한·중복 지급 방지·복원을 검사한다. 실제 강석전 승리 → 보상 터치 → 센터까지 도보 이동 → 회복 후 다음 체육관 안내를 확인했다. 소지금 999,990원 검증 파일로 별도 전투 후 실제 증가액 9원, 보상 중 새로고침, 관장 재대화의 보상 보존도 확인했다. [직접 관찰 9건](tests/gym-reward-playthrough.json), [화면](tests/gym-reward-screenshots/), [재접속 후 경고·오류 0건](tests/gym-reward-console.json)을 남겼다. 다른 세 관장과 X·계속 선택은 자동 테스트 범위다.
+이전 체육관 보상 보완에서는 자동 테스트 216개가 통과했다. [체육관 보상 테스트](../tests/gym-reward.test.ts)는 네 관장·보상 순서·지도 연결·취소·소지금 상한·중복 지급 방지·복원을 검사한다. 실제 강석전 승리 → 보상 터치 → 센터까지 도보 이동 → 회복 후 다음 체육관 안내를 확인했다. 소지금 999,990원 검증 파일로 별도 전투 후 실제 증가액 9원, 보상 중 새로고침, 관장 재대화의 보상 보존도 확인했다. [직접 관찰 9건](../tests/gym-reward-playthrough.json), [화면](../tests/gym-reward-screenshots), [재접속 후 경고·오류 0건](../tests/gym-reward-console.json)을 남겼다. 다른 세 관장과 X·계속 선택은 자동 테스트 범위다.
 
-이전 포획 결과 보완에서는 자동 테스트 209개가 통과했다. [포획 결과 테스트](tests/catch-summary.test.ts)는 성공 표시·새 개체 선택·회복·선두·계속·복원을 검사한다. 실제 두 번의 포획과 정보 화면 이동·회복·다음 전투 출전·재접속을 확인했다. [직접 확인 기록 7건](tests/catch-summary-playthrough.json), [화면](tests/catch-summary-screenshots/), [재연결 후 경고·오류 0건](tests/catch-summary-console.json)을 남겼다.
+이전 포획 결과 보완에서는 자동 테스트 209개가 통과했다. [포획 결과 테스트](../tests/catch-summary.test.ts)는 성공 표시·새 개체 선택·회복·선두·계속·복원을 검사한다. 실제 두 번의 포획과 정보 화면 이동·회복·다음 전투 출전·재접속을 확인했다. [직접 확인 기록 7건](../tests/catch-summary-playthrough.json), [화면](../tests/catch-summary-screenshots), [재연결 후 경고·오류 0건](../tests/catch-summary-console.json)을 남겼다.
 
-이전 관장전 중단 보완에서는 자동 테스트 203개가 통과했다. [관장전 중단 테스트](tests/gym-exit.test.ts)는 기본 계속·취소·중단·강제 교대·연속 입력·복원을 검사한다. 실제 관장전의 취소, XP 50 획득 후 중단·재도전, 강제 교대 선택 보존, 확인 중 재접속을 확인했다. [관찰 10건](tests/gym-exit-playthrough.json), [화면](tests/gym-exit-screenshots/), [경고·오류 0건](tests/gym-exit-console.json)을 남겼다.
+이전 관장전 중단 보완에서는 자동 테스트 203개가 통과했다. [관장전 중단 테스트](../tests/gym-exit.test.ts)는 기본 계속·취소·중단·강제 교대·연속 입력·복원을 검사한다. 실제 관장전의 취소, XP 50 획득 후 중단·재도전, 강제 교대 선택 보존, 확인 중 재접속을 확인했다. [관찰 10건](../tests/gym-exit-playthrough.json), [화면](../tests/gym-exit-screenshots), [경고·오류 0건](../tests/gym-exit-console.json)을 남겼다.
 
-이전 패배·회복 보완에서는 자동 테스트 197개가 통과했다. [패배·회복 테스트](tests/defeat-recovery.test.ts)는 화면 순서·안전 저장·6마리 회복·입력 잠금·복원을 검사한다. 실제 센터/집 복귀, 간호사 보충, 체육관 길안내 재개, 패배/회복 중 재접속을 확인했다. [관찰 12건](tests/defeat-recovery-playthrough.json), [화면](tests/defeat-recovery-screenshots/), [마지막 연결의 경고·오류 0건](tests/defeat-recovery-console.json)을 남겼다.
+이전 패배·회복 보완에서는 자동 테스트 197개가 통과했다. [패배·회복 테스트](../tests/defeat-recovery.test.ts)는 화면 순서·안전 저장·6마리 회복·입력 잠금·복원을 검사한다. 실제 센터/집 복귀, 간호사 보충, 체육관 길안내 재개, 패배/회복 중 재접속을 확인했다. [관찰 12건](../tests/defeat-recovery-playthrough.json), [화면](../tests/defeat-recovery-screenshots), [마지막 연결의 경고·오류 0건](../tests/defeat-recovery-console.json)을 남겼다.
 
-이전 전투 화면 보완에서는 자동 테스트 191개가 통과했다. [전투 화면 순서 테스트](tests/battle-presentation.test.ts)는 공격·반격·기절·교대 표시, 대사 무중복, 저장 복원을 검사한다. 실제 강석전의 HP·다음 상대·무료 교대·상처약·기절 교대·재접속을 확인했다. [관찰 14건](tests/battle-presentation-playthrough.json), [화면](tests/battle-presentation-screenshots/), [경고·오류 0건](tests/battle-presentation-console.json)을 남겼다.
+이전 전투 화면 보완에서는 자동 테스트 191개가 통과했다. [전투 화면 순서 테스트](../tests/battle-presentation.test.ts)는 공격·반격·기절·교대 표시, 대사 무중복, 저장 복원을 검사한다. 실제 강석전의 HP·다음 상대·무료 교대·상처약·기절 교대·재접속을 확인했다. [관찰 14건](../tests/battle-presentation-playthrough.json), [화면](../tests/battle-presentation-screenshots), [경고·오류 0건](../tests/battle-presentation-console.json)을 남겼다.
 
-이전 도전 준비 보완에서는 자동 테스트 184개가 통과했다. [도전 준비 테스트](tests/gym-preparation.test.ts)는 팀 표시·준비 집계·조건 안내·낮은 레벨 도전·취소·복원을 검사한다. 실제 브라우저에서 강석 준비 화면·부상 파티·취소·낮은 레벨 도전·유채의 선행 배지 안내·저장 재접속을 확인했다. [준비 화면 관찰](tests/gym-preparation-playthrough.json), [화면](tests/gym-preparation-screenshots/), [콘솔 기록](tests/gym-preparation-console.json)을 남겼다.
+이전 도전 준비 보완에서는 자동 테스트 184개가 통과했다. [도전 준비 테스트](../tests/gym-preparation.test.ts)는 팀 표시·준비 집계·조건 안내·낮은 레벨 도전·취소·복원을 검사한다. 실제 브라우저에서 강석 준비 화면·부상 파티·취소·낮은 레벨 도전·유채의 선행 배지 안내·저장 재접속을 확인했다. [준비 화면 관찰](../tests/gym-preparation-playthrough.json), [화면](../tests/gym-preparation-screenshots), [콘솔 기록](../tests/gym-preparation-console.json)을 남겼다.
 
-이전 교대 보완에서는 자동 테스트 178개가 통과했다. [관장전 교대 테스트](tests/gym-switch.test.ts)는 무료 교대·일반 반격·경험치 대상·취소·터치·복원을 검사한다. 실제 Lv.8 두 마리 파티로 강석전의 교대·계속 싸우기·최종 승리와 저장 복원을 확인했다. [관찰 8건](tests/gym-switch-playthrough.json), [화면](tests/gym-switch-screenshots/), [경고·오류 0건](tests/gym-switch-console.json)을 남겼다.
+이전 교대 보완에서는 자동 테스트 178개가 통과했다. [관장전 교대 테스트](../tests/gym-switch.test.ts)는 무료 교대·일반 반격·경험치 대상·취소·터치·복원을 검사한다. 실제 Lv.8 두 마리 파티로 강석전의 교대·계속 싸우기·최종 승리와 저장 복원을 확인했다. [관찰 8건](../tests/gym-switch-playthrough.json), [화면](../tests/gym-switch-screenshots), [경고·오류 0건](../tests/gym-switch-console.json)을 남겼다.
 
-이전 지도 보완은 자동 테스트 172개와 다음 범위를 확인했다. [게임 안 지도 테스트](tests/adventure-map.test.ts)는 M/터치, 네 체육관 도보 안내, 목표·회복 추적과 조작 잠금을 검사한다. 고유 QA에서 연구소 방향·계단 갱신, 무쇠체육관 24걸음 입장, 센터 회복 후 목표 복귀, G 표식·해제·저장 복원을 확인했다. [지도 관찰 12건](tests/adventure-map-playthrough.json), [화면](tests/adventure-map-screenshots/), [경고·오류 0건](tests/adventure-map-console.json)을 남겼다.
+이전 지도 보완은 자동 테스트 172개와 다음 범위를 확인했다. [게임 안 지도 테스트](../tests/adventure-map.test.ts)는 M/터치, 네 체육관 도보 안내, 목표·회복 추적과 조작 잠금을 검사한다. 고유 QA에서 연구소 방향·계단 갱신, 무쇠체육관 24걸음 입장, 센터 회복 후 목표 복귀, G 표식·해제·저장 복원을 확인했다. [지도 관찰 12건](../tests/adventure-map-playthrough.json), [화면](../tests/adventure-map-screenshots), [경고·오류 0건](../tests/adventure-map-console.json)을 남겼다.
 
-이전 통합 검증은 자동 테스트 166개와 다음 범위를 확인했다. [통합 테스트](tests/unified-world.test.ts)는 131개 맵 연결, 네 체육관 문, 옛 저장의 진행 보존과 일회 이행, 센터 38곳의 회복·복귀를 확인한다.
+이전 통합 검증은 자동 테스트 166개와 다음 범위를 확인했다. [통합 테스트](../tests/unified-world.test.ts)는 131개 맵 연결, 네 체육관 문, 옛 저장의 진행 보존과 일회 이행, 센터 38곳의 회복·복귀를 확인한다.
 
-고유 QA unified-world-20260907-01에서 실제 서쪽길 → 확장 축복 → 센터 도보 이동과 HP 4→20·상처약 보충·저장 복원을 확인했다. Lv.25 테스트 파티로 확장 무쇠의 GYM 입장·관장전 승리·배지·TM·1440원 지급과 도시 복귀를 확인했다. 영원숲에서는 풀밭 6걸음 → Lv.7 비버니 조우 → 포획 → 두 마리 파티·볼 수량 저장 복원을 확인했다. 옛 도시 저장 이행과 그래픽 도구의 파티·배지 유지도 확인했다. [직접 관찰 17건](tests/unified-world-playthrough.json), [화면](tests/unified-world-screenshots/), [경고·오류 0건](tests/unified-world-console.json)을 남겼다. 이는 통합 동작 검증이며 새 게임부터 전체 캠페인을 완료한 검증은 아니다.
+고유 QA unified-world-20260907-01에서 실제 서쪽길 → 확장 축복 → 센터 도보 이동과 HP 4→20·상처약 보충·저장 복원을 확인했다. Lv.25 테스트 파티로 확장 무쇠의 GYM 입장·관장전 승리·배지·TM·1440원 지급과 도시 복귀를 확인했다. 영원숲에서는 풀밭 6걸음 → Lv.7 비버니 조우 → 포획 → 두 마리 파티·볼 수량 저장 복원을 확인했다. 옛 도시 저장 이행과 그래픽 도구의 파티·배지 유지도 확인했다. [직접 관찰 17건](../tests/unified-world-playthrough.json), [화면](../tests/unified-world-screenshots), [경고·오류 0건](../tests/unified-world-console.json)을 남겼다. 이는 통합 동작 검증이며 새 게임부터 전체 캠페인을 완료한 검증은 아니다.
 
 아래는 통합 전 단계별 검증 이력이며 당시 작은 도시 좌표와 모드 구분은 현재 계약을 뜻하지 않는다.
 
-이전 [회복 안내 테스트](tests/recovery-guide.test.ts)는 위험 HP·기절·구역 연결·승선 조건·회복 후 목표 복귀·저장 복원을 검사한다.
+이전 [회복 안내 테스트](../tests/recovery-guide.test.ts)는 위험 HP·기절·구역 연결·승선 조건·회복 후 목표 복귀·저장 복원을 검사한다.
 
-고유 QA recovery-guide-20260907-01에서 실제 야생전 반격·도주 후 회복 안내, 길 안내원까지 도보 이동·회복·목표 복귀를 확인했다. 기절 파티 조건에서는 체육관에서 센터까지 걸어가 안내 터치로 회복하고 저장 복원까지 확인했다. [관찰 12건](tests/recovery-guide-playthrough.json), [화면 5개](tests/recovery-guide-screenshots/), [콘솔 오류·경고 0건](tests/recovery-guide-console.json)을 남겼다. 조사선 안내는 자동 테스트로 확인했다.
+고유 QA recovery-guide-20260907-01에서 실제 야생전 반격·도주 후 회복 안내, 길 안내원까지 도보 이동·회복·목표 복귀를 확인했다. 기절 파티 조건에서는 체육관에서 센터까지 걸어가 안내 터치로 회복하고 저장 복원까지 확인했다. [관찰 12건](../tests/recovery-guide-playthrough.json), [화면 5개](../tests/recovery-guide-screenshots), [콘솔 오류·경고 0건](../tests/recovery-guide-console.json)을 남겼다. 조사선 안내는 자동 테스트로 확인했다.
 
-이전 [모험 안내 테스트](tests/adventure-guide.test.ts)는 기존 진행 분기·구역 연결·자료 전달 완료 시점·저장 복원·조사 힌트를 검사한다.
+이전 [모험 안내 테스트](../tests/adventure-guide.test.ts)는 기존 진행 분기·구역 연결·자료 전달 완료 시점·저장 복원·조사 힌트를 검사한다.
 
-고유 QA adventure-guide-20260907-01에서 실제 박사 대화와 꼬부기 수령, 조사 안내 터치·키보드 입력, 도윤의 출발 이벤트, 서쪽 출구 도보 이동, 다음 구역 갱신과 저장 복원을 확인했다. [관찰 10건](tests/adventure-guide-playthrough.json), [화면 6개](tests/adventure-guide-screenshots/), [콘솔 오류·경고 0건](tests/adventure-guide-console.json)을 남겼다. 체육관 이후 안내 분기는 자동 테스트로 확인했다.
+고유 QA adventure-guide-20260907-01에서 실제 박사 대화와 꼬부기 수령, 조사 안내 터치·키보드 입력, 도윤의 출발 이벤트, 서쪽 출구 도보 이동, 다음 구역 갱신과 저장 복원을 확인했다. [관찰 10건](../tests/adventure-guide-playthrough.json), [화면 6개](../tests/adventure-guide-screenshots), [콘솔 오류·경고 0건](../tests/adventure-guide-console.json)을 남겼다. 체육관 이후 안내 분기는 자동 테스트로 확인했다.
 
-이전 [필드 가방 테스트](tests/field-bag.test.ts)는 대상 탐색·취소·무효 대상·회복·중복 사용 차단·저장 복원을 검사한다.
+이전 [필드 가방 테스트](../tests/field-bag.test.ts)는 대상 탐색·취소·무효 대상·회복·중복 사용 차단·저장 복원을 검사한다.
 
-고유 QA field-bag-20260907-01에서 실제 키보드·터치로 6마리 목록의 회복 미리보기, 만피·기절 거절, 연속 회복, 약 소진, 저장 복원을 확인했다. [관찰 11건](tests/field-bag-playthrough.json), [화면 4개](tests/field-bag-screenshots/), [콘솔 오류·경고 0건](tests/field-bag-console.json)을 남겼다. 기술머신 4개는 검증용 저장으로 표시를 확인했다.
+고유 QA field-bag-20260907-01에서 실제 키보드·터치로 6마리 목록의 회복 미리보기, 만피·기절 거절, 연속 회복, 약 소진, 저장 복원을 확인했다. [관찰 11건](../tests/field-bag-playthrough.json), [화면 4개](../tests/field-bag-screenshots), [콘솔 오류·경고 0건](../tests/field-bag-console.json)을 남겼다. 기술머신 4개는 검증용 저장으로 표시를 확인했다.
 
-이전 [성장 표시 테스트](tests/growth-feedback.test.ts)는 HP 경계·기절 표시, 전투 승리 후 레벨업·경험치 표시와 저장 복원, 성장 한도를 검사한다.
+이전 [성장 표시 테스트](../tests/growth-feedback.test.ts)는 HP 경계·기절 표시, 전투 승리 후 레벨업·경험치 표시와 저장 복원, 성장 한도를 검사한다.
 
-고유 QA growth-feedback-20260907-01에서 실제 야생전의 HP 색상 변화·회복·승리 후 Lv.6 경험치 표시·정보 화면·저장 복원을 확인했다. 별도 QA 저장으로 Lv.25 성장 한도와 HP 1도 확인했다. [직접 관찰 10건](tests/growth-feedback-playthrough.json), [화면](tests/growth-feedback-screenshots/), [콘솔 오류·경고 0건](tests/growth-feedback-console.json)을 남겼다.
+고유 QA growth-feedback-20260907-01에서 실제 야생전의 HP 색상 변화·회복·승리 후 Lv.6 경험치 표시·정보 화면·저장 복원을 확인했다. 별도 QA 저장으로 Lv.25 성장 한도와 HP 1도 확인했다. [직접 관찰 10건](../tests/growth-feedback-playthrough.json), [화면](../tests/growth-feedback-screenshots), [콘솔 오류·경고 0건](../tests/growth-feedback-console.json)을 남겼다.
 
-이전 [전투 메뉴 흐름 테스트](tests/battle-menu-flow.test.ts)는 무효 행동 후 재선택, 취소 커서, 포켓몬별 기술 기억·복원 시 초기화, 실제 턴 소비와 거절의 구분, 기절 대상 안내를 검사한다. 기존 기절 후 출전·회복·전투 안내·파티·경험치 테스트도 통과했다.
+이전 [전투 메뉴 흐름 테스트](../tests/battle-menu-flow.test.ts)는 무효 행동 후 재선택, 취소 커서, 포켓몬별 기술 기억·복원 시 초기화, 실제 턴 소비와 거절의 구분, 기절 대상 안내를 검사한다. 기존 기절 후 출전·회복·전투 안내·파티·경험치 테스트도 통과했다.
 
-고유 QA battle-menu-flow-20260907-01에서 6마리 파티로 실제 도보 조우 후 포획 불가·만피 회복·출전 중 개체 교대 거절과 목록 유지, 같은 화면에서 회복 재선택, 취소 커서 복귀, 꼬부기 기술 기억과 비버니 교대·꼬부기 재출전, 도주 후 필드 복귀, 저장·재접속과 새 전투 기술 초기화를 확인했다. [관찰 12건](tests/battle-menu-flow-playthrough.json)과 [화면](tests/battle-menu-flow-screenshots/)을 남겼으며 재접속 후 콘솔 오류·경고는 0건이다. 이번 실제 검증은 야생전의 키보드 조작이다.
+고유 QA battle-menu-flow-20260907-01에서 6마리 파티로 실제 도보 조우 후 포획 불가·만피 회복·출전 중 개체 교대 거절과 목록 유지, 같은 화면에서 회복 재선택, 취소 커서 복귀, 꼬부기 기술 기억과 비버니 교대·꼬부기 재출전, 도주 후 필드 복귀, 저장·재접속과 새 전투 기술 초기화를 확인했다. [관찰 12건](../tests/battle-menu-flow-playthrough.json)과 [화면](../tests/battle-menu-flow-screenshots)을 남겼으며 재접속 후 콘솔 오류·경고는 0건이다. 이번 실제 검증은 야생전의 키보드 조작이다.
 
-고유 QA battle-replacement-20260907-01에서 실제 도보 조우 후 기절, 기절 대상 거절, X 안내, 6번 비버니 포인터 출전과 추가 HP 손실 없음, 승리·레벨업, 저장·재접속과 선택 대기 저장 복원을 확인했다. [관찰 요약 9건](tests/battle-replacement-playthrough.json)과 [화면](tests/battle-replacement-screenshots/)을 남겼다. 중간 기록 도구가 초기화되어 관찰은 요약으로 보관한다. 마지막 도주 대사는 확인했으나 탭 연결 종료로 그 뒤의 필드 화면은 기록하지 못했다. 관장전·한 마리 자동 출전·전멸은 자동 테스트 대상이다.
+고유 QA battle-replacement-20260907-01에서 실제 도보 조우 후 기절, 기절 대상 거절, X 안내, 6번 비버니 포인터 출전과 추가 HP 손실 없음, 승리·레벨업, 저장·재접속과 선택 대기 저장 복원을 확인했다. [관찰 요약 9건](../tests/battle-replacement-playthrough.json)과 [화면](../tests/battle-replacement-screenshots)을 남겼다. 중간 기록 도구가 초기화되어 관찰은 요약으로 보관한다. 마지막 도주 대사는 확인했으나 탭 연결 종료로 그 뒤의 필드 화면은 기록하지 못했다. 관장전·한 마리 자동 출전·전멸은 자동 테스트 대상이다.
 
-고유 QA battle-healing-20260907-01에서 6마리 파티를 가져와 실제 풀밭 조우부터 회복 대상 선택·두 단계 취소, 기절·만피·약 부족 거절, 포인터와 키보드로 대기 비버니 두 마리 회복을 확인했다. 반격은 꼬부기만 받았고 승리 후 대기 포켓몬의 경험치는 유지됐다. 저장·재접속 후 HP·약·파티 순서도 유지했다. [관찰 10건](tests/battle-healing-playthrough.json)과 [화면](tests/battle-healing-screenshots/)을 남겼으며 재접속 후 콘솔 오류·경고는 0건이다. 관장전·회복 직후 출전 포켓몬 기절은 자동 테스트 대상이다.
+고유 QA battle-healing-20260907-01에서 6마리 파티를 가져와 실제 풀밭 조우부터 회복 대상 선택·두 단계 취소, 기절·만피·약 부족 거절, 포인터와 키보드로 대기 비버니 두 마리 회복을 확인했다. 반격은 꼬부기만 받았고 승리 후 대기 포켓몬의 경험치는 유지됐다. 저장·재접속 후 HP·약·파티 순서도 유지했다. [관찰 10건](../tests/battle-healing-playthrough.json)과 [화면](../tests/battle-healing-screenshots)을 남겼으며 재접속 후 콘솔 오류·경고는 0건이다. 관장전·회복 직후 출전 포켓몬 기절은 자동 테스트 대상이다.
 
-고유 QA battle-tactics-20260907-01에서 공개 파일 가져오기로 두 마리 파티를 준비하고 실제 야생전을 플레이했다. 기술·회복·교대·포획 안내, 꼬리흔들기·울음소리 3단계와 한도 재사용, 실제 피해·약 소비, 확정 포획·재접속, 마무리 공격·레벨업을 확인했다. 새 돌아가기 버튼의 포인터 입력도 확인했다. [관찰 17건](tests/battle-tactics-playthrough.json), [화면](tests/battle-tactics-screenshots/)을 남겼으며 재접속 후 콘솔 오류·경고는 0건이다. 관장전의 피해 안내는 자동 테스트 대상이다.
+고유 QA battle-tactics-20260907-01에서 공개 파일 가져오기로 두 마리 파티를 준비하고 실제 야생전을 플레이했다. 기술·회복·교대·포획 안내, 꼬리흔들기·울음소리 3단계와 한도 재사용, 실제 피해·약 소비, 확정 포획·재접속, 마무리 공격·레벨업을 확인했다. 새 돌아가기 버튼의 포인터 입력도 확인했다. [관찰 17건](../tests/battle-tactics-playthrough.json), [화면](../tests/battle-tactics-screenshots)을 남겼으며 재접속 후 콘솔 오류·경고는 0건이다. 관장전의 피해 안내는 자동 테스트 대상이다.
 
-고유 QA battle-polish-20260907-01에서 6마리 파티 저장을 가져와 풀밭 도보 조우, X로 전투 유지, 두 열 교대 선택, 기절한 포켓몬 거절, 교대 전 비버니의 경험치 분배·레벨업, 미참여 포켓몬 경험치 유지, 필드 파티 조작, 저장·재접속, 참여 수 표시와 명시적 도주를 실제 브라우저에서 확인했다. [관찰 10건](tests/battle-polish-playthrough.json)과 [화면](tests/battle-polish-screenshots/)을 남겼고 재접속 후 콘솔 오류·경고는 0건이다. 체육관 분배 규칙은 자동 테스트로 확인했으며 시작 이야기나 D3 전체를 재수용한 기록은 아니다.
+고유 QA battle-polish-20260907-01에서 6마리 파티 저장을 가져와 풀밭 도보 조우, X로 전투 유지, 두 열 교대 선택, 기절한 포켓몬 거절, 교대 전 비버니의 경험치 분배·레벨업, 미참여 포켓몬 경험치 유지, 필드 파티 조작, 저장·재접속, 참여 수 표시와 명시적 도주를 실제 브라우저에서 확인했다. [관찰 10건](../tests/battle-polish-playthrough.json)과 [화면](../tests/battle-polish-screenshots)을 남겼고 재접속 후 콘솔 오류·경고는 0건이다. 체육관 분배 규칙은 자동 테스트로 확인했으며 시작 이야기나 D3 전체를 재수용한 기록은 아니다.
 
-이전 파티 기능 추가 당시에는 자동 테스트 117개와 고유 QA team-play-20260907-01의 [관찰 12건](tests/team-playthrough-results.json), [화면](tests/team-screenshots/)으로 포획·회복·교대·선두 변경과 포인터 조작을 확인했다. 당시 경험치·취소 규칙은 이번 보완으로 변경했다.
+이전 파티 기능 추가 당시에는 자동 테스트 117개와 고유 QA team-play-20260907-01의 [관찰 12건](../tests/team-playthrough-results.json), [화면](../tests/team-screenshots)으로 포획·회복·교대·선두 변경과 포인터 조작을 확인했다. 당시 경험치·취소 규칙은 이번 보완으로 변경했다.

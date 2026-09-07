@@ -17,7 +17,8 @@ import tempfile
 import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-OUT = ROOT / 'docs/design-data'
+DOCS = ROOT / 'docs'
+OUT = DOCS / 'design-data'
 PLAN = json.loads((OUT / 'nexus-plan.json').read_text(encoding='utf-8-sig'))
 SHA = PLAN['referenceCommit']
 CACHE = pathlib.Path(tempfile.gettempdir()) / ('nexus-pokeapi-' + SHA)
@@ -106,15 +107,15 @@ def md_table(headers, data):
 
 
 def write(name, content):
-    (ROOT / name).write_text(content.rstrip() + '\n', encoding='utf8')
+    (DOCS / name).write_text(content.rstrip() + '\n', encoding='utf8')
 
 
 def write_json(name, obj):
     (OUT / name).write_text(json.dumps(obj, ensure_ascii=False, indent=2) + '\n', encoding='utf8')
 
 
-MAP_TEXT = (ROOT / '개발용_초안맵.md').read_text(encoding='utf8')
-STORY_TEXT = (ROOT / '개발용_초안스토리.md').read_text(encoding='utf8')
+MAP_TEXT = (DOCS / '개발용_초안맵.md').read_text(encoding='utf8')
+STORY_TEXT = (DOCS / '개발용_초안스토리.md').read_text(encoding='utf8')
 NODES = {}
 GYM_META = {}
 REQUESTED = []
@@ -559,7 +560,7 @@ def render_dex():
     text += ('## 도감 기록과 구현 계약\n\n'
              '발견·소유·진화 관찰·색이 다른 모습은 분리 기록한다. 붉은 갸라도스는 #0130 개체의 색 상태이며 새 전국번호가 아니다. '
              '박사에게 받은 피카츄가 라이츄로 진화해도 과거 수령 플래그는 유지한다. 도감 완성 조건에 통신·유료 배포·현실 요일을 요구하지 않는다.\n\n'
-             '종별 상세 JSON은 [pokemon.json](docs/design-data/pokemon.json), 실제 후보 슬롯은 [지역별 출현표](개발용_지역별출현표.md), '
+             '종별 상세 JSON은 [pokemon.json](design-data/pokemon.json), 실제 후보 슬롯은 [지역별 출현표](개발용_지역별출현표.md), '
              '진화 분기는 [진화 DB](개발용_진화데이터베이스.md)를 따른다. 각 종의 `captureRate`는 포획 확률(%)이 아닌 기초 상수다. '
              '그 상수·기술·아이템만으로 포획·전투 엔진이 완성된 것으로 해석하지 않는다.\n')
     write('개발용_포켓몬도감.md', text)
@@ -736,8 +737,8 @@ def render_moves():
           m['accuracy'] if m['accuracy'] is not None else '—',m['pp'],m['priority'],m['effectId']] for m in MOVE_DB])
     text += ('\n## 구현 경계\n\n효과 ID는 원자료의 참조 키이지 현재 게임이 실행할 수 있는 함수가 아니다. '
              '피해·상태·날씨·필드·교체·반동·회복·흡수·턴 지연을 각 효과 구현으로 연결해야 한다. '
-             '추가 효과 확률·대상 ID와 관장 개체별 습득 근거는 [moves.json](docs/design-data/moves.json) 및 '
-             '[gyms.json](docs/design-data/gyms.json)에 보존했다.\n\n'
+             '추가 효과 확률·대상 ID와 관장 개체별 습득 근거는 [moves.json](design-data/moves.json) 및 '
+             '[gyms.json](design-data/gyms.json)에 보존했다.\n\n'
              '먼저 몸통박치기·전기쇼크·울음소리 같은 작은 기술 집합으로 전투를 검증한 후 체육관별 필요한 효과를 늘린다. '
              '미구현 기술을 이름만 표시한 채 전투 가능 팀으로 출하하지 않는다.\n')
     write('개발용_기술데이터베이스.md',text)
@@ -832,7 +833,7 @@ def render_index():
              '분류·수치·진화·조우를 대량으로 연결하기 위해 [PokéAPI 프로젝트](https://github.com/PokeAPI/pokeapi)의 공개 자료를 사용했다. '
              'PokéAPI는 포켓몬 공식 배급사의 데이터베이스가 아닌 커뮤니티 프로젝트다. 모든 원자료 행의 공식 검증을 완료했다는 주장은 하지 않는다.\n\n'
              f'원자료 커밋은 `{SHA}`, 커밋 일시는 2026-09-03T19:01:48Z다. '
-             '조회 기준일은 2026-09-06이다. 파일별 SHA-256과 크기는 [출처 명세](docs/design-data/source-manifest.json)에 기록했다. '
+             '조회 기준일은 2026-09-06이다. 파일별 SHA-256과 크기는 [출처 명세](design-data/source-manifest.json)에 기록했다. '
              '프로그램은 동일 커밋 파일을 로컬 캐시에 보관해 반복 다운로드를 피한다. [PokéAPI 문서](https://pokeapi.co/docs/v2)의 읽기·캐시 원칙을 참고했다.\n\n')
     text += md_table(['필드','근거 / 결정 수준'],[
         ['전국번호·기본 종 이름·타입·종족값·특성','고정 원자료 스냅샷. 공식 이름 일부 대조, 전체 행 공식 개별 검증은 아님'],
@@ -844,10 +845,10 @@ def render_index():
         ['아이템 가격·효과 선택·개방','프로젝트 규칙. 원작 모든 세대와 동일하다고 주장하지 않음'],
         ['현재 구현','4종 등록, 연구소 수령·파티 표시·시작 마을. DB 전투·조우·진화·아이템 시스템은 미구현']])
     text += ('\n## 3. 데이터 파일과 수정 순서\n\n'
-             '편집 입력은 [nexus-plan.json](docs/design-data/nexus-plan.json)이다. 원작 사실을 바꾸지 않고 배치·팀·가격 등을 수정한다. '
-             '생성 결과는 [pokemon.json](docs/design-data/pokemon.json), [encounters.json](docs/design-data/encounters.json), '
-             '[evolutions.json](docs/design-data/evolutions.json), [gyms.json](docs/design-data/gyms.json), '
-             '[items.json](docs/design-data/items.json), [moves.json](docs/design-data/moves.json), [quests.json](docs/design-data/quests.json)이다. '
+             '편집 입력은 [nexus-plan.json](design-data/nexus-plan.json)이다. 원작 사실을 바꾸지 않고 배치·팀·가격 등을 수정한다. '
+             '생성 결과는 [pokemon.json](design-data/pokemon.json), [encounters.json](design-data/encounters.json), '
+             '[evolutions.json](design-data/evolutions.json), [gyms.json](design-data/gyms.json), '
+             '[items.json](design-data/items.json), [moves.json](design-data/moves.json), [quests.json](design-data/quests.json)이다. '
              '이 JSON들은 문서 검수용 데이터이며 게임이 자동 로드하지 않는다. 세부 출현·진화·보상 수치는 이번 DB를 우선하고, '
              '큰 장 순서·지역 이동·기존 구현 계약은 앞선 스토리·맵·기준 문서를 유지한다.\n\n'
              '```powershell\npython -X utf8 scripts/design/build_databases.py\n```\n\n'
@@ -862,7 +863,7 @@ def render_index():
              '실제 구현 시 저장 이행을 먼저 설계한다. 게임의 기존 `grantPokemon()`을 모든 선물에 그대로 재사용하면 일반 스타팅 제한과 충돌한다.\n\n'
              '## 5. 검사와 미완성 범위\n\n'
              '생성 시 요청123종 누락, 종·진화 부모·필요 도구·체육관 팀·기술 습득 근거·퀘스트 보상·장소 참조·풀 가중치·문서 링크를 검사한다. '
-             '[validation.json](docs/design-data/validation.json)에 이번 생성 결과를 남긴다. 수록 후보의 자료 검증이며 실제 게임 밸런스·브라우저 플레이 통과가 아니다.\n\n'
+             '[validation.json](design-data/validation.json)에 이번 생성 결과를 남긴다. 수록 후보의 자료 검증이며 실제 게임 밸런스·브라우저 플레이 통과가 아니다.\n\n'
              '전체 도감 개체의 레벨업 기술표·기술 효과 구현·32관장의 AI·사천왕 세부 팀·모든 폼·타일별 보물 좌표는 아직 별도 제작 대상이다. '
              '첫 도로의 작은 종 집합부터 구현하고 각 체육관 단위로 확장한다. 이름만 있는 기술이나 파일만 있는 포켓몬을 플레이 가능으로 표시하지 않는다.\n')
     write('개발용_데이터베이스_안내.md',text)
@@ -896,7 +897,7 @@ def validate():
     for q in QUEST_DB:
         assert all(i in ids for i in q.get('speciesRewards',[])),q['id']
         assert all(i in item_ids for i in q.get('itemRewards',[])),q['id']
-    files=list(ROOT.glob('개발용_*.md'))+[ROOT/'DEVELOPMENT.md',ROOT/'STORY.md']
+    files=list(DOCS.glob('개발용_*.md'))+[DOCS/'DEVELOPMENT.md',DOCS/'STORY.md']
     links=0
     for path in files:
         content=path.read_text(encoding='utf8')
