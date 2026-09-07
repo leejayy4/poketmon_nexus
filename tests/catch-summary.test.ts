@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {Engine} from '../src/engine';
 import {Renderer} from '../src/renderer';
-import {createBattle} from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
 import {newSave,parseSave} from '../src/save';
 import {grantPokemon} from '../src/pokemon';
 
@@ -25,8 +25,8 @@ test('X and touch continuation close the result without changing party order or 
   for(const touch of [false,true]){const g=game();g.actBattle('ball');const before=structuredClone(g.save);choices(g);g.navigate('up');if(touch){const ctx=new Proxy({}, {get:()=>()=>{}}) as CanvasRenderingContext2D,canvas={getContext:()=>ctx} as HTMLCanvasElement,r=new Renderer(g,canvas,canvas);r.lower();r.click(128,164)}else g.cancel();assert.equal(g.dialogue,null);assert.equal(g.battle,null);assert.equal(g.caughtPreview,null);assert.equal(g.panel,'field');assert.deepEqual(g.save,before);}
 }));
 
-test('failed capture, full party and trainer Pokemon do not show the success screen',()=>dom(()=>{
-  for(const kind of ['failed','full','gym']){const g=game();if(kind==='failed'){g.battle!.enemy.hp=18;g.random=()=>.99;}if(kind==='full')while(g.save.party.length<6)g.save.party.push({...g.battle!.enemy});if(kind==='gym')g.battle=createBattle(g.save,'gym');g.actBattle('ball');assert.equal(g.caughtPreview,null);assert.equal(g.showingCatch,false);assert.equal(g.dialogue!.choices,undefined);assert(!g.battle!.result);}
+test('failed capture, full party and box and trainer Pokemon do not show the success screen',()=>dom(()=>{
+  for(const kind of ['failed','full','gym']){const g=game();if(kind==='failed'){g.battle!.enemy.hp=18;g.random=()=>.99;}if(kind==='full')while(g.save.party.length<6)g.save.party.push({...g.battle!.enemy});if(kind==='full')g.save.box=Array.from({length:60},()=>({...g.battle!.enemy}));if(kind==='gym')g.battle=createBattle(g.save,'gym');g.actBattle('ball');assert.equal(g.caughtPreview,null);assert.equal(g.showingCatch,false);assert.equal(g.dialogue!.choices,undefined);assert(!g.battle!.result);}
 }));
 
 test('result rendering shows the caught stats without covering them with top-screen choices',()=>dom(()=>{

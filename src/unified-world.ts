@@ -17,6 +17,11 @@ export function createUnifiedWorld(base:Record<MapId,GameMap>):Partial<Record<Ma
   const edit=(id:MapId)=>result[id]??(result[id]=structuredClone(base[id]));
   const route=edit('route_s01');route.warps.find(w=>w.to==='jubilife')!.to='tour_jubilife';route.warps.find(w=>w.to==='tour_jubilife')!.spawn={x:37,y:24};
   const jubilife=edit('tour_jubilife'),entrance=jubilife.warps.find(w=>w.to==='town')!;entrance.to='route_s01';entrance.spawn={x:3,y:12};
+  // S03 in the authored encounter DB is the city's outskirts, away from its
+  // plaza and building doors. Keep the pavement route around this optional lawn.
+  jubilife.terrain=[{kind:'tallGrass',x:3,y:29,w:6,h:3}];
+  jubilife.props.push({x:3,y:33,dialogue:'jubilifeGrassSign'});
+  jubilife.walkable[33]=jubilife.walkable[33].slice(0,3)+'#'+jubilife.walkable[33].slice(4);
   for(const [city,gym] of WORLD_GYMS){
     const map=edit(city),door=worldGymDoor(city)!;
     map.walkable[door.y]=map.walkable[door.y].slice(0,door.x)+'.'+map.walkable[door.y].slice(door.x+1);

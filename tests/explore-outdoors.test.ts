@@ -5,9 +5,11 @@ import { canStand,getMap,getWorldOutdoors } from '../src/maps';
 import { Engine,VECTOR } from '../src/engine';
 import { parseSave } from '../src/save';
 import { TOWN_REVISION } from '../src/town';
+import { PASSAGES } from '../src/journey-world';
+import { passageSignPages } from '../src/encounter-guidance';
 function tour(id:string){const g=new Engine();g.exploring=true;g.save=g.freshSave();g.save.map=id as TourId;return g}
-test('all 43 outdoor maps expose solid signs for their actual exterior exits',()=>{
-  assert.equal(Object.keys(TOUR_OUTDOORS).length,43);
+test('original outdoor maps and added passages expose solid signs for actual exterior exits',()=>{
+  assert.equal(Object.keys(TOUR_OUTDOORS).length,43+Object.keys(PASSAGES).length);
   for(const id of Object.keys(TOUR_OUTDOORS)){const outdoor=getWorldOutdoors(getMap(id as TourId))!;
     const map=getMap(id as TourId);assert.equal(outdoor.signs.length,map.warps.filter(w=>TOUR_OUTDOORS[w.to]||['town','route_s01','research_path'].includes(w.to)).length);
     for(const sign of outdoor.signs){
@@ -25,7 +27,7 @@ test('every outdoor object and sign is investigated by facing a reachable surfac
       for(const cell of cells)for(const [direction,v]of Object.entries(VECTOR)){
         const x=cell.x-v.x,y=cell.y-v.y;if(!canStand(g.map,x,y))continue;
         g.save.player={x,y,facing:direction as keyof typeof VECTOR};assert(g.interactionHint?.includes(obj.name));
-        const before=structuredClone(g.save);g.confirm();assert.equal(g.dialogue?.speaker,obj.name);assert.deepEqual(g.dialogue?.pages,obj.pages);assert.equal(g.interactionHint,null);
+        const before=structuredClone(g.save);g.confirm();assert.equal(g.dialogue?.speaker,obj.name);assert.deepEqual(g.dialogue?.pages,PASSAGES[id]&&obj.event==='journeySign'?passageSignPages(id,PASSAGES[id].a.name,PASSAGES[id].b.name):obj.pages);assert.equal(g.interactionHint,null);
         while(g.dialogue){g.dialogue.shown=1000;g.confirm()}
         assert.deepEqual(g.save,before);assert.equal(g.battle,null);checked++;
       }

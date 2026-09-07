@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { Engine } from '../src/engine';
 import { Renderer } from '../src/renderer';
 import { newSave,parseSave } from '../src/save';
-import { grantPokemon } from '../src/pokemon';
+import { grantPokemon,pokemonMoves } from '../src/pokemon';
 import { createBattle } from '../src/battle';
 
 function dom(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}}
@@ -20,7 +20,7 @@ test('up/down compare every party member in order including fainted members, whi
 
 test('touch previous/next changes both information and moves without changing progress',()=>{
   const g=game(3),before=structuredClone(g.save),{r,words,ctx}=renderer(g);r.lower();assert(words.includes('↑ 이전'));assert(words.includes('↓ 다음'));
-  r.click(110,175);assert.equal(g.partyIndex,1);words.length=0;r.summaryTop(ctx);r.lower();assert(words.includes('비버니'));assert(words.includes('울음소리'));assert(words.includes('2 / 3'));assert(words.includes('HP  2 / 18'));
+  r.click(110,175);assert.equal(g.partyIndex,1);words.length=0;r.summaryTop(ctx);r.lower();assert(words.includes('비버니'));assert(pokemonMoves(g.save.party[1]).every(move=>words.includes(move)));assert(words.includes('2 / 3'));assert(words.includes('HP  2 / 18'));
   r.click(35,175);assert.equal(g.partyIndex,0);r.lower();r.click(35,175);assert.equal(g.partyIndex,2);assert.deepEqual(g.save,before);
 });
 
@@ -37,7 +37,7 @@ test('lead changes retain the inspected Pokemon and survive save restore after b
 }));
 
 test('stale browsing callbacks cannot run through dialogue, battle, movement, transitions or another panel',()=>dom(()=>{
-  for(const mode of ['dialogue','battle','move','transition','party']){const g=game(3),before=structuredClone(g.save);if(mode==='dialogue')g.say('안내',['대화']);if(mode==='battle')g.battle=createBattle(g.save);if(mode==='move')g.move={from:{x:6,y:6},to:{x:7,y:6},elapsed:0,duration:.16};if(mode==='transition')g.transition=.4;if(mode==='party')g.panel='party';g.browseParty(1);assert.equal(g.partyIndex,0);assert.deepEqual(g.save,before);}
+  for(const mode of ['dialogue','battle','move','transition','party']){const g=game(3),before=structuredClone(g.save);if(mode==='dialogue')g.say('안내',['대화']);if(mode==='battle')g.battle=createBattle({...structuredClone(g.save),map:'route_s01'},'wild','roark',()=>0);if(mode==='move')g.move={from:{x:6,y:6},to:{x:7,y:6},elapsed:0,duration:.16};if(mode==='transition')g.transition=.4;if(mode==='party')g.panel='party';g.browseParty(1);assert.equal(g.partyIndex,0);assert.deepEqual(g.save,before);}
   const g=game(3);for(const invalid of [0,2,-2,NaN,Infinity])g.browseParty(invalid);assert.equal(g.partyIndex,0);
 }));
 

@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { Engine } from '../src/engine';
 import { newSave,parseSave } from '../src/save';
 import { grantPokemon } from '../src/pokemon';
-import { createBattle,battleTurn } from '../src/battle';
+import {battleTurn } from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
 
 function ready(){const s=newSave();grantPokemon(s,7);s.map='route_s01';s.player={x:8,y:14,facing:'down'};s.flags.departureCleared=true;s.inventory={pokeBalls:0,potions:2};s.party.push({species:399,level:3,hp:3,maxHp:18,experience:0,nature:'성실',met:'새잎 서쪽길'});return s;}
 function dom(run:()=>void){const previous=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{value:{getElementById:()=>null},configurable:true});try{run();}finally{if(previous)Object.defineProperty(globalThis,'document',previous);else Reflect.deleteProperty(globalThis,'document');}}

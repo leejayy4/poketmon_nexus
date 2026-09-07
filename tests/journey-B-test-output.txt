@@ -1,0 +1,1487 @@
+
+> first-partner-platinum@0.1.0 test
+> tsx --test tests/*.test.ts
+
+✔ normal starter and Pikachu-first progression both guide departure without inventing capture requirements (1.6162ms)
+✔ each existing badge and research flag selects its implemented next objective without mutating saves (2.535ms)
+✔ guidance follows real interior exits and connecting maps; on arrival it names the interaction (1.1796ms)
+✔ research guidance updates only when the existing delivery dialogue actually completes (1.6221ms)
+✔ adventure interaction hints require a faced NPC or prop and disappear while busy (0.6618ms)
+✔ field map opens with M or touch and retains the unchanged adventure save (10.1481ms)
+✔ map controls cannot bypass dialogue, menus, battle, movement or transition locks (1.0782ms)
+✔ all four gym markers guide through real expanded city doors without granting a badge (24.1457ms)
+✔ objective guidance tracks the next badge and switches to recovery only while needed (3.3039ms)
+✔ starter objective guides from the bedroom to the lab and respects the departure gate (2.5216ms)
+✔ active-world map markers fit their map and point to real doors or people (4.5025ms)
+✔ audio is opt-in; scene/effects/fanfare never create a context or timer while muted (4.1451ms)
+✔ scene changes reset beat and cancel queued audio; repeated same-scene calls keep one timer (1.3181ms)
+✔ mute stops present and future voices and old fanfare never survives re-enable (0.8136ms)
+✔ five original scenes have different melodies and bounded gentle voices (1.6505ms)
+✔ technical effects sound distinct and use Web Audio scheduling without adding timers (1.3228ms)
+✔ fanfare ducks music and resumes selected scene without a second timer (0.6788ms)
+✔ hidden or suspended contexts do not advance beats or pile up background notes (0.4073ms)
+✔ ended voices disconnect and invalid public note inputs do not reach Web Audio (2.2061ms)
+✔ failed resume disables cleanly but stale rejection cannot mute a newer user enable (0.8941ms)
+✔ unavailable AudioContext fails safely and closed context can be recreated by a user toggle (2.5554ms)
+✖ battle arena keeps the platform depth while adding a pixel horizon and drifting clouds (3.4568ms)
+✔ counterattack declares the move before changing displayed HP for every action that spends a turn (6.2924ms)
+✖ lethal counter keeps the outgoing Pokemon alive through the attack declaration, then shows exact loss before fainting (1.7479ms)
+✔ finishing blow reports actual HP loss in hint, dialogue and effect while preserving victory XP (1.1378ms)
+✖ low-HP counter previews report at most the HP the selected Pokemon can lose (0.847ms)
+✔ counter playback and reload never apply damage or item use for a second time (2.7715ms)
+✔ attack damage and counterattack carry separate visual targets on the matching pages (4.7347ms)
+✔ healing uses the actual recovered HP and never puts a reserve heal effect on the active Pokemon (0.8564ms)
+✔ page effects expire independently of text speed and revealing text does not replay an effect (2.1027ms)
+✔ fast forwarding, replacement dialogue and reload drop effects without repeating damage or items (3.2549ms)
+✔ knockout, next opponent and appended reward pages do not replay the final hit (17.5677ms)
+✔ renderer draws a short damage label and displaced sprite, then restores the original pose (2.0806ms)
+✔ rejected actions and non-finite or expired clocks produce no effect (0.5382ms)
+✔ experience and level pages show growth in order instead of revealing the final level early (4.1353ms)
+✔ shared experience follows individual participants and reserve growth never replaces the active battler (0.835ms)
+✖ multiple levels and the cap have distinct detached steps and preserve the existing growth result (4.7417ms)
+✔ growth card identifies a reserve recipient while the upper battlefield retains the active Pokemon (3.8586ms)
+✔ gym growth completes before the next opponent and before a final badge reward (24.5772ms)
+✔ reload during growth retains final XP exactly once and clears presentation; no growth on escape or capture (1.7136ms)
+✖ reserve healing consumes one potion while only the active Pokemon takes retaliation (20.4894ms)
+✔ invalid, full, fainted and out-of-stock healing changes neither battle nor save (1.5658ms)
+✔ active-target healing is compatible and heals at most 20 before retaliation (0.5352ms)
+✔ reserve is healed before a fatal retaliation and can then replace the active Pokemon (0.8631ms)
+✔ bag opens target selection without spending a turn and cancellation returns through bag (1.9916ms)
+✖ move damage previews agree with resolved wild and gym turns across levels and debuffs (6.2985ms)
+✔ finishing blow preview promises no retaliation and resolution preserves HP (0.9722ms)
+✔ status previews reflect next damage and capped effects report failure but still cost a turn (0.9483ms)
+✔ potion and switch previews include the retaliation and invalid action reasons (0.5725ms)
+✖ catch preview follows HP threshold and eligibility without consuming resources (0.9193ms)
+✔ invalid healing, switching and catching preserve the menu and cursor for a retry (7.485ms)
+✔ cancelling submenus returns focus to the action that opened them without consuming a turn (0.823ms)
+✔ last used move is remembered per Pokemon while browsing and cancelling do not overwrite it (1.9884ms)
+✔ failed capture and capped status moves still consume their normal turn and return to actions (0.7726ms)
+✔ the fainted active Pokemon is rejected accurately and forced replacement keeps its selection (0.5544ms)
+✖ battle move menu shows the current move type in the unchanged touch buttons (19.3777ms)
+✔ switch training shares experience once per participant and preserves level progress in saves (6.1257ms)
+✔ only healthy participants earn experience; reserves, escapes and captures earn none (1.4876ms)
+✔ gym experience conserves its budget and participation resets for each opponent (0.9498ms)
+✔ two-column navigation follows rows and columns including odd and full parties (0.8381ms)
+✔ X on action selection never ends a battle while submenu cancellation remains free (0.9828ms)
+✔ battle arena uses layered platform colors without changing battle state (2.1199ms)
+✔ attack, damage, knockout and next opponent retain distinct detached display states (3.3937ms)
+✖ normal and free switches show outgoing then incoming Pokemon and only the normal switch takes a counter (2.4408ms)
+✔ healing and debuffs appear before the counterattack in their respective dialogue pages (0.8617ms)
+✔ fainting keeps the defeated Pokemon visible in status until automatic or chosen replacement (0.5897ms)
+✔ advancing display dialogue never reapplies committed damage, items or XP and restore drops playback (3.3064ms)
+✔ renderer hides future opponent and choices during playback and uses current data afterwards (3.1664ms)
+✔ rejected actions, a replaced dialogue and final battle completion leave no stale frame (0.6887ms)
+✖ wild and gym fainting lets the player choose among healthy reserves without another attack (26.9741ms)
+✖ pending replacement blocks moves, items and invalid replacements but permits explicit escape (4.1093ms)
+✔ one healthy reserve still enters automatically and a total defeat still ends the battle (0.6542ms)
+✔ healing or manually switching before fainting leads to the same free replacement choice (0.5537ms)
+✔ Engine opens replacement after dialogue, prevents cancellation bypass and safely restores saves (3.6719ms)
+✔ six party slots show the selected Pokemon and HP without changing the party or active battler (7.5647ms)
+✔ preview exposes lethal normal-switch risk and distinguishes free and forced replacements (4.0394ms)
+✔ reserve medicine preview and touch use agree while only the active Pokemon takes the counter (1.4732ms)
+✔ fainted and full-health healing previews explain rejection without consuming a turn (0.9484ms)
+✔ cancel and reload close previews without changing selected Pokemon order, HP or items (1.5135ms)
+✖ successful and failed throws share the same initial scene without revealing the result (2.8426ms)
+✖ the ball follows an arc, hides the target on contact and comes to rest without modifying game data (0.6683ms)
+✖ failed escape restores the enemy before counterattack and success opens the existing catch card (2.5463ms)
+✖ renderer draws the ball in flight and keeps the opponent hidden only during the throw page (0.9415ms)
+✖ fast forwarding and reload cannot replay a throw or grant another Pokemon (1.3467ms)
+✔ empty balls, full party and gym capture rejection never animate or consume a ball (2.0108ms)
+✔ catch result appears only at the success page and default continue never duplicates the catch (4.4226ms)
+✖ information opens the newly caught sixth Pokemon among duplicates and connects to healing and lead selection (1.6728ms)
+✔ X and touch continuation close the result without changing party order or spending resources (1.2662ms)
+✖ failed capture, full party and trainer Pokemon do not show the success screen (0.8245ms)
+✖ result rendering shows the caught stats without covering them with top-screen choices (5.4144ms)
+✔ reload during catch preserves the new Pokemon once and clears the pending result action (1.369ms)
+✔ activities target two real residents and unrelated events leave state untouched (2.1743ms)
+✔ acceptance is optional, has safe last choices, and survives a real save reload (1.2481ms)
+✔ broadcast errand needs distinct owned species, then pays once across reload and stale replay (0.6977ms)
+✔ optional flat box contributes owned species while seen-only Pokedex does not (0.2365ms)
+✔ unknown species cannot complete a collection errand (0.1781ms)
+✔ miner checks party size, actual recovery, and level without healing or growing for the player (0.4967ms)
+✔ revisits acknowledge a newly earned badge without repeating the local gift (0.8304ms)
+✔ already badged players may still complete the optional preparation errand (0.2467ms)
+✔ capacity blocks the whole gift without loss and leaves it claimable after spending (0.6727ms)
+✔ callbacks from another slot or departed map cannot change save progress (0.2858ms)
+✔ city rendering preserves all live road footprints and never paints outside the paved tiles (669.3356ms)
+✔ intersection asphalt is seamless across tiles while inner and outer corners retain a curb (1.2453ms)
+✔ every door and stair requires the exact tile and approach direction (158.198ms)
+✔ walking parallel to the front of every town door never warps (0.873ms)
+✔ lab annex floor and both new characters are reachable from the entrance (0.9056ms)
+✔ buildings block foundations while side and rear paths remain walkable (0.1803ms)
+✔ revision two saves preserve progress and relocate only newly blocked positions (1.1136ms)
+✔ every walkable floor cell in every map is connected, except the guarded exit (220.9282ms)
+✔ Coronet marked paths connect every pair of its three exits without forcing encounters (3.7202ms)
+✔ revision 18 Coronet floor saves retain progress and repair only new rock overlaps (20.5923ms)
+✔ Coronet preserves old rock and sign event IDs while adding accessible scenery (0.5171ms)
+✔ Coronet guide names all actual exits and retains healing without reducing stocked potions (1.7886ms)
+✖ defeat commits one safe recovery save while showing the last attack and fainting on the battlefield (8.0296ms)
+✖ home and center guidance preserve inventory and recovery handles all six party members (18.8735ms)
+✖ reload during defeat or recovery clears display state and does not replay rewards or recovery (2.998ms)
+✖ keyboard and touch cannot replay battle actions during defeat and recovery (2.5454ms)
+✖ renderer keeps the defeated battle until return, then shows six recovered Pokemon and actual potion stock (3.2852ms)
+✖ replacing dialogue clears defeat visuals and normal nurse interaction still replenishes stock (3.3296ms)
+✔ paintDesertRuinsRock renders sandstone strata and highlights within bounding box (1.0138ms)
+✔ Jubilife fountain renders a stepped stone basin and separate water highlights (0.2463ms)
+✔ desert ground and paths use sandstone marks rather than grass-green path edges (0.3384ms)
+✔ Desert marked paths connect north and south exits and reach signs and guide (2.6407ms)
+✔ revision 21 Desert floor saves preserve progress and repair newly blocked rocks (24.9226ms)
+✔ Desert preserves original rocks and sign events while adding 3 new investigable features (0.4845ms)
+✔ Eterna Forest has a continuous encounter-free marked trail in both directions (2.2864ms)
+✔ revision 17 forest saves keep progress and relocate only new tree overlaps (22.9726ms)
+✔ existing forest investigation and sign IDs stay stable with four additional groves (0.3497ms)
+✔ forest guide describes the actual north and south exits while retaining healing and supplies (1.6253ms)
+✔ all 38 reception counters block walking and talk to the nurse from every front tile (16.9542ms)
+✔ revision 15 counter and nurse saves migrate safely while valid room positions and progress survive (37.5918ms)
+✔ DS interior samples and nurse directional frames fit the downloaded images (33.3773ms)
+✔ all 35 towns expand while the eight essential areas retain compact dimensions (4.4917ms)
+✔ revision 12 saves recover blocked town positions and preserve valid positions and visits (28.0135ms)
+✔ every room has solid furniture with reachable investigation surfaces (7.94ms)
+✔ every exhibit is investigated through player facing and confirm, repeatedly without rewards (68.6076ms)
+✔ revision seven interior saves relocate only obstructed positions and preserve progress (75.6137ms)
+✔ facility dialogue fits the two-line DS dialogue box and landmark collections are distinct (3.7482ms)
+✔ guidance does not record a visit; actual door arrivals and public travel do, once (4.5259ms)
+✔ legacy tour saves attest only to the current place and current interior, retaining progress (0.439ms)
+✔ visit history survives file and slot round trips without leaking between saves (2.3566ms)
+✔ visit lists reject malformed or foreign IDs and normalize known interior parents (0.8177ms)
+✔ all map visits separate 43 original places, interiors and new passages without duplicates (139.0589ms)
+✔ doorway checkpoint records both the known source and normalized arrival without mutating input (0.4329ms)
+✖ six towns and five trails have distinct investigable arrangements while facility doors stay aligned (13.9197ms)
+✔ revision 10 plaza saves relocate only newly blocked positions and preserve visited interiors (4.7188ms)
+✔ wooden observation paths stay on reachable floor and revision 11 saves recover new scenery overlaps (11.2571ms)
+✔ all tour minimap markers match actual doors or NPCs, fit the map and have distinct touch areas (10.2933ms)
+✔ touching facilities guides without travel, while touching a person only identifies them (8.9324ms)
+✔ markers cannot change guidance through menus, dialogue, walking, transitions or stale map hits (8.9943ms)
+✔ every pair of tour destinations has a legal connected map route and a usable first exit path (1117.5428ms)
+✔ all interiors first guide outside and recognize a destination already being visited (51.4998ms)
+✔ following the displayed tile path walks from the starting town to another region without teleporting (17.1457ms)
+✔ guidance can change, recalculate and cancel without moving the player or altering the save (3.7266ms)
+✔ an obstructed exit reports no tile route instead of crossing blocked terrain (5.2175ms)
+✔ original outdoor maps and added passages expose solid signs for actual exterior exits (2.9772ms)
+✔ every outdoor object and sign is investigated by facing a reachable surface without rewards (72.4225ms)
+✔ interaction hints match facing and disappear during movement and menus (0.4819ms)
+✔ revision eight saves on new sign tiles relocate while other valid positions remain (36.6603ms)
+✔ 35 town Pokemon cover eight DS field species with four reachable conversation sides (1.5485ms)
+✔ all town Pokemon react from four directions repeatedly without changing ownership or progress (50.7255ms)
+✔ revision 13 saves recover Pokemon overlaps and preserve visits, elapsed time and valid adjacent positions (13.4076ms)
+✔ direction and idle frames stay inside downloaded DS sheets, including the four-frame Starly (130.7796ms)
+✔ 35 towns have 70 distinct local conversations with existing DS sprite assets and clear approaches (18.3262ms)
+✖ each resident can be faced and spoken to repeatedly without changing progress or granting rewards (8.4637ms)
+✔ revision 9 saves overlapping new residents move safely while visits and valid positions survive (27.1353ms)
+✔ facility routes avoid the newly occupied resident tiles (48.3263ms)
+✔ all 35 Pokemon roam connected clear tiles without overlapping doors, people or minimap hits (1289.2214ms)
+✔ moving Pokemon reserve both endpoints and release the previous tile on arrival (3.6077ms)
+✔ menus and dialogue pause roaming and nearby conversations remain available (2.19ms)
+✔ revision 15 and current saves on the former fixed anchor reload exactly and spawn the Pokemon beside the player (28.7395ms)
+✔ navigation recomputes around current Pokemon positions and reserved steps without moving the player (7.3243ms)
+✔ roaming state is isolated by engine and resets on map changes or file restoration (1.3414ms)
+✔ complete grove trees stay inside the blocked footprint except for the northern canopy (2.6197ms)
+✔ world renderer paints trees in front of northern actors and behind southern actors without changing progress (6.5435ms)
+✔ all 43 exterior places and four regions form one connected walking graph (1.7041ms)
+✔ every tour doorway and regional connection moves to a valid save and can be revisited (187.7004ms)
+✔ the western route and expanded Jubilife return preserve the adventure party (0.6388ms)
+✔ tour buildings and features have collision; every non-enterable house can be investigated (1.8121ms)
+✔ developer map jump preserves progress and cannot bypass dialogue, battle or movement (5.3851ms)
+✔ expanded map saves round trip as adventures; legacy test imports preserve current progress (2.5903ms)
+✔ every tour spawn reaches all entrances, guides and house investigation positions (146.4741ms)
+✔ tour guides repeat their map’s real exit directions and destinations (5.4736ms)
+✔ legacy exploration URL uses the same adventure storage namespace (0.8005ms)
+✔ all facility and floor destinations guide through real doors and stairs and arrive only inside (1450.4187ms)
+✔ another room in the same town requires leaving and reentering, preserving visits and no rewards (1288.0826ms)
+✔ facility guidance crosses regions, recalculates after fast travel and clears without changing saves (9.6605ms)
+✔ only existing tour destinations are accepted and new adventures retain the departure gate in facility guidance (0.5002ms)
+✔ field bag opens injured target and cancels to potion then bag menu without spending inventory or steps (3.7828ms)
+✔ bag healing agrees with preview, keeps target list and party order, and blocks double activation (1.7389ms)
+✔ full, fainted, invalid and exhausted targets stay on the same list without consuming medicine (1.651ms)
+✔ field balls explain battle use and empty party cannot enter target selection (0.4572ms)
+✖ field item handlers cannot bypass battle, dialogue, movement or transition locks (3.0137ms)
+✔ walking toward an NPC accepts one early confirm at the destination (5.282ms)
+✔ an early investigation runs once after the step, without skipping its first page (1.2422ms)
+✔ menu and map requests stop a held walk at the next tile (0.6925ms)
+✔ the first buffered action wins and is consumed only once (0.2322ms)
+✔ dialogue choice direction never becomes walking after confirm or OS repeat (1.884ms)
+✔ menu navigation cannot leak when returning to the field with confirm (0.3523ms)
+✔ door transition discards the queued action and keys pressed during the fade (2.5695ms)
+✔ a grass encounter consumes the queued confirm without advancing battle dialogue (9.052ms)
+✔ blur-style input clearing and save restore discard pending field actions (1.5721ms)
+✔ touch menu callbacks use the same buffer and ordinary held walking still works (1.0539ms)
+✔ blocked facing still allows immediate investigation without walking (0.4519ms)
+✔ departure needs a healthy partner and completed guidance; all starter orders unlock only once (7.438ms)
+✔ unlocked western threshold and route entrance work both ways, including transition checkpoints (1.5141ms)
+✔ safe road never encounters; six completed grass steps start battle and lock field movement (3.7422ms)
+✔ each partner wins the first battle; capture survives reload without changing gift flags (2.9408ms)
+✖ failed catches consume one ball and a turn; empty bag and full party cannot consume items (1.669ms)
+✖ support moves and potions change combat state with bounded effects (0.5828ms)
+✔ a fainted partner passes to the next healthy member; defeat recovers at home and persists (1.3582ms)
+✔ mid-battle saves preserve settled HP and items; restoration cancels old battle and dialogue (2.988ms)
+✔ guide and mother heal; guide replenishes only missing supplies without stacking rewards (0.5938ms)
+✔ legacy saves gain empty inventory; invalid inventory and gift combinations are rejected; test travel does not grant departure (0.8444ms)
+✔ growth carries residual XP, restores only gained HP and stops at level 25 (5.1864ms)
+✖ all four level 8 partners can defeat the complete gym team with two potions (3.734ms)
+✔ trainer capture is rejected without a turn; enemy change resets debuffs; retreat grants nothing (0.9305ms)
+✔ gym confirmation can cancel, accepts a healthy partner, and rejects no partner (2.67ms)
+✖ final knockout commits all rewards once before dialogue and survives reload/revisit (19.9839ms)
+✖ nurse sets a persistent recovery point; gym defeat recovers there without badge (1.6183ms)
+✔ reload during the second opponent keeps earned XP but cancels the challenge without rewards (1.3452ms)
+✔ revision 4 save migration preserves party, inventory and flags while supplying new fields (0.6034ms)
+✔ save validation rejects invalid growth, trainer-only ownership and inconsistent badges (1.5926ms)
+✔ western route, expanded cities and both center/gym entrances round trip (12.3834ms)
+✔ forest perimeter trees preserve every map and keep all exit tiles clear (13.4847ms)
+✔ live renderer puts southern perimeter trees in front of the player, keeps northern trees behind and preserves saves (3.7415ms)
+✔ all entrance destinations are valid and not an immediate return warp (3.116ms)
+✔ all town buildings, residents, and grass are reachable from home (3.5079ms)
+✔ small meadow is exactly 12 walkable tiles and has no event warp (0.2581ms)
+✔ western neighbor seals the sole exit, lake and building foundations are solid (1.5674ms)
+✔ old town saves migrate position while retaining party and researcher progress (3.6567ms)
+✔ new world saves retain their position and malformed data does not load (0.4219ms)
+✔ north/south frames match the inspected DS sprite order for walking and running (0.2439ms)
+✔ quick key taps commit one tile even when keyup precedes a rendered frame (2.8592ms)
+✔ dialogue prompt names the keyboard confirmation keys without conflicting with WASD movement (3.2095ms)
+✔ all three starters and Pikachu grant exactly once, survive save roundtrip (0.8854ms)
+✔ HP danger colors include exact half and fifth boundaries; living 1 HP remains visible and fainted HP is empty (1.5806ms)
+✖ victory bar follows level-local experience through level-up and validated save restoration (0.7403ms)
+✔ reaching the current growth cap displays a full distinct bar even though saved experience resets to zero (1.5723ms)
+✔ gym exit defaults to continuing and X restores the exact battle selection without cost (15.4501ms)
+✔ confirmed stop retains earned XP, HP, tools and money and the next challenge starts at opponent one (4.7235ms)
+✖ touch exit protects forced replacement and cancellation preserves the chosen healthy Pokemon (11.1ms)
+✔ repeated menu submissions and stale button callbacks cannot quit through the confirmation (2.1806ms)
+✖ wild escapes remain immediate and exit cannot interrupt an existing battle dialogue (1.6755ms)
+✔ reloading at exit confirmation restores committed progress without a pending choice or reward (1.3292ms)
+✔ preparation counts injured and available Pokemon without using fainted levels or changing a save (4.4711ms)
+✔ each gym explains the earliest missing badge, while levels and potion counts do not become gates (1.0893ms)
+✔ blocked challenges tell the actual unmet requirement and never offer a battle (1.8428ms)
+✔ cancel and touch preparation return preserve progression and dismiss the preview (2.4935ms)
+✖ preview draws the actual teams for every gym and confirms a low-level challenge with no upfront cost (3.2765ms)
+✔ restoring or replacing the dialogue clears the preview without granting rewards (1.1948ms)
+✖ four gym rewards appear after the final knockout and are awarded once before display (23.5566ms)
+✔ reward guidance follows the next gym, recovery and the existing fourth-badge objective (8.7631ms)
+✔ reward rendering shows earned resources, badge count and a working touch route button (1.9559ms)
+✔ X and touch continue close the scene while preserving rewards and party state (0.8514ms)
+✔ capped money is reported as the actual gain including zero, and existing badges give no duplicate reward (1.3094ms)
+✔ reloading before or during reward display preserves prizes and invalidates pending actions (1.3387ms)
+✖ wild victory, partial gym victory, defeat and exit never show a badge reward (0.5592ms)
+✖ a gym knockout offers exactly one free healthy replacement and resets next-opponent participation (5.4391ms)
+✔ invalid free replacements preserve the opportunity, items, HP and experience (1.0952ms)
+✔ single healthy Pokemon, wild victories and the last opponent do not offer an unnecessary switch (0.7015ms)
+✖ Engine waits for the announcement, supports cancel and continue, and does not replay a free switch (1.8723ms)
+✔ touch selection switches without damage and remembering moves survives between opponents (1.9965ms)
+✔ reload during the choice preserves earned XP and grants neither a badge nor a pending free action (1.0011ms)
+✔ Ilex marked roads lead only to real exits and the observation spur stays inside the forest (2.7006ms)
+✔ revision 20 Ilex floor saves relocate only tree overlaps without losing progress (28.0516ms)
+✔ Ilex retains original observation, signs and guide while each new grove is approachable (0.5005ms)
+✔ supply locations distinguish balls from potions throughout the active world and respect the departure gate (72.9174ms)
+✔ empty tools explain existing supply limits and default back without changing the save (3.0216ms)
+✔ choosing supply guidance exits the bag and reaches a real counter before any medicine is granted (3.1226ms)
+✔ X and touch back preserve the previous route while touch guidance selects the correct ball provider (3.0268ms)
+✔ manual destination changes and adventure tracking replace supply guidance without changing progress (1.88ms)
+✔ restore clears the supply target event and invalidates an old pending choice (5.0003ms)
+✖ stocked items retain their normal use and supply prompts cannot interrupt battles or other panels (2.6343ms)
+✔ shop prices match the authored item database and transactions are atomic (2.788ms)
+✔ PC storage preserves individual values and old starter ownership across save round trips (5.293ms)
+✔ PC rejects invalid indices, full storage and full parties without losing a Pokemon (0.9586ms)
+✔ shop and PC events require their real facility and pickups cannot be farmed (1.5061ms)
+✔ every same-region city edge has a real route, retaining forests and research transport (4.2439ms)
+✔ routes provide a clear main path, optional grass, accessible signs, traveller and pickup (25.3013ms)
+✔ all 35 towns have accessible shops and homes, without replacing gym entrances (94.9568ms)
+✔ visible high buildings have three distinct floors with safe reciprocal staircase landings (17.1504ms)
+✔ routes do not falsely mark either city arrived or visited, while upper rooms group under their city (1.2019ms)
+✔ shop labels use the existing DB potion price and all centers retain the PC event (1.2103ms)
+✔ every new background generates, stairs are painted, and pickup art respects the saved service flag (44.4061ms)
+✔ techniques stop at .7 seconds and reject invalid clocks without touching Canvas (4.2751ms)
+✔ all effects are deterministic integer pixels within the arena and restore caller state (28.07ms)
+✔ requested techniques have distinct geometry, not only a changed palette (0.7863ms)
+✔ attacks travel in both directions and finish at the specified sprite, defense surrounds its user (2.1931ms)
+✔ current named techniques are covered and unknown future moves get a safe impact (1.7665ms)
+✔ even a Canvas drawing error restores the caller context (0.6955ms)
+✔ objective continues inside a gym to a legal speaking tile without awarding progress (6.8394ms)
+✔ all expanded centers route to accessible nurse or counter interaction, not the blocked nurse tile (2.779ms)
+✔ center healing updates the followed objective from local interaction back to the next gym (3.097ms)
+✔ all existing progression objectives resolve to a reachable person including city story NPCs (4.3696ms)
+✔ missing or obstructed targets report blocked and manual city destinations retain arrival behavior (1.0532ms)
+✔ map renders local routes and direction guidance without requiring a warp, and restore preserves progress (3.6636ms)
+✔ the always-updated developer panel handles local walking routes without a warp (3.6445ms)
+✔ up/down compare every party member in order including fainted members, while left/right choose actions (4.7278ms)
+✖ touch previous/next changes both information and moves without changing progress (7.4829ms)
+✔ browsing keeps the action selection and medicine applies only to the inspected member (1.0334ms)
+✔ lead changes retain the inspected Pokemon and survive save restore after browsing (1.2776ms)
+✖ stale browsing callbacks cannot run through dialogue, battle, movement, transitions or another panel (1.2503ms)
+✔ empty and single-member summaries do not expose unusable browsing buttons (0.4574ms)
+✔ critical HP boundary and fainted reserves temporarily prioritize recovery without replacing story progress (3.7575ms)
+✔ recovery chooses existing local NPCs and follows real gym exits to a center (0.6504ms)
+✔ expanded port has its own working center even before the research ferry quest (1.341ms)
+✖ escaping with critical HP shows recovery and actual route-guide healing restores the original objective (5.0232ms)
+✔ saving a recovery state preserves badges and fainted HP; nursing restores both party and next badge guidance (2.185ms)
+✖ all four partners can win each new gym at the advertised level with two potions (4.9739ms)
+✖ gym order cannot be skipped and wins, reload and revisits do not duplicate rewards (3.4101ms)
+✔ all new recovery centers persist and recover a gym defeat to a valid tile (2.4622ms)
+✖ forest and mountain encounters scale, grant XP and preserve capture location (2.0045ms)
+✔ records require four badges and delivery completes once while world travel stays open (3.4349ms)
+✔ Veilstone guide stops directing a completed observation delivery (1.9293ms)
+✔ Sinnoh city guides do not direct the player to an already won gym (2.5957ms)
+✔ free ferry cancellation, outbound reload and return preserve party, supplies and funds (2.0092ms)
+✔ revision 5 capped partners and first badge migrate without losing valid progress (0.7925ms)
+✔ save rejects skipped badges, missing TM, unearned records and invalid story dependencies (0.8482ms)
+✔ every integrated story map warp executes with a legal arrival and checkpoint (26.5424ms)
+✔ mother recognizes every valid partner combination before and after reload without changing progress (6.5563ms)
+✔ every prop can be reached from the map entrance and investigated using normal movement (25.4093ms)
+✔ first meeting tells mother and adventure story before offering the starter (1.0411ms)
+✔ Pikachu received first gets the greedy joke and blocks every normal starter (0.453ms)
+✔ Pikachu after a starter is acknowledged without another starter grant (0.2725ms)
+✔ completed introduction is not repeated when reconsidering the starter (0.1792ms)
+✔ three save slots are independent and reset backup keeps the previous party (5.0785ms)
+✔ export/import roundtrip retains position, Pikachu and dialogue flags; raw saves also load (0.6236ms)
+✔ malformed and unsupported files do not become loadable (0.408ms)
+✔ saving during a door transition produces the arrival map, not a stuck door tile (0.2569ms)
+✔ restoring during movement or a menu clears pending state and cancels the old warp (1.1197ms)
+✖ manual switching costs one enemy attack and keeps target debuffs, party order and items (4.3399ms)
+✔ invalid, current and fainted switches spend no turn; a knocked out replacement falls back once (1.2745ms)
+✔ both healthy participants receive a share of victory experience after switching (0.9644ms)
+✔ lead selection preserves all Pokemon data through saves and the next encounter uses that lead (1.5735ms)
+✔ field potion heals at most 20, consumes exactly one, and does not revive or waste stock (0.4572ms)
+✔ battle menu cancellation spends no turn and summary actions cannot mutate during dialogue or battle (1.2652ms)
+✔ selected attack applies the current roster type matchup and matches its hint (3.8641ms)
+✔ wild capture dialogue and playback label use the actual opponent species (1.4751ms)
+✔ one world reaches every active map from the bedroom after departure (4.1078ms)
+✔ four expanded city gym doors have reachable approaches and reciprocal safe exits (14.4323ms)
+✔ all fourteen legacy city aliases migrate to safe expanded coordinates without losing progress (1.9431ms)
+✔ legacy exploration is merged once into main progress and its source storage stays intact (1.8503ms)
+✔ every expanded center heals the adventure party, supplies potions and becomes a safe return point (7.0027ms)
+✔ graphic test travel can save at every active map without granting adventure progress (12.2012ms)
+✔ Viridian Forest has two marked routes around its central grove and accessible signs and guide (2.3682ms)
+✔ revision 19 Viridian Forest saves preserve progress and repair only newly blocked trees (22.5222ms)
+✔ Viridian Forest retains existing observation and exit IDs with no encounter or story replacement (0.3512ms)
+ℹ tests 348
+ℹ suites 0
+ℹ pass 299
+ℹ fail 49
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4711.6195
+
+✖ failing tests:
+
+test at tests\battle-arena-art.test.ts:16:1
+✖ battle arena keeps the platform depth while adding a pixel horizon and drifting clouds (3.4568ms)
+  AssertionError [ERR_ASSERTION]: retains the platform shadow layer
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-arena-art.test.ts:20:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\battle-counter-order.test.ts:26:1
+✖ lethal counter keeps the outgoing Pokemon alive through the attack declaration, then shows exact loss before fainting (1.7479ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 0
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-counter-order.test.ts:30:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\battle-counter-order.test.ts:43:1
+✖ low-HP counter previews report at most the HP the selected Pokemon can lose (0.847ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '다음 공격 피해 8'
+  - '이번 반격 피해 1'
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-counter-order.test.ts:49:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '다음 공격 피해 8',
+    expected: '이번 반격 피해 1',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\battle-growth.test.ts:33:1
+✖ multiple levels and the cap have distinct detached steps and preserve the existing growth result (4.7417ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  5 !== 4
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-growth.test.ts:35:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 5,
+    expected: 4,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\battle-healing.test.ts:16:1
+✖ reserve healing consumes one potion while only the active Pokemon takes retaliation (20.4894ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  20 !== 16
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-healing.test.ts:20:43)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 20,
+    expected: 16,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\battle-hints.test.ts:12:1
+✖ move damage previews agree with resolved wild and gym turns across levels and debuffs (6.2985ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  20 !== 19
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-hints.test.ts:18:36)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 20,
+    expected: 19,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\battle-hints.test.ts:49:1
+✖ catch preview follows HP threshold and eligibility without consuming resources (0.9193ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /가득/. Input:
+  
+  '몬스터볼이 없습니다'
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-hints.test.ts:56:63)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '몬스터볼이 없습니다',
+    expected: /가득/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests\battle-move-types.test.ts:12:1
+✖ battle move menu shows the current move type in the unchanged touch buttons (19.3777ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(words.includes('울음소리'))
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\battle-move-types.test.ts:13:151)
+      at dom (C:\my_play\poketmon_demo\tests\battle-move-types.test.ts:9:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-move-types.test.ts:12:88)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\battle-presentation.test.ts:24:1
+✖ normal and free switches show outgoing then incoming Pokemon and only the normal switch takes a counter (2.4408ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  33 !== 28
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-presentation.test.ts:25:298)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 33,
+    expected: 28,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\battle-replacement.test.ts:14:1
+✖ wild and gym fainting lets the player choose among healthy reserves without another attack (26.9741ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(b.forcedSwitch)
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-replacement.test.ts:17:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\battle-replacement.test.ts:23:1
+✖ pending replacement blocks moves, items and invalid replacements but permits explicit escape (4.1093ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      b: {
+        active: 0,
+        betweenOpponents: false,
+        enemy: {
+          experience: 0,
+  +       hp: 16,
+  -       hp: 19,
+          level: 10,
+          maxHp: 22,
+          met: '체육관',
+          moves: [
+            '몸통박치기',
+  ...
+        enemyIndex: 0,
+  +     forcedSwitch: true,
+  -     forcedSwitch: false,
+        gymId: 'roark',
+        kind: 'gym',
+  +     menu: 'party',
+  -     menu: 'actions',
+        moveSelections: [
+          0,
+          0,
+          0
+        ],
+  ...
+            experience: 0,
+  +         hp: 16,
+  -         hp: 19,
+            level: 10,
+            maxHp: 22,
+            met: '체육관',
+            moves: [
+              '몸통박치기',
+  ...
+        result: false,
+  +     selected: 1,
+  +     turn: 2
+  -     selected: 0,
+  -     turn: 1
+      },
+      s: {
+        badges: [],
+        box: [],
+        flags: {
+  ...
+            experience: 0,
+  +         hp: 0,
+  -         hp: 1,
+            level: 5,
+            maxHp: 20,
+            met: '새잎마을 · 포켓몬 연구소',
+            moves: [
+              '몸통박치기',
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-replacement.test.ts:26:193)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { s: { version: 1, worldRevision: 23, map: 'route_s01', player: [Object], flags: [Object], party: [Array], box: [], pokedex: [Object], inventory: [Object], badges: [], keyItems: [], money: 0, healingPoint: 'home', steps: 0, seconds: 0 }, b: { kind: 'gym', gymId: 'roark', opponents: [Array], enemyIndex: 0, enemy: [Object], active: 0, participants: [Array], forcedSwitch: true, betweenOpponents: false, moveSelections: [Array], menu: 'party', selected: 1, enemyAttackDrop: 0, enemyDefenseDrop: 0, result: false, protectStreak: 0, turn: 2, playerRocks: true } },
+    expected: { s: { version: 1, worldRevision: 23, map: 'route_s01', player: [Object], flags: [Object], party: [Array], box: [], pokedex: [Object], inventory: [Object], badges: [], keyItems: [], money: 0, healingPoint: 'home', steps: 0, seconds: 0 }, b: { kind: 'gym', gymId: 'roark', opponents: [Array], enemyIndex: 0, enemy: [Object], active: 0, participants: [Array], forcedSwitch: false, betweenOpponents: false, moveSelections: [Array], menu: 'actions', selected: 0, enemyAttackDrop: 0, enemyDefenseDrop: 0, result: false, protectStreak: 0, turn: 1, playerRocks: true } },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\capture-motion.test.ts:13:1
+✖ successful and failed throws share the same initial scene without revealing the result (2.8426ms)
+  TypeError: Cannot read properties of null (reading 'result')
+      at battleTurn (C:\my_play\poketmon_demo\src\battle.ts:116:8)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\capture-motion.test.ts:14:41)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17)
+
+test at tests\capture-motion.test.ts:17:1
+✖ the ball follows an arc, hides the target on contact and comes to rest without modifying game data (0.6683ms)
+  TypeError: Cannot read properties of null (reading 'result')
+      at battleTurn (C:\my_play\poketmon_demo\src\battle.ts:116:8)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\capture-motion.test.ts:18:23)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+
+test at tests\capture-motion.test.ts:22:1
+✖ failed escape restores the enemy before counterattack and success opens the existing catch card (2.5463ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - true
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\capture-motion.test.ts:23:140)
+      at dom (C:\my_play\poketmon_demo\tests\capture-motion.test.ts:9:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\capture-motion.test.ts:22:108)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\capture-motion.test.ts:25:1
+✖ renderer draws the ball in flight and keeps the opponent hidden only during the throw page (0.9415ms)
+  TypeError: Cannot read properties of null (reading 'active')
+      at Renderer.battleTop (C:\my_play\poketmon_demo\src\renderer.ts:256:142)
+      at <anonymous> (C:\my_play\poketmon_demo\tests\capture-motion.test.ts:27:38)
+      at dom (C:\my_play\poketmon_demo\tests\capture-motion.test.ts:9:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\capture-motion.test.ts:25:103)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+
+test at tests\capture-motion.test.ts:29:1
+✖ fast forwarding and reload cannot replay a throw or grant another Pokemon (1.3467ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 2
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\capture-motion.test.ts:30:338)
+      at dom (C:\my_play\poketmon_demo\tests\capture-motion.test.ts:9:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\capture-motion.test.ts:29:86)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\catch-summary.test.ts:19:1
+✖ information opens the newly caught sixth Pokemon among duplicates and connects to healing and lead selection (1.6728ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  24 !== 18
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\catch-summary.test.ts:21:37)
+      at dom (C:\my_play\poketmon_demo\tests\catch-summary.test.ts:9:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\catch-summary.test.ts:19:121)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 24,
+    expected: 18,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\catch-summary.test.ts:28:1
+✖ failed capture, full party and trainer Pokemon do not show the success screen (0.8245ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  5 !== null
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\catch-summary.test.ts:29:285)
+      at dom (C:\my_play\poketmon_demo\tests\catch-summary.test.ts:9:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\catch-summary.test.ts:28:90)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 5,
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\catch-summary.test.ts:32:1
+✖ result rendering shows the caught stats without covering them with top-screen choices (5.4144ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(upper.includes('Lv.3'))
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\catch-summary.test.ts:34:183)
+      at dom (C:\my_play\poketmon_demo\tests\catch-summary.test.ts:9:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\catch-summary.test.ts:32:98)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\defeat-recovery.test.ts:14:1
+✖ defeat commits one safe recovery save while showing the last attack and fainting on the battlefield (8.0296ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'oreburgh_gym'
+  - 'tour_oreburgh_center'
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:15:184)
+      at dom (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:9:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:14:112)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'oreburgh_gym',
+    expected: 'tour_oreburgh_center',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\defeat-recovery.test.ts:19:1
+✖ home and center guidance preserve inventory and recovery handles all six party members (18.8735ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(g.recoveryPreview)
+  
+      at recover (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:11:76)
+      at <anonymous> (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:22:26)
+      at dom (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:9:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:19:99)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\defeat-recovery.test.ts:27:1
+✖ reload during defeat or recovery clears display state and does not replay rewards or recovery (2.998ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(g.recoveryPreview)
+  
+      at recover (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:11:76)
+      at <anonymous> (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:28:103)
+      at dom (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:9:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:27:106)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\defeat-recovery.test.ts:31:1
+✖ keyboard and touch cannot replay battle actions during defeat and recovery (2.5454ms)
+  AssertionError [ERR_ASSERTION]: movement resumes after recovery dialogue
+      at <anonymous> (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:34:218)
+      at dom (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:9:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:31:87)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\defeat-recovery.test.ts:37:1
+✖ renderer keeps the defeated battle until return, then shows six recovered Pokemon and actual potion stock (3.2852ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(g.recoveryPreview)
+  
+      at recover (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:11:76)
+      at <anonymous> (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:39:90)
+      at dom (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:9:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:37:118)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\defeat-recovery.test.ts:42:1
+✖ replacing dialogue clears defeat visuals and normal nurse interaction still replenishes stock (3.3296ms)
+  TypeError: Cannot read properties of null (reading 'kind')
+      at <anonymous> (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:44:120)
+      at dom (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:9:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\defeat-recovery.test.ts:42:106)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+
+test at tests\explore-layouts.test.ts:10:1
+✖ six towns and five trails have distinct investigable arrangements while facility doors stay aligned (13.9197ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   26,
+  +   10
+  -   25,
+  -   28
+    ]
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-layouts.test.ts:24:64)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 26, 10 ],
+    expected: [ 25, 28 ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-residents.test.ts:25:1
+✖ each resident can be faced and spoken to repeatedly without changing progress or granting rewards (8.4637ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      '카메라 앞에 서면 괜히 긴장돼요.\n오늘은 광장 풍경을 담고 싶네요.',
+  +   '광장을 찾는 동료들의 이야기를\n짧게 소개하는 건 어떨까요?',
+  +   '서로 다른 두 종을 동료로 맞고\n다시 이야기해 주세요.',
+  +   '파티와 박스의 친구를 함께 셀게요.\n사례: 200원과 몬스터볼 2개예요.'
+    ]
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-residents.test.ts:30:86)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '카메라 앞에 서면 괜히 긴장돼요.\n오늘은 광장 풍경을 담고 싶네요.', '광장을 찾는 동료들의 이야기를\n짧게 소개하는 건 어떨까요?', '서로 다른 두 종을 동료로 맞고\n다시 이야기해 주세요.', '파티와 박스의 친구를 함께 셀게요.\n사례: 200원과 몬스터볼 2개예요.' ],
+    expected: [ '카메라 앞에 서면 괜히 긴장돼요.\n오늘은 광장 풍경을 담고 싶네요.' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\field-bag.test.ts:59:1
+✖ field item handlers cannot bypass battle, dialogue, movement or transition locks (3.0137ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      badges: [],
+      box: [],
+      flags: {
+        departureCleared: true,
+  ...
+        pokeBalls: 0,
+  +     potions: 1
+  -     potions: 2
+      },
+      keyItems: [],
+      map: 'bedroom',
+      money: 0,
+      party: [
+        {
+          experience: 0,
+  +       hp: 20,
+  -       hp: 1,
+          level: 5,
+          maxHp: 20,
+          met: '새잎마을 · 포켓몬 연구소',
+          moves: [
+            '몸통박치기',
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\field-bag.test.ts:61:60)
+      at dom (C:\my_play\poketmon_demo\tests\field-bag.test.ts:12:7)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\field-bag.test.ts:59:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { version: 1, worldRevision: 23, map: 'bedroom', player: { x: 6, y: 6, facing: 'down' }, flags: { starterReceived: true, departureCleared: true }, party: [ [Object], [Object], [Object], [Object], [Object], [Object] ], box: [], pokedex: { seen: [Array], caught: [Array] }, inventory: { pokeBalls: 0, potions: 1 }, badges: [], keyItems: [], money: 0, healingPoint: 'home', steps: 0, seconds: 0 },
+    expected: { version: 1, worldRevision: 23, map: 'bedroom', player: { x: 6, y: 6, facing: 'down' }, flags: { starterReceived: true, departureCleared: true }, party: [ [Object], [Object], [Object], [Object], [Object], [Object] ], box: [], pokedex: { seen: [Array], caught: [Array] }, inventory: { pokeBalls: 0, potions: 2 }, badges: [], keyItems: [], money: 0, healingPoint: 'home', steps: 0, seconds: 0 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\first-adventure.test.ts:58:1
+✖ failed catches consume one ball and a turn; empty bag and full party cannot consume items (1.669ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  4 !== 5
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\first-adventure.test.ts:61:138)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 4,
+    expected: 5,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\first-adventure.test.ts:64:1
+✖ support moves and potions change combat state with bounded effects (0.5828ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\first-adventure.test.ts:68:82)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\first-badge.test.ts:21:1
+✖ all four level 8 partners can defeat the complete gym team with two potions (3.734ms)
+  AssertionError [ERR_ASSERTION]: 1
+  
+  'lost' !== 'won'
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\first-badge.test.ts:24:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'lost',
+    expected: 'won',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\first-badge.test.ts:37:1
+✖ final knockout commits all rewards once before dialogue and survives reload/revisit (19.9839ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(g.dialogue)
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\first-badge.test.ts:40:3)
+      at ui (C:\my_play\poketmon_demo\tests\first-badge.test.ts:13:193)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\first-badge.test.ts:37:96)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\first-badge.test.ts:43:1
+✖ nurse sets a persistent recovery point; gym defeat recovers there without badge (1.6183ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'oreburgh_gym'
+  - 'tour_jubilife_center'
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\first-badge.test.ts:45:143)
+      at ui (C:\my_play\poketmon_demo\tests\first-badge.test.ts:13:193)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\first-badge.test.ts:43:92)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'oreburgh_gym',
+    expected: 'tour_jubilife_center',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\growth-feedback.test.ts:28:1
+✖ victory bar follows level-local experience through level-up and validated save restoration (0.7403ms)
+  TypeError: Cannot read properties of null (reading 'enemy')
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\growth-feedback.test.ts:32:42)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3)
+
+test at tests\gym-exit.test.ts:25:1
+✖ touch exit protects forced replacement and cancellation preserves the chosen healthy Pokemon (11.1ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(b.forcedSwitch)
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\gym-exit.test.ts:26:219)
+      at dom (C:\my_play\poketmon_demo\tests\gym-exit.test.ts:9:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\gym-exit.test.ts:25:105)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\gym-exit.test.ts:35:1
+✖ wild escapes remain immediate and exit cannot interrupt an existing battle dialogue (1.6755ms)
+  TypeError: Cannot set properties of null (setting 'selected')
+      at <anonymous> (C:\my_play\poketmon_demo\tests\gym-exit.test.ts:36:58)
+      at dom (C:\my_play\poketmon_demo\tests\gym-exit.test.ts:9:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\gym-exit.test.ts:35:96)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+
+test at tests\gym-preparation.test.ts:40:1
+✖ preview draws the actual teams for every gym and confirms a low-level challenge with no upfront cost (3.2765ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      badges: [],
+      box: [],
+      flags: {
+        departureCleared: true,
+  ...
+          7,
+  +       74
+        ]
+      },
+      seconds: 0,
+      steps: 0,
+      version: 1,
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\gym-preparation.test.ts:45:159)
+      at dom (C:\my_play\poketmon_demo\tests\gym-preparation.test.ts:10:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\gym-preparation.test.ts:40:113)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { version: 1, worldRevision: 23, map: 'bedroom', player: { x: 6, y: 6, facing: 'down' }, flags: { starterReceived: true, departureCleared: true }, party: [ [Object] ], box: [], pokedex: { seen: [Array], caught: [Array] }, inventory: { pokeBalls: 0, potions: 2 }, badges: [], keyItems: [], money: 0, healingPoint: 'home', steps: 0, seconds: 0 },
+    expected: { version: 1, worldRevision: 23, map: 'bedroom', player: { x: 6, y: 6, facing: 'down' }, flags: { starterReceived: true, departureCleared: true }, party: [ [Object] ], box: [], pokedex: { seen: [Array], caught: [Array] }, inventory: { pokeBalls: 0, potions: 2 }, badges: [], keyItems: [], money: 0, healingPoint: 'home', steps: 0, seconds: 0 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\gym-reward.test.ts:20:1
+✖ four gym rewards appear after the final knockout and are awarded once before display (23.5566ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 2280
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\gym-reward.test.ts:22:183)
+      at dom (C:\my_play\poketmon_demo\tests\gym-reward.test.ts:11:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\gym-reward.test.ts:20:97)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 2280,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\gym-reward.test.ts:51:1
+✖ wild victory, partial gym victory, defeat and exit never show a badge reward (0.5592ms)
+  TypeError: Cannot read properties of null (reading 'enemy')
+      at <anonymous> (C:\my_play\poketmon_demo\tests\gym-reward.test.ts:52:281)
+      at dom (C:\my_play\poketmon_demo\tests\gym-reward.test.ts:11:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\gym-reward.test.ts:51:89)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+
+test at tests\gym-switch.test.ts:17:1
+✖ a gym knockout offers exactly one free healthy replacement and resets next-opponent participation (5.4391ms)
+  AssertionError [ERR_ASSERTION]: switching after Growl during combat still costs a counterattack
+  
+  9 !== 25
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\gym-switch.test.ts:21:112)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 9,
+    expected: 25,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\gym-switch.test.ts:34:1
+✖ Engine waits for the announcement, supports cancel and continue, and does not replay a free switch (1.8723ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  33 !== 28
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\gym-switch.test.ts:36:34)
+      at dom (C:\my_play\poketmon_demo\tests\gym-switch.test.ts:13:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\gym-switch.test.ts:34:111)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 33,
+    expected: 28,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\item-supply.test.ts:37:1
+✖ stocked items retain their normal use and supply prompts cannot interrupt battles or other panels (2.6343ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + {
+  +   after: undefined,
+  +   choices: [
+  +     {
+  +       action: [Function: action],
+  +       label: '보충 장소 안내'
+  +     },
+  +     {
+  +       action: [Function: action],
+  +       label: '가방으로 돌아가기'
+  +     }
+  +   ],
+  +   page: 0,
+  +   pages: [
+  +     '상처약이 없어요.\n보충: 무쇠시티 · 포켓몬센터',
+  +     '상처약 2개까지 무료로 채워 줘요.\n보충 장소까지 길을 안내할까요?'
+  +   ],
+  +   selected: 1,
+  +   shown: 0,
+  +   speaker: '상처약'
+  + }
+  - null
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\item-supply.test.ts:38:345)
+      at dom (C:\my_play\poketmon_demo\tests\item-supply.test.ts:12:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\item-supply.test.ts:37:110)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [Object],
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\party-summary-navigation.test.ts:21:1
+✖ touch previous/next changes both information and moves without changing progress (7.4829ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(words.includes('울음소리'))
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\party-summary-navigation.test.ts:23:122)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\party-summary-navigation.test.ts:39:1
+✖ stale browsing callbacks cannot run through dialogue, battle, movement, transitions or another panel (1.2503ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\party-summary-navigation.test.ts:40:382)
+      at dom (C:\my_play\poketmon_demo\tests\party-summary-navigation.test.ts:9:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\party-summary-navigation.test.ts:39:113)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\recovery-guide.test.ts:35:1
+✖ escaping with critical HP shows recovery and actual route-guide healing restores the original objective (5.0232ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  3 !== 4
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\recovery-guide.test.ts:37:100)
+      at dom (C:\my_play\poketmon_demo\tests\recovery-guide.test.ts:11:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\recovery-guide.test.ts:35:116)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 4,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\sinnoh-front.test.ts:18:1
+✖ all four partners can win each new gym at the advertised level with two potions (4.9739ms)
+  AssertionError [ERR_ASSERTION]: 1 gardenia
+  
+  'lost' !== 'won'
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\sinnoh-front.test.ts:22:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'lost',
+    expected: 'won',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\sinnoh-front.test.ts:25:1
+✖ gym order cannot be skipped and wins, reload and revisits do not duplicate rewards (3.4101ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 2
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\sinnoh-front.test.ts:30:12)
+      at ui (C:\my_play\poketmon_demo\tests\sinnoh-front.test.ts:15:193)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\sinnoh-front.test.ts:25:95)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\sinnoh-front.test.ts:36:1
+✖ forest and mountain encounters scale, grant XP and preserve capture location (2.0045ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  13 !== 7
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\sinnoh-front.test.ts:37:248)
+      at ui (C:\my_play\poketmon_demo\tests\sinnoh-front.test.ts:15:193)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\sinnoh-front.test.ts:36:89)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 13,
+    expected: 7,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\team.test.ts:12:1
+✖ manual switching costs one enemy attack and keeps target debuffs, party order and items (4.3399ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  18 !== 14
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\team.test.ts:15:84)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 18,
+    expected: 14,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

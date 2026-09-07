@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {Engine} from '../src/engine';
 import {Renderer} from '../src/renderer';
-import {createBattle} from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
 import {newSave,parseSave} from '../src/save';
 import {grantPokemon} from '../src/pokemon';
 
@@ -23,7 +23,7 @@ test('confirmed stop retains earned XP, HP, tools and money and the next challen
 }));
 
 test('touch exit protects forced replacement and cancellation preserves the chosen healthy Pokemon',()=>dom(()=>{
-  const g=game();g.save.party[0].hp=1;g.save.party.push({...g.save.party[0],species:399,level:3,hp:18,maxHp:18},{...g.save.party[0],species:399,level:3,hp:18,maxHp:18});g.actBattle('move1');finish(g);const b=g.battle!;assert(b.forcedSwitch);b.selected=2;const before=structuredClone({save:g.save,battle:b}),r=renderer(g);
+  const g=game();g.battle!.turn=1;g.save.party[0].hp=1;g.save.party.push({...g.save.party[0],species:399,level:3,hp:18,maxHp:18},{...g.save.party[0],species:399,level:3,hp:18,maxHp:18});g.actBattle('move1');finish(g);const b=g.battle!;assert(b.forcedSwitch);b.selected=2;const before=structuredClone({save:g.save,battle:b}),r=renderer(g);
   r.lower();r.click(128,179);assert(g.dialogue);choices(g);r.lower();r.click(128,164);assert.deepEqual({save:g.save,battle:b},before);assert.equal(g.dialogue,null);
   r.lower();r.click(128,179);choices(g);r.lower();r.click(128,135);assert(b.result);finish(g);assert.equal(g.battle,null);assert.deepEqual(g.save,before.save);
 }));

@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "worldRevision": 23,
+  "map": "tour_celadon_home2",
+  "player": {
+    "x": 8,
+    "y": 10,
+    "facing": "up"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 4,
+      "level": 5,
+      "experience": 0,
+      "hp": 1,
+      "maxHp": 19,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "할퀴기",
+        "울음소리"
+      ]
+    }
+  ],
+  "box": [],
+  "pokedex": {
+    "seen": [
+      4
+    ],
+    "caught": [
+      4
+    ]
+  },
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 0
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 0,
+  "seconds": 0
+}

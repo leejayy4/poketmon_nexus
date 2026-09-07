@@ -3,6 +3,8 @@ import { paintTourFacade,paintTourHouse,paintTourGround,paintTourPaths } from '.
 import { paintTourInterior } from './explore-interior-art';
 import { paintTourCenter } from './explore-center-art';
 import { paintGroveGround } from './explore-tree-art';
+import { PASSAGES,MART_ROOMS } from './journey-world';
+import { paintJourneyPassage,paintJourneyInterior,paintJourneyMart } from './journey-art';
 import { FOREST_BORDER_MAPS,paintForestBorderGround } from './forest-border-art';
 import { TOUR_LAYOUTS } from './explore-layouts';
 import { PLACES,TOUR_PLANS,TOUR_MAPS,TOUR_OUTDOORS,TOUR_INTERIORS,TOUR_BUILDINGS,TOUR_FEATURES,SHORT_TOURS,tourPlaceForMap,type Place,type TourBuilding } from './explore-world';
@@ -25,7 +27,35 @@ function paintCoronetRock(c:CanvasRenderingContext2D,x:number,y:number,w:number,
   for(let j=22;j<h-5;j+=7){rect(c,x+w-12,y+j,6,2,'#647973');rect(c,x+8,y+j+1,3,1,'#c0c2a3');}
   rect(c,x+Math.floor(w/2),y+12,2,5,'#78867b');rect(c,x+Math.floor(w/2)-3,y+17,4,2,'#78867b');
 }
+export function paintDesertRuinsRock(c:CanvasRenderingContext2D,x:number,y:number,w:number,h:number){
+  rect(c,x,y,w,h,'#8a6b46');
+  const face=(points:number[][],color:string)=>{c.fillStyle=color;c.beginPath();points.forEach(([a,b],i)=>i?c.lineTo(x+a,y+b):c.moveTo(x+a,y+b));c.closePath();c.fill()};
+  face([[0,h-6],[2,h-6],[2,10],[6,10],[6,5],[10,5],[10,2],[w-10,2],[w-10,5],[w-5,5],[w-5,10],[w-2,10],[w-2,16],[w,16],[w,h-4],[w-6,h-4],[w-6,h-2],[4,h-2],[4,h-4],[0,h-4]],'#6e5233');
+  face([[4,10],[10,5],[w-10,5],[w-6,9],[w-3,15],[w-8,17],[w-12,13],[11,15]],'#e5d3a8');
+  face([[3,13],[10,16],[w-11,15],[w-7,19],[w-3,18],[w-5,h-5],[w-10,h-3],[5,h-5]],'#c8ad7f');
+  rect(c,x+8,y+6,Math.max(4,w-16),2,'#f4e7c5');
+  for(let j=16;j<h-4;j+=6){
+    rect(c,x+4,y+j,Math.max(4,w-8),1,'#7e5f3c');
+    rect(c,x+6,y+j+1,Math.max(4,w-12),1,'#dfcda2');
+  }
+  const mid=Math.floor(w/2);
+  rect(c,x+mid-2,y+8,4,Math.max(2,h-16),'#a08259');
+  rect(c,x+mid-1,y+8,2,Math.max(2,h-16),'#745634');
+}
+// A compact, stepped plaza fountain: richer than a flat oval while staying in
+// the same 16px DS field grid as the surrounding Jubilife street tiles.
+export function paintJubilifeFountain(c:CanvasRenderingContext2D,x:number,y:number,w:number,h:number){
+  const fill=(dx:number,dy:number,dw:number,dh:number,color:string)=>rect(c,x+dx,y+dy,dw,dh,color);
+  fill(4,0,w-8,h,'#52696b');fill(1,4,w-2,h-8,'#6f8580');fill(0,8,w,h-16,'#52696b');
+  fill(6,3,w-12,h-6,'#d6d7bf');fill(3,7,w-6,h-14,'#d6d7bf');
+  fill(8,6,w-16,h-12,'#5a9fba');fill(5,10,w-10,h-20,'#5a9fba');
+  fill(10,8,w-20,2,'#b9e4e1');fill(8,h-10,w-16,2,'#407f9d');
+  fill(w/2-7,10,14,h-20,'#778f86');fill(w/2-5,8,10,h-19,'#d2d8be');
+  fill(w/2-9,6,18,4,'#f0eed5');fill(w/2-2,1,4,8,'#e8f3df');fill(w/2-1,0,2,5,'#bce8e0');
+  fill(7,h-8,4,2,'#d9f0dd');fill(w-11,h-8,4,2,'#d9f0dd');
+}
 export function paintTourBuilding(c:CanvasRenderingContext2D,images:Images,p:Place,b:TourBuilding){
+  if(b.kind==='house'&&b.room&&MART_ROOMS.has(b.room)){paintJourneyMart(c,images,b);return}
   if(p.id==='tour_jubilife'&&b.kind!=='center'){paintJubilifeBuilding(c,images,b);return}
   if(['urban','waterfront'].includes(TOUR_PLANS[p.id]?.style)){
     if(b.kind==='landmark'){paintCityHall(c,images,b);return}
@@ -43,7 +73,8 @@ export function paintTourSign(c:CanvasRenderingContext2D,images:Images,point:{x:
 }
 export function buildExploreArt(images:Images,id:string){
   const map=TOUR_MAPS[id as keyof typeof TOUR_MAPS],p=tourPlaceForMap(id)!;const canvas=document.createElement('canvas');canvas.width=map.width*16;canvas.height=map.height*16;const c=canvas.getContext('2d')!;c.imageSmoothingEnabled=false;
-  if(TOUR_INTERIORS[id]){if(TOUR_INTERIORS[id].style==='center')paintTourCenter(c,images);else paintTourInterior(c,images,TOUR_INTERIORS[id]);return canvas;}
+  if(PASSAGES[id]){paintJourneyPassage(c,images,map);return canvas;}
+  if(TOUR_INTERIORS[id]){if(TOUR_INTERIORS[id].style==='center')paintTourCenter(c,images);else paintTourInterior(c,images,TOUR_INTERIORS[id]);paintJourneyInterior(c,images,map,TOUR_INTERIORS[id]);return canvas;}
   const short=SHORT_TOURS.has(p.id),cx=short?10:14,cy=short?9:12;
   const tiles=images['town-reference'];
   for(let y=0;y<map.height;y++)for(let x=0;x<map.width;x++){
@@ -64,7 +95,9 @@ export function buildExploreArt(images:Images,id:string){
   }
   for(const f of TOUR_FEATURES[p.id]){
     const x=f.x*16,y=f.y*16,w=f.w*16,h=f.h*16;
-    if(f.kind==='fountain'){
+    if(f.kind==='fountain'&&p.id==='tour_jubilife'){
+      paintJubilifeFountain(c,x,y,w,h);
+    }else if(f.kind==='fountain'){
       const basin=(inset:number,color:string)=>{c.fillStyle=color;c.beginPath();[[8,inset],[w-8,inset],[w-inset,7],[w-inset,h-7],[w-8,h-inset],[8,h-inset],[inset,h-7],[inset,7]].forEach(([a,b],i)=>i?c.lineTo(x+a,y+b):c.moveTo(x+a,y+b));c.closePath();c.fill()};
       basin(0,'#657e83');basin(2,'#d5d7c1');basin(5,p.theme==='snow'?'#d5e9e6':'#70b9d7');
       rect(c,x+10,y+h-7,w-20,1,'#aedce2');rect(c,x+8,y+8,w-16,1,'#548fa9');
@@ -91,6 +124,7 @@ export function buildExploreArt(images:Images,id:string){
     }
     if(f.kind==='rocks'){
       if(p.id==='tour_coronet')paintCoronetRock(c,x,y,w,h);
+      else if(p.id==='tour_desert')paintDesertRuinsRock(c,x,y,w,h);
       else{rect(c,x,y,w,h,p.theme==='desert'?'#ae9271':'#7e898b');for(let j=0;j<2;j++)for(let i=0;i<2;i++)rock(c,x+4+i*w/2,y+6+j*(h-20)/2,w/2-8,(h-20)/2-5);if(p.theme==='mine'){rect(c,x+4,y+h-12,w-8,2,'#dfd4b5');rect(c,x+4,y+h-4,w-8,2,'#515d69');for(let i=8;i<w-5;i+=10)rect(c,x+i,y+h-13,3,13,'#b0946a')}}
     }
     if(f.kind==='rail'){
@@ -104,6 +138,6 @@ export function buildExploreArt(images:Images,id:string){
     if(f.kind==='runway'){rect(c,x,y,w,h,'#748388');rect(c,x+3,y+3,w-6,h-6,'#879397');for(let i=0;i<5;i++)rect(c,x+13+i*12,y+h/2,7,3,'#ece8ca');rect(c,x+28,y+12,26,5,'#dde4da');rect(c,x+39,y+4,4,28,'#dae2d8')}
   }
   if(p.theme==='port'||p.theme==='coast'){const bx=50,by=canvas.height-30;rect(c,bx,by,78,16,'#f0ecd7');rect(c,bx+5,by+14,66,5,'#8b7259');rect(c,bx+18,by-8,37,12,'#f0e6c7');rect(c,bx+23,by-5,10,5,'#709bad');rect(c,bx+39,by-5,10,5,'#709bad');rect(c,bx+7,by+2,5,6,'#bc8d65');}
-  if(short){for(const[x,y]of [[4,5],[14,12]])if(p.id==='tour_coronet')paintCoronetRock(c,x*16,y*16,32,32);else if(p.theme==='cave'||p.theme==='desert')rock(c,x*16,y*16,22,19);}
+  if(short){for(const[x,y]of [[4,5],[14,12]])if(p.id==='tour_coronet')paintCoronetRock(c,x*16,y*16,32,32);else if(p.id==='tour_desert')paintDesertRuinsRock(c,x*16,y*16,32,32);else if(p.theme==='cave')rock(c,x*16,y*16,22,19);}
   return canvas;
 }

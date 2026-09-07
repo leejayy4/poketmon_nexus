@@ -2,7 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Engine } from '../src/engine';
 import { Renderer } from '../src/renderer';
-import { TOUR_MAPS } from '../src/explore-world';
+import { TOUR_MAPS,TOUR_BUILDINGS } from '../src/explore-world';
+import { FLOOR_INFO } from '../src/journey-world';
 import { tourMapMarkers,tourMarkerBounds } from '../src/explore-minimap';
 
 function setup(){
@@ -23,7 +24,9 @@ test('all tour minimap markers match actual doors or NPCs, fit the map and have 
       for(const other of markers.filter(n=>n!==m)){const b=tourMarkerBounds(map,other);assert(box.x+box.w<=b.x||b.x+b.w<=box.x||box.y+box.h<=b.y||b.y+b.h<=box.y,map.id+' overlapping marker '+m.id)}
     }
   }
-  assert.equal(facilities,76);assert.equal(people,189);assert.equal(pokemon,35);
+  const buildingDoors=Object.values(TOUR_BUILDINGS).flat().filter(b=>b.room).length;
+  const stairs=Object.values(TOUR_MAPS).reduce((n,m)=>n+m.warps.filter(w=>FLOOR_INFO[m.id]&&FLOOR_INFO[w.to]).length,0);
+  assert.equal(facilities,buildingDoors+stairs);assert.equal(people,Object.values(TOUR_MAPS).reduce((n,m)=>n+m.npcs.filter(p=>p.id!=='tourPokemon').length,0));assert.equal(pokemon,35);
 });
 
 test('touching facilities guides without travel, while touching a person only identifies them',()=>{

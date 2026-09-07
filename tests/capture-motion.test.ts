@@ -2,7 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {Engine} from '../src/engine';
 import {Renderer} from '../src/renderer';
-import {battleTurn,createBattle} from '../src/battle';
+import {battleTurn} from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
 import {captureMotion} from '../src/battle-effect';
 import {newSave,parseSave} from '../src/save';
 import {grantPokemon} from '../src/pokemon';
@@ -29,6 +30,6 @@ test('renderer draws the ball in flight and keeps the opponent hidden only durin
 test('fast forwarding and reload cannot replay a throw or grant another Pokemon',()=>dom(()=>{
   for(const mode of ['skip','reload','replace']){const g=game();g.random=()=>0;g.actBattle('ball');const saved=parseSave(JSON.stringify(g.save))!;assert(saved);if(mode==='reload')g.restore(saved);else if(mode==='replace')g.say('안내',['다른 대화']);else {for(let i=0;i<20&&g.dialogue;i++)g.confirm();}assert.equal(g.captureMotion,null);assert.equal(g.save.party.length,2);assert.equal(g.save.inventory.pokeBalls,2);assert.deepEqual(g.save.party,saved.party);assert(!('captureMotion'in saved));}
 }));
-test('empty balls, full party and gym capture rejection never animate or consume a ball',()=>dom(()=>{
-  for(const mode of ['empty','full','gym']){const g=game();if(mode==='empty')g.save.inventory.pokeBalls=0;if(mode==='full')while(g.save.party.length<6)g.save.party.push({...g.save.party[0]});if(mode==='gym')g.battle=createBattle(g.save,'gym');const before=structuredClone(g.save);g.actBattle('ball');assert.equal(g.captureMotion,null);assert.equal(g.battleFrames,null);assert.deepEqual(g.save,before);}
+test('empty balls, full party and box and gym capture rejection never animate or consume a ball',()=>dom(()=>{
+  for(const mode of ['empty','full','gym']){const g=game();if(mode==='empty')g.save.inventory.pokeBalls=0;if(mode==='full')while(g.save.party.length<6)g.save.party.push({...g.save.party[0]});if(mode==='full')g.save.box=Array.from({length:60},()=>({...g.battle!.enemy}));if(mode==='gym')g.battle=createBattle(g.save,'gym');const before=structuredClone(g.save);g.actBattle('ball');assert.equal(g.captureMotion,null);assert.equal(g.battleFrames,null);assert.deepEqual(g.save,before);}
 }));

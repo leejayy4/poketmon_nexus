@@ -2,17 +2,17 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {Engine} from '../src/engine';
 import {Renderer} from '../src/renderer';
-import {createBattle} from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
 import {GYMS,type GymId} from '../src/gyms';
 import {adventureGuide} from '../src/adventure-guide';
 import {newSave,parseSave} from '../src/save';
-import {grantPokemon} from '../src/pokemon';
+import {grantPokemon,teachMove} from '../src/pokemon';
 
 function dom(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}}
 function game(id:GymId='roark'){
   const g=new Engine();g.save=newSave();grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.map='oreburgh_gym';g.save.player={x:8,y:5,facing:'up'};
   for(const gym of GYMS){if(gym.id===id)break;g.save.badges.push(gym.badge);g.save.keyItems.push(gym.tm);}
-  g.battle=createBattle(g.save,'gym',id);g.battle!.enemyIndex=2;g.battle!.enemy=g.battle!.opponents[2];g.battle!.enemy.hp=1;return g;
+  if(id==='fantina'){g.save.party[0].level=16;g.save.party[0].hp=g.save.party[0].maxHp=53;teachMove(g.save,0,'물기',0);}g.battle=createBattle(g.save,'gym',id);g.battle!.enemyIndex=2;g.battle!.enemy=g.battle!.opponents[2];g.battle!.enemy.hp=1;return g;
 }
 function choices(g:Engine){for(let i=0;i<50;i++){const d=g.dialogue!;if(d.page===d.pages.length-1&&d.shown>=d.pages[d.page].length)return;g.confirm()}assert.fail('no choice')}
 function renderer(g:Engine,upper:string[]=[],lower:string[]=[]){const ctx=(out:string[])=>new Proxy({}, {get:(_,key)=>key==='fillText'?(text:string)=>out.push(text):()=>{}}) as CanvasRenderingContext2D;return new Renderer(g,{getContext:()=>ctx(upper)} as HTMLCanvasElement,{getContext:()=>ctx(lower)} as HTMLCanvasElement)}
@@ -20,14 +20,14 @@ function renderer(g:Engine,upper:string[]=[],lower:string[]=[]){const ctx=(out:s
 test('four gym rewards appear after the final knockout and are awarded once before display',()=>dom(()=>{
   for(const [i,gym] of GYMS.entries()){
     const g=game(gym.id),before=g.save.money;let saves=0;g.persist=()=>{saves++;return true};g.actBattle('move0');assert.equal(saves,1);assert.equal(g.showingGymReward,false);assert.equal(g.save.money,before+gym.team[2][1]*120);assert.equal(g.save.badges.length,i+1);assert.equal(g.save.keyItems.filter(x=>x===gym.tm).length,1);
-    const awarded=structuredClone(g.save);g.actBattle('move0');while(g.dialogue!.page<g.gymReward!.page)g.confirm();assert(g.showingGymReward);choices(g);assert.equal(g.dialogue!.selected,1);g.confirm();assert.equal(g.battle,null);assert.equal(g.gymReward,null);assert.equal(g.fieldMap,false);assert.deepEqual(g.save,awarded);assert.equal(saves,1);
+    const awarded=structuredClone(g.save);g.actBattle('move0');while(g.dialogue!.page<g.gymReward!.page)g.confirm();assert(g.showingGymReward);choices(g);assert.equal(g.dialogue!.choices![g.dialogue!.selected].label,'계속 모험하기');g.confirm();assert.equal(g.battle,null);assert.equal(g.gymReward,null);assert.equal(g.fieldMap,false);assert.deepEqual(g.save,awarded);assert.equal(saves,1);
   }
 }));
 
 test('reward guidance follows the next gym, recovery and the existing fourth-badge objective',()=>dom(()=>{
   for(const variant of ['next','recover','fourth']){
     const g=game(variant==='fourth'?'maylene':'roark');if(variant==='recover')g.save.party.push({...g.save.party[0],hp:0});
-    g.actBattle('move0');choices(g);const before=structuredClone(g.save);g.navigate('up');g.confirm();assert.equal(g.battle,null);assert(g.fieldMap);assert(g.followingObjective);assert.equal(adventureGuide(g.save)?.objective.id,variant==='next'?'gardenia':variant==='recover'?'recover':'observation');assert(g.tourNavigation);assert.deepEqual(g.save,before);
+    g.actBattle('move0');choices(g);const before=structuredClone(g.save);while(g.dialogue!.choices![g.dialogue!.selected].label!=='목표 안내')g.navigate('up');g.confirm();assert.equal(g.battle,null);assert(g.fieldMap);assert(g.followingObjective);assert.equal(adventureGuide(g.save)?.objective.id,variant==='next'?'gardenia':variant==='recover'?'recover':'observation');assert(g.tourNavigation);assert.deepEqual(g.save,before);
   }
 }));
 

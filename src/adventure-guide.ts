@@ -7,7 +7,7 @@ export interface AdventureObjective {id:string;title:string;map:MapId;action:str
 
 export function itemSupply(save:SaveData,item:keyof SaveData['inventory']):AdventureObjective|null{
   const queue:MapId[]=[worldMapId(save.map)],seen=new Set<MapId>(queue);
-  const events=item==='pokeBalls'?['routeGuide']:['nurse','routeGuide','trailGuide'];
+  const events=save.badges.length?['martClerk']:item==='pokeBalls'?['routeGuide']:['nurse','routeGuide','trailGuide'];
   for(let i=0;i<queue.length;i++){
     const map=getMap(queue[i],save.flags),provider=map.npcs.find(n=>events.includes(n.dialogue));
     if(provider)return {id:'supply',map:map.id,event:provider.dialogue,title:map.name,action:provider.name+'에게 말을 걸자'};

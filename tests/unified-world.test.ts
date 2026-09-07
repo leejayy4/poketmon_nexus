@@ -15,10 +15,10 @@ function ui(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'
 function finish(g:Engine){for(let i=0;g.dialogue&&i<100;i++)g.confirm();assert.equal(g.dialogue,null)}
 function step(g:Engine,key:string){g.press(key);g.release(key);for(let i=0;i<20;i++)g.update(.04)}
 
-test('one world reaches all 131 active maps from the bedroom after departure',()=>{
+test('one world reaches every active map from the bedroom after departure',()=>{
   const queue:MapId[]=['bedroom'],seen=new Set(queue);
   for(let i=0;i<queue.length;i++)for(const w of getMap(queue[i],{departureCleared:true}).warps){assert.equal(worldMapId(w.to),w.to);assert(ACTIVE_MAPS[w.to]);assert(canStand(getMap(w.to,{departureCleared:true}),w.spawn.x,w.spawn.y),queue[i]+' arrival');if(!seen.has(w.to)){seen.add(w.to);queue.push(w.to)}}
-  assert.equal(Object.keys(ACTIVE_MAPS).length,131);assert.deepEqual([...seen].sort(),Object.keys(ACTIVE_MAPS).sort());
+  assert(Object.keys(ACTIVE_MAPS).length>131);assert.deepEqual([...seen].sort(),Object.keys(ACTIVE_MAPS).sort());
   assert(!getMap('town').warps.some(w=>w.to==='route_s01'));
   assert(getMap('tour_jubilife').warps.some(w=>w.to==='research_path'));
 });

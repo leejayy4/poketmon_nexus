@@ -1,0 +1,1913 @@
+{
+  "referenceCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
+  "learnsetVersion": "platinum",
+  "timePolicy": "day-only",
+  "limits": "Two selected moves; direct damage ignores secondary effects, accuracy and PP. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. Only first starter evolutions enabled.",
+  "pools": [
+    {
+      "id": "ENC-001",
+      "node": "S02",
+      "levels": [
+        3,
+        6
+      ],
+      "method": "풀숲",
+      "condition": "상시",
+      "slots": [
+        {
+          "speciesId": 399,
+          "weight": 35
+        },
+        {
+          "speciesId": 396,
+          "weight": 25
+        },
+        {
+          "speciesId": 403,
+          "weight": 20
+        },
+        {
+          "speciesId": 401,
+          "weight": 15
+        },
+        {
+          "speciesId": 406,
+          "weight": 5
+        }
+      ]
+    },
+    {
+      "id": "ENC-002",
+      "node": "S03",
+      "levels": [
+        4,
+        7
+      ],
+      "method": "외곽풀숲",
+      "condition": "상시",
+      "slots": [
+        {
+          "speciesId": 399,
+          "weight": 45
+        },
+        {
+          "speciesId": 396,
+          "weight": 30
+        },
+        {
+          "speciesId": 406,
+          "weight": 20
+        },
+        {
+          "speciesId": 63,
+          "weight": 5
+        }
+      ]
+    },
+    {
+      "id": "ENC-003",
+      "node": "S04",
+      "levels": [
+        7,
+        10
+      ],
+      "method": "동굴",
+      "condition": "상시",
+      "slots": [
+        {
+          "speciesId": 74,
+          "weight": 35
+        },
+        {
+          "speciesId": 41,
+          "weight": 25
+        },
+        {
+          "speciesId": 66,
+          "weight": 20
+        },
+        {
+          "speciesId": 95,
+          "weight": 15
+        },
+        {
+          "speciesId": 299,
+          "weight": 5
+        }
+      ]
+    },
+    {
+      "id": "ENC-004",
+      "node": "S05",
+      "levels": [
+        10,
+        14
+      ],
+      "method": "풀숲",
+      "condition": "낮",
+      "slots": [
+        {
+          "speciesId": 265,
+          "weight": 30
+        },
+        {
+          "speciesId": 266,
+          "weight": 25
+        },
+        {
+          "speciesId": 268,
+          "weight": 20
+        },
+        {
+          "speciesId": 406,
+          "weight": 12
+        },
+        {
+          "speciesId": 427,
+          "weight": 8
+        },
+        {
+          "speciesId": 415,
+          "weight": 5
+        }
+      ]
+    },
+    {
+      "id": "ENC-016",
+      "node": "S15",
+      "levels": [
+        13,
+        17
+      ],
+      "method": "하부동굴",
+      "condition": "상시",
+      "slots": [
+        {
+          "speciesId": 41,
+          "weight": 35
+        },
+        {
+          "speciesId": 74,
+          "weight": 25
+        },
+        {
+          "speciesId": 307,
+          "weight": 20
+        },
+        {
+          "speciesId": 173,
+          "weight": 15
+        },
+        {
+          "speciesId": 443,
+          "weight": 5
+        }
+      ]
+    }
+  ],
+  "ownable": [
+    1,
+    2,
+    4,
+    5,
+    7,
+    8,
+    25,
+    41,
+    63,
+    66,
+    74,
+    95,
+    173,
+    265,
+    266,
+    268,
+    299,
+    307,
+    396,
+    399,
+    401,
+    403,
+    406,
+    415,
+    427,
+    443
+  ],
+  "species": {
+    "1": {
+      "name": "이상해씨",
+      "types": [
+        "풀",
+        "독"
+      ],
+      "stats": {
+        "hp": 45,
+        "attack": 49,
+        "defense": 49,
+        "specialAttack": 65,
+        "specialDefense": 65,
+        "speed": 45
+      },
+      "weight": 69,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 3,
+          "move": "울음소리"
+        },
+        {
+          "level": 9,
+          "move": "덩굴채찍"
+        },
+        {
+          "level": 19,
+          "move": "잎날가르기"
+        }
+      ],
+      "tm": [
+        "풀묶기"
+      ]
+    },
+    "2": {
+      "name": "이상해풀",
+      "types": [
+        "풀",
+        "독"
+      ],
+      "stats": {
+        "hp": 60,
+        "attack": 62,
+        "defense": 63,
+        "specialAttack": 80,
+        "specialDefense": 80,
+        "speed": 60
+      },
+      "weight": 130,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 1,
+          "move": "울음소리"
+        },
+        {
+          "level": 3,
+          "move": "울음소리"
+        },
+        {
+          "level": 9,
+          "move": "덩굴채찍"
+        },
+        {
+          "level": 20,
+          "move": "잎날가르기"
+        }
+      ],
+      "tm": [
+        "풀묶기"
+      ]
+    },
+    "4": {
+      "name": "파이리",
+      "types": [
+        "불꽃"
+      ],
+      "stats": {
+        "hp": 39,
+        "attack": 52,
+        "defense": 43,
+        "specialAttack": 60,
+        "specialDefense": 50,
+        "speed": 65
+      },
+      "weight": 85,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "울음소리"
+        },
+        {
+          "level": 1,
+          "move": "할퀴기"
+        },
+        {
+          "level": 7,
+          "move": "불꽃세례"
+        },
+        {
+          "level": 16,
+          "move": "용의분노"
+        }
+      ],
+      "tm": []
+    },
+    "5": {
+      "name": "리자드",
+      "types": [
+        "불꽃"
+      ],
+      "stats": {
+        "hp": 58,
+        "attack": 64,
+        "defense": 58,
+        "specialAttack": 80,
+        "specialDefense": 65,
+        "speed": 80
+      },
+      "weight": 190,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "불꽃세례"
+        },
+        {
+          "level": 1,
+          "move": "울음소리"
+        },
+        {
+          "level": 1,
+          "move": "할퀴기"
+        },
+        {
+          "level": 7,
+          "move": "불꽃세례"
+        },
+        {
+          "level": 17,
+          "move": "용의분노"
+        }
+      ],
+      "tm": []
+    },
+    "7": {
+      "name": "꼬부기",
+      "types": [
+        "물"
+      ],
+      "stats": {
+        "hp": 44,
+        "attack": 48,
+        "defense": 65,
+        "specialAttack": 50,
+        "specialDefense": 64,
+        "speed": 43
+      },
+      "weight": 90,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 4,
+          "move": "꼬리흔들기"
+        },
+        {
+          "level": 7,
+          "move": "거품"
+        },
+        {
+          "level": 10,
+          "move": "껍질에숨기"
+        },
+        {
+          "level": 13,
+          "move": "물대포"
+        },
+        {
+          "level": 16,
+          "move": "물기"
+        },
+        {
+          "level": 19,
+          "move": "고속스핀"
+        },
+        {
+          "level": 22,
+          "move": "방어"
+        },
+        {
+          "level": 25,
+          "move": "물의파동"
+        }
+      ],
+      "tm": []
+    },
+    "8": {
+      "name": "어니부기",
+      "types": [
+        "물"
+      ],
+      "stats": {
+        "hp": 59,
+        "attack": 63,
+        "defense": 80,
+        "specialAttack": 65,
+        "specialDefense": 80,
+        "speed": 58
+      },
+      "weight": 225,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "거품"
+        },
+        {
+          "level": 1,
+          "move": "꼬리흔들기"
+        },
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 4,
+          "move": "꼬리흔들기"
+        },
+        {
+          "level": 7,
+          "move": "거품"
+        },
+        {
+          "level": 10,
+          "move": "껍질에숨기"
+        },
+        {
+          "level": 13,
+          "move": "물대포"
+        },
+        {
+          "level": 16,
+          "move": "물기"
+        },
+        {
+          "level": 20,
+          "move": "고속스핀"
+        },
+        {
+          "level": 24,
+          "move": "방어"
+        }
+      ],
+      "tm": []
+    },
+    "25": {
+      "name": "피카츄",
+      "types": [
+        "전기"
+      ],
+      "stats": {
+        "hp": 35,
+        "attack": 55,
+        "defense": 40,
+        "specialAttack": 50,
+        "specialDefense": 50,
+        "speed": 90
+      },
+      "weight": 60,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "울음소리"
+        },
+        {
+          "level": 1,
+          "move": "전기쇼크"
+        },
+        {
+          "level": 5,
+          "move": "꼬리흔들기"
+        },
+        {
+          "level": 13,
+          "move": "전광석화"
+        },
+        {
+          "level": 21,
+          "move": "힘껏치기"
+        }
+      ],
+      "tm": [
+        "풀묶기"
+      ]
+    },
+    "41": {
+      "name": "주뱃",
+      "types": [
+        "독",
+        "비행"
+      ],
+      "stats": {
+        "hp": 40,
+        "attack": 45,
+        "defense": 35,
+        "specialAttack": 30,
+        "specialDefense": 40,
+        "speed": 55
+      },
+      "weight": 75,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "흡혈"
+        },
+        {
+          "level": 9,
+          "move": "놀래키기"
+        },
+        {
+          "level": 13,
+          "move": "물기"
+        },
+        {
+          "level": 17,
+          "move": "날개치기"
+        },
+        {
+          "level": 25,
+          "move": "에어커터"
+        }
+      ],
+      "tm": [
+        "섀도볼"
+      ]
+    },
+    "63": {
+      "name": "캐이시",
+      "types": [
+        "에스퍼"
+      ],
+      "stats": {
+        "hp": 25,
+        "attack": 20,
+        "defense": 15,
+        "specialAttack": 105,
+        "specialDefense": 55,
+        "speed": 90
+      },
+      "weight": 195,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "순간이동"
+        }
+      ],
+      "tm": [
+        "드레인펀치",
+        "섀도볼",
+        "풀묶기"
+      ]
+    },
+    "66": {
+      "name": "알통몬",
+      "types": [
+        "격투"
+      ],
+      "stats": {
+        "hp": 70,
+        "attack": 80,
+        "defense": 50,
+        "specialAttack": 35,
+        "specialDefense": 35,
+        "speed": 35
+      },
+      "weight": 195,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "안다리걸기"
+        },
+        {
+          "level": 1,
+          "move": "째려보기"
+        },
+        {
+          "level": 10,
+          "move": "태권당수"
+        },
+        {
+          "level": 19,
+          "move": "지구던지기"
+        }
+      ],
+      "tm": []
+    },
+    "74": {
+      "name": "꼬마돌",
+      "types": [
+        "바위",
+        "땅"
+      ],
+      "stats": {
+        "hp": 40,
+        "attack": 80,
+        "defense": 100,
+        "specialAttack": 30,
+        "specialDefense": 30,
+        "speed": 20
+      },
+      "weight": 200,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 1,
+          "move": "웅크리기"
+        },
+        {
+          "level": 11,
+          "move": "돌떨구기"
+        }
+      ],
+      "tm": [
+        "스텔스록"
+      ]
+    },
+    "92": {
+      "name": "고오스",
+      "types": [
+        "고스트",
+        "독"
+      ],
+      "stats": {
+        "hp": 30,
+        "attack": 35,
+        "defense": 30,
+        "specialAttack": 100,
+        "specialDefense": 35,
+        "speed": 80
+      },
+      "weight": 1,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "핥기"
+        }
+      ],
+      "tm": [
+        "섀도볼"
+      ]
+    },
+    "95": {
+      "name": "롱스톤",
+      "types": [
+        "바위",
+        "땅"
+      ],
+      "stats": {
+        "hp": 35,
+        "attack": 45,
+        "defense": 160,
+        "specialAttack": 30,
+        "specialDefense": 45,
+        "speed": 70
+      },
+      "weight": 2100,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "단단해지기"
+        },
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 9,
+          "move": "돌떨구기"
+        },
+        {
+          "level": 25,
+          "move": "힘껏치기"
+        }
+      ],
+      "tm": [
+        "스텔스록"
+      ]
+    },
+    "173": {
+      "name": "삐",
+      "types": [
+        "페어리"
+      ],
+      "stats": {
+        "hp": 50,
+        "attack": 25,
+        "defense": 28,
+        "specialAttack": 45,
+        "specialDefense": 55,
+        "speed": 15
+      },
+      "weight": 30,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "막치기"
+        },
+        {
+          "level": 1,
+          "move": "애교부리기"
+        },
+        {
+          "level": 16,
+          "move": "매지컬리프"
+        }
+      ],
+      "tm": [
+        "섀도볼",
+        "풀묶기"
+      ]
+    },
+    "200": {
+      "name": "무우마",
+      "types": [
+        "고스트"
+      ],
+      "stats": {
+        "hp": 60,
+        "attack": 60,
+        "defense": 60,
+        "specialAttack": 85,
+        "specialDefense": 85,
+        "speed": 85
+      },
+      "weight": 10,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "울음소리"
+        },
+        {
+          "level": 10,
+          "move": "놀래키기"
+        }
+      ],
+      "tm": [
+        "섀도볼"
+      ]
+    },
+    "265": {
+      "name": "개무소",
+      "types": [
+        "벌레"
+      ],
+      "stats": {
+        "hp": 45,
+        "attack": 45,
+        "defense": 35,
+        "specialAttack": 20,
+        "specialDefense": 30,
+        "speed": 20
+      },
+      "weight": 36,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 15,
+          "move": "벌레먹기"
+        }
+      ],
+      "tm": []
+    },
+    "266": {
+      "name": "실쿤",
+      "types": [
+        "벌레"
+      ],
+      "stats": {
+        "hp": 50,
+        "attack": 35,
+        "defense": 55,
+        "specialAttack": 25,
+        "specialDefense": 25,
+        "speed": 15
+      },
+      "weight": 100,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "단단해지기"
+        },
+        {
+          "level": 7,
+          "move": "단단해지기"
+        }
+      ],
+      "tm": []
+    },
+    "268": {
+      "name": "카스쿤",
+      "types": [
+        "벌레"
+      ],
+      "stats": {
+        "hp": 50,
+        "attack": 35,
+        "defense": 55,
+        "specialAttack": 25,
+        "specialDefense": 25,
+        "speed": 15
+      },
+      "weight": 115,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "단단해지기"
+        },
+        {
+          "level": 7,
+          "move": "단단해지기"
+        }
+      ],
+      "tm": []
+    },
+    "299": {
+      "name": "코코파스",
+      "types": [
+        "바위"
+      ],
+      "stats": {
+        "hp": 30,
+        "attack": 45,
+        "defense": 135,
+        "specialAttack": 45,
+        "specialDefense": 90,
+        "speed": 30
+      },
+      "weight": 970,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 7,
+          "move": "단단해지기"
+        },
+        {
+          "level": 13,
+          "move": "돌떨구기"
+        }
+      ],
+      "tm": [
+        "스텔스록"
+      ]
+    },
+    "307": {
+      "name": "요가랑",
+      "types": [
+        "격투",
+        "에스퍼"
+      ],
+      "stats": {
+        "hp": 30,
+        "attack": 40,
+        "defense": 55,
+        "specialAttack": 40,
+        "specialDefense": 55,
+        "speed": 60
+      },
+      "weight": 112,
+      "learnset": [
+        {
+          "level": 8,
+          "move": "염동력"
+        },
+        {
+          "level": 11,
+          "move": "판별"
+        }
+      ],
+      "tm": [
+        "드레인펀치",
+        "섀도볼",
+        "풀묶기"
+      ]
+    },
+    "315": {
+      "name": "로젤리아",
+      "types": [
+        "풀",
+        "독"
+      ],
+      "stats": {
+        "hp": 50,
+        "attack": 60,
+        "defense": 45,
+        "specialAttack": 100,
+        "specialDefense": 80,
+        "speed": 65
+      },
+      "weight": 20,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "흡수"
+        },
+        {
+          "level": 13,
+          "move": "메가드레인"
+        },
+        {
+          "level": 19,
+          "move": "매지컬리프"
+        }
+      ],
+      "tm": [
+        "섀도볼",
+        "풀묶기"
+      ]
+    },
+    "396": {
+      "name": "찌르꼬",
+      "types": [
+        "노말",
+        "비행"
+      ],
+      "stats": {
+        "hp": 40,
+        "attack": 55,
+        "defense": 30,
+        "specialAttack": 30,
+        "specialDefense": 30,
+        "speed": 60
+      },
+      "weight": 20,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 1,
+          "move": "울음소리"
+        },
+        {
+          "level": 5,
+          "move": "전광석화"
+        },
+        {
+          "level": 9,
+          "move": "날개치기"
+        },
+        {
+          "level": 25,
+          "move": "제비반환"
+        }
+      ],
+      "tm": []
+    },
+    "399": {
+      "name": "비버니",
+      "types": [
+        "노말"
+      ],
+      "stats": {
+        "hp": 59,
+        "attack": 45,
+        "defense": 40,
+        "specialAttack": 35,
+        "specialDefense": 40,
+        "speed": 31
+      },
+      "weight": 200,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 5,
+          "move": "울음소리"
+        },
+        {
+          "level": 9,
+          "move": "웅크리기"
+        },
+        {
+          "level": 17,
+          "move": "박치기"
+        },
+        {
+          "level": 21,
+          "move": "필살앞니"
+        }
+      ],
+      "tm": [
+        "섀도볼",
+        "스텔스록",
+        "풀묶기"
+      ]
+    },
+    "401": {
+      "name": "귀뚤뚜기",
+      "types": [
+        "벌레"
+      ],
+      "stats": {
+        "hp": 37,
+        "attack": 25,
+        "defense": 41,
+        "specialAttack": 25,
+        "specialDefense": 41,
+        "speed": 25
+      },
+      "weight": 22,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "울음소리"
+        },
+        {
+          "level": 16,
+          "move": "벌레먹기"
+        }
+      ],
+      "tm": []
+    },
+    "403": {
+      "name": "꼬링크",
+      "types": [
+        "전기"
+      ],
+      "stats": {
+        "hp": 45,
+        "attack": 65,
+        "defense": 34,
+        "specialAttack": 40,
+        "specialDefense": 34,
+        "speed": 45
+      },
+      "weight": 95,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 5,
+          "move": "째려보기"
+        },
+        {
+          "level": 13,
+          "move": "스파크"
+        },
+        {
+          "level": 17,
+          "move": "물기"
+        }
+      ],
+      "tm": []
+    },
+    "406": {
+      "name": "꼬몽울",
+      "types": [
+        "풀",
+        "독"
+      ],
+      "stats": {
+        "hp": 40,
+        "attack": 30,
+        "defense": 35,
+        "specialAttack": 50,
+        "specialDefense": 70,
+        "speed": 55
+      },
+      "weight": 12,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "흡수"
+        },
+        {
+          "level": 13,
+          "move": "메가드레인"
+        }
+      ],
+      "tm": [
+        "섀도볼",
+        "풀묶기"
+      ]
+    },
+    "408": {
+      "name": "두개도스",
+      "types": [
+        "바위"
+      ],
+      "stats": {
+        "hp": 67,
+        "attack": 125,
+        "defense": 40,
+        "specialAttack": 30,
+        "specialDefense": 30,
+        "speed": 58
+      },
+      "weight": 315,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "박치기"
+        },
+        {
+          "level": 1,
+          "move": "째려보기"
+        }
+      ],
+      "tm": [
+        "스텔스록"
+      ]
+    },
+    "415": {
+      "name": "세꿀버리",
+      "types": [
+        "벌레",
+        "비행"
+      ],
+      "stats": {
+        "hp": 30,
+        "attack": 30,
+        "defense": 42,
+        "specialAttack": 30,
+        "specialDefense": 42,
+        "speed": 70
+      },
+      "weight": 55,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "바람일으키기"
+        },
+        {
+          "level": 13,
+          "move": "벌레먹기"
+        }
+      ],
+      "tm": []
+    },
+    "420": {
+      "name": "체리버",
+      "types": [
+        "풀"
+      ],
+      "stats": {
+        "hp": 45,
+        "attack": 35,
+        "defense": 45,
+        "specialAttack": 62,
+        "specialDefense": 53,
+        "speed": 35
+      },
+      "weight": 33,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 19,
+          "move": "매지컬리프"
+        }
+      ],
+      "tm": [
+        "풀묶기"
+      ]
+    },
+    "425": {
+      "name": "흔들풍손",
+      "types": [
+        "고스트",
+        "비행"
+      ],
+      "stats": {
+        "hp": 90,
+        "attack": 50,
+        "defense": 34,
+        "specialAttack": 60,
+        "specialDefense": 44,
+        "speed": 70
+      },
+      "weight": 12,
+      "learnset": [
+        {
+          "level": 6,
+          "move": "놀래키기"
+        },
+        {
+          "level": 11,
+          "move": "바람일으키기"
+        }
+      ],
+      "tm": [
+        "섀도볼"
+      ]
+    },
+    "427": {
+      "name": "이어롤",
+      "types": [
+        "노말"
+      ],
+      "stats": {
+        "hp": 55,
+        "attack": 66,
+        "defense": 44,
+        "specialAttack": 44,
+        "specialDefense": 56,
+        "speed": 85
+      },
+      "weight": 55,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "막치기"
+        },
+        {
+          "level": 1,
+          "move": "웅크리기"
+        },
+        {
+          "level": 1,
+          "move": "튀어오르기"
+        },
+        {
+          "level": 16,
+          "move": "전광석화"
+        }
+      ],
+      "tm": [
+        "드레인펀치",
+        "섀도볼",
+        "풀묶기"
+      ]
+    },
+    "443": {
+      "name": "딥상어동",
+      "types": [
+        "드래곤",
+        "땅"
+      ],
+      "stats": {
+        "hp": 58,
+        "attack": 70,
+        "defense": 45,
+        "specialAttack": 40,
+        "specialDefense": 45,
+        "speed": 42
+      },
+      "weight": 205,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 7,
+          "move": "용의분노"
+        },
+        {
+          "level": 25,
+          "move": "베어가르기"
+        }
+      ],
+      "tm": [
+        "스텔스록"
+      ]
+    },
+    "448": {
+      "name": "루카리오",
+      "types": [
+        "격투",
+        "강철"
+      ],
+      "stats": {
+        "hp": 70,
+        "attack": 110,
+        "defense": 70,
+        "specialAttack": 115,
+        "specialDefense": 70,
+        "speed": 90
+      },
+      "weight": 540,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "전광석화"
+        },
+        {
+          "level": 1,
+          "move": "판별"
+        },
+        {
+          "level": 11,
+          "move": "발경"
+        }
+      ],
+      "tm": [
+        "드레인펀치",
+        "섀도볼"
+      ]
+    }
+  },
+  "moves": {
+    "막치기": {
+      "id": 1,
+      "slug": "pound",
+      "type": "노말",
+      "power": 40,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "태권당수": {
+      "id": 2,
+      "slug": "karate-chop",
+      "type": "격투",
+      "power": 50,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "할퀴기": {
+      "id": 10,
+      "slug": "scratch",
+      "type": "노말",
+      "power": 40,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "바람일으키기": {
+      "id": 16,
+      "slug": "gust",
+      "type": "비행",
+      "power": 40,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "날개치기": {
+      "id": 17,
+      "slug": "wing-attack",
+      "type": "비행",
+      "power": 60,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "힘껏치기": {
+      "id": 21,
+      "slug": "slam",
+      "type": "노말",
+      "power": 80,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "덩굴채찍": {
+      "id": 22,
+      "slug": "vine-whip",
+      "type": "풀",
+      "power": 45,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "박치기": {
+      "id": 29,
+      "slug": "headbutt",
+      "type": "노말",
+      "power": 70,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "몸통박치기": {
+      "id": 33,
+      "slug": "tackle",
+      "type": "노말",
+      "power": 40,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "꼬리흔들기": {
+      "id": 39,
+      "slug": "tail-whip",
+      "type": "노말",
+      "power": 0,
+      "priority": 0,
+      "rule": "defenseDrop"
+    },
+    "째려보기": {
+      "id": 43,
+      "slug": "leer",
+      "type": "노말",
+      "power": 0,
+      "priority": 0,
+      "rule": "defenseDrop"
+    },
+    "물기": {
+      "id": 44,
+      "slug": "bite",
+      "type": "악",
+      "power": 60,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "울음소리": {
+      "id": 45,
+      "slug": "growl",
+      "type": "노말",
+      "power": 0,
+      "priority": 0,
+      "rule": "attackDrop"
+    },
+    "불꽃세례": {
+      "id": 52,
+      "slug": "ember",
+      "type": "불꽃",
+      "power": 40,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "물대포": {
+      "id": 55,
+      "slug": "water-gun",
+      "type": "물",
+      "power": 40,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "안다리걸기": {
+      "id": 67,
+      "slug": "low-kick",
+      "type": "격투",
+      "power": 0,
+      "priority": 0,
+      "rule": "weightDamage"
+    },
+    "지구던지기": {
+      "id": 69,
+      "slug": "seismic-toss",
+      "type": "격투",
+      "power": 0,
+      "priority": 0,
+      "rule": "levelDamage"
+    },
+    "흡수": {
+      "id": 71,
+      "slug": "absorb",
+      "type": "풀",
+      "power": 20,
+      "priority": 0,
+      "rule": "drain"
+    },
+    "메가드레인": {
+      "id": 72,
+      "slug": "mega-drain",
+      "type": "풀",
+      "power": 40,
+      "priority": 0,
+      "rule": "drain"
+    },
+    "잎날가르기": {
+      "id": 75,
+      "slug": "razor-leaf",
+      "type": "풀",
+      "power": 55,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "용의분노": {
+      "id": 82,
+      "slug": "dragon-rage",
+      "type": "드래곤",
+      "power": 0,
+      "priority": 0,
+      "rule": "fixedDamage"
+    },
+    "전기쇼크": {
+      "id": 84,
+      "slug": "thunder-shock",
+      "type": "전기",
+      "power": 40,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "돌떨구기": {
+      "id": 88,
+      "slug": "rock-throw",
+      "type": "바위",
+      "power": 50,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "염동력": {
+      "id": 93,
+      "slug": "confusion",
+      "type": "에스퍼",
+      "power": 50,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "전광석화": {
+      "id": 98,
+      "slug": "quick-attack",
+      "type": "노말",
+      "power": 40,
+      "priority": 1,
+      "rule": "damage"
+    },
+    "순간이동": {
+      "id": 100,
+      "slug": "teleport",
+      "type": "에스퍼",
+      "power": 0,
+      "priority": -6,
+      "rule": "escape"
+    },
+    "단단해지기": {
+      "id": 106,
+      "slug": "harden",
+      "type": "노말",
+      "power": 0,
+      "priority": 0,
+      "rule": "defenseUp"
+    },
+    "껍질에숨기": {
+      "id": 110,
+      "slug": "withdraw",
+      "type": "물",
+      "power": 0,
+      "priority": 0,
+      "rule": "defenseUp"
+    },
+    "웅크리기": {
+      "id": 111,
+      "slug": "defense-curl",
+      "type": "노말",
+      "power": 0,
+      "priority": 0,
+      "rule": "defenseUp"
+    },
+    "핥기": {
+      "id": 122,
+      "slug": "lick",
+      "type": "고스트",
+      "power": 30,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "흡혈": {
+      "id": 141,
+      "slug": "leech-life",
+      "type": "벌레",
+      "power": 80,
+      "priority": 0,
+      "rule": "drain"
+    },
+    "거품": {
+      "id": 145,
+      "slug": "bubble",
+      "type": "물",
+      "power": 40,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "튀어오르기": {
+      "id": 150,
+      "slug": "splash",
+      "type": "노말",
+      "power": 0,
+      "priority": 0,
+      "rule": "nothing"
+    },
+    "필살앞니": {
+      "id": 158,
+      "slug": "hyper-fang",
+      "type": "노말",
+      "power": 80,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "베어가르기": {
+      "id": 163,
+      "slug": "slash",
+      "type": "노말",
+      "power": 70,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "발버둥": {
+      "id": 165,
+      "slug": "struggle",
+      "type": "노말",
+      "power": 50,
+      "priority": 0,
+      "rule": "struggle"
+    },
+    "방어": {
+      "id": 182,
+      "slug": "protect",
+      "type": "노말",
+      "power": 0,
+      "priority": 4,
+      "rule": "protect"
+    },
+    "판별": {
+      "id": 197,
+      "slug": "detect",
+      "type": "격투",
+      "power": 0,
+      "priority": 4,
+      "rule": "protect"
+    },
+    "애교부리기": {
+      "id": 204,
+      "slug": "charm",
+      "type": "페어리",
+      "power": 0,
+      "priority": 0,
+      "rule": "attackDrop"
+    },
+    "스파크": {
+      "id": 209,
+      "slug": "spark",
+      "type": "전기",
+      "power": 65,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "고속스핀": {
+      "id": 229,
+      "slug": "rapid-spin",
+      "type": "노말",
+      "power": 50,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "섀도볼": {
+      "id": 247,
+      "slug": "shadow-ball",
+      "type": "고스트",
+      "power": 80,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "놀래키기": {
+      "id": 310,
+      "slug": "astonish",
+      "type": "고스트",
+      "power": 30,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "에어커터": {
+      "id": 314,
+      "slug": "air-cutter",
+      "type": "비행",
+      "power": 60,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "제비반환": {
+      "id": 332,
+      "slug": "aerial-ace",
+      "type": "비행",
+      "power": 60,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "매지컬리프": {
+      "id": 345,
+      "slug": "magical-leaf",
+      "type": "풀",
+      "power": 60,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "물의파동": {
+      "id": 352,
+      "slug": "water-pulse",
+      "type": "물",
+      "power": 60,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "발경": {
+      "id": 395,
+      "slug": "force-palm",
+      "type": "격투",
+      "power": 60,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "드레인펀치": {
+      "id": 409,
+      "slug": "drain-punch",
+      "type": "격투",
+      "power": 75,
+      "priority": 0,
+      "rule": "drain"
+    },
+    "스텔스록": {
+      "id": 446,
+      "slug": "stealth-rock",
+      "type": "바위",
+      "power": 0,
+      "priority": 0,
+      "rule": "hazard"
+    },
+    "풀묶기": {
+      "id": 447,
+      "slug": "grass-knot",
+      "type": "풀",
+      "power": 0,
+      "priority": 0,
+      "rule": "weightDamage"
+    },
+    "벌레먹기": {
+      "id": 450,
+      "slug": "bug-bite",
+      "type": "벌레",
+      "power": 60,
+      "priority": 0,
+      "rule": "damage"
+    }
+  },
+  "evolutions": [
+    {
+      "from": 1,
+      "to": 2,
+      "level": 16
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "level": 16
+    },
+    {
+      "from": 7,
+      "to": 8,
+      "level": 16
+    }
+  ],
+  "typeChart": {
+    "노말": {
+      "바위": 0.5,
+      "고스트": 0.0,
+      "강철": 0.5
+    },
+    "격투": {
+      "노말": 2.0,
+      "비행": 0.5,
+      "독": 0.5,
+      "바위": 2.0,
+      "벌레": 0.5,
+      "고스트": 0.0,
+      "강철": 2.0,
+      "에스퍼": 0.5,
+      "얼음": 2.0,
+      "악": 2.0,
+      "페어리": 0.5
+    },
+    "비행": {
+      "격투": 2.0,
+      "바위": 0.5,
+      "벌레": 2.0,
+      "강철": 0.5,
+      "풀": 2.0,
+      "전기": 0.5
+    },
+    "독": {
+      "독": 0.5,
+      "땅": 0.5,
+      "바위": 0.5,
+      "고스트": 0.5,
+      "강철": 0.0,
+      "풀": 2.0,
+      "페어리": 2.0
+    },
+    "땅": {
+      "비행": 0.0,
+      "독": 2.0,
+      "바위": 2.0,
+      "벌레": 0.5,
+      "강철": 2.0,
+      "불꽃": 2.0,
+      "풀": 0.5,
+      "전기": 2.0
+    },
+    "바위": {
+      "격투": 0.5,
+      "비행": 2.0,
+      "땅": 0.5,
+      "벌레": 2.0,
+      "강철": 0.5,
+      "불꽃": 2.0,
+      "얼음": 2.0
+    },
+    "벌레": {
+      "격투": 0.5,
+      "비행": 0.5,
+      "독": 0.5,
+      "고스트": 0.5,
+      "강철": 0.5,
+      "불꽃": 0.5,
+      "풀": 2.0,
+      "에스퍼": 2.0,
+      "악": 2.0,
+      "페어리": 0.5
+    },
+    "고스트": {
+      "노말": 0.0,
+      "고스트": 2.0,
+      "에스퍼": 2.0,
+      "악": 0.5
+    },
+    "강철": {
+      "바위": 2.0,
+      "강철": 0.5,
+      "불꽃": 0.5,
+      "물": 0.5,
+      "전기": 0.5,
+      "얼음": 2.0,
+      "페어리": 2.0
+    },
+    "불꽃": {
+      "바위": 0.5,
+      "벌레": 2.0,
+      "강철": 2.0,
+      "불꽃": 0.5,
+      "물": 0.5,
+      "풀": 2.0,
+      "얼음": 2.0,
+      "드래곤": 0.5
+    },
+    "물": {
+      "땅": 2.0,
+      "바위": 2.0,
+      "불꽃": 2.0,
+      "물": 0.5,
+      "풀": 0.5,
+      "드래곤": 0.5
+    },
+    "풀": {
+      "비행": 0.5,
+      "독": 0.5,
+      "땅": 2.0,
+      "바위": 2.0,
+      "벌레": 0.5,
+      "강철": 0.5,
+      "불꽃": 0.5,
+      "물": 2.0,
+      "풀": 0.5,
+      "드래곤": 0.5
+    },
+    "전기": {
+      "비행": 2.0,
+      "땅": 0.0,
+      "물": 2.0,
+      "풀": 0.5,
+      "전기": 0.5,
+      "드래곤": 0.5
+    },
+    "에스퍼": {
+      "격투": 2.0,
+      "독": 2.0,
+      "강철": 0.5,
+      "에스퍼": 0.5,
+      "악": 0.0
+    },
+    "얼음": {
+      "비행": 2.0,
+      "땅": 2.0,
+      "강철": 0.5,
+      "불꽃": 0.5,
+      "물": 0.5,
+      "풀": 2.0,
+      "얼음": 0.5,
+      "드래곤": 2.0
+    },
+    "드래곤": {
+      "강철": 0.5,
+      "드래곤": 2.0,
+      "페어리": 0.0
+    },
+    "악": {
+      "격투": 0.5,
+      "고스트": 2.0,
+      "에스퍼": 2.0,
+      "악": 0.5,
+      "페어리": 0.5
+    },
+    "페어리": {
+      "격투": 2.0,
+      "독": 0.5,
+      "강철": 0.5,
+      "불꽃": 0.5,
+      "드래곤": 2.0,
+      "악": 2.0
+    }
+  }
+}

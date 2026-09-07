@@ -22,12 +22,12 @@ test('35 towns have 70 distinct local conversations with existing DS sprite asse
   assert.equal(texts.size,70);
 });
 
-test('each resident can be faced and spoken to repeatedly without changing progress or granting rewards',()=>{
+test('each resident remains approachable and declining optional requests preserves progress',()=>{
   const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});
   try{for(const [id,residents]of Object.entries(TOUR_RESIDENTS))for(const n of residents){
     const g=new Engine();g.exploring=true;g.save=g.freshSave();g.exploreTo(id);g.save.player={x:n.x,y:n.y+1,facing:'up'};const before=structuredClone(g.save);
     assert.equal(g.interactionHint,'Z 말걸기 · '+n.name);
-    for(let i=0;i<2;i++){g.confirm();assert.equal(g.dialogue?.speaker,n.name);assert.deepEqual(g.dialogue?.pages,n.pages);g.confirm();g.confirm();assert.equal(g.dialogue,null);assert.deepEqual(g.save,before)}
+    for(let i=0;i<2;i++){g.confirm();assert.equal(g.dialogue?.speaker,n.name);assert.deepEqual(g.dialogue?.pages.slice(0,n.pages.length),n.pages);if(g.dialogue?.choices){g.cancel();}else{g.confirm();g.confirm();}assert.equal(g.dialogue,null);assert.deepEqual(g.save,before)}
     assert.equal(g.battle,null);
   }}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}
 });

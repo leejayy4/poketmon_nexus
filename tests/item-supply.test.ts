@@ -35,5 +35,5 @@ test('restore clears the supply target event and invalidates an old pending choi
   const g=game();g.selectFieldItem(1);choices(g);const action=g.dialogue!.choices![0].action,saved=parseSave(JSON.stringify(g.save))!;g.restore(saved);action();assert.equal(g.tourEvent,null);assert.equal(g.panel,'field');assert(!g.fieldMap);assert.equal(g.save.inventory.potions,0);
 }));
 test('stocked items retain their normal use and supply prompts cannot interrupt battles or other panels',()=>dom(()=>{
-  const g=game();g.save.inventory={pokeBalls:1,potions:1};g.selectFieldItem(0);assert.equal(g.dialogue!.choices,undefined);while(g.dialogue)g.confirm();g.selectFieldItem(1);assert.equal(g.panel,'fieldHeal');g.showSupplyHint('potions');assert.equal(g.dialogue,null);g.panel='bag';g.battle=createBattle(g.save);g.showSupplyHint('potions');assert.equal(g.dialogue,null);
+  const g=game();g.save.inventory={pokeBalls:1,potions:1};g.selectFieldItem(0);assert.equal(g.dialogue!.choices,undefined);while(g.dialogue)g.confirm();g.selectFieldItem(1);assert.equal(g.panel,'fieldHeal');g.showSupplyHint('potions');assert.equal(g.dialogue,null);g.panel='bag';g.battle=createBattle({...g.save,map:'route_s01'},'wild','roark',()=>0);g.showSupplyHint('potions');assert.equal(g.dialogue,null);
 }));

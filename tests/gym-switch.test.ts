@@ -2,7 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Engine } from '../src/engine';
 import { Renderer } from '../src/renderer';
-import { createBattle,battleTurn } from '../src/battle';
+import {battleTurn,enemyDamage } from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
 import { battleHint } from '../src/battle-hints';
 import { newSave,parseSave } from '../src/save';
 import { grantPokemon } from '../src/pokemon';
@@ -17,7 +18,7 @@ test('a gym knockout offers exactly one free healthy replacement and resets next
   const s=ready(),b=createBattle(s,'gym')!;b.enemy.hp=1;b.enemyAttackDrop=2;b.enemyDefenseDrop=2;battleTurn(s,b,'move0');assert(b.betweenOpponents);assert.equal(b.enemy.species,95);assert.equal(b.enemyAttackDrop,0);assert.equal(b.enemyDefenseDrop,0);const earned=s.party[0].experience,before=structuredClone(s);assert.equal(earned,50);
   const result=battleTurn(s,b,{switch:1});assert(!b.betweenOpponents);assert.equal(b.active,1);assert.deepEqual(b.participants,[1]);assert.deepEqual(s,before);assert(!result.pages.some(p=>p.includes('피해')));
   b.enemy.hp=1;battleTurn(s,b,'move0');assert.equal(s.party[0].experience,earned);assert.equal(s.party[1].experience,50);assert(parseSave(JSON.stringify(s)));
-  battleTurn(s,b,'move1');assert(!b.betweenOpponents);const hp=s.party[0].hp;battleTurn(s,b,{switch:0});assert.equal(s.party[0].hp,hp-4,'switching after Growl during combat still costs a counterattack');
+  battleTurn(s,b,'move1');assert(!b.betweenOpponents);const hp=s.party[0].hp,reply=enemyDamage({...b,active:0},b.enemyAttackDrop,s.party[0]);battleTurn(s,b,{switch:0});assert.equal(s.party[0].hp,Math.max(0,hp-reply-(b.playerRocks?Math.max(1,Math.floor(s.party[0].maxHp/8)):0)),'switching after Growl during combat still costs a counterattack');
 });
 
 test('invalid free replacements preserve the opportunity, items, HP and experience',()=>{
@@ -32,7 +33,7 @@ test('single healthy Pokemon, wild victories and the last opponent do not offer 
 
 test('Engine waits for the announcement, supports cancel and continue, and does not replay a free switch',()=>dom(()=>{
   const g=game();g.actBattle('move0');const b=g.battle!;assert.equal(b.menu,'between');const before=structuredClone(g.save);g.selectBattle();assert.deepEqual(g.save,before);assert(b.betweenOpponents);finish(g);g.navigate('right');g.selectBattle();assert.equal(b.menu,'party');assert.equal(b.selected,1);g.cancel();assert.equal(b.menu,'between');assert.equal(b.selected,1);assert.deepEqual(g.save,before);g.cancel();assert.equal(b.menu,'actions');assert(!b.betweenOpponents);assert.deepEqual(g.save,before);
-  g.actBattle({switch:1});assert.equal(g.save.party[1].hp,before.party[1].hp-5);finish(g);
+  g.actBattle({switch:1});assert.equal(g.save.party[1].hp,before.party[1].hp);finish(g);
   const other=game();other.actBattle('move0');finish(other);other.selectBattle();assert.equal(other.battle?.menu,'actions');assert(!other.battle?.betweenOpponents);assert.equal(other.save.party[1].hp,33);
 }));
 

@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { newSave } from '../src/save';
 import { grantPokemon } from '../src/pokemon';
 import { maxHpAtLevel } from '../src/growth';
-import { createBattle,battleTurn,playerDamage,enemyDamage } from '../src/battle';
+import {battleTurn,playerDamage,enemyDamage } from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
 import { battleHint } from '../src/battle-hints';
 import { GYMS } from '../src/gyms';
 
@@ -12,9 +13,9 @@ test('move damage previews agree with resolved wild and gym turns across levels 
   for(const species of [1,4,7,25])for(const level of [5,8,25])for(const gym of [null,...GYMS.map(g=>g.id)]){
     const s=ready(species),p=s.party[0];p.level=level;p.hp=p.maxHp=maxHpAtLevel(species,level);
     const b=createBattle(s,gym?'gym':'wild',gym??'roark')!;b.menu='moves';b.enemyDefenseDrop=2;b.enemyAttackDrop=1;
-    const hit=playerDamage(p,b),reply=enemyDamage(b),old=structuredClone({s,b});
-    assert.equal(battleHint(s,b)[0],`상대에게 ${Math.min(b.enemy.hp,hit)} 피해`);assert.deepEqual({s,b},old);
-    battleTurn(s,b,'move0');assert.equal(b.enemy.hp,Math.max(0,old.b.enemy.hp-hit));assert.equal(p.hp,old.s.party[0].hp-(hit>=old.b.enemy.hp?0:reply));
+    const hit=playerDamage(p,b),reply=enemyDamage(b,b.enemyAttackDrop,p),old=structuredClone({s,b});
+    assert.match(battleHint(s,b)[0],new RegExp(`^상대에게 ${Math.min(b.enemy.hp,hit)} 피해`));assert.deepEqual({s,b},old);
+    const turn=battleTurn(s,b,'move0');assert.equal(turn.frames![1].enemy.hp,Math.max(0,old.b.enemy.hp-hit));assert.equal(p.hp,Math.max(0,old.s.party[0].hp-(hit>=old.b.enemy.hp?0:reply)));
   }
 });
 test('finishing blow preview promises no retaliation and resolution preserves HP',()=>{
@@ -52,5 +53,5 @@ test('catch preview follows HP threshold and eligibility without consuming resou
   const caught=battleTurn(s,b,'ball',()=>.99);assert.equal(caught.outcome,'caught');
   const gym=createBattle(s,'gym')!;gym.menu='bag';assert.match(battleHint(s,gym)[0],/포획 불가/);
   const wild=createBattle(s)!;wild.menu='bag';s.inventory.pokeBalls=0;assert.match(battleHint(s,wild)[0],/없습니다/);
-  while(s.party.length<6)s.party.push({...s.party[1]});assert.match(battleHint(s,wild)[0],/가득/);
+  while(s.party.length<6)s.party.push({...s.party[1]});s.inventory.pokeBalls=1;assert.match(battleHint(s,wild)[1],/PC 박스/);s.box=Array.from({length:60},()=>({...s.party[1]}));assert.match(battleHint(s,wild)[0],/가득/);
 });

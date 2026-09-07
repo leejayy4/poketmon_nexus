@@ -4,7 +4,8 @@ import {Engine} from '../src/engine';
 import {Renderer} from '../src/renderer';
 import {newSave,parseSave} from '../src/save';
 import {grantPokemon} from '../src/pokemon';
-import {createBattle,battleTurn} from '../src/battle';
+import {battleTurn} from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
 import {gainExperience,maxHpAtLevel,type GrowthStep} from '../src/growth';
 
 function ready(){const s=newSave();grantPokemon(s,7);s.flags.departureCleared=true;s.party[0].experience=40;return s}
@@ -31,7 +32,7 @@ test('shared experience follows individual participants and reserve growth never
 
 test('multiple levels and the cap have distinct detached steps and preserve the existing growth result',()=>{
   const p=ready().party[0],steps:GrowthStep[]=[];const pages=gainExperience(p,140,(_page,step)=>steps.push(step));
-  assert.equal(pages.length,4);assert.deepEqual(steps.map(s=>s.after.level),[5,6,7,8]);assert.equal(p.experience,0);
+  assert.equal(pages.length,5);assert(steps.some(s=>s.kind==='move'));assert.deepEqual(steps.filter(s=>s.kind!=='move').map(s=>s.after.level),[5,6,7,8]);assert.equal(p.experience,0);
   assert.deepEqual(steps.filter(s=>s.kind==='level').map(s=>s.after.maxHp-s.before.maxHp),[3,3,3]);
   p.level=24;p.maxHp=maxHpAtLevel(7,24);p.hp=p.maxHp;p.experience=230;steps.length=0;
   gainExperience(p,30,(_page,step)=>steps.push(step));assert.equal(steps.at(-1)!.after.level,25);assert.equal(steps.at(-1)!.after.experience,0);

@@ -2,7 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {Engine} from '../src/engine';
 import {Renderer} from '../src/renderer';
-import {createBattle} from '../src/battle';
+import {} from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
 import {newSave,parseSave} from '../src/save';
 import {grantPokemon} from '../src/pokemon';
 function dom(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}}

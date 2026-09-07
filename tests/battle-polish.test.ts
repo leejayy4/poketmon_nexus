@@ -2,7 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { newSave,parseSave } from '../src/save';
 import { grantPokemon } from '../src/pokemon';
-import { battleTurn,createBattle,experienceParticipants } from '../src/battle';
+import { battleTurn,experienceParticipants } from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
 import { gridSelection } from '../src/menu-grid';
 import { Engine } from '../src/engine';
 

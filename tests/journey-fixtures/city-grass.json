@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "worldRevision": 23,
+  "map": "tour_jubilife",
+  "player": {
+    "x": 3,
+    "y": 32,
+    "facing": "up"
+  },
+  "flags": {
+    "starterReceived": true,
+    "pikachuReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 4,
+      "level": 5,
+      "experience": 0,
+      "hp": 19,
+      "maxHp": 19,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "할퀴기",
+        "울음소리"
+      ]
+    },
+    {
+      "species": 25,
+      "level": 5,
+      "experience": 0,
+      "hp": 19,
+      "maxHp": 19,
+      "nature": "고집",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "전기쇼크",
+        "울음소리"
+      ]
+    }
+  ],
+  "box": [],
+  "pokedex": {
+    "seen": [
+      4,
+      25
+    ],
+    "caught": [
+      4,
+      25
+    ]
+  },
+  "inventory": {
+    "pokeBalls": 20,
+    "potions": 10
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 5000,
+  "healingPoint": "home",
+  "steps": 0,
+  "seconds": 0
+}

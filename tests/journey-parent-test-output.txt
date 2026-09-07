@@ -1,0 +1,138 @@
+✖ battle arena keeps the platform depth while adding a pixel horizon and drifting clouds (2.817ms)
+✔ 35 towns have 70 distinct local conversations with existing DS sprite assets and clear approaches (8.8671ms)
+✔ each resident remains approachable and declining optional requests preserves progress (24.5398ms)
+✔ revision 9 saves overlapping new residents move safely while visits and valid positions survive (20.8573ms)
+✔ facility routes avoid the newly occupied resident tiles (27.9974ms)
+✔ field bag opens injured target and cancels to potion then bag menu without spending inventory or steps (4.101ms)
+✔ bag healing agrees with preview, keeps target list and party order, and blocks double activation (1.6022ms)
+✔ full, fainted, invalid and exhausted targets stay on the same list without consuming medicine (0.9708ms)
+✔ field balls explain battle use and empty party cannot enter target selection (0.3055ms)
+✖ field item handlers cannot bypass battle, dialogue, movement or transition locks (2.5118ms)
+✔ supply locations distinguish balls from potions throughout the active world and respect the departure gate (48.3034ms)
+✔ empty tools explain existing supply limits and default back without changing the save (1.3527ms)
+✔ choosing supply guidance exits the bag and reaches a real counter before any medicine is granted (3.3407ms)
+✔ X and touch back preserve the previous route while touch guidance selects the correct ball provider (1.1886ms)
+✔ manual destination changes and adventure tracking replace supply guidance without changing progress (1.2318ms)
+✔ restore clears the supply target event and invalidates an old pending choice (0.736ms)
+✔ stocked items retain their normal use and supply prompts cannot interrupt battles or other panels (0.4606ms)
+✔ shop prices match the authored item database and transactions are atomic (2.4755ms)
+✔ PC storage preserves individual values and old starter ownership across save round trips (2.6759ms)
+✔ PC rejects invalid indices, full storage and full parties without losing a Pokemon (0.8903ms)
+✔ shop and PC events require their real facility and pickups cannot be farmed (1.0374ms)
+✔ up/down compare every party member in order including fainted members, while left/right choose actions (3.6187ms)
+✔ touch previous/next changes both information and moves without changing progress (1.9601ms)
+✔ browsing keeps the action selection and medicine applies only to the inspected member (0.9094ms)
+✔ lead changes retain the inspected Pokemon and survive save restore after browsing (1.1358ms)
+✖ stale browsing callbacks cannot run through dialogue, battle, movement, transitions or another panel (3.5417ms)
+✔ empty and single-member summaries do not expose unusable browsing buttons (0.3346ms)
+✔ critical HP boundary and fainted reserves temporarily prioritize recovery without replacing story progress (3.2749ms)
+✔ recovery chooses existing local NPCs and follows real gym exits to a center (0.545ms)
+✔ expanded port has its own working center even before the research ferry quest (0.3561ms)
+✔ escaping with critical HP shows recovery and actual route-guide healing restores the original objective (4.2531ms)
+✔ saving a recovery state preserves badges and fainted HP; nursing restores both party and next badge guidance (1.7652ms)
+✔ manual switching costs one enemy attack and keeps target debuffs, party order and items (4.4341ms)
+✔ invalid, current and fainted switches spend no turn; a knocked out replacement falls back once (0.9889ms)
+✔ both healthy participants receive a share of victory experience after switching (1.0677ms)
+✔ lead selection preserves all Pokemon data through saves and the next encounter uses that lead (1.17ms)
+✔ field potion heals at most 20, consumes exactly one, and does not revive or waste stock (0.249ms)
+✔ battle menu cancellation spends no turn and summary actions cannot mutate during dialogue or battle (0.7542ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 35
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 600.5656
+
+✖ failing tests:
+
+test at tests\battle-arena-art.test.ts:16:1
+✖ battle arena keeps the platform depth while adding a pixel horizon and drifting clouds (2.817ms)
+  AssertionError [ERR_ASSERTION]: retains the platform shadow layer
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\battle-arena-art.test.ts:20:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\field-bag.test.ts:59:1
+✖ field item handlers cannot bypass battle, dialogue, movement or transition locks (2.5118ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      badges: [],
+      box: [],
+      flags: {
+        departureCleared: true,
+  ...
+          7,
+  +       399
+        ]
+      },
+      seconds: 0,
+      steps: 0,
+      version: 1,
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\field-bag.test.ts:61:102)
+      at dom (C:\my_play\poketmon_demo\tests\field-bag.test.ts:12:7)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\field-bag.test.ts:59:93)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { version: 1, worldRevision: 23, map: 'bedroom', player: { x: 6, y: 6, facing: 'down' }, flags: { starterReceived: true, departureCleared: true }, party: [ [Object], [Object], [Object], [Object], [Object], [Object] ], box: [], pokedex: { seen: [Array], caught: [Array] }, inventory: { pokeBalls: 0, potions: 2 }, badges: [], keyItems: [], money: 0, healingPoint: 'home', steps: 0, seconds: 0 },
+    expected: { version: 1, worldRevision: 23, map: 'bedroom', player: { x: 6, y: 6, facing: 'down' }, flags: { starterReceived: true, departureCleared: true }, party: [ [Object], [Object], [Object], [Object], [Object], [Object] ], box: [], pokedex: { seen: [Array], caught: [Array] }, inventory: { pokeBalls: 0, potions: 2 }, badges: [], keyItems: [], money: 0, healingPoint: 'home', steps: 0, seconds: 0 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\party-summary-navigation.test.ts:39:1
+✖ stale browsing callbacks cannot run through dialogue, battle, movement, transitions or another panel (3.5417ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    {
+      badges: [],
+      box: [],
+      flags: {
+        departureCleared: true,
+  ...
+          7,
+  +       399
+        ]
+      },
+      seconds: 0,
+      steps: 0,
+      version: 1,
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\party-summary-navigation.test.ts:40:453)
+      at dom (C:\my_play\poketmon_demo\tests\party-summary-navigation.test.ts:9:194)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\party-summary-navigation.test.ts:39:113)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { version: 1, worldRevision: 23, map: 'bedroom', player: { x: 6, y: 6, facing: 'down' }, flags: { starterReceived: true, departureCleared: true }, party: [ [Object], [Object], [Object] ], box: [], pokedex: { seen: [Array], caught: [Array] }, inventory: { pokeBalls: 0, potions: 2 }, badges: [], keyItems: [], money: 0, healingPoint: 'home', steps: 0, seconds: 0 },
+    expected: { version: 1, worldRevision: 23, map: 'bedroom', player: { x: 6, y: 6, facing: 'down' }, flags: { starterReceived: true, departureCleared: true }, party: [ [Object], [Object], [Object] ], box: [], pokedex: { seen: [Array], caught: [Array] }, inventory: { pokeBalls: 0, potions: 2 }, badges: [], keyItems: [], money: 0, healingPoint: 'home', steps: 0, seconds: 0 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

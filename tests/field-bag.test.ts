@@ -58,9 +58,9 @@ test('field balls explain battle use and empty party cannot enter target selecti
 
 test('field item handlers cannot bypass battle, dialogue, movement or transition locks',()=>dom(()=>{
   const g=ready();g.save.party[0].hp=1;g.confirm();const before=structuredClone(g.save);
-  g.battle=createBattle(g.save);g.useFieldPotion(0);assert.deepEqual(g.save,before);g.battle=null;
+  g.battle=createBattle({...structuredClone(g.save),map:'route_s01'},'wild','roark',()=>0);g.useFieldPotion(0);assert.deepEqual(g.save,before);g.battle=null;
   g.say('검사',['대화 중']);g.useFieldPotion(0);assert.deepEqual(g.save,before);finish(g);
   g.move={from:{x:1,y:1},to:{x:2,y:1},elapsed:0,duration:.16};g.useFieldPotion(0);assert.deepEqual(g.save,before);g.move=null;
   g.transition=.4;g.useFieldPotion(0);assert.deepEqual(g.save,before);g.transition=0;
-  g.panel='bag';g.battle=createBattle(g.save);g.selectFieldItem(1);assert.equal(g.panel,'bag');assert.deepEqual(g.save,before);
+  g.panel='bag';g.battle=createBattle({...structuredClone(g.save),map:'route_s01'},'wild','roark',()=>0);g.selectFieldItem(1);assert.equal(g.panel,'bag');assert.deepEqual(g.save,before);
 }));

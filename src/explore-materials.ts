@@ -29,6 +29,15 @@ export function paintTourFacade(c:CanvasRenderingContext2D,images:Images,p:Place
 }
 
 export function paintTourGround(c:CanvasRenderingContext2D,source:CanvasImageSource,x:number,y:number,theme:string){
+  if(theme==='desert'){
+    // Keep the sand tile-based, but break its large flat fields into the small
+    // wind-carved marks that read at the DS field scale.
+    c.fillStyle='#d9bd7d';c.fillRect(x,y,16,16);
+    const seed=((x>>4)*13+(y>>4)*7)%5;
+    c.fillStyle='#edda9f';c.fillRect(x+2+(seed%3),y+3,5,1);c.fillRect(x+8,y+11+(seed%2),4,1);
+    c.fillStyle='#b8915c';c.fillRect(x+1,y+12,3,1);c.fillRect(x+10+(seed%2),y+6,2,1);
+    return;
+  }
   c.drawImage(source,184,16,16,16,x,y,16,16);
   const tint:Record<string,string>={forest:'#73986e70',city:'#a6b89d77',port:'#93b5a177',water:'#81a99b66',mine:'#b8af88bb',snow:'#eff3e8ed',factory:'#a9b0a1aa',ghost:'#a29bac99',coast:'#ead2a0ee',desert:'#d8b885ee',cave:'#9b9e96ee'};
   if(tint[theme]){c.fillStyle=tint[theme];c.fillRect(x,y,16,16)}
@@ -40,9 +49,13 @@ export function paintTourPaths(c:CanvasRenderingContext2D,source:CanvasImageSour
   for(const key of paths){
     const [x,y]=key.split(',').map(Number),px=x*16,py=y*16;
     c.drawImage(source,232,64,16,16,px,py,16,16);
+    if(theme==='desert'){
+      fill(px,py,16,16,'#e7c982');
+      fill(px+2,py+4+(x%2),12,1,'#f5dda0');fill(px+4,py+11-(y%2),9,1,'#c49c62');
+    }
     if(paved||snow)fill(px,py,16,16,snow?'#d8e4e0e0':'#c7c6b8bf');
     // Edge only at the perimeter: the path reads as one surface, not a striped tile grid.
-    const edge=paved?'#8c9a8d':snow?'#aabeb8':theme==='forest'?'#7eab70':'#8dc579',light=snow?'#f1f4e8':'#eee6bf';
+    const edge=paved?'#8c9a8d':snow?'#aabeb8':theme==='forest'?'#7eab70':theme==='desert'?'#a88050':'#8dc579',light=snow?'#f1f4e8':theme==='desert'?'#f5dda0':'#eee6bf';
     if(!paths.has(x+','+(y-1))){fill(px,py,16,2,edge);fill(px+1,py+2,14,1,light)}
     if(!paths.has(x+','+(y+1))){fill(px,py+14,16,2,edge);fill(px+1,py+13,14,1,light)}
     if(!paths.has((x-1)+','+y)){fill(px,py,2,16,edge);fill(px+2,py+1,1,14,light)}

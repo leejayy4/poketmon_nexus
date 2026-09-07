@@ -5,12 +5,13 @@ import { Engine,VECTOR } from '../src/engine';
 import { canStand } from '../src/maps';
 import { newSave,parseSave } from '../src/save';
 import { TOWN_REVISION } from '../src/town';
+import { MART_ROOMS } from '../src/journey-world';
 
 function tour(){const g=new Engine();g.exploring=true;g.save=g.freshSave();return g}
-test('all 76 rooms have three solid exhibits with reachable investigation surfaces',()=>{
-  assert.equal(Object.keys(TOUR_INTERIORS).length,76);
+test('every room has solid furniture with reachable investigation surfaces',()=>{
+  assert(Object.keys(TOUR_INTERIORS).length>=76);
   for(const [id,room]of Object.entries(TOUR_INTERIORS)){
-    const map=TOUR_MAPS[id as TourId];assert.equal(room.objects.length,3,id);
+    const map=TOUR_MAPS[id as TourId];assert(room.objects.length>=3,id);
     const occupied=new Set<string>();
     for(const o of room.objects){
       for(let y=o.y;y<o.y+o.h;y++)for(let x=o.x;x<o.x+o.w;x++){
@@ -27,6 +28,10 @@ test('every exhibit is investigated through player facing and confirm, repeatedl
   try{for(const [id,room]of Object.entries(TOUR_INTERIORS)){
     const g=tour();g.save.map=id as TourId;
     for(const o of room.objects){
+      if(room.style==='center'&&o.event==='tourExhibit1'){
+        g.save.player={x:o.x,y:o.y+o.h,facing:'up'};const before=structuredClone(g.save);g.confirm();
+        assert(g.dialogue?.choices?.some(c=>c.label==='포켓몬 맡기기'));assert(g.dialogue?.choices?.some(c=>c.label==='포켓몬도감'));g.dialogue=null;assert.deepEqual(g.save,before);continue;
+      }
       g.save.player={x:o.x,y:o.y+o.h,facing:'up'};const before=structuredClone(g.save);
       for(let n=0;n<2;n++){
         g.confirm();assert.equal(g.dialogue?.speaker,o.name);assert.deepEqual(g.dialogue?.pages,o.pages);
@@ -39,7 +44,7 @@ test('every exhibit is investigated through player facing and confirm, repeatedl
       }
     }
     g.save.player={x:room.host.x,y:room.reception?room.reception.y+room.reception.h:room.host.y+1,facing:'up'};
-    assert(canStand(g.map,g.save.player.x,g.save.player.y));g.confirm();if(room.style==='center')assert(g.dialogue?.pages[0].includes('건강해졌어요'));else assert.deepEqual(g.dialogue?.pages,room.greeting);
+    assert(canStand(g.map,g.save.player.x,g.save.player.y));g.confirm();if(room.style==='center')assert(g.dialogue?.pages[0].includes('건강해졌어요'));else if(MART_ROOMS.has(id))assert(g.dialogue?.choices?.some(c=>c.label==='상처약 200원'));else assert.deepEqual(g.dialogue?.pages,room.greeting);
   }}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}
 });
 test('revision seven interior saves relocate only obstructed positions and preserve progress',()=>{

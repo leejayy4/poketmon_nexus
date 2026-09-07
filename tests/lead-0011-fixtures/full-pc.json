@@ -1,0 +1,894 @@
+{
+  "version": 1,
+  "worldRevision": 23,
+  "map": "tour_oreburgh_center",
+  "player": {
+    "x": 10,
+    "y": 5,
+    "facing": "right"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 7,
+      "level": 5,
+      "experience": 0,
+      "hp": 20,
+      "maxHp": 20,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "꼬리흔들기"
+      ]
+    },
+    {
+      "species": 399,
+      "level": 5,
+      "experience": 1,
+      "hp": 18,
+      "maxHp": 24,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "울음소리"
+      ]
+    },
+    {
+      "species": 399,
+      "level": 5,
+      "experience": 2,
+      "hp": 18,
+      "maxHp": 24,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "울음소리"
+      ]
+    },
+    {
+      "species": 399,
+      "level": 5,
+      "experience": 3,
+      "hp": 18,
+      "maxHp": 24,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "울음소리"
+      ]
+    },
+    {
+      "species": 399,
+      "level": 5,
+      "experience": 4,
+      "hp": 18,
+      "maxHp": 24,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "울음소리"
+      ]
+    },
+    {
+      "species": 399,
+      "level": 5,
+      "experience": 5,
+      "hp": 18,
+      "maxHp": 24,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "울음소리"
+      ]
+    }
+  ],
+  "box": [
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 0,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 1,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 2,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 3,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 4,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 5,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 6,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 7,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 8,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 9,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 10,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 11,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 12,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 13,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 14,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 15,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 16,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 17,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 18,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 19,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 20,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 21,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 22,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 23,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 24,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 25,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 26,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 27,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 28,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 29,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 30,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 31,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 32,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 33,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 34,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 35,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 36,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 37,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 38,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 39,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 0,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 1,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 2,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 3,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 4,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 5,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 6,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 7,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 8,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 9,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 10,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 11,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 12,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 13,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 14,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 15,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 16,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 17,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 18,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 5,
+      "experience": 19,
+      "hp": 10,
+      "maxHp": 34,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "웅크리기"
+      ]
+    }
+  ],
+  "pokedex": {
+    "seen": [
+      7
+    ],
+    "caught": [
+      7
+    ]
+  },
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 0
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 0,
+  "seconds": 0
+}

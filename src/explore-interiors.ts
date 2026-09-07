@@ -53,7 +53,7 @@ const collections:Record<string,Collection>={
 export function createTourInterior(p:Place,center:boolean):TourInterior {
   const collection:Collection=center?{style:'center',exhibits:[
     exhibit('healer','회복 장치','몬스터볼을 올리는 홈이 있는\n포켓몬센터의 회복 장치다.'),
-    exhibit('console','센터 안내 단말',p.name+'의 안내 화면이다.\n주변 장소와 쉼터를 소개한다.'),
+    exhibit('console','포켓몬 보관 PC','포켓몬을 보관하거나 데려올 수 있다.\n발견·포획한 포켓몬 도감도 확인하자.'),
     exhibit('bench','대기 의자','여행자가 잠시 쉬어 가는 자리다.\n옆에 여행 안내 책자가 있다.'),
   ]}:collections[p.id.slice(5)];
   if(!collection)throw Error('Missing tour interior: '+p.id);

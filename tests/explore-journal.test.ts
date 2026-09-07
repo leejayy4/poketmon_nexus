@@ -4,7 +4,8 @@ import assert from 'node:assert/strict';
 import { Engine } from '../src/engine';
 import { newSave,parseSave } from '../src/save';
 import { markTourVisit,tourVisitSummary } from '../src/explore-journal';
-import { TOUR_MAPS,TOUR_SPAWNS,type TourId } from '../src/explore-world';
+import { TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS,type TourId } from '../src/explore-world';
+import { PASSAGES } from '../src/journey-world';
 import { checkpoint,encodeSave,decodeSave,SaveLibrary } from '../src/save-library';
 function tour(){const g=new Engine();g.exploring=true;g.save=g.freshSave();return g}
 function step(g:Engine,key:string){g.press(key);g.release(key);for(let i=0;i<20;i++)g.update(.04)}
@@ -32,9 +33,9 @@ test('visit lists reject malformed or foreign IDs and normalize known interior p
   assert(parseSave(JSON.stringify({...newSave(),tourVisited:[]})));
   const parsed=parseSave(JSON.stringify({...s,tourVisited:['tour_jubilife_hall']}))!;assert.deepEqual(parsed.tourVisited,['tour_jubilife_hall','tour_jubilife']);
 });
-test('all 119 tour locations count as 43 outdoor places and 76 interiors without duplicates',()=>{
+test('all map visits separate 43 original places, interiors and new passages without duplicates',()=>{
   const s=tour().save;for(const id of Object.keys(TOUR_MAPS)){s.map=id as TourId;s.player={...TOUR_SPAWNS[id as TourId],facing:'down'};markTourVisit(s);markTourVisit(s)}
-  assert.equal(s.tourVisited?.length,119);assert.equal(tourVisitSummary(s,'신오').outdoors,43);assert.equal(tourVisitSummary(s,'신오').interiors,76);
+  assert.equal(s.tourVisited?.length,Object.keys(TOUR_MAPS).length);assert.equal(tourVisitSummary(s,'신오').outdoors,43);assert.equal(tourVisitSummary(s,'신오').interiors,Object.keys(TOUR_INTERIORS).length);assert.equal(tourVisitSummary(s,'신오').passages,Object.keys(PASSAGES).length);
   for(const region of ['신오','관동','성도','하나']){const result=tourVisitSummary(s,region);assert.equal(result.regionVisited,result.regionTotal)}assert(parseSave(JSON.stringify(s)));
 });
 test('doorway checkpoint records both the known source and normalized arrival without mutating input',()=>{

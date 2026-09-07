@@ -3,11 +3,12 @@ import assert from 'node:assert/strict';
 import { PLACES,TOUR_MAPS,TOUR_SPAWNS,TOUR_EDGES,TOUR_BUILDINGS,TOUR_FEATURES,SHORT_TOURS } from '../src/explore-world';
 import { grantPokemon } from '../src/pokemon';
 import { Engine,VECTOR } from '../src/engine';
-import { MAPS,canStand,canEnter,getMap } from '../src/maps';
+import { MAPS,canStand,canEnter,getMap,getWorldOutdoors } from '../src/maps';
 import { newSave,parseSave } from '../src/save';
 import { encodeSave,decodeSave,checkpoint } from '../src/save-library';
 function tour(){const g=new Engine();g.save=g.freshSave();grantPokemon(g.save,7);g.save.flags.departureCleared=true;return g}
 function step(g:Engine,key:string){g.press(key);g.release(key);for(let i=0;i<20;i++)g.update(.04)}
+function ui(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}}
 test('all 43 exterior places and four regions form one connected walking graph',()=>{
   assert.equal(PLACES.length,43);assert.equal(new Set(PLACES.map(p=>p.region)).size,4);const seen=new Set(['tour_jubilife']),q=['tour_jubilife'];for(let i=0;i<q.length;i++)for(const [a,b]of TOUR_EDGES){const next=a===q[i]?b:b===q[i]?a:null;if(next&&!seen.has(next)){seen.add(next);q.push(next)}}assert.equal(seen.size,43);
   for(const id of SHORT_TOURS){assert.equal(TOUR_MAPS[id as keyof typeof TOUR_MAPS].width,20);assert.equal(TOUR_MAPS[id as keyof typeof TOUR_MAPS].height,18)}
@@ -32,6 +33,10 @@ test('expanded map saves round trip as adventures; legacy test imports preserve 
 test('every tour spawn reaches all entrances, guides and house investigation positions',()=>{
   for(const map of Object.values(TOUR_MAPS)){const spawn=TOUR_SPAWNS[map.id as keyof typeof TOUR_SPAWNS],q=[spawn],seen=new Set<string>();for(let i=0;i<q.length;i++){const{x,y}=q[i],key=x+','+y;if(seen.has(key))continue;seen.add(key);for(const[dir,v]of Object.entries(VECTOR)){const a=x+v.x,b=y+v.y;if(canEnter(map,a,b,dir as keyof typeof VECTOR)&&!map.warps.some(w=>w.x===a&&w.y===b))q.push({x:a,y:b})}}for(const w of map.warps){const v=VECTOR[w.entry];assert(seen.has((w.x-v.x)+','+(w.y-v.y)),map.id+' exit')}for(const n of [...map.npcs,...map.props])assert(Object.values(VECTOR).some(v=>seen.has((n.x+v.x)+','+(n.y+v.y))),map.id+' interaction');}
 });
+test('tour guides repeat their map’s real exit directions and destinations',()=>ui(()=>{
+  const g=tour();
+  for(const place of PLACES){g.save.map=place.id;g.save.player={...TOUR_SPAWNS[place.id],facing:'down'};const signs=getWorldOutdoors(g.map)!.signs;g.event('tourGuide');assert.deepEqual(g.dialogue?.pages.slice(1),signs.map(sign=>sign.pages[0]));g.dialogue=null;}
+}));
 test('legacy exploration URL uses the same adventure storage namespace',()=>{
   const old=Object.getOwnPropertyDescriptor(globalThis,'location');try{Object.defineProperty(globalThis,'location',{configurable:true,value:{search:'?explore=1&qa=world-test'}});const a=new Engine();assert.equal(a.exploring,false);assert(a.storageKey.endsWith(':qa:world-test'));Object.defineProperty(globalThis,'location',{configurable:true,value:{search:'?qa=world-test'}});const b=new Engine();assert(!b.exploring);assert.equal(a.storageKey,b.storageKey);}finally{if(old)Object.defineProperty(globalThis,'location',old);else Reflect.deleteProperty(globalThis,'location')}
 });

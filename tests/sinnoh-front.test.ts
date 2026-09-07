@@ -4,10 +4,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Engine } from '../src/engine';
 import { newSave,parseSave } from '../src/save';
-import { grantPokemon } from '../src/pokemon';
+import { grantPokemon,pokemonMoves } from '../src/pokemon';
 import { maxHpAtLevel,gainExperience } from '../src/growth';
 import { GYMS,awardGym } from '../src/gyms';
-import { createBattle,battleTurn } from '../src/battle';
+import {battleTurn,playerDamage,enemyDamage,type Battle,type BattleAction } from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
+import {createBattle as createRegionalBattle} from '../src/battle';
+import {encounterPool} from '../src/runtime-encounters';
+import type {SaveData} from '../src/types';
 import { getMap,canStand,MAPS } from '../src/maps';
 import { checkpoint } from '../src/save-library';
 import { SINNOH_CENTERS,SINNOH_GYMS,SINNOH_MAPS } from '../src/sinnoh-maps';
@@ -15,27 +19,45 @@ function ready(species=7,level=15,badges=1){const s=newSave();grantPokemon(s,spe
 function ui(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}}
 function finish(g:Engine){for(let i=0;g.dialogue&&i<150;i++)g.confirm();assert.equal(g.dialogue,null)}
 function step(g:Engine,key:string){g.press(key);g.release(key);for(let i=0;i<20;i++)g.update(.04)}
-test('all four partners can win each new gym at the advertised level with two potions',()=>{
+function prepare(s:SaveData,stage:number){
+  // S02 + S04 species; Meditite is only added once S15 is in the travelled region.
+  const ids=stage===1?[403,41,396,406,399]:[403,41,396,406,307];
+  const level=stage===1?12:stage===2?15:20;
+  s.party=s.party.slice(0,1);
+  for(const species of ids){const maxHp=maxHpAtLevel(species,level);s.party.push({species,level,hp:maxHp,maxHp,experience:0,nature:'성실',met:species===307?'천관산 하부':'신오 초반 도로와 동굴'});}
+  for(const p of s.party){delete p.moves;p.moves=pokemonMoves(p);}
+}
+function strategy(s:SaveData,b:Battle):BattleAction{
+  const candidates=s.party.map((p,i)=>({i,p,hit:p.hp>0?playerDamage(p,{...b,active:i}):-1})).filter(p=>p.p.hp>0).sort((a,c)=>c.hit-a.hit);
+  if(b.forcedSwitch)return {switch:candidates[0].i};
+  const p=s.party[b.active],best=candidates[0];
+  if(best.i!==b.active&&best.hit>playerDamage(p,b))return {switch:best.i};
+  if(p.hp<=enemyDamage(b,b.enemyAttackDrop,p)&&s.inventory.potions&&p.hp<p.maxHp)return 'potion';
+  return 'move0';
+}
+test('each starter can lead a locally obtainable prepared party through all later gyms with two potions',()=>{
   for(const species of [1,4,7,25])for(let stage=1;stage<4;stage++){
-    const gym=GYMS[stage],s=ready(species,gym.level,stage),b=createBattle(s,'gym',gym.id)!;let result;
-    for(let i=0;i<60&&!b.result;i++){const p=s.party[b.active];result=battleTurn(s,b,p.hp<=gym.damage*2&&s.inventory.potions?'potion':'move0').outcome;}
+    const gym=GYMS[stage],s=ready(species,gym.level,stage);prepare(s,stage);const b=createBattle(s,'gym',gym.id)!;let result;
+    for(let i=0;i<60&&!b.result;i++){result=battleTurn(s,b,strategy(s,b)).outcome;}
     assert.equal(result,'won',species+' '+gym.id);assert(awardGym(s,gym.id));assert.equal(s.badges.length,stage+1);assert(parseSave(JSON.stringify(s)));
   }
 });
 test('gym order cannot be skipped and wins, reload and revisits do not duplicate rewards',()=>ui(()=>{
   const g=new Engine();g.save=ready();g.event('maylene');finish(g);assert.equal(g.battle,null);assert(!awardGym(g.save,'maylene'));
   for(let stage=1;stage<4;stage++){
-    g.save.map=SINNOH_GYMS[stage-1];g.save.player={x:8,y:5,facing:'up'};g.healParty();g.save.inventory.potions=2;g.event(GYMS[stage].id);finish(g);
-    for(let i=0;g.battle&&!g.battle.result&&i<60;i++){g.actBattle(g.save.party[0].hp<=14&&g.save.inventory.potions?'potion':'move0');if(!g.battle?.result)finish(g)}
+    prepare(g.save,stage);g.save.map=SINNOH_GYMS[stage-1];g.save.player={x:8,y:5,facing:'up'};g.healParty();g.save.inventory.potions=2;g.event(GYMS[stage].id);finish(g);
+    for(let i=0;g.battle&&!g.battle.result&&i<60;i++){g.actBattle(strategy(g.save,g.battle));if(!g.battle?.result)finish(g)}
     assert.equal(g.save.badges.length,stage+1);const saved=parseSave(JSON.stringify(g.save))!;assert(saved);g.restore(saved);const money=g.save.money;g.event(GYMS[stage].id);finish(g);assert.equal(g.battle,null);assert.equal(g.save.money,money);
   }assert.equal(g.save.money,8400);
 }));
 test('all new recovery centers persist and recover a gym defeat to a valid tile',()=>ui(()=>{
   for(let i=0;i<3;i++){const g=new Engine();g.save=ready(7,15,3);g.save.map=worldMapId(SINNOH_CENTERS[i]);g.save.player={x:8,y:7,facing:'up'};g.event('nurse');finish(g);assert.equal(g.save.healingPoint,worldMapId(SINNOH_CENTERS[i]));g.save.map=SINNOH_GYMS[i];g.save.player={x:8,y:5,facing:'up'};g.save.party[0].hp=1;g.battle=createBattle(g.save,'gym',GYMS[i+1].id);g.actBattle('move0');assert.equal(g.save.map,worldMapId(SINNOH_CENTERS[i]));assert.equal(g.save.party[0].hp,g.save.party[0].maxHp);assert(parseSave(JSON.stringify(g.save)))}
 }));
-test('forest and mountain encounters scale, grant XP and preserve capture location',()=>ui(()=>{
-  for(const [map,level,xp]of [['tour_eterna_forest',7,60],['tour_coronet',10,80]] as const){const g=new Engine();g.save=ready();g.save.map=map;g.save.player={x:4,y:10,facing:'right'};for(let i=0;i<6;i++)step(g,i%2?'ArrowLeft':'ArrowRight');assert.equal(g.battle?.enemy.level,level);finish(g);g.battle!.enemy.hp=1;const before=g.save.party[0].experience;g.actBattle('move0');assert.equal(g.save.party[0].experience,before+xp);finish(g);
-    const b=createBattle(g.save)!;b.enemy.hp=1;assert.equal(battleTurn(g.save,b,'ball').outcome,'caught');assert.equal(g.save.party[1].level,level);assert.equal(g.save.party[1].met,MAPS[map].name);assert(parseSave(JSON.stringify(g.save)));
+test('forest and mountain encounters follow their design pools, grant level XP and preserve location',()=>ui(()=>{
+  for(const map of ['tour_eterna_forest','tour_coronet'] as const){const g=new Engine();g.save=ready();g.save.map=map;g.save.player={x:4,y:10,facing:'right'};g.random=()=>0;
+    for(let i=0;i<6;i++)step(g,i%2?'ArrowLeft':'ArrowRight');const pool=encounterPool(map)!;assert.equal(g.battle?.enemy.level,pool.levels[0]);assert.equal(g.battle?.enemy.species,pool.slots[0].speciesId);finish(g);
+    g.battle!.enemy.hp=1;const expected=structuredClone(g.save.party[0]);gainExperience(expected,pool.levels[0]*10);g.actBattle('move0');assert.deepEqual(g.save.party[0],expected);finish(g);
+    const b=createRegionalBattle(g.save,'wild','roark',()=>0)!;b.enemy.hp=1;assert.equal(battleTurn(g.save,b,'ball').outcome,'caught');assert.equal(g.save.party[1].level,pool.levels[0]);assert.equal(g.save.party[1].met,MAPS[map].name);assert(parseSave(JSON.stringify(g.save)));
   }
 }));
 test('records require four badges and delivery completes once while world travel stays open',()=>ui(()=>{
@@ -43,6 +65,16 @@ test('records require four badges and delivery completes once while world travel
   const before=parseSave(JSON.stringify(g.save))!;g.restore(before);assert(g.map.warps.some(w=>w.to==='research_path'));g.event('researchGate');finish(g);assert.equal(g.save.flags.researchDelivered,true);assert(g.map.warps.some(w=>w.to==='research_path'));assert(g.map.warps.some(w=>w.to==='research_path'));
   const done=parseSave(JSON.stringify(g.save))!;g.restore(before);assert(!g.save.flags.researchDelivered);g.restore(done);assert(g.map.warps.some(w=>w.to==='research_path'));g.event('researchGate');finish(g);assert.equal(g.save.money,8400);
   g.event('observation');assert(g.dialogue?.pages.some(l=>l.includes('무사히 전달')));finish(g);
+}));
+test('Veilstone guide stops directing a completed observation delivery',()=>ui(()=>{
+  const g=new Engine();g.save=ready(7,15,4);g.save.map='tour_veilstone';g.save.flags.observationCollected=true;g.save.flags.researchDelivered=true;
+  g.event('sinnohGuide');assert(g.dialogue?.pages.some(line=>line.includes('무사히 전달')));assert(!g.dialogue?.pages.some(line=>line.includes('관측 연구원을 만나세요')));finish(g);
+  const restored=parseSave(JSON.stringify(g.save))!;g.restore(restored);g.event('sinnohGuide');assert(g.dialogue?.pages.some(line=>line.includes('새로운 소식')));finish(g);
+}));
+test('Sinnoh city guides do not direct the player to an already won gym',()=>ui(()=>{
+  const g=new Engine();g.save=ready(7,15,2);g.save.map='tour_eterna';g.event('sinnohGuide');assert(g.dialogue?.pages.some(line=>line.includes('멜리사에게 도전')));assert(!g.dialogue?.pages.some(line=>line.includes('먼저 유채')));finish(g);
+  g.save=ready(7,15,3);g.save.map='tour_hearthome';g.event('sinnohGuide');assert(g.dialogue?.pages.some(line=>line.includes('자두 체육관')));assert(!g.dialogue?.pages.some(line=>line.includes('이곳은 멜리사의')));finish(g);
+  const restored=parseSave(JSON.stringify(g.save))!;g.restore(restored);g.event('sinnohGuide');assert(g.dialogue?.pages.some(line=>line.includes('자두 체육관')));finish(g);
 }));
 test('free ferry cancellation, outbound reload and return preserve party, supplies and funds',()=>ui(()=>{
   const g=new Engine();g.save=ready(7,15,4);g.save.flags.observationCollected=true;g.save.flags.researchDelivered=true;g.save.map='tour_canalave';g.save.player={...worldSpawn('tour_canalave')!,facing:'down'};const party=JSON.stringify(g.save.party),inv={...g.save.inventory};g.event('ferry');g.cancel();assert.equal(g.save.map,'tour_canalave');assert(!g.save.flags.ferryPass);g.event('ferry');finish(g);assert.equal(g.save.map,'tour_vermilion');assert.equal(g.save.flags.ferryPass,true);g.restore(parseSave(JSON.stringify(g.save))!);g.event('ferry');finish(g);assert.equal(g.save.map,'tour_canalave');assert.equal(JSON.stringify(g.save.party),party);assert.deepEqual(g.save.inventory,inv);assert.equal(g.save.money,8400);

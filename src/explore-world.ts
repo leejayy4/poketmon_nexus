@@ -1,3 +1,4 @@
+import { buildJourneyWorld,ROOM_PARENTS,PASSAGES,PASSAGE_PLACES } from './journey-world';
 import { COMPACT_PLACES,tourSize,expandedExits,expandTown,type ExpandedTown } from './explore-expansion';
 import { createTownPokemon,type TownPokemon } from './explore-pokemon';
 import type { Direction,GameMap,MapId,Point } from './types';
@@ -114,4 +115,14 @@ for(const [index,p]of PLACES.entries()){
 for(const p of PLACES)TOUR_OUTDOORS[p.id]=prepareTourOutdoors(p,TOUR_MAPS[p.id],TOUR_FEATURES[p.id],SHORT_TOURS.has(p.id),placeById);
 export const TOUR_POKEMON:Record<string,TownPokemon>={};
 for(const p of PLACES){const residents=createTourResidents(p.id);if(residents.length){TOUR_RESIDENTS[p.id]=residents;const pokemon=createTownPokemon(p);TOUR_POKEMON[p.id]=pokemon;TOUR_MAPS[p.id].npcs.push(...residents,pokemon)}}
-export function tourPlaceForMap(id:string){return placeById(id)??PLACES.find(p=>id===p.id+'_center'||id===p.id+'_hall')}
+buildJourneyWorld({places:PLACES,maps:TOUR_MAPS,buildings:TOUR_BUILDINGS,rooms:TOUR_INTERIORS,spawns:TOUR_SPAWNS});
+// Store the actual next map in exit signs; direction and tile never change.
+for(const p of PLACES)for(const sign of TOUR_OUTDOORS[p.id].signs){
+  const exit=TOUR_MAPS[p.id].warps.find(w=>w.entry===sign.direction&&PASSAGES[w.to]&&[PASSAGES[w.to].a.id,PASSAGES[w.to].b.id].includes(sign.destination as TourId));
+  if(exit){const name=TOUR_MAPS[exit.to as TourId].name;sign.pages[0]=sign.pages[0].split(' → ')[0]+'\n'+name;sign.name=name;sign.destination=exit.to;}
+}
+for(const passage of Object.values(PASSAGES)){
+  const map=TOUR_MAPS[passage.id];
+  TOUR_OUTDOORS[passage.id]={objects:[],signs:map.warps.map((w,i)=>({x:i?28:3,y:8,direction:w.entry,destination:w.to,name:'이정표',event:'journeySign',pages:[`← ${passage.a.name}\n→ ${passage.b.name}`,'길에서 벗어난 풀밭에는\n다른 포켓몬이 살고 있을지도 모른다.']}))};
+}
+export function tourPlaceForMap(id:string){return placeById(id)??PASSAGE_PLACES[id]??ROOM_PARENTS[id]??PLACES.find(p=>id===p.id+'_center'||id===p.id+'_hall')}

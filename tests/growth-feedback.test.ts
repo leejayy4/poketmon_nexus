@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { Renderer } from '../src/renderer';
 import { newSave,parseSave } from '../src/save';
 import { grantPokemon } from '../src/pokemon';
-import { createBattle,battleTurn } from '../src/battle';
+import {battleTurn } from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
 import { gainExperience,maxHpAtLevel } from '../src/growth';
 
 function painter(){

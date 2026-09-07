@@ -33,7 +33,7 @@ test('expanded port has its own working center even before the research ferry qu
 });
 
 test('escaping with critical HP shows recovery and actual route-guide healing restores the original objective',()=>dom(()=>{
-  const g=new Engine();g.exploring=false;g.save=ready();g.save.party[0].hp=8;g.save.inventory={pokeBalls:0,potions:0};g.battle=createBattle(g.save);
+  const g=new Engine();g.exploring=false;g.save=ready();g.save.party[0].hp=8;g.save.inventory={pokeBalls:0,potions:0};g.battle=createBattle({...g.save,map:'route_s01'},'wild','roark',()=>0);
   assert.equal(adventureGuide(g.save)!.objective.id,'roark');g.actBattle('move1');finish(g);assert.equal(g.save.party[0].hp,4);
   g.actBattle('run');finish(g);assert(!g.battle);assert.equal(adventureGuide(g.save)!.objective.id,'recover');
   const flags=structuredClone(g.save.flags);g.event('routeGuide');finish(g);assert.equal(g.save.party[0].hp,20);assert.equal(g.save.inventory.potions,2);assert.equal(g.save.inventory.pokeBalls,5);

@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "worldRevision": 23,
+  "map": "tour_pass_hearthome_veilstone",
+  "player": {
+    "x": 2,
+    "y": 10,
+    "facing": "right"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 4,
+      "level": 6,
+      "experience": 59,
+      "hp": 22,
+      "maxHp": 22,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "할퀴기",
+        "울음소리"
+      ]
+    }
+  ],
+  "box": [],
+  "pokedex": {
+    "seen": [
+      4
+    ],
+    "caught": [
+      4
+    ]
+  },
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 5
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 0,
+  "seconds": 0
+}

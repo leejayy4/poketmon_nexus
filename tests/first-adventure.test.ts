@@ -4,7 +4,8 @@ import { Engine } from '../src/engine';
 import { getMap,canStand } from '../src/maps';
 import { newSave,parseSave } from '../src/save';
 import { grantPokemon } from '../src/pokemon';
-import { createBattle,battleTurn } from '../src/battle';
+import {battleTurn,enemyDamage } from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
 import { checkpoint } from '../src/save-library';
 
 function ui(run:()=>void){const previous=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(previous)Object.defineProperty(globalThis,'document',previous);else Reflect.deleteProperty(globalThis,'document')}}
@@ -54,10 +55,10 @@ test('each partner wins the first battle; capture survives reload without changi
   }
 });
 
-test('failed catches consume one ball and a turn; empty bag and full party cannot consume items',()=>{
+test('failed catches consume one ball and a turn; empty bag and full party plus box cannot consume items',()=>{
   const s=ready(),b=createBattle(s)!;battleTurn(s,b,'ball',()=>.99);assert.equal(s.inventory.pokeBalls,4);assert.equal(s.party[0].hp,16);assert.equal(s.party.length,1);
   s.inventory.pokeBalls=0;const hp=s.party[0].hp;battleTurn(s,b,'ball');assert.equal(s.party[0].hp,hp);
-  s.inventory.pokeBalls=5;while(s.party.length<6)s.party.push({...b.enemy});battleTurn(s,b,'ball');assert.equal(s.party.length,6);assert.equal(s.inventory.pokeBalls,5);assert(parseSave(JSON.stringify(s)));
+  s.inventory.pokeBalls=5;while(s.party.length<6)s.party.push({...b.enemy});s.box=Array.from({length:60},()=>({...b.enemy}));battleTurn(s,b,'ball');assert.equal(s.party.length,6);assert.equal(s.inventory.pokeBalls,5);assert(parseSave(JSON.stringify(s)));
 });
 
 test('support moves and potions change combat state with bounded effects',()=>{
@@ -74,8 +75,8 @@ test('a fainted partner passes to the next healthy member; defeat recovers at ho
 }));
 
 test('mid-battle saves preserve settled HP and items; restoration cancels old battle and dialogue',()=>ui(()=>{
-  const g=new Engine();g.save=ready();encounter(g);g.actBattle('move0');const saved=parseSave(JSON.stringify(g.save))!;assert.equal(saved.party[0].hp,16);
-  g.restore(saved);assert.equal(g.battle,null);assert.equal(g.dialogue,null);assert.equal(g.save.party[0].hp,16);assert.equal(g.save.map,'route_s01');
+  const g=new Engine();g.save=ready();encounter(g);const expected=g.save.party[0].hp-enemyDamage(g.battle!,g.battle!.enemyAttackDrop,g.save.party[0]);g.actBattle('move0');const saved=parseSave(JSON.stringify(g.save))!;assert.equal(saved.party[0].hp,expected);
+  g.restore(saved);assert.equal(g.battle,null);assert.equal(g.dialogue,null);assert.equal(g.save.party[0].hp,expected);assert.equal(g.save.map,'route_s01');
   encounter(g);g.actBattle('run');g.restore(newSave());finish(g);assert.equal(g.save.map,'bedroom');assert.equal(g.save.party.length,0);
 }));
 

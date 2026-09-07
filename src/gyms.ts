@@ -20,7 +20,7 @@ export function gymPreparation(save:SaveData,id:GymId){
   const healthy=save.party.filter(p=>p.hp>0),injured=save.party.filter(p=>p.hp<p.maxHp).length;
   const highestLevel=Math.max(0,...healthy.map(p=>p.level)),recommendedLevel=gymById(id).level;
   const blocked=gymChallengeBlock(save,id);
-  const advice=blocked??(injured?'다친 친구가 있으니 센터에서 쉬면\n더 든든하게 도전할 수 있을 거야.':highestLevel<recommendedLevel?`권장 레벨은 ${recommendedLevel}이야. 풀밭에서\n연습하거나 지금 도전해도 좋아.`:save.inventory.potions<2?'센터에서 상처약을 2개까지\n보충해 주니 준비할 때 들러 봐.':'파트너의 기술과 교대를 활용해 봐.\n준비가 되었다면 시작하자!');
+  const advice=blocked??(injured?'다친 친구가 있으니 센터에서 쉬면\n더 든든하게 도전할 수 있을 거야.':highestLevel<recommendedLevel?`권장 레벨은 ${recommendedLevel}이야. 풀밭에서\n연습하거나 지금 도전해도 좋아.`:save.inventory.potions<2?(save.badges.length?'상처약은 마을 상점에서\n준비해 주세요.':'센터에서 상처약을 2개까지\n보충해 주니 준비할 때 들러 봐.'):'파트너의 기술과 교대를 활용해 봐.\n준비가 되었다면 시작하자!');
   return {available:healthy.length,total:save.party.length,injured,highestLevel,recommendedLevel,potions:save.inventory.potions,blocked,advice};
 }
 export function awardGym(save:SaveData,id:GymId){const gym=gymById(id);if(save.badges.includes(gym.badge)||!canChallenge(save,id))return false;save.badges.push(gym.badge);save.keyItems.push(gym.tm);save.money=Math.min(999999,save.money+gym.team[2][1]*120);return true}

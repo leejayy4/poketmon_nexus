@@ -1,6 +1,7 @@
 import { worldMapId,worldSpawn,isWorldCenter } from './unified-world';
 import { markTourVisit,validTourVisits } from './explore-journal';
-import type { SaveData } from './types';
+import type { SaveData, Pokemon } from './types';
+import { SPECIES, BOX_CAPACITY, validPokemonMoves, recordSeen } from './pokemon';
 import { MAPS, getMap, canStand } from './maps';
 import { TOWN_REVISION } from './town';
 import { LEVEL_CAP, OWNABLE_SPECIES, minimumLevel, maxHpAtLevel, nextLevelXp } from './growth';
@@ -8,7 +9,7 @@ import { TOUR_SPAWNS } from './explore-world';
 import { GYMS } from './gyms';
 import { SINNOH_MAPS,SINNOH_STARTS,SINNOH_CENTERS } from './sinnoh-maps';
 export const SAVE_KEY='first-partner-save-v1';
-export function newSave():SaveData { return {version:1,worldRevision:TOWN_REVISION,map:'bedroom',player:{x:6,y:6,facing:'down'},flags:{},party:[],inventory:{pokeBalls:0,potions:0},badges:[],keyItems:[],money:0,healingPoint:'home',steps:0,seconds:0}; }
+export function newSave():SaveData { return {version:1,worldRevision:TOWN_REVISION,map:'bedroom',player:{x:6,y:6,facing:'down'},flags:{},party:[],box:[],pokedex:{seen:[],caught:[]},inventory:{pokeBalls:0,potions:0},badges:[],keyItems:[],money:0,healingPoint:'home',steps:0,seconds:0}; }
 export function parseSave(raw:string|null):SaveData|null {
   try {
     if(!raw) return null;
@@ -40,15 +41,26 @@ export function parseSave(raw:string|null):SaveData|null {
       s.worldRevision=TOWN_REVISION;
     }
     if(s.version!==1 || !MAPS[s.map] || !s.player || !Number.isInteger(s.player.x) || !Number.isInteger(s.player.y) || !canStand({...getMap(s.map,s.flags),npcs:getMap(s.map,s.flags).npcs.filter(n=>n.id!=='tourPokemon')},s.player.x,s.player.y) || !['up','down','left','right'].includes(s.player.facing)) return null;
-    if(!Array.isArray(s.party)||s.party.length>6||s.party.some(p=>!p||!Number.isInteger(p.species)||!OWNABLE_SPECIES.includes(p.species)||!Number.isInteger(p.level)||p.level<minimumLevel(p.species)||p.level>LEVEL_CAP||p.maxHp!==maxHpAtLevel(p.species,p.level)||!Number.isInteger(p.experience)||p.experience<0||p.experience>=(p.level===LEVEL_CAP?1:nextLevelXp(p.level))||!Number.isInteger(p.hp)||p.hp<0||p.hp>p.maxHp||typeof p.nature!=='string'||p.nature.length>20||typeof p.met!=='string'||p.met.length>100)) return null;
+    const validPokemon=(p:Pokemon)=>Boolean(p)&&Number.isInteger(p.species)&&OWNABLE_SPECIES.includes(p.species)&&Number.isInteger(p.level)&&p.level>=minimumLevel(p.species)&&p.level<=LEVEL_CAP&&p.maxHp===maxHpAtLevel(p.species,p.level)&&Number.isInteger(p.experience)&&p.experience>=0&&p.experience<(p.level===LEVEL_CAP?1:nextLevelXp(p.level))&&Number.isInteger(p.hp)&&p.hp>=0&&p.hp<=p.maxHp&&typeof p.nature==='string'&&p.nature.length<=20&&typeof p.met==='string'&&p.met.length<=100&&validPokemonMoves(p,Array.isArray(s.keyItems)?s.keyItems:[]);
+    if(!Array.isArray(s.party)||s.party.length>6||s.party.some(p=>!validPokemon(p)))return null;
+    if(s.box===undefined)s.box=[];
+    if(!Array.isArray(s.box)||s.box.length>BOX_CAPACITY||s.box.some(p=>!validPokemon(p)))return null;
+    const owned=[...s.party,...s.box];
+    if(s.pokedex!==undefined){
+      const d=s.pokedex;
+      if(!d||typeof d!=='object'||!Array.isArray(d.seen)||!Array.isArray(d.caught))return null;
+      for(const values of [d.seen,d.caught])if(values.length>Object.keys(SPECIES).length||new Set(values).size!==values.length||values.some(id=>!Number.isInteger(id)||!SPECIES[id]))return null;
+      if(d.caught.some(id=>!OWNABLE_SPECIES.includes(id)||!d.seen.includes(id)))return null;
+    }
+    for(const p of owned)recordSeen(s,p.species,true);
     if(!s.flags||Array.isArray(s.flags)||typeof s.flags!=='object'||Object.values(s.flags).some(v=>typeof v!=='boolean' && (typeof v!=='number'||!Number.isFinite(v)))) return null;
-    const starters=s.party.filter(p=>[1,4,7].includes(p.species)), pikachu=s.party.filter(p=>p.species===25);
+    const starters=owned.filter(p=>[1,2,4,5,7,8].includes(p.species)), pikachu=owned.filter(p=>p.species===25);
     if(starters.length>1||pikachu.length>1||Boolean(s.flags.starterReceived)!==Boolean(starters.length)||Boolean(s.flags.pikachuReceived)!==Boolean(pikachu.length)) return null;
     if(s.flags.exploration!==undefined&&typeof s.flags.exploration!=='boolean')return null;
 
-    if(s.flags.exploration===true&&(s.party.length||s.badges?.length||s.keyItems?.length||s.money!==0))return null;
+    if(s.flags.exploration===true&&(owned.length||s.badges?.length||s.keyItems?.length||s.money!==0))return null;
     if(s.flags.departureCleared!==undefined&&typeof s.flags.departureCleared!=='boolean')return null;
-    if(s.party.some(p=>p.species===399)&&s.flags.departureCleared!==true)return null;
+    if(owned.some(p=>![1,2,4,5,7,8,25].includes(p.species))&&s.flags.departureCleared!==true)return null;
     if(s.flags.departureCleared===true&&!starters.length&&!pikachu.length)return null;
     if(!s.inventory||!['pokeBalls','potions'].every(key=>Number.isInteger(s.inventory[key as keyof typeof s.inventory])&&s.inventory[key as keyof typeof s.inventory]>=0&&s.inventory[key as keyof typeof s.inventory]<=999))return null;
     if(!Array.isArray(s.badges)||s.badges.length>4||s.badges.some((b,i)=>b!==GYMS[i].badge)||!Array.isArray(s.keyItems)||s.keyItems.length!==s.badges.length||s.keyItems.some((item,i)=>item!==GYMS[i].tm))return null;

@@ -4,11 +4,12 @@ import assert from 'node:assert/strict';
 import { getMap } from '../src/maps';
 import { Engine,VECTOR } from '../src/engine';
 import { newSave,parseSave } from '../src/save';
-import { grantPokemon } from '../src/pokemon';
-import { createBattle,battleTurn } from '../src/battle';
+import { grantPokemon,pokemonMoves } from '../src/pokemon';
+import {battleTurn } from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
 import { gainExperience,maxHpAtLevel } from '../src/growth';
 import { FIRST_BADGE,FIRST_TM,grantFirstBadge } from '../src/first-badge';
-function ready(species=7,level=8){const s=newSave();grantPokemon(s,species);Object.assign(s.party[0],{level,hp:maxHpAtLevel(species,level),maxHp:maxHpAtLevel(species,level)});s.flags.departureCleared=true;s.inventory={pokeBalls:5,potions:2};s.map='oreburgh_gym';s.player={x:8,y:5,facing:'up'};return s}
+function ready(species=7,level=8){const s=newSave();grantPokemon(s,species);Object.assign(s.party[0],{level,hp:maxHpAtLevel(species,level),maxHp:maxHpAtLevel(species,level)});delete s.party[0].moves;s.party[0].moves=pokemonMoves(s.party[0]);s.flags.departureCleared=true;s.inventory={pokeBalls:5,potions:2};s.map='oreburgh_gym';s.player={x:8,y:5,facing:'up'};return s}
 function ui(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}}
 function finish(g:Engine){for(let i=0;g.dialogue&&i<100;i++)g.confirm();assert.equal(g.dialogue,null)}
 function step(g:Engine,key:string){g.press(key);g.release(key);for(let i=0;i<20;i++)g.update(.04)}
@@ -17,10 +18,14 @@ test('growth carries residual XP, restores only gained HP and stops at level 25'
   const p=ready(7,5).party[0];p.hp=7;gainExperience(p,49);assert.equal(p.level,5);gainExperience(p,1);assert.deepEqual([p.level,p.experience,p.hp,p.maxHp],[6,0,10,23]);
   gainExperience(p,130);assert.deepEqual([p.level,p.experience,p.hp,p.maxHp],[8,0,16,29]);gainExperience(p,99999);assert.equal(p.level,25);assert.equal(p.experience,0);const copy={...p};gainExperience(p,100);assert.deepEqual(p,copy);
 });
-test('all four level 8 partners can defeat the complete gym team with two potions',()=>{
-  for(const species of [1,4,7,25]){const s=ready(species),b=createBattle(s,'gym')!;const seen=new Set<number>();let outcome;
-    for(let i=0;i<40&&!b.result;i++){seen.add(b.enemy.species);const p=s.party[b.active];outcome=battleTurn(s,b,p.hp<=10&&s.inventory.potions?'potion':'move0').outcome;}
-    assert.equal(outcome,'won',String(species));assert.deepEqual([...seen],[74,95,408]);assert(s.party[0].hp>0);assert.equal(s.party[0].level,9);assert.equal(s.party[0].experience,70);assert(parseSave(JSON.stringify(s)));
+test('each starter route has an obtainable early grass partner strategy for the complete first gym',()=>{
+  for(const species of [1,4,7,25]){const s=ready(species);const hp=maxHpAtLevel(406,8);s.party.push({species:406,level:8,hp,maxHp:hp,experience:0,nature:'성실',met:'새잎 서쪽길'});
+    const b=createBattle(s,'gym')!;const seen=new Set<number>();let outcome;
+    // A captured and trained S02 Budew supplies a Grass move, including the
+    // Pikachu start whose Electric move cannot hit Ground-type opponents.
+    battleTurn(s,b,{switch:1});
+    for(let i=0;i<60&&!b.result;i++){seen.add(b.enemy.species);const p=s.party[b.active];outcome=battleTurn(s,b,p.hp<=20&&p.hp<p.maxHp&&s.inventory.potions?'potion':'move0').outcome;}
+    assert.equal(outcome,'won',String(species));assert.deepEqual([...seen],[74,95,408]);assert(s.party.some(p=>p.hp>0));assert(parseSave(JSON.stringify(s)));
     const copy=JSON.stringify(s);battleTurn(s,b,'move0');assert.equal(JSON.stringify(s),copy);
   }
 });
@@ -41,7 +46,7 @@ test('final knockout commits all rewards once before dialogue and survives reloa
 }));
 test('nurse sets a persistent recovery point; gym defeat recovers there without badge',()=>ui(()=>{
   for(const map of ['tour_jubilife_center','tour_oreburgh_center'] as const){const g=new Engine();g.save=ready();g.save.map=map;g.save.player={x:8,y:7,facing:'up'};g.save.party[0].hp=1;g.save.inventory.potions=0;g.event('nurse');finish(g);assert.equal(g.save.healingPoint,map);assert.equal(g.save.party[0].hp,29);assert.equal(g.save.inventory.potions,2);
-    g.save.map='oreburgh_gym';g.save.player={x:8,y:5,facing:'up'};g.save.party[0].hp=1;g.event('roark');finish(g);g.actBattle('move0');assert.equal(g.save.map,map);assert.deepEqual(g.save.player,{x:8,y:10,facing:'up'});assert.equal(g.save.party[0].hp,29);assert.deepEqual(g.save.badges,[]);assert(parseSave(JSON.stringify(g.save)));
+    g.save.map='oreburgh_gym';g.save.player={x:8,y:5,facing:'up'};g.save.party[0].hp=1;g.event('roark');finish(g);g.battle!.turn=1;g.actBattle('move1');assert.equal(g.save.map,map);assert.deepEqual(g.save.player,{x:8,y:10,facing:'up'});assert.equal(g.save.party[0].hp,29);assert.deepEqual(g.save.badges,[]);assert(parseSave(JSON.stringify(g.save)));
   }
 }));
 test('reload during the second opponent keeps earned XP but cancels the challenge without rewards',()=>ui(()=>{

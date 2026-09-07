@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import {newSave,parseSave} from '../src/save';
+import {grantPokemon} from '../src/pokemon';
+import {maxHpAtLevel} from '../src/growth';
+const s=newSave();grantPokemon(s,7);s.flags.departureCleared=true;
+s.map='route_s01';s.player={x:4,y:11,facing:'left'};
+Object.assign(s.party[0],{level:12,experience:119,hp:maxHpAtLevel(7,12),maxHp:maxHpAtLevel(7,12),moves:['거품','꼬리흔들기']});
+if(!parseSave(JSON.stringify(s)))throw Error('Invalid fixture');
+fs.mkdirSync('tests/lead-0010-fixtures',{recursive:true});
+fs.writeFileSync('tests/lead-0010-fixtures/water-gun.json',JSON.stringify(s,null,2));

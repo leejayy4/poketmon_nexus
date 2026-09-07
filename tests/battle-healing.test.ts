@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { Engine } from '../src/engine';
 import { newSave,parseSave } from '../src/save';
 import { grantPokemon } from '../src/pokemon';
-import { createBattle,battleTurn } from '../src/battle';
+import {battleTurn,enemyDamage } from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
 import { battleHint } from '../src/battle-hints';
 
 function ready(){
@@ -15,7 +16,7 @@ function dom(run:()=>void){const previous=Object.getOwnPropertyDescriptor(global
 test('reserve healing consumes one potion while only the active Pokemon takes retaliation',()=>{
   for(const kind of ['wild','gym'] as const){
     const s=ready(),b=createBattle(s,kind)!;b.enemyAttackDrop=1;b.enemyDefenseDrop=2;
-    const reply=kind==='wild'?3:4;const result=battleTurn(s,b,{potion:1});
+    b.turn=1;const reply=enemyDamage(b,b.enemyAttackDrop,s.party[0]);const result=battleTurn(s,b,{potion:1});
     assert.equal(s.party[1].hp,18);assert.equal(s.party[0].hp,20-reply);assert.equal(s.inventory.potions,2);
     assert.equal(b.active,0);assert.deepEqual(b.participants,[0]);assert.equal(b.enemyDefenseDrop,2);assert.equal(result.outcome,undefined);
     assert(result.pages.some(p=>p.includes('비버니의 HP가 16 회복')));assert.deepEqual(parseSave(JSON.stringify(s))?.party,s.party);

@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "worldRevision": 23,
+  "map": "route_s01",
+  "player": {
+    "x": 22,
+    "y": 9,
+    "facing": "left"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 4,
+      "level": 8,
+      "experience": 79,
+      "hp": 25,
+      "maxHp": 28,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "할퀴기",
+        "울음소리"
+      ]
+    }
+  ],
+  "box": [],
+  "pokedex": {
+    "seen": [
+      4
+    ],
+    "caught": [
+      4
+    ]
+  },
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 0
+  },
+  "badges": [
+    "BADGE-GS01"
+  ],
+  "keyItems": [
+    "TM-stealth-rock"
+  ],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 0,
+  "seconds": 0
+}

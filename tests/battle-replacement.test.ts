@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createBattle,battleTurn } from '../src/battle';
+import {battleTurn } from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
 import { battleHint } from '../src/battle-hints';
 import { newSave,parseSave } from '../src/save';
 import { grantPokemon } from '../src/pokemon';
@@ -12,7 +13,7 @@ function finish(g:Engine){for(let i=0;i<40&&g.dialogue;i++)g.confirm();assert(!g
 
 test('wild and gym fainting lets the player choose among healthy reserves without another attack',()=>{
   for(const kind of ['wild','gym'] as const){
-    const s=ready(),b=createBattle(s,kind)!;battleTurn(s,b,'move1');
+    const s=ready(),b=createBattle(s,kind)!;b.turn=1;battleTurn(s,b,'move1');
     assert(b.forcedSwitch);assert.equal(b.menu,'party');assert.equal(b.active,0);assert.equal(b.selected,1);assert.deepEqual(b.participants,[0]);
     b.selected=2;assert.equal(battleHint(s,b)[1],'추가 반격 없이 출전합니다');
     const before=structuredClone(s);battleTurn(s,b,{switch:2});assert.equal(b.active,2);assert(!b.forcedSwitch);assert.deepEqual(s,before);assert.deepEqual(b.participants,[0,2]);assert.equal(b.enemyDefenseDrop,1);
@@ -21,7 +22,7 @@ test('wild and gym fainting lets the player choose among healthy reserves withou
 });
 test('pending replacement blocks moves, items and invalid replacements but permits explicit escape',()=>{
   for(const kind of ['wild','gym'] as const){
-    const s=ready(),b=createBattle(s,kind)!;battleTurn(s,b,'move0');
+    const s=ready(),b=createBattle(s,kind)!;b.turn=1;battleTurn(s,b,'move0');
     for(const action of ['move0','move1','ball','potion',{potion:1},{switch:0},{switch:-1},{switch:1.5},{switch:8}] as const){const before=structuredClone({s,b});battleTurn(s,b,action);assert.deepEqual({s,b},before);}
     const before=structuredClone(s);assert.equal(battleTurn(s,b,'run').outcome,'escaped');assert.deepEqual(s,before);battleTurn(s,b,{switch:2});assert.deepEqual(s,before);
   }

@@ -2,12 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Engine } from '../src/engine';
 import { Renderer } from '../src/renderer';
-import { createBattle } from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
 import { newSave,parseSave } from '../src/save';
 import { grantPokemon } from '../src/pokemon';
 
 function dom(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}}
-function game(home=false){const g=new Engine();g.save=newSave();grantPokemon(g.save,7);g.save.party[0].hp=1;g.save.party[0].experience=17;g.save.flags.departureCleared=true;g.save.map='oreburgh_gym';g.save.player={x:8,y:5,facing:'up'};g.save.healingPoint=home?'home':'tour_oreburgh_center';g.save.inventory={pokeBalls:3,potions:0};g.save.money=123;g.battle=createBattle(g.save,'gym');return g}
+function game(home=false){const g=new Engine();g.save=newSave();grantPokemon(g.save,7);g.save.party[0].hp=1;g.save.party[0].experience=17;g.save.flags.departureCleared=true;g.save.map='oreburgh_gym';g.save.player={x:8,y:5,facing:'up'};g.save.healingPoint=home?'home':'tour_oreburgh_center';g.save.inventory={pokeBalls:3,potions:0};g.save.money=123;g.battle=createBattle(g.save,'gym');g.battle!.turn=1;return g}
 function recover(g:Engine){for(let i=0;g.defeatScene&&i<50;i++)g.confirm();assert(g.recoveryPreview);assert(g.dialogue)}
 function finish(g:Engine){for(let i=0;g.dialogue&&i<80;i++)g.confirm();assert.equal(g.dialogue,null)}
 
@@ -18,7 +18,7 @@ test('defeat commits one safe recovery save while showing the last attack and fa
 
 test('home and center guidance preserve inventory and recovery handles all six party members',()=>dom(()=>{
   for(const home of [true,false])for(const potions of [0,5]){
-    const g=game(home);g.save.inventory.potions=potions;while(g.save.party.length<6)g.save.party.push({...g.save.party[0],species:399,level:3,maxHp:18,hp:0,experience:0});
+    const g=game(home);g.save.inventory.potions=potions;while(g.save.party.length<6)g.save.party.push({...g.save.party[0],species:399,level:3,maxHp:18,hp:0,experience:0,moves:undefined});
     g.actBattle('move1');recover(g);assert.equal(g.save.map,home?'home':'tour_oreburgh_center');assert.equal(g.dialogue!.speaker,home?'엄마':'간호사');assert(g.save.party.every(p=>p.hp===p.maxHp));assert.equal(g.save.inventory.potions,potions);assert.equal(g.save.inventory.pokeBalls,3);assert.equal(g.save.party.length,6);
     if(potions===0)assert.match(g.dialogue!.pages[1],home?/길 안내원/:/다시 말을/);else assert.match(g.dialogue!.pages[1],/다시 출발/);
   }

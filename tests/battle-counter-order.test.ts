@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { battleTurn,createBattle,type BattleAction } from '../src/battle';
+import { battleTurn,type BattleAction } from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
 import { battleHint } from '../src/battle-hints';
 import { newSave,parseSave } from '../src/save';
 import { grantPokemon } from '../src/pokemon';
@@ -24,7 +25,7 @@ test('counterattack declares the move before changing displayed HP for every act
 
 test('lethal counter keeps the outgoing Pokemon alive through the attack declaration, then shows exact loss before fainting',()=>{
   const s=ready();s.party[0].hp=2;s.party.push({...s.party[0],species:399,hp:18,maxHp:18,level:3});
-  const b=createBattle(s,'gym')!,t=battleTurn(s,b,'move1'),attack=t.pages.findIndex(p=>p.startsWith('강석의 꼬마돌의'));
+  const b=createBattle(s,'gym')!;b.turn=1;const t=battleTurn(s,b,'move1'),attack=t.pages.findIndex(p=>p.startsWith('강석의 꼬마돌의'));
   assert.equal(t.frames![attack].player.hp,2);assert.equal(t.frames![attack].player.species,7);
   assert.equal(t.frames![attack+1].player.hp,0);assert.equal(t.frames![attack+1].effect?.amount,2);
   assert(t.pages[attack+1].includes('2의 피해'));assert(t.pages[attack+2].includes('쓰러졌다'));
@@ -44,7 +45,7 @@ test('low-HP counter previews report at most the HP the selected Pokemon can los
   b.menu='bag';assert(battleHint(s,b)[1].endsWith('HP -1'));
   b.menu='moves';b.selected=1;b.enemyDefenseDrop=3;assert(battleHint(s,b)[1].endsWith('HP -1'));
   b.enemyDefenseDrop=0;b.enemy.hp=1;assert.equal(battleHint(s,b)[1],'다음 공격 피해 1');
-  const pikachu=ready();pikachu.party[0].species=25;pikachu.party[0].hp=1;const p=createBattle(pikachu)!;p.menu='moves';p.selected=1;
+  const pikachu=ready();pikachu.party[0].species=25;pikachu.party[0].moves=['전기쇼크','울음소리'];pikachu.party[0].hp=1;const p=createBattle(pikachu)!;p.menu='moves';p.selected=1;
   assert.equal(battleHint(pikachu,p)[1],'이번 반격 피해 1');
 });
 

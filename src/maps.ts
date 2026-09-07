@@ -45,7 +45,7 @@ export const ACTIVE_MAPS=Object.fromEntries(Object.entries(MAPS).filter(([id])=>
 export function getWorldOutdoors(map:GameMap){
   const source=TOUR_OUTDOORS[map.id];if(!source)return undefined;
   return {...source,signs:source.signs.map(sign=>{
-    const original=TOUR_MAPS[map.id as keyof typeof TOUR_MAPS].warps.find(w=>w.to===sign.destination&&w.entry===sign.direction);
+    const original=TOUR_MAPS[map.id as keyof typeof TOUR_MAPS].warps.find(w=>w.entry===sign.direction&&(w.to===sign.destination||w.to.startsWith('tour_pass_')));
     const exit=map.warps.find(w=>w.x===original?.x&&w.y===original?.y);
     if(!exit||exit.to===sign.destination)return sign;
     const name=MAPS[exit.to].name;
@@ -64,6 +64,8 @@ export function canEnter(map:GameMap,x:number,y:number,direction:import('./types
 // Position and access derive from this save; loading another slot cannot leak gate state.
 export function getMap(id:MapId,flags:SaveData['flags']={}):GameMap {
   id=worldMapId(id);const map=UNIFIED_MAPS[id]??MAPS[id];
-  return {...map,warps:map.warps.filter(w=>!w.requiresFlag||flags[w.requiresFlag]===true),
+  const collected=flags['pickup:'+id]?map.props.find(p=>p.dialogue==='journeyItem'):undefined;
+  return {...map,walkable:collected?map.walkable.map((row,y)=>y===collected.y?row.slice(0,collected.x)+'.'+row.slice(collected.x+1):row):map.walkable,
+    props:collected?map.props.filter(p=>p!==collected):map.props,warps:map.warps.filter(w=>!w.requiresFlag||flags[w.requiresFlag]===true),
     npcs:map.npcs.map(n=>n.id==='gatekeeper'&&flags.departureCleared===true?{...n,x:4,y:14,facing:'down'}:n)};
 }

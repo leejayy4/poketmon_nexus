@@ -20,8 +20,8 @@ test('six towns and five trails have distinct investigable arrangements while fa
       for(let y=f.y;y<f.y+f.h;y++)for(let x=f.x;x<f.x+f.w;x++)assert(!canStand(map,x,y));
     }
     for(const building of TOUR_BUILDINGS[id].filter(b=>b.room)){
-      const room=building.kind==='center'?'center':'hall', {x,y}=building.door;
-      const door=map.warps.find(w=>w.to===id+'_'+room)!;assert.deepEqual([door.x,door.y],[x,y]);
+      const {x,y}=building.door;
+      const door=map.warps.find(w=>w.to===building.room)!;assert.deepEqual([door.x,door.y],[x,y]);
       assert(TOUR_MAPS[door.to as TourId].warps.some(w=>w.to===id&&w.spawn.x===x&&w.spawn.y===y+1));
     }
   }

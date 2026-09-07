@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { battleTurn,createBattle } from '../src/battle';
+import { enemyDamage,battleTurn} from '../src/battle';
+import {createBattle} from './runtime-battle-fixture';
 import { Engine } from '../src/engine';
 import { Renderer } from '../src/renderer';
 import { newSave,parseSave } from '../src/save';
@@ -9,6 +10,8 @@ import { grantPokemon } from '../src/pokemon';
 function ready(){const s=newSave();grantPokemon(s,7);s.flags.departureCleared=true;s.inventory.potions=2;s.party.push({species:399,level:8,hp:33,maxHp:33,experience:0,nature:'성실',met:'새잎 서쪽길'});return s}
 function dom(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}}
 function finish(g:Engine){for(let i=0;g.dialogue&&i<90;i++)g.confirm();assert(!g.dialogue)}
+
+test('battle arena uses layered platform colors without changing battle state',()=>{const g=new Engine(),ctx={getContext:()=>({})} as unknown as HTMLCanvasElement,r=new Renderer(g,ctx,ctx),fills:string[]=[];const c={fillStyle:'',fillRect:()=>fills.push(c.fillStyle),beginPath:()=>{},ellipse:()=>{},fill:()=>fills.push(c.fillStyle)} as unknown as CanvasRenderingContext2D;r.battleArena(c);assert(fills.includes('#76996e'));assert(fills.includes('#9fbd7e'));assert(fills.includes('#dbe5b6'));assert.equal(g.battle,null);});
 
 test('attack, damage, knockout and next opponent retain distinct detached display states',()=>{
   const s=ready(),b=createBattle(s,'gym')!;b.enemy.hp=1;const t=battleTurn(s,b,'move0'),f=t.frames!;assert.equal(f.length,t.pages.length);
@@ -19,7 +22,7 @@ test('attack, damage, knockout and next opponent retain distinct detached displa
 });
 
 test('normal and free switches show outgoing then incoming Pokemon and only the normal switch takes a counter',()=>{
-  for(const free of [false,true]){const s=ready(),b=createBattle(s,'gym')!;b.betweenOpponents=free;const t=battleTurn(s,b,{switch:1}),f=t.frames!;assert.equal(f.length,t.pages.length);assert.equal(f[0].player.species,7);assert.equal(f[1].player.species,399);assert.equal(f[1].player.hp,33);assert.equal(f.at(-1)!.player.hp,free?33:28);assert.equal(s.party[1].hp,free?33:28);}
+  for(const free of [false,true]){const s=ready(),b=createBattle(s,'gym')!;b.betweenOpponents=free;b.turn=1;const reply=enemyDamage({...b,active:1},b.enemyAttackDrop,s.party[1]);const t=battleTurn(s,b,{switch:1}),f=t.frames!;assert.equal(f.length,t.pages.length);assert.equal(f[0].player.species,7);assert.equal(f[1].player.species,399);assert.equal(f[1].player.hp,33);assert.equal(f.at(-1)!.player.hp,free?33:33-reply);assert.equal(s.party[1].hp,free?33:33-reply);}
 });
 
 test('healing and debuffs appear before the counterattack in their respective dialogue pages',()=>{
