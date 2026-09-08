@@ -2,7 +2,7 @@
   "referenceCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
   "learnsetVersion": "platinum",
   "timePolicy": "day-only",
-  "limits": "Two selected moves; direct damage ignores secondary effects, accuracy and PP. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. Only first starter evolutions enabled.",
+  "limits": "Up to four selected moves; direct damage ignores secondary effects, accuracy and PP. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. Only first starter evolutions enabled.",
   "pools": [
     {
       "id": "ENC-001",
@@ -219,6 +219,47 @@
           "weight": 5
         }
       ]
+    },
+    {
+      "id": "ENC-039",
+      "node": "K18",
+      "levels": [
+        22,
+        25
+      ],
+      "method": "풀숲",
+      "condition": "상시",
+      "slots": [
+        {
+          "speciesId": 19,
+          "weight": 30
+        },
+        {
+          "speciesId": 52,
+          "weight": 25
+        },
+        {
+          "speciesId": 21,
+          "weight": 20
+        },
+        {
+          "speciesId": 23,
+          "weight": 12
+        },
+        {
+          "speciesId": 39,
+          "weight": 8
+        },
+        {
+          "speciesId": 96,
+          "weight": 5
+        }
+      ],
+      "sourceLevels": [
+        22,
+        27
+      ],
+      "levelPolicy": "Runtime range limited to level 25; design source remains 22-27."
     }
   ],
   "ownable": [
@@ -228,13 +269,19 @@
     5,
     7,
     8,
+    19,
+    21,
+    23,
     25,
+    39,
     41,
+    52,
     63,
     66,
     74,
     77,
     95,
+    96,
     173,
     228,
     265,
@@ -518,6 +565,104 @@
       ],
       "tm": []
     },
+    "19": {
+      "name": "꼬렛",
+      "types": [
+        "노말"
+      ],
+      "stats": {
+        "hp": 30,
+        "attack": 56,
+        "defense": 35,
+        "specialAttack": 25,
+        "specialDefense": 35,
+        "speed": 72
+      },
+      "weight": 35,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "꼬리흔들기"
+        },
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 4,
+          "move": "전광석화"
+        },
+        {
+          "level": 10,
+          "move": "물기"
+        },
+        {
+          "level": 16,
+          "move": "필살앞니"
+        }
+      ],
+      "tm": [
+        "섀도볼",
+        "풀묶기"
+      ]
+    },
+    "21": {
+      "name": "깨비참",
+      "types": [
+        "노말",
+        "비행"
+      ],
+      "stats": {
+        "hp": 40,
+        "attack": 60,
+        "defense": 30,
+        "specialAttack": 31,
+        "specialDefense": 31,
+        "speed": 70
+      },
+      "weight": 20,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "울음소리"
+        },
+        {
+          "level": 5,
+          "move": "째려보기"
+        },
+        {
+          "level": 17,
+          "move": "제비반환"
+        }
+      ],
+      "tm": []
+    },
+    "23": {
+      "name": "아보",
+      "types": [
+        "독"
+      ],
+      "stats": {
+        "hp": 35,
+        "attack": 60,
+        "defense": 44,
+        "specialAttack": 40,
+        "specialDefense": 54,
+        "speed": 55
+      },
+      "weight": 69,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "째려보기"
+        },
+        {
+          "level": 9,
+          "move": "물기"
+        }
+      ],
+      "tm": []
+    },
     "25": {
       "name": "피카츄",
       "types": [
@@ -558,6 +703,38 @@
         "풀묶기"
       ]
     },
+    "39": {
+      "name": "푸린",
+      "types": [
+        "노말",
+        "페어리"
+      ],
+      "stats": {
+        "hp": 115,
+        "attack": 45,
+        "defense": 20,
+        "specialAttack": 45,
+        "specialDefense": 25,
+        "speed": 20
+      },
+      "weight": 55,
+      "learnset": [
+        {
+          "level": 5,
+          "move": "웅크리기"
+        },
+        {
+          "level": 9,
+          "move": "막치기"
+        }
+      ],
+      "tm": [
+        "드레인펀치",
+        "섀도볼",
+        "스텔스록",
+        "풀묶기"
+      ]
+    },
     "41": {
       "name": "주뱃",
       "types": [
@@ -593,6 +770,38 @@
         {
           "level": 25,
           "move": "에어커터"
+        }
+      ],
+      "tm": [
+        "섀도볼"
+      ]
+    },
+    "52": {
+      "name": "나옹",
+      "types": [
+        "노말"
+      ],
+      "stats": {
+        "hp": 40,
+        "attack": 45,
+        "defense": 35,
+        "specialAttack": 40,
+        "specialDefense": 40,
+        "speed": 90
+      },
+      "weight": 42,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "울음소리"
+        },
+        {
+          "level": 1,
+          "move": "할퀴기"
+        },
+        {
+          "level": 6,
+          "move": "물기"
         }
       ],
       "tm": [
@@ -786,6 +995,40 @@
       ],
       "tm": [
         "스텔스록"
+      ]
+    },
+    "96": {
+      "name": "슬리프",
+      "types": [
+        "에스퍼"
+      ],
+      "stats": {
+        "hp": 60,
+        "attack": 48,
+        "defense": 45,
+        "specialAttack": 43,
+        "specialDefense": 90,
+        "speed": 42
+      },
+      "weight": 324,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "막치기"
+        },
+        {
+          "level": 9,
+          "move": "염동력"
+        },
+        {
+          "level": 15,
+          "move": "박치기"
+        }
+      ],
+      "tm": [
+        "드레인펀치",
+        "섀도볼",
+        "풀묶기"
       ]
     },
     "173": {

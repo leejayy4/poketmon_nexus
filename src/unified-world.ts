@@ -1,5 +1,7 @@
 import type { GameMap,MapId,Point } from './types';
 import { TOUR_BUILDINGS,TOUR_INTERIORS,TOUR_MAPS,TOUR_SPAWNS } from './explore-world';
+import { ETERNA_FOREST_GRASS } from './eterna-forest-layout';
+import { CORONET_GRASS } from './coronet-layout';
 
 export const WORLD_ALIASES:Partial<Record<MapId,MapId>>={
   jubilife:'tour_jubilife',oreburgh:'tour_oreburgh',eterna_forest:'tour_eterna_forest',eterna:'tour_eterna',coronet_pass:'tour_coronet',hearthome:'tour_hearthome',veilstone:'tour_veilstone',canalave:'tour_canalave',vermilion_port:'tour_vermilion',
@@ -33,7 +35,7 @@ export function createUnifiedWorld(base:Record<MapId,GameMap>):Partial<Record<Ma
     if(isWorldCenter(id))edit(id).npcs[0].dialogue='nurse';
   }
   for(const id of ['tour_eterna_forest','tour_coronet'] as const){
-    const map=edit(id);map.terrain=[{kind:'tallGrass',x:4,y:10,w:4,h:3}];map.npcs[0].dialogue='trailGuide';
+    const map=edit(id);map.terrain=(id==='tour_eterna_forest'?ETERNA_FOREST_GRASS:CORONET_GRASS).map(r=>({...r}));map.npcs[0].dialogue='trailGuide';
   }
   for(const [id,event,name] of [['tour_jubilife','researchGate','연구 통로 안내원'],['tour_eterna','sinnohGuide','도시 안내원'],['tour_hearthome','sinnohGuide','도시 안내원'],['tour_veilstone','observation','관측 연구원'],['tour_canalave','ferry','조사선 선원'],['tour_vermilion','ferry','조사선 선원']] as const){
     const npc=edit(id).npcs.find(n=>n.id==='tourGuide')!;npc.dialogue=event;npc.name=name;

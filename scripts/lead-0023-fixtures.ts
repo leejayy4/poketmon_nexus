@@ -1,0 +1,20 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {newSave,parseSave} from '../src/save';
+import {maxHpAtLevel} from '../src/growth';
+import {grantPokemon,recordSeen,validPokemonMoves} from '../src/pokemon';
+
+const save=newSave();
+grantPokemon(save,1);save.box=[save.party[0]];
+recordSeen(save,77);save.pokedex.caught.push(77);
+const hp=maxHpAtLevel(77,18);
+save.party=[{species:77,level:18,hp,maxHp:hp,experience:0,nature:'성실',met:'준비 안내 검증',moves:['몸통박치기','울음소리']}];
+save.flags.starterReceived=true;save.flags.departureCleared=true;
+save.badges=['BADGE-GS01','BADGE-GS02','BADGE-GS03'];
+save.keyItems=['TM-stealth-rock','TM-grass-knot','TM-shadow-ball'];
+save.map='veilstone_gym';save.player={x:12,y:13,facing:'up'};
+save.inventory.potions=2;
+assert(validPokemonMoves(save.party[0],save.keyItems));
+assert(parseSave(JSON.stringify(save)));
+fs.mkdirSync('tests/lead-0023-fixtures',{recursive:true});
+fs.writeFileSync('tests/lead-0023-fixtures/ponyta-learning.json',JSON.stringify(save,null,2)+'\n');

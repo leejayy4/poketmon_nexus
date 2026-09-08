@@ -2,6 +2,9 @@ import { worldMapId } from './unified-world';
 import type { MapId,SaveData } from './types';
 import { GYMS } from './gyms';
 import { getMap,MAPS } from './maps';
+import { withParticle } from './korean-text';
+import { TOUR_BUILDINGS,TOUR_INTERIORS,tourPlaceForMap,placeById } from './explore-world';
+import { FLOOR_PARENTS } from './journey-world';
 
 export interface AdventureObjective {id:string;title:string;map:MapId;action:string;event?:string}
 
@@ -22,11 +25,44 @@ export function adventureObjective(save:SaveData):AdventureObjective|null{
   if(!save.party.length)return {id:'partner',event:'professor',title:'첫 파트너 만나기',map:'lab',action:'은솔박사에게 말을 걸자'};
   if(!save.flags.departureCleared)return {id:'departure',event:'gatekeeper',title:'모험 출발 준비',map:'town',action:'서쪽 입구의 도윤과 이야기하자'};
   const next=GYMS.findIndex(g=>!save.badges.includes(g.badge));
-  if(next>=0)return {id:GYMS[next].id,event:GYMS[next].id,title:GYMS[next].label+'에 도전',map:(['oreburgh_gym','eterna_gym','hearthome_gym','veilstone_gym'] as const)[next],action:`관장 ${GYMS[next].name}과 이야기하자`};
+  if(next>=0)return {id:GYMS[next].id,event:GYMS[next].id,title:GYMS[next].label+'에 도전',map:(['oreburgh_gym','eterna_gym','hearthome_gym','veilstone_gym'] as const)[next],action:`관장 ${withParticle(GYMS[next].name,'과/와')} 이야기하자`};
   if(!save.flags.observationCollected)return {id:'observation',event:'observation',title:'관측 자료 받기',map:'tour_veilstone',action:'마을 안내 자리의 연구원을 만나자'};
   if(!save.flags.researchDelivered)return {id:'research',event:'researchGate',title:'관측 자료 전달',map:'tour_jubilife',action:'연구 통로 안내원을 만나자'};
   if(!save.flags.ferryPass)return {id:'ferry',event:'ferry',title:'조사선으로 출발',map:'tour_canalave',action:'조사선 선원에게 말을 걸자'};
-  return {id:'explore',title:'다시 자유롭게 둘러보기',map:save.map,action:'왕복선으로 운하항과 갈색항을 오가자'};
+  return explorationObjective(save);
+}
+
+function explorationObjective(save:SaveData):AdventureObjective{
+  const current=worldMapId(save.map),place=tourPlaceForMap(current)
+    ??getMap(current,save.flags).warps.map(w=>tourPlaceForMap(w.to)).find(Boolean);
+  const fallback:AdventureObjective={id:'explore',title:'자유롭게 둘러보기',map:current,action:'지도에서 가 보고 싶은 곳을 골라 보자'};
+  if(!place)return fallback;
+  const landmark=(id:string)=>TOUR_BUILDINGS[id]?.find(b=>b.kind==='landmark')?.room;
+  const localHall=landmark(place.id);
+  // Entering records a visit, not a completed inspection. Keep the current hall
+  // (including its floors) available until the player chooses to leave it.
+  if(localHall&&(current===localHall||FLOOR_PARENTS[current]===localHall))return {
+    id:'explore',title:'시설 둘러보기',map:current,event:'tourHost',action:'안내원과 전시를 천천히 살펴보자',
+  };
+  const visited=new Set<string>(save.tourVisited??[]),queue=[current],seen=new Set(queue);
+  // Actual open warps determine distance; another region is never a shortcut.
+  // Centers and marts remain available through recovery/supply guidance, rather
+  // than competing with the existing representative facilities for this goal.
+  for(let i=0;i<queue.length;i++){
+    const id=queue[i],area=tourPlaceForMap(id),hall=area&&landmark(area.id);
+    if(id===hall&&TOUR_INTERIORS[id]&&!visited.has(id))return {
+      id:'explore',title:'시설 둘러보기',map:id,event:'tourHost',action:'안내원에게 시설 이야기를 들어 보자',
+    };
+    if(placeById(id)&&!hall&&id!==current&&!visited.has(id))return {
+      id:'explore',title:'주변 둘러보기',map:id,event:getMap(id,save.flags).npcs.find(n=>['tourGuide','trailGuide'].includes(n.dialogue))?.dialogue,action:'주변 길과 안내원을 살펴보자',
+    };
+    for(const warp of getMap(id,save.flags).warps){
+      const next=tourPlaceForMap(warp.to);
+      if(seen.has(warp.to)||next&&next.region!==place.region)continue;
+      seen.add(warp.to);queue.push(warp.to);
+    }
+  }
+  return fallback;
 }
 
 // Breadth-first traversal measures area transitions, not walking distance.

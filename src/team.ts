@@ -1,5 +1,6 @@
 import type { SaveData } from './types';
 import { SPECIES } from './pokemon';
+import { withParticle } from './korean-text';
 
 export function leadPokemon(save:SaveData,index:number):string{
   const p=save.party[index];
@@ -7,7 +8,7 @@ export function leadPokemon(save:SaveData,index:number):string{
   if(p.hp<=0)return '쓰러진 포켓몬은 선두로 세울 수 없어요.';
   if(index===0)return '이미 선두에 있는 포켓몬이에요.';
   save.party.splice(index,1);save.party.unshift(p);
-  return `${SPECIES[p.species].name}를 선두로 세웠어요.\n다음 전투에 먼저 나갑니다.`;
+  return `${withParticle(SPECIES[p.species].name,'을/를')} 선두로 세웠어요.\n다음 전투에 먼저 나갑니다.`;
 }
 function fieldPotionIssue(save:SaveData,index:number):string|null{
   const p=save.party[index];

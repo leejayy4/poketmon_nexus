@@ -1,4 +1,6 @@
 import type { TourFeature } from './explore-world';
+import { ETERNA_FOREST_FEATURES,ETERNA_FOREST_PATHS } from './eterna-forest-layout';
+import { CORONET_FEATURES,CORONET_PATHS } from './coronet-layout';
 
 interface TourLayout { features:TourFeature[]; paths:[number,number,number,number][]; boardwalks?:[number,number,number,number][] }
 export const TOUR_LAYOUTS:Record<string,TourLayout>={
@@ -34,8 +36,9 @@ export const TOUR_LAYOUTS:Record<string,TourLayout>={
       {x:8,y:6,w:3,h:2,kind:'rocks',name:'겹겹이 드러난 지층',description:'돌에 여러 겹의 층이 드러나 있다.\n바위 오른쪽으로 흙길이 돌아간다.'},
       {x:10,y:11,w:2,h:3,kind:'rocks',name:'풀밭 옆 바위턱',description:'바위 왼쪽에 풀밭으로 가는 샛길이 있다.\n흙길은 남쪽 출구까지 이어진다.'},
       {x:14,y:5,w:2,h:2,kind:'rocks',name:'호수 쪽 암반',description:'바위 아래로 넓은 통로가 이어진다.\n동쪽 표지는 신오 호수를 가리킨다.'},
+      ...CORONET_FEATURES,
     ],
-    paths:[[9,3,2,3],[10,5,4,1],[12,5,2,4],[8,8,10,2],[8,10,5,1],[8,10,2,6],[8,15,5,1],[10,15,1,2]],
+    paths:[[9,3,2,3],[10,5,4,1],[12,5,2,4],[8,8,10,2],[8,10,5,1],[8,10,2,6],[8,15,5,1],[10,15,1,2],...CORONET_PATHS],
   },
   tour_eterna_forest:{
     features:[
@@ -43,9 +46,10 @@ export const TOUR_LAYOUTS:Record<string,TourLayout>={
       {x:13,y:4,w:4,h:4,kind:'grove',name:'북쪽 나무 군락',description:'나무 사이로 길 안내원이 보인다.\n북쪽 길은 영원시티로 이어진다.'},
       {x:10,y:11,w:2,h:4,kind:'grove',name:'풀밭 옆 나무',description:'나무 왼쪽 샛길에 긴 풀이 자란다.\n풀밭에 들어가면 포켓몬을 만날지도.'},
       {x:13,y:11,w:4,h:4,kind:'grove',name:'숲 가장자리 나무',description:'잎이 바람에 부딪쳐 바스락거린다.\n흙길을 따라가면 남쪽 출구가 나온다.'},
+      ...ETERNA_FOREST_FEATURES,
     ],
     // Two-tile bends keep the guide approachable and leave the existing grass optional.
-    paths:[[9,3,2,3],[9,5,4,2],[11,6,2,5],[8,9,5,2],[8,10,2,6],[8,15,3,1],[10,15,1,2]],
+    paths:[[9,3,2,3],[9,5,4,2],[11,6,2,5],[8,9,5,2],[8,10,2,6],[8,15,3,1],[10,15,1,2],...ETERNA_FOREST_PATHS],
   },
   tour_eterna:{
     features:[

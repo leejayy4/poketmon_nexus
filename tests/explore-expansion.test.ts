@@ -7,12 +7,12 @@ import { TOWN_REVISION } from '../src/town';
 import { COMPACT_PLACES } from '../src/explore-expansion';
 import { PLACES,TOUR_PLANS,TOUR_BUILDINGS,TOUR_MAPS,TOUR_SPAWNS,SHORT_TOURS,type TourId } from '../src/explore-world';
 
-test('all 35 towns expand while the eight essential areas retain compact dimensions',()=>{
+test('all 35 towns expand while essential areas use their authored dimensions',()=>{
   assert.equal(Object.keys(TOUR_PLANS).length,35);
   assert.equal(new Set(Object.values(TOUR_PLANS).map(p=>p.style)).size,5);
   for(const p of PLACES){
     const m=TOUR_MAPS[p.id];
-    if(COMPACT_PLACES.has(p.id)){assert.deepEqual([m.width,m.height],SHORT_TOURS.has(p.id)?[20,18]:[28,24]);continue;}
+    if(COMPACT_PLACES.has(p.id)){assert.deepEqual([m.width,m.height],p.id==='tour_eterna_forest'?[32,34]:p.id==='tour_coronet'?[20,30]:SHORT_TOURS.has(p.id)?[20,18]:[28,24]);continue;}
     assert(m.width>28&&m.height>24,p.id);
     assert(TOUR_BUILDINGS[p.id].filter(b=>b.kind==='house').length>=3,p.id);
     const occupied=new Set<string>();

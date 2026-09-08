@@ -29,7 +29,14 @@ def rows(name):
 def read(name):
     return json.loads((DB / (name + '.json')).read_text(encoding='utf8'))
 
-pools = [{k:r[k] for k in ('id','node','levels','method','condition')} | {'slots':[{k:s[k] for k in ('speciesId','weight')} for s in r['slots']]} for r in read('encounters') if r['id'] in ['ENC-001','ENC-002','ENC-003','ENC-004','ENC-007','ENC-008','ENC-016']]
+pools = [{k:r[k] for k in ('id','node','levels','method','condition')} | {'slots':[{k:s[k] for k in ('speciesId','weight')} for s in r['slots']]} for r in read('encounters') if r['id'] in ['ENC-001','ENC-002','ENC-003','ENC-004','ENC-007','ENC-008','ENC-016','ENC-039']]
+# Preserve the authored range as evidence while every captured runtime Pokemon
+# remains valid under the existing level-25 growth/save contract.
+for pool in pools:
+    if pool['id'] == 'ENC-039':
+        pool['sourceLevels'] = pool['levels'][:]
+        pool['levels'] = [22, 25]
+        pool['levelPolicy'] = 'Runtime range limited to level 25; design source remains 22-27.'
 owned = sorted({1,2,4,5,7,8,25} | {s['speciesId'] for p in pools for s in p['slots']})
 ids = set(owned) | {420,315,425,92,200,448,408}
 names = {int(r['move_id']):r['name'] for r in rows('move_names') if r['local_language_id']=='3'}
@@ -66,7 +73,7 @@ for r in rows('type_efficacy'):
     a,b=int(r['damage_type_id']),int(r['target_type_id'])
     if a in types and b in types and int(r['damage_factor'])!=100:
         chart.setdefault(types[a],{})[types[b]]=int(r['damage_factor'])/100
-out = {'referenceCommit':SHA,'learnsetVersion':'platinum','timePolicy':'day-only','limits':'Two selected moves; direct damage ignores secondary effects, accuracy and PP. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. Only first starter evolutions enabled.','pools':pools,'ownable':owned,'species':species,'moves':moves,'evolutions':evolutions,'typeChart':chart}
+out = {'referenceCommit':SHA,'learnsetVersion':'platinum','timePolicy':'day-only','limits':'Up to four selected moves; direct damage ignores secondary effects, accuracy and PP. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. Only first starter evolutions enabled.','pools':pools,'ownable':owned,'species':species,'moves':moves,'evolutions':evolutions,'typeChart':chart}
 (ROOT/'src/runtime-pokemon-data.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
 manifest={'dataCommit':SHA,'learnsetVersionGroup':9,'sources':[],'sprites':[]}
 for name in ['pokemon_moves','moves','move_names','type_names','type_efficacy','pokemon']:

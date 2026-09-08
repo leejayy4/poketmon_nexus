@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "worldRevision": 24,
+  "map": "tour_eterna",
+  "player": {
+    "x": 6,
+    "y": 25,
+    "facing": "up"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 1,
+      "level": 5,
+      "experience": 0,
+      "hp": 20,
+      "maxHp": 20,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "울음소리"
+      ]
+    }
+  ],
+  "box": [],
+  "pokedex": {
+    "seen": [
+      1
+    ],
+    "caught": [
+      1
+    ]
+  },
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 0
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 0,
+  "seconds": 0
+}

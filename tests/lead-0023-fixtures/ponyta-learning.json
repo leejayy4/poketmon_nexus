@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "worldRevision": 24,
+  "map": "veilstone_gym",
+  "player": {
+    "x": 12,
+    "y": 13,
+    "facing": "up"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 77,
+      "level": 18,
+      "hp": 67,
+      "maxHp": 67,
+      "experience": 0,
+      "nature": "성실",
+      "met": "준비 안내 검증",
+      "moves": [
+        "몸통박치기",
+        "울음소리"
+      ]
+    }
+  ],
+  "box": [
+    {
+      "species": 1,
+      "level": 5,
+      "experience": 0,
+      "hp": 20,
+      "maxHp": 20,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "울음소리"
+      ]
+    }
+  ],
+  "pokedex": {
+    "seen": [
+      1,
+      77
+    ],
+    "caught": [
+      1,
+      77
+    ]
+  },
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 2
+  },
+  "badges": [
+    "BADGE-GS01",
+    "BADGE-GS02",
+    "BADGE-GS03"
+  ],
+  "keyItems": [
+    "TM-stealth-rock",
+    "TM-grass-knot",
+    "TM-shadow-ball"
+  ],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 0,
+  "seconds": 0
+}

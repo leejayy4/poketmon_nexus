@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {newSave,parseSave} from '../src/save';
+import {grantPokemon} from '../src/pokemon';
+import {maxHpAtLevel} from '../src/growth';
+const s=newSave();grantPokemon(s,4);
+s.party[0].level=10;s.party[0].hp=s.party[0].maxHp=maxHpAtLevel(4,10);
+s.party[0].moves=['할퀴기','울음소리'];
+s.flags.departureCleared=true;s.badges=['BADGE-GS01'];s.keyItems=['TM-stealth-rock'];
+s.map='eterna_gym';s.player={x:12,y:13,facing:'up'};s.healingPoint='tour_eterna_center';
+assert(parseSave(JSON.stringify(s)));
+fs.mkdirSync('tests/lead-0020-fixtures',{recursive:true});
+fs.writeFileSync('tests/lead-0020-fixtures/unlearned-ember.json',JSON.stringify(s,null,2)+'\n');

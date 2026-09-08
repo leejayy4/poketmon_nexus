@@ -1,6 +1,9 @@
 import type { GameMap,MapId } from './types';
 import { BADGE_MAPS,buildBadgeArt } from './badge-maps';
 import { paintTallGrass } from './town';
+import { paintEternaGymInterior } from './eterna-gym-art';
+import { paintHearthomeGymInterior } from './hearthome-gym-art';
+import { paintVeilstoneGymInterior } from './veilstone-gym-art';
 export const SINNOH_CITIES=['eterna','hearthome','veilstone'] as const;
 export const SINNOH_CENTERS=['eterna_center','hearthome_center','veilstone_center'] as const;
 export const SINNOH_GYMS=['eterna_gym','hearthome_gym','veilstone_gym'] as const;
@@ -44,7 +47,9 @@ export const SINNOH_STARTS=Object.fromEntries(Object.keys(SINNOH_MAPS).map(id=>[
 export function buildSinnohArt(images:Record<string,HTMLImageElement|HTMLCanvasElement>,map:GameMap){
   if(SINNOH_CITIES.includes(map.id as any))return buildBadgeArt(images,'oreburgh',map);
   if(SINNOH_GYMS.includes(map.id as any)){
-    const c=buildBadgeArt(images,'oreburgh_gym'),ctx=c.getContext('2d')!;ctx.fillStyle=map.id==='eterna_gym'?'#5d996733':map.id==='hearthome_gym'?'#7b528433':'#ba754a33';ctx.fillRect(32,48,208,176);return c;
+    const canvas=document.createElement('canvas');canvas.width=map.width*16;canvas.height=map.height*16;
+    const ctx=canvas.getContext('2d')!;ctx.imageSmoothingEnabled=false;
+    if(map.id==='eterna_gym')paintEternaGymInterior(ctx,map);else if(map.id==='hearthome_gym')paintHearthomeGymInterior(ctx,map);else paintVeilstoneGymInterior(ctx,map);return canvas;
   }
   if(map.id.endsWith('_center'))return buildBadgeArt(images,'center');
   const c=document.createElement('canvas');c.width=map.width*16;c.height=map.height*16;const ctx=c.getContext('2d')!;ctx.imageSmoothingEnabled=false;

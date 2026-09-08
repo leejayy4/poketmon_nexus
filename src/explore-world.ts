@@ -6,6 +6,8 @@ import { createTourInterior,type TourInterior } from './explore-interiors';
 import { prepareTourOutdoors,type TourOutdoors } from './explore-outdoors';
 import { createTourResidents,type TourResident } from './explore-residents';
 import { TOUR_LAYOUTS } from './explore-layouts';
+import { ETERNA_FOREST_SOUTH,makeEternaForestFloor } from './eterna-forest-layout';
+import { CORONET_SOUTH,makeCoronetFloor } from './coronet-layout';
 export type TourId=`tour_${string}`;
 export type Theme='village'|'city'|'forest'|'mine'|'port'|'water'|'snow'|'temple'|'factory'|'ghost'|'flowers'|'coast'|'desert'|'dragon'|'airport'|'fair'|'cave';
 export interface Place {id:TourId;name:string;region:string;theme:Theme;concept:string;landmark:string;x:number;y:number}
@@ -67,12 +69,12 @@ const DIRECTION:Direction[]=['up','right','down','left'];
 const slots:Record<Direction,{point:Point;spawn:Point;facing:Direction}>={up:{point:{x:14,y:2},spawn:{x:14,y:3},facing:'down'},right:{point:{x:26,y:12},spawn:{x:25,y:12},facing:'left'},down:{point:{x:14,y:22},spawn:{x:14,y:21},facing:'up'},left:{point:{x:1,y:12},spawn:{x:2,y:12},facing:'right'}};
 export const SHORT_TOURS=new Set(['tour_eterna_forest','tour_coronet','tour_viridian_forest','tour_ilex','tour_desert']);
 const shortSlots:typeof slots={up:{point:{x:10,y:2},spawn:{x:10,y:3},facing:'down'},right:{point:{x:18,y:9},spawn:{x:17,y:9},facing:'left'},down:{point:{x:10,y:16},spawn:{x:10,y:15},facing:'up'},left:{point:{x:1,y:9},spawn:{x:2,y:9},facing:'right'}};
-const slotsFor=(id:string)=>SHORT_TOURS.has(id)?shortSlots:COMPACT_PLACES.has(id)?slots:expandedExits(placeById(id)!);
+const slotsFor=(id:string)=>id==='tour_eterna_forest'?{...shortSlots,down:ETERNA_FOREST_SOUTH}:id==='tour_coronet'?{...shortSlots,down:CORONET_SOUTH}:SHORT_TOURS.has(id)?shortSlots:COMPACT_PLACES.has(id)?slots:expandedExits(placeById(id)!);
 const exits:Record<string,Map<TourId,Direction>>={};
 for(const p of PLACES){exits[p.id]=new Map();for(const dest of TOUR_NEIGHBORS(p.id)){const target=placeById(dest)!;const dx=target.x-p.x,dy=target.y-p.y;const desired=Math.abs(dx)>Math.abs(dy)?dx>0?'right':'left':dy>0?'down':'up';const direction=[desired,...DIRECTION].find(d=>![...exits[p.id].values()].includes(d as Direction)) as Direction;if(!direction)throw Error('Too many exits '+p.id);exits[p.id].set(dest,direction);}}
 for(const [index,p]of PLACES.entries()){
   if(SHORT_TOURS.has(p.id)){
-    const grid=Array.from({length:18},(_,y)=>Array.from({length:20},(_,x)=>x>=2&&x<=17&&y>=3&&y<=15?'.':'#'));
+    const grid=p.id==='tour_eterna_forest'?makeEternaForestFloor():p.id==='tour_coronet'?makeCoronetFloor():Array.from({length:18},(_,y)=>Array.from({length:20},(_,x)=>x>=2&&x<=17&&y>=3&&y<=15?'.':'#'));
     if(p.theme==='cave'||p.theme==='desert')for(const[x,y]of [[4,5],[14,12]])for(let j=y;j<y+2;j++)for(let i=x;i<x+2;i++)grid[j][i]='#';
     const features=TOUR_LAYOUTS[p.id]?.features??[];
     for(const f of features)for(let y=f.y;y<f.y+f.h;y++)for(let x=f.x;x<f.x+f.w;x++)grid[y][x]='#';
@@ -81,7 +83,7 @@ for(const [index,p]of PLACES.entries()){
       const from=slotsFor(p.id)[dir],other=slotsFor(dest)[exits[dest].get(p.id)!];
       grid[from.point.y][from.point.x]='.';warps.push({...from.point,to:dest,spawn:other.spawn,entry:dir,facing:other.facing});
     }
-    TOUR_MAPS[p.id]={id:p.id,name:p.name,width:20,height:18,background:p.id,walkable:grid.map(r=>r.join('')),warps,npcs:[{id:'tourGuide',name:'길 안내원',sprite:'rancher',x:12,y:7,facing:'down',dialogue:'tourGuide'}],props:[]};
+    TOUR_MAPS[p.id]={id:p.id,name:p.name,width:grid[0].length,height:grid.length,background:p.id,walkable:grid.map(r=>r.join('')),warps,npcs:[{id:'tourGuide',name:'길 안내원',sprite:'rancher',x:12,y:7,facing:'down',dialogue:'tourGuide'}],props:[]};
     TOUR_SPAWNS[p.id]={x:10,y:10};TOUR_BUILDINGS[p.id]=[];TOUR_FEATURES[p.id]=features;continue;
   }
   const {width,height}=tourSize(p);
@@ -113,6 +115,19 @@ for(const [index,p]of PLACES.entries()){
   }
 }
 for(const p of PLACES)TOUR_OUTDOORS[p.id]=prepareTourOutdoors(p,TOUR_MAPS[p.id],TOUR_FEATURES[p.id],SHORT_TOURS.has(p.id),placeById);
+// The extended groves and rocks meet the map edge and one another. Register
+// investigation faces only where a player can actually stand beside them.
+// Preserve every original object and sign, including their event IDs.
+for(const id of ['tour_eterna_forest','tour_coronet'] as const){
+  const map=TOUR_MAPS[id],added=TOUR_OUTDOORS[id].objects.slice(5);
+  const events=new Set(added.map(o=>o.event));
+  const approachable=(p:Point)=>[[0,-1],[0,1],[-1,0],[1,0]].some(([dx,dy])=>{
+    const x=p.x+dx,y=p.y+dy;
+    return map.walkable[y]?.[x]==='.'&&!map.npcs.some(n=>n.x===x&&n.y===y)&&!map.warps.some(w=>w.x===x&&w.y===y);
+  });
+  for(const object of added)object.cells=object.cells.filter(approachable);
+  map.props=map.props.filter(p=>!events.has(p.dialogue)||approachable(p));
+}
 export const TOUR_POKEMON:Record<string,TownPokemon>={};
 for(const p of PLACES){const residents=createTourResidents(p.id);if(residents.length){TOUR_RESIDENTS[p.id]=residents;const pokemon=createTownPokemon(p);TOUR_POKEMON[p.id]=pokemon;TOUR_MAPS[p.id].npcs.push(...residents,pokemon)}}
 buildJourneyWorld({places:PLACES,maps:TOUR_MAPS,buildings:TOUR_BUILDINGS,rooms:TOUR_INTERIORS,spawns:TOUR_SPAWNS});

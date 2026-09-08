@@ -2,6 +2,11 @@ import { paintJubilifeBuilding,paintJubilifeStreets,paintCityHall } from './expl
 import { paintTourFacade,paintTourHouse,paintTourGround,paintTourPaths } from './explore-materials';
 import { paintTourInterior } from './explore-interior-art';
 import { paintTourCenter } from './explore-center-art';
+import { paintEternaGym } from './eterna-gym-art';
+import { paintHearthomeGym } from './hearthome-gym-art';
+import { paintVeilstoneGym } from './veilstone-gym-art';
+import { paintVermilionTerminal } from './vermilion-terminal-art';
+import { paintCoronetGround,paintCoronetBoundary,paintCoronetPaths } from './coronet-art';
 import { paintGroveGround } from './explore-tree-art';
 import { PASSAGES,MART_ROOMS } from './journey-world';
 import { paintJourneyPassage,paintJourneyInterior,paintJourneyMart } from './journey-art';
@@ -55,6 +60,19 @@ export function paintJubilifeFountain(c:CanvasRenderingContext2D,x:number,y:numb
   fill(7,h-8,4,2,'#d9f0dd');fill(w-11,h-8,4,2,'#d9f0dd');
 }
 export function paintTourBuilding(c:CanvasRenderingContext2D,images:Images,p:Place,b:TourBuilding){
+  if(p.id==='tour_vermilion'&&b.kind==='landmark'&&b.room==='tour_vermilion_hall'){paintVermilionTerminal(c,b);return}
+  if(p.id==='tour_veilstone'&&b.kind==='house'){
+    const gym=TOUR_BUILDINGS[p.id].find(building=>building.kind==='house');
+    if(gym&&b.door.x===gym.door.x&&b.door.y===gym.door.y){paintVeilstoneGym(c,b);return}
+  }
+  if(p.id==='tour_hearthome'&&b.kind==='house'){
+    const gym=TOUR_BUILDINGS[p.id].find(building=>building.kind==='house');
+    if(gym&&b.door.x===gym.door.x&&b.door.y===gym.door.y){paintHearthomeGym(c,b);return}
+  }
+  if(p.id==='tour_eterna'&&b.kind==='house'){
+    const gym=TOUR_BUILDINGS[p.id].find(building=>building.kind==='house');
+    if(gym&&b.door.x===gym.door.x&&b.door.y===gym.door.y){paintEternaGym(c,b);return}
+  }
   if(b.kind==='house'&&b.room&&MART_ROOMS.has(b.room)){paintJourneyMart(c,images,b);return}
   if(p.id==='tour_jubilife'&&b.kind!=='center'){paintJubilifeBuilding(c,images,b);return}
   if(['urban','waterfront'].includes(TOUR_PLANS[p.id]?.style)){
@@ -78,16 +96,17 @@ export function buildExploreArt(images:Images,id:string){
   const short=SHORT_TOURS.has(p.id),cx=short?10:14,cy=short?9:12;
   const tiles=images['town-reference'];
   for(let y=0;y<map.height;y++)for(let x=0;x<map.width;x++){
-    const edge=x<2||x>=map.width-2||y<3||y>=map.height-2;
-    paintTourGround(c,tiles,x*16,y*16,p.theme);
+    const edge=id!=='tour_coronet'&&(x<2||x>=map.width-2||y<3||y>=map.height-2);
+    if(id==='tour_coronet')paintCoronetGround(c,x,y);else paintTourGround(c,tiles,x*16,y*16,p.theme);
     if(edge){if(FOREST_BORDER_MAPS.has(id)){if(map.walkable[y][x]==='#')paintForestBorderGround(c,x,y)}else if(['port','coast','water'].includes(p.theme)){rect(c,x*16,y*16,16,16,'#69aac1');rect(c,x*16+3,y*16+7,10,1,'#bbdbe1')}else if(['cave','mine','desert'].includes(p.theme)){rect(c,x*16,y*16,16,16,'#75818b');rect(c,x*16+1,y*16+2,14,5,'#aab0a2')}else{c.drawImage(tiles,(x%2)*16,(y%4)*16,16,16,x*16,y*16,16,16);if(p.theme==='snow'){c.fillStyle='#e8f2ed99';c.fillRect(x*16,y*16,16,16)}}}
   }
+  if(id==='tour_coronet')paintCoronetBoundary(c,map);
   const paths=new Set<string>();const path=(x:number,y:number,w:number,h:number)=>{for(let j=y;j<y+h;j++)for(let i=x;i<x+w;i++)if(map.walkable[j]?.[i]==='.')paths.add(i+','+j)};
   const layout=TOUR_PLANS[p.id]??TOUR_LAYOUTS[p.id];
   if(layout){for(const r of layout.paths)path(...r)}else{path(cx-1,3,3,map.height-5);path(2,cy-1,map.width-4,3);if(!short)path(10,10,8,8)}
   if(!short)for(const b of TOUR_BUILDINGS[p.id]){path(b.door.x,b.door.y+1,1,Math.max(1,cy-b.door.y));if(b.y>cy)path(b.door.x,cy,1,b.door.y-cy+2);}
   for(const w of map.warps){path(w.x,w.y,1,1);}
-  if(TOUR_PLANS[p.id]?.style==='urban')paintJubilifeStreets(c,images,map.walkable,paths,p.id==='tour_jubilife');else paintTourPaths(c,tiles,paths,p.theme);
+  if(id==='tour_coronet')paintCoronetPaths(c,paths);else if(TOUR_PLANS[p.id]?.style==='urban')paintJubilifeStreets(c,images,map.walkable,paths,p.id==='tour_jubilife');else paintTourPaths(c,tiles,paths,p.theme);
   for(const [x,y,w,h] of layout?.boardwalks??[])for(let j=y;j<y+h;j++)for(let i=x;i<x+w;i++)if(map.walkable[j]?.[i]==='.'){
     rect(c,i*16,j*16,16,16,'#866d54');rect(c,i*16+1,j*16,14,16,'#bb9b70');
     for(let k=3;k<16;k+=4)rect(c,i*16+1,j*16+k,14,1,'#927754');

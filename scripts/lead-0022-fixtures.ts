@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {newSave,parseSave} from '../src/save';
+import {maxHpAtLevel} from '../src/growth';
+import {grantPokemon,recordSeen} from '../src/pokemon';
+const s=newSave();grantPokemon(s,1);recordSeen(s,399);s.pokedex.caught.push(399);
+s.box=[s.party[0]];
+s.party=[{species:399,level:3,hp:maxHpAtLevel(399,3),maxHp:maxHpAtLevel(399,3),experience:0,nature:'성실',met:'준비 안내 검증',moves:['몸통박치기','몸통박치기']}];
+s.flags.starterReceived=true;s.flags.departureCleared=true;
+s.badges=['BADGE-GS01','BADGE-GS02'];s.keyItems=['TM-stealth-rock','TM-grass-knot'];
+s.map='hearthome_gym';s.player={x:12,y:13,facing:'up'};s.inventory.potions=1;
+assert(parseSave(JSON.stringify(s)));
+fs.mkdirSync('tests/lead-0022-fixtures',{recursive:true});
+fs.writeFileSync('tests/lead-0022-fixtures/normal-only.json',JSON.stringify(s,null,2)+'\n');

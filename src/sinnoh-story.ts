@@ -1,8 +1,16 @@
-import { TOUR_SPAWNS } from './explore-world';
+import { startFerryJourney } from './ferry-journey';
 import type { Engine } from './engine';
 import { GYMS } from './gyms';
+import { gardeniaPreparationPages } from './gardenia-preparation';
+import { fantinaPreparationPages } from './fantina-preparation';
+import { maylenePreparationPages } from './maylene-preparation';
+import { adventureObjective } from './adventure-guide';
+import { MAPS } from './maps';
 export function sinnohEvent(g:Engine,id:string):boolean {
   if(id==='sinnohGymGuide'){
+    if(g.save.map==='eterna_gym'){g.say('체육관 안내원',gardeniaPreparationPages(g.save));return true;}
+    if(g.save.map==='hearthome_gym'){g.say('체육관 안내원',fantinaPreparationPages(g.save));return true;}
+    if(g.save.map==='veilstone_gym'){g.say('체육관 안내원',maylenePreparationPages(g.save));return true;}
     const gym=GYMS[['eterna_gym','hearthome_gym','veilstone_gym'].indexOf(g.save.map)+1];
     g.say('체육관 안내원',['이곳은 '+gym.name+'의 체육관이에요.\n앞선 배지를 얻었다면 도전하세요.','레벨 '+gym.level+'과 상처약을 준비하세요.\n센터에서 회복하고 상점에 들러요.']);return true;
   }
@@ -22,6 +30,10 @@ export function sinnohEvent(g:Engine,id:string):boolean {
       :g.save.map==='tour_hearthome'
       ?has('BADGE-GS03')?['멜리사에게 승리했군요. 길 안내판을 따라\n장막의 자두 체육관으로 가 보세요.','역의 시계 기록도 3초가 어긋났대요.\n장막 연구원이 기록을 모으고 있어요.']:['이곳은 멜리사의 체육관이 있는 연고예요.\n길 안내판을 따라 장막으로 갈 수 있어요.','역의 시계 기록도 3초가 어긋났대요.\n장막 연구원이 기록을 모으고 있어요.']
       :g.save.flags.researchDelivered?['GYM 간판이 있는 곳이 자두의 체육관이에요.\n관측 자료는 무사히 전달됐대요.','다른 지방도 자유롭게 둘러보며\n새로운 소식을 찾아보세요.']:['GYM 간판이 있는 곳이 자두의 체육관이에요.\n승리하면 마을의 관측 연구원을 만나세요.'];
+    if((g.save.map==='tour_eterna'&&has('BADGE-GS03'))||(g.save.map==='tour_hearthome'&&has('BADGE-GS04'))){
+      const objective=adventureObjective(g.save),gym=GYMS.find(gym=>gym.id===objective?.id);
+      if(objective)pages[0]=`${MAPS[objective.map].name} · ${objective.title}\n${gym?`관장 ${gym.name}에게 도전해 보세요.`:objective.id==='observation'?'관측 연구원을 만나 보세요.':objective.action}`;
+    }
     g.say('도시 안내원',pages);return true;
   }
   if(id==='observation'){
@@ -30,6 +42,7 @@ export function sinnohEvent(g:Engine,id:string):boolean {
       g.say('관측 연구원',['자료를 무사히 전달해 주셨군요.\n축복과 운하에서 조사가 시작되었어요.','선원을 만나 바다 건너의 다른 지방도\n자유롭게 둘러보고 오세요.']);
       return true;
     }
+    if(g.save.flags.observationCollected){g.say('관측 연구원',['맡긴 관측 자료는 축복시티의\n연구 통로 안내원에게 전해 주세요.']);return true;}
     g.save.flags.observationCollected=true;g.persist();g.say('관측 연구원',['도시의 시계와 열차 기록이\n같은 순간 3초씩 어긋났어요.','관측 자료를 맡길게요. 축복시티\n연구 통로 안내원에게 전해 주세요.']);return true;
   }
   if(id==='researchGate'){
@@ -38,12 +51,14 @@ export function sinnohEvent(g:Engine,id:string):boolean {
     g.say('연구 통로 안내원',['연구 연결길은 운하시티로 이어져요.\n배를 타도 이곳으로 돌아올 수 있어요.']);return true;
   }
   if(id==='ferry'){
+    if(g.ferryJourney)return true;
     if(!g.save.flags.researchDelivered){g.say('조사선 선원',['축복의 연구 통로 안내를 마치고 와 주세요.']);return true}
     const outbound=g.save.map==='tour_canalave';
+    const save=g.save,map=save.map;let consumed=false;
     g.say('조사선 선원',[outbound?'관동 갈색항으로 출발합니다.\n조사 승선은 왕복 무료예요.':'신오 운하항으로 돌아갈 수 있어요.\n갈색시티와 주변 마을도 둘러보세요.'],undefined,[{label:outbound?'갈색항으로 간다':'운하항으로 돌아간다',action:()=>{
-      g.save.flags.ferryPass=true;g.save.map=outbound?'tour_vermilion':'tour_canalave';g.save.player={...TOUR_SPAWNS[g.save.map as keyof typeof TOUR_SPAWNS],facing:'down'};g.keys.clear();g.labelTime=3;g.persist();
-      g.say('조사선 선원',[outbound?'갈색항에 도착했습니다!\n돌아갈 때도 제게 말해 주세요.':'운하항에 도착했습니다!\n연구 연결길로 축복에 갈 수 있어요.']);
-    }},{label:'아직 머무른다',action:()=>{}}]);return true;
+      if(consumed||g.save!==save||g.save.map!==map)return;
+      consumed=true;startFerryJourney(g,outbound);
+    }},{label:'아직 머무른다',action:()=>{consumed=true;}}]);return true;
   }
   return false;
 }

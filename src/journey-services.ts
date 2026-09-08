@@ -6,6 +6,7 @@ import { isWorldCenter } from './unified-world';
 import { MART_ROOMS,PASSAGES } from './journey-world';
 import { speciesHabitats } from './runtime-encounters';
 import { showPcSwap } from './pc-swap-menu';
+import { withParticle } from './korean-text';
 
 // Prices are the NEXUS items.json project values, not another generation's prices.
 export const SHOP_ITEMS=[{key:'pokeBalls' as const,name:'몬스터볼',price:200,source:'IT-poke-ball'},{key:'potions' as const,name:'상처약',price:200,source:'IT-potion'}];
@@ -24,12 +25,12 @@ export function depositPokemon(s:CollectionSave,index:number):string{
   if((s.box?.length??0)>=BOX_CAPACITY)return '박스가 가득 찼어요. (60마리)';
   if(s.party.length<=1||!s.party.some((mon,i)=>i!==index&&mon.hp>0))return '모험할 수 있는 건강한 포켓몬을\n한 마리 이상 데리고 있어야 해요.';
   (s.box??=[]).push(s.party.splice(index,1)[0]);
-  return `${SPECIES[p.species].name}를 박스에 맡겼다.\n센터 PC에서 다시 데려올 수 있다.`;
+  return `${withParticle(SPECIES[p.species].name,'을/를')} 박스에 맡겼다.\n센터 PC에서 다시 데려올 수 있다.`;
 }
 export function withdrawPokemon(s:CollectionSave,index:number):string{
   const p=s.box?.[index];if(!Number.isInteger(index)||!p)return '데려올 포켓몬을 선택해 주세요.';
   if(s.party.length>=6)return '파티가 가득 찼어요.\n먼저 한 마리를 맡겨 주세요.';
-  s.party.push(s.box!.splice(index,1)[0]);return `${SPECIES[p.species].name}가 파티로 돌아왔다!`;
+  s.party.push(s.box!.splice(index,1)[0]);return `${withParticle(SPECIES[p.species].name,'이/가')} 파티로 돌아왔다!`;
 }
 function pcMenu(g:Engine){
   const s=g.save as CollectionSave;

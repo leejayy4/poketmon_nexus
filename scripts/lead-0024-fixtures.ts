@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {newSave,parseSave} from '../src/save';
+import {grantPokemon} from '../src/pokemon';
+import {GYMS} from '../src/gyms';
+const save=newSave();grantPokemon(save,1);
+save.flags.departureCleared=true;save.flags.observationCollected=true;
+save.badges=GYMS.map(g=>g.badge);save.keyItems=GYMS.map(g=>g.tm);
+save.map='tour_veilstone';save.player={x:16,y:15,facing:'up'};
+assert(parseSave(JSON.stringify(save)));
+fs.mkdirSync('tests/lead-0024-fixtures',{recursive:true});
+fs.writeFileSync('tests/lead-0024-fixtures/records-held.json',JSON.stringify(save,null,2)+'\n');

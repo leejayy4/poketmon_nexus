@@ -55,7 +55,7 @@ test('third and fourth move actions resolve their actual techniques and missing 
 test('a full moveset compares and replaces the fourth slot without creating a fifth',()=>{
   const f=school();f.g.save.party[0].moves=['할퀴기','울음소리','용의분노','발버둥'];showMoveSchool(f.g);f.choose('불꽃세례');
   assert.equal(f.dialogue.choices.length,5);assert(!f.dialogue.choices.some(c=>c.label==='빈 자리에 배운다'));
-  f.choose('발버둥와 비교');const before=structuredClone(f.g.save);assert.deepEqual(f.g.save,before);f.choose('바꿔서 배운다');
+  f.choose('발버둥과 비교');const before=structuredClone(f.g.save);assert.deepEqual(f.g.save,before);f.choose('바꿔서 배운다');
   assert.deepEqual(f.g.save.party[0].moves,['할퀴기','울음소리','용의분노','불꽃세례']);assert.equal(f.writes,1);assert(parseSave(JSON.stringify(f.g.save)));
 });
 

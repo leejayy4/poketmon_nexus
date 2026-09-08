@@ -5,7 +5,7 @@ import { effectivenessText,moveEffectiveness,enemyDamage,playerDamage,switchEntr
 // Read-only previews use the same damage rules as the resolved turn.
 export function battleHint(save:SaveData,b:Battle):[string,string]{
   const active=save.party[b.active],damage=enemyDamage(b,b.enemyAttackDrop,active);
-  const remaining=(hp:number,max:number)=>hp<=damage?'반격 후 기절 (HP 0)':`반격 후 HP ${hp-damage}/${max}`;
+  const remaining=(hp:number,max:number,reply=damage)=>hp<=reply?'반격 후 기절 (HP 0)':`반격 후 HP ${hp-reply}/${max}`;
   if(b.menu==='between')return [`다음 상대: ${SPECIES[b.enemy.species].name} Lv.${b.enemy.level}`,'교대하면 추가 반격 없이 출전합니다'];
   if(b.menu==='heal'){
     const target=save.party[b.selected];
@@ -24,7 +24,7 @@ export function battleHint(save:SaveData,b:Battle):[string,string]{
     if(b.betweenOpponents&&b.selected!==b.active)return [`${SPECIES[next.species].name}를 내보낸다`,entry?`반격 없음 · 바위 피해 ${entry}`:'다음 상대와 반격 없이 대면합니다'];
     if(b.forcedSwitch)return [`${SPECIES[next.species].name}를 내보낸다`,entry?`반격 없음 · 바위 피해 ${entry}`:'추가 반격 없이 출전합니다'];
     if(b.selected===b.active)return ['이미 싸우고 있는 포켓몬','다른 포켓몬을 선택하세요'];
-    const hit=entry+enemyDamage({...b,active:b.selected,playerDefense:{...b.playerDefense,[b.selected]:0},playerDefenseDrop:{...b.playerDefenseDrop,[b.selected]:0}},b.enemyAttackDrop,next);
+    const hit=entry+enemyDamage({...b,active:b.selected,playerDefense:{...b.playerDefense,[b.selected]:0},playerDefenseDrop:{...b.playerDefenseDrop,[b.selected]:0},playerAttackDrop:{...b.playerAttackDrop,[b.selected]:0}},b.enemyAttackDrop,next);
     return [`${SPECIES[next.species].name}로 교대 · 한 턴 사용`,next.hp<=hit?'반격 후 기절 (HP 0)':`반격 후 HP ${next.hp-hit}/${next.maxHp}`];
   }
   if(b.menu==='moves'){
@@ -33,15 +33,16 @@ export function battleHint(save:SaveData,b:Battle):[string,string]{
     if(isDamagingMove(move)){
       const hit=playerDamage(active,b,move);
       const effect=effectivenessText(moveEffectiveness(move,b.enemy));
+      const reply=enemyDamage({...b,enemy:{...b.enemy,hp:Math.max(0,b.enemy.hp-hit)}},b.enemyAttackDrop,active);
       if(rule==='struggle'){
         const recoil=Math.min(active.hp,Math.max(1,Math.floor(active.maxHp/4))),hp=active.hp-recoil;
-        return [`상대에게 ${Math.min(b.enemy.hp,hit)} 피해 · 반동 ${recoil}`,hp===0?'반동으로 기절 · 상대 반격 없음':b.enemy.hp<=hit?`반동 후 HP ${hp}/${active.maxHp} · 반격 없음`:remaining(hp,active.maxHp)];
+        return [`상대에게 ${Math.min(b.enemy.hp,hit)} 피해 · 반동 ${recoil}`,hp===0?'반동으로 기절 · 상대 반격 없음':b.enemy.hp<=hit?`반동 후 HP ${hp}/${active.maxHp} · 반격 없음`:remaining(hp,active.maxHp,reply)];
       }
       if(rule==='drain'){
         const dealt=Math.min(b.enemy.hp,hit),heal=dealt>0?Math.min(active.maxHp-active.hp,Math.max(1,Math.floor(dealt/2))):0,hp=active.hp+heal;
-        return [`상대에게 ${dealt} 피해${effect?` · ${effect}`:''}`,`HP +${heal} · ${b.enemy.hp<=hit?`반격 없음 (${hp}/${active.maxHp})`:remaining(hp,active.maxHp)}`];
+        return [`상대에게 ${dealt} 피해${effect?` · ${effect}`:''}`,`HP +${heal} · ${b.enemy.hp<=hit?`반격 없음 (${hp}/${active.maxHp})`:remaining(hp,active.maxHp,reply)}`];
       }
-      return [`상대에게 ${Math.min(b.enemy.hp,hit)} 피해${effect?` · ${effect}`:''}`,b.enemy.hp<=hit?'쓰러뜨리면 반격 없음':remaining(active.hp,active.maxHp)];
+      return [`상대에게 ${Math.min(b.enemy.hp,hit)} 피해${effect?` · ${effect}`:''}`,b.enemy.hp<=hit?'쓰러뜨리면 반격 없음':remaining(active.hp,active.maxHp,reply)];
     }
     if(rule==='protect')return ['이번 상대 기술을 막는 방어','연속 사용하면 성공률이 낮아집니다'];
     if(rule==='defenseUp'){

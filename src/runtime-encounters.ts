@@ -14,6 +14,7 @@ const MAP_POOLS:Record<string,{node:string;name:string}>={
   coronet_pass:{node:'S15',name:'천관산 하부'},tour_coronet:{node:'S15',name:'천관산 하부'},
   tour_pass_hearthome_veilstone:{node:'S08',name:'연고–장막 연결도로'},
   tour_pass_hearthome_pastoria:{node:'S07',name:'연고–들판 연결도로'},
+  tour_pass_vermilion_cerulean:{node:'K18',name:'갈색–블루 해안길'},
 };
 export const ENCOUNTER_TIME_POLICY='day-only' as const;
 export function encounterPool(map:string){const binding=MAP_POOLS[map];return binding?DATA.pools.find(p=>p.node===binding.node):undefined;}

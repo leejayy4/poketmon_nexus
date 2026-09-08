@@ -1,5 +1,10 @@
 import { withParticle } from './korean-text';
 import { paintOreburghGymBattleArena } from './oreburgh-gym-art';
+import { paintEternaGymBattleArena } from './eterna-gym-art';
+import { paintHearthomeGymBattleArena } from './hearthome-gym-art';
+import { paintVeilstoneGymBattleArena } from './veilstone-gym-art';
+import { paintCoronetBattleArena } from './coronet-art';
+import { paintFerryJourney,ferryProgress,type FerryJourneyView } from './ferry-art';
 import { gymCartView } from './gym-cart';
 import { paintGymCart,paintGymCartSamples } from './gym-cart-art';
 import { isOreburghCave, paintCaveEncounter, paintCaveBattleArena } from './oreburgh-cave-art';
@@ -51,8 +56,19 @@ export class Renderer {
   text(c:CanvasRenderingContext2D,text:string,x:number,y:number,color=INK,size=10,align:CanvasTextAlign='left'){c.fillStyle=color;c.font=`${size}px Galmuri`;c.textBaseline='top';c.textAlign=align;for(const [i,line]of text.split('\n').entries())c.fillText(line,Math.round(x),Math.round(y+i*(size+5)));c.textAlign='left'}
   frame(c:CanvasRenderingContext2D,x:number,y:number,w:number,h:number,fill=PAPER){this.rect(c,x,y,w,h,'#394954');this.rect(c,x+1,y+1,w-2,h-2,'#a0b1b9');this.rect(c,x+3,y+3,w-6,h-6,'#fff');this.rect(c,x+5,y+5,w-10,h-10,fill);}
   ball(c:CanvasRenderingContext2D,x:number,y:number,r=5,selected=false){c.fillStyle='#34464b';c.beginPath();c.arc(x,y,r+1,0,Math.PI*2);c.fill();c.fillStyle=selected?'#f39867':'#de6a62';c.beginPath();c.arc(x,y,r,Math.PI,0);c.fill();c.fillStyle='#f2f1df';c.beginPath();c.arc(x,y,r,0,Math.PI);c.fill();this.rect(c,x-r,y-1,r*2,2,'#34464b');this.rect(c,x-2,y-2,4,4,'#34464b');this.rect(c,x-1,y-1,2,2,'#f6f9e5')}
-  battleArena(c:CanvasRenderingContext2D){const battle=this.game.presentedBattle;if((battle?.kind==='gym'&&battle.gymId==='roark')||(battle?.kind==='trainer'&&this.game.save.map==='oreburgh_gym')){paintOreburghGymBattleArena(c);return;}if(isOreburghCave(this.game.save.map)){paintCaveBattleArena(c);return;}this.rect(c,0,0,256,192,'#e7edd5');for(let y=0;y<62;y+=3)this.rect(c,0,y,256,1,'#dce7cb');const drift=Math.floor(this.game.clock*5)%286;for(const [x,y,w]of [[-12,12,18],[84,31,24],[194,8,16]] as const){const px=(x+drift)%286-15;this.rect(c,px,y,w,2,'#f3f3dc');this.rect(c,px+4,y-2,w-8,2,'#f3f3dc');this.rect(c,px+7,y+2,w-13,1,'#d4dfca');}for(const [x,w,h]of [[-20,56,7],[48,42,4],[126,68,8],[212,51,5]] as const)this.rect(c,x,62-h,w,h,'#b4c69a');this.rect(c,0,62,256,130,'#c7d7aa');for(let y=72;y<192;y+=16)for(let x=(y%32?7:15);x<256;x+=37)this.rect(c,x,y,5,1,'#afc58d');for(const [x,y,rx,ry]of [[196,84,53,12],[59,133,70,19]] as const){c.fillStyle='#76996e';c.beginPath();c.ellipse(x,y+3,rx,ry,0,0,Math.PI*2);c.fill();c.fillStyle='#9fbd7e';c.beginPath();c.ellipse(x,y,rx-2,ry-3,0,0,Math.PI*2);c.fill();c.fillStyle='#dbe5b6';c.beginPath();c.ellipse(x,y-3,rx-7,ry-6,0,0,Math.PI*2);c.fill();this.rect(c,x-rx+12,y-2,rx-13,1,'#eef0cc');this.rect(c,x+5,y+5,rx-13,1,'#8bad76');}}
-  draw(){this.world();this.lower();if(this.game.transition){const alpha=this.game.transition>.18?Math.min(1,(.4-this.game.transition)/.16):this.game.transition/.18;this.ctx.fillStyle=`rgba(0,0,0,${alpha})`;this.ctx.fillRect(0,0,W,H)}if(this.game.toastTime>0){this.frame(this.touch,8,153,240,31);this.text(this.touch,this.game.toast,128,163,INK,8,'center')}}
+  battleArena(c:CanvasRenderingContext2D){const battle=this.game.presentedBattle;if(battle?.kind==='gym'&&battle.gymId==='maylene'){paintVeilstoneGymBattleArena(c);return;}if(battle?.kind==='gym'&&battle.gymId==='fantina'){paintHearthomeGymBattleArena(c);return;}if(battle?.kind==='gym'&&battle.gymId==='gardenia'){paintEternaGymBattleArena(c);return;}if((battle?.kind==='gym'&&battle.gymId==='roark')||(battle?.kind==='trainer'&&this.game.save.map==='oreburgh_gym')){paintOreburghGymBattleArena(c);return;}if(battle?.kind==='wild'&&this.game.save.map==='tour_coronet'){paintCoronetBattleArena(c);return;}if(isOreburghCave(this.game.save.map)){paintCaveBattleArena(c);return;}this.rect(c,0,0,256,192,'#e7edd5');for(let y=0;y<62;y+=3)this.rect(c,0,y,256,1,'#dce7cb');const drift=Math.floor(this.game.clock*5)%286;for(const [x,y,w]of [[-12,12,18],[84,31,24],[194,8,16]] as const){const px=(x+drift)%286-15;this.rect(c,px,y,w,2,'#f3f3dc');this.rect(c,px+4,y-2,w-8,2,'#f3f3dc');this.rect(c,px+7,y+2,w-13,1,'#d4dfca');}for(const [x,w,h]of [[-20,56,7],[48,42,4],[126,68,8],[212,51,5]] as const)this.rect(c,x,62-h,w,h,'#b4c69a');this.rect(c,0,62,256,130,'#c7d7aa');for(let y=72;y<192;y+=16)for(let x=(y%32?7:15);x<256;x+=37)this.rect(c,x,y,5,1,'#afc58d');for(const [x,y,rx,ry]of [[196,84,53,12],[59,133,70,19]] as const){c.fillStyle='#76996e';c.beginPath();c.ellipse(x,y+3,rx,ry,0,0,Math.PI*2);c.fill();c.fillStyle='#9fbd7e';c.beginPath();c.ellipse(x,y,rx-2,ry-3,0,0,Math.PI*2);c.fill();c.fillStyle='#dbe5b6';c.beginPath();c.ellipse(x,y-3,rx-7,ry-6,0,0,Math.PI*2);c.fill();this.rect(c,x-rx+12,y-2,rx-13,1,'#eef0cc');this.rect(c,x+5,y+5,rx-13,1,'#8bad76');}}
+  draw(){if(this.game.ferryJourney){this.ferry(this.game.ferryJourney);return;}this.world();this.lower();if(this.game.transition){const alpha=this.game.transition>.18?Math.min(1,(.4-this.game.transition)/.16):this.game.transition/.18;this.ctx.fillStyle=`rgba(0,0,0,${alpha})`;this.ctx.fillRect(0,0,W,H)}if(this.game.toastTime>0){this.frame(this.touch,8,153,240,31);this.text(this.touch,this.game.toast,128,163,INK,8,'center')}}
+  ferry(view:FerryJourneyView){
+    this.hits=[];paintFerryJourney(this.ctx,view);
+    const c=this.touch;this.rect(c,0,0,W,H,'#dfe7d9');this.frame(c,10,25,236,142,'#f4f0d7');
+    this.text(c,'조사선 항해',128,42,INK,11,'center');
+    this.text(c,view.outbound?'운하항 → 갈색항':'갈색항 → 운하항',128,67,INK,11,'center');
+    this.rect(c,38,106,180,2,'#8aaca8');this.rect(c,38,108,180,1,'#c5d5bc');
+    for(const x of [36,216]){this.rect(c,x,103,5,7,'#5b8286');this.rect(c,x+1,104,3,4,'#d8dabe');}
+    const marker=43+Math.round(ferryProgress(view)*166);
+    this.rect(c,marker-3,101,7,8,'#537d88');this.rect(c,marker-2,102,5,5,'#c4d9cd');
+    this.text(c,'바다를 건너고 있어요',128,133,'#627d79',9,'center');
+  }
   world(){const c=this.ctx,g=this.game,map=g.map;if(g.showingGymReward){this.gymRewardTop(c);if(g.dialogue)this.dialogue(c,false);return}if(g.showingCatch){this.catchTop(c);if(g.dialogue)this.dialogue(c,false);return}if(g.presentedBattle){this.battleTop(c);if(g.dialogue)this.dialogue(c);return}this.rect(c,0,0,W,H,'#101b20');const pos=g.position;
     const camera=(p:number,total:number,view:number)=>total<view?(total-view)/2:Math.max(0,Math.min(total-view,p-view/2));
     const cx=Math.round(camera(pos.x*16+8,map.width*16,W)),cy=Math.round(camera(pos.y*16+8,map.height*16,H));
@@ -336,6 +352,6 @@ export class Renderer {
     }
   }
   moveButton(c:CanvasRenderingContext2D,x:number,y:number,move:string,action:()=>void,selected=false){this.frame(c,x,y,116,32,selected?'#f3df9f':'#fbf9e6');if(selected)this.rect(c,x+5,y+5,3,22,'#c2774d');this.text(c,move,x+13,y+11,INK,9);this.typeBadge(c,moveType(move)??'?',x+80,y+9);this.hits.push({x,y,w:116,h:32,action})}
-  click(x:number,y:number){if(this.game.transition||this.game.move)return;const hit=[...this.hits].reverse().find(h=>x>=h.x&&x<h.x+h.w&&y>=h.y&&y<h.y+h.h);if(hit){this.game.audio.play('confirm');hit.action()}}
+  click(x:number,y:number){if(this.game.ferryJourney||this.game.transition||this.game.move)return;const hit=[...this.hits].reverse().find(h=>x>=h.x&&x<h.x+h.w&&y>=h.y&&y<h.y+h.h);if(hit){this.game.audio.play('confirm');hit.action()}}
 }
 

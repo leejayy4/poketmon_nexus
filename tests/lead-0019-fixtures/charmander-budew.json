@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "worldRevision": 24,
+  "map": "oreburgh_gym",
+  "player": {
+    "x": 8,
+    "y": 5,
+    "facing": "up"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 4,
+      "level": 8,
+      "hp": 28,
+      "maxHp": 28,
+      "experience": 0,
+      "nature": "성실",
+      "met": "준비 파티 재검증",
+      "moves": [
+        "할퀴기",
+        "울음소리",
+        "불꽃세례"
+      ]
+    },
+    {
+      "species": 406,
+      "level": 8,
+      "hp": 51,
+      "maxHp": 51,
+      "experience": 0,
+      "nature": "성실",
+      "met": "준비 파티 재검증",
+      "moves": [
+        "흡수",
+        "흡수"
+      ]
+    }
+  ],
+  "box": [],
+  "pokedex": {
+    "seen": [
+      4
+    ],
+    "caught": [
+      4
+    ]
+  },
+  "inventory": {
+    "pokeBalls": 5,
+    "potions": 4
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 300,
+  "healingPoint": "tour_oreburgh_center",
+  "steps": 0,
+  "seconds": 0
+}

@@ -79,7 +79,8 @@ export function playerDamage(p:Pokemon,b:Battle,move=pokemonMoves(p)[0]):number{
 }
 export function enemyMove(b:Battle,target?:Pokemon):string{
   const moves=pokemonMoves(b.enemy),turn=b.turn??0;
-  if(b.kind!=='wild'&&turn===0&&!b.playerRocks&&moves.some(m=>MOVE_RULES[m]?.rule==='hazard'))return moves.find(m=>MOVE_RULES[m]?.rule==='hazard')!;
+  const threatened=b.kind==='gym'&&b.gymId==='roark'&&target&&b.enemy.hp<=Math.max(...pokemonMoves(target).map(move=>playerDamage(target,b,move)));
+  if(b.kind!=='wild'&&turn===0&&!b.playerRocks&&!threatened&&moves.some(m=>MOVE_RULES[m]?.rule==='hazard'))return moves.find(m=>MOVE_RULES[m]?.rule==='hazard')!;
   return [...moves].sort((a,c)=>(target?techniqueDamage(b.enemy,target,c):Number(isDamagingMove(c)))-(target?techniqueDamage(b.enemy,target,a):Number(isDamagingMove(a))))[0];
 }
 export function enemyDamage(b:Battle,attackDrop=b.enemyAttackDrop,target?:Pokemon):number{

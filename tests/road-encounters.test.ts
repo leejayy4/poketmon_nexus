@@ -25,7 +25,7 @@ test('two named roads use the selected design pools without enabling other roads
     assert.deepEqual(pool.levels,source.levels);
     assert(pool.levels[1]<=LEVEL_CAP);
   }
-  assert.deepEqual(DATA.pools.map(p=>p.id).sort(),['ENC-001','ENC-002','ENC-003','ENC-004','ENC-007','ENC-008','ENC-016']);
+  assert.deepEqual(DATA.pools.map(p=>p.id).sort(),['ENC-001','ENC-002','ENC-003','ENC-004','ENC-007','ENC-008','ENC-016','ENC-039']);
   for(const map of ['tour_pass_veilstone_sunyshore','tour_pass_pastoria_sunyshore','tour_hearthome','tour_veilstone']){
     assert.equal(hasWildEncounters(map),false,map);assert.equal(wildPokemon(map),null,map);
   }

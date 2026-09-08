@@ -27,6 +27,15 @@ test('each existing badge and research flag selects its implemented next objecti
   const restored=parseSave(JSON.stringify(s));assert(restored);assert.deepEqual(adventureGuide(restored),adventureGuide(s));
 });
 
+test('gym objective particles match each leader while preserving progress and the next missing badge',()=>{
+  const s=newSave();grantPokemon(s,7);s.flags.departureCleared=true;
+  for(const [i,name] of ['강석과','유채와','멜리사와','자두와'].entries()){
+    const before=structuredClone(s),objective=adventureObjective(s)!;
+    assert.equal(objective.action,`관장 ${name} 이야기하자`);assert.equal(objective.id,GYMS[i].id);assert.deepEqual(s,before);s.badges.push(GYMS[i].badge);
+  }
+  s.badges=['BADGE-GS01','BADGE-GS03'];assert.equal(adventureObjective(s)!.action,'관장 유채와 이야기하자');
+});
+
 test('guidance follows real interior exits and connecting maps; on arrival it names the interaction',()=>{
   const s=newSave();assert.equal(adventureGuide(s)!.lines[1],'다음 구역: 우리 집 · 1층');
   s.map='home';assert.equal(adventureGuide(s)!.lines[1],'다음 구역: 새잎마을');
