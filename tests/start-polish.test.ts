@@ -73,6 +73,11 @@ test('every prop can be reached from the map entrance and investigated using nor
       assert(game.dialogue, `${map.id}: ${prop.dialogue} did not open`);
       if (prop.dialogue==='pokeballs') assert.equal(game.dialogue.speaker,'은솔박사');
       else if(prop.dialogue==='routeSign'){assert.equal(game.dialogue.pages[0],TEXT.routeSign.pages[0]);assert.match(game.dialogue.pages.join(''),/흙길은 포켓몬을 만나지 않는 길/);assert.match(game.dialogue.pages.join(''),/Lv\.3~6/);}
+      else if(prop.dialogue.startsWith('gymCart')){
+        const speakers:Record<string,string>={gymCartObserve:'광물 관찰대',gymCartLever:'탄차 분기 레버',gymCartLaunch:'탄차 출발 버튼'};
+        assert.equal(game.dialogue.speaker,speakers[prop.dialogue]);
+        assert.match(game.dialogue.pages.join(''),/받침/);
+      }
       else assert.deepEqual(game.dialogue.pages,TEXT[prop.dialogue].pages);
     }
   }

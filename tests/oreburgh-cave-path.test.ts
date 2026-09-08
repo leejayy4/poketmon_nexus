@@ -51,7 +51,7 @@ test('Oreburgh cave keeps the existing warps and safe main route',()=>{
   assert.deepEqual(map.warps,before);
   assert.deepEqual(map.warps.map(({x,y,to})=>({x,y,to})),[
     {x:1,y:10,to:'tour_jubilife'},
-    {x:30,y:10,to:'tour_oreburgh'},
+    {x:50,y:10,to:'tour_oreburgh'},
   ]);
   for(const y of [9,10,11])for(const x of [1,10,15,22,30])assert.equal(map.walkable[y][x],'.',`${x},${y}`);
   for(const [x,y] of [[9,7],[9,11],[12,7],[21,7],[24,11]] as const)assert.equal(map.walkable[y][x],'.',`${x},${y}`);

@@ -26,7 +26,10 @@ export const BADGE_MAPS:Record<'jubilife'|'oreburgh'|'jubilife_center'|'oreburgh
   oreburgh_gym:{id:'oreburgh_gym',name:'무쇠체육관',width:17,height:16,background:'oreburgh_gym',walkable:floor(17,16,GYM_ROCKS,[[8,14],[8,15]]),
     warps:[{x:8,y:15,to:'oreburgh',spawn:{x:18,y:10},entry:'down',facing:'down'}],
     npcs:[{id:'roark',name:'관장 강석',sprite:'worker',x:8,y:4,facing:'down',dialogue:'roark'},
-      {id:'gymGuide',name:'체육관 안내원',sprite:'rancher',x:12,y:12,facing:'left',dialogue:'gymGuide'}],props:[]},
+      {id:'gymGuide',name:'체육관 안내원',sprite:'rancher',x:12,y:12,facing:'left',dialogue:'gymGuide'},
+      {id:'gymTypeTrainer',name:'체육관 수련생',sprite:'ace_trainer_f',x:3,y:9,facing:'right',dialogue:'gymTypeTrainer'},
+      {id:'gymSwitchTrainer',name:'체육관 연습생',sprite:'ace_trainer_m',x:13,y:6,facing:'left',dialogue:'gymSwitchTrainer'}],
+    props:[{x:11,y:10,dialogue:'gymCartObserve'},{x:5,y:7,dialogue:'gymCartLever'},{x:6,y:7,dialogue:'gymCartLaunch'}]},
 };
 export function paintCityBuilding(c:CanvasRenderingContext2D,images:Images,b:typeof CITY_BUILDINGS['oreburgh'][number]|typeof CITY_BUILDINGS['jubilife'][number]){
   const source=images['sandgem-reference'];

@@ -10,7 +10,7 @@ import { showMoveSchool } from '../src/move-school';
 
 function fixture(){
   const save=newSave();grantPokemon(save,4);
-  const p=save.party[0];p.level=7;p.hp=p.maxHp=maxHpAtLevel(4,7);
+  const p=save.party[0];p.level=16;p.hp=p.maxHp=maxHpAtLevel(4,16);p.moves=['할퀴기','울음소리','용의분노','발버둥'];
   let dialogue:{pages:string[];choices:Choice[];after?:()=>void}={pages:[],choices:[]};
   let writes=0,sounds=0;
   const game={save,partyIndex:0,battle:null,
@@ -55,9 +55,9 @@ test('comparison is read-only, cancellation preserves moves, confirmation saves 
   for(const page of f.dialogue.pages)assert(page.split('\n').length<=3);
   f.choose('기술 목록으로');assert.deepEqual(f.game.save,before);
   f.compare();const confirm=f.dialogue.choices[0].action;confirm();confirm();
-  assert.deepEqual(pokemonMoves(f.game.save.party[0]),['불꽃세례','울음소리']);
+  assert.deepEqual(pokemonMoves(f.game.save.party[0]),['불꽃세례','울음소리','용의분노','발버둥']);
   assert.equal(f.writes,1);assert.equal(f.sounds,1);
-  assert.deepEqual(parseSave(JSON.stringify(f.game.save))!.party[0].moves,['불꽃세례','울음소리']);
+  assert.deepEqual(parseSave(JSON.stringify(f.game.save))!.party[0].moves,['불꽃세례','울음소리','용의분노','발버둥']);
 });
 
 test('stale confirmations cannot change a replaced save, party member, moves or active battle',()=>{

@@ -23,7 +23,7 @@ test('runtime encounter pools exactly preserve selected design slot weights, lev
     }before+=slot.weight;}
     assert.equal(before,100);
   }
-  assert(!hasWildEncounters('tour_pass_hearthome_veilstone'));assert.equal(wildPokemon('bedroom'),null);assert.equal(createBattle({...ready(),map:'bedroom'}),null);
+  assert(!hasWildEncounters('tour_pass_veilstone_sunyshore'));assert.equal(wildPokemon('bedroom'),null);assert.equal(createBattle({...ready(),map:'bedroom'}),null);
 });
 
 test('every registered species has actual front and back PNG assets',()=>{
@@ -104,7 +104,7 @@ test('draining, weight-based and fixed-damage rules have meaningful distinct eff
 });
 
 test('save rejects corrupted box, dex and move payloads while keeping story flags strict',()=>{
-  for(const mutate of [(s:any)=>s.box=Array(61).fill(mon(399,3)),(s:any)=>s.pokedex={seen:[7,7],caught:[7]},(s:any)=>s.pokedex={seen:[7],caught:[399]},(s:any)=>s.box=[{...mon(399,3),hp:-1}],(s:any)=>s.party[0].moves=['물대포'],(s:any)=>s.flags.starterReceived=false]){
+  for(const mutate of [(s:any)=>s.box=Array(61).fill(mon(399,3)),(s:any)=>s.pokedex={seen:[7,7],caught:[7]},(s:any)=>s.pokedex={seen:[7],caught:[399]},(s:any)=>s.box=[{...mon(399,3),hp:-1}],(s:any)=>s.party[0].moves=[],(s:any)=>s.flags.starterReceived=false]){
     const s=ready();mutate(s);assert.equal(parseSave(JSON.stringify(s)),null);
   }
 });

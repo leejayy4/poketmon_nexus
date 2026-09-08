@@ -1,4 +1,7 @@
 import { withParticle } from './korean-text';
+import { paintOreburghGymBattleArena } from './oreburgh-gym-art';
+import { gymCartView } from './gym-cart';
+import { paintGymCart,paintGymCartSamples } from './gym-cart-art';
 import { isOreburghCave, paintCaveEncounter, paintCaveBattleArena } from './oreburgh-cave-art';
 import { paintJourneyOverlay } from './journey-art';
 import { paintMoveTechnique } from './move-art';
@@ -48,7 +51,7 @@ export class Renderer {
   text(c:CanvasRenderingContext2D,text:string,x:number,y:number,color=INK,size=10,align:CanvasTextAlign='left'){c.fillStyle=color;c.font=`${size}px Galmuri`;c.textBaseline='top';c.textAlign=align;for(const [i,line]of text.split('\n').entries())c.fillText(line,Math.round(x),Math.round(y+i*(size+5)));c.textAlign='left'}
   frame(c:CanvasRenderingContext2D,x:number,y:number,w:number,h:number,fill=PAPER){this.rect(c,x,y,w,h,'#394954');this.rect(c,x+1,y+1,w-2,h-2,'#a0b1b9');this.rect(c,x+3,y+3,w-6,h-6,'#fff');this.rect(c,x+5,y+5,w-10,h-10,fill);}
   ball(c:CanvasRenderingContext2D,x:number,y:number,r=5,selected=false){c.fillStyle='#34464b';c.beginPath();c.arc(x,y,r+1,0,Math.PI*2);c.fill();c.fillStyle=selected?'#f39867':'#de6a62';c.beginPath();c.arc(x,y,r,Math.PI,0);c.fill();c.fillStyle='#f2f1df';c.beginPath();c.arc(x,y,r,0,Math.PI);c.fill();this.rect(c,x-r,y-1,r*2,2,'#34464b');this.rect(c,x-2,y-2,4,4,'#34464b');this.rect(c,x-1,y-1,2,2,'#f6f9e5')}
-  battleArena(c:CanvasRenderingContext2D){if(isOreburghCave(this.game.save.map)){paintCaveBattleArena(c);return;}this.rect(c,0,0,256,192,'#e7edd5');for(let y=0;y<62;y+=3)this.rect(c,0,y,256,1,'#dce7cb');const drift=Math.floor(this.game.clock*5)%286;for(const [x,y,w]of [[-12,12,18],[84,31,24],[194,8,16]] as const){const px=(x+drift)%286-15;this.rect(c,px,y,w,2,'#f3f3dc');this.rect(c,px+4,y-2,w-8,2,'#f3f3dc');this.rect(c,px+7,y+2,w-13,1,'#d4dfca');}for(const [x,w,h]of [[-20,56,7],[48,42,4],[126,68,8],[212,51,5]] as const)this.rect(c,x,62-h,w,h,'#b4c69a');this.rect(c,0,62,256,130,'#c7d7aa');for(let y=72;y<192;y+=16)for(let x=(y%32?7:15);x<256;x+=37)this.rect(c,x,y,5,1,'#afc58d');for(const [x,y,rx,ry]of [[196,84,53,12],[59,133,70,19]] as const){c.fillStyle='#76996e';c.beginPath();c.ellipse(x,y+3,rx,ry,0,0,Math.PI*2);c.fill();c.fillStyle='#9fbd7e';c.beginPath();c.ellipse(x,y,rx-2,ry-3,0,0,Math.PI*2);c.fill();c.fillStyle='#dbe5b6';c.beginPath();c.ellipse(x,y-3,rx-7,ry-6,0,0,Math.PI*2);c.fill();this.rect(c,x-rx+12,y-2,rx-13,1,'#eef0cc');this.rect(c,x+5,y+5,rx-13,1,'#8bad76');}}
+  battleArena(c:CanvasRenderingContext2D){const battle=this.game.presentedBattle;if((battle?.kind==='gym'&&battle.gymId==='roark')||(battle?.kind==='trainer'&&this.game.save.map==='oreburgh_gym')){paintOreburghGymBattleArena(c);return;}if(isOreburghCave(this.game.save.map)){paintCaveBattleArena(c);return;}this.rect(c,0,0,256,192,'#e7edd5');for(let y=0;y<62;y+=3)this.rect(c,0,y,256,1,'#dce7cb');const drift=Math.floor(this.game.clock*5)%286;for(const [x,y,w]of [[-12,12,18],[84,31,24],[194,8,16]] as const){const px=(x+drift)%286-15;this.rect(c,px,y,w,2,'#f3f3dc');this.rect(c,px+4,y-2,w-8,2,'#f3f3dc');this.rect(c,px+7,y+2,w-13,1,'#d4dfca');}for(const [x,w,h]of [[-20,56,7],[48,42,4],[126,68,8],[212,51,5]] as const)this.rect(c,x,62-h,w,h,'#b4c69a');this.rect(c,0,62,256,130,'#c7d7aa');for(let y=72;y<192;y+=16)for(let x=(y%32?7:15);x<256;x+=37)this.rect(c,x,y,5,1,'#afc58d');for(const [x,y,rx,ry]of [[196,84,53,12],[59,133,70,19]] as const){c.fillStyle='#76996e';c.beginPath();c.ellipse(x,y+3,rx,ry,0,0,Math.PI*2);c.fill();c.fillStyle='#9fbd7e';c.beginPath();c.ellipse(x,y,rx-2,ry-3,0,0,Math.PI*2);c.fill();c.fillStyle='#dbe5b6';c.beginPath();c.ellipse(x,y-3,rx-7,ry-6,0,0,Math.PI*2);c.fill();this.rect(c,x-rx+12,y-2,rx-13,1,'#eef0cc');this.rect(c,x+5,y+5,rx-13,1,'#8bad76');}}
   draw(){this.world();this.lower();if(this.game.transition){const alpha=this.game.transition>.18?Math.min(1,(.4-this.game.transition)/.16):this.game.transition/.18;this.ctx.fillStyle=`rgba(0,0,0,${alpha})`;this.ctx.fillRect(0,0,W,H)}if(this.game.toastTime>0){this.frame(this.touch,8,153,240,31);this.text(this.touch,this.game.toast,128,163,INK,8,'center')}}
   world(){const c=this.ctx,g=this.game,map=g.map;if(g.showingGymReward){this.gymRewardTop(c);if(g.dialogue)this.dialogue(c,false);return}if(g.showingCatch){this.catchTop(c);if(g.dialogue)this.dialogue(c,false);return}if(g.presentedBattle){this.battleTop(c);if(g.dialogue)this.dialogue(c);return}this.rect(c,0,0,W,H,'#101b20');const pos=g.position;
     const camera=(p:number,total:number,view:number)=>total<view?(total-view)/2:Math.max(0,Math.min(total-view,p-view/2));
@@ -59,6 +62,7 @@ export class Renderer {
     if(['tour_eterna_forest','tour_coronet','tour_jubilife'].includes(map.id))for(const r of map.terrain??[])for(let y=r.y;y<r.y+r.h;y++)for(let x=r.x;x<r.x+r.w;x++)paintTallGrass(c,x*16,y*16,false,g.clock,this.images['grass-reference']);
     if(map.id==='town')for(let k=0;k<4;k++){this.rect(c,465+((k*19+Math.floor(g.clock*3))%78),237+(k%2)*17,7,1,'#a3d9ed')}
     const layers:{depth:number;draw:()=>void}[]=[];
+    if(map.id==='oreburgh_gym'){const view=gymCartView(g);layers.push({depth:7.9,draw:()=>paintGymCart(c,view)},{depth:10.9,draw:()=>paintGymCartSamples(c,view)});}
     for(const tree of forestBorderTrees(map))layers.push({depth:tree.depth,draw:()=>paintGroveTree(c,this.images['sandgem-reference'],tree)});
     for(const f of TOUR_FEATURES[map.id]??[])for(const tree of groveTrees(f))layers.push({depth:tree.depth,draw:()=>paintGroveTree(c,this.images['sandgem-reference'],tree)});
     for(const n of [...map.npcs.map(n=>({...n,...(n.id==='tourPokemon'?g.roaming?.position:{}),player:false})),{...pos,facing:g.save.player.facing,sprite:'hero',player:true}])layers.push({depth:n.y,draw:()=>{
@@ -226,7 +230,7 @@ export class Renderer {
   menuLower(c:CanvasRenderingContext2D){this.topbar(c,'메뉴');const labels=['포켓몬','가방','트레이너','리포트','설정','닫기'];labels.forEach((label,i)=>{const x=9+(i%2)*124,y=36+Math.floor(i/2)*45;this.button(c,x,y,114,38,label,()=>{this.game.menuIndex=i;this.game.selectMenu(i)},this.game.menuIndex===i)});this.text(c,'방향키로 선택 · Z로 확인',128,177,'#687d73',8,'center')}
   starters(c:CanvasRenderingContext2D){const g=this.game;this.topbar(c,'첫 번째 파트너');this.text(c,'마음이 끌리는 몬스터볼을 선택하세요',128,37,INK,8,'center');STARTERS.forEach((id,i)=>{const x=7+i*83,selected=g.starterIndex===i;this.frame(c,x,57,77,92,selected?'#f0dfa6':'#f8f7e6');this.ball(c,x+38,78,7,selected);this.pokemon(c,id,x+8,81,.75);this.text(c,SPECIES[id].name,x+38,130,INK,10,'center');if(selected)this.text(c,'▼',x+35,48,'#b56f4c',8);this.hits.push({x,y:57,w:77,h:92,action:()=>{if(g.starterIndex===i)g.chooseStarter();else g.starterIndex=i}})});this.button(c,9,159,145,27,'Z  이 친구로 결정',()=>g.chooseStarter(),true);this.button(c,162,159,86,27,'X  돌아가기',()=>g.cancel())}
   party(c:CanvasRenderingContext2D){const g=this.game,healing=g.panel==='fieldHeal';this.topbar(c,healing?'상처약을 쓸 포켓몬':'함께하는 포켓몬');if(!g.save.party.length){this.frame(c,15,52,226,87);this.text(c,'아직 함께하는 포켓몬이 없어요.\n\n연구소에서 첫 친구를 만나 보세요!',128,68,INK,9,'center')}else{g.save.party.forEach((p,i)=>{const data=SPECIES[p.species],x=8+(i%2)*124,y=35+Math.floor(i/2)*41;this.frame(c,x,y,116,37,g.partyIndex===i?'#efe2ad':'#f4f5e7');this.pokemon(c,p.species,x+1,y-4,.55);this.text(c,data.name,x+44,y+7,INK,9);this.text(c,`Lv.${p.level}`,x+100,y+8,'#697e7a',7,'right');this.hp(c,x+45,y+22,60,p);this.hits.push({x,y,w:116,h:37,action:()=>{if(healing)g.useFieldPotion(i);else{g.partyIndex=i;g.panel='summary';g.summaryActionIndex=0;}}})});for(let i=g.save.party.length;i<6;i++){const x=8+(i%2)*124,y=35+Math.floor(i/2)*41;this.rect(c,x,y,116,37,'#c3d1c9');this.rect(c,x+2,y+2,112,33,'#cedad0');this.text(c,'—',x+58,y+12,'#9aaeaa',9,'center')}}this.text(c,healing?'남은 상처약 '+g.save.inventory.potions+'개':'포켓몬을 선택해 주세요',10,173,INK,8);this.back(c)}
-  moves(c:CanvasRenderingContext2D){const p=this.game.save.party[this.game.partyIndex];if(!p)return;this.topbar(c,'기억하고 있는 기술');pokemonMoves(p).forEach((m,i)=>{this.frame(c,12,30+i*30,232,28);this.text(c,m,25,39+i*30,INK,10)});this.text(c,growthPreview(p),128,96,'#345c49',8,'center');this.button(c,8,139,78,23,'선두로',()=>this.game.manageParty(0),this.game.summaryActionIndex===0);this.button(c,89,139,78,23,'상처약 '+this.game.save.inventory.potions,()=>this.game.manageParty(1),this.game.summaryActionIndex===1);this.button(c,170,139,78,23,'기술 배우기',()=>this.game.manageParty(2),this.game.summaryActionIndex===2);this.text(c,p.level===LEVEL_CAP?`현재 성장 한도 Lv.${LEVEL_CAP}`:`다음 레벨까지 ${nextLevelXp(p.level)-p.experience} EXP`,128,111,'#657a72',9,'center');this.text(c,'EXP',14,125,'#52758d',7);this.experience(c,37,127,203,p);if(this.game.save.party.length>1){this.button(c,8,164,68,23,'↑ 이전',()=>this.game.browseParty(-1));this.button(c,81,164,68,23,'↓ 다음',()=>this.game.browseParty(1));}this.back(c)}
+  moves(c:CanvasRenderingContext2D){const p=this.game.save.party[this.game.partyIndex];if(!p)return;this.topbar(c,'기억하고 있는 기술');pokemonMoves(p).forEach((m,i)=>{const x=8+(i%2)*124,y=32+Math.floor(i/2)*29;this.frame(c,x,y,116,25);this.text(c,m,x+9,y+8,INK,9)});this.text(c,growthPreview(p),128,96,'#345c49',8,'center');this.button(c,8,139,78,23,'선두로',()=>this.game.manageParty(0),this.game.summaryActionIndex===0);this.button(c,89,139,78,23,'상처약 '+this.game.save.inventory.potions,()=>this.game.manageParty(1),this.game.summaryActionIndex===1);this.button(c,170,139,78,23,'기술 배우기',()=>this.game.manageParty(2),this.game.summaryActionIndex===2);this.text(c,p.level===LEVEL_CAP?`현재 성장 한도 Lv.${LEVEL_CAP}`:`다음 레벨까지 ${nextLevelXp(p.level)-p.experience} EXP`,128,111,'#657a72',9,'center');this.text(c,'EXP',14,125,'#52758d',7);this.experience(c,37,127,203,p);if(this.game.save.party.length>1){this.button(c,8,164,68,23,'↑ 이전',()=>this.game.browseParty(-1));this.button(c,81,164,68,23,'↓ 다음',()=>this.game.browseParty(1));}this.back(c)}
   fieldHealTop(c:CanvasRenderingContext2D){
     const g=this.game,p=g.save.party[g.partyIndex];if(!p)return;
     this.rect(c,0,0,256,192,'#dce8e7');this.topbar(c,'포켓몬 회복');
@@ -252,11 +256,11 @@ export class Renderer {
     const g=this.game,b=g.battle!,p=g.save.party[b.selected],species=SPECIES[p.species];
     this.rect(c,0,0,256,192,'#dce8e7');this.topbar(c,b.menu==='heal'?'상처약을 사용할 포켓몬':'교대할 포켓몬');
     this.text(c,`${b.selected+1}/${g.save.party.length}`,222,9,'#fffce7',9,'right');
-    this.frame(c,7,33,242,94,'#f8f3da');this.pokemon(c,p.species,10,34,.95);
+    this.frame(c,7,33,242,101,'#f8f3da');this.pokemon(c,p.species,10,34,.95);
     this.text(c,species.name,100,42,INK,12);this.text(c,`Lv.${p.level}`,235,45,INK,9,'right');this.typePills(c,species.types,100,62);
     this.text(c,`HP ${p.hp} / ${p.maxHp}`,100,81,p.hp?'#384750':'#a3463f',9);this.hp(c,100,98,132,p);
-    this.text(c,pokemonMoves(p).join(' · '),128,115,'#617878',8,'center');
-    this.frame(c,3,132,250,57);this.text(c,battleHint(g.save,b).join('\n'),15,146,INK,9);
+    const moves=pokemonMoves(p);for(let row=0;row<Math.ceil(moves.length/2);row++)this.text(c,moves.slice(row*2,row*2+2).join(' · '),128,109+row*13,'#617878',8,'center');
+    this.frame(c,3,139,250,50);this.text(c,battleHint(g.save,b).join('\n'),15,149,INK,9);
   }
   battleTop(c:CanvasRenderingContext2D){const presentation=this.game.battlePresentation,b=this.game.presentedBattle!,view=presentation?.frame??this.game.battleFrame,p=view?.player??this.game.save.party[b.active],enemy=view?.enemy??b.enemy,attackDrop=view?.enemyAttackDrop??b.enemyAttackDrop,defenseDrop=view?.enemyDefenseDrop??b.enemyDefenseDrop;
     if(!this.game.dialogue&&(b.menu==='party'||b.menu==='heal')&&this.game.save.party[b.selected]){this.battleSelectionTop(c);return;}
@@ -320,18 +324,18 @@ export class Renderer {
     }
     this.text(c,`${SPECIES[p.species].name}의 행동을 선택하세요`,128,36,INK,9,'center');
     const labels=b.menu==='moves'?pokemonMoves(p):b.menu==='bag'?[`몬스터볼 (${g.save.inventory.pokeBalls})`,`상처약 (${g.save.inventory.potions})`]:['싸운다','가방','포켓몬',b.kind!=='wild'?'도전 중단':'도망친다'];
-    labels.forEach((label,i)=>{const x=8+(i%2)*124,y=54+Math.floor(i/2)*47,action=()=>{b.selected=i;g.selectBattle()};
+    labels.forEach((label,i)=>{const x=8+(i%2)*124,y=54+Math.floor(i/2)*(b.menu==='moves'?36:47),action=()=>{b.selected=i;g.selectBattle()};
       if(b.menu==='moves')this.moveButton(c,x,y,label,action,i===b.selected);else this.button(c,x,y,116,40,label,action,i===b.selected);
     });
     if(b.menu==='actions')this.text(c,(b.kind==='wild'?(b.caughtBeforeBattle?'포획 기록 있음':'미포획')+' · ':'')+'경험치 참여 '+experienceParticipants(g.save,b).length+'마리',128,149,'#657b72',8,'center');
     if(b.menu==='actions')this.text(c,'방향키로 선택 · Z로 확인',128,165,INK,9,'center');
     else {
-      this.frame(c,8,102,240,53,'#fbf9e6');
-      this.text(c,battleHint(g.save,b).join('\n'),18,112,INK,9);
+      const moves=b.menu==='moves';this.frame(c,8,moves?128:102,240,moves?33:53,'#fbf9e6');
+      this.text(c,battleHint(g.save,b).join('\n'),18,moves?133:112,INK,moves?8:9);
       this.button(c,8,165,240,24,'X  행동 선택으로',()=>g.cancel());
     }
   }
-  moveButton(c:CanvasRenderingContext2D,x:number,y:number,move:string,action:()=>void,selected=false){this.frame(c,x,y,116,40,selected?'#f3df9f':'#fbf9e6');if(selected)this.rect(c,x+5,y+5,3,30,'#c2774d');this.text(c,move,x+13,y+15,INK,9);this.typeBadge(c,moveType(move)??'?',x+80,y+13);this.hits.push({x,y,w:116,h:40,action})}
+  moveButton(c:CanvasRenderingContext2D,x:number,y:number,move:string,action:()=>void,selected=false){this.frame(c,x,y,116,32,selected?'#f3df9f':'#fbf9e6');if(selected)this.rect(c,x+5,y+5,3,22,'#c2774d');this.text(c,move,x+13,y+11,INK,9);this.typeBadge(c,moveType(move)??'?',x+80,y+9);this.hits.push({x,y,w:116,h:32,action})}
   click(x:number,y:number){if(this.game.transition||this.game.move)return;const hit=[...this.hits].reverse().find(h=>x>=h.x&&x<h.x+h.w&&y>=h.y&&y<h.y+h.h);if(hit){this.game.audio.play('confirm');hit.action()}}
 }
 

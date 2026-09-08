@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "worldRevision": 23,
+  "map": "tour_hearthome",
+  "player": {
+    "x": 14,
+    "y": 27,
+    "facing": "down"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 7,
+      "level": 25,
+      "experience": 0,
+      "hp": 80,
+      "maxHp": 80,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "꼬리흔들기"
+      ]
+    }
+  ],
+  "box": [],
+  "pokedex": {
+    "seen": [
+      7
+    ],
+    "caught": [
+      7
+    ]
+  },
+  "inventory": {
+    "pokeBalls": 30,
+    "potions": 10
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 0,
+  "seconds": 0
+}

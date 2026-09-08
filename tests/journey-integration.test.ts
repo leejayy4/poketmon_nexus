@@ -44,8 +44,8 @@ test('collected passage item frees its collision only in the collecting save',()
 
 test('learning an earned elemental move updates the selected slots and survives reload',()=>dom(()=>{
   const g=game(),p=g.save.party[0];p.level=7;p.hp=p.maxHp=maxHpAtLevel(p.species,7);g.panel='summary';showMoveSchool(g);
-  choose(g,'불꽃세례');choose(g,'울음소리와 비교');assert.deepEqual(pokemonMoves(p),['할퀴기','울음소리']);choose(g,'바꿔서 배운다');
-  assert.deepEqual(pokemonMoves(p),['할퀴기','불꽃세례']);assert.equal(parseSave(JSON.stringify(g.save))?.party[0].moves?.[1],'불꽃세례');
+  choose(g,'불꽃세례');assert.deepEqual(pokemonMoves(p),['할퀴기','울음소리']);choose(g,'빈 자리에 배운다');
+  assert.deepEqual(pokemonMoves(p),['할퀴기','울음소리','불꽃세례']);assert.equal(parseSave(JSON.stringify(g.save))?.party[0].moves?.[2],'불꽃세례');
   assert.match(g.dialogue!.pages[0],new RegExp('불꽃세례'));assert.equal(SPECIES[p.species].name,'파이리');
 }));
 

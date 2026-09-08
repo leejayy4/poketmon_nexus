@@ -18,6 +18,9 @@ for(let i=0;i<3;i++){
   result[id]=city;
   const c=copy(BADGE_MAPS.oreburgh_center);Object.assign(c,{id:center,name:name+' 포켓몬센터'});c.warps[0].to=id;result[center]=c;
   const g=copy(BADGE_MAPS.oreburgh_gym);Object.assign(g,{id:gym,name:name+'체육관',background:gym});g.warps[0].to=id;
+  // The shared room shape does not grant other gyms Oreburgh-only activities.
+  g.props=g.props.filter(p=>!p.dialogue.startsWith('gymCart'));
+  g.npcs=g.npcs.filter(n=>n.id!=='gymTypeTrainer'&&n.id!=='gymSwitchTrainer');
   Object.assign(g.npcs[0],{id:['gardenia','fantina','maylene'][i],name:'관장 '+['유채','멜리사','자두'][i],sprite:['gardener','scientist_f','ace_trainer_f'][i],dialogue:['gardenia','fantina','maylene'][i]});g.npcs[1].dialogue='sinnohGymGuide';result[gym]=g;
 }
 function corridor(id:MapId,name:string,left:MapId,right:MapId):GameMap{

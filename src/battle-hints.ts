@@ -29,6 +29,7 @@ export function battleHint(save:SaveData,b:Battle):[string,string]{
   }
   if(b.menu==='moves'){
     const move=pokemonMoves(active)[b.selected],rule=MOVE_RULES[move]?.rule;
+    if(!move)return ['기억하고 있는 기술을 선택하세요',''];
     if(isDamagingMove(move)){
       const hit=playerDamage(active,b,move);
       const effect=effectivenessText(moveEffectiveness(move,b.enemy));
@@ -36,10 +37,18 @@ export function battleHint(save:SaveData,b:Battle):[string,string]{
         const recoil=Math.min(active.hp,Math.max(1,Math.floor(active.maxHp/4))),hp=active.hp-recoil;
         return [`상대에게 ${Math.min(b.enemy.hp,hit)} 피해 · 반동 ${recoil}`,hp===0?'반동으로 기절 · 상대 반격 없음':b.enemy.hp<=hit?`반동 후 HP ${hp}/${active.maxHp} · 반격 없음`:remaining(hp,active.maxHp)];
       }
+      if(rule==='drain'){
+        const dealt=Math.min(b.enemy.hp,hit),heal=dealt>0?Math.min(active.maxHp-active.hp,Math.max(1,Math.floor(dealt/2))):0,hp=active.hp+heal;
+        return [`상대에게 ${dealt} 피해${effect?` · ${effect}`:''}`,`HP +${heal} · ${b.enemy.hp<=hit?`반격 없음 (${hp}/${active.maxHp})`:remaining(hp,active.maxHp)}`];
+      }
       return [`상대에게 ${Math.min(b.enemy.hp,hit)} 피해${effect?` · ${effect}`:''}`,b.enemy.hp<=hit?'쓰러뜨리면 반격 없음':remaining(active.hp,active.maxHp)];
     }
     if(rule==='protect')return ['이번 상대 기술을 막는 방어','연속 사용하면 성공률이 낮아집니다'];
-    if(rule==='defenseUp')return ['자신의 방어를 올립니다','받는 기술 피해를 줄입니다 (최대 3)'];
+    if(rule==='defenseUp'){
+      const defense=b.playerDefense?.[b.active]??0,next=Math.min(3,defense+1);
+      const hit=enemyDamage({...b,playerDefense:{...b.playerDefense,[b.active]:next}},b.enemyAttackDrop,active);
+      return [defense>=3?'방어 상승은 이미 최대':`자신 방어 ${defense} → ${next}/3`,active.hp<=hit?'반격 후 기절 (HP 0)':`반격 후 HP ${active.hp-hit}/${active.maxHp}`];
+    }
     if(rule==='hazard')return ['다음에 나오는 상대에게 바위 피해','현재 상대에게 즉시 피해는 없음'];
     if(rule==='escape')return [b.kind==='wild'?'전투에서 순간이동으로 벗어납니다':'트레이너전에서는 효과 없음',''];
     if(rule==='nothing')return ['아무 효과가 없는 기술',remaining(active.hp,active.maxHp)];

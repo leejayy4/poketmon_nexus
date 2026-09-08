@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "worldRevision": 24,
+  "map": "oreburgh_gym",
+  "player": {
+    "x": 8,
+    "y": 13,
+    "facing": "up"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 7,
+      "level": 13,
+      "experience": 0,
+      "hp": 44,
+      "maxHp": 44,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "꼬리흔들기",
+        "거품",
+        "껍질에숨기"
+      ]
+    }
+  ],
+  "box": [],
+  "pokedex": {
+    "seen": [
+      7
+    ],
+    "caught": [
+      7
+    ]
+  },
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 0
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 0,
+  "seconds": 0
+}

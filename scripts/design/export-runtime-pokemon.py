@@ -29,7 +29,7 @@ def rows(name):
 def read(name):
     return json.loads((DB / (name + '.json')).read_text(encoding='utf8'))
 
-pools = [{k:r[k] for k in ('id','node','levels','method','condition')} | {'slots':[{k:s[k] for k in ('speciesId','weight')} for s in r['slots']]} for r in read('encounters') if r['id'] in ['ENC-001','ENC-002','ENC-003','ENC-004','ENC-016']]
+pools = [{k:r[k] for k in ('id','node','levels','method','condition')} | {'slots':[{k:s[k] for k in ('speciesId','weight')} for s in r['slots']]} for r in read('encounters') if r['id'] in ['ENC-001','ENC-002','ENC-003','ENC-004','ENC-007','ENC-008','ENC-016']]
 owned = sorted({1,2,4,5,7,8,25} | {s['speciesId'] for p in pools for s in p['slots']})
 ids = set(owned) | {420,315,425,92,200,448,408}
 names = {int(r['move_id']):r['name'] for r in rows('move_names') if r['local_language_id']=='3'}

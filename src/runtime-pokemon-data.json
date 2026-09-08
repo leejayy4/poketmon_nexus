@@ -133,6 +133,62 @@
       ]
     },
     {
+      "id": "ENC-007",
+      "node": "S07",
+      "levels": [
+        15,
+        18
+      ],
+      "method": "외곽풀숲",
+      "condition": "상시",
+      "slots": [
+        {
+          "speciesId": 280,
+          "weight": 45
+        },
+        {
+          "speciesId": 439,
+          "weight": 30
+        },
+        {
+          "speciesId": 427,
+          "weight": 20
+        },
+        {
+          "speciesId": 404,
+          "weight": 5
+        }
+      ]
+    },
+    {
+      "id": "ENC-008",
+      "node": "S08",
+      "levels": [
+        18,
+        21
+      ],
+      "method": "외곽풀숲",
+      "condition": "상시",
+      "slots": [
+        {
+          "speciesId": 307,
+          "weight": 45
+        },
+        {
+          "speciesId": 434,
+          "weight": 30
+        },
+        {
+          "speciesId": 77,
+          "weight": 20
+        },
+        {
+          "speciesId": 228,
+          "weight": 5
+        }
+      ]
+    },
+    {
       "id": "ENC-016",
       "node": "S15",
       "levels": [
@@ -177,20 +233,26 @@
     63,
     66,
     74,
+    77,
     95,
     173,
+    228,
     265,
     266,
     268,
+    280,
     299,
     307,
     396,
     399,
     401,
     403,
+    404,
     406,
     415,
     427,
+    434,
+    439,
     443
   ],
   "species": {
@@ -630,6 +692,40 @@
         "스텔스록"
       ]
     },
+    "77": {
+      "name": "포니타",
+      "types": [
+        "불꽃"
+      ],
+      "stats": {
+        "hp": 50,
+        "attack": 85,
+        "defense": 55,
+        "specialAttack": 65,
+        "specialDefense": 65,
+        "speed": 90
+      },
+      "weight": 300,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 1,
+          "move": "울음소리"
+        },
+        {
+          "level": 6,
+          "move": "꼬리흔들기"
+        },
+        {
+          "level": 10,
+          "move": "불꽃세례"
+        }
+      ],
+      "tm": []
+    },
     "92": {
       "name": "고오스",
       "types": [
@@ -753,6 +849,39 @@
         "섀도볼"
       ]
     },
+    "228": {
+      "name": "델빌",
+      "types": [
+        "악",
+        "불꽃"
+      ],
+      "stats": {
+        "hp": 45,
+        "attack": 60,
+        "defense": 30,
+        "specialAttack": 80,
+        "specialDefense": 50,
+        "speed": 65
+      },
+      "weight": 108,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "불꽃세례"
+        },
+        {
+          "level": 1,
+          "move": "째려보기"
+        },
+        {
+          "level": 17,
+          "move": "물기"
+        }
+      ],
+      "tm": [
+        "섀도볼"
+      ]
+    },
     "265": {
       "name": "개무소",
       "types": [
@@ -830,6 +959,44 @@
         }
       ],
       "tm": []
+    },
+    "280": {
+      "name": "랄토스",
+      "types": [
+        "에스퍼",
+        "페어리"
+      ],
+      "stats": {
+        "hp": 28,
+        "attack": 25,
+        "defense": 25,
+        "specialAttack": 45,
+        "specialDefense": 35,
+        "speed": 40
+      },
+      "weight": 66,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "울음소리"
+        },
+        {
+          "level": 6,
+          "move": "염동력"
+        },
+        {
+          "level": 12,
+          "move": "순간이동"
+        },
+        {
+          "level": 21,
+          "move": "매지컬리프"
+        }
+      ],
+      "tm": [
+        "섀도볼",
+        "풀묶기"
+      ]
     },
     "299": {
       "name": "코코파스",
@@ -1069,6 +1236,44 @@
       ],
       "tm": []
     },
+    "404": {
+      "name": "럭시오",
+      "types": [
+        "전기"
+      ],
+      "stats": {
+        "hp": 60,
+        "attack": 85,
+        "defense": 49,
+        "specialAttack": 60,
+        "specialDefense": 49,
+        "speed": 60
+      },
+      "weight": 305,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 1,
+          "move": "째려보기"
+        },
+        {
+          "level": 5,
+          "move": "째려보기"
+        },
+        {
+          "level": 13,
+          "move": "스파크"
+        },
+        {
+          "level": 18,
+          "move": "물기"
+        }
+      ],
+      "tm": []
+    },
     "406": {
       "name": "꼬몽울",
       "types": [
@@ -1241,6 +1446,62 @@
         {
           "level": 16,
           "move": "전광석화"
+        }
+      ],
+      "tm": [
+        "드레인펀치",
+        "섀도볼",
+        "풀묶기"
+      ]
+    },
+    "434": {
+      "name": "스컹뿡",
+      "types": [
+        "독",
+        "악"
+      ],
+      "stats": {
+        "hp": 63,
+        "attack": 63,
+        "defense": 47,
+        "specialAttack": 41,
+        "specialDefense": 41,
+        "speed": 74
+      },
+      "weight": 192,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "할퀴기"
+        },
+        {
+          "level": 22,
+          "move": "베어가르기"
+        }
+      ],
+      "tm": [
+        "섀도볼"
+      ]
+    },
+    "439": {
+      "name": "흉내내",
+      "types": [
+        "에스퍼",
+        "페어리"
+      ],
+      "stats": {
+        "hp": 20,
+        "attack": 25,
+        "defense": 45,
+        "specialAttack": 70,
+        "specialDefense": 90,
+        "speed": 60
+      },
+      "weight": 130,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "염동력"
         }
       ],
       "tm": [

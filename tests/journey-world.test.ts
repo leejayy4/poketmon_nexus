@@ -31,7 +31,7 @@ test('every same-region city edge has a real route, retaining forests and resear
 test('routes provide a clear main path, optional grass, accessible signs, traveller and pickup',()=>{
   for(const p of Object.values(PASSAGES)){
     const map=getMap(p.id),spawn=TOUR_SPAWNS[p.id];
-    assert.equal(map.width,32);assert.equal(map.height,20);assert(canStand(map,spawn.x,spawn.y));
+    assert(map.width>=32);assert(map.height>=20);assert(canStand(map,spawn.x,spawn.y));
     for(const event of ['journeySign','journeyWalker','journeyItem'])assert(objectiveInteractionPath(map,spawn,event),p.id+' '+event);
     for(const sign of TOUR_OUTDOORS[p.id].signs)assert(map.warps.some(w=>w.to===sign.destination&&w.entry===sign.direction));
     // Remove grass from the walking graph: both cities must remain reachable.

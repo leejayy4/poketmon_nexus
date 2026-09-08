@@ -1,12 +1,18 @@
 import type { Pokemon } from './types';
-import { RUNTIME_SPECIES, SPECIES, availableMoves } from './pokemon';
+import { RUNTIME_SPECIES, SPECIES, availableMoves, pokemonMoves } from './pokemon';
 import { LEVEL_CAP } from './growth';
 import DATA from './runtime-pokemon-data.json';
 
 // Only report future events supported by the current growth implementation.
 export function growthPreview(p: Pokemon): string {
-  if(p.level>=LEVEL_CAP)return '배운 기술은 기술 배우기에서 확인';
   const known=new Set(availableMoves(p));
+  const selected=new Set(pokemonMoves(p));
+  // No save/TM argument: only currently available natural moves can be pending.
+  // Prefer the last unselected entry in the runtime learning order, retaining
+  // earlier options in the move school rather than changing any selected slot.
+  const pending=[...known].filter(move=>!selected.has(move)).at(-1);
+  if(pending)return `배울 수 있음 · ${pending}`;
+  if(p.level>=LEVEL_CAP)return '배운 기술은 기술 배우기에서 확인';
   const nextMove=RUNTIME_SPECIES[p.species]?.learnset
     .filter(entry=>entry.level>p.level&&entry.level<=LEVEL_CAP&&!known.has(entry.move))
     .sort((a,b)=>a.level-b.level)[0];

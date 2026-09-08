@@ -90,7 +90,7 @@ function rewardParticipants(save:SaveData,b:Battle,total:number,onStep:(page:str
   const eligible=experienceParticipants(save,b);
   eligible.forEach((index,i)=>gainExperience(save.party[index],Math.floor(total/eligible.length)+(i<total%eligible.length?1:0),(page,step)=>onStep(page,step,index)));
 }
-export type BattleAction = 'move0'|'move1'|'ball'|'potion'|'run'|{switch:number}|{potion:number};
+export type BattleAction = 'move0'|'move1'|'move2'|'move3'|'ball'|'potion'|'run'|{switch:number}|{potion:number};
 export interface BattleFrame {
   enemy:Pokemon; player:Pokemon; enemyIndex:number; active:number;
   enemyAttackDrop:number; enemyDefenseDrop:number;
@@ -104,7 +104,7 @@ export function captureBattleFrame(save:SaveData,b:Battle):BattleFrame {
 }
 export interface TurnResult { pages:string[]; frames?:BattleFrame[]; outcome?:'won'|'caught'|'escaped'|'lost'; retry?:boolean; caughtInBox?:boolean; reward?:number }
 function rejectAction(message:string):TurnResult{return {pages:[message],retry:true};}
-// Small battle rules: level-based damage, two moves and HP-based wild catching.
+// Small battle rules: level-based damage, up to four moves and HP-based wild catching.
 // Resolve the whole turn synchronously; dialogue callbacks never apply damage or items.
 export function battleTurn(save:SaveData,b:Battle,action:BattleAction,random:()=>number=Math.random):TurnResult {
   if(b.result)return {pages:[]};
@@ -188,9 +188,12 @@ export function battleTurn(save:SaveData,b:Battle,action:BattleAction,random:()=
     show(`상처약을 사용했다!\n${SPECIES[target.species].name}의 HP가 ${healed} 회복되었다.`);
     if(index===b.active)frames[frames.length-1].effect={target:'player',kind:'heal',amount:healed};
   } else {
+    const slot=typeof action==='string'&&/^move[0-3]$/.test(action)?Number(action.slice(4)):-1;
+    const move=pokemonMoves(active)[slot];
+    if(!move)return rejectAction('기억하고 있는 기술을 선택하자.');
     b.betweenOpponents=false;
-    b.moveSelections[b.active]=action==='move0'?0:1;
-    const move=pokemonMoves(active)[action==='move0'?0:1],rule=MOVE_RULES[move]?.rule;
+    b.moveSelections[b.active]=slot;
+    const rule=MOVE_RULES[move]?.rule;
     show(`${name}의 ${move}!`);
     frames[frames.length-1].technique={move,target:['defenseUp','protect','escape','nothing'].includes(rule??'')?'player':'enemy'};
     if(rule!=='protect')b.protectStreak=0;
@@ -213,7 +216,9 @@ export function battleTurn(save:SaveData,b:Battle,action:BattleAction,random:()=
       if(b.enemyAttackDrop>=3)show(`${enemyName}의 공격은\n더 이상 떨어지지 않는다!`);
       else {b.enemyAttackDrop++;show(`${enemyName}의 공격이 떨어졌다!`);}
     } else if(rule==='defenseUp'){
-      b.playerDefense??={};b.playerDefense[b.active]=Math.min(3,(b.playerDefense[b.active]??0)+1);show(`${name}의 방어가 올라갔다!`);
+      b.playerDefense??={};
+      if((b.playerDefense[b.active]??0)>=3)show(`${name}의 방어는\n더 이상 올라가지 않는다!`);
+      else {b.playerDefense[b.active]=(b.playerDefense[b.active]??0)+1;show(`${name}의 방어가 올라갔다!`);}
     } else if(rule==='protect'){
       protectedTurn=(b.protectStreak??0)===0||random()<1/3**b.protectStreak!;b.protectStreak=(b.protectStreak??0)+1;
       show(protectedTurn?`${withParticle(name,'은/는')} 방어 태세를 취했다!`:'하지만 잘되지 않았다!');
@@ -233,7 +238,10 @@ export function battleTurn(save:SaveData,b:Battle,action:BattleAction,random:()=
   else if(protectedTurn)show(`${withParticle(name,'은/는')} 공격을 막아냈다!`);
   else if(foeRule==='attackDrop'){b.playerAttackDrop??={};b.playerAttackDrop[b.active]=Math.min(3,(b.playerAttackDrop[b.active]??0)+1);show(`${name}의 공격이 떨어졌다!`);}
   else if(foeRule==='defenseDrop'){b.playerDefenseDrop??={};b.playerDefenseDrop[b.active]=Math.min(3,(b.playerDefenseDrop[b.active]??0)+1);show(`${name}의 방어가 떨어졌다!`);}
-  else if(foeRule==='defenseUp'){b.enemyDefense=Math.min(3,(b.enemyDefense??0)+1);show(`${enemyName}의 방어가 올라갔다!`);}
+  else if(foeRule==='defenseUp'){
+    if((b.enemyDefense??0)>=3)show(`${enemyName}의 방어는\n더 이상 올라가지 않는다!`);
+    else {b.enemyDefense=(b.enemyDefense??0)+1;show(`${enemyName}의 방어가 올라갔다!`);}
+  }
   else show(`${name}에게 ${damage}의 피해!`);
   frames[frames.length-1].effect={target:'player',kind:'damage',amount:damage};
   if(foeRule==='drain'&&damage>0){const heal=Math.min(b.enemy.maxHp-b.enemy.hp,Math.max(1,Math.floor(damage/2)));b.enemy.hp+=heal;if(heal){show(`${withParticle(enemyName,'은/는')} HP를 ${heal} 흡수했다!`);frames.at(-1)!.effect={target:'enemy',kind:'heal',amount:heal};}}

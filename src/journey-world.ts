@@ -1,6 +1,7 @@
 import type { GameMap, Point, MapId } from './types';
 import type { Place,TourId,TourBuilding } from './explore-world';
 import type { TourInterior,Furnishing } from './explore-interiors';
+import { applyJourneyRouteLayout } from './journey-route-layouts';
 
 export interface Passage { id:TourId; a:Place; b:Place; kind:'road'|'cave'|'coast'; bend:number }
 export const PASSAGES:Record<string,Passage>={};
@@ -130,6 +131,7 @@ export function buildJourneyWorld(w:World){
       if(rows[point.y][point.x]!=='.')rows[point.y][point.x]='.';
     }
     w.maps[id].walkable=rows.map(r=>r.join(''));
-    exit.to=id;exit.spawn={x:2,y:10};exit.facing='right';back.to=id;back.spawn={x:29,y:10};back.facing='left';w.spawns[id]={x:2,y:10};
+    applyJourneyRouteLayout(w.maps[id]);
+    exit.to=id;exit.spawn={x:2,y:10};exit.facing='right';back.to=id;back.spawn={x:w.maps[id].width-3,y:10};back.facing='left';w.spawns[id]={x:2,y:10};
   }
 }

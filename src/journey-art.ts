@@ -4,6 +4,7 @@ import { paintTourGround,paintTourPaths } from './explore-materials';
 import { paintGroveTree } from './explore-tree-art';
 import { paintTallGrass } from './town';
 import { isOreburghCave,paintCaveEncounter } from './oreburgh-cave-art';
+import { JOURNEY_ROUTE_LAYOUTS } from './journey-route-layouts';
 import type { TourInterior } from './explore-interiors';
 import type { TourBuilding } from './explore-world';
 
@@ -18,7 +19,8 @@ const caveHintGround=(map:GameMap,x:number,y:number)=>map.walkable[y]?.[x]==='.'
   &&!map.npcs.some(n=>n.x===x&&n.y===y);
 
 function paintOreburghCavePathHints(c:CanvasRenderingContext2D,map:GameMap){
-  const safePath=(x:number,y:number)=>(y>=9&&y<=11&&x>=1&&x<=30)
+  const layout=JOURNEY_ROUTE_LAYOUTS[map.id];
+  const safePath=(x:number,y:number)=>!!layout?.safePath.some(r=>x>=r.x&&x<r.x+r.w&&y>=r.y&&y<r.y+r.h)||(y>=9&&y<=11&&x>=1&&x<=30)
     ||(x>=9&&x<=12&&y>=7&&y<=11)
     ||(x>=21&&x<=24&&y>=7&&y<=11);
   for(let y=0;y<map.height;y++)for(let x=0;x<map.width;x++){
@@ -58,12 +60,33 @@ export function paintJourneyMart(c:CanvasRenderingContext2D,images:Images,b:Tour
 export function paintJourneyPassage(c:CanvasRenderingContext2D,images:Images,map:GameMap){
   const passage=PASSAGES[map.id];if(!passage)return;
   const {kind}=passage,tiles=images['town-reference'];
+  const layout=JOURNEY_ROUTE_LAYOUTS[map.id];
+  const within=(r:{x:number;y:number;w:number;h:number},x:number,y:number)=>x>=r.x&&x<r.x+r.w&&y>=r.y&&y<r.y+r.h;
+  const onSafePath=(x:number,y:number)=>!layout||x<30||layout.safePath.some(r=>within(r,x,y));
+  const landmarkAt=(x:number,y:number)=>layout?.landmarks.find(r=>within(r,x,y));
   const paths=new Set<string>();
-  const isGround=(x:number,y:number)=>map.walkable[y]?.[x]==='.'||map.props.some(p=>p.x===x&&p.y===y&&p.dialogue==='journeyItem');
+  const isGround=(x:number,y:number)=>map.walkable[y]?.[x]==='.'||map.props.some(p=>p.x===x&&p.y===y&&(p.dialogue==='journeyItem'||p.dialogue==='journeySign'));
   for(let y=0;y<map.height;y++)for(let x=0;x<map.width;x++){
     const px=x*16,py=y*16,ground=isGround(x,y);
     paintTourGround(c,tiles,px,py,kind==='coast'?'coast':kind==='cave'?'cave':'forest');
-    if(ground){paths.add(x+','+y);continue;}
+    if(ground){if(kind!=='road'||onSafePath(x,y))paths.add(x+','+y);continue;}
+    const landmark=landmarkAt(x,y);
+    if(landmark?.kind==='water'){
+      rect(c,px,py,16,16,'#578c9a');rect(c,px+2+(y%2)*3,py+5,7,1,'#88b8ba');rect(c,px+8,py+12,5,1,'#70a5ac');
+      const same=(xx:number,yy:number)=>landmarkAt(xx,yy)===landmark&&!isGround(xx,yy);
+      if(!same(x,y-1)){rect(c,px,py,16,3,'#9caa83');rect(c,px,py+3,16,1,'#cad0a4');}
+      if(!same(x,y+1)){rect(c,px,py+12,16,1,'#b4c9ad');rect(c,px,py+13,16,3,'#718e78');}
+      if(!same(x-1,y)){rect(c,px,py,3,16,'#8b9d7d');rect(c,px+3,py,1,16,'#bed0b2');}
+      if(!same(x+1,y)){rect(c,px+12,py,1,16,'#9fbcaa');rect(c,px+13,py,3,16,'#718e78');}
+      continue;
+    }
+    if(landmark?.kind==='cliff'){
+      const foot=y===landmark.y+landmark.h-1||isGround(x,y+1);
+      rect(c,px,py,16,16,'#8e927b');rect(c,px+2,py+3,9,2,'#aeb196');
+      if(foot){rect(c,px,py+5,16,10,'#788675');rect(c,px,py+5,16,2,'#b2b394');rect(c,px+3+(x%3)*3,py+9,2,5,'#5e7368');rect(c,px,py+15,16,1,'#50675d');}
+      else {rect(c,px+9,py+10,4,1,'#7c8c75');}
+      continue;
+    }
     if(kind==='cave'){
       rect(c,px,py,16,16,'#4b5a60');rect(c,px+1,py+1,15,5,'#7c8983');
       rect(c,px+3,py+2,8,2,'#a1a995');rect(c,px+(y%2?3:11),py+7,2,7,'#35464f');
@@ -83,7 +106,7 @@ export function paintJourneyPassage(c:CanvasRenderingContext2D,images:Images,map
   if(map.id===OREBURGH_CAVE)paintOreburghCavePathHints(c,map);
   // Complete existing DS trees fit only within the blocked canopy rectangle.
   if(kind==='road')for(let y=1;y<map.height-2;y+=2)for(let x=0;x<map.width-1;x+=2){
-    let clear=true;for(let dy=-1;dy<2;dy++)for(let dx=0;dx<2;dx++)if(isGround(x+dx,y+dy))clear=false;
+    let clear=true;for(let dy=-1;dy<2;dy++)for(let dx=0;dx<2;dx++){const landmark=landmarkAt(x+dx,y+dy);if(isGround(x+dx,y+dy)||landmark&&landmark.kind!=='grove')clear=false;}
     if(clear)paintGroveTree(c,images['sandgem-reference'],{x:x*16,y:y*16-16,depth:y+1.5});
   }
   for(const patch of map.terrain??[])for(let y=patch.y;y<patch.y+patch.h;y++)for(let x=patch.x;x<patch.x+patch.w;x++){
@@ -97,6 +120,12 @@ export function paintJourneyPassage(c:CanvasRenderingContext2D,images:Images,map
     const x=exit.x*16,y=exit.y*16,dir=exit.entry==='left'?-1:1;
     rect(c,x+2,y+4,12,8,kind==='cave'?'#4a615d':'#a9996f');
     for(let i=0;i<4;i++)rect(c,x+7+dir*(3-i),y+4+i,2,8-i*2,'#f6e9bb');
+  }
+  for(const sign of map.props.filter(p=>p.dialogue==='journeySign')){
+    const x=sign.x*16,y=sign.y*16;
+    rect(c,x+3,y+13,12,2,'#46584a55');rect(c,x+7,y+7,3,8,'#80654c');
+    rect(c,x,y,16,10,'#546b63');rect(c,x+1,y+1,14,7,'#e0d5aa');
+    rect(c,x+3,y+3,10,1,'#8d8c72');rect(c,x+4,y+5,8,1,'#8d8c72');
   }
 }
 

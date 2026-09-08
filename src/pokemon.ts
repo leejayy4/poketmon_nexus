@@ -23,6 +23,7 @@ export const STARTERS = [7, 4, 1];
 export const RUNTIME_SPECIES=DATA.species as Record<number,(typeof DATA.species)['1']>;
 export const MOVE_RULES=DATA.moves as Record<string,{id:number;slug:string;type:string;power:number;priority:number;rule:string}>;
 export const BOX_CAPACITY=60;
+export const MOVE_CAPACITY=4;
 export function pokemonSnapshot(p:Pokemon):Pokemon{return {...p,...(p.moves?{moves:[...p.moves]}:{})};}
 for(const [key,data] of Object.entries(RUNTIME_SPECIES)){
   const id=Number(key),old=SPECIES[id];
@@ -52,7 +53,9 @@ export function availableMoves(p:Pokemon,save?:SaveData):string[]{
 }
 export function validPokemonMoves(p:Pokemon,keyItems:string[]):boolean{
   if(p.moves===undefined)return true;
-  if(!Array.isArray(p.moves)||p.moves.length!==2||p.moves.some(m=>typeof m!=='string'||!MOVE_RULES[m]))return false;
+  if(!Array.isArray(p.moves)||p.moves.length<1||p.moves.length>MOVE_CAPACITY||p.moves.some(m=>typeof m!=='string'||!MOVE_RULES[m]))return false;
+  // Legacy two-slot defaults can repeat the only available move.
+  if(p.moves.some((m,i)=>i>=2&&p.moves!.slice(0,i).includes(m)))return false;
   const natural=levelMoves(p),tm=RUNTIME_SPECIES[p.species]?.tm??[];
   // A previously selected emergency Struggle remains legal after learning an
   // attack, until the player uses the replacement menu.
@@ -60,8 +63,8 @@ export function validPokemonMoves(p:Pokemon,keyItems:string[]):boolean{
 }
 export function teachMove(save:SaveData,index:number,move:string,slot:number):boolean{
   const p=save.party[index];
-  if(!Number.isInteger(index)||!p||!Number.isInteger(slot)||slot<0||slot>1||!availableMoves(p,save).includes(move))return false;
-  const moves=pokemonMoves(p);if(moves[slot]===move||moves[1-slot]===move)return false;
+  if(!Number.isInteger(index)||!p||!Number.isInteger(slot)||slot<0||slot>=MOVE_CAPACITY||!availableMoves(p,save).includes(move))return false;
+  const moves=pokemonMoves(p);if(slot>moves.length||moves.includes(move))return false;
   moves[slot]=move;p.moves=moves;return true;
 }
 export function recordSeen(save:SaveData,species:number,caught=false){
