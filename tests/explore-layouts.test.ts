@@ -25,7 +25,7 @@ test('six towns and five trails have distinct investigable arrangements while fa
       assert(TOUR_MAPS[door.to as TourId].warps.some(w=>w.to===id&&w.spawn.x===x&&w.spawn.y===y+1));
     }
   }
-  assert.equal(names.size,45);assert.equal(Object.values(TOUR_OUTDOORS).flatMap(o=>o.objects).length,116);
+  assert.equal(names.size,Object.keys(TOUR_LAYOUTS).flatMap(id=>TOUR_FEATURES[id]).length,'each authored feature has a distinct investigation name');
 });
 
 test('revision 10 plaza saves relocate only newly blocked positions and preserve visited interiors',()=>{

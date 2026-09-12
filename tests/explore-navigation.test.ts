@@ -4,7 +4,7 @@ import { grantPokemon } from '../src/pokemon';
 import { Engine,VECTOR } from '../src/engine';
 import { getMap,canEnter } from '../src/maps';
 import { PLACES,TOUR_SPAWNS,TOUR_INTERIORS,tourPlaceForMap,type TourId } from '../src/explore-world';
-import { FLOOR_PARENTS } from '../src/journey-world';
+import { FLOOR_PARENTS,TRANSIT_LINKS } from '../src/journey-world';
 import { planTourNavigation,tourExitPath } from '../src/explore-navigation';
 function tour(id:string='town'){const g=new Engine();g.exploring=true;g.save=g.freshSave();g.save.map=id as typeof g.save.map;g.save.player={...(TOUR_SPAWNS[id as TourId]??{x:8,y:25}),facing:'down'};return g}
 function step(g:Engine,key:string){g.press(key);g.release(key);for(let i=0;i<20;i++)g.update(.04)}
@@ -16,7 +16,7 @@ test('every pair of tour destinations has a legal connected map route and a usab
   }
 });
 test('all interiors first guide outside and recognize a destination already being visited',()=>{
-  for(const id of Object.keys(TOUR_INTERIORS)){const g=tour(id),place=tourPlaceForMap(id)!.id;assert.equal(planTourNavigation(g.save,place)?.status,'arrived');const target=place==='tour_jubilife'?'tour_humilau':'tour_jubilife';const r=planTourNavigation(g.save,target)!;assert.equal(r.status,'walking');assert.equal(r.maps[1],FLOOR_PARENTS[id]??place);assert.equal(r.exit?.entry,'down');}
+  for(const id of Object.keys(TOUR_INTERIORS)){const g=tour(id),place=tourPlaceForMap(id)!.id;assert.equal(planTourNavigation(g.save,place)?.status,'arrived');const target=place==='tour_jubilife'?'tour_humilau':'tour_jubilife';const r=planTourNavigation(g.save,target)!;assert.equal(r.status,'walking');if(TRANSIT_LINKS[id]){assert(TRANSIT_LINKS[id].includes(r.maps[1]));assert(g.map.warps.some(w=>w.to===r.maps[1]&&w.entry===r.exit?.entry));}else{assert.equal(r.maps[1],FLOOR_PARENTS[id]??place);assert.equal(r.exit?.entry,'down');}}
 });
 test('following the displayed tile path walks from the starting town to another region without teleporting',()=>{
   const g=tour();grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.setTourDestination('tour_vermilion');let crossed=0;

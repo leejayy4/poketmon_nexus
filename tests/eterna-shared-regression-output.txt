@@ -1,0 +1,75 @@
+✔ every integrated passage gives truthful sign and traveller guidance (6.4126ms)
+✔ guidance derives the two common and one rare species from the runtime pool (0.1839ms)
+✔ route companion guidance uses the actual weighted route pool (0.2028ms)
+✔ route companion guidance fits the field dialogue UI (0.125ms)
+✔ guidance and pickup preserve rewards and pickup remains one time (0.3178ms)
+✔ six towns and five trails have distinct investigable arrangements while facility doors stay aligned (2.3559ms)
+✔ revision 10 plaza saves relocate only newly blocked positions and preserve visited interiors (4.2789ms)
+✔ wooden observation paths stay on reachable floor and revision 11 saves recover new scenery overlaps (9.4423ms)
+✔ 35 town Pokemon cover eight DS field species with four reachable conversation sides (1.0966ms)
+✔ all town Pokemon react from four directions repeatedly without changing ownership or progress (29.8026ms)
+✔ revision 13 saves recover Pokemon overlaps and preserve visits, elapsed time and valid adjacent positions (10.289ms)
+✔ direction and idle frames stay inside downloaded DS sheets, including the four-frame Starly (11.1666ms)
+✔ 35 towns have 70 distinct local conversations with existing DS sprite assets and clear approaches (5.509ms)
+✖ each resident remains approachable and declining optional requests preserves progress (24.6462ms)
+✔ revision 9 saves overlapping new residents move safely while visits and valid positions survive (18.2593ms)
+✔ facility routes avoid the newly occupied resident tiles (28.8263ms)
+✖ all 35 Pokemon roam connected clear tiles without overlapping doors, people or minimap hits (391.6834ms)
+✔ moving Pokemon reserve both endpoints and release the previous tile on arrival (2.9442ms)
+✔ menus and dialogue pause roaming and nearby conversations remain available (2.7286ms)
+✔ revision 15 and current saves on the former fixed anchor reload exactly and spawn the Pokemon beside the player (17.3576ms)
+✔ navigation recomputes around current Pokemon positions and reserved steps without moving the player (5.0391ms)
+✔ roaming state is isolated by engine and resets on map changes or file restoration (0.9316ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 20
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 976.551
+
+✖ failing tests:
+
+test at tests\explore-residents.test.ts:1:1296
+✖ each resident remains approachable and declining optional requests preserves progress (24.6462ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   '절벽 아래와 남서쪽 물가 앞에\n풀밭이 있어요. 포장길은 안전해요.',
+  +   '만날 수 있는 동료: 가디·질퍽이\n풀밭에서 천천히 살펴봐.'
+  -   '절벽의 붉은 결을 살펴보는 중이에요.\n연구소 표본과 같은 화산암이지요.',
+  -   '남쪽 만의 돌은 파도에 닳아 매끈해요.\n연구소에서 두 장소를 비교해 보세요.'
+    ]
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-residents.test.ts:33:19)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '절벽 아래와 남서쪽 물가 앞에\n풀밭이 있어요. 포장길은 안전해요.', '만날 수 있는 동료: 가디·질퍽이\n풀밭에서 천천히 살펴봐.' ],
+    expected: [ '절벽의 붉은 결을 살펴보는 중이에요.\n연구소 표본과 같은 화산암이지요.', '남쪽 만의 돌은 파도에 닳아 매끈해요.\n연구소에서 두 장소를 비교해 보세요.' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-roaming.test.ts:1:846
+✖ all 35 Pokemon roam connected clear tiles without overlapping doors, people or minimap hits (391.6834ms)
+  AssertionError [ERR_ASSERTION]: tour_cinnabar roaming space
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-roaming.test.ts:19:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

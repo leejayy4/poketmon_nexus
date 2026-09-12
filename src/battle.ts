@@ -2,7 +2,7 @@ import type { Pokemon, SaveData } from './types';
 import { SPECIES, pokemonMoves, pokemonSnapshot, MOVE_RULES, RUNTIME_SPECIES, BOX_CAPACITY, recordSeen, isDamagingMove } from './pokemon';
 import DATA from './runtime-pokemon-data.json';
 import { wildPokemon } from './runtime-encounters';
-import { gainExperience, minimumLevel, type GrowthStep } from './growth';
+import { gainExperience, minimumLevel, LEVEL_CAP, type GrowthStep } from './growth';
 import { gymTeam,gymById,type GymId } from './gyms';
 import { withParticle } from './korean-text';
 
@@ -36,7 +36,7 @@ export function createBattle(save:SaveData,kind:'wild'|'gym'='wild',gymId:GymId=
     ...(kind==='wild'?{caughtBeforeBattle}:{})};
 }
 export function experienceParticipants(save:SaveData,b:Battle):number[]{
-  return [...new Set(b.participants)].filter(i=>save.party[i]?.hp>0).sort((a,b)=>a-b);
+  return [...new Set(b.participants)].filter(i=>save.party[i]?.hp>0&&save.party[i].level<LEVEL_CAP).sort((a,b)=>a-b);
 }
 export function createTrainerBattle(save:SaveData,trainer:TrainerBattleInfo):Battle|null{
   if(!trainer.team.length||trainer.team.some(p=>!SPECIES[p.species]||p.hp<=0)||!Number.isInteger(trainer.reward)||trainer.reward<0)return null;

@@ -45,7 +45,7 @@ test('coast capture updates the actual Pokedex habitat page and route guidance u
   const g=new Engine();g.save=ready();g.announce=()=>{};
   for(let slot=0;slot<species.length;slot++){
     const p=monster(slot,0);g.save.pokedex!.seen.push(p.species);g.save.pokedex!.caught.push(p.species);
-    const habitats=speciesHabitats(p.species);assert.deepEqual(habitats.map(h=>[h.name,h.minLevel,h.maxLevel]),[['갈색–블루 해안길',22,25]]);
+    const habitats=speciesHabitats(p.species);assert.deepEqual(habitats.map(h=>[h.name,h.minLevel,h.maxLevel]),[['갈색–블루 해안길',22,25],...([19,96].includes(p.species)?[['성도 34번도로',22,24]]:[])]);
     let page=0;while(true){showPokedex(g,page);const choice=g.dialogue!.choices!.find(c=>c.label.includes(` ${['꼬렛','나옹','깨비참','아보','푸린','슬리프'][slot]}`));if(choice){choice.action();break;}assert(g.dialogue!.choices!.some(c=>c.label==='다음 페이지'));page++;}
     assert(g.dialogue!.pages.some(p=>p.includes('잡은 포켓몬')));assert(g.dialogue!.pages.some(p=>p.includes('갈색–블루 해안길')&&p.includes('Lv.22~25')));
   }

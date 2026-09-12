@@ -3,6 +3,10 @@
   "learnsetVersionGroup": 9,
   "sources": [
     {
+      "file": "scripts/design/runtime-local-pools.json",
+      "sha256": "53c8e1355256201611a3db6a8a32cba3499dac0a6496424e339947882fba1c17"
+    },
+    {
       "file": "pokemon_moves.csv",
       "url": "https://raw.githubusercontent.com/PokeAPI/pokeapi/d4f9a4af58ade123fbc0558f68b1c69daa97d9e4/data/v2/csv/pokemon_moves.csv",
       "sha256": "22a807cef26891eeac0d0c900bd363e66baf421f7ee795bc7bc3e718f23b939e"
@@ -119,6 +123,54 @@
       "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
     },
     {
+      "file": "pokemon-10.png",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-iv/platinum/10.png",
+      "sha256": "542f81f61c3e0e51d09db05bd26c6ea151682129766b6e8c483ad2f808b81c83",
+      "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
+    },
+    {
+      "file": "pokemon-back-10.png",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-iv/platinum/back/10.png",
+      "sha256": "1fb981a7e3fc00e61392dd1ae871daaab1723a51d1a77a385416dc31bdd88021",
+      "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
+    },
+    {
+      "file": "pokemon-11.png",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-iv/platinum/11.png",
+      "sha256": "71d294ab58ce925459558f6fd9e2fe2e33392461a32b3179ebceefb72ad7d04c",
+      "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
+    },
+    {
+      "file": "pokemon-back-11.png",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-iv/platinum/back/11.png",
+      "sha256": "7e6761c2e5a22ebab8a4036d93b99cff8c2337a79e7c7f9fe2150c49f03255d2",
+      "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
+    },
+    {
+      "file": "pokemon-13.png",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-iv/platinum/13.png",
+      "sha256": "23fe7f3086cccfd210bf2d72df3d9d20cce8451c01b6ceb7b8fe673ff76dd54f",
+      "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
+    },
+    {
+      "file": "pokemon-back-13.png",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-iv/platinum/back/13.png",
+      "sha256": "d8b93e8423ef700dbfd5d9f068f81c9bd7aa1ab43fc54cbeb151c779a4aaea62",
+      "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
+    },
+    {
+      "file": "pokemon-14.png",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-iv/platinum/14.png",
+      "sha256": "5853f3d6ed75f4741a90c7fcc5e9a67eecbe91f04eeedacf49b9ec04ee4a1a2d",
+      "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
+    },
+    {
+      "file": "pokemon-back-14.png",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-iv/platinum/back/14.png",
+      "sha256": "4355acb2021f805b58f586dcae3155ff0aa7c7804d945fc3c3344768a029ff47",
+      "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
+    },
+    {
       "file": "pokemon-19.png",
       "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-iv/platinum/19.png",
       "sha256": "bae9950626ff491ae45be99b3a579ed6fb0e4e49b642a625242d771f10c71889",
@@ -203,6 +255,18 @@
       "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
     },
     {
+      "file": "pokemon-58.png",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-iv/platinum/58.png",
+      "sha256": "3e6407f4bffb485182a795ff728a7e05ca017d6e4b1be16e09e84f53db09a72d",
+      "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
+    },
+    {
+      "file": "pokemon-back-58.png",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-iv/platinum/back/58.png",
+      "sha256": "52eb4ef776b3a6abd6524d7fc879d80c2e4b9a8aadf480773d53cea618efbc2a",
+      "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
+    },
+    {
       "file": "pokemon-63.png",
       "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-iv/platinum/63.png",
       "sha256": "a30e6350482e826f811b387cfb5a236cdfe89e46c6fb1ba9f8e2794a91f8c4df",
@@ -248,6 +312,18 @@
       "file": "pokemon-back-77.png",
       "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-iv/platinum/back/77.png",
       "sha256": "55b36789a274f5a5b3a914b4023222afec0812aab370110a0e78183e261f15f6",
+      "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
+    },
+    {
+      "file": "pokemon-88.png",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-iv/platinum/88.png",
+      "sha256": "eb59cbb6f893587d310ed5431dc1b5ade57f95b1be24dc29cef42bd9a43728fe",
+      "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
+    },
+    {
+      "file": "pokemon-back-88.png",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-iv/platinum/back/88.png",
+      "sha256": "d3bfd28135862c8e5f571b40af3066192d819b9d4d05e1d509a39c398e5f856c",
       "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
     },
     {
@@ -585,6 +661,34 @@
       "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-iv/platinum/back/448.png",
       "sha256": "e93466a6989454d92e843321394941d259d153edf87bb90fd3bf06421a523e2c",
       "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
+    },
+    {
+      "file": "pokemon-519.png",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-v/black-white/519.png",
+      "sha256": "e13caaaa9874bcdc6e88c2c7901b6f8b937636adeca9a7599f651dffa0bdd71a",
+      "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
+    },
+    {
+      "file": "pokemon-back-519.png",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-v/black-white/back/519.png",
+      "sha256": "243b3e61e1498d96246b467ca776e4f8f3a56289730900fc794a89b8b95c658b",
+      "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
+    },
+    {
+      "file": "pokemon-548.png",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-v/black-white/548.png",
+      "sha256": "3dc344776acca04786b31c0ab4d242a75b8b8fbef7e6ae1f265ded5f089be24e",
+      "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
+    },
+    {
+      "file": "pokemon-back-548.png",
+      "url": "https://raw.githubusercontent.com/PokeAPI/sprites/6e523c72bb714306c90912647e0b2ccc4fd2fff1/sprites/pokemon/versions/generation-v/black-white/back/548.png",
+      "sha256": "6c09177d85837642125ff0cba7f8e18138ecfdfc9f1dfbb50c01ae4cf56f5841",
+      "processing": "Original PNG, existing assets preserved; see sources.json for preexisting artwork."
     }
-  ]
+  ],
+  "learnsetVersionGroupOverrides": {
+    "519": 14,
+    "548": 14
+  }
 }

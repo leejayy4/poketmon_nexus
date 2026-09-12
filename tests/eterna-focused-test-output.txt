@@ -1,0 +1,30 @@
+✔ Eterna clock owns one reachable investigation surface, not the wall survey event (9.2127ms)
+✔ Eterna optional trainer cancellation, victory, restoration and repeat interaction preserve one-time reward (17.1069ms)
+✔ Eterna trainer defeat restores the city center without granting victory (2.564ms)
+✔ Prepared pre-Eterna party can challenge Gardenia without the optional trainer and preserves badge reward on reload (29.1189ms)
+✔ forest expansion preserves every former valid save tile and existing investigation identities (16.5542ms)
+✔ safe route spans the new bend while both grass branches join back to reachable paths (2.6418ms)
+✔ city transitions use the moved southern mouth and preserve exact entry directions in both directions (8.1704ms)
+✔ new grass retains the existing six-species pool and creates actual forest encounters (1.6326ms)
+✔ expanded art and minimap use the new dimensions and keep all authored geometry in bounds (5.5771ms)
+✔ Eterna survey requires both field observations, survives reload and never awards or changes party (7.3085ms)
+✔ Eterna observation rejects stale party slots, fainted partners and replaced saves (0.7718ms)
+✔ each starter can lead a locally obtainable prepared party through all later gyms with two potions (22.5989ms)
+✔ gym order cannot be skipped and wins, reload and revisits do not duplicate rewards (36.7748ms)
+✔ all new recovery centers persist and recover a gym defeat to a valid tile (2.1092ms)
+✔ forest and mountain encounters follow their design pools, grant level XP and preserve location (5.9726ms)
+✔ records require four badges and delivery completes once while world travel stays open (2.9957ms)
+✔ Veilstone guide stops directing a completed observation delivery (1.073ms)
+✔ Sinnoh city guides do not direct the player to an already won gym (1.5034ms)
+✔ free ferry cancellation, outbound reload and return preserve party, supplies and funds (1.2259ms)
+✔ revision 5 capped partners and first badge migrate without losing valid progress (0.6611ms)
+✔ save rejects skipped badges, missing TM, unearned records and invalid story dependencies (0.7548ms)
+✔ every integrated story map warp executes with a legal arrival and checkpoint (36.3793ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 762.3822

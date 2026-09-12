@@ -32,7 +32,10 @@ for(const [key,data] of Object.entries(RUNTIME_SPECIES)){
 function levelMoves(p:Pokemon):string[]{
   const own=RUNTIME_SPECIES[p.species]?.learnset.filter(m=>m.level<=p.level).map(m=>m.move)??[];
   const evo=DATA.evolutions.find(e=>e.to===p.species);
-  const inherited=evo?RUNTIME_SPECIES[evo.from].learnset.filter(m=>m.level<evo.level).map(m=>m.move):[];
+  // Forest cocoons can evolve after learning Bug Bite at level 15. Preserve
+  // that move; keep the existing starter acquisition schedule unchanged.
+  const inheritedLevel=evo?([11,14].includes(p.species)?p.level:evo.level-1):0;
+  const inherited=evo?RUNTIME_SPECIES[evo.from].learnset.filter(m=>m.level<=inheritedLevel).map(m=>m.move):[];
   return [...new Set([...inherited,...own])];
 }
 export function isDamagingMove(move:string){return ['damage','drain','weightDamage','struggle','fixedDamage','levelDamage'].includes(MOVE_RULES[move]?.rule);}

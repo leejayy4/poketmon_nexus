@@ -14,7 +14,9 @@ function baseOpen(bend:number,x:number,y:number){
   const inRect=(rx:number,ry:number,rw:number,rh:number)=>x>=rx&&x<rx+rw&&y>=ry&&y<ry+rh;
   return (inRect(1,9,10,3)||inRect(9,Math.min(9,bend),4,Math.abs(bend-9)+3)||inRect(10,bend,13,3)||inRect(21,Math.min(9,bend),4,Math.abs(bend-9)+3)||inRect(23,9,8,3)||inRect(14,4,6,12)||inRect(13,4,8,4))&&!(x===15&&y===5);
 }
-const passageIds=Object.keys(PASSAGES);
+// These assertions describe the original horizontal template, not authored regional maps.
+// Route 34 has a vertical entry and its own traversal/save regression coverage.
+const passageIds=Object.keys(PASSAGES).filter(id=>id.startsWith('tour_pass_'));
 
 test('all 33 passages add kind-specific outer loop openings only',()=>{
   assert.equal(passageIds.length,33);

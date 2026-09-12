@@ -2,6 +2,9 @@ import type { GameMap,MapId,Point } from './types';
 import { TOUR_BUILDINGS,TOUR_INTERIORS,TOUR_MAPS,TOUR_SPAWNS } from './explore-world';
 import { ETERNA_FOREST_GRASS } from './eterna-forest-layout';
 import { CORONET_GRASS } from './coronet-layout';
+import { CINNABAR_GRASS } from './cinnabar-layout';
+import { CASTELIA_GRASS } from './explore-castelia';
+import { extendSinnohWestRoute } from './sinnoh-west-route';
 
 export const WORLD_ALIASES:Partial<Record<MapId,MapId>>={
   jubilife:'tour_jubilife',oreburgh:'tour_oreburgh',eterna_forest:'tour_eterna_forest',eterna:'tour_eterna',coronet_pass:'tour_coronet',hearthome:'tour_hearthome',veilstone:'tour_veilstone',canalave:'tour_canalave',vermilion_port:'tour_vermilion',
@@ -17,6 +20,8 @@ export const isWorldCenter=(id:MapId)=>TOUR_INTERIORS[worldMapId(id)]?.style==='
 export function createUnifiedWorld(base:Record<MapId,GameMap>):Partial<Record<MapId,GameMap>>{
   const result:Partial<Record<MapId,GameMap>>={};
   const edit=(id:MapId)=>result[id]??(result[id]=structuredClone(base[id]));
+  edit('tour_cinnabar').terrain=CINNABAR_GRASS.map(r=>({...r}));
+  edit('tour_castelia').terrain=CASTELIA_GRASS.map(r=>({...r}));
   const route=edit('route_s01');route.warps.find(w=>w.to==='jubilife')!.to='tour_jubilife';route.warps.find(w=>w.to==='tour_jubilife')!.spawn={x:37,y:24};
   const jubilife=edit('tour_jubilife'),entrance=jubilife.warps.find(w=>w.to==='town')!;entrance.to='route_s01';entrance.spawn={x:3,y:12};
   // S03 in the authored encounter DB is the city's outskirts, away from its
@@ -37,12 +42,22 @@ export function createUnifiedWorld(base:Record<MapId,GameMap>):Partial<Record<Ma
   for(const id of ['tour_eterna_forest','tour_coronet'] as const){
     const map=edit(id);map.terrain=(id==='tour_eterna_forest'?ETERNA_FOREST_GRASS:CORONET_GRASS).map(r=>({...r}));map.npcs[0].dialogue='trailGuide';
   }
+  // Optional woodland grass stays off both marked routes and every existing prop.
+  edit('tour_viridian_forest').terrain=[{kind:'tallGrass',x:14,y:6,w:3,h:3},{kind:'tallGrass',x:2,y:10,w:3,h:2}];
+  edit('tour_viridian_forest').npcs[0].dialogue='viridianForestGuide';
   for(const [id,event,name] of [['tour_jubilife','researchGate','연구 통로 안내원'],['tour_eterna','sinnohGuide','도시 안내원'],['tour_hearthome','sinnohGuide','도시 안내원'],['tour_veilstone','observation','관측 연구원'],['tour_canalave','ferry','조사선 선원'],['tour_vermilion','ferry','조사선 선원']] as const){
     const npc=edit(id).npcs.find(n=>n.id==='tourGuide')!;npc.dialogue=event;npc.name=name;
   }
   // The existing research corridor becomes the short connection between the cities.
   const canalave=edit('tour_canalave'),toCanalave=jubilife.warps.find(w=>w.to==='tour_canalave')!,toJubilife=canalave.warps.find(w=>w.to==='tour_jubilife')!;
   const corridor=edit('research_path');corridor.warps[0]={...corridor.warps[0],to:'tour_jubilife',spawn:toJubilife.spawn};corridor.warps[1]={...corridor.warps[1],to:'tour_canalave',spawn:toCanalave.spawn};
-  toCanalave.to='research_path';toCanalave.spawn={x:2,y:12};toJubilife.to='research_path';toJubilife.spawn={x:26,y:12};
+  extendSinnohWestRoute(corridor);
+  const route218=edit('tour_sinnoh_route_218');route218.warps=[
+    {x:1,y:13,to:'tour_jubilife',spawn:{...toJubilife.spawn},entry:'left',facing:'left'},
+    {x:62,y:10,to:'research_path',spawn:{x:2,y:12},entry:'right',facing:'right'},
+  ];
+  toCanalave.to='tour_sinnoh_route_218';toCanalave.spawn={x:2,y:13};
+  corridor.warps[0]={...corridor.warps[0],to:'tour_sinnoh_route_218',spawn:{x:61,y:10}};
+  toJubilife.to='research_path';toJubilife.spawn={x:61,y:12};
   return result;
 }

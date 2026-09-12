@@ -1,6 +1,7 @@
 import { COMPACT_PLACES,expandedSigns } from './explore-expansion';
 import type { Place,TourFeature } from './explore-world';
 import type { Direction,GameMap,Point } from './types';
+import { ILEX_FOREST_EAST } from './ilex-forest-layout';
 
 export interface OutdoorObject { name:string; pages:string[]; event:string; cells:Point[] }
 export interface TourSign extends Point { direction:Direction; destination:string; name:string; event:string; pages:string[] }
@@ -31,7 +32,7 @@ export function prepareTourOutdoors(p:Place,map:GameMap,features:TourFeature[],s
     props.push(...cells.map(point=>({...point,dialogue:event})));
     return {name,pages:[text],event,cells};
   });
-  const slots:Record<Direction,Point>=short?{up:{x:12,y:4},right:{x:16,y:7},down:{x:12,y:14},left:{x:3,y:7}}:{up:{x:16,y:4},right:{x:24,y:11},down:{x:16,y:20},left:{x:3,y:10}};
+  const slots:Record<Direction,Point>=p.id==='tour_ilex'?{up:{x:12,y:4},right:{x:ILEX_FOREST_EAST.spawn.x-1,y:ILEX_FOREST_EAST.spawn.y-2},down:{x:12,y:14},left:{x:3,y:7}}:short?{up:{x:12,y:4},right:{x:16,y:7},down:{x:12,y:14},left:{x:3,y:7}}:{up:{x:16,y:4},right:{x:24,y:11},down:{x:16,y:20},left:{x:3,y:10}};
   const signs=map.warps.filter(w=>lookup(w.to)||w.to==='town').map((w,i)=>{
     const point=(!COMPACT_PLACES.has(p.id)?expandedSigns(p):slots)[w.entry],dest=lookup(w.to),name=dest?.name??'새잎마을';
     if(rows[point.y][point.x]!=='.'||map.npcs.some(n=>n.x===point.x&&n.y===point.y))throw Error('Blocked tour sign '+p.id);

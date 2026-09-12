@@ -39,9 +39,14 @@ function explorationObjective(save:SaveData):AdventureObjective{
   if(!place)return fallback;
   const landmark=(id:string)=>TOUR_BUILDINGS[id]?.find(b=>b.kind==='landmark')?.room;
   const localHall=landmark(place.id);
+  const floorRoot=(id:MapId)=>{let root=id;const seen=new Set<MapId>();while(FLOOR_PARENTS[root]&&!seen.has(root)){seen.add(root);root=FLOOR_PARENTS[root];}return root;};
   // Entering records a visit, not a completed inspection. Keep the current hall
   // (including its floors) available until the player chooses to leave it.
-  if(localHall&&(current===localHall||FLOOR_PARENTS[current]===localHall))return {
+  if(current==='tour_vermilion_hall_3f'){
+    const notebook=TOUR_INTERIORS[current]?.objects.find(object=>object.name==='여행 준비 수첩');
+    return {id:'vermilion-practice',title:'동료 기술 연습',map:current,event:notebook?.event??'tourHost',action:'여행 준비 수첩을 살펴보자'};
+  }
+  if(localHall&&floorRoot(current)===localHall)return {
     id:'explore',title:'시설 둘러보기',map:current,event:'tourHost',action:'안내원과 전시를 천천히 살펴보자',
   };
   const visited=new Set<string>(save.tourVisited??[]),queue=[current],seen=new Set(queue);

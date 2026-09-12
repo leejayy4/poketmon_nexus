@@ -13,7 +13,7 @@ import { paintJourneyOverlay } from '../src/journey-art';
 import type { GameMap } from '../src/types';
 
 test('every same-region city edge has a real route, retaining forests and research transport',()=>{
-  assert.equal(Object.keys(PASSAGES).length,33);
+  assert.equal(Object.keys(PASSAGES).filter(id=>id.startsWith('tour_pass_')).length,33);
   assert.deepEqual(new Set(Object.values(PASSAGES).map(p=>p.kind)),new Set(['road','cave','coast']));
   for(const [a,b] of TOUR_EDGES){
     const p=PLACES.find(p=>p.id===a)!,q=PLACES.find(p=>p.id===b)!;
@@ -23,16 +23,19 @@ test('every same-region city edge has a real route, retaining forests and resear
     assert(PASSAGES[exit.to],`${a} should enter a route before ${b}`);
     assert(getMap(exit.to).warps.some(w=>w.to===a));assert(getMap(exit.to).warps.some(w=>w.to===b));
   }
-  assert(getMap('tour_eterna_forest').warps.some(w=>w.to==='tour_eterna'));
+  assert(journeyConnection(getMap('tour_eterna_forest'),'tour_eterna'));
   assert(getMap('tour_coronet').warps.some(w=>w.to==='tour_hearthome'));
   assert(getMap('tour_canalave').warps.some(w=>w.to==='tour_vermilion'));
 });
 
-test('routes provide a clear main path, optional grass, accessible signs, traveller and pickup',()=>{
+test('routes provide safe travel, accessible signs and residents, with pickups on template roads',()=>{
   for(const p of Object.values(PASSAGES)){
     const map=getMap(p.id),spawn=TOUR_SPAWNS[p.id];
     assert(map.width>=32);assert(map.height>=20);assert(canStand(map,spawn.x,spawn.y));
-    for(const event of ['journeySign','journeyWalker','journeyItem'])assert(objectiveInteractionPath(map,spawn,event),p.id+' '+event);
+    const events=p.id.startsWith('tour_pass_')?['journeySign','journeyWalker','journeyItem']:
+      [...new Set([...map.props.map(p=>p.dialogue),...map.npcs.map(n=>n.dialogue)])];
+    assert(events.length>=2,p.id+' signs and resident');
+    for(const event of events)assert(objectiveInteractionPath(map,spawn,event),p.id+' '+event);
     for(const sign of TOUR_OUTDOORS[p.id].signs)assert(map.warps.some(w=>w.to===sign.destination&&w.entry===sign.direction));
     // Remove grass from the walking graph: both cities must remain reachable.
     const safe:GameMap=structuredClone(map);
@@ -77,7 +80,7 @@ test('visible high buildings have three distinct floors with safe reciprocal sta
         const to=getMap(exit.to);assert(canStand(to,exit.spawn.x,exit.spawn.y));assert(!to.warps.some(w=>w.x===exit.spawn.x&&w.y===exit.spawn.y));
         assert(to.warps.some(w=>w.to===id),id+' reciprocal');
       }
-      if(floor>1){assert(!map.warps.some(w=>w.to===ROOM_PARENTS[id].id));assert.equal(map.walkable[13],'#'.repeat(16));}
+      if(floor>1){assert(!map.warps.some(w=>w.to===ROOM_PARENTS[id].id));assert.equal(map.walkable.at(-1),'#'.repeat(map.width));assert.equal(map.walkable.at(-2),'#'.repeat(map.width));}
       if(floor<3){const up=map.warps.find(w=>FLOOR_INFO[w.to]?.floor===floor+1)!;assert(up);assert.equal(FLOOR_PARENTS[up.to],id);id=up.to as TourId;}
     }
     assert.equal(furniture.size,3,base+' different use and furniture on each floor');

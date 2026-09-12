@@ -1,0 +1,864 @@
+
+> first-partner-platinum@0.1.0 test
+> tsx --test tests/*.test.ts
+
+✔ normal starter and Pikachu-first progression both guide departure without inventing capture requirements (1.2348ms)
+✔ each existing badge and research flag selects its implemented next objective without mutating saves (4.1504ms)
+✔ gym objective particles match each leader while preserving progress and the next missing badge (1.0411ms)
+✔ guidance follows real interior exits and connecting maps; on arrival it names the interaction (0.9484ms)
+✔ research guidance updates only when the existing delivery dialogue actually completes (9.1346ms)
+✔ adventure interaction hints require a faced NPC or prop and disappear while busy (0.6412ms)
+✔ field map opens with M or touch and retains the unchanged adventure save (10.2488ms)
+✔ map controls cannot bypass dialogue, menus, battle, movement or transition locks (0.883ms)
+✔ all four gym markers guide through real expanded city doors without granting a badge (24.853ms)
+✔ objective guidance tracks the next badge and switches to recovery only while needed (4.3879ms)
+✔ starter objective guides from the bedroom to the lab and respects the departure gate (4.9798ms)
+✔ active-world map markers fit their map and point to real doors or people (5.0778ms)
+✔ audio is opt-in; scene/effects/fanfare never create a context or timer while muted (2.9849ms)
+✔ scene changes reset beat and cancel queued audio; repeated same-scene calls keep one timer (1.0184ms)
+✔ mute stops present and future voices and old fanfare never survives re-enable (0.625ms)
+✔ six original scenes have different melodies and bounded gentle voices (1.9996ms)
+✔ technical effects sound distinct and use Web Audio scheduling without adding timers (1.2781ms)
+✔ fanfare ducks music and resumes selected scene without a second timer (5.819ms)
+✔ hidden or suspended contexts do not advance beats or pile up background notes (6.3233ms)
+✔ ended voices disconnect and invalid public note inputs do not reach Web Audio (0.5633ms)
+✔ failed resume disables cleanly but stale rejection cannot mute a newer user enable (0.8049ms)
+✔ unavailable AudioContext fails safely and closed context can be recreated by a user toggle (0.6378ms)
+✔ battle arena keeps the platform depth while adding a pixel horizon and drifting clouds (2.4263ms)
+✔ caught snapshot stays false when the species is only seen (3.0574ms)
+✔ caught snapshot includes PC ownership and legacy party ownership (0.7798ms)
+✔ caught dex records mark the wild battle as previously caught (0.3191ms)
+✔ trainer and gym battles do not expose a wild caught snapshot (0.5382ms)
+✔ a new capture does not update the current battle snapshot, but the next battle sees it (1.7325ms)
+✔ wild caught badge and text follow the battle snapshot without changing controls or save (7.6685ms)
+✔ counterattack declares the move before changing displayed HP for every action that spends a turn (3.6989ms)
+✔ lethal counter keeps the outgoing Pokemon alive through the attack declaration, then shows exact loss before fainting (0.4774ms)
+✔ finishing blow reports actual HP loss in hint, dialogue and effect while preserving victory XP (0.8928ms)
+✔ low-HP counter previews report at most the HP the selected Pokemon can lose (0.3094ms)
+✔ counter playback and reload never apply damage or item use for a second time (2.4617ms)
+✔ attack damage and counterattack carry separate visual targets on the matching pages (4.1207ms)
+✔ healing uses the actual recovered HP and never puts a reserve heal effect on the active Pokemon (0.5928ms)
+✔ page effects expire independently of text speed and revealing text does not replay an effect (1.9694ms)
+✔ fast forwarding, replacement dialogue and reload drop effects without repeating damage or items (1.6896ms)
+✔ knockout, next opponent and appended reward pages do not replay the final hit (27.2851ms)
+✔ renderer draws a short damage label and displaced sprite, then restores the original pose (2.0836ms)
+✔ rejected actions and non-finite or expired clocks produce no effect (0.5643ms)
+✔ experience and level pages show growth in order instead of revealing the final level early (5.3382ms)
+✔ shared experience follows individual participants and reserve growth never replaces the active battler (0.9819ms)
+✔ multiple levels and the cap have distinct detached steps and preserve the existing growth result (0.5407ms)
+✔ growth card identifies a reserve recipient while the upper battlefield retains the active Pokemon (4.1027ms)
+✔ gym growth completes before the next opponent and before a final badge reward (25.0101ms)
+✔ reload during growth retains final XP exactly once and clears presentation; no growth on escape or capture (1.886ms)
+✔ reserve healing consumes one potion while only the active Pokemon takes retaliation (6.542ms)
+✔ invalid, full, fainted and out-of-stock healing changes neither battle nor save (2.2521ms)
+✔ active-target healing is compatible and heals at most 20 before retaliation (0.6287ms)
+✔ reserve is healed before a fatal retaliation and can then replace the active Pokemon (1.1035ms)
+✔ bag opens target selection without spending a turn and cancellation returns through bag (2.2106ms)
+✔ move damage previews agree with resolved wild and gym turns across levels and debuffs (20.0728ms)
+✔ finishing blow preview promises no retaliation and resolution preserves HP (0.7328ms)
+✔ status previews reflect next damage and capped effects report failure but still cost a turn (0.7568ms)
+✔ potion and switch previews include the retaliation and invalid action reasons (0.8148ms)
+✔ catch preview follows HP threshold and eligibility without consuming resources (0.6135ms)
+✔ full party catch preview preserves failure damage and agrees with success, failure and capacity limits (1.2597ms)
+✔ capture messages use 조사 matching the caught species name (2.8981ms)
+✔ battle knockout messages use 조사 matching player and enemy names (1.6286ms)
+✔ invalid healing, switching and catching preserve the menu and cursor for a retry (5.5387ms)
+✔ cancelling submenus returns focus to the action that opened them without consuming a turn (0.6202ms)
+✔ last used move is remembered per Pokemon while browsing and cancelling do not overwrite it (2.1164ms)
+✔ failed capture and capped status moves still consume their normal turn and return to actions (0.8236ms)
+✔ the fainted active Pokemon is rejected accurately and forced replacement keeps its selection (0.7988ms)
+✔ battle move menu shows the current move type in the unchanged touch buttons (8.87ms)
+✔ switch training shares experience once per participant and preserves level progress in saves (6.0446ms)
+✔ only healthy participants earn experience; reserves, escapes and captures earn none (0.95ms)
+✔ gym experience conserves its budget and participation resets for each opponent (0.925ms)
+✔ two-column navigation follows rows and columns including odd and full parties (0.7622ms)
+✔ X on action selection never ends a battle while submenu cancellation remains free (0.923ms)
+✔ battle arena uses layered platform colors without changing battle state (1.8475ms)
+✔ attack, damage, knockout and next opponent retain distinct detached display states (2.7455ms)
+✔ normal and free switches show outgoing then incoming Pokemon and only the normal switch takes a counter (0.6223ms)
+✔ healing and debuffs appear before the counterattack in their respective dialogue pages (0.4464ms)
+✔ fainting keeps the defeated Pokemon visible in status until automatic or chosen replacement (0.3943ms)
+✔ advancing display dialogue never reapplies committed damage, items or XP and restore drops playback (2.968ms)
+✔ renderer hides future opponent and choices during playback and uses current data afterwards (6.3786ms)
+✔ rejected actions, a replaced dialogue and final battle completion leave no stale frame (0.6041ms)
+✔ wild and gym fainting lets the player choose among healthy reserves without another attack (4.5513ms)
+✔ pending replacement blocks moves, items and invalid replacements but permits explicit escape (1.4288ms)
+✔ one healthy reserve still enters automatically and a total defeat still ends the battle (0.3017ms)
+✔ healing or manually switching before fainting leads to the same free replacement choice (0.3933ms)
+✔ Engine opens replacement after dialogue, prevents cancellation bypass and safely restores saves (3.1149ms)
+✔ six party slots show the selected Pokemon and HP without changing the party or active battler (9.6209ms)
+✔ preview exposes lethal normal-switch risk and distinguishes free and forced replacements (13.1953ms)
+✔ reserve medicine preview and touch use agree while only the active Pokemon takes the counter (9.0778ms)
+✔ fainted and full-health healing previews explain rejection without consuming a turn (1.4779ms)
+✔ cancel and reload close previews without changing selected Pokemon order, HP or items (7.5591ms)
+✔ pre-badge supply shortages point to the route guide without consuming a turn (4.358ms)
+✔ post-badge supply shortages point to the town mart without changing battle state (0.8305ms)
+✔ switching to a capped partner awards all experience to the growing participant and preserves presentation/save (10.5096ms)
+✔ all capped participants finish normally without growth pages (0.6899ms)
+✔ capped, fainted, duplicate and reserve entries do not dilute eligible shares (0.6542ms)
+✔ next opponent resets recipients even when the active battler is capped (0.5566ms)
+✔ successful and failed throws share the same initial scene without revealing the result (4.3801ms)
+✔ the ball follows an arc, hides the target on contact and comes to rest without modifying game data (0.7815ms)
+✔ failed escape restores the enemy before counterattack and success opens the existing catch card (3.7352ms)
+✔ renderer draws the ball in flight and keeps the opponent hidden only during the throw page (14.4359ms)
+✔ fast forwarding and reload cannot replay a throw or grant another Pokemon (2.3288ms)
+✔ empty balls, full party and box and gym capture rejection never animate or consume a ball (1.6088ms)
+✔ both garden species survive boxed capture, withdrawal and home move learning with provenance (7.3597ms)
+✔ all harbor surfaces dispatch through player confirmation and retain optional records after reload (17.2397ms)
+✔ harbor sketch rejects a changed lead and persists one optional gallery selection (0.8535ms)
+✔ Castelia homes, gallery and Route 1 support engine walking and save restoration in one journey (28.9051ms)
+✔ catch result appears only at the success page and default continue never duplicates the catch (4.3175ms)
+✔ information opens the newly caught sixth Pokemon among duplicates and connects to healing and lead selection (0.6842ms)
+✔ X and touch continuation close the result without changing party order or spending resources (1.2048ms)
+✔ failed capture, full party and box and trainer Pokemon do not show the success screen (8.3036ms)
+✔ result rendering shows the caught stats without covering them with top-screen choices (1.8979ms)
+✔ reload during catch preserves the new Pokemon once and clears the pending result action (1.3724ms)
+✔ both Cinnabar encounters recover a defeat to a saved and healed island center (7.8884ms)
+✔ Cinnabar music covers interiors, routes, battle priority and restored exploration (3.0935ms)
+✔ Cinnabar two-species guidance does not call the same companion common and rare (1.405ms)
+✔ Cinnabar field observations persist independently and revisits give no extra rewards (2.9617ms)
+✔ Cinnabar guidance ignores callbacks after a save replacement (0.4003ms)
+✔ Cinnabar observation flags accept old saves and reject malformed records (0.5213ms)
+✔ activities target two real residents and unrelated events leave state untouched (6.7943ms)
+✔ acceptance is optional, has safe last choices, and survives a real save reload (2.2459ms)
+✔ broadcast errand needs distinct owned species, then pays once across reload and stale replay (9.9154ms)
+✔ optional flat box contributes owned species while seen-only Pokedex does not (0.4828ms)
+✔ unknown species cannot complete a collection errand (0.3035ms)
+✔ miner checks party size, actual recovery, and level without healing or growing for the player (0.7703ms)
+✔ revisits acknowledge a newly earned badge without repeating the local gift (1.169ms)
+✔ already badged players may still complete the optional preparation errand (0.4111ms)
+✔ capacity blocks the whole gift without loss and leaves it claimable after spending (0.989ms)
+✔ callbacks from another slot or departed map cannot change save progress (0.6592ms)
+✔ city rendering preserves all live road footprints and never paints outside the paved tiles (944.5417ms)
+✔ intersection asphalt is seamless across tiles while inner and outer corners retain a curb (1.6107ms)
+✔ every door and stair requires the exact tile and approach direction (180.9608ms)
+✔ walking parallel to the front of every town door never warps (0.9349ms)
+✔ lab annex floor and both new characters are reachable from the entrance (0.66ms)
+✔ buildings block foundations while side and rear paths remain walkable (0.2099ms)
+✔ revision two saves preserve progress and relocate only newly blocked positions (1.5034ms)
+✔ every walkable floor cell in every map is connected, except the guarded exit (294.2085ms)
+✔ mountain walls follow dynamic map sizes and never obscure any walkable approach or warp (14.891ms)
+✔ the actual three mountain mouths remain clear and paths retain a continuous contrasting surface (2.3352ms)
+✔ exploration integration keeps rock footprints and terrain data while replacing generic ground only on Coronet (9.4559ms)
+✔ only mountain wild battles use the static rocky arena; other fields, cave and gyms keep their own arenas (17.2813ms)
+✔ mountain arena is completely behind actors and text, and every painter restores Canvas on failure (2.0276ms)
+✔ Coronet keeps every former valid coordinate, five old rocks, investigation IDs and healing guide (9.3017ms)
+✔ the longer safe route and southern encounter branch reconnect while every registered face is approachable (3.6101ms)
+✔ Hearthome uses the new south entry while Eterna and the lake retain their original mouths and return directions (4.4539ms)
+✔ both encounter patches use the unchanged S15 pool and the guide still heals without post-badge supplies (3.6623ms)
+✔ Coronet geometry and minimap fit the new map while the other expanded forest stays unchanged (0.3593ms)
+✔ defeat commits one safe recovery save while showing the last attack and fainting on the battlefield (5.3421ms)
+✔ home and center guidance preserve inventory and recovery handles all six party members (1.2064ms)
+✔ reload during defeat or recovery clears display state and does not replay rewards or recovery (8.0291ms)
+✔ keyboard and touch cannot replay battle actions during defeat and recovery (3.573ms)
+✔ renderer keeps the defeated battle until return, then shows six recovered Pokemon and actual potion stock (4.6586ms)
+✔ replacing dialogue clears defeat visuals and normal nurse interaction still replenishes stock (8.7084ms)
+✔ defense preview applies the next stage before retaliation and does not mutate its inputs (5.757ms)
+✔ defense preview handles lethal HP boundaries and an active Pokemon outside slot zero (1.8754ms)
+✔ opponent defense reaches its cap and reports a capped attempt without advancing the stat (0.5743ms)
+✔ paintDesertRuinsRock renders sandstone strata and highlights within bounding box (1.6858ms)
+✔ Jubilife fountain renders a stepped stone basin and separate water highlights (0.2569ms)
+✔ desert ground and paths use sandstone marks rather than grass-green path edges (0.3399ms)
+✔ Desert marked paths connect north and south exits and reach signs and guide (1.9306ms)
+✔ revision 21 Desert floor saves preserve progress and repair newly blocked rocks (45.4939ms)
+✔ Desert preserves original rocks and sign events while adding 3 new investigable features (0.3607ms)
+✔ Budew drain preview counts healing before retaliation and leaves its inputs untouched (10.4001ms)
+✔ drain preview caps healing at missing HP, including a completely healthy Pokemon (0.9799ms)
+✔ finishing drain uses actual remaining enemy HP and promises no retaliation (1.2878ms)
+✔ enemy defense reduces both drain damage and healing and still predicts a real knockout (3.8881ms)
+✔ enemy drain and Protect retain their existing HP predictions and actual recovery rules (5.8103ms)
+✖ every integrated passage gives truthful sign and traveller guidance (6.7582ms)
+✔ guidance derives the two common and one rare species from the runtime pool (0.2402ms)
+✔ route companion guidance uses the actual weighted route pool (0.1994ms)
+✔ route companion guidance fits the field dialogue UI (0.133ms)
+✔ guidance and pickup preserve rewards and pickup remains one time (0.93ms)
+✔ Eterna clock owns one reachable investigation surface, not the wall survey event (5.2878ms)
+✔ Eterna optional trainer cancellation, victory, restoration and repeat interaction preserve one-time reward (24.639ms)
+✔ Eterna trainer defeat restores the city center without granting victory (6.4977ms)
+✔ Prepared pre-Eterna party can challenge Gardenia without the optional trainer and preserves badge reward on reload (25.8877ms)
+✔ forest expansion preserves every former valid save tile and existing investigation identities (40.5994ms)
+✔ safe route spans the new bend while both grass branches join back to reachable paths (2.9693ms)
+✔ city transitions use the moved southern mouth and preserve exact entry directions in both directions (6.2516ms)
+✔ new grass retains the existing six-species pool and creates actual forest encounters (2.6312ms)
+✔ expanded art and minimap use the new dimensions and keep all authored geometry in bounds (5.3822ms)
+✔ greenhouse room rendering keeps the existing geometry, actors, exit and map data intact (10.6057ms)
+✔ all low planter foliage and borders stay on the original blocked rock footprint (0.7481ms)
+✔ Veilstone uses its own room drawing instead of greenhouse scenery (5.2513ms)
+✔ exterior still fits the original house envelope and painting always restores Canvas (1.3954ms)
+✔ only Gardenia uses the static greenhouse battle background and stays inside the DS screen (5.5278ms)
+✔ greenhouse decorations are painted before battle actors and text, with no foreground pass (1.3111ms)
+✔ Eterna survey requires both field observations, survives reload and never awards or changes party (5.0902ms)
+✔ Eterna observation rejects stale party slots, fainted partners and replaced saves (0.6331ms)
+✔ all 38 reception counters block walking and talk to the nurse from every front tile (47.9986ms)
+✔ revision 15 counter and nurse saves migrate safely while valid room positions and progress survive (30.3545ms)
+✔ DS interior samples and nurse directional frames fit the downloaded images (14.7531ms)
+✔ all 35 towns expand while essential areas use their authored dimensions (8.3931ms)
+✔ revision 12 saves recover blocked town positions and preserve valid positions and visits (29.6886ms)
+✔ every room has solid furniture with reachable investigation surfaces (11.0071ms)
+✖ every exhibit is investigated through player facing and confirm, repeatedly without rewards (26.6383ms)
+✔ revision seven interior saves relocate only obstructed positions and preserve progress (102.6802ms)
+✔ facility dialogue fits the two-line DS dialogue box and landmark collections are distinct (3.6763ms)
+✔ guidance does not record a visit; actual door arrivals and public travel do, once (5.306ms)
+✔ legacy tour saves attest only to the current place and current interior, retaining progress (0.4561ms)
+✔ visit history survives file and slot round trips without leaking between saves (2.2411ms)
+✔ visit lists reject malformed or foreign IDs and normalize known interior parents (0.5827ms)
+✔ all map visits separate 43 original places, interiors and new passages without duplicates (188.8621ms)
+✔ doorway checkpoint records both the known source and normalized arrival without mutating input (0.6207ms)
+✖ six towns and five trails have distinct investigable arrangements while facility doors stay aligned (4.1985ms)
+✔ revision 10 plaza saves relocate only newly blocked positions and preserve visited interiors (5.3898ms)
+✔ wooden observation paths stay on reachable floor and revision 11 saves recover new scenery overlaps (15.9859ms)
+✔ all tour minimap markers match actual doors or NPCs, fit the map and have distinct touch areas (12.1645ms)
+✔ touching facilities guides without travel, while touching a person only identifies them (22.1137ms)
+✔ markers cannot change guidance through menus, dialogue, walking, transitions or stale map hits (14.1172ms)
+✔ every pair of tour destinations has a legal connected map route and a usable first exit path (1702.1609ms)
+✔ all interiors first guide outside and recognize a destination already being visited (90.596ms)
+✔ following the displayed tile path walks from the starting town to another region without teleporting (17.43ms)
+✔ guidance can change, recalculate and cancel without moving the player or altering the save (4.1537ms)
+✔ an obstructed exit reports no tile route instead of crossing blocked terrain (4.1556ms)
+✖ original outdoor maps and added passages expose solid signs for actual exterior exits (2.8346ms)
+✖ every outdoor object and sign is investigated by facing a reachable surface without rewards (77.4009ms)
+✔ interaction hints match facing and disappear during movement and menus (0.7874ms)
+✔ revision eight saves on new sign tiles relocate while other valid positions remain (53.5548ms)
+✔ 35 town Pokemon cover eight DS field species with four reachable conversation sides (4.5245ms)
+✖ all town Pokemon react from four directions repeatedly without changing ownership or progress (11.4381ms)
+✔ revision 13 saves recover Pokemon overlaps and preserve visits, elapsed time and valid adjacent positions (19.6938ms)
+✔ direction and idle frames stay inside downloaded DS sheets, including the four-frame Starly (57.7375ms)
+✔ 35 towns have 70 distinct local conversations with existing DS sprite assets and clear approaches (8.8931ms)
+✖ each resident remains approachable and declining optional requests preserves progress (31.652ms)
+✔ revision 9 saves overlapping new residents move safely while visits and valid positions survive (30.2225ms)
+✔ facility routes avoid the newly occupied resident tiles (39.0415ms)
+✖ all 35 Pokemon roam connected clear tiles without overlapping doors, people or minimap hits (141.5332ms)
+✔ moving Pokemon reserve both endpoints and release the previous tile on arrival (3.2363ms)
+✔ menus and dialogue pause roaming and nearby conversations remain available (4.146ms)
+✔ revision 15 and current saves on the former fixed anchor reload exactly and spawn the Pokemon beside the player (78.7228ms)
+✔ navigation recomputes around current Pokemon positions and reserved steps without moving the player (10.2313ms)
+✔ roaming state is isolated by engine and resets on map changes or file restoration (1.1337ms)
+✔ complete grove trees stay inside the blocked footprint except for the northern canopy (6.2173ms)
+✔ world renderer paints trees in front of northern actors and behind southern actors without changing progress (9.1568ms)
+✔ all 43 exterior places and four regions form one connected walking graph (2.2607ms)
+✔ every tour doorway and regional connection moves to a valid save and can be revisited (215.1996ms)
+✔ the western route and expanded Jubilife return preserve the adventure party (0.7797ms)
+✔ tour buildings and features have collision; every non-enterable house can be investigated (1.7781ms)
+✔ developer map jump preserves progress and cannot bypass dialogue, battle or movement (5.8628ms)
+✔ expanded map saves round trip as adventures; legacy test imports preserve current progress (2.9786ms)
+✔ every tour spawn reaches all entrances, guides and house investigation positions (146.273ms)
+✔ tour guides repeat their map’s real exit directions and destinations (6.2335ms)
+✔ legacy exploration URL uses the same adventure storage namespace (0.4039ms)
+✔ all facility and floor destinations guide through real doors and stairs and arrive only inside (2488.0953ms)
+✔ another room in the same town requires leaving and reentering, preserving visits and no rewards (3417.6529ms)
+✔ facility guidance crosses regions, recalculates after fast travel and clears without changing saves (20.1786ms)
+✔ only existing tour destinations are accepted and new adventures retain the departure gate in facility guidance (0.7397ms)
+✔ Fantina advice selects actual damage across all opponents and preserves the natural party (3.4256ms)
+✔ immunity advice is limited to attacks and retains the struggle and status exceptions (0.4344ms)
+✔ equipped attacks precede unselected moves, learning advice changes after teaching, and no future move is promised (0.8478ms)
+✔ TM availability is owned, fainted partners get recovery advice, and a missing prior badge still blocks challenge (1.8916ms)
+✔ victory follows the existing objective with its destination, and the guide integration stays compact and read-only (2.1672ms)
+✔ voyage artwork is bounded integer DS pixels at both headings and every progress edge (9.6097ms)
+✔ boat travels toward the selected port and the wake stays behind the mirrored hull (0.9884ms)
+✔ voyage owns both screens, clears old touch hits and leaves save and journey state untouched (3.6964ms)
+✔ touch guard rejects the previous frame button before the first voyage draw and permits controls after arrival (0.787ms)
+✔ normal rendering returns after restore cancels a voyage; painter restores Canvas if drawing fails (0.8704ms)
+✔ ferry choice starts a locked 1.8 second journey and commits destination once at arrival in both directions (16.3189ms)
+✔ mid-voyage save stays at departure, restore cancels the old journey, and returnHome cannot complete it later (7.1336ms)
+✔ declining or restoring a boarding prompt invalidates its callback and an undelivered record cannot board (0.5919ms)
+✔ revisiting the observation researcher after collection only reminds delivery without rewriting progress (0.5161ms)
+✔ field bag opens injured target and cancels to potion then bag menu without spending inventory or steps (4.0955ms)
+✔ bag healing agrees with preview, keeps target list and party order, and blocks double activation (7.1409ms)
+✔ full, fainted, invalid and exhausted targets stay on the same list without consuming medicine (1.4525ms)
+✔ field balls explain battle use and empty party cannot enter target selection (0.797ms)
+✔ field item handlers cannot bypass battle, dialogue, movement or transition locks (1.3798ms)
+✔ walking toward an NPC accepts one early confirm at the destination (43.0686ms)
+✔ an early investigation runs once after the step, without skipping its first page (14.5362ms)
+✔ menu and map requests stop a held walk at the next tile (5.0773ms)
+✔ the first buffered action wins and is consumed only once (0.2451ms)
+✔ dialogue choice direction never becomes walking after confirm or OS repeat (0.4644ms)
+✔ menu navigation cannot leak when returning to the field with confirm (0.2222ms)
+✔ door transition discards the queued action and keys pressed during the fade (0.2974ms)
+✔ a grass encounter consumes the queued confirm without advancing battle dialogue (4.204ms)
+✔ blur-style input clearing and save restore discard pending field actions (0.9534ms)
+✔ touch menu callbacks use the same buffer and ordinary held walking still works (0.5545ms)
+✔ blocked facing still allows immediate investigation without walking (0.3059ms)
+✔ departure needs a healthy partner and completed guidance; all starter orders unlock only once (37.664ms)
+✔ unlocked western threshold and route entrance work both ways, including transition checkpoints (3.1051ms)
+✔ safe road never encounters; six completed grass steps start battle and lock field movement (13.4052ms)
+✔ each partner wins the first battle; capture survives reload without changing gift flags (5.5045ms)
+✔ failed catches consume one ball and a turn; empty bag and full party plus box cannot consume items (0.7278ms)
+✔ support moves and potions change combat state with bounded effects (3.5314ms)
+✔ a fainted partner passes to the next healthy member; defeat recovers at home and persists (11.5157ms)
+✔ mid-battle saves preserve settled HP and items; restoration cancels old battle and dialogue (1.7338ms)
+✔ guide and mother heal; guide replenishes only missing supplies without stacking rewards (0.8988ms)
+✔ legacy saves gain empty inventory; invalid inventory and gift combinations are rejected; test travel does not grant departure (0.8419ms)
+✔ active Jubilife guide offers real center, mart, resident and next-route choices (2.4811ms)
+✔ Oreburgh guide targets the real center, shop, resident and gym without teleporting (7.1075ms)
+✔ Oreburgh guide reacts to an earned first badge (3.9197ms)
+✔ Jubilife keeps research guidance as an explicit choice until observation delivery (0.8358ms)
+✔ growth carries residual XP, restores only gained HP and stops at level 25 (3.4866ms)
+✔ each starter route has an obtainable early grass partner strategy for the complete first gym (6.5161ms)
+✔ trainer capture is rejected without a turn; enemy change resets debuffs; retreat grants nothing (0.4594ms)
+✔ gym confirmation can cancel, accepts a healthy partner, and rejects no partner (3.7706ms)
+✔ final knockout commits all rewards once before dialogue and survives reload/revisit (16.3771ms)
+✔ nurse sets a persistent recovery point; gym defeat recovers there without badge (13.4704ms)
+✔ reload during the second opponent keeps earned XP but cancels the challenge without rewards (0.9108ms)
+✔ revision 4 save migration preserves party, inventory and flags while supplying new fields (0.6069ms)
+✔ save validation rejects invalid growth, trainer-only ownership and inconsistent badges (0.8222ms)
+✔ western route, expanded cities and both center/gym entrances round trip (16.8508ms)
+✔ forest perimeter trees preserve every map and keep all exit tiles clear (29.6287ms)
+✔ live renderer puts southern perimeter trees in front of the player, keeps northern trees behind and preserves saves (5.8208ms)
+✔ late forest evolution preserves learned Bug Bite, HP damage, identity and save validity (4.6158ms)
+✔ existing caught Kakuna recalls an attack and uses it in a battle turn without changing old save on load (2.9672ms)
+✔ cocoon evolution uses level seven and cannot add unregistered final stages (2.4964ms)
+✔ all four battle move targets stay visible above hints and cancel, and fourth touch selects slot 4 (6.7229ms)
+✔ four remembered moves fit above growth and party actions in summary (0.926ms)
+✔ battle party preview puts four remembered moves on two readable lines above the preview box (0.7807ms)
+✔ one through four learned slots round-trip while legacy defaults and slot order remain unchanged (8.1988ms)
+✔ learning appends or replaces a valid slot and rejects duplicate, skipped and out-of-range slots (0.4506ms)
+✔ blank-slot learning requires confirmation, saves once, and stale confirmations cannot append (1.71ms)
+✔ third and fourth move actions resolve their actual techniques and missing slots do not spend a turn (2.8736ms)
+✔ a full moveset compares and replaces the fourth slot without creating a fifth (0.6134ms)
+✔ battle cursor uses actual move count, remembers slot four, and cancel preserves it (1.2724ms)
+✔ four selected moves survive starter evolution without reordering (0.3274ms)
+✔ free exploration chooses the local landmark, then the actual same-region road to an unvisited landmark (10.4152ms)
+✔ an entered landmark stays available for leisurely inspection until leaving, without inventing completion flags (2.5764ms)
+✔ the aquarium itinerary reaches the real exit tiles and final speaking face while the goal stays stable on the road (3.6432ms)
+✔ unfinished story and critical recovery retain priority, and a fully visited region does not force another region (3.6845ms)
+✔ Engine objective navigation refreshes when a newly recorded landmark changes its destination (4.2714ms)
+✔ all entrance destinations are valid and not an immediate return warp (3.9816ms)
+✔ all town buildings, residents, and grass are reachable from home (3.6978ms)
+✔ small meadow is exactly 12 walkable tiles and has no event warp (0.2052ms)
+✔ western neighbor seals the sole exit, lake and building foundations are solid (1.1295ms)
+✔ old town saves migrate position while retaining party and researcher progress (5.4884ms)
+✔ new world saves retain their position and malformed data does not load (0.7315ms)
+✔ north/south frames match the inspected DS sprite order for walking and running (0.2788ms)
+✔ quick key taps commit one tile even when keyup precedes a rendered frame (1.6943ms)
+✔ dialogue prompt names the keyboard confirmation keys without conflicting with WASD movement (1.4477ms)
+✔ all three starters and Pikachu grant exactly once, survive save roundtrip (0.712ms)
+✔ Eterna preparation distinguishes opponent and recommended levels and leaves the challenge unchanged (2.4796ms)
+✔ equipped advantageous moves win over unselected learnable moves and only one partner is recommended (0.3068ms)
+✔ unselected available moves provide a learning path without claiming a future unlock is available (0.3901ms)
+✔ fainted recommended partners receive recovery advice and completed Gardenia does not repeat preparation (0.2434ms)
+✔ only the Eterna gym guide uses new preparation and advice stays compact (1.8338ms)
+✔ Goldenrod and Saffron neighbor panels resolve the station corridor without losing directions (0.8236ms)
+✔ radio upper floors use current party provenance, leave progress unchanged and reject stale navigation (2.6959ms)
+✔ Route 34 notebook distinguishes same-species outsiders from local boxed companions (0.2559ms)
+✔ station, radio floors, homes and Route 34 support engine walking and save restoration in one journey (61.7122ms)
+✔ HP danger colors include exact half and fifth boundaries; living 1 HP remains visible and fainted HP is empty (1.3763ms)
+✔ victory bar follows level-local experience through level-up and validated save restoration (5.0664ms)
+✔ reaching the current growth cap displays a full distinct bar even though saved experience resets to zero (0.6034ms)
+✔ growth names use consonant particles and preserve experience (1.6855ms)
+✔ first evolution and move messages contain resolved particles without changing milestones (0.5858ms)
+✔ post-battle learning focuses the newly unlocked move on a later page without teaching it (5.248ms)
+✔ early chained growth and multiple participants survive until final victory; existing school opens (0.8838ms)
+✔ gym growth preserves guide order, defaults to continue and grants rewards once (46.1011ms)
+✔ cancel keeps learned slots and rewards; restore invalidates victory and picker callbacks (2.0511ms)
+✔ interrupted chain never offers learning in the next battle (2.7844ms)
+✔ no growth keeps old gym choices and ordinary victory dialogue; picker cancel invalidates callback (1.1005ms)
+✔ summary renders the growth goal and keeps the move-school touch target (4.2367ms)
+✔ starter previews anticipate actual next technique and change after leveling (2.7425ms)
+✔ same-level evolution takes precedence and preview follows evolved learnset (0.457ms)
+✔ unimplemented evolutions and levels above the cap are never promised (0.5184ms)
+✔ all current species and levels produce compact immutable labels (24.9493ms)
+✔ legacy unevolved starters preview the next level that actually triggers evolution (1.267ms)
+✔ unselected natural moves remain visible until learned, including at the level cap (0.4506ms)
+✔ multiple unselected moves prefer the last natural learning entry without adding reward TMs (6.9823ms)
+✔ cart props use existing rock collision and preserve leader, trainers, guide and every floor connection (2.4747ms)
+✔ observation and launch cancellation preserve progress, and canceled callbacks cannot start a cart (1.8619ms)
+✔ wrong branch returns to the start without advancing, then both correct deliveries complete exactly once (4.005ms)
+✔ departure, replacing a save, battle, and changed puzzle state cancel a run without delayed commits (6.8492ms)
+✔ launch callbacks are single use and cannot act on another save or changed direction (5.0597ms)
+✔ old, in-flight, partial and completed saves round-trip without requiring puzzle flags or persisting animation (2.4473ms)
+✔ field interaction launches the cart and Engine updates finish it while field controls remain locked (2.7546ms)
+✔ gym coach connects optional advice to party without granting progress (5.3146ms)
+✔ leaving or replacing a save invalidates a pending coach shortcut (0.2794ms)
+✔ west road sign uses actual rare encounter and preserves safe-path directions (0.4084ms)
+✔ coach prioritizes injury and keeps every page compact (2.2679ms)
+✔ coach reports the current selected favorable attack from actual gym targets (0.6401ms)
+✔ coach recommends a currently learnable favorable move and the move-school path (1.6374ms)
+✔ coach reports a near future move separately from currently learnable moves (0.4213ms)
+✔ coach falls back to the actual S04 encounter and recognizes Machop (2.2522ms)
+✔ coach celebrates an already owned badge without combat advice or mutation (1.1913ms)
+✔ gym exit defaults to continuing and X restores the exact battle selection without cost (5.0083ms)
+✔ confirmed stop retains earned XP, HP, tools and money and the next challenge starts at opponent one (8.2396ms)
+✔ touch exit protects forced replacement and cancellation preserves the chosen healthy Pokemon (2.7394ms)
+✔ repeated menu submissions and stale button callbacks cannot quit through the confirmation (0.702ms)
+✔ wild escapes remain immediate and exit cannot interrupt an existing battle dialogue (1.055ms)
+✔ reloading at exit confirmation restores committed progress without a pending choice or reward (1.3021ms)
+✔ preparation counts injured and available Pokemon without using fainted levels or changing a save (5.7427ms)
+✔ each gym explains the earliest missing badge, while levels and potion counts do not become gates (0.6897ms)
+✔ free potion refill is only advised before the first badge (0.2407ms)
+✔ blocked challenges tell the actual unmet requirement and never offer a battle (1.3178ms)
+✔ cancel and touch preparation return preserve progression and dismiss the preview (2.0058ms)
+✔ preview draws the actual teams for every gym and confirms a low-level challenge with no upfront cost (2.6557ms)
+✔ restoring or replacing the dialogue clears the preview without granting rewards (1.2848ms)
+✔ four gym rewards appear after the final knockout and are awarded once before display (27.747ms)
+✔ reward guidance follows the next gym, recovery and the existing fourth-badge objective (30.1535ms)
+✔ reward rendering shows earned resources, badge count and a working touch route button (3.4405ms)
+✔ X and touch continue close the scene while preserving rewards and party state (1.5145ms)
+✔ capped money is reported as the actual gain including zero, and existing badges give no duplicate reward (0.7183ms)
+✔ reloading before or during reward display preserves prizes and invalidates pending actions (1.5589ms)
+✔ wild victory, partial gym victory, defeat and exit never show a badge reward (1.1745ms)
+✔ a gym knockout offers exactly one free healthy replacement and resets next-opponent participation (5.3843ms)
+✔ invalid free replacements preserve the opportunity, items, HP and experience (1.3019ms)
+✔ single healthy Pokemon, wild victories and the last opponent do not offer an unnecessary switch (0.6697ms)
+✔ Engine waits for the announcement, supports cancel and continue, and does not replay a free switch (1.9388ms)
+✔ touch selection switches without damage and remembering moves survives between opponents (1.3691ms)
+✔ reload during the choice preserves earned XP and grants neither a badge nor a pending free action (0.6731ms)
+✔ Hearthome theatre replaces only the gym house and fits its original drawing envelope and door (2.7679ms)
+✔ ghost hall keeps every map field and original actor and exit coordinates (1.5672ms)
+✔ low plinths and their ornament stay on exactly the three existing blocked footprints (0.4408ms)
+✔ Eterna exterior and interior and Veilstone room retain their own full drawing (5.0027ms)
+✔ Fantina uses the static indoor arena while other leaders and mountain wild battles keep theirs (6.9258ms)
+✔ hall scenery is below actors and HUD and all painters restore Canvas even if painting fails (9.4078ms)
+✔ Ilex marked roads lead only to real exits and the observation spur stays inside the forest (3.3496ms)
+✔ revision 20 Ilex floor saves relocate only tree overlaps without losing progress (64.1466ms)
+✔ Ilex retains original observation, signs and guide while each new grove is approachable (0.3866ms)
+✔ supply locations distinguish balls from potions throughout the active world and respect the departure gate (118.9957ms)
+✔ empty tools explain existing supply limits and default back without changing the save (2.4285ms)
+✔ choosing supply guidance exits the bag and reaches a real counter before any medicine is granted (5.6243ms)
+✔ X and touch back preserve the previous route while touch guidance selects the correct ball provider (1.3888ms)
+✔ manual destination changes and adventure tracking replace supply guidance without changing progress (1.2129ms)
+✔ restore clears the supply target event and invalidates an old pending choice (0.9351ms)
+✔ stocked items retain their normal use and supply prompts cannot interrupt battles or other panels (0.8626ms)
+✔ a seventh catch presents the caught species in the PC and survives save reload (15.2562ms)
+✔ optional road trainer victory pays once and re-visiting remembers it (11.8202ms)
+✔ collected passage item frees its collision only in the collecting save (2.3574ms)
+✔ learning an earned elemental move updates the selected slots and survives reload (2.2009ms)
+✔ all five encounter areas have reachable grass without blocking their exits (3.7285ms)
+✔ after the first badge recovery remains free and item guidance leads to a real shop (12.9943ms)
+✔ authored routes connect both cities with grass-free walking and reciprocal landings (8.461ms)
+✔ authored routes offer several accessible encounter clearings and preserve NPC and pickup access (4.5619ms)
+✔ all former ground coordinates and saved progress survive additive route expansion (2.0385ms)
+✔ authored routes have distinct paths and retain solid exterior borders except their exits (0.2915ms)
+✔ shop prices match the authored item database and transactions are atomic (1.652ms)
+✔ PC storage preserves individual values and old starter ownership across save round trips (1.8794ms)
+✔ PC rejects invalid indices, full storage and full parties without losing a Pokemon (1.8181ms)
+✔ shop and PC events require their real facility and pickups cannot be farmed (7.0884ms)
+✔ every same-region city edge has a real route, retaining forests and research transport (2.3348ms)
+✔ routes provide safe travel, accessible signs and residents, with pickups on template roads (48.2112ms)
+✔ all 35 towns have accessible shops and homes, without replacing gym entrances (78.9095ms)
+✔ visible high buildings have three distinct floors with safe reciprocal staircase landings (27.9771ms)
+✔ routes do not falsely mark either city arrived or visited, while upper rooms group under their city (2.2132ms)
+✔ shop labels use the existing DB potion price and all centers retain the PC event (1.7436ms)
+✔ every new background generates, stairs are painted, and pickup art respects the saved service flag (88.8704ms)
+✔ K18 keeps all six authored weights and original levels as evidence while exposing only save-compatible levels (4.6132ms)
+✔ every coast species has supported minimum/maximum-level attacks and captured saves round-trip without extra progression (20.7675ms)
+✔ new sprite files use pinned Platinum front/back assets with matching hashes and dimensions (9.8954ms)
+✖ coast capture updates the actual Pokedex habitat page and route guidance uses the runtime range (2.1771ms)
+✔ selects the standard Korean particle for final consonants and vowels (1.1045ms)
+✔ uses 로 after a vowel or rieul and 으로 after other final consonants (0.2549ms)
+✔ uses the explicit no-final fallback for unsupported endings (0.1932ms)
+✔ Maylene preparation reports opponent levels and limited current damage without changing health or challenge rules (9.3689ms)
+✔ drain warning matches the actual opening response to the existing Geodude (2.0089ms)
+✔ Ponyta learning advice changes to equipped advice after learning, never promises a future move (0.7922ms)
+✔ TM advice respects ownership and existing road companions have distinct target-specific roles (0.4841ms)
+✔ Maylene guide integrates read-only and completed battles follow the real research destination (1.3904ms)
+✔ techniques stop at .7 seconds and reject invalid clocks without touching Canvas (1.6886ms)
+✔ all effects are deterministic integer pixels within the arena and restore caller state (31.9924ms)
+✔ requested techniques have distinct geometry, not only a changed palette (1.4585ms)
+✔ attacks travel in both directions and finish at the specified sprite, defense surrounds its user (0.7658ms)
+✔ current named techniques are covered and unknown future moves get a safe impact (0.8558ms)
+✔ even a Canvas drawing error restores the caller context (0.7881ms)
+✔ all runtime rules have short descriptions without invented secondary effects (1.7302ms)
+✔ comparison is read-only, cancellation preserves moves, confirmation saves once and reloads (3.8237ms)
+✔ stale confirmations cannot change a replaced save, party member, moves or active battle (2.1191ms)
+✔ remembered moves show effects without offering a replacement (0.3742ms)
+✔ preferred new move opens its page and selects its item (1.495ms)
+✔ preferred move on the first page selects its third item (0.2261ms)
+✔ missing or remembered preferred moves keep ordinary page and cursor behavior (0.1587ms)
+✔ two-move Kakuna may replace Struggle without filling empty slots; stale add cannot run (6.7703ms)
+✔ replacement comparison can be cancelled without learning or writing; ordinary add remains available (1.4498ms)
+✔ objective continues inside a gym to a legal speaking tile without awarding progress (12.2148ms)
+✔ all expanded centers route to accessible nurse or counter interaction, not the blocked nurse tile (8.7915ms)
+✔ center healing updates the followed objective from local interaction back to the next gym (8.2222ms)
+✔ all existing progression objectives resolve to a reachable person including city story NPCs (4.8767ms)
+✔ missing or obstructed targets report blocked and manual city destinations retain arrival behavior (1.9491ms)
+✔ map renders local routes and direction guidance without requiring a warp, and restore preserves progress (6.3175ms)
+✔ the always-updated developer panel handles local walking routes without a warp (2.1189ms)
+✔ identifies only the exact Oreburgh cave map (0.984ms)
+✔ paints a 16px gravel tile at integer coordinates and restores the canvas (0.4129ms)
+✔ foreground adds foot dust while background tiles do not (0.1927ms)
+✔ paints a cave arena with the existing platform centers and cave palette (0.4194ms)
+✔ cave arena is selected by actual location without changing the outdoor arena (6.4828ms)
+✔ cave sign and trainer help explain gravel encounters and safe passage (2.08ms)
+✔ Oreburgh cave art branch is isolated to the authored map (31.4691ms)
+✔ Oreburgh cave art does not mutate the source map (8.8934ms)
+✔ Oreburgh cave keeps the existing warps and safe main route (2.623ms)
+✔ path hint stays on walkable non-prop tiles and points to the encounter patch (7.1069ms)
+✔ gym practice is off the direct leader route and every remaining floor and interaction stays reachable (6.1845ms)
+✔ revision 23 saves on new NPC tiles migrate safely without losing party or progress (7.4382ms)
+✔ gym trainers offer optional advice without cave directions, and stale or repeated choices cannot replace battle (4.7528ms)
+✔ both gym practices can be stopped and lost without victory flags or money, then retried (3.4025ms)
+✔ gym practice victory pays once across reload and acknowledges the first badge (9.3346ms)
+✔ Pallet machine compares actual party moves without damaging, rewarding or rearranging Pokemon (12.9061ms)
+✔ party pages, back choices, insufficient party and stale slot callbacks are safe (1.5356ms)
+✔ immune, fixed-damage and non-damaging trials do not promise ordinary multiplied damage (1.073ms)
+✔ practice uses detached healthy copies and preserves defense changes across real battle turns (18.3906ms)
+✔ practice victory grants neither growth nor money even to simulation copies; loss stays local (2.9507ms)
+✔ dialogue trial supports repeated turns, restart and cancellation while rejecting replayed actions (2.5716ms)
+✔ up/down compare every party member in order including fainted members, while left/right choose actions (17.346ms)
+✔ touch previous/next changes both information and moves without changing progress (2.7427ms)
+✔ browsing keeps the action selection and medicine applies only to the inspected member (0.7309ms)
+✔ lead changes retain the inspected Pokemon and survive save restore after browsing (1.0012ms)
+✔ stale browsing callbacks cannot run through dialogue, battle, movement, transitions or another panel (0.8677ms)
+✔ empty and single-member summaries do not expose unusable browsing buttons (0.2818ms)
+✔ all 33 passages add kind-specific outer loop openings only (19.3751ms)
+✔ each loop joins the existing route and keeps both exits reachable without grass (331.9742ms)
+✔ core props and NPC remain reachable and kind layouts differ (3.3357ms)
+✔ existing passage save coordinates survive parsing without a revision change (2.5176ms)
+✔ PC deposit and withdrawal use the species final consonant while preserving the exact Pokemon and save rules (5.717ms)
+✔ full party and full box can select later pages, compare, cancel and swap once (4.3955ms)
+✔ stale swap confirmations do not mutate another save, location, battle or selected individual (1.6693ms)
+✔ empty storage returns to PC without changing the save (0.2368ms)
+✔ party 6 and box 60 are both full but one-to-one swap succeeds (1.5463ms)
+✔ swap preserves the two Pokemon objects and every stored field (0.1669ms)
+✔ rejects non-integer or out-of-range slots without changing the save (0.3865ms)
+✔ rejects exchanging the last healthy party Pokemon with a fainted box Pokemon atomically (0.2314ms)
+✔ seen-only species shows actual habitats without granting capture or changing progress (2.1178ms)
+✔ gift partner without a wild pool does not invent a habitat (0.2608ms)
+✔ old detail action cannot open against a different save or an active battle (0.197ms)
+✔ species habitats use registered encounter nodes and deduplicate map aliases (1.475ms)
+✔ species habitats expose the runtime level range and weighted rarity (0.3698ms)
+✔ unregistered species have no promised habitat (0.131ms)
+✔ critical HP boundary and fainted reserves temporarily prioritize recovery without replacing story progress (7.4881ms)
+✔ recovery chooses existing local NPCs and follows real gym exits to a center (1.4315ms)
+✔ expanded port has its own working center even before the research ferry quest (0.4006ms)
+✔ escaping with critical HP shows recovery and actual route-guide healing restores the original objective (22.1526ms)
+✔ saving a recovery state preserves badges and fainted HP; nursing restores both party and next badge guidance (4.1989ms)
+✔ two named roads use the selected design pools without enabling other roads (8.6839ms)
+✔ each new road slot has playable moves, sprite evidence and survives capture and save reload (9.3922ms)
+✔ roadworker static dialogue follows the real integrated route (1.6787ms)
+✔ roadworker battle proposal gives one or two pages of correct route guidance (1.8388ms)
+✔ roadworker help and post-victory guidance keep the real route (0.5481ms)
+✔ Roark answers a threatening Bubble with damage and its preview uses post-hit enemy HP (7.0309ms)
+✔ Roark installs rocks only when its remaining HP exceeds the equipped move threat (3.4455ms)
+✔ other gyms, ordinary trainers and wild move selection preserve their existing behavior (1.1317ms)
+✔ drain, recoil and finishing attacks keep their HP previews when Roark changes tactics (1.8751ms)
+✔ defense and potion previews use the unchanged enemy HP for the Roark threat check (0.6434ms)
+✔ switch preview resets the incoming attacker stages before evaluating the Roark threat (0.8126ms)
+✔ runtime encounter pools exactly preserve selected design slot weights, levels and daytime policy (15.8475ms)
+✔ every registered species has actual front and back PNG assets (24.3339ms)
+✔ all reachable wild slots can be captured, persisted and registered in the Pokedex (7.0143ms)
+✔ full party sends captures to box and rejects only when both capacities are exhausted (1.2384ms)
+✔ legacy optional fields migrate and evolved starters remain valid in a box without permitting duplicate gifts (1.2022ms)
+✔ level-up unlocks a learnable move while retaining selection until the player replaces a slot (0.3503ms)
+✔ all four reward TMs require both the reward key and a compatible Platinum species (0.4063ms)
+✔ both sides use identical move damage rules, dual typing, resistance and immunity (2.3351ms)
+✔ Protect actually blocks one attack, repeat attempts can fail, and declarations carry technique frames (5.3432ms)
+✔ gym hazards damage replacements and trainer victory pays exactly once without allowing capture (1.5606ms)
+✔ draining, weight-based and fixed-damage rules have meaningful distinct effects (0.4236ms)
+✔ save rejects corrupted box, dex and move payloads while keeping story flags strict (0.6041ms)
+✔ first evolution preserves selected moves and increases rather than resets attack strength (0.5168ms)
+✔ battle and growth snapshots detach selected move arrays and do not revive fainted participants (0.7228ms)
+✔ each starter can lead a locally obtainable prepared party through all later gyms with two potions (17.5388ms)
+✔ gym order cannot be skipped and wins, reload and revisits do not duplicate rewards (18.8585ms)
+✔ all new recovery centers persist and recover a gym defeat to a valid tile (1.4189ms)
+✔ forest and mountain encounters follow their design pools, grant level XP and preserve location (2.9867ms)
+✔ records require four badges and delivery completes once while world travel stays open (30.8179ms)
+✔ Veilstone guide stops directing a completed observation delivery (6.7945ms)
+✔ Sinnoh city guides do not direct the player to an already won gym (3.0029ms)
+✔ free ferry cancellation, outbound reload and return preserve party, supplies and funds (2.3206ms)
+✔ revision 5 capped partners and first badge migrate without losing valid progress (0.5057ms)
+✔ save rejects skipped badges, missing TM, unearned records and invalid story dependencies (0.5823ms)
+✔ every integrated story map warp executes with a legal arrival and checkpoint (33.2157ms)
+✔ existing city advice before the completed target and each three-second clue remain unchanged (10.3129ms)
+✔ Eterna after the third badge points to the next missing gym instead of replaying Fantina (0.3847ms)
+✔ both cities follow the existing research and ferry milestones without changing progress (1.2184ms)
+✔ city guidance does not heal injured parties or replace the milestone with a recovery instruction (0.1774ms)
+✔ mother recognizes every valid partner combination before and after reload without changing progress (67.9866ms)
+✔ every prop can be reached from the map entrance and investigated using normal movement (62.0155ms)
+✔ starter declaration boundaries stay deterministic, clipped and restore Canvas (8.8642ms)
+✔ projectiles leave the attacker toward either target and have distinct shapes (1.1378ms)
+✔ starter Canvas state restores even if drawing throws (0.5205ms)
+✔ battleTop keeps a zero HP target visible, uses shown HP and stops recoil during HP phase (0.9127ms)
+✔ three declarations have exact preparation, contact and afterglow boundaries (29.5404ms)
+✔ damage holds old HP then interpolates only display HP and keeps a knockout visible for the whole page (11.9162ms)
+✔ other moves, unrelated effects and invalid times cannot accidentally inherit presentation (0.9108ms)
+✔ confirm, touch-confirm and X reveal text but cannot skip or queue the two waits (21.0036ms)
+✔ raw turn results, snapshot isolation and reload remain independent of presentation (3.0757ms)
+✔ ordinary techniques still advance without elapsed time and appended pages never reuse the last frame (0.5297ms)
+✔ X cannot execute a later reward choice while a selected technique is being presented (10.661ms)
+✔ first meeting tells mother and adventure story before offering the starter (0.8813ms)
+✔ Pikachu received first gets the greedy joke and blocks every normal starter (0.2749ms)
+✔ Pikachu after a starter is acknowledged without another starter grant (0.1462ms)
+✔ completed introduction is not repeated when reconsidering the starter (0.0979ms)
+✔ three save slots are independent and reset backup keeps the previous party (3.4972ms)
+✔ export/import roundtrip retains position, Pikachu and dialogue flags; raw saves also load (2.8077ms)
+✔ malformed and unsupported files do not become loadable (0.8949ms)
+✔ saving during a door transition produces the arrival map, not a stuck door tile (0.5454ms)
+✔ restoring during movement or a menu clears pending state and cancels the old warp (1.5464ms)
+✔ Struggle ignores type in damage, preview and resolved dialogue; ordinary immunity remains (3.9933ms)
+✔ recoil knockout ends action immediately with zero, one or several healthy reserves (3.225ms)
+✔ player simultaneous knockout gives defeat without reserves, otherwise one terminal reward (1.6271ms)
+✔ simultaneous knockout in a team battle requires replacement then allows next action (0.7811ms)
+✔ automatic replacement after recoil still takes entry hazard damage (0.4605ms)
+✔ enemy recoil resolves single and simultaneous knockouts and consumes a potion only once (1.1406ms)
+✔ enemy recoil in a team battle advances once and forced entry clears both pending states (0.3087ms)
+✔ surviving recoil preview includes its HP cost and agrees with final HP (0.2821ms)
+✔ blocking enemy Struggle preserves its HP and spends no item (3.6562ms)
+✔ manual switching costs one enemy attack and keeps target debuffs, party order and items (8.1174ms)
+✔ invalid, current and fainted switches spend no turn; a knocked out replacement falls back once (6.4155ms)
+✔ both healthy participants receive a share of victory experience after switching (2.7044ms)
+✔ lead selection preserves all Pokemon data through saves and the next encounter uses that lead (3.5292ms)
+✔ field potion heals at most 20, consumes exactly one, and does not revive or waste stock (0.4529ms)
+✔ battle menu cancellation spends no turn and summary actions cannot mutate during dialogue or battle (2.2082ms)
+✔ selected attack applies the current roster type matchup and matches its hint (7.6811ms)
+✔ wild capture dialogue and playback label use the actual opponent species (2.7599ms)
+✔ one world reaches every active map from the bedroom after departure (6.7155ms)
+✔ four expanded city gym doors have reachable approaches and reciprocal safe exits (14.489ms)
+✔ all fourteen legacy city aliases migrate to safe expanded coordinates without losing progress (1.6999ms)
+✔ legacy exploration is merged once into main progress and its source storage stays intact (1.1624ms)
+✔ every expanded center heals the adventure party, supplies potions and becomes a safe return point (9.0625ms)
+✔ graphic test travel can save at every active map without granting adventure progress (12.4684ms)
+✔ training hall follows the existing urban envelope and door; ordinary urban houses remain unchanged (2.9411ms)
+✔ wooden hall preserves the complete map and draws its mat lane only on valid floor through the exit (1.675ms)
+✔ equipment platforms and every decorative pixel stay inside the original three blocked rectangles (0.441ms)
+✔ the previously completed greenhouse and ghost hall keep their full interior paintings (3.5958ms)
+✔ Maylene uses static dojo scenery and other leaders, mountain and outdoor battles retain their backgrounds (8.6678ms)
+✔ dojo paints behind both actors and HUD; all painters restore Canvas even on drawing failure (1.5851ms)
+✔ terminal artwork fits the original urban landmark envelope at integer pixels and preserves all map and room data (2.8621ms)
+✔ the terminal follows supplied building coordinates instead of hardcoding its current city position (0.8882ms)
+✔ only Vermilion passenger terminal receives the new facade; other city halls and homes keep their exact painter (1.2268ms)
+✔ terminal painter always restores the caller Canvas on a drawing failure (0.5242ms)
+✔ Viridian uses exactly the authored daytime forest pool and keeps nearby cities peaceful (4.1824ms)
+✔ both optional grass patches are reachable and leave both marked forest routes and old positions intact (2.5612ms)
+✔ all forest slots at both level limits capture into valid saves with their own supported moves (3.2296ms)
+✔ guide connects real encounters to safe travel and eight new Platinum sprites have verified provenance (5.791ms)
+✔ Viridian Forest has two marked routes around its central grove and accessible signs and guide (3.8094ms)
+✔ revision 19 Viridian Forest saves preserve progress and repair only newly blocked trees (27.2501ms)
+✔ Viridian Forest retains observation and exit IDs while its existing guide explains wild encounters (0.572ms)
+✔ forest records distinguish seen, caught, unknown and include boxed ownership without changing save (2.3504ms)
+✔ real exhibit routes to optional notebook, returns after reading, opens party and rejects stale callbacks (3.1802ms)
+✔ Viridian facility supplies and all three journeys select walkable routes without changing save (8.5551ms)
+✔ actual capture resolution preserves a forest Pikachu without setting the researcher gift flag (4.8706ms)
+✔ repeated forest catches in the party and box round-trip with a starter or gifted Pikachu (1.2019ms)
+✔ legacy researcher gift provenance, unique gift and flag consistency remain enforced (0.9992ms)
+✔ forest Pikachu cannot substitute for a departure gift or appear before departure clearance (0.4063ms)
+ℹ tests 630
+ℹ suites 0
+ℹ pass 621
+ℹ fail 9
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9887.8116
+
+✖ failing tests:
+
+test at tests\encounter-guidance.test.ts:21:1
+✖ every integrated passage gives truthful sign and traveller guidance (6.7582ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /도시 사이를 걷기 좋은 길/. Input:
+  
+  '신오 2번도로 · 영원숲 남쪽길\n' +
+    '왼쪽은 축복시티, 오른쪽은 영원숲입니다.\n' +
+    '나무 사이 굽은 길을 따라가세요.\n' +
+    '야생 포켓몬은 영원숲의 긴 풀에서\n' +
+    '만날 수 있어요. 이 도로에는 없어요.\n' +
+    '숲 안의 안내원에게 동료를 쉬게 하고\n' +
+    '긴 풀이나 큰길을 골라 여행하세요.'
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\encounter-guidance.test.ts:41:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '신오 2번도로 · 영원숲 남쪽길\n왼쪽은 축복시티, 오른쪽은 영원숲입니다.\n나무 사이 굽은 길을 따라가세요.\n야생 포켓몬은 영원숲의 긴 풀에서\n만날 수 있어요. 이 도로에는 없어요.\n숲 안의 안내원에게 동료를 쉬게 하고\n긴 풀이나 큰길을 골라 여행하세요.',
+    expected: /도시 사이를 걷기 좋은 길/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests\explore-interiors.test.ts:26:1
+✖ every exhibit is investigated through player facing and confirm, repeatedly without rewards (26.6383ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '금빛 라디오'
+  - '라디오 조정석'
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-interiors.test.ts:63:28)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '금빛 라디오',
+    expected: '라디오 조정석',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-layouts.test.ts:10:1
+✖ six towns and five trails have distinct investigable arrangements while facility doors stay aligned (4.1985ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  49 !== 45
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-layouts.test.ts:28:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 49,
+    expected: 45,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-outdoors.test.ts:11:1
+✖ original outdoor maps and added passages expose solid signs for actual exterior exits (2.8346ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  4 !== 3
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-outdoors.test.ts:14:43)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 4,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-outdoors.test.ts:22:1
+✖ every outdoor object and sign is investigated by facing a reachable surface without rewards (77.4009ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      '식은 용암이 여러 겹으로 굳어 있다.\n연구소 앞 돌과 같은 붉은 결이다.',
+  +   '표면을 살펴보고 관찰 내용을 적었다.\n연구소의 표본과 비교해 보자.'
+    ]
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-outdoors.test.ts:30:108)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '식은 용암이 여러 겹으로 굳어 있다.\n연구소 앞 돌과 같은 붉은 결이다.', '표면을 살펴보고 관찰 내용을 적었다.\n연구소의 표본과 비교해 보자.' ],
+    expected: [ '식은 용암이 여러 겹으로 굳어 있다.\n연구소 앞 돌과 같은 붉은 결이다.' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-pokemon.test.ts:23:1
+✖ all town Pokemon react from four directions repeatedly without changing ownership or progress (11.4381ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   '삐삐!\n꽃밭 가장자리에서 가볍게 발을 구른다.',
+  +   '다가오는 동료를 보고 귀를 움직인다.\n꽃밭을 피해 산책길 쪽으로 몸을 돌린다.'
+  -   '삐삐!\n꽃밭 가장자리에서 산책길을 바라본다.'
+    ]
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-pokemon.test.ts:29:117)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '삐삐!\n꽃밭 가장자리에서 가볍게 발을 구른다.', '다가오는 동료를 보고 귀를 움직인다.\n꽃밭을 피해 산책길 쪽으로 몸을 돌린다.' ],
+    expected: [ '삐삐!\n꽃밭 가장자리에서 산책길을 바라본다.' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-residents.test.ts:25:1
+✖ each resident remains approachable and declining optional requests preserves progress (31.652ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   '삐삐가 꽃을 밟지 않도록\n산책길 가장자리를 함께 돌보지.'
+  -   '오래된 석상 곁에도 새잎이 돋지.\n같은 길을 걸어도 볼 것이 달라진단다.'
+    ]
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-residents.test.ts:30:86)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '삐삐가 꽃을 밟지 않도록\n산책길 가장자리를 함께 돌보지.' ],
+    expected: [ '오래된 석상 곁에도 새잎이 돋지.\n같은 길을 걸어도 볼 것이 달라진단다.' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-roaming.test.ts:15:1
+✖ all 35 Pokemon roam connected clear tiles without overlapping doors, people or minimap hits (141.5332ms)
+  AssertionError [ERR_ASSERTION]: shared anchor remains unchanged
+  + actual - expected
+  
+    {
+  +   x: 30,
+  +   y: 35
+  -   x: 22,
+  -   y: 16
+    }
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-roaming.test.ts:27:54)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: { x: 30, y: 35 },
+    expected: { x: 22, y: 16 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\kanto-coast-encounters.test.ts:44:1
+✖ coast capture updates the actual Pokedex habitat page and route guidance uses the runtime range (2.1771ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      [
+        '갈색–블루 해안길',
+        22,
+        25
+      ],
+  +   [
+  +     '성도 34번도로',
+  +     22,
+  +     24
+  +   ]
+    ]
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\kanto-coast-encounters.test.ts:48:54)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ [ '갈색–블루 해안길', 22, 25 ], [ '성도 34번도로', 22, 24 ] ],
+    expected: [ [ '갈색–블루 해안길', 22, 25 ] ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

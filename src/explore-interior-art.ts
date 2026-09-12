@@ -1,4 +1,5 @@
 import type { Furnishing,TourInterior,RoomStyle } from './explore-interiors';
+import type { GameMap } from './types';
 type Images=Record<string,HTMLImageElement|HTMLCanvasElement>;
 export const HALL_SAMPLES={tile:['lab-reference',80,80,16,16],wood:['home-reference',160,80,16,16],shelf:['lab-reference',42,20,30,32],desk:['lab-reference',24,55,48,24],monitor:['home-reference',94,48,30,28],window:['lab-reference',105,13,26,17]} as const;
 function sample(c:CanvasRenderingContext2D,images:Images,key:keyof typeof HALL_SAMPLES,x:number,y:number){const [name,sx,sy,w,h]=HALL_SAMPLES[key];c.drawImage(images[name],sx,sy,w,h,x,y,w,h);}
@@ -35,7 +36,12 @@ export function paintTourFurnishing(c:CanvasRenderingContext2D,images:Images,roo
     r(5,27,w-10,5,'#586a79');for(let i=0;i<Math.floor((w-10)/6);i++)r(6+i*6,28,3,2,i%2?'#d7c48b':'#89b9a9');
   }else if(o.kind==='workbench'){
     c.save();c.beginPath();c.rect(x,y,w,h-5);c.clip();sample(c,images,'desk',x,y+8);c.restore();
-    if(o.name.includes('학생')){r(10,11,13,10,'#f8f3da');r(11,12,1,8,'#b6977b');r(14,14,7,1,'#839ea2');r(28,13,2,9,'#ae755f');}
+    if(o.name==='숲 관찰 수첩'){
+      r(8,10,29,17,'#756c4e');r(9,9,27,16,'#f5efd5');r(22,10,1,14,'#b8a984');
+      r(12,12,7,5,'#7b9f70');r(15,16,1,5,'#547957');
+      for(let row=0;row<3;row++)r(25,12+row*4,8,1,'#8e9b85');
+      r(39,12,2,13,'#ae755f');r(39,23,2,2,'#e0ce9c');
+    }else if(o.name.includes('학생')){r(10,11,13,10,'#f8f3da');r(11,12,1,8,'#b6977b');r(14,14,7,1,'#839ea2');r(28,13,2,9,'#ae755f');}
     else{r(7,12,3,13,'#687e85');r(5,11,8,4,'#b8c7bd');r(21,14,w-27,3,'#607078');r(24,19,3,6,'#aa7352');}
   }else
   if(o.kind==='healer'){
@@ -96,7 +102,26 @@ export function paintTourFurnishing(c:CanvasRenderingContext2D,images:Images,roo
   c.restore();
 }
 
-export function paintTourInterior(c:CanvasRenderingContext2D,images:Images,room:TourInterior){
+function paintExpandedTourInterior(c:CanvasRenderingContext2D,images:Images,room:TourInterior,map:GameMap){
+  const [wall,floor,,accent]=PALETTES[room.style],wood=['shrine','stage','school','workshop','dojo','gallery'].includes(room.style);
+  box(c,0,0,map.width*16,map.height*16,'#172b34');
+  for(let y=0;y<map.height;y++)for(let x=0;x<map.width;x++){
+    const px=x*16,py=y*16;
+    if(map.walkable[y]?.[x]==='.'){
+      sample(c,images,wood?'wood':'tile',px,py);
+      if(!wood){c.save();c.globalAlpha=.2;box(c,px,py,16,16,floor);c.restore();}
+    }else{
+      box(c,px,py,16,16,y<3?wall:'#354746');
+      if(y===2){box(c,px,py+10,16,6,accent);box(c,px+1,py+10,14,2,'#e0d5b9');}
+    }
+  }
+  for(let x=3;x<map.width-3;x+=4){sample(c,images,'window',x*16+3,17);box(c,x*16+1,35,30,4,accent);}
+  const door=map.warps.find(w=>!w.to.startsWith(map.id.split('_2f')[0].split('_3f')[0]));
+  if(door){box(c,door.x*16,door.y*16-16,16,32,'#865d57');box(c,door.x*16+2,door.y*16-14,12,30,'#bb816e');}
+}
+
+export function paintTourInterior(c:CanvasRenderingContext2D,images:Images,room:TourInterior,map?:GameMap){
+  if(map&&map.width>16){paintExpandedTourInterior(c,images,room,map);return;}
   const [wall,floor,,accent]=PALETTES[room.style],style=room.style;
   const wood=['shrine','stage','school','workshop','dojo','gallery'].includes(style);
   box(c,0,0,256,224,'#172b34');box(c,28,10,200,184,'#354746');

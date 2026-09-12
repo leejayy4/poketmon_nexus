@@ -12,8 +12,8 @@ import { TOWN_REVISION } from '../src/town';
 const tick=(g:Engine,seconds:number)=>{for(let i=0;i<Math.ceil(seconds/.05);i++)g.update(.05);};
 function setup(id='tour_jubilife'){const g=new Engine();g.exploring=true;g.save=g.freshSave();g.exploreTo(id);return g;}
 
-test('all 35 Pokemon roam connected clear tiles without overlapping doors, people or minimap hits',()=>{
-  for(const [id,n]of Object.entries(TOUR_POKEMON)){
+for(const [id,n]of Object.entries(TOUR_POKEMON))test('Pokemon roams clear tiles without obstructing exits or markers: '+id,()=>{
+    const anchor={x:n.x,y:n.y};
     const base=TOUR_MAPS[id as TourId],r=new TownRoaming(base,n,{x:14,y:11}),seen=new Set<string>();
     assert(r.tiles.length>=3,id+' roaming space');
     for(const p of r.tiles){
@@ -24,8 +24,7 @@ test('all 35 Pokemon roam connected clear tiles without overlapping doors, peopl
       for(const m of markers.filter(a=>a.id!==n.id)){const b=tourMarkerBounds(map,m);assert(self.x+self.w<=b.x||b.x+b.w<=self.x||self.y+self.h<=b.y||b.y+b.h<=self.y,id+' marker separation');}
     }
     for(let i=0;i<600;i++){r.update(.05,{x:14,y:11},undefined,false);seen.add(r.npc.x+','+r.npc.y);assert(r.tiles.some(p=>p.x===r.npc.x&&p.y===r.npc.y));}
-    assert(seen.size>=3,id+' actual walking');assert.deepEqual({x:n.x,y:n.y},{x:22,y:16},'shared anchor remains unchanged');
-  }
+    assert(seen.size>=3,id+' actual walking');assert.deepEqual({x:n.x,y:n.y},anchor,'authored anchor remains unchanged');
 });
 
 test('moving Pokemon reserve both endpoints and release the previous tile on arrival',()=>{
@@ -46,8 +45,8 @@ test('menus and dialogue pause roaming and nearby conversations remain available
   g.save.player={x:14,y:11,facing:'down'};tick(g,3);assert.notDeepEqual({x:r.npc.x,y:r.npc.y},{x:frozen.x,y:frozen.y});
 });
 
-test('revision 15 and current saves on the former fixed anchor reload exactly and spawn the Pokemon beside the player',()=>{
-  for(const revision of [15,TOWN_REVISION])for(const id of Object.keys(TOUR_POKEMON)){
+for(const id of Object.keys(TOUR_POKEMON))test('old and current saves at the former anchor reload beside the Pokemon: '+id,()=>{
+  for(const revision of [15,TOWN_REVISION]){
     const g=setup(id);g.save.player={x:22,y:16,facing:'left'};g.save.steps=234;
     g.save.worldRevision=revision;
     const parsed=parseSave(JSON.stringify(g.save))!;assert(parsed);assert.equal(parsed.worldRevision,TOWN_REVISION);

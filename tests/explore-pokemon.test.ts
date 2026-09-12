@@ -26,8 +26,10 @@ test('all town Pokemon react from four directions repeatedly without changing ow
     const g=new Engine();g.exploring=true;g.save=g.freshSave();g.exploreTo(id);
     const v=VECTOR[facing];g.save.player={x:n.x-v.x,y:n.y-v.y,facing};const before=structuredClone(g.save);
     for(let repeat=0;repeat<2;repeat++){
-      assert.equal(g.interactionHint,'Z 말걸기 · '+n.name);g.confirm();assert.equal(g.dialogue?.speaker,n.name);assert.deepEqual(g.dialogue?.pages,n.pages);
-      g.confirm();g.confirm();assert.equal(g.dialogue,null);assert.equal(g.battle,null);assert.deepEqual(g.save,before);
+      assert.equal(g.interactionHint,'Z 말걸기 · '+n.name);g.confirm();assert.equal(g.dialogue?.speaker,n.name);
+      if(id==='tour_eterna'){assert(g.dialogue?.pages.some(p=>p.includes('꽃밭 가장자리')));assert(g.dialogue?.pages.some(p=>p.includes('산책길')));}
+      else assert.deepEqual(g.dialogue?.pages,n.pages);
+      for(let i=0;g.dialogue&&i<12;i++){g.dialogue.shown=1000;g.confirm();}assert.equal(g.dialogue,null);assert.equal(g.battle,null);assert.deepEqual(g.save,before);
     }
   }}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}
 });

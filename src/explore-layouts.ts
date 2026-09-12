@@ -1,6 +1,7 @@
 import type { TourFeature } from './explore-world';
 import { ETERNA_FOREST_FEATURES,ETERNA_FOREST_PATHS } from './eterna-forest-layout';
 import { CORONET_FEATURES,CORONET_PATHS } from './coronet-layout';
+import { ILEX_FOREST_FEATURES,ILEX_FOREST_PATHS } from './ilex-forest-layout';
 
 interface TourLayout { features:TourFeature[]; paths:[number,number,number,number][]; boardwalks?:[number,number,number,number][] }
 export const TOUR_LAYOUTS:Record<string,TourLayout>={
@@ -8,10 +9,11 @@ export const TOUR_LAYOUTS:Record<string,TourLayout>={
     features:[
       {x:4,y:4,w:4,h:4,kind:'grove',name:'햇살이 비치는 숲길 나무',description:'나무 너머로 북쪽 흙길이 보인다.\n금빛시티로 가는 길이다.'},
       {x:7,y:11,w:6,h:3,kind:'grove',name:'남쪽 나무 그늘',description:'산책길이 나무 그늘에서 끝난다.\n출구는 북쪽과 동쪽 흙길에 있다.'},
-      {x:14,y:4,w:3,h:2,kind:'grove',name:'고동마을 쪽 나무',description:'낮은 가지 아래로 표지가 보인다.\n동쪽 출구는 고동마을로 이어진다.'},
+      {x:14,y:4,w:3,h:2,kind:'grove',name:'깊은 숲 들머리 나무',description:'낮은 가지 아래로 옛 표지가 보인다.\n동쪽 흙길은 깊은 숲으로 이어진다.'},
+      ...ILEX_FOREST_FEATURES,
     ],
     // Only the north and east roads reach a boundary; the southwest spur ends at a grove.
-    paths:[[9,3,2,5],[9,8,9,2],[9,9,2,2],[10,5,3,1],[4,9,5,2],[4,10,2,5],[4,14,7,1]],
+    paths:[[9,3,2,5],[9,8,9,2],[9,9,2,2],[10,5,3,1],[4,9,5,2],[4,10,2,5],[4,14,7,1],...ILEX_FOREST_PATHS],
   },
   tour_desert:{
     features:[

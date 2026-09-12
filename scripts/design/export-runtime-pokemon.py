@@ -29,7 +29,11 @@ def rows(name):
 def read(name):
     return json.loads((DB / (name + '.json')).read_text(encoding='utf8'))
 
-pools = [{k:r[k] for k in ('id','node','levels','method','condition')} | {'slots':[{k:s[k] for k in ('speciesId','weight')} for s in r['slots']]} for r in read('encounters') if r['id'] in ['ENC-001','ENC-002','ENC-003','ENC-004','ENC-007','ENC-008','ENC-016','ENC-039']]
+pools = [{k:r[k] for k in ('id','node','levels','method','condition')} | {'slots':[{k:s[k] for k in ('speciesId','weight')} for s in r['slots']]} for r in read('encounters') if r['id'] in ['ENC-001','ENC-002','ENC-003','ENC-004','ENC-007','ENC-008','ENC-016','ENC-027','ENC-039']]
+# Authored, geographically specific playable subsets; keep evidence and project
+# tuning separate from the large design-node pools.
+local_pools = ROOT / 'scripts/design/runtime-local-pools.json'
+pools.extend(json.loads(local_pools.read_text(encoding='utf8')))
 # Preserve the authored range as evidence while every captured runtime Pokemon
 # remains valid under the existing level-25 growth/save contract.
 for pool in pools:
@@ -43,18 +47,22 @@ names = {int(r['move_id']):r['name'] for r in rows('move_names') if r['local_lan
 types = {int(r['type_id']):r['name'] for r in rows('type_names') if r['local_language_id']=='3'}
 # Every exposed move has a runtime rule. Secondary status chances, crits, PP and
 # accuracy are intentionally not simulated; these damage moves use direct damage.
-damage = set('pound karate-chop gust wing-attack slam headbutt tackle scratch vine-whip bite ember water-gun bubble razor-leaf thunder-shock confusion quick-attack rock-throw slash spark astonish lick magical-leaf force-palm aerial-ace air-cutter bug-bite hyper-fang rapid-spin water-pulse shadow-ball'.split())
+damage = set('pound poison-sting karate-chop gust wing-attack slam headbutt tackle scratch vine-whip bite ember water-gun bubble razor-leaf thunder-shock confusion quick-attack rock-throw slash spark astonish lick magical-leaf force-palm aerial-ace air-cutter bug-bite hyper-fang rapid-spin water-pulse shadow-ball'.split())
 rules = {s:'damage' for s in damage}
 rules.update({s:'drain' for s in ['absorb','mega-drain','leech-life','drain-punch']})
 rules.update({'growl':'attackDrop','charm':'attackDrop','tail-whip':'defenseDrop','leer':'defenseDrop','harden':'defenseUp','withdraw':'defenseUp','defense-curl':'defenseUp','protect':'protect','detect':'protect','teleport':'escape','splash':'nothing','stealth-rock':'hazard','grass-knot':'weightDamage','low-kick':'weightDamage','struggle':'struggle','dragon-rage':'fixedDamage','seismic-toss':'levelDamage'})
 move_rows = {int(r['id']):r for r in rows('moves') if r['identifier'] in rules}
 moves = {names[i]:{'id':i,'slug':r['identifier'],'type':types[int(r['type_id'])],'power':int(r['power'] or 0),'priority':int(r['priority']),'rule':rules[r['identifier']]} for i,r in move_rows.items()}
 learn = {i:[] for i in ids}
+learnset_overrides = {519:14, 548:14}  # Black 2 / White 2 for these Gen V species only.
 tm = {i:[] for i in ids}
 tm_slugs = {'stealth-rock','grass-knot','shadow-ball','drain-punch'}
 for r in rows('pokemon_moves'):
     i, m = int(r['pokemon_id']), int(r['move_id'])
-    if i not in ids or r['version_group_id']!='9' or m not in move_rows:
+    if i not in ids or int(r['version_group_id'])!=learnset_overrides.get(i,9) or m not in move_rows:
+        continue
+    # This rollout adds Weedle's basic attack; preserve other species' loadouts.
+    if move_rows[m]['identifier'] == 'poison-sting' and i != 13:
         continue
     if r['pokemon_move_method_id']=='1' and int(r['level'])<=25:
         entry = {'level':int(r['level']), 'move':names[m]}
@@ -67,15 +75,19 @@ for p in read('pokemon'):
     i=p['nationalId']
     if i in ids:
         species[i] = {k:p[k] for k in ('name','types','stats') } | {'weight':weights[i], 'learnset':sorted(learn[i],key=lambda r:(r['level'],r['move'])), 'tm':sorted(tm[i])}
-evolutions = [{'from':r['from'],'to':r['to'],'level':int(r['sourceRule']['minimum_level'])} for r in read('evolutions') if (r['from'],r['to']) in [(1,2),(4,5),(7,8)]]
+evolutions = [{'from':r['from'],'to':r['to'],'level':int(r['sourceRule']['minimum_level'])} for r in read('evolutions') if (r['from'],r['to']) in [(1,2),(4,5),(7,8),(10,11),(13,14)]]
 chart = {}
 for r in rows('type_efficacy'):
     a,b=int(r['damage_type_id']),int(r['target_type_id'])
     if a in types and b in types and int(r['damage_factor'])!=100:
         chart.setdefault(types[a],{})[types[b]]=int(r['damage_factor'])/100
-out = {'referenceCommit':SHA,'learnsetVersion':'platinum','timePolicy':'day-only','limits':'Up to four selected moves; direct damage ignores secondary effects, accuracy and PP. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. Only first starter evolutions enabled.','pools':pools,'ownable':owned,'species':species,'moves':moves,'evolutions':evolutions,'typeChart':chart}
-(ROOT/'src/runtime-pokemon-data.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+out = {'referenceCommit':SHA,'learnsetVersion':'platinum','timePolicy':'day-only','limits':'Up to four selected moves; direct damage ignores secondary effects, accuracy and PP. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. First starter and Caterpie/Weedle cocoon evolutions enabled.','pools':pools,'ownable':owned,'species':species,'moves':moves,'evolutions':evolutions,'typeChart':chart}
 manifest={'dataCommit':SHA,'learnsetVersionGroup':9,'sources':[],'sprites':[]}
+out['learnsetOverrides']={str(i):'black-2-white-2' for i in learnset_overrides if i in ids}
+out['limits']+=' Pidove and Petilil use Black 2/White 2 acquisition; their evolutions are not enabled.'
+(ROOT/'src/runtime-pokemon-data.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+manifest['learnsetVersionGroupOverrides']={str(i):v for i,v in learnset_overrides.items() if i in ids}
+manifest['sources'].append({'file':'scripts/design/runtime-local-pools.json','sha256':hashlib.sha256(local_pools.read_bytes()).hexdigest()})
 for name in ['pokemon_moves','moves','move_names','type_names','type_efficacy','pokemon']:
     path=CACHE/(name+'.csv')
     manifest['sources'].append({'file':name+'.csv','url':f'https://raw.githubusercontent.com/PokeAPI/pokeapi/{SHA}/data/v2/csv/{name}.csv','sha256':hashlib.sha256(path.read_bytes()).hexdigest()})
@@ -86,7 +98,8 @@ if '--assets' in sys.argv:
     def sprite(job):
         i,back=job
         filename=f'pokemon-{"back-" if back else ""}{i}.png'
-        url=f'https://raw.githubusercontent.com/PokeAPI/sprites/{SPRITE_SHA}/sprites/pokemon/versions/generation-iv/platinum/{"back/" if back else ""}{i}.png'
+        version='generation-v/black-white' if i in learnset_overrides else 'generation-iv/platinum'
+        url=f'https://raw.githubusercontent.com/PokeAPI/sprites/{SPRITE_SHA}/sprites/pokemon/versions/{version}/{"back/" if back else ""}{i}.png'
         path=ROOT/'public/assets'/filename
         # Existing assets belong to earlier work; retain them verbatim.
         if not path.exists(): path.write_bytes(urllib.request.urlopen(url,timeout=60).read())

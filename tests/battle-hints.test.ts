@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { newSave } from '../src/save';
-import { grantPokemon } from '../src/pokemon';
+import { grantPokemon, BOX_CAPACITY } from '../src/pokemon';
 import { maxHpAtLevel } from '../src/growth';
 import {battleTurn,playerDamage,enemyDamage } from '../src/battle';
 import {createBattle} from './runtime-battle-fixture';
@@ -54,4 +54,24 @@ test('catch preview follows HP threshold and eligibility without consuming resou
   const gym=createBattle(s,'gym')!;gym.menu='bag';assert.match(battleHint(s,gym)[0],/포획 불가/);
   const wild=createBattle(s)!;wild.menu='bag';s.inventory.pokeBalls=0;assert.match(battleHint(s,wild)[0],/없습니다/);
   while(s.party.length<6)s.party.push({...s.party[1]});s.inventory.pokeBalls=1;assert.match(battleHint(s,wild)[1],/PC 박스/);s.box=Array.from({length:60},()=>({...s.party[1]}));assert.match(battleHint(s,wild)[0],/가득/);
+});
+
+test('full party catch preview preserves failure damage and agrees with success, failure and capacity limits',()=>{
+  for(const hp of [1,20])for(const certain of [false,true]){
+    const s=ready();while(s.party.length<6)s.party.push({...s.party[0]});s.party[0].hp=hp;
+    const b=createBattle(s)!;b.menu='bag';if(certain)b.enemy.hp=Math.floor(b.enemy.maxHp/2);
+    const before=structuredClone({s,b}),loss=Math.min(hp,enemyDamage(b,b.enemyAttackDrop,s.party[0]));
+    const hint=battleHint(s,b);assert.match(hint[1],/PC 박스/);
+    if(certain)assert.doesNotMatch(hint[1],/실패/);else assert.match(hint[1],new RegExp(`실패 반격: HP -${loss}$`));
+    assert.deepEqual({s,b},before);
+    const result=battleTurn(s,b,'ball',()=>.99);
+    assert.equal(s.inventory.pokeBalls,before.s.inventory.pokeBalls-1);
+    assert.equal(s.party[0].hp,certain?hp:hp-loss);
+    assert.equal(s.box?.length??0,certain?1:0);
+    if(certain){assert.equal(result.outcome,'caught');assert.equal(result.caughtInBox,true);}
+    else assert(result.pages.some(page=>page.includes('빠져나왔다')));
+  }
+  const s=ready();while(s.party.length<6)s.party.push({...s.party[0]});
+  const b=createBattle(s)!;b.menu='bag';s.box=Array.from({length:BOX_CAPACITY},()=>({...s.party[0]}));
+  const before=structuredClone(s);assert.match(battleHint(s,b)[0],/가득/);battleTurn(s,b,'ball',()=>0);assert.deepEqual(s,before);
 });

@@ -7,8 +7,10 @@ export function paintTownPokemon(c:CanvasRenderingContext2D,images:Images,n:Town
   const x=Math.round(n.x*16+8),y=Math.round(n.y*16+8),dir=reacting?pokemonFacing(playerFacing):n.facing;
   const frame=fieldPokemonFrame(n.species,dir,walkProgress===undefined?clock:walkProgress*2,reacting);
   c.fillStyle='#293d393d';c.beginPath();c.ellipse(x,y-2,5,2,0,0,Math.PI*2);c.fill();
-  const hop=n.species==='starly'?Math.round(Math.max(0,Math.sin(clock*3))):0;
-  c.drawImage(images[n.sprite],0,frame*32,32,32,x-16,y-30-hop,32,32);
+  const hop=n.species==='starly'||n.species==='pidove'?Math.round(Math.max(0,Math.sin(clock*3))):0;
+  if(n.species==='pidove'){
+    c.drawImage(images[n.sprite],528,frame*352,352,352,x-16,y-30-hop,32,32);
+  }else c.drawImage(images[n.sprite],0,frame*32,32,32,x-16,y-30-hop,32,32);
   if(reacting){
     c.fillStyle='#fff9e8';c.fillRect(x+6,y-38,15,13);c.fillRect(x+7,y-25,3,3);
     c.fillStyle='#d7788b';c.fillRect(x+9,y-35,4,4);c.fillRect(x+15,y-35,4,4);c.fillRect(x+10,y-32,8,3);c.fillRect(x+12,y-29,4,2);

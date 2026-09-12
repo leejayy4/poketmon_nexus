@@ -1,0 +1,44 @@
+✔ every room has solid furniture with reachable investigation surfaces (8.5724ms)
+✔ every exhibit is investigated through player facing and confirm, repeatedly without rewards: Goldenrod (18.8893ms)
+✖ every exhibit is investigated through player facing and confirm, repeatedly without rewards: other regions (19.0286ms)
+✔ revision seven interior saves relocate only obstructed positions and preserve progress (72.8102ms)
+✔ facility dialogue fits the two-line DS dialogue box and landmark collections are distinct (5.1159ms)
+✔ Goldenrod and Saffron neighbor panels resolve the station corridor without losing directions (2.1714ms)
+✔ radio upper floors use current party provenance, leave progress unchanged and reject stale navigation (2.8613ms)
+✔ Route 34 notebook distinguishes same-species outsiders from local boxed companions (1.0193ms)
+✔ station, radio floors, homes and Route 34 support engine walking and save restoration in one journey (41.8406ms)
+✔ K18 keeps all six authored weights and original levels as evidence while exposing only save-compatible levels (8.7674ms)
+✔ every coast species has supported minimum/maximum-level attacks and captured saves round-trip without extra progression (10.577ms)
+✔ new sprite files use pinned Platinum front/back assets with matching hashes and dimensions (4.4952ms)
+✔ coast capture updates the actual Pokedex habitat page and route guidance uses the runtime range (3.4045ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 12
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 926.6782
+
+✖ failing tests:
+
+test at tests\explore-interiors.test.ts:34:41
+✖ every exhibit is investigated through player facing and confirm, repeatedly without rewards: other regions (19.0286ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  '항구 갤러리' !== '항구의 아침'
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-interiors.test.ts:79:28)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '항구 갤러리',
+    expected: '항구의 아침',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

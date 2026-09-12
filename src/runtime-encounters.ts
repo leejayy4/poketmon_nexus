@@ -1,11 +1,15 @@
 import DATA from './runtime-pokemon-data.json';
+import { CASTELIA_HABITAT } from './explore-castelia';
 import type { Pokemon } from './types';
 import { maxHpAtLevel } from './growth';
 import { pokemonMoves } from './pokemon';
+import { CINNABAR_HABITAT_NAME } from './cinnabar-layout';
 
 // Exact geography only. New passages elsewhere have no encounter pool until
 // their own design node is selected; CH numbers are never runtime locks.
 const MAP_POOLS:Record<string,{node:string;name:string}>={
+  tour_castelia:{node:'U01-GARDEN',name:CASTELIA_HABITAT},
+  tour_cinnabar:{node:'K13-OUTSKIRTS',name:CINNABAR_HABITAT_NAME},
   route_s01:{node:'S02',name:'새잎 서쪽길'},
   jubilife:{node:'S03',name:'축복시티 주변'},tour_jubilife:{node:'S03',name:'축복시티 주변'},
   tour_pass_jubilife_oreburgh:{node:'S04',name:'축복–무쇠 암반굴'},
@@ -14,7 +18,18 @@ const MAP_POOLS:Record<string,{node:string;name:string}>={
   coronet_pass:{node:'S15',name:'천관산 하부'},tour_coronet:{node:'S15',name:'천관산 하부'},
   tour_pass_hearthome_veilstone:{node:'S08',name:'연고–장막 연결도로'},
   tour_pass_hearthome_pastoria:{node:'S07',name:'연고–들판 연결도로'},
+  tour_kanto_route_5:{node:'K18',name:'관동 5번도로'},
+  tour_kanto_route_9:{node:'K-R09-DAY',name:'관동 9번도로'},
+  tour_kanto_route_10_north:{node:'K-R10-DAY',name:'관동 10번도로 북부'},
+  tour_kanto_rock_tunnel_b1f:{node:'K-ROCK-B1F',name:'돌산터널 B1F'},
+  tour_kanto_route_10_south:{node:'K-R10-DAY',name:'관동 10번도로 남부'},
   tour_pass_vermilion_cerulean:{node:'K18',name:'갈색–블루 해안길'},
+  tour_viridian_forest:{node:'K05',name:'상록숲'},
+  tour_route_34:{node:'J-R34',name:'성도 34번도로'},
+  tour_ilex:{node:'J-ILEX',name:'너도밤나무숲'},
+  tour_johto_route_33:{node:'J-R33',name:'성도 33번도로'},
+  tour_union_cave_1f:{node:'J-UNION-1F',name:'연결동굴 1층'},
+  tour_johto_route_32:{node:'J-R32',name:'성도 32번도로'},
 };
 export const ENCOUNTER_TIME_POLICY='day-only' as const;
 export function encounterPool(map:string){const binding=MAP_POOLS[map];return binding?DATA.pools.find(p=>p.node===binding.node):undefined;}

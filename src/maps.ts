@@ -65,7 +65,10 @@ export function canEnter(map:GameMap,x:number,y:number,direction:import('./types
 export function getMap(id:MapId,flags:SaveData['flags']={}):GameMap {
   id=worldMapId(id);const map=UNIFIED_MAPS[id]??MAPS[id];
   const collected=flags['pickup:'+id]?map.props.find(p=>p.dialogue==='journeyItem'):undefined;
-  return {...map,walkable:collected?map.walkable.map((row,y)=>y===collected.y?row.slice(0,collected.x)+'.'+row.slice(collected.x+1):row):map.walkable,
-    props:collected?map.props.filter(p=>p!==collected):map.props,warps:map.warps.filter(w=>!w.requiresFlag||flags[w.requiresFlag]===true),
+  let walkable=collected?map.walkable.map((row,y)=>y===collected.y?row.slice(0,collected.x)+'.'+row.slice(collected.x+1):row):map.walkable;
+  let props=collected?map.props.filter(p=>p!==collected):map.props;
+  if(id==='tour_chargestone_b1f'&&flags.chargestoneMainCrystalMoved===true){walkable=walkable.map((row,y)=>y===23?row.slice(0,25)+'.'+row.slice(26):row);props=props.filter(p=>p.dialogue!=='tourChargestoneMainCrystal');}
+  return {...map,walkable,
+    props,warps:map.warps.filter(w=>!w.requiresFlag||flags[w.requiresFlag]===true),
     npcs:map.npcs.map(n=>n.id==='gatekeeper'&&flags.departureCleared===true?{...n,x:4,y:14,facing:'down'}:n)};
 }

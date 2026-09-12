@@ -1,4 +1,15 @@
 import { paintJubilifeBuilding,paintJubilifeStreets,paintCityHall } from './explore-jubilife';
+import { GOLDENROD_ROUTE } from './goldenrod-route';
+import { JOIN_AVENUE,UNOVA_ROUTE_FOUR,UNOVA_ROUTE_ONE,paintUnovaRouteNetwork,paintUnovaRouteOne } from './unova-route-one';
+import { DRIFTVEIL_DRAWBRIDGE,UNOVA_ROUTE_FIVE,paintNimbasaWestRoute } from './nimbasa-west-route';
+import { CHARGESTONE_1F,CHARGESTONE_B1F,UNOVA_ROUTE_SIX,paintUnovaRouteSix } from './unova-route-six';
+import { REVERSAL_MOUNTAIN_A,REVERSAL_MOUNTAIN_B,REVERSAL_MOUNTAIN_EXTERIOR,paintReversalMountain } from './unova-reversal-mountain';
+import { UNOVA_ROUTE_THIRTEEN,paintUnovaRouteThirteen } from './unova-route-thirteen';
+import { UNOVA_ROUTE_TWELVE,paintUnovaRouteTwelve } from './unova-route-twelve';
+import { paintRoute34,paintGoldenrodStation,paintGoldenrodPaving,paintGoldenrodDistricts } from './goldenrod-art';
+import { GOLDENROD_STATION } from './goldenrod-station';
+import { paintCasteliaStreets } from './explore-castelia';
+import { paintCinnabarRock } from './cinnabar-art';
 import { paintTourFacade,paintTourHouse,paintTourGround,paintTourPaths } from './explore-materials';
 import { paintTourInterior } from './explore-interior-art';
 import { paintTourCenter } from './explore-center-art';
@@ -6,11 +17,15 @@ import { paintEternaGym } from './eterna-gym-art';
 import { paintHearthomeGym } from './hearthome-gym-art';
 import { paintVeilstoneGym } from './veilstone-gym-art';
 import { paintVermilionTerminal } from './vermilion-terminal-art';
+import { paintVermilionHarbor } from './vermilion-art';
 import { paintCoronetGround,paintCoronetBoundary,paintCoronetPaths } from './coronet-art';
 import { paintGroveGround } from './explore-tree-art';
 import { PASSAGES,MART_ROOMS } from './journey-world';
 import { paintJourneyPassage,paintJourneyInterior,paintJourneyMart } from './journey-art';
 import { FOREST_BORDER_MAPS,paintForestBorderGround } from './forest-border-art';
+import { paintIlexForestLandmarks } from './ilex-forest-art';
+import { JOHTO_ROUTE_32,JOHTO_ROUTE_33,UNION_CAVE_1F,paintJohtoSouthRoute } from './johto-south-route';
+import { paintLavenderInteriorDetails,paintLavenderTownDetails } from './lavender-art';
 import { TOUR_LAYOUTS } from './explore-layouts';
 import { PLACES,TOUR_PLANS,TOUR_MAPS,TOUR_OUTDOORS,TOUR_INTERIORS,TOUR_BUILDINGS,TOUR_FEATURES,SHORT_TOURS,tourPlaceForMap,type Place,type TourBuilding } from './explore-world';
 
@@ -76,7 +91,19 @@ export function paintTourBuilding(c:CanvasRenderingContext2D,images:Images,p:Pla
   if(b.kind==='house'&&b.room&&MART_ROOMS.has(b.room)){paintJourneyMart(c,images,b);return}
   if(p.id==='tour_jubilife'&&b.kind!=='center'){paintJubilifeBuilding(c,images,b);return}
   if(['urban','waterfront'].includes(TOUR_PLANS[p.id]?.style)){
-    if(b.kind==='landmark'){paintCityHall(c,images,b);return}
+    if(b.kind==='landmark'){
+      paintCityHall(c,images,b);
+      if(p.id==='tour_goldenrod'){
+        const x=b.door.x*16+8,y=(b.door.y+1)*16-188;
+        c.save();c.fillStyle='#737b89';c.fillRect(x-2,y-30,4,34);
+        c.fillStyle='#d7d6bb';c.fillRect(x-16,y-22,32,2);c.fillRect(x-10,y-14,20,2);
+        c.fillStyle='#b95756';c.fillRect(x-2,y-34,4,4);
+        c.fillStyle='#b49a5e';c.fillRect(x-67,y+5,132,3);
+        c.fillStyle='#405764';c.fillRect(x-22,y+147,44,11);
+        c.fillStyle='#efe1ab';c.font='7px Galmuri11, monospace';c.textAlign='center';c.fillText('RADIO',x,y+155);c.restore();
+      }
+      return;
+    }
     if(b.kind==='house'){paintJubilifeBuilding(c,images,b);return}
   }
   if(b.kind==='landmark'){paintTourFacade(c,images,p,b);return}
@@ -91,13 +118,24 @@ export function paintTourSign(c:CanvasRenderingContext2D,images:Images,point:{x:
 }
 export function buildExploreArt(images:Images,id:string){
   const map=TOUR_MAPS[id as keyof typeof TOUR_MAPS],p=tourPlaceForMap(id)!;const canvas=document.createElement('canvas');canvas.width=map.width*16;canvas.height=map.height*16;const c=canvas.getContext('2d')!;c.imageSmoothingEnabled=false;
+  if(id===GOLDENROD_ROUTE){paintRoute34(c,images,map);return canvas;}
+  if(id===GOLDENROD_STATION){paintGoldenrodStation(c,images);return canvas;}
+  if(id===UNOVA_ROUTE_ONE){paintUnovaRouteOne(c,images,map);return canvas;}
+  if(id===UNOVA_ROUTE_FOUR||id===JOIN_AVENUE){paintUnovaRouteNetwork(c,images,map);return canvas;}
+  if(id===UNOVA_ROUTE_FIVE||id===DRIFTVEIL_DRAWBRIDGE){paintNimbasaWestRoute(c,images,map);return canvas;}
+  if(id===UNOVA_ROUTE_SIX||id===CHARGESTONE_1F||id===CHARGESTONE_B1F){paintUnovaRouteSix(c,images,map);return canvas;}
+  if(id===REVERSAL_MOUNTAIN_EXTERIOR||id===REVERSAL_MOUNTAIN_A||id===REVERSAL_MOUNTAIN_B){paintReversalMountain(c,images,map);return canvas;}
+  if(id===UNOVA_ROUTE_THIRTEEN){paintUnovaRouteThirteen(c,images,map);return canvas;}
+  if(id===UNOVA_ROUTE_TWELVE){paintUnovaRouteTwelve(c,images,map);return canvas;}
+  if(id===JOHTO_ROUTE_32||id===JOHTO_ROUTE_33||id===UNION_CAVE_1F){paintJohtoSouthRoute(c,images,map);return canvas;}
   if(PASSAGES[id]){paintJourneyPassage(c,images,map);return canvas;}
-  if(TOUR_INTERIORS[id]){if(TOUR_INTERIORS[id].style==='center')paintTourCenter(c,images);else paintTourInterior(c,images,TOUR_INTERIORS[id]);paintJourneyInterior(c,images,map,TOUR_INTERIORS[id]);return canvas;}
+  if(TOUR_INTERIORS[id]){if(TOUR_INTERIORS[id].style==='center')paintTourCenter(c,images,map);else paintTourInterior(c,images,TOUR_INTERIORS[id],map);paintJourneyInterior(c,images,map,TOUR_INTERIORS[id]);paintLavenderInteriorDetails(c,map);return canvas;}
   const short=SHORT_TOURS.has(p.id),cx=short?10:14,cy=short?9:12;
   const tiles=images['town-reference'];
   for(let y=0;y<map.height;y++)for(let x=0;x<map.width;x++){
     const edge=id!=='tour_coronet'&&(x<2||x>=map.width-2||y<3||y>=map.height-2);
     if(id==='tour_coronet')paintCoronetGround(c,x,y);else paintTourGround(c,tiles,x*16,y*16,p.theme);
+    if(id==='tour_cinnabar'&&edge){rect(c,x*16,y*16,16,16,'#579cae');rect(c,x*16+2+(y%2)*3,y*16+6,8,1,'#a0d0cf');continue;}
     if(edge){if(FOREST_BORDER_MAPS.has(id)){if(map.walkable[y][x]==='#')paintForestBorderGround(c,x,y)}else if(['port','coast','water'].includes(p.theme)){rect(c,x*16,y*16,16,16,'#69aac1');rect(c,x*16+3,y*16+7,10,1,'#bbdbe1')}else if(['cave','mine','desert'].includes(p.theme)){rect(c,x*16,y*16,16,16,'#75818b');rect(c,x*16+1,y*16+2,14,5,'#aab0a2')}else{c.drawImage(tiles,(x%2)*16,(y%4)*16,16,16,x*16,y*16,16,16);if(p.theme==='snow'){c.fillStyle='#e8f2ed99';c.fillRect(x*16,y*16,16,16)}}}
   }
   if(id==='tour_coronet')paintCoronetBoundary(c,map);
@@ -106,7 +144,8 @@ export function buildExploreArt(images:Images,id:string){
   if(layout){for(const r of layout.paths)path(...r)}else{path(cx-1,3,3,map.height-5);path(2,cy-1,map.width-4,3);if(!short)path(10,10,8,8)}
   if(!short)for(const b of TOUR_BUILDINGS[p.id]){path(b.door.x,b.door.y+1,1,Math.max(1,cy-b.door.y));if(b.y>cy)path(b.door.x,cy,1,b.door.y-cy+2);}
   for(const w of map.warps){path(w.x,w.y,1,1);}
-  if(id==='tour_coronet')paintCoronetPaths(c,paths);else if(TOUR_PLANS[p.id]?.style==='urban')paintJubilifeStreets(c,images,map.walkable,paths,p.id==='tour_jubilife');else paintTourPaths(c,tiles,paths,p.theme);
+  if(id==='tour_coronet')paintCoronetPaths(c,paths);else if(id==='tour_castelia')paintCasteliaStreets(c,images['jubilife-reference'],map.walkable,paths);else if(TOUR_PLANS[p.id]?.style==='urban')paintJubilifeStreets(c,images,map.walkable,paths,p.id==='tour_jubilife');else paintTourPaths(c,tiles,paths,p.theme);
+  if(id==='tour_goldenrod')paintGoldenrodPaving(c,map.walkable);
   for(const [x,y,w,h] of layout?.boardwalks??[])for(let j=y;j<y+h;j++)for(let i=x;i<x+w;i++)if(map.walkable[j]?.[i]==='.'){
     rect(c,i*16,j*16,16,16,'#866d54');rect(c,i*16+1,j*16,14,16,'#bb9b70');
     for(let k=3;k<16;k+=4)rect(c,i*16+1,j*16+k,14,1,'#927754');
@@ -144,6 +183,7 @@ export function buildExploreArt(images:Images,id:string){
     if(f.kind==='rocks'){
       if(p.id==='tour_coronet')paintCoronetRock(c,x,y,w,h);
       else if(p.id==='tour_desert')paintDesertRuinsRock(c,x,y,w,h);
+      else if(p.id==='tour_cinnabar')paintCinnabarRock(c,x,y,w,h);
       else{rect(c,x,y,w,h,p.theme==='desert'?'#ae9271':'#7e898b');for(let j=0;j<2;j++)for(let i=0;i<2;i++)rock(c,x+4+i*w/2,y+6+j*(h-20)/2,w/2-8,(h-20)/2-5);if(p.theme==='mine'){rect(c,x+4,y+h-12,w-8,2,'#dfd4b5');rect(c,x+4,y+h-4,w-8,2,'#515d69');for(let i=8;i<w-5;i+=10)rect(c,x+i,y+h-13,3,13,'#b0946a')}}
     }
     if(f.kind==='rail'){
@@ -156,6 +196,10 @@ export function buildExploreArt(images:Images,id:string){
     if(f.kind==='grove')paintGroveGround(c,f);
     if(f.kind==='runway'){rect(c,x,y,w,h,'#748388');rect(c,x+3,y+3,w-6,h-6,'#879397');for(let i=0;i<5;i++)rect(c,x+13+i*12,y+h/2,7,3,'#ece8ca');rect(c,x+28,y+12,26,5,'#dde4da');rect(c,x+39,y+4,4,28,'#dae2d8')}
   }
+  if(id==='tour_vermilion')paintVermilionHarbor(c);
+  if(id==='tour_goldenrod')paintGoldenrodDistricts(c);
+  if(id==='tour_ilex')paintIlexForestLandmarks(c);
+  if(id==='tour_lavender')paintLavenderTownDetails(c);
   if(p.theme==='port'||p.theme==='coast'){const bx=50,by=canvas.height-30;rect(c,bx,by,78,16,'#f0ecd7');rect(c,bx+5,by+14,66,5,'#8b7259');rect(c,bx+18,by-8,37,12,'#f0e6c7');rect(c,bx+23,by-5,10,5,'#709bad');rect(c,bx+39,by-5,10,5,'#709bad');rect(c,bx+7,by+2,5,6,'#bc8d65');}
   if(short){for(const[x,y]of [[4,5],[14,12]])if(p.id==='tour_coronet')paintCoronetRock(c,x*16,y*16,32,32);else if(p.id==='tour_desert')paintDesertRuinsRock(c,x*16,y*16,32,32);else if(p.theme==='cave')rock(c,x*16,y*16,22,19);}
   return canvas;

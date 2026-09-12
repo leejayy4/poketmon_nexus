@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { getMap,canStand,canEnter } from '../src/maps';
+import { getMap,getWorldOutdoors,canStand,canEnter } from '../src/maps';
 import { Engine,VECTOR } from '../src/engine';
 import { newSave,parseSave } from '../src/save';
 import { grantPokemon } from '../src/pokemon';
@@ -50,9 +50,17 @@ test('safe route spans the new bend while both grass branches join back to reach
 
 test('city transitions use the moved southern mouth and preserve exact entry directions in both directions',()=>{
   const forest=getMap(id),jubilife=getMap('tour_jubilife'),eterna=getMap('tour_eterna');
-  assert.deepEqual(forest.warps.map(w=>[w.x,w.y,w.to,w.entry]),[[10,32,'tour_jubilife','down'],[10,2,'tour_eterna','up']]);
-  assert.deepEqual(jubilife.warps.find(w=>w.to===id)!.spawn,{x:10,y:31});assert.deepEqual(eterna.warps.find(w=>w.to===id)!.spawn,{x:10,y:3});
-  for(const map of [forest,jubilife,eterna])for(const w of map.warps.filter(w=>map.id===id||w.to===id)){
+  const south=getMap('tour_sinnoh_route_02'),north=getMap('tour_sinnoh_route_03');
+  assert.deepEqual(forest.warps.map(w=>[w.x,w.y,w.to,w.entry]),[[10,32,south.id,'down'],[10,2,north.id,'up']]);
+  assert.deepEqual(south.warps.find(w=>w.to===id)!.spawn,{x:10,y:31});assert.deepEqual(north.warps.find(w=>w.to===id)!.spawn,{x:10,y:3});
+  assert(jubilife.warps.some(w=>w.to===south.id));assert(eterna.warps.some(w=>w.to===north.id));
+  const chain=[jubilife,south,forest,north,eterna];
+  for(const [from,to] of [[jubilife,south],[forest,south],[forest,north],[eterna,north]]){
+    const sign=getWorldOutdoors(from)!.signs.find(sign=>sign.destination===to.id);
+    assert(sign,`${from.id} names the actual connecting road`);assert.equal(sign.name,to.name);
+    for(const page of sign.pages){assert(page.split('\n').length<=2);for(const line of page.split('\n'))assert(line.length<=24,line);}
+  }
+  for(const map of chain)for(const w of map.warps.filter(w=>chain.some(area=>area.id===w.to))){
     assert(canStand(getMap(w.to),w.spawn.x,w.spawn.y));
     for(const direction of ['up','down','left','right'] as const)assert.equal(canEnter(map,w.x,w.y,direction),w.entry===direction);
     const g=new Engine();g.save=ready();g.save.map=map.id;const v=VECTOR[w.entry];g.save.player={x:w.x-v.x,y:w.y-v.y,facing:w.entry};g.walk(w.entry);for(let i=0;i<20;i++)g.update(.05);assert.equal(g.save.map,w.to);assert.deepEqual(g.save.player,{...w.spawn,facing:w.facing});assert(parseSave(JSON.stringify(g.save)));

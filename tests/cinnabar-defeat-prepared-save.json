@@ -1,0 +1,227 @@
+{
+  "version": 1,
+  "worldRevision": 24,
+  "map": "tour_cinnabar",
+  "player": {
+    "x": 10,
+    "y": 31,
+    "facing": "left"
+  },
+  "flags": {
+    "professorMet": true,
+    "professorIntroHeard": true,
+    "starterReceived": true,
+    "departureCleared": true,
+    "trainerWon:west-road-practice": true,
+    "cityJubilifeFriendsAccepted": true,
+    "cityJubilifeFriendsRewarded": true,
+    "cityOreburghReadyAccepted": true,
+    "cityOreburghReadyRewarded": true,
+    "observationCollected": true,
+    "researchDelivered": true,
+    "ferryPass": true
+  },
+  "party": [
+    {
+      "species": 307,
+      "level": 20,
+      "hp": 1,
+      "maxHp": 87,
+      "experience": 70,
+      "nature": "성실",
+      "met": "연고–장막 연결도로",
+      "moves": [
+        "판별"
+      ]
+    },
+    {
+      "species": 74,
+      "level": 17,
+      "hp": 0,
+      "maxHp": 70,
+      "experience": 50,
+      "nature": "성실",
+      "met": "천관산 하부",
+      "moves": [
+        "돌떨구기",
+        "웅크리기"
+      ]
+    },
+    {
+      "species": 1,
+      "level": 13,
+      "experience": 50,
+      "hp": 0,
+      "maxHp": 44,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "울음소리",
+        "덩굴채찍"
+      ]
+    },
+    {
+      "species": 14,
+      "level": 21,
+      "hp": 0,
+      "maxHp": 75,
+      "experience": 0,
+      "nature": "성실",
+      "met": "상록숲",
+      "moves": [
+        "독침",
+        "단단해지기"
+      ]
+    },
+    {
+      "species": 77,
+      "level": 18,
+      "hp": 0,
+      "maxHp": 67,
+      "experience": 110,
+      "nature": "성실",
+      "met": "연고–장막 연결도로",
+      "moves": [
+        "불꽃세례",
+        "꼬리흔들기"
+      ]
+    },
+    {
+      "species": 19,
+      "level": 25,
+      "hp": 0,
+      "maxHp": 86,
+      "experience": 0,
+      "nature": "성실",
+      "met": "갈색–블루 해안길",
+      "moves": [
+        "필살앞니",
+        "꼬리흔들기"
+      ]
+    }
+  ],
+  "box": [
+    {
+      "species": 52,
+      "level": 25,
+      "hp": 87,
+      "maxHp": 87,
+      "experience": 0,
+      "nature": "성실",
+      "met": "갈색–블루 해안길",
+      "moves": [
+        "할퀴기",
+        "울음소리"
+      ]
+    },
+    {
+      "species": 399,
+      "level": 4,
+      "hp": 21,
+      "maxHp": 21,
+      "experience": 0,
+      "nature": "성실",
+      "met": "새잎 서쪽길",
+      "moves": [
+        "몸통박치기",
+        "몸통박치기"
+      ]
+    }
+  ],
+  "pokedex": {
+    "seen": [
+      1,
+      399,
+      406,
+      396,
+      74,
+      95,
+      408,
+      266,
+      268,
+      420,
+      315,
+      425,
+      92,
+      200,
+      434,
+      77,
+      228,
+      307,
+      66,
+      448,
+      173,
+      19,
+      52,
+      23,
+      14
+    ],
+    "caught": [
+      1,
+      399,
+      74,
+      77,
+      307,
+      19,
+      52,
+      14
+    ]
+  },
+  "inventory": {
+    "pokeBalls": 4,
+    "potions": 10
+  },
+  "badges": [
+    "BADGE-GS01",
+    "BADGE-GS02",
+    "BADGE-GS03",
+    "BADGE-GS04"
+  ],
+  "keyItems": [
+    "TM-stealth-rock",
+    "TM-grass-knot",
+    "TM-shadow-ball",
+    "TM-drain-punch"
+  ],
+  "money": 5060,
+  "healingPoint": "tour_cinnabar_center",
+  "steps": 3238,
+  "seconds": 8546.21288001734,
+  "tourVisited": [
+    "tour_jubilife",
+    "tour_jubilife_center",
+    "tour_pass_jubilife_oreburgh",
+    "tour_oreburgh",
+    "tour_oreburgh_center",
+    "tour_eterna_forest",
+    "tour_eterna",
+    "tour_eterna_center",
+    "tour_coronet",
+    "tour_lake",
+    "tour_hearthome",
+    "tour_hearthome_center",
+    "tour_hearthome_mart",
+    "tour_pass_hearthome_veilstone",
+    "tour_veilstone",
+    "tour_veilstone_mart",
+    "tour_veilstone_center",
+    "tour_canalave",
+    "tour_vermilion",
+    "tour_vermilion_hall",
+    "tour_vermilion_center",
+    "tour_pass_vermilion_cerulean",
+    "tour_cerulean",
+    "tour_cerulean_hall",
+    "tour_cerulean_center",
+    "tour_cerulean_mart",
+    "tour_pass_pewter_cerulean",
+    "tour_pewter",
+    "tour_pewter_hall",
+    "tour_viridian_forest",
+    "tour_viridian",
+    "tour_viridian_center",
+    "tour_pass_pallet_viridian",
+    "tour_pallet"
+  ]
+}

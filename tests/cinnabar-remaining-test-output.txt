@@ -1,0 +1,304 @@
+✖ every integrated passage gives truthful sign and traveller guidance (21.9963ms)
+✔ guidance derives the two common and one rare species from the runtime pool (0.6798ms)
+✔ route companion guidance uses the actual weighted route pool (0.598ms)
+✔ route companion guidance fits the field dialogue UI (0.3494ms)
+✔ guidance and pickup preserve rewards and pickup remains one time (5.3111ms)
+✔ every room has solid furniture with reachable investigation surfaces (18.2711ms)
+✖ every exhibit is investigated through player facing and confirm, repeatedly without rewards (36.8137ms)
+✔ revision seven interior saves relocate only obstructed positions and preserve progress (161.8783ms)
+✔ facility dialogue fits the two-line DS dialogue box and landmark collections are distinct (9.6577ms)
+✖ six towns and five trails have distinct investigable arrangements while facility doors stay aligned (7.2016ms)
+✔ revision 10 plaza saves relocate only newly blocked positions and preserve visited interiors (14.3371ms)
+✔ wooden observation paths stay on reachable floor and revision 11 saves recover new scenery overlaps (31.6117ms)
+✖ original outdoor maps and added passages expose solid signs for actual exterior exits (8.8403ms)
+✖ every outdoor object and sign is investigated by facing a reachable surface without rewards (17.5082ms)
+✔ interaction hints match facing and disappear during movement and menus (4.1841ms)
+✔ revision eight saves on new sign tiles relocate while other valid positions remain (135.7198ms)
+✔ 35 town Pokemon cover eight DS field species with four reachable conversation sides (2.0015ms)
+✖ all town Pokemon react from four directions repeatedly without changing ownership or progress (22.5459ms)
+✔ revision 13 saves recover Pokemon overlaps and preserve visits, elapsed time and valid adjacent positions (34.3916ms)
+✔ direction and idle frames stay inside downloaded DS sheets, including the four-frame Starly (30.5217ms)
+✔ 35 towns have 70 distinct local conversations with existing DS sprite assets and clear approaches (19.3268ms)
+✖ each resident remains approachable and declining optional requests preserves progress (18.3162ms)
+✔ revision 9 saves overlapping new residents move safely while visits and valid positions survive (71.1832ms)
+✔ facility routes avoid the newly occupied resident tiles (57.3329ms)
+✖ all 35 Pokemon roam connected clear tiles without overlapping doors, people or minimap hits (326.0912ms)
+✔ moving Pokemon reserve both endpoints and release the previous tile on arrival (10.1011ms)
+✔ menus and dialogue pause roaming and nearby conversations remain available (15.1672ms)
+✔ revision 15 and current saves on the former fixed anchor reload exactly and spawn the Pokemon beside the player (70.1189ms)
+✔ navigation recomputes around current Pokemon positions and reserved steps without moving the player (10.9952ms)
+✔ roaming state is isolated by engine and resets on map changes or file restoration (1.8008ms)
+✔ all 43 exterior places and four regions form one connected walking graph (7.077ms)
+✔ every tour doorway and regional connection moves to a valid save and can be revisited (320.0986ms)
+✔ the western route and expanded Jubilife return preserve the adventure party (0.9163ms)
+✔ tour buildings and features have collision; every non-enterable house can be investigated (2.7499ms)
+✔ developer map jump preserves progress and cannot bypass dialogue, battle or movement (8.8157ms)
+✔ expanded map saves round trip as adventures; legacy test imports preserve current progress (4.0021ms)
+✔ every tour spawn reaches all entrances, guides and house investigation positions (221.8898ms)
+✖ tour guides repeat their map’s real exit directions and destinations (10.7486ms)
+✔ legacy exploration URL uses the same adventure storage namespace (0.5619ms)
+✔ every same-region city edge has a real route, retaining forests and research transport (4.801ms)
+✔ routes provide safe travel, accessible signs and residents, with pickups on template roads (70.1484ms)
+✔ all 35 towns have accessible shops and homes, without replacing gym entrances (197.3067ms)
+✔ visible high buildings have three distinct floors with safe reciprocal staircase landings (37.7983ms)
+✔ routes do not falsely mark either city arrived or visited, while upper rooms group under their city (2.3949ms)
+✔ shop labels use the existing DB potion price and all centers retain the PC event (2.0124ms)
+✔ every new background generates, stairs are painted, and pickup art respects the saved service flag (187.9281ms)
+✔ K18 keeps all six authored weights and original levels as evidence while exposing only save-compatible levels (13.9841ms)
+✔ every coast species has supported minimum/maximum-level attacks and captured saves round-trip without extra progression (9.4288ms)
+✔ new sprite files use pinned Platinum front/back assets with matching hashes and dimensions (9.838ms)
+✖ coast capture updates the actual Pokedex habitat page and route guidance uses the runtime range (9.1869ms)
+✔ all 33 passages add kind-specific outer loop openings only (40.2146ms)
+✔ each loop joins the existing route and keeps both exits reachable without grass (513.9752ms)
+✔ core props and NPC remain reachable and kind layouts differ (4.7009ms)
+✔ existing passage save coordinates survive parsing without a revision change (6.5342ms)
+ℹ tests 54
+ℹ suites 0
+ℹ pass 44
+ℹ fail 10
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1701.3145
+
+✖ failing tests:
+
+test at tests\encounter-guidance.test.ts:21:1
+✖ every integrated passage gives truthful sign and traveller guidance (21.9963ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /도시 사이를 걷기 좋은 길/. Input:
+  
+  '관동 9번도로 · 태초–홍련 해안길\n' +
+    '← 태초마을\n' +
+    '→ 홍련섬\n' +
+    '만을 돌아가는 모래길이 홍련으로 이어져.\n' +
+    '북쪽 전망길과 남쪽 바위 샛길도 돌아봐.\n' +
+    '홍련에 도착하면 센터에서 쉬어 가.\n' +
+    '연구소에서는 섬의 화산암을 볼 수 있어.'
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\encounter-guidance.test.ts:33:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '관동 9번도로 · 태초–홍련 해안길\n← 태초마을\n→ 홍련섬\n만을 돌아가는 모래길이 홍련으로 이어져.\n북쪽 전망길과 남쪽 바위 샛길도 돌아봐.\n홍련에 도착하면 센터에서 쉬어 가.\n연구소에서는 섬의 화산암을 볼 수 있어.',
+    expected: /도시 사이를 걷기 좋은 길/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests\explore-interiors.test.ts:26:1
+✖ every exhibit is investigated through player facing and confirm, repeatedly without rewards (36.8137ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  '화산암 관찰' !== '화산암 표본'
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-interiors.test.ts:55:28)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '화산암 관찰',
+    expected: '화산암 표본',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-layouts.test.ts:10:1
+✖ six towns and five trails have distinct investigable arrangements while facility doors stay aligned (7.2016ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  49 !== 45
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-layouts.test.ts:28:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 49,
+    expected: 45,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-outdoors.test.ts:11:1
+✖ original outdoor maps and added passages expose solid signs for actual exterior exits (8.8403ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  4 !== 3
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-outdoors.test.ts:14:43)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 4,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-outdoors.test.ts:22:1
+✖ every outdoor object and sign is investigated by facing a reachable surface without rewards (17.5082ms)
+  AssertionError [ERR_ASSERTION]: ↑ 북쪽 출구 → 신오 2번도로 · 영원숲 남쪽길
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-outdoors.test.ts:35:106)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\explore-pokemon.test.ts:23:1
+✖ all town Pokemon react from four directions repeatedly without changing ownership or progress (22.5459ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   '삐삐!\n꽃밭 가장자리에서 가볍게 발을 구른다.',
+  +   '다가오는 동료를 보고 귀를 움직인다.\n꽃밭을 피해 산책길 쪽으로 몸을 돌린다.'
+  -   '삐삐!\n꽃밭 가장자리에서 산책길을 바라본다.'
+    ]
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-pokemon.test.ts:29:117)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '삐삐!\n꽃밭 가장자리에서 가볍게 발을 구른다.', '다가오는 동료를 보고 귀를 움직인다.\n꽃밭을 피해 산책길 쪽으로 몸을 돌린다.' ],
+    expected: [ '삐삐!\n꽃밭 가장자리에서 산책길을 바라본다.' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-residents.test.ts:25:1
+✖ each resident remains approachable and declining optional requests preserves progress (18.3162ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   '삐삐가 꽃을 밟지 않도록\n산책길 가장자리를 함께 돌보지.'
+  -   '오래된 석상 곁에도 새잎이 돋지.\n같은 길을 걸어도 볼 것이 달라진단다.'
+    ]
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-residents.test.ts:30:86)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '삐삐가 꽃을 밟지 않도록\n산책길 가장자리를 함께 돌보지.' ],
+    expected: [ '오래된 석상 곁에도 새잎이 돋지.\n같은 길을 걸어도 볼 것이 달라진단다.' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-roaming.test.ts:15:1
+✖ all 35 Pokemon roam connected clear tiles without overlapping doors, people or minimap hits (326.0912ms)
+  AssertionError [ERR_ASSERTION]: shared anchor remains unchanged
+  + actual - expected
+  
+    {
+  +   x: 30,
+  +   y: 35
+  -   x: 22,
+  -   y: 16
+    }
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-roaming.test.ts:27:54)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: { x: 30, y: 35 },
+    expected: { x: 22, y: 16 },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-world.test.ts:36:1
+✖ tour guides repeat their map’s real exit directions and destinations (10.7486ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   '동료들의 HP가 모두 건강해요.\n기술과 도구도 확인하고 출발해요.',
+  +   '몬스터볼 0개 · 상처약 0개\n상점은 주거 구역 서쪽에 있어요.'
+  -   '↑ 북쪽 출구\n관동 9번도로 · 태초–홍련 해안길',
+  -   '→ 동쪽 출구\n관동 10번도로 · 홍련–갈색 해안길'
+    ]
+  
+      at <anonymous> (C:\my_play\poketmon_demo\tests\explore-world.test.ts:38:176)
+      at ui (C:\my_play\poketmon_demo\tests\explore-world.test.ts:11:193)
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-world.test.ts:36:81)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '동료들의 HP가 모두 건강해요.\n기술과 도구도 확인하고 출발해요.', '몬스터볼 0개 · 상처약 0개\n상점은 주거 구역 서쪽에 있어요.' ],
+    expected: [ '↑ 북쪽 출구\n관동 9번도로 · 태초–홍련 해안길', '→ 동쪽 출구\n관동 10번도로 · 홍련–갈색 해안길' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\kanto-coast-encounters.test.ts:44:1
+✖ coast capture updates the actual Pokedex habitat page and route guidance uses the runtime range (9.1869ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      [
+        '갈색–블루 해안길',
+        22,
+        25
+      ],
+  +   [
+  +     '성도 34번도로',
+  +     22,
+  +     24
+  +   ]
+    ]
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\kanto-coast-encounters.test.ts:48:54)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ [ '갈색–블루 해안길', 22, 25 ], [ '성도 34번도로', 22, 24 ] ],
+    expected: [ [ '갈색–블루 해안길', 22, 25 ] ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

@@ -2,9 +2,11 @@ import type { GameMap, Point, MapId } from './types';
 import type { Place,TourId,TourBuilding } from './explore-world';
 import type { TourInterior,Furnishing } from './explore-interiors';
 import { applyJourneyRouteLayout } from './journey-route-layouts';
+import { CINNABAR_ROUTE,CINNABAR_ROUTE_NAME,CINNABAR_DEPARTURE_ROUTE,CINNABAR_DEPARTURE_NAME } from './cinnabar-layout';
 
 export interface Passage { id:TourId; a:Place; b:Place; kind:'road'|'cave'|'coast'; bend:number }
 export const PASSAGES:Record<string,Passage>={};
+export const TRANSIT_LINKS:Record<string,readonly string[]>={};
 export const ROOM_PARENTS:Record<string,Place>={};
 export const FLOOR_INFO:Record<string,{floor:number;total:number;title:string}>={};
 export const MART_ROOMS=new Set<string>();
@@ -24,7 +26,7 @@ export const PASSAGE_LOOP_OPENINGS:Record<Passage['kind'],Point[]>={
   coast:rect(18,2,10,2).concat(rect(26,3,2,12),rect(18,14,10,2),rect(18,3,2,2)),
 };
 export function journeyConnection(map:GameMap,destination:MapId){
-  return map.warps.find(w=>w.to===destination||PASSAGES[w.to]&&[PASSAGES[w.to].a.id,PASSAGES[w.to].b.id].includes(destination as TourId));
+  return map.warps.find(w=>w.to===destination||TRANSIT_LINKS[w.to]?.includes(destination)||PASSAGES[w.to]&&[PASSAGES[w.to].a.id,PASSAGES[w.to].b.id].includes(destination as TourId));
 }
 type World={places:Place[];maps:Record<TourId,GameMap>;buildings:Record<string,TourBuilding[]>;rooms:Record<string,TourInterior>;spawns:Record<TourId,Point>};
 const fixture=(kind:Furnishing['kind'],name:string,text:string,x:number,y:number,w=3,h=2):Furnishing=>({kind,name,pages:[text],x,y,w,h,event:'tourDetail'+x+'_'+y});
@@ -83,7 +85,7 @@ export function buildJourneyWorld(w:World){
     }
     const hall=`${p.id}_hall` as TourId;
     // Urban landmarks are visibly tall DS buildings too, not just named towers.
-    if(!w.rooms[hall]||!(/탑|타워|등대|백화점|사옥|방송국/.test(p.landmark)||['city','factory','airport','fair'].includes(p.theme)||p.id==='tour_castelia'))continue;
+    if(!w.rooms[hall]||!(/탑|타워|등대|백화점|사옥|방송국/.test(p.landmark)||['city','factory','airport','fair'].includes(p.theme)||['tour_castelia','tour_vermilion','tour_lentimas','tour_undella','tour_lacunosa'].includes(p.id)))continue;
     const total=3,ids=[hall,`${hall}_2f`,`${hall}_3f`] as TourId[];
     // Department stores have an actual shop counter on their first floor.
     if(p.landmark==='백화점'){
@@ -114,9 +116,9 @@ export function buildJourneyWorld(w:World){
     const key=[p.id,q.id].sort().join('_');if(used.has(key)||[p.id,q.id].includes('tour_jubilife')&&[p.id,q.id].includes('tour_canalave'))continue;used.add(key);
     const back=w.maps[q.id].warps.find(w=>w.to===p.id);if(!back)continue;
     const id=`tour_pass_${p.id.slice(5)}_${q.id.slice(5)}` as TourId;
-    const kind=['mine','dragon'].includes(p.theme)||['mine','dragon'].includes(q.theme)?'cave':['port','coast'].includes(p.theme)||['port','coast'].includes(q.theme)?'coast':'road';
+    const kind=id===CINNABAR_ROUTE?'coast':['mine','dragon'].includes(p.theme)||['mine','dragon'].includes(q.theme)?'cave':['port','coast'].includes(p.theme)||['port','coast'].includes(q.theme)?'coast':'road';
     const bend=used.size%2?7:12;PASSAGES[id]={id,a:p,b:q,kind,bend};
-    const name=p.name.replace('시티','')+'–'+q.name.replace('시티','')+(kind==='cave'?' 암반굴':kind==='coast'?' 해안길':' 연결도로');
+    const name=id===CINNABAR_ROUTE?CINNABAR_ROUTE_NAME:id===CINNABAR_DEPARTURE_ROUTE?CINNABAR_DEPARTURE_NAME:p.name.replace('시티','')+'–'+q.name.replace('시티','')+(kind==='cave'?' 암반굴':kind==='coast'?' 해안길':' 연결도로');
     PASSAGE_PLACES[id]={id,name,region:p.region,theme:kind==='cave'?'cave':kind==='coast'?'coast':'forest',concept:'서쪽 '+p.name+' · 동쪽 '+q.name,landmark:'길 표지',x:(p.x+q.x)/2,y:(p.y+q.y)/2};
     const width=32,height=20;
     const rows=Array.from({length:height},()=>Array<string>(width).fill('#'));
@@ -127,7 +129,7 @@ export function buildJourneyWorld(w:World){
     const aSpawn={...back.spawn},bSpawn={...exit.spawn};
     w.maps[id]={id,name,width,height,background:id,walkable:rows.map(r=>r.join('')),warps:[{x:1,y:10,to:p.id,spawn:aSpawn,entry:'left',facing:back.facing},{x:30,y:10,to:q.id,spawn:bSpawn,entry:'right',facing:exit.facing}],npcs:[{id:'pathWalker',name:kind==='cave'?'산행객':'여행자',sprite:kind==='cave'?'worker':'rancher',x:18,y:5,facing:'down',dialogue:'journeyWalker'}],props:[{x:15,y:5,dialogue:'journeyItem'},{x:3,y:8,dialogue:'journeySign'},{x:28,y:8,dialogue:'journeySign'}],terrain:[{kind:'tallGrass',x:14,y:13,w:5,h:2}]};
     rows[5][15]='#';
-    for(const point of PASSAGE_LOOP_OPENINGS[kind]){
+    for(const point of [...PASSAGE_LOOP_OPENINGS[kind],...(id===CINNABAR_ROUTE?PASSAGE_LOOP_OPENINGS.road:[])]){
       if(rows[point.y][point.x]!=='.')rows[point.y][point.x]='.';
     }
     w.maps[id].walkable=rows.map(r=>r.join(''));

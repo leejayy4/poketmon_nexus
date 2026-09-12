@@ -8,6 +8,7 @@ import {newSave,parseSave} from '../src/save';
 import {gainExperience,maxHpAtLevel,type GrowthStep} from '../src/growth';
 import {createBattle,createTrainerBattle,battleTurn,moveEffectiveness,techniqueDamage,playerDamage,enemyDamage} from '../src/battle';
 import type {Pokemon} from '../src/types';
+import {ACTIVE_MAPS} from '../src/maps';
 const ready=(id=7)=>{const s=newSave();grantPokemon(s,id);s.flags.departureCleared=true;s.map='route_s01';s.player={x:29,y:12,facing:'left'};s.inventory.pokeBalls=10;return s;};
 const mon=(id:number,level=10):Pokemon=>({species:id,level,hp:maxHpAtLevel(id,level),maxHp:maxHpAtLevel(id,level),experience:0,nature:'성실',met:'검사'});
 
@@ -31,8 +32,10 @@ test('every registered species has actual front and back PNG assets',()=>{
 });
 
 test('all reachable wild slots can be captured, persisted and registered in the Pokedex',()=>{
-  for(const pool of DATA.pools)for(const slot of pool.slots){const s=ready(),b=createBattle(s,'wild','roark',()=>0)!;
-    b.enemy=mon(slot.speciesId,pool.levels[0]);b.enemy.hp=1;
+  for(const pool of DATA.pools)for(const [index,slot] of pool.slots.entries()){const s=ready(),b=createBattle(s,'wild','roark',()=>0)!;
+    const map=Object.keys(ACTIVE_MAPS).find(map=>encounterPool(map)?.id===pool.id)!;
+    const prior=pool.slots.slice(0,index).reduce((sum,s)=>sum+s.weight,0);let call=0;
+    b.enemy=wildPokemon(map,()=>call++===0?(prior+slot.weight/2)/100:0)!;b.enemy.hp=1;
     assert.equal(battleTurn(s,b,'ball').outcome,'caught');assert(s.pokedex!.caught.includes(slot.speciesId));
     assert(parseSave(JSON.stringify(s)),`${slot.speciesId}`);
   }

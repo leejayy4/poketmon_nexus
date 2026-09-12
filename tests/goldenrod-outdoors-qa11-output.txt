@@ -1,0 +1,40 @@
+✔ original outdoor maps and added passages expose solid signs for actual exterior exits (1.6641ms)
+✔ every outdoor object and sign is investigated by facing a reachable surface without rewards: Goldenrod and Route 34 (5.3309ms)
+✖ every outdoor object and sign is investigated by facing a reachable surface without rewards: other regions (30.4038ms)
+✔ interaction hints match facing and disappear during movement and menus (0.3215ms)
+✔ revision eight saves on new sign tiles relocate while other valid positions remain (20.0634ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 426.0104
+
+✖ failing tests:
+
+test at tests\explore-outdoors.test.ts:22:37
+✖ every outdoor object and sign is investigated by facing a reachable surface without rewards: other regions (30.4038ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      '식은 용암이 여러 겹으로 굳어 있다.\n연구소 앞 돌과 같은 붉은 결이다.',
+  +   '표면을 살펴보고 관찰 내용을 적었다.\n연구소의 표본과 비교해 보자.'
+    ]
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-outdoors.test.ts:38:108)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '식은 용암이 여러 겹으로 굳어 있다.\n연구소 앞 돌과 같은 붉은 결이다.', '표면을 살펴보고 관찰 내용을 적었다.\n연구소의 표본과 비교해 보자.' ],
+    expected: [ '식은 용암이 여러 겹으로 굳어 있다.\n연구소 앞 돌과 같은 붉은 결이다.' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

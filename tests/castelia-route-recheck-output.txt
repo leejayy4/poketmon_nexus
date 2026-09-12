@@ -1,0 +1,21 @@
+✔ harbor sketch rejects a changed lead and persists one optional gallery selection (6.3515ms)
+✔ Castelia homes, gallery and Route 1 support engine walking and save restoration in one journey (75.6926ms)
+✔ every same-region city edge has a real route, retaining forests and research transport (4.4192ms)
+✔ routes provide safe travel, accessible signs and residents, with pickups on template roads (70.5048ms)
+✔ all 35 towns have accessible shops and homes, without replacing gym entrances (159.1009ms)
+✔ visible high buildings have three distinct floors with safe reciprocal staircase landings (38.8282ms)
+✔ routes do not falsely mark either city arrived or visited, while upper rooms group under their city (3.1975ms)
+✔ shop labels use the existing DB potion price and all centers retain the PC event (2.1889ms)
+✔ every new background generates, stairs are painted, and pickup art respects the saved service flag (150.0009ms)
+✔ all 33 passages add kind-specific outer loop openings only (33.7916ms)
+✔ each loop joins the existing route and keeps both exits reachable without grass (472.785ms)
+✔ core props and NPC remain reachable and kind layouts differ (6.0262ms)
+✔ existing passage save coordinates survive parsing without a revision change (6.7167ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2248.8819

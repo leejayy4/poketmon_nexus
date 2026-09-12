@@ -3,10 +3,12 @@ import { PASSAGES,FLOOR_INFO,MART_ROOMS,MART_DOORS,HOME_ROOMS,journeyItemFlag } 
 import { paintTourGround,paintTourPaths } from './explore-materials';
 import { paintGroveTree } from './explore-tree-art';
 import { paintTallGrass } from './town';
-import { isOreburghCave,paintCaveEncounter } from './oreburgh-cave-art';
+import { isCaveEncounterMap,paintCaveEncounter } from './oreburgh-cave-art';
 import { JOURNEY_ROUTE_LAYOUTS } from './journey-route-layouts';
+import { paintEternaClock } from './eterna-clock-art';
 import type { TourInterior } from './explore-interiors';
 import type { TourBuilding } from './explore-world';
+import { paintLavenderApproach } from './lavender-art';
 
 type Images=Record<string,HTMLImageElement|HTMLCanvasElement>;
 const rect=(c:CanvasRenderingContext2D,x:number,y:number,w:number,h:number,color:string)=>{c.fillStyle=color;c.fillRect(x,y,w,h)};
@@ -104,6 +106,19 @@ export function paintJourneyPassage(c:CanvasRenderingContext2D,images:Images,map
   paintTourPaths(c,tiles,paths,kind==='coast'?'desert':kind==='cave'?'cave':'forest');
   if(kind==='cave')for(const key of paths){const[x,y]=key.split(',').map(Number);rect(c,x*16,y*16,16,16,'#839082b8');rect(c,x*16+2,y*16+5,4,1,'#b4b7a0');if((x+y)%3===0)rect(c,x*16+10,y*16+12,3,2,'#5c726a');}
   if(map.id===OREBURGH_CAVE)paintOreburghCavePathHints(c,map);
+  if(map.id==='tour_pass_vermilion_cinnabar'){
+    // Cargo waiting beside the volcanic-coast trail ties this segment to Vermilion's working port.
+    for(const [x,y,color] of [[58,29,'#9b7048'],[59,29,'#b98955'],[58,28,'#806141']] as const){
+      rect(c,x*16+2,y*16+5,12,10,color);rect(c,x*16+3,y*16+6,10,2,'#d3b077');rect(c,x*16+7,y*16+5,2,10,'#6f543b');
+    }
+    rect(c,60*16,28*16+12,48,3,'#686e62');rect(c,60*16+5,28*16+3,3,12,'#4d5d56');rect(c,60*16+39,28*16+3,3,12,'#4d5d56');
+  }
+  if(map.id==='tour_pass_vermilion_cerulean'){
+    // A small observation rail marks the habitat survey bend without creating a new interaction.
+    rect(c,47*16,13*16+11,96,3,'#d7d1aa');
+    for(const x of [47,50,53]){rect(c,x*16+4,13*16+4,3,12,'#6f7667');rect(c,x*16+7,13*16+5,9,2,'#aeb593');}
+    rect(c,50*16+3,13*16+1,26,9,'#526c67');rect(c,50*16+5,13*16+3,22,5,'#d9cf9f');
+  }
   // Complete existing DS trees fit only within the blocked canopy rectangle.
   if(kind==='road')for(let y=1;y<map.height-2;y+=2)for(let x=0;x<map.width-1;x+=2){
     let clear=true;for(let dy=-1;dy<2;dy++)for(let dx=0;dx<2;dx++){const landmark=landmarkAt(x+dx,y+dy);if(isGround(x+dx,y+dy)||landmark&&landmark.kind!=='grove')clear=false;}
@@ -111,7 +126,7 @@ export function paintJourneyPassage(c:CanvasRenderingContext2D,images:Images,map
   }
   for(const patch of map.terrain??[])for(let y=patch.y;y<patch.y+patch.h;y++)for(let x=patch.x;x<patch.x+patch.w;x++){
     if(isGround(x,y)){
-      if(isOreburghCave(map.id))paintCaveEncounter(c,x*16,y*16,false);
+      if(isCaveEncounterMap(map.id))paintCaveEncounter(c,x*16,y*16,false);
       else paintTallGrass(c,x*16,y*16,false,0,images['grass-reference']);
     }
   }
@@ -127,12 +142,14 @@ export function paintJourneyPassage(c:CanvasRenderingContext2D,images:Images,map
     rect(c,x,y,16,10,'#546b63');rect(c,x+1,y+1,14,7,'#e0d5aa');
     rect(c,x+3,y+3,10,1,'#8d8c72');rect(c,x+4,y+5,8,1,'#8d8c72');
   }
+  paintLavenderApproach(c,map);
 }
 
 /** Stairs are painted into the background, underneath actors and furniture. */
 export function paintJourneyInterior(c:CanvasRenderingContext2D,images:Images,map:GameMap,room:TourInterior){
   const info=FLOOR_INFO[map.id];
-  if(HOME_ROOMS.has(map.id)){
+  const compact=map.width===16;
+  if(HOME_ROOMS.has(map.id)&&compact){
     // Replace the dojo wall treatment with household windows and warm wallpaper.
     rect(c,32,12,192,30,'#d2c3a0');rect(c,32,40,192,8,'#977b59');
     for(const x of [48,112,176]){rect(c,x-2,16,30,23,'#735e4b');c.drawImage(images['lab-reference'],105,13,26,17,x,18,26,17);rect(c,x-3,16,5,22,'#c58d7d');rect(c,x+24,16,5,22,'#c58d7d');}
@@ -142,10 +159,32 @@ export function paintJourneyInterior(c:CanvasRenderingContext2D,images:Images,ma
     const {x,y,w}=room.reception,px=x*16,py=y*16;
     rect(c,px,py-6,w*16,22,'#537f87');rect(c,px+2,py-5,w*16-4,10,'#dce5d0');rect(c,px+2,py+6,w*16-4,8,'#82afa9');
     rect(c,px+w*16-18,py-13,14,11,'#5f727b');rect(c,px+w*16-16,py-11,10,5,'#a5d2bf');
-    rect(c,104,19,49,15,'#436b80');c.save();c.font='8px Galmuri11, monospace';c.fillStyle='#fff0c9';c.textAlign='center';c.fillText('SHOP',128,30);c.restore();
+    const signX=map.width*8;rect(c,signX-24,19,49,15,'#436b80');c.save();c.font='8px Galmuri11, monospace';c.fillStyle='#fff0c9';c.textAlign='center';c.fillText('SHOP',signX,30);c.restore();
   }
   if(!info)return;
-  if(info.floor>1){
+  if(map.id.startsWith('tour_vermilion_hall')){
+    const cx=map.width*8;
+    if(info.floor===1){
+      // Three route rows: the local coasts and the separate Canalave connection.
+      rect(c,cx-68,21,136,24,'#3f6470');
+      for(let row=0;row<3;row++){
+        rect(c,cx-61,26+row*6,42+row*12,2,row===2?'#d5aa69':'#d9d5ae');
+        rect(c,cx+49-row*8,24+row*6,7,6,row===2?'#9fc9c0':'#e4c982');
+      }
+    }else if(info.floor===2){
+      // Cargo silhouettes and a blue status board distinguish the working floor.
+      rect(c,cx-70,20,140,25,'#465e68');rect(c,cx-64,24,48,16,'#7faeac');
+      for(const x of [cx-5,cx+22,cx+49]){rect(c,x,28,22,15,'#a8784e');rect(c,x+2,30,18,3,'#d0a56f');rect(c,x+9,28,3,15,'#71543d');}
+    }else{
+      // Wide sea windows and planters make the upper floor read as a shared rest deck.
+      for(const x of [cx-72,cx-22,cx+28]){
+        rect(c,x,19,42,24,'#536d70');rect(c,x+3,22,36,17,'#86b9ba');rect(c,x+5,24,32,3,'#bedbd0');
+        rect(c,x+2,40,38,4,'#d6c69d');
+      }
+      for(const x of [cx-82,cx+72]){rect(c,x,37,12,8,'#8a6949');rect(c,x+2,31,8,7,'#73945f');}
+    }
+  }
+  if(info.floor>1&&compact){
     // paintTourInterior contains an exterior mat. Upper floors have a solid wall.
     rect(c,128,176,16,16,'#b9b5a0');rect(c,32,189,192,4,'#6b786b');rect(c,128,193,16,31,'#172b34');
   }
@@ -159,7 +198,7 @@ export function paintJourneyInterior(c:CanvasRenderingContext2D,images:Images,ma
     const signY=up?py-10:py+17;
     rect(c,px-2,signY,20,8,'#466674');c.save();c.font='7px Galmuri11, monospace';c.fillStyle='#f7e6b3';c.textAlign='center';c.fillText((up?'↑':'↓')+FLOOR_INFO[exit.to].floor+'F',px+8,signY+7);c.restore();
   }
-  c.save();c.font='8px Galmuri11, monospace';c.fillStyle='#fff0c9';c.textAlign='center';rect(c,193,20,23,13,'#526c77');c.fillText(info.floor+'F',204,30);c.restore();
+  const labelX=map.width*16-52;c.save();c.font='8px Galmuri11, monospace';c.fillStyle='#fff0c9';c.textAlign='center';rect(c,labelX-11,20,23,13,'#526c77');c.fillText(info.floor+'F',labelX,30);c.restore();
 }
 
 /** Renderer integration: call in world coordinates after depth layers, before UI.
@@ -167,6 +206,7 @@ export function paintJourneyInterior(c:CanvasRenderingContext2D,images:Images,ma
  * The pickup flag is shared through journeyItemFlag; drawing never mutates saves.
  */
 export function paintJourneyOverlay(c:CanvasRenderingContext2D,_images:Images,map:GameMap,flags:SaveData['flags']={},clock=0){
+  if(map.id==='tour_eterna')paintEternaClock(c);
   if(map.id==='tour_jubilife'){
     const sign=map.props.find(p=>p.dialogue==='jubilifeGrassSign');
     if(sign){const x=sign.x*16,y=sign.y*16;rect(c,x+7,y+8,3,9,'#776246');rect(c,x,y,17,11,'#566b55');rect(c,x+1,y+1,15,8,'#e4d4a0');rect(c,x+3,y+3,10,1,'#8b8866');rect(c,x+3,y+5,8,1,'#8b8866');}

@@ -35,7 +35,7 @@ test('every tour spawn reaches all entrances, guides and house investigation pos
 });
 test('tour guides repeat their map’s real exit directions and destinations',()=>ui(()=>{
   const g=tour();
-  for(const place of PLACES){g.save.map=place.id;g.save.player={...TOUR_SPAWNS[place.id],facing:'down'};const signs=getWorldOutdoors(g.map)!.signs;g.event('tourGuide');assert.deepEqual(g.dialogue?.pages.slice(1),signs.map(sign=>sign.pages[0]));g.dialogue=null;}
+  for(const place of PLACES){g.save.map=place.id;g.save.player={...TOUR_SPAWNS[place.id],facing:'down'};const signs=getWorldOutdoors(g.map)!.signs;g.event('tourGuide');if(place.id==='tour_cinnabar'){const choice=g.dialogue?.choices?.find(c=>c.label==='다음 여행 준비');assert(choice);g.dialogue=null;choice.action();assert.match(g.dialogue!.pages[0],/북쪽 해안길 → 태초마을/);assert.match(g.dialogue!.pages[0],/동쪽 해안길 → 갈색시티/);g.cancel();continue;}assert.deepEqual(g.dialogue?.pages.slice(1),signs.map(sign=>sign.pages[0]));g.dialogue=null;}
 }));
 test('legacy exploration URL uses the same adventure storage namespace',()=>{
   const old=Object.getOwnPropertyDescriptor(globalThis,'location');try{Object.defineProperty(globalThis,'location',{configurable:true,value:{search:'?explore=1&qa=world-test'}});const a=new Engine();assert.equal(a.exploring,false);assert(a.storageKey.endsWith(':qa:world-test'));Object.defineProperty(globalThis,'location',{configurable:true,value:{search:'?qa=world-test'}});const b=new Engine();assert(!b.exploring);assert.equal(a.storageKey,b.storageKey);}finally{if(old)Object.defineProperty(globalThis,'location',old);else Reflect.deleteProperty(globalThis,'location')}

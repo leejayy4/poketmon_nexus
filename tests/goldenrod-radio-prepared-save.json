@@ -1,0 +1,56 @@
+{
+  "format": "first-partner-save",
+  "savedAt": "2026-09-10T01:52:44.299Z",
+  "save": {
+    "version": 1,
+    "worldRevision": 24,
+    "map": "tour_goldenrod_hall",
+    "player": {
+      "x": 4,
+      "y": 6,
+      "facing": "up"
+    },
+    "flags": {
+      "starterReceived": true,
+      "departureCleared": true
+    },
+    "party": [
+      {
+        "species": 7,
+        "level": 5,
+        "experience": 0,
+        "hp": 20,
+        "maxHp": 20,
+        "nature": "성실",
+        "met": "새잎마을 · 포켓몬 연구소",
+        "moves": [
+          "몸통박치기",
+          "꼬리흔들기"
+        ]
+      }
+    ],
+    "box": [],
+    "pokedex": {
+      "seen": [
+        7
+      ],
+      "caught": [
+        7
+      ]
+    },
+    "inventory": {
+      "pokeBalls": 30,
+      "potions": 20
+    },
+    "badges": [],
+    "keyItems": [],
+    "money": 5000,
+    "healingPoint": "home",
+    "steps": 0,
+    "seconds": 0,
+    "tourVisited": [
+      "tour_goldenrod",
+      "tour_goldenrod_hall"
+    ]
+  }
+}

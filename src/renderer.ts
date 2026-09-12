@@ -7,7 +7,7 @@ import { paintCoronetBattleArena } from './coronet-art';
 import { paintFerryJourney,ferryProgress,type FerryJourneyView } from './ferry-art';
 import { gymCartView } from './gym-cart';
 import { paintGymCart,paintGymCartSamples } from './gym-cart-art';
-import { isOreburghCave, paintCaveEncounter, paintCaveBattleArena } from './oreburgh-cave-art';
+import { isCaveEncounterMap, paintCaveEncounter, paintCaveBattleArena } from './oreburgh-cave-art';
 import { paintJourneyOverlay } from './journey-art';
 import { paintMoveTechnique } from './move-art';
 import { showPokedex } from './journey-services';
@@ -36,6 +36,7 @@ import { TOUR_MAPS,TOUR_INTERIORS,TOUR_OUTDOORS,TOUR_BUILDINGS,TOUR_FEATURES,tou
 import { buildExploreArt,paintTourSign,paintTourBuilding,TOUR_COLORS } from './explore-art';
 import { SINNOH_MAPS,SINNOH_CITIES,buildSinnohArt } from './sinnoh-maps';
 import { buildRouteArt, ROUTE_SIGN } from './route';
+import { paintChargestoneMainCrystal } from './unova-route-six';
 import { spriteFrame,recolorSprite } from './sprites';
 type Hit = { x:number;y:number;w:number;h:number;action:()=>void };
 const W=256,H=192;
@@ -56,7 +57,7 @@ export class Renderer {
   text(c:CanvasRenderingContext2D,text:string,x:number,y:number,color=INK,size=10,align:CanvasTextAlign='left'){c.fillStyle=color;c.font=`${size}px Galmuri`;c.textBaseline='top';c.textAlign=align;for(const [i,line]of text.split('\n').entries())c.fillText(line,Math.round(x),Math.round(y+i*(size+5)));c.textAlign='left'}
   frame(c:CanvasRenderingContext2D,x:number,y:number,w:number,h:number,fill=PAPER){this.rect(c,x,y,w,h,'#394954');this.rect(c,x+1,y+1,w-2,h-2,'#a0b1b9');this.rect(c,x+3,y+3,w-6,h-6,'#fff');this.rect(c,x+5,y+5,w-10,h-10,fill);}
   ball(c:CanvasRenderingContext2D,x:number,y:number,r=5,selected=false){c.fillStyle='#34464b';c.beginPath();c.arc(x,y,r+1,0,Math.PI*2);c.fill();c.fillStyle=selected?'#f39867':'#de6a62';c.beginPath();c.arc(x,y,r,Math.PI,0);c.fill();c.fillStyle='#f2f1df';c.beginPath();c.arc(x,y,r,0,Math.PI);c.fill();this.rect(c,x-r,y-1,r*2,2,'#34464b');this.rect(c,x-2,y-2,4,4,'#34464b');this.rect(c,x-1,y-1,2,2,'#f6f9e5')}
-  battleArena(c:CanvasRenderingContext2D){const battle=this.game.presentedBattle;if(battle?.kind==='gym'&&battle.gymId==='maylene'){paintVeilstoneGymBattleArena(c);return;}if(battle?.kind==='gym'&&battle.gymId==='fantina'){paintHearthomeGymBattleArena(c);return;}if(battle?.kind==='gym'&&battle.gymId==='gardenia'){paintEternaGymBattleArena(c);return;}if((battle?.kind==='gym'&&battle.gymId==='roark')||(battle?.kind==='trainer'&&this.game.save.map==='oreburgh_gym')){paintOreburghGymBattleArena(c);return;}if(battle?.kind==='wild'&&this.game.save.map==='tour_coronet'){paintCoronetBattleArena(c);return;}if(isOreburghCave(this.game.save.map)){paintCaveBattleArena(c);return;}this.rect(c,0,0,256,192,'#e7edd5');for(let y=0;y<62;y+=3)this.rect(c,0,y,256,1,'#dce7cb');const drift=Math.floor(this.game.clock*5)%286;for(const [x,y,w]of [[-12,12,18],[84,31,24],[194,8,16]] as const){const px=(x+drift)%286-15;this.rect(c,px,y,w,2,'#f3f3dc');this.rect(c,px+4,y-2,w-8,2,'#f3f3dc');this.rect(c,px+7,y+2,w-13,1,'#d4dfca');}for(const [x,w,h]of [[-20,56,7],[48,42,4],[126,68,8],[212,51,5]] as const)this.rect(c,x,62-h,w,h,'#b4c69a');this.rect(c,0,62,256,130,'#c7d7aa');for(let y=72;y<192;y+=16)for(let x=(y%32?7:15);x<256;x+=37)this.rect(c,x,y,5,1,'#afc58d');for(const [x,y,rx,ry]of [[196,84,53,12],[59,133,70,19]] as const){c.fillStyle='#76996e';c.beginPath();c.ellipse(x,y+3,rx,ry,0,0,Math.PI*2);c.fill();c.fillStyle='#9fbd7e';c.beginPath();c.ellipse(x,y,rx-2,ry-3,0,0,Math.PI*2);c.fill();c.fillStyle='#dbe5b6';c.beginPath();c.ellipse(x,y-3,rx-7,ry-6,0,0,Math.PI*2);c.fill();this.rect(c,x-rx+12,y-2,rx-13,1,'#eef0cc');this.rect(c,x+5,y+5,rx-13,1,'#8bad76');}}
+  battleArena(c:CanvasRenderingContext2D){const battle=this.game.presentedBattle;if(battle?.kind==='gym'&&battle.gymId==='maylene'){paintVeilstoneGymBattleArena(c);return;}if(battle?.kind==='gym'&&battle.gymId==='fantina'){paintHearthomeGymBattleArena(c);return;}if(battle?.kind==='gym'&&battle.gymId==='gardenia'){paintEternaGymBattleArena(c);return;}if((battle?.kind==='gym'&&battle.gymId==='roark')||(battle?.kind==='trainer'&&this.game.save.map==='oreburgh_gym')){paintOreburghGymBattleArena(c);return;}if(battle?.kind==='wild'&&this.game.save.map==='tour_coronet'){paintCoronetBattleArena(c);return;}if(isCaveEncounterMap(this.game.save.map)){paintCaveBattleArena(c);return;}this.rect(c,0,0,256,192,'#e7edd5');for(let y=0;y<62;y+=3)this.rect(c,0,y,256,1,'#dce7cb');const drift=Math.floor(this.game.clock*5)%286;for(const [x,y,w]of [[-12,12,18],[84,31,24],[194,8,16]] as const){const px=(x+drift)%286-15;this.rect(c,px,y,w,2,'#f3f3dc');this.rect(c,px+4,y-2,w-8,2,'#f3f3dc');this.rect(c,px+7,y+2,w-13,1,'#d4dfca');}for(const [x,w,h]of [[-20,56,7],[48,42,4],[126,68,8],[212,51,5]] as const)this.rect(c,x,62-h,w,h,'#b4c69a');this.rect(c,0,62,256,130,'#c7d7aa');for(let y=72;y<192;y+=16)for(let x=(y%32?7:15);x<256;x+=37)this.rect(c,x,y,5,1,'#afc58d');for(const [x,y,rx,ry]of [[196,84,53,12],[59,133,70,19]] as const){c.fillStyle='#76996e';c.beginPath();c.ellipse(x,y+3,rx,ry,0,0,Math.PI*2);c.fill();c.fillStyle='#9fbd7e';c.beginPath();c.ellipse(x,y,rx-2,ry-3,0,0,Math.PI*2);c.fill();c.fillStyle='#dbe5b6';c.beginPath();c.ellipse(x,y-3,rx-7,ry-6,0,0,Math.PI*2);c.fill();this.rect(c,x-rx+12,y-2,rx-13,1,'#eef0cc');this.rect(c,x+5,y+5,rx-13,1,'#8bad76');}}
   draw(){if(this.game.ferryJourney){this.ferry(this.game.ferryJourney);return;}this.world();this.lower();if(this.game.transition){const alpha=this.game.transition>.18?Math.min(1,(.4-this.game.transition)/.16):this.game.transition/.18;this.ctx.fillStyle=`rgba(0,0,0,${alpha})`;this.ctx.fillRect(0,0,W,H)}if(this.game.toastTime>0){this.frame(this.touch,8,153,240,31);this.text(this.touch,this.game.toast,128,163,INK,8,'center')}}
   ferry(view:FerryJourneyView){
     this.hits=[];paintFerryJourney(this.ctx,view);
@@ -73,9 +74,10 @@ export class Renderer {
     const camera=(p:number,total:number,view:number)=>total<view?(total-view)/2:Math.max(0,Math.min(total-view,p-view/2));
     const cx=Math.round(camera(pos.x*16+8,map.width*16,W)),cy=Math.round(camera(pos.y*16+8,map.height*16,H));
     c.save();c.translate(-cx,-cy);c.drawImage(this.images[map.background],0,0);
+    if(map.id==='tour_chargestone_b1f')paintChargestoneMainCrystal(c,Boolean(g.save.flags.chargestoneMainCrystalMoved));
     paintTourWaterMotion(c,TOUR_FEATURES[map.id]??[],g.clock);
     if(map.id==='tour_jubilife')for(const r of map.terrain??[]){this.rect(c,r.x*16-3,r.y*16-3,r.w*16+6,r.h*16+6,'#8c9c77');this.rect(c,r.x*16-1,r.y*16-1,r.w*16+2,r.h*16+2,'#cee0a4');}
-    if(['tour_eterna_forest','tour_coronet','tour_jubilife'].includes(map.id))for(const r of map.terrain??[])for(let y=r.y;y<r.y+r.h;y++)for(let x=r.x;x<r.x+r.w;x++)paintTallGrass(c,x*16,y*16,false,g.clock,this.images['grass-reference']);
+    if(['tour_eterna_forest','tour_viridian_forest','tour_coronet','tour_jubilife','tour_cinnabar','tour_castelia'].includes(map.id))for(const r of map.terrain??[])for(let y=r.y;y<r.y+r.h;y++)for(let x=r.x;x<r.x+r.w;x++)paintTallGrass(c,x*16,y*16,false,g.clock,this.images['grass-reference']);
     if(map.id==='town')for(let k=0;k<4;k++){this.rect(c,465+((k*19+Math.floor(g.clock*3))%78),237+(k%2)*17,7,1,'#a3d9ed')}
     const layers:{depth:number;draw:()=>void}[]=[];
     if(map.id==='oreburgh_gym'){const view=gymCartView(g);layers.push({depth:7.9,draw:()=>paintGymCart(c,view)},{depth:10.9,draw:()=>paintGymCartSamples(c,view)});}
@@ -113,7 +115,7 @@ export class Renderer {
     }
     else if(room)for(const o of room.objects)layers.push({depth:o.y+o.h-.1,draw:()=>paintTourFurnishing(c,this.images,room,o)});
     layers.sort((a,b)=>a.depth-b.depth).forEach(l=>l.draw());
-    {const x=Math.round(pos.x),y=Math.round(pos.y);if(map.terrain?.some(r=>x>=r.x&&x<r.x+r.w&&y>=r.y&&y<r.y+r.h)){if(isOreburghCave(map.id))paintCaveEncounter(c,x*16,y*16,true,g.move?g.clock:0);else paintTallGrass(c,x*16,y*16,true,g.clock*2+x,this.images['grass-reference']);}}
+    {const x=Math.round(pos.x),y=Math.round(pos.y);if(map.terrain?.some(r=>x>=r.x&&x<r.x+r.w&&y>=r.y&&y<r.y+r.h)){if(isCaveEncounterMap(map.id))paintCaveEncounter(c,x*16,y*16,true,g.move?g.clock:0);else paintTallGrass(c,x*16,y*16,true,g.clock*2+x,this.images['grass-reference']);}}
     paintJourneyOverlay(c,this.images,map,g.save.flags,g.clock);
     c.restore();
     if(g.labelTime>0){const alpha=Math.min(1,g.labelTime*2),w=Math.min(132,22+map.name.length*9);c.globalAlpha=alpha;this.rect(c,6,6,w,17,'#263c42');this.rect(c,7,7,w-2,15,'#708777');this.rect(c,9,9,w-6,11,'#d9d8ab');this.text(c,map.name,15,11,'#35483e',8);c.globalAlpha=1}
@@ -207,7 +209,7 @@ export class Renderer {
   exploreMap(c:CanvasRenderingContext2D){
     const g=this.game,m=g.map,p=tourPlaceForMap(m.id),markers=tourMapMarkers(m);
     this.topbar(c,p?p.region+' · '+p.name:m.name);
-    this.text(c,g.interactionHint??(markers.length?'＋ 센터  G 체육관  ◆ 시설  ● 사람':'모험 지도  ·  출구를 따라 이동'),128,34,g.interactionHint?INK:'#657b74',8,'center');
+    this.text(c,g.interactionHint??(markers.length?'＋센터  G체육관  ◆시설  ●사람  ◇출구':'모험 지도  ·  출구를 따라 이동'),128,34,g.interactionHint?INK:'#657b74',8,'center');
     if(g.interactionHint)this.hits.push({x:0,y:27,w:256,h:19,action:()=>g.confirm()});
     const {scale,x:ox,y:oy}=tourMinimapLayout(m);
     this.frame(c,ox-4,oy-4,m.width*scale+8,m.height*scale+8);
@@ -226,17 +228,18 @@ export class Renderer {
       else if(marker.kind==='gym'){this.rect(c,x-3,y-3,6,6,'#bb964d');this.text(c,'G',x,y-3,'#fffce7',6,'center')}
       else if(marker.kind==='facility'){this.rect(c,x-3,y-2,6,4,'#42618d');this.rect(c,x-2,y-3,4,6,'#42618d')}
       else if(marker.kind==='pokemon'){this.rect(c,x-3,y-2,2,3,'#bb7083');this.rect(c,x+1,y-2,2,3,'#bb7083');this.rect(c,x-2,y,4,2,'#bb7083');this.rect(c,x-1,y+2,2,1,'#bb7083')}
+      else if(marker.kind==='exit'){this.rect(c,x-3,y-1,6,2,'#b671a4');this.rect(c,x-1,y-3,2,6,'#b671a4');this.rect(c,x-2,y-2,4,4,'#f0cc78')}
       else{this.rect(c,x-1,y-3,2,2,'#42618d');this.rect(c,x-2,y,4,3,'#42618d')}
       if(!g.locked&&!g.move)this.hits.push({...b,action:()=>{
         if(g.locked||g.move||g.map.id!==m.id)return;
-        if(marker.destination)g.setTourDestination(marker.destination);
+        if(marker.destination)g.setTourDestination(marker.destination,marker.event);
         else g.notice(marker.name+' · 앞에서 Z 대화');
       }});
     }
     this.rect(c,ox+g.save.player.x*scale,oy+g.save.player.y*scale,scale,scale,'#bf5d56');
     if(route?.interaction){const b=tourMarkerBounds(m,route.interaction);this.rect(c,b.cx-5,b.cy-5,10,10,'#b671a4');this.text(c,'!',b.cx,b.cy-4,'#fffbe2',8,'center');}
     const goal=g.followingObjective?adventureGuide(g.save):null;
-    this.text(c,route?route.status==='arrived'?(route.interaction?DIRECTION_LABEL[route.interaction.facing]+'을 보고 Z 대화':goal?.objective.action??route.name+' 도착'):route.status==='blocked'?'길이 막혔어요. 출발 준비·주변 길을 확인하세요':route.interaction?(goal?.objective.action??'목표 인물을 만나자'):DIRECTION_LABEL[route.exit!.entry]+' '+tourPassageLabel(route.exit!)+' · '+route.nextName:'시설 표식을 누르면 입구까지 길안내',128,44,INK,7,'center');
+    this.text(c,route?route.status==='arrived'?(route.interaction?DIRECTION_LABEL[route.interaction.facing]+'을 보고 Z 대화':goal?.objective.action??route.name+' 도착'):route.status==='blocked'?'길이 막혔어요. 출발 준비·주변 길을 확인하세요':route.interaction?(goal?.objective.action??'목표 인물을 만나자'):`${route.name} · ${DIRECTION_LABEL[route.exit!.entry]} ${tourPassageLabel(route.exit!)} → ${route.nextName}`:'시설·사람·출구 표식을 누르면 길안내',128,44,INK,7,'center');
     if(!g.locked&&!g.move){
       this.button(c,4,170,80,20,g.followingObjective?'목표 추적 중':'목표 안내',()=>g.guideObjective(),g.followingObjective);
       this.button(c,88,170,80,20,'안내 해제',()=>{if(!g.locked&&!g.move)g.setTourDestination(null)});
@@ -343,7 +346,7 @@ export class Renderer {
     labels.forEach((label,i)=>{const x=8+(i%2)*124,y=54+Math.floor(i/2)*(b.menu==='moves'?36:47),action=()=>{b.selected=i;g.selectBattle()};
       if(b.menu==='moves')this.moveButton(c,x,y,label,action,i===b.selected);else this.button(c,x,y,116,40,label,action,i===b.selected);
     });
-    if(b.menu==='actions')this.text(c,(b.kind==='wild'?(b.caughtBeforeBattle?'포획 기록 있음':'미포획')+' · ':'')+'경험치 참여 '+experienceParticipants(g.save,b).length+'마리',128,149,'#657b72',8,'center');
+    if(b.menu==='actions')this.text(c,(b.kind==='wild'?(b.caughtBeforeBattle?'포획 기록 있음':'미포획')+' · ':'')+'경험치 받을 동료 '+experienceParticipants(g.save,b).length+'마리',128,149,'#657b72',8,'center');
     if(b.menu==='actions')this.text(c,'방향키로 선택 · Z로 확인',128,165,INK,9,'center');
     else {
       const moves=b.menu==='moves';this.frame(c,8,moves?128:102,240,moves?33:53,'#fbf9e6');

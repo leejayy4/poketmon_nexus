@@ -42,7 +42,7 @@ test('authored routes connect both cities with grass-free walking and reciprocal
 test('authored routes offer several accessible encounter clearings and preserve NPC and pickup access',()=>{
   for(const id of ids){
     const map=getMap(id as GameMap['id']),seen=reachable(map);
-    assert((map.terrain?.length??0)>=3);
+    assert.equal(map.terrain?.length??0,1+JOURNEY_ROUTE_LAYOUTS[id].grass.length);
     for(const area of map.terrain??[]){
       assert(area.w*area.h>=10);
       for(let y=area.y;y<area.y+area.h;y++)for(let x=area.x;x<area.x+area.w;x++)assert(seen.has(key(x,y)),id+' accessible grass '+key(x,y));
@@ -67,7 +67,7 @@ test('all former ground coordinates and saved progress survive additive route ex
 });
 
 test('authored routes have distinct paths and retain solid exterior borders except their exits',()=>{
-  assert.equal(new Set(ids.map(id=>JSON.stringify(JOURNEY_ROUTE_LAYOUTS[id].safePath))).size,3);
+  assert.equal(new Set(ids.map(id=>JSON.stringify(JOURNEY_ROUTE_LAYOUTS[id].safePath))).size,ids.length);
   for(const id of ids){const map=getMap(id as GameMap['id']);
     assert(map.walkable.every(row=>row.length===map.width));
     assert.equal(map.walkable[0],'#'.repeat(map.width));assert.equal(map.walkable[map.height-1],'#'.repeat(map.width));

@@ -13,7 +13,7 @@ test('Ilex marked roads lead only to real exits and the observation spur stays i
   const map=getMap(id),paths=new Set<string>();
   assert.deepEqual([map.width,map.height],[20,18]);assert.equal(map.terrain,undefined);
   assert.deepEqual(map.warps.map(w=>[w.to,w.x,w.y,w.entry]),[
-    ['tour_goldenrod',10,2,'up'],['tour_azalea',18,9,'right'],
+    ['tour_route_34',10,2,'up'],['tour_azalea',18,9,'right'],
   ]);
   for(const [x,y,w,h]of TOUR_LAYOUTS[id].paths)for(let j=y;j<y+h;j++)for(let i=x;i<x+w;i++){
     assert(canStand(map,i,j),`marked path blocked ${i},${j}`);
@@ -48,7 +48,7 @@ test('Ilex retains original observation, signs and guide while each new grove is
   const outdoor=TOUR_OUTDOORS[id],map=getMap(id);
   assert.equal(outdoor.objects.length,4);
   assert.deepEqual([outdoor.objects[0].event,outdoor.objects[0].name],['tourOutdoor0','숲의 나무']);
-  assert.deepEqual(outdoor.signs.map(s=>[s.event,s.destination]),[['tourExit0','tour_goldenrod'],['tourExit1','tour_azalea']]);
+  assert.deepEqual(outdoor.signs.map(s=>[s.event,s.destination]),[['tourExit0','tour_route_34'],['tourExit1','tour_azalea']]);
   assert.deepEqual(map.npcs.map(n=>[n.id,n.x,n.y,n.dialogue]),[['tourGuide',12,7,'tourGuide']]);
   for(const obj of outdoor.objects)for(const c of obj.cells)
     assert([[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dy])=>canStand(map,c.x+dx,c.y+dy)),obj.name+' surface reachable');

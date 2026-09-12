@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "worldRevision": 24,
+  "map": "tour_sinnoh_route_03",
+  "player": {
+    "x": 17,
+    "y": 12,
+    "facing": "up"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true,
+    "eternaSurveyPartner": 1,
+    "eternaSurveyPartnerSlot": 0,
+    "eternaSurveyStatue": true,
+    "eternaSurveyBorder": true,
+    "eternaSurveyCompared": true
+  },
+  "party": [
+    {
+      "species": 1,
+      "level": 12,
+      "hp": 1,
+      "maxHp": 41,
+      "experience": 0,
+      "nature": "성실",
+      "met": "QA 준비 사본 · 신오 초반 동료",
+      "moves": [
+        "덩굴채찍",
+        "울음소리"
+      ]
+    }
+  ],
+  "box": [],
+  "pokedex": {
+    "seen": [
+      1,
+      396,
+      403,
+      41
+    ],
+    "caught": [
+      1,
+      396,
+      403,
+      41
+    ]
+  },
+  "inventory": {
+    "pokeBalls": 0,
+    "potions": 2
+  },
+  "badges": [
+    "BADGE-GS01"
+  ],
+  "keyItems": [
+    "TM-stealth-rock"
+  ],
+  "money": 1440,
+  "healingPoint": "tour_eterna_center",
+  "steps": 505,
+  "seconds": 1155.970969999476,
+  "tourVisited": [
+    "tour_eterna",
+    "tour_eterna_hall",
+    "tour_sinnoh_route_03",
+    "tour_eterna_forest",
+    "tour_sinnoh_route_02",
+    "tour_jubilife",
+    "tour_coronet",
+    "tour_eterna_center"
+  ]
+}

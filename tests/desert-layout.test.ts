@@ -13,7 +13,7 @@ test('Desert marked paths connect north and south exits and reach signs and guid
   const map=getMap(id),paths=new Set<string>();
   assert.deepEqual([map.width,map.height],[20,18]);
   assert.deepEqual(map.warps.map(w=>[w.to,w.x,w.y,w.entry]),[
-    ['tour_castelia',10,16,'down'],['tour_nimbasa',10,2,'up'],
+    ['tour_unova_route_01',10,16,'down'],['tour_nimbasa',10,2,'up'],
   ]);
   for(const [x,y,w,h]of layout.paths)for(let j=y;j<y+h;j++)for(let i=x;i<x+w;i++){
     assert.equal(map.walkable[j][i],'.',`path over rock ${i},${j}`);paths.add(i+','+j);
@@ -46,6 +46,6 @@ test('Desert preserves original rocks and sign events while adding 3 new investi
   assert.equal(outdoor.objects.length,5);
   assert.deepEqual(outdoor.objects.slice(0,2).map(o=>[o.event,o.name]),[['tourOutdoor0','모래 속 유적석'],['tourOutdoor1','모래 속 유적석']]);
   assert.deepEqual(outdoor.objects.slice(2).map(o=>o.name),['모래에 묻힌 유적 기둥','바람이 쌓은 모래 언덕','유적 외곽 석벽']);
-  assert.deepEqual(outdoor.signs.map(s=>[s.event,s.destination]),[['tourExit0','tour_castelia'],['tourExit1','tour_nimbasa']]);
+  assert.deepEqual(outdoor.signs.map(s=>[s.event,s.destination]),[['tourExit0','tour_unova_route_01'],['tourExit1','tour_nimbasa']]);
   for(const obj of outdoor.objects)assert(obj.cells.some(c=>[[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dy])=>canStand(getMap(id),c.x+dx,c.y+dy))),obj.name+' reachable');
 });

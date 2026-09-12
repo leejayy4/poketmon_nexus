@@ -64,7 +64,8 @@ export function battleHint(save:SaveData,b:Battle):[string,string]{
       if(save.party.length>=6&&(save.box?.length??0)>=BOX_CAPACITY)return ['파티와 PC 박스가 가득 찼습니다','몬스터볼을 소비하지 않습니다'];
       if(save.inventory.pokeBalls<=0)return ['몬스터볼이 없습니다',save.badges.length?'상점에서 도구를 구입하세요':'길 안내원에게 보충받으세요'];
       const certain=b.enemy.hp<=b.enemy.maxHp/2;
-      return [`포획 성공률 ${certain?100:55}% · 볼 1개`,save.party.length>=6?'성공하면 PC 박스로 보냅니다':certain?'성공하면 반격 없이 포획':`실패하면 반격: HP -${Math.min(active.hp,damage)}`];
+      const toBox=save.party.length>=6,loss=Math.min(active.hp,damage);
+      return [`포획 성공률 ${certain?100:55}% · 볼 1개`,certain?(toBox?'성공하면 PC 박스로 보냅니다':'성공하면 반격 없이 포획'):toBox?`성공: PC 박스 · 실패 반격: HP -${loss}`:`실패하면 반격: HP -${loss}`];
     }
     if(save.inventory.potions<=0)return ['상처약이 없습니다',save.badges.length?'상점에서 도구를 구입하세요':'회복 지점에서 보충받으세요'];
     return ['포켓몬을 골라 HP 최대 20 회복','사용하면 출전 포켓몬이 반격을 받음'];

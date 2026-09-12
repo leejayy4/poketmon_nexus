@@ -1,0 +1,70 @@
+✖ every integrated passage gives truthful sign and traveller guidance (15.8028ms)
+✔ guidance derives the two common and one rare species from the runtime pool (0.562ms)
+✔ route companion guidance uses the actual weighted route pool (0.4837ms)
+✔ route companion guidance fits the field dialogue UI (0.2268ms)
+✔ guidance and pickup preserve rewards and pickup remains one time (3.216ms)
+✔ every room has solid furniture with reachable investigation surfaces (9.7931ms)
+✖ every exhibit is investigated through player facing and confirm, repeatedly without rewards (39.1462ms)
+✔ revision seven interior saves relocate only obstructed positions and preserve progress (104.9793ms)
+✔ facility dialogue fits the two-line DS dialogue box and landmark collections are distinct (4.4084ms)
+✔ all 43 exterior places and four regions form one connected walking graph (10.1903ms)
+✔ every tour doorway and regional connection moves to a valid save and can be revisited (303.7463ms)
+✔ the western route and expanded Jubilife return preserve the adventure party (0.9245ms)
+✔ tour buildings and features have collision; every non-enterable house can be investigated (1.9411ms)
+✔ developer map jump preserves progress and cannot bypass dialogue, battle or movement (11.5758ms)
+✔ expanded map saves round trip as adventures; legacy test imports preserve current progress (3.8767ms)
+✔ every tour spawn reaches all entrances, guides and house investigation positions (215.669ms)
+✔ tour guides repeat their map’s real exit directions and destinations (11.5728ms)
+✔ legacy exploration URL uses the same adventure storage namespace (0.6309ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 16
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1586.5365
+
+✖ failing tests:
+
+test at tests\encounter-guidance.test.ts:21:1
+✖ every integrated passage gives truthful sign and traveller guidance (15.8028ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /흔한 동료:/. Input:
+  
+  '← 금빛시티\n→ 너도밤나무숲\n만날 수 있는 동료: 슬리프·꼬렛\n풀밭에서 천천히 살펴봐.\n이곳의 포켓몬은\nLv.22~24 정도야.'
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\encounter-guidance.test.ts:37:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '← 금빛시티\n→ 너도밤나무숲\n만날 수 있는 동료: 슬리프·꼬렛\n풀밭에서 천천히 살펴봐.\n이곳의 포켓몬은\nLv.22~24 정도야.',
+    expected: /흔한 동료:/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests\explore-interiors.test.ts:26:1
+✖ every exhibit is investigated through player facing and confirm, repeatedly without rewards (39.1462ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '금빛 라디오'
+  - '라디오 조정석'
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-interiors.test.ts:63:28)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '금빛 라디오',
+    expected: '라디오 조정석',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

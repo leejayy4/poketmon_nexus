@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "worldRevision": 24,
+  "map": "route_s01",
+  "player": {
+    "x": 17,
+    "y": 10,
+    "facing": "up"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true
+  },
+  "party": [
+    {
+      "species": 7,
+      "level": 5,
+      "experience": 40,
+      "hp": 20,
+      "maxHp": 20,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "꼬리흔들기"
+      ]
+    },
+    {
+      "species": 19,
+      "level": 25,
+      "hp": 86,
+      "maxHp": 86,
+      "experience": 0,
+      "nature": "성실",
+      "met": "갈색–블루 해안길",
+      "moves": [
+        "필살앞니",
+        "꼬리흔들기"
+      ]
+    }
+  ],
+  "box": [],
+  "pokedex": {
+    "seen": [
+      7
+    ],
+    "caught": [
+      7
+    ]
+  },
+  "inventory": {
+    "pokeBalls": 5,
+    "potions": 5
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 0,
+  "healingPoint": "home",
+  "steps": 0,
+  "seconds": 0
+}

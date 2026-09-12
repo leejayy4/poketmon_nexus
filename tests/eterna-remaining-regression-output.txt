@@ -1,0 +1,855 @@
+✔ every room has solid furniture with reachable investigation surfaces (7.8624ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_jubilife_center (4.924ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_jubilife_hall (0.6399ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_oreburgh_center (0.454ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_oreburgh_hall (0.3282ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_eterna_center (0.2618ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_eterna_hall (0.5056ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_hearthome_center (0.2637ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_hearthome_hall (0.2214ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_veilstone_center (0.3749ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_veilstone_hall (0.4631ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pastoria_center (0.309ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pastoria_hall (0.2336ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_canalave_center (0.2154ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_canalave_hall (0.1893ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_snowpoint_center (0.1952ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_snowpoint_hall (0.7143ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_sunyshore_center (0.2976ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_sunyshore_hall (0.2159ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_lake_center (0.2837ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_lake_hall (0.2016ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_vermilion_center (0.2392ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_vermilion_hall (0.1994ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pallet_center (0.2723ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pallet_hall (0.4175ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_viridian_center (0.3469ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_viridian_hall (0.8255ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pewter_center (2.8622ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pewter_hall (0.3189ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cerulean_center (0.219ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cerulean_hall (0.183ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_celadon_center (0.199ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_celadon_hall (0.2667ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_saffron_center (0.2125ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_saffron_hall (0.1891ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_lavender_center (0.1711ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_lavender_hall (0.1533ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_fuchsia_center (0.1631ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_fuchsia_hall (0.1467ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cinnabar_center (0.1714ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cinnabar_hall (0.8716ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_goldenrod_center (0.2812ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_goldenrod_hall (0.3638ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_violet_center (0.1823ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_violet_hall (0.1414ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_azalea_center (0.1595ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_azalea_hall (0.1553ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_ecruteak_center (0.2078ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_ecruteak_hall (0.1841ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mahogany_center (0.1602ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mahogany_hall (0.2396ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_rage_lake_center (0.2153ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_rage_lake_hall (0.2457ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_olivine_center (0.1744ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_olivine_hall (0.1762ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cianwood_center (0.2221ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cianwood_hall (0.1427ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_blackthorn_center (0.1474ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_blackthorn_hall (0.1561ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_castelia_center (0.1513ms)
+✖ room investigation and optional activity cancellation preserve progress: tour_castelia_hall (1.3586ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_aspertia_center (0.2475ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_aspertia_hall (0.1356ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_virbank_center (0.1501ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_virbank_hall (0.1768ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_nimbasa_center (0.1596ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_nimbasa_hall (0.178ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_driftveil_center (0.1558ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_driftveil_hall (0.1319ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mistralton_center (0.1555ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mistralton_hall (0.1344ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_opelucid_center (0.132ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_opelucid_hall (0.1233ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_humilau_center (0.1641ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_humilau_hall (0.2191ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_dragonspiral_center (0.3503ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_dragonspiral_hall (0.1961ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_jubilife_mart (0.3832ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_jubilife_home1 (0.2181ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_jubilife_home1_2f (0.2002ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_jubilife_home1_3f (0.1685ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_jubilife_home2 (0.4257ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_jubilife_home2_2f (0.182ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_jubilife_home2_3f (0.1593ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_jubilife_home3 (0.1803ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_jubilife_home3_2f (0.2123ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_jubilife_home3_3f (0.1974ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_jubilife_hall_2f (0.1538ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_jubilife_hall_3f (0.551ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_oreburgh_mart (0.2193ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_oreburgh_home2 (0.2034ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_eterna_mart (0.1915ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_eterna_home2 (0.2304ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_hearthome_mart (0.1815ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_hearthome_home2 (0.3825ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_veilstone_mart (0.3293ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_veilstone_home2 (0.2562ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_veilstone_home2_2f (0.2459ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_veilstone_home2_3f (0.2508ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_veilstone_home3 (0.2741ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_veilstone_home3_2f (0.3773ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_veilstone_home3_3f (0.2782ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_veilstone_hall_2f (0.1841ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_veilstone_hall_3f (0.3495ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pastoria_mart (1.675ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pastoria_home1 (0.3787ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pastoria_home1_2f (0.3278ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pastoria_home1_3f (0.1656ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pastoria_home2 (0.1767ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pastoria_home2_2f (0.273ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pastoria_home2_3f (0.4171ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_canalave_mart (0.2608ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_canalave_home1 (0.1923ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_canalave_home1_2f (0.1389ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_canalave_home1_3f (0.2349ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_canalave_home2 (0.1831ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_canalave_home2_2f (0.1436ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_canalave_home2_3f (0.1374ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_snowpoint_mart (0.1634ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_snowpoint_home1 (0.1771ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_snowpoint_home2 (0.1838ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_sunyshore_mart (0.1704ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_sunyshore_home1 (0.199ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_sunyshore_home1_2f (0.1583ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_sunyshore_home1_3f (0.2917ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_sunyshore_home2 (0.4873ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_sunyshore_home2_2f (0.2532ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_sunyshore_home2_3f (0.1603ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_sunyshore_hall_2f (0.1479ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_sunyshore_hall_3f (0.1304ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_lake_mart (0.134ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_lake_home1 (0.2116ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_vermilion_mart (0.1498ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_vermilion_home1 (0.1812ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_vermilion_home1_2f (0.1506ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_vermilion_home1_3f (0.1594ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_vermilion_home2 (0.1963ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_vermilion_home2_2f (0.1554ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_vermilion_home2_3f (0.1788ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pallet_mart (0.1932ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pallet_home1 (0.3629ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pallet_home2 (0.2857ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_viridian_mart (0.2626ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_viridian_home1 (0.3004ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_viridian_home2 (0.3613ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pewter_mart (0.3239ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pewter_home1 (0.3895ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_pewter_home2 (0.2223ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cerulean_mart (0.1554ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cerulean_home1 (0.1749ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cerulean_home1_2f (0.1599ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cerulean_home1_3f (0.1405ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cerulean_home2 (0.2132ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cerulean_home2_2f (0.1412ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cerulean_home2_3f (0.1782ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_celadon_mart (0.1494ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_celadon_home1 (0.175ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_celadon_home2 (0.1656ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_celadon_hall_2f (0.1346ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_celadon_hall_3f (0.1459ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_saffron_mart (0.1737ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_saffron_home1 (0.1947ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_saffron_home1_2f (0.1735ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_saffron_home1_3f (0.1795ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_saffron_home2 (0.1883ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_saffron_home2_2f (0.1756ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_saffron_home2_3f (0.1643ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_saffron_home3 (0.1679ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_saffron_home3_2f (0.1739ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_saffron_home3_3f (0.1625ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_saffron_hall_2f (0.2486ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_saffron_hall_3f (0.1838ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_lavender_mart (0.3163ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_lavender_home1 (0.2917ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_lavender_home2 (0.2878ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_lavender_hall_2f (0.2075ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_lavender_hall_3f (0.1702ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_fuchsia_mart (0.204ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_fuchsia_home1 (0.2097ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_fuchsia_home2 (0.2539ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cinnabar_mart (0.1668ms)
+✖ room investigation and optional activity cancellation preserve progress: tour_cinnabar_home1 (0.5316ms)
+✖ room investigation and optional activity cancellation preserve progress: tour_cinnabar_home2 (0.2576ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_goldenrod_mart (0.2174ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_goldenrod_home1 (0.2877ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_goldenrod_home1_2f (0.173ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_goldenrod_home1_3f (0.2093ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_goldenrod_home2 (0.4013ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_goldenrod_home2_2f (0.2926ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_goldenrod_home2_3f (0.2943ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_goldenrod_home3 (0.5279ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_goldenrod_home3_2f (0.1882ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_goldenrod_home3_3f (0.1401ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_goldenrod_hall_2f (0.2016ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_goldenrod_hall_3f (0.2908ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_violet_mart (0.1753ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_violet_home1 (0.194ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_violet_home2 (0.1691ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_violet_hall_2f (0.1466ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_violet_hall_3f (0.1376ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_azalea_mart (0.135ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_azalea_home1 (0.1993ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_azalea_home2 (0.1956ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_ecruteak_mart (0.1657ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_ecruteak_home1 (0.2016ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_ecruteak_home2 (0.268ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_ecruteak_hall_2f (0.15ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_ecruteak_hall_3f (0.173ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mahogany_mart (0.3101ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mahogany_home1 (0.3125ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mahogany_home2 (0.2432ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_rage_lake_mart (0.2196ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_rage_lake_home1 (0.5323ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_olivine_mart (0.404ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_olivine_home1 (0.4441ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_olivine_home1_2f (0.4299ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_olivine_home1_3f (0.3863ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_olivine_home2 (0.5756ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_olivine_home2_2f (0.3367ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_olivine_home2_3f (0.4267ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_olivine_hall_2f (0.1975ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_olivine_hall_3f (0.1714ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cianwood_mart (0.1666ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cianwood_home1 (0.2355ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cianwood_home1_2f (0.3048ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cianwood_home1_3f (0.3568ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cianwood_home2 (0.3087ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cianwood_home2_2f (0.1694ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_cianwood_home2_3f (0.1588ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_blackthorn_mart (0.1571ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_blackthorn_home1 (0.1715ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_blackthorn_home2 (0.4507ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_castelia_mart (0.2866ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_castelia_home1 (0.5012ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_castelia_home1_2f (0.1865ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_castelia_home1_3f (0.1445ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_castelia_home2 (0.1953ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_castelia_home2_2f (0.1335ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_castelia_home2_3f (0.2022ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_castelia_home3 (0.175ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_castelia_home3_2f (0.1402ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_castelia_home3_3f (0.1794ms)
+✖ room investigation and optional activity cancellation preserve progress: tour_castelia_home4 (0.3911ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_castelia_home4_2f (0.1931ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_castelia_home4_3f (0.1514ms)
+✖ room investigation and optional activity cancellation preserve progress: tour_castelia_home5 (0.2634ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_castelia_home5_2f (0.6949ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_castelia_home5_3f (1.8652ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_castelia_hall_2f (0.3317ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_castelia_hall_3f (0.2138ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_aspertia_mart (0.1646ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_aspertia_home1 (0.1606ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_aspertia_home2 (0.1426ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_virbank_mart (0.1471ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_virbank_home1 (0.2112ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_virbank_home1_2f (0.1782ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_virbank_home1_3f (0.2723ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_virbank_home2 (0.2814ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_virbank_home2_2f (0.1451ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_virbank_home2_3f (0.1142ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_virbank_home3 (0.1315ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_virbank_home3_2f (0.2953ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_virbank_home3_3f (0.1771ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_virbank_hall_2f (0.3946ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_virbank_hall_3f (0.2114ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_nimbasa_mart (0.1432ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_nimbasa_home1 (0.1955ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_nimbasa_home1_2f (0.1306ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_nimbasa_home1_3f (0.1141ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_nimbasa_home2 (0.3764ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_nimbasa_home2_2f (0.2211ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_nimbasa_home2_3f (0.1413ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_nimbasa_home3 (0.1474ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_nimbasa_home3_2f (0.1384ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_nimbasa_home3_3f (0.1132ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_nimbasa_hall_2f (0.1259ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_nimbasa_hall_3f (0.1044ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_driftveil_mart (0.1102ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_driftveil_home1 (0.135ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_driftveil_home1_2f (0.1144ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_driftveil_home1_3f (0.1166ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_driftveil_home2 (0.1234ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_driftveil_home2_2f (0.1003ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_driftveil_home2_3f (0.1033ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mistralton_mart (0.1102ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mistralton_home1 (0.1401ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mistralton_home1_2f (0.1055ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mistralton_home1_3f (0.1041ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mistralton_home2 (0.139ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mistralton_home2_2f (0.1187ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mistralton_home2_3f (0.1376ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mistralton_home3 (0.1461ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mistralton_home3_2f (0.134ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mistralton_home3_3f (0.1282ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mistralton_hall_2f (0.1204ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_mistralton_hall_3f (0.1551ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_opelucid_mart (0.1557ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_opelucid_home1 (0.2437ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_opelucid_home2 (0.2859ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_humilau_mart (0.1564ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_humilau_home1 (0.1526ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_humilau_home1_2f (0.1138ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_humilau_home1_3f (0.115ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_humilau_home2 (0.1271ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_humilau_home2_2f (0.1072ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_humilau_home2_3f (0.4317ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_dragonspiral_mart (0.2753ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_dragonspiral_home1 (0.2327ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_dragonspiral_hall_2f (0.1864ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_dragonspiral_hall_3f (0.1845ms)
+✔ room investigation and optional activity cancellation preserve progress: tour_goldenrod_station (0.4983ms)
+✔ revision seven interior saves relocate only obstructed positions and preserve progress (44.7355ms)
+✔ facility dialogue fits the two-line DS dialogue box and landmark collections are distinct (1.2329ms)
+✔ original outdoor maps and added passages expose solid signs for actual exterior exits (3.1334ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_jubilife (11.3003ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_oreburgh (2.6931ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_eterna_forest (8.0219ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_eterna (6.2707ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_coronet (2.8364ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_hearthome (2.1748ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_veilstone (1.1228ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pastoria (1.7694ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_canalave (1.8501ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_snowpoint (0.8685ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_sunyshore (0.7854ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_lake (0.8651ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_vermilion (4.0254ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pallet (0.8384ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_viridian (0.8771ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_viridian_forest (1.2034ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pewter (0.6254ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_cerulean (0.7106ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_celadon (0.7976ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_saffron (0.9237ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_lavender (0.7436ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_fuchsia (0.8049ms)
+✖ outdoor investigation through reachable surfaces preserves progress: tour_cinnabar (2.4906ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_goldenrod (1.7004ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_violet (0.7815ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_azalea (0.7186ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_ilex (1.1406ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_ecruteak (0.9303ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_mahogany (0.7265ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_rage_lake (0.6144ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_olivine (0.8652ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_cianwood (0.6107ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_blackthorn (0.5212ms)
+✖ outdoor investigation through reachable surfaces preserves progress: tour_castelia (1.0559ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_aspertia (0.6027ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_virbank (0.6374ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_nimbasa (0.6754ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_driftveil (1.0887ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_mistralton (0.7418ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_opelucid (0.6392ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_humilau (0.985ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_desert (1.1292ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_dragonspiral (0.701ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_unova_route_01 (0.3105ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_route_34 (0.8318ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_jubilife_oreburgh (0.3707ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_hearthome_veilstone (0.1912ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_hearthome_pastoria (0.1526ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_veilstone_sunyshore (0.1513ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_pastoria_sunyshore (0.1196ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_snowpoint_lake (0.1191ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_vermilion_cerulean (0.1307ms)
+✖ outdoor investigation through reachable surfaces preserves progress: tour_pass_vermilion_cinnabar (0.2855ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_pallet_viridian (0.142ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_pallet_cinnabar (0.1435ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_viridian_celadon (0.1013ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_pewter_cerulean (0.105ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_cerulean_saffron (0.0973ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_celadon_saffron (0.099ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_celadon_fuchsia (0.0819ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_saffron_lavender (0.1096ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_lavender_fuchsia (0.1008ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_goldenrod_violet (0.102ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_goldenrod_ecruteak (0.1227ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_violet_azalea (0.1043ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_ecruteak_mahogany (0.1171ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_ecruteak_olivine (0.1117ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_mahogany_rage_lake (0.0943ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_mahogany_blackthorn (0.0871ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_olivine_cianwood (0.0997ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_castelia_virbank (0.101ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_castelia_aspertia (0.1134ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_aspertia_virbank (0.0755ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_nimbasa_driftveil (0.0846ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_driftveil_mistralton (0.088ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_mistralton_opelucid (0.0808ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_mistralton_dragonspiral (0.105ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_pass_opelucid_humilau (0.0934ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_sinnoh_route_02 (0.1085ms)
+✔ outdoor investigation through reachable surfaces preserves progress: tour_sinnoh_route_03 (0.0888ms)
+✔ interaction hints match facing and disappear during movement and menus (0.2439ms)
+✔ revision eight saves on new sign tiles relocate while other valid positions remain (23.6151ms)
+✔ 35 towns have 70 distinct local conversations with existing DS sprite assets and clear approaches (5.3235ms)
+✔ residents remain approachable and declining requests preserves progress: tour_jubilife (6.7145ms)
+✔ residents remain approachable and declining requests preserves progress: tour_oreburgh (1.477ms)
+✔ residents remain approachable and declining requests preserves progress: tour_eterna (1.3006ms)
+✔ residents remain approachable and declining requests preserves progress: tour_hearthome (1.0936ms)
+✔ residents remain approachable and declining requests preserves progress: tour_veilstone (0.6418ms)
+✔ residents remain approachable and declining requests preserves progress: tour_pastoria (1.0537ms)
+✔ residents remain approachable and declining requests preserves progress: tour_canalave (0.4921ms)
+✔ residents remain approachable and declining requests preserves progress: tour_snowpoint (0.7163ms)
+✔ residents remain approachable and declining requests preserves progress: tour_sunyshore (0.6413ms)
+✔ residents remain approachable and declining requests preserves progress: tour_vermilion (0.5753ms)
+✔ residents remain approachable and declining requests preserves progress: tour_pallet (0.8615ms)
+✔ residents remain approachable and declining requests preserves progress: tour_viridian (1.8655ms)
+✔ residents remain approachable and declining requests preserves progress: tour_pewter (0.412ms)
+✔ residents remain approachable and declining requests preserves progress: tour_cerulean (0.4355ms)
+✔ residents remain approachable and declining requests preserves progress: tour_celadon (0.4072ms)
+✔ residents remain approachable and declining requests preserves progress: tour_saffron (0.3841ms)
+✔ residents remain approachable and declining requests preserves progress: tour_lavender (0.4064ms)
+✔ residents remain approachable and declining requests preserves progress: tour_fuchsia (0.4492ms)
+✖ residents remain approachable and declining requests preserves progress: tour_cinnabar (2.0827ms)
+✖ residents remain approachable and declining requests preserves progress: tour_goldenrod (0.636ms)
+✔ residents remain approachable and declining requests preserves progress: tour_violet (0.3866ms)
+✔ residents remain approachable and declining requests preserves progress: tour_azalea (0.3228ms)
+✔ residents remain approachable and declining requests preserves progress: tour_ecruteak (0.3598ms)
+✔ residents remain approachable and declining requests preserves progress: tour_mahogany (0.3325ms)
+✔ residents remain approachable and declining requests preserves progress: tour_olivine (0.3181ms)
+✔ residents remain approachable and declining requests preserves progress: tour_cianwood (0.3255ms)
+✔ residents remain approachable and declining requests preserves progress: tour_blackthorn (0.2871ms)
+✖ residents remain approachable and declining requests preserves progress: tour_castelia (0.7263ms)
+✔ residents remain approachable and declining requests preserves progress: tour_aspertia (0.6041ms)
+✔ residents remain approachable and declining requests preserves progress: tour_virbank (0.3393ms)
+✔ residents remain approachable and declining requests preserves progress: tour_nimbasa (0.2931ms)
+✔ residents remain approachable and declining requests preserves progress: tour_driftveil (0.2806ms)
+✔ residents remain approachable and declining requests preserves progress: tour_mistralton (0.3154ms)
+✔ residents remain approachable and declining requests preserves progress: tour_opelucid (0.3505ms)
+✔ residents remain approachable and declining requests preserves progress: tour_humilau (0.301ms)
+✔ revision 9 saves overlapping new residents move safely while visits and valid positions survive (27.6069ms)
+✔ facility routes avoid the newly occupied resident tiles (24.6273ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_jubilife (68.6574ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_oreburgh (9.8372ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_eterna (20.6709ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_hearthome (24.322ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_veilstone (19.6254ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_pastoria (9.1528ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_canalave (9.6731ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_snowpoint (17.8659ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_sunyshore (9.8641ms)
+✖ Pokemon roams clear tiles without obstructing exits or markers: tour_vermilion (1.1177ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_pallet (17.5786ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_viridian (20.0779ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_pewter (13.317ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_cerulean (9.6075ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_celadon (28.0706ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_saffron (28.9278ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_lavender (18.139ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_fuchsia (21.0105ms)
+✖ Pokemon roams clear tiles without obstructing exits or markers: tour_cinnabar (0.3155ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_goldenrod (27.9633ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_violet (18.5535ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_azalea (18.009ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_ecruteak (21.6682ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_mahogany (20.9535ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_olivine (11.682ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_cianwood (9.7891ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_blackthorn (16.1046ms)
+✖ Pokemon roams clear tiles without obstructing exits or markers: tour_castelia (33.1875ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_aspertia (26.7262ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_virbank (23.7588ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_nimbasa (19.4804ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_driftveil (8.9769ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_mistralton (26.2021ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_opelucid (22.6334ms)
+✔ Pokemon roams clear tiles without obstructing exits or markers: tour_humilau (9.4435ms)
+✔ moving Pokemon reserve both endpoints and release the previous tile on arrival (2.3556ms)
+✔ menus and dialogue pause roaming and nearby conversations remain available (2.4837ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_jubilife (2.0668ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_oreburgh (1.1774ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_eterna (0.6406ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_hearthome (0.6214ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_veilstone (0.8147ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_pastoria (0.4148ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_canalave (0.3689ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_snowpoint (0.4302ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_sunyshore (0.556ms)
+✖ old and current saves at the former anchor reload beside the Pokemon: tour_vermilion (3.3348ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_pallet (0.6214ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_viridian (0.4578ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_pewter (0.4239ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_cerulean (0.3399ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_celadon (0.4348ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_saffron (0.3902ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_lavender (0.3492ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_fuchsia (0.4475ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_cinnabar (0.5394ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_goldenrod (0.4537ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_violet (0.353ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_azalea (0.3473ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_ecruteak (0.3465ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_mahogany (0.41ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_olivine (0.312ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_cianwood (0.2988ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_blackthorn (0.3553ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_castelia (0.469ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_aspertia (0.3948ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_virbank (0.3741ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_nimbasa (0.335ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_driftveil (0.3059ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_mistralton (0.3366ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_opelucid (0.3354ms)
+✔ old and current saves at the former anchor reload beside the Pokemon: tour_humilau (0.3126ms)
+✔ navigation recomputes around current Pokemon positions and reserved steps without moving the player (5.7314ms)
+✔ roaming state is isolated by engine and resets on map changes or file restoration (0.9169ms)
+✔ K18 keeps all six authored weights and original levels as evidence while exposing only save-compatible levels (4.8954ms)
+✔ every coast species has supported minimum/maximum-level attacks and captured saves round-trip without extra progression (7.2839ms)
+✔ new sprite files use pinned Platinum front/back assets with matching hashes and dimensions (3.9196ms)
+✔ coast capture updates the actual Pokedex habitat page and route guidance uses the runtime range (2.0487ms)
+ℹ tests 512
+ℹ suites 0
+ℹ pass 497
+ℹ fail 15
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1106.2512
+
+✖ failing tests:
+
+test at tests\explore-interiors.test.ts:34:54
+✖ room investigation and optional activity cancellation preserve progress: tour_castelia_hall (1.3586ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  '항구 갤러리' !== '항구의 아침'
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-interiors.test.ts:79:28)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '항구 갤러리',
+    expected: '항구의 아침',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-interiors.test.ts:34:54
+✖ room investigation and optional activity cancellation preserve progress: tour_cinnabar_home1 (0.5316ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '동료를 돌보는 주민'
+  - '함께 쓰는 식탁'
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-interiors.test.ts:79:28)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '동료를 돌보는 주민',
+    expected: '함께 쓰는 식탁',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-interiors.test.ts:34:54
+✖ room investigation and optional activity cancellation preserve progress: tour_cinnabar_home2 (0.2576ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '여행 준비를 하는 주민'
+  - '가방 수선대'
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-interiors.test.ts:79:28)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '여행 준비를 하는 주민',
+    expected: '가방 수선대',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-interiors.test.ts:34:54
+✖ room investigation and optional activity cancellation preserve progress: tour_castelia_home4 (0.3911ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '항구를 그리는 주민'
+  - '그림 작업대'
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-interiors.test.ts:79:28)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '항구를 그리는 주민',
+    expected: '그림 작업대',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-interiors.test.ts:34:54
+✖ room investigation and optional activity cancellation preserve progress: tour_castelia_home5 (0.2634ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '정원을 돌보는 주민'
+  - '동료 돌봄 책상'
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-interiors.test.ts:79:28)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '정원을 돌보는 주민',
+    expected: '동료 돌봄 책상',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-outdoors.test.ts:22:44
+✖ outdoor investigation through reachable surfaces preserves progress: tour_cinnabar (2.4906ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      '식은 용암이 여러 겹으로 굳어 있다.\n연구소 앞 돌과 같은 붉은 결이다.',
+  +   '표면을 살펴보고 관찰 내용을 적었다.\n연구소의 표본과 비교해 보자.'
+    ]
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-outdoors.test.ts:39:126)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '식은 용암이 여러 겹으로 굳어 있다.\n연구소 앞 돌과 같은 붉은 결이다.', '표면을 살펴보고 관찰 내용을 적었다.\n연구소의 표본과 비교해 보자.' ],
+    expected: [ '식은 용암이 여러 겹으로 굳어 있다.\n연구소 앞 돌과 같은 붉은 결이다.' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-outdoors.test.ts:22:44
+✖ outdoor investigation through reachable surfaces preserves progress: tour_castelia (1.0559ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      '부두의 그늘과 밝은 바닷빛이\n물결을 따라 번갈아 흔들린다.',
+  +   '건강한 선두 동료와 함께 오면\n이 풍경을 스케치로 남길 수 있다.'
+    ]
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-outdoors.test.ts:39:126)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '부두의 그늘과 밝은 바닷빛이\n물결을 따라 번갈아 흔들린다.', '건강한 선두 동료와 함께 오면\n이 풍경을 스케치로 남길 수 있다.' ],
+    expected: [ '부두의 그늘과 밝은 바닷빛이\n물결을 따라 번갈아 흔들린다.' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-outdoors.test.ts:22:44
+✖ outdoor investigation through reachable surfaces preserves progress: tour_pass_vermilion_cinnabar (0.2855ms)
+  AssertionError [ERR_ASSERTION]: 북쪽 전망길에서도 양쪽 큰길로 돌아올 수 있어.
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-outdoors.test.ts:46:131)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\explore-residents.test.ts:25:59
+✖ residents remain approachable and declining requests preserves progress: tour_cinnabar (2.0827ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   '절벽 아래와 남서쪽 물가 앞에\n풀밭이 있어요. 포장길은 안전해요.',
+  +   '만날 수 있는 동료: 가디·질퍽이\n풀밭에서 천천히 살펴봐.'
+  -   '절벽의 붉은 결을 살펴보는 중이에요.\n연구소 표본과 같은 화산암이지요.',
+  -   '남쪽 만의 돌은 파도에 닳아 매끈해요.\n연구소에서 두 장소를 비교해 보세요.'
+    ]
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-residents.test.ts:33:19)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '절벽 아래와 남서쪽 물가 앞에\n풀밭이 있어요. 포장길은 안전해요.', '만날 수 있는 동료: 가디·질퍽이\n풀밭에서 천천히 살펴봐.' ],
+    expected: [ '절벽의 붉은 결을 살펴보는 중이에요.\n연구소 표본과 같은 화산암이지요.', '남쪽 만의 돌은 파도에 닳아 매끈해요.\n연구소에서 두 장소를 비교해 보세요.' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-residents.test.ts:25:59
+✖ residents remain approachable and declining requests preserves progress: tour_goldenrod (0.636ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   '남쪽 34번도로로 떠나는 길이니?\n상점에서 볼과 상처약을 챙겨 가렴.'
+  -   '광장에서는 서로 안부부터 묻지.\n바쁜 도시라도 인사는 빼놓지 않아.'
+    ]
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-residents.test.ts:33:19)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '남쪽 34번도로로 떠나는 길이니?\n상점에서 볼과 상처약을 챙겨 가렴.' ],
+    expected: [ '광장에서는 서로 안부부터 묻지.\n바쁜 도시라도 인사는 빼놓지 않아.' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-residents.test.ts:25:59
+✖ residents remain approachable and declining requests preserves progress: tour_castelia (0.7263ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   '점심 뒤에는 북쪽 정원도 걸어 봐.\n건물 사이 풀밭에 동료들이 살고 있어.'
+  -   '빌딩에서 나와 바다를 보면 시원해.\n쉬는 시간엔 산책로를 꼭 걷지.'
+    ]
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-residents.test.ts:33:19)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '점심 뒤에는 북쪽 정원도 걸어 봐.\n건물 사이 풀밭에 동료들이 살고 있어.' ],
+    expected: [ '빌딩에서 나와 바다를 보면 시원해.\n쉬는 시간엔 산책로를 꼭 걷지.' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests\explore-roaming.test.ts:15:49
+✖ Pokemon roams clear tiles without obstructing exits or markers: tour_vermilion (1.1177ms)
+  AssertionError [ERR_ASSERTION]: tour_vermilion roaming space
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-roaming.test.ts:18:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\explore-roaming.test.ts:15:49
+✖ Pokemon roams clear tiles without obstructing exits or markers: tour_cinnabar (0.3155ms)
+  AssertionError [ERR_ASSERTION]: tour_cinnabar roaming space
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-roaming.test.ts:18:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\explore-roaming.test.ts:15:49
+✖ Pokemon roams clear tiles without obstructing exits or markers: tour_castelia (33.1875ms)
+  AssertionError [ERR_ASSERTION]: tour_castelia marker separation
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-roaming.test.ts:24:86)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\explore-roaming.test.ts:48:43
+✖ old and current saves at the former anchor reload beside the Pokemon: tour_vermilion (3.3348ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert(canStand(g.map,22,16))
+  
+      at TestContext.<anonymous> (C:\my_play\poketmon_demo\tests\explore-roaming.test.ts:54:94)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

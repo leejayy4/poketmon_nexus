@@ -11,7 +11,11 @@ const manifest={worldRevision:17,activeMapCount:Object.keys(ACTIVE_MAPS).length,
 writeFileSync(new URL('../tests/world-tour-map-manifest.json',import.meta.url),JSON.stringify(manifest,null,2));
 let text=`# 통합 모험 지도와 그래픽 확인
 
-2026-09-07 · 그래픽 확인용 확장 지도와 기존 모험을 하나로 통합했다. 현재 게임은 131개 실사용 맵이며 같은 파티·배지·도구로 이동한다.
+> 적용 우선순위: [개발 기준 제0절](DEVELOPMENT.md#0-최우선-목표와-지방도시-작업-단위)의 포켓몬 세계관·DP풍 맵/스토리와 지방→도시 단위 목표를 따른다. 검증은 [도시 구현 완료 후 QA](AGENTS.md#검증과-도시-완료)에 모은다.
+
+현재 장소 설명·도시 사이 경유지·출구·지방 간 이동 수단은 [장소·도로·교통 명세](WORLD_ROUTES.md), 지방별 표시 번호는 그 문서가 연결한 지역 기준을 따른다. 아래 과거 지도·검증 기록의 수량과 현재 실행 범위를 구분한다.
+
+2026-09-07 · 그래픽 확인용 확장 지도와 기존 모험을 하나로 통합했다. 현재 게임은 ${Object.keys(ACTIVE_MAPS).length}개 실사용 맵이며 같은 파티·배지·도구로 이동한다.
 
 ## 실행과 조작
 

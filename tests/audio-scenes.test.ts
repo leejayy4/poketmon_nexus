@@ -63,14 +63,14 @@ test('mute stops present and future voices and old fanfare never survives re-ena
   h.audio.melody();assert.equal(h.audio.beat,1);
 });
 
-test('five original scenes have different melodies and bounded gentle voices',t=>{
+test('six original scenes have different melodies and bounded gentle voices',t=>{
   const h=harness(t);h.audio.toggle();const c=h.contexts[0],signatures=[];
-  for(const scene of ['town','route','cave','wild','gym'] as AudioScene[]){
+  for(const scene of ['town','route','cave','wild','gym','cinnabar'] as AudioScene[]){
     h.audio.setScene(scene);const start=c.oscs.length;
     for(let i=0;i<32;i++){h.audio.melody();c.currentTime+=.5;}
     signatures.push(JSON.stringify(c.oscs.slice(start).map(o=>[o.type,o.frequency.events[0][1]])));
   }
-  assert.equal(new Set(signatures).size,5);
+  assert.equal(new Set(signatures).size,6);
   for(const o of c.oscs){assert.ok(['sine','triangle'].includes(o.type));assert.ok(o.frequency.events.every(([,f])=>f>=65&&f<=1600));}
   for(const g of c.gains)assert.ok(g.gain.events.every(([,v])=>v>0&&v<=.035));
   assert.ok(c.oscs.filter(o=>!o.disconnected).length<=32);

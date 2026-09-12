@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { Engine } from '../src/engine';
 import { PASSAGES } from '../src/journey-world';
 import { encounterPool } from '../src/runtime-encounters';
-import { SPECIES } from '../src/pokemon';
+import { SPECIES,grantPokemon } from '../src/pokemon';
+import { ETERNA_APPROACHES } from '../src/eterna-approaches';
 import { newSave } from '../src/save';
 import { handleJourneyEvent } from '../src/journey-services';
 import { encounterGuidance, routeCompanionPages } from '../src/encounter-guidance';
@@ -20,14 +21,38 @@ function game(map: string) {
 
 test('every integrated passage gives truthful sign and traveller guidance', () => {
   for (const passage of Object.values(PASSAGES)) {
+    if(passage.id==='tour_unova_route_01'){
+      const g=game(passage.id),before=JSON.stringify(g.save);
+      g.event('journeySign');assert.match(g.dialogue!.pages.join('\n'),/4번도로 · 리조트데저트 입구/);assert.match(g.dialogue!.pages.join('\n'),/야생 조우가 없습니다/);
+      g.dialogue=null;g.event('journeyWalker');assert.match(g.dialogue!.pages.join('\n'),/← 구름시티  → 리조트데저트/);assert.doesNotMatch(g.dialogue!.pages.join('\n'),/도구|보상/);
+      assert.equal(JSON.stringify(g.save),before);continue;
+    }
+    const approach=ETERNA_APPROACHES.find(route=>route.id===passage.id);
+    if(approach){
+      const g=game(passage.id);grantPokemon(g.save,1);const before=structuredClone(g.save);
+      g.event('journeySign');const pages=g.dialogue!.pages.join('\n');
+      assert(pages.includes(approach.name));assert(pages.includes(passage.a.name));assert(pages.includes(passage.b.name));assert.match(pages,/이 도로에는 없어요/);assert.equal(encounterPool(passage.id),undefined);
+      g.dialogue=null;g.event('journeyWalker');
+      if(approach.id==='tour_sinnoh_route_03'){assert(g.dialogue?.choices?.some(c=>c.label==='배틀한다'));g.cancel();assert(!g.battle);}
+      else{assert(g.dialogue?.pages.some(p=>p.includes('숲 안의 안내원')));g.dialogue=null;}
+      assert.deepEqual(g.save,before);continue;
+    }
+    if(passage.id==='tour_pass_pallet_cinnabar'){
+      const g=game(passage.id),before=JSON.stringify(g.save);
+      g.event('journeySign');assert.match(g.dialogue!.pages.join('\n'),/태초–홍련 해안길/);
+      assert.match(g.dialogue!.pages.join('\n'),/태초마을/);assert.match(g.dialogue!.pages.join('\n'),/홍련섬/);
+      g.dialogue=null;g.event('journeyWalker');assert(g.dialogue!.choices?.some(c=>c.label==='태초로 돌아가는 길'));
+      assert(g.dialogue!.choices?.some(c=>c.label==='홍련센터 안내'));g.cancel();assert.equal(g.dialogue,null);
+      assert.equal(JSON.stringify(g.save),before);continue;
+    }
     const pool = encounterPool(passage.id);
     const g = game(passage.id);
     const before = JSON.stringify(g.save);
     assert.equal(handleJourneyEvent(g, 'journeySign'), true);
     assert(g.dialogue);
     if (pool) {
-      assert.match(g.dialogue.pages.join('\n'), /흔한 동료:/);
-      assert.match(g.dialogue.pages.join('\n'), /드물게/);
+      assert.match(g.dialogue.pages.join('\n'), pool.slots.length<=2?/만날 수 있는 동료:/ : /흔한 동료:/);
+      if(pool.slots.length>2)assert.match(g.dialogue.pages.join('\n'), /드물게/);else assert.doesNotMatch(g.dialogue.pages.join('\n'), /드물게/);
       assert.match(g.dialogue.pages.join('\n'), new RegExp(`이곳의 포켓몬은\\nLv\\.${pool.levels[0]}~${pool.levels[1]}`));
     } else {
       assert.match(g.dialogue.pages.join('\n'), /도시 사이를 걷기 좋은 길/);

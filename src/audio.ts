@@ -1,11 +1,13 @@
 import {moveTechniqueStyle, type MoveStyle} from './move-art';
 
-export type AudioScene = 'town'|'route'|'cave'|'wild'|'gym';
+export type AudioScene = 'town'|'route'|'cave'|'wild'|'gym'|'cinnabar'|'vermilion';
 export type Fanfare = 'victory'|'catch'|'evolution';
 type Sound = 'confirm'|'bump'|'receive'|'menu'|'door'|Fanfare;
 type Score = {step:number; notes:readonly number[]; bass:readonly number[]};
 // Original short compositions in MIDI notes (0 = rest), no external recordings.
 const SCORES:Record<AudioScene,Score> = {
+  cinnabar:{step:340,notes:[60,0,64,67,69,67,64,0,62,0,65,69,67,65,62,0,64,0,67,72,71,67,64,0,62,65,67,0,64,62,60,0],bass:[48,53,45,55]},
+  vermilion:{step:270,notes:[62,66,69,0,71,69,66,0,64,67,71,0,69,67,64,0,62,64,66,69,74,71,69,0,67,69,71,67,66,64,62,0],bass:[38,45,43,47]},
   town:{step:300,notes:[64,0,67,69,67,64,62,0,60,64,67,0,69,67,64,0,65,69,72,69,67,65,62,0,64,67,69,67,62,64,60,0],bass:[48,53,50,48]},
   route:{step:230,notes:[62,66,69,0,71,69,66,64,62,0,66,69,74,71,69,0,67,71,74,0,76,74,71,69,66,69,71,66,64,66,62,0],bass:[50,55,52,57]},
   cave:{step:420,notes:[57,0,0,64,0,60,0,0,59,0,65,0,64,0,0,0,60,0,67,0,0,64,0,62,59,0,0,62,57,0,0,0],bass:[45,41,48,40]},

@@ -1,4 +1,5 @@
 import type { Furnishing,TourInterior } from './explore-interiors';
+import type { GameMap } from './types';
 
 type Images=Record<string,HTMLImageElement|HTMLCanvasElement>;
 // Native DPPt samples, composed into our existing 16 × 14 exploration room.
@@ -7,7 +8,20 @@ const box=(c:CanvasRenderingContext2D,x:number,y:number,w:number,h:number,color:
 function sample(c:CanvasRenderingContext2D,images:Images,key:keyof typeof CENTER_SAMPLES,x:number,y:number){
   const [sx,sy,w,h]=CENTER_SAMPLES[key];c.drawImage(images['center-reference'],sx,sy,w,h,x,y,w,h);
 }
-export function paintTourCenter(c:CanvasRenderingContext2D,images:Images){
+function paintExpandedCenter(c:CanvasRenderingContext2D,images:Images,map:GameMap){
+  box(c,0,0,map.width*16,map.height*16,'#172b34');
+  for(let y=0;y<map.height;y++)for(let x=0;x<map.width;x++){
+    const px=x*16,py=y*16;
+    if(map.walkable[y]?.[x]==='.')sample(c,images,'floor',px,py);
+    else{box(c,px,py,16,16,y<3?'#988582':'#705644');if(y===2){box(c,px,py+9,16,7,'#bd6039');box(c,px,py+9,16,2,'#e7a35d');}}
+  }
+  for(let x=3;x<map.width-3;x+=3)sample(c,images,'wall',x*16,9);
+  const door=map.warps.find(w=>w.entry==='down');if(door){box(c,door.x*16,door.y*16-16,16,32,'#a13e37');box(c,door.x*16+2,door.y*16-14,12,30,'#d85642');}
+  sample(c,images,'emblem',map.width*8-27,map.height*8+8);
+}
+
+export function paintTourCenter(c:CanvasRenderingContext2D,images:Images,map?:GameMap){
+  if(map&&map.width>16){paintExpandedCenter(c,images,map);return;}
   box(c,0,0,256,224,'#172b34');box(c,28,18,200,176,'#705644');
   for(let y=3;y<12;y++)for(let x=2;x<14;x++)sample(c,images,'floor',x*16,y*16);
   box(c,32,31,192,17,'#e7a35d');box(c,32,42,192,6,'#bd6039');

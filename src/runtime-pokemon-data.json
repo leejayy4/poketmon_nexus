@@ -2,7 +2,7 @@
   "referenceCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
   "learnsetVersion": "platinum",
   "timePolicy": "day-only",
-  "limits": "Up to four selected moves; direct damage ignores secondary effects, accuracy and PP. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. Only first starter evolutions enabled.",
+  "limits": "Up to four selected moves; direct damage ignores secondary effects, accuracy and PP. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. First starter and Caterpie/Weedle cocoon evolutions enabled. Pidove and Petilil use Black 2/White 2 acquisition; their evolutions are not enabled.",
   "pools": [
     {
       "id": "ENC-001",
@@ -221,6 +221,38 @@
       ]
     },
     {
+      "id": "ENC-027",
+      "node": "K05",
+      "levels": [
+        20,
+        24
+      ],
+      "method": "풀숲",
+      "condition": "낮",
+      "slots": [
+        {
+          "speciesId": 10,
+          "weight": 35
+        },
+        {
+          "speciesId": 13,
+          "weight": 25
+        },
+        {
+          "speciesId": 11,
+          "weight": 20
+        },
+        {
+          "speciesId": 14,
+          "weight": 15
+        },
+        {
+          "speciesId": 25,
+          "weight": 5
+        }
+      ]
+    },
+    {
       "id": "ENC-039",
       "node": "K18",
       "levels": [
@@ -260,6 +292,368 @@
         27
       ],
       "levelPolicy": "Runtime range limited to level 25; design source remains 22-27."
+    },
+    {
+      "id": "LOCAL-U-CASTELIA-GARDEN-DAY",
+      "node": "U01-GARDEN",
+      "levels": [
+        22,
+        24
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 519,
+          "weight": 60
+        },
+        {
+          "speciesId": 548,
+          "weight": 40
+        }
+      ],
+      "source": {
+        "file": "docs/design-data/encounters.json",
+        "pool": "ENC-061",
+        "location": "castelia-city",
+        "referenceSpecies": [
+          519,
+          546,
+          548
+        ],
+        "policy": "B2W2 Castelia habitat evidence, not a reproduction of its original access route. Project northern city garden placement, levels 22-24 and weights 60/40. Pidove and Petilil only; no sewer, season, Surf, story gate or evolution implied."
+      }
+    },
+    {
+      "id": "LOCAL-J-R34-DAY",
+      "node": "J-R34",
+      "levels": [
+        22,
+        24
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 19,
+          "weight": 40
+        },
+        {
+          "speciesId": 96,
+          "weight": 60
+        }
+      ],
+      "source": {
+        "version": "heartgold-soulsilver",
+        "location": "johto-route-34",
+        "url": "https://www.serebii.net/pokearth/johto/route34.shtml",
+        "referenceSpecies": [
+          19,
+          63,
+          96,
+          132
+        ],
+        "policy": "Species habitat reference only. Project levels 22-24 and weights 40/60 support the existing level-25 travel party. Initial supported subset: Rattata and Drowzee. Abra and Ditto are not claimed as implemented here. No radio, time, Surf or fishing unlocks."
+      }
+    },
+    {
+      "id": "LOCAL-K-CINNABAR-OUTSKIRTS-DAY",
+      "node": "K13-OUTSKIRTS",
+      "levels": [
+        22,
+        24
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 58,
+          "weight": 60
+        },
+        {
+          "speciesId": 88,
+          "weight": 40
+        }
+      ],
+      "source": {
+        "file": "docs/design-data/encounters.json",
+        "pool": "ENC-035",
+        "location": "pokemon-mansion",
+        "referenceSpecies": [
+          58,
+          88,
+          109,
+          126
+        ],
+        "policy": "Cinnabar regional species reference from authored ENC-035 (FireRed Mansion records 31417 and 31419). Project outdoor habitat adaptation, not an original Mansion encounter or an implemented Mansion map. Levels 22-24 and weights 60/40 are project tuning for the level-25 cap. Two optional outskirts grass patches only; no sea encounters, story locks or gifts. Koffing and Magmar remain excluded."
+      }
+    },
+    {
+      "id": "LOCAL-J-R33-DAY",
+      "node": "J-R33",
+      "levels": [
+        22,
+        24
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 19,
+          "weight": 50
+        },
+        {
+          "speciesId": 21,
+          "weight": 30
+        },
+        {
+          "speciesId": 23,
+          "weight": 20
+        }
+      ],
+      "source": {
+        "version": "heartgold-soulsilver",
+        "location": "johto-route-33",
+        "url": "https://www.serebii.net/pokearth/johto/route33.shtml",
+        "referenceSpecies": [
+          19,
+          187,
+          21,
+          41,
+          23
+        ],
+        "policy": "Day walking habitat reference with a supported-species project subset. Rattata and Spearow are shared day references; Ekans represents the SoulSilver side. Hoppip and Zubat are excluded from this day-only runtime subset. Levels 22-24 and weights 50/30/20 are project tuning for the existing level-25 travel party. No rain battle rule, radio, headbutt, fishing, gift or story lock is implied."
+      }
+    },
+    {
+      "id": "LOCAL-J-UNION-1F-DAY",
+      "node": "J-UNION-1F",
+      "levels": [
+        23,
+        25
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 41,
+          "weight": 45
+        },
+        {
+          "speciesId": 74,
+          "weight": 45
+        },
+        {
+          "speciesId": 95,
+          "weight": 10
+        }
+      ],
+      "source": {
+        "version": "heartgold-soulsilver",
+        "location": "union-cave-1f",
+        "url": "https://bulbapedia.bulbagarden.net/wiki/Union_Cave",
+        "referenceSpecies": [
+          19,
+          27,
+          41,
+          74,
+          95
+        ],
+        "policy": "1F cave walking habitat reference with the currently supported Zubat, Geodude and Onix only. Levels 23-25 and weights 45/45/10 are project tuning for the existing level-25 travel party. Sandshrew is not yet in the runtime roster. No Surf, fishing, B1F, B2F, Friday encounter or story lock is implied."
+      }
+    },
+    {
+      "id": "LOCAL-J-R32-DAY",
+      "node": "J-R32",
+      "levels": [
+        23,
+        25
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 19,
+          "weight": 70
+        },
+        {
+          "speciesId": 23,
+          "weight": 30
+        }
+      ],
+      "source": {
+        "version": "heartgold-soulsilver",
+        "location": "johto-route-32",
+        "url": "https://www.serebii.net/pokearth/johto/route32.shtml",
+        "referenceSpecies": [
+          19,
+          69,
+          179,
+          187,
+          41,
+          23,
+          194
+        ],
+        "policy": "Day walking habitat reference with a supported-species project subset. Rattata represents HeartGold and SoulSilver while Ekans represents the SoulSilver side. Bellsprout, Mareep and Hoppip are not yet in the runtime roster. Levels 23-25 and weights 70/30 are project tuning for the existing level-25 travel party. No version choice, radio, night, Surf, fishing, swarm, gift or story lock is implied."
+      }
+    },
+    {
+      "id": "LOCAL-K-R09-DAY",
+      "node": "K-R09-DAY",
+      "levels": [
+        22,
+        24
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 19,
+          "weight": 45
+        },
+        {
+          "speciesId": 21,
+          "weight": 35
+        },
+        {
+          "speciesId": 23,
+          "weight": 20
+        }
+      ],
+      "source": {
+        "version": "firered-leafgreen",
+        "location": "kanto-route-9",
+        "url": "https://bulbapedia.bulbagarden.net/wiki/Kanto_Route_9",
+        "referenceSpecies": [
+          19,
+          21,
+          23,
+          27
+        ],
+        "policy": "Day walking habitat reference with the currently supported Rattata, Spearow and Ekans only. Levels 22-24 and weights 45/35/20 are project tuning for the level-25 travel party, not original rates. Sandshrew and version selection are excluded. Optional grass branches only; no item, trainer, Surf or story lock is implied."
+      }
+    },
+    {
+      "id": "LOCAL-K-R10-DAY",
+      "node": "K-R10-DAY",
+      "levels": [
+        23,
+        25
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 19,
+          "weight": 40
+        },
+        {
+          "speciesId": 21,
+          "weight": 35
+        },
+        {
+          "speciesId": 23,
+          "weight": 25
+        }
+      ],
+      "source": {
+        "version": "firered-leafgreen",
+        "location": "kanto-route-10",
+        "url": "https://bulbapedia.bulbagarden.net/wiki/Kanto_Route_10",
+        "referenceSpecies": [
+          19,
+          21,
+          23,
+          27
+        ],
+        "policy": "Route 10 north and south share a supported day-walking project pool of Rattata, Spearow and Ekans. Levels 23-25 and weights 40/35/25 are project tuning, not original rates. Optional grass branches only. Power Plant water, fishing, Surf, version selection and story gates remain unavailable."
+      }
+    },
+    {
+      "id": "LOCAL-K-ROCK-B1F-DAY",
+      "node": "K-ROCK-B1F",
+      "levels": [
+        23,
+        25
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 41,
+          "weight": 40
+        },
+        {
+          "speciesId": 74,
+          "weight": 35
+        },
+        {
+          "speciesId": 66,
+          "weight": 15
+        },
+        {
+          "speciesId": 95,
+          "weight": 10
+        }
+      ],
+      "source": {
+        "version": "firered-leafgreen",
+        "location": "rock-tunnel-b1f",
+        "url": "https://bulbapedia.bulbagarden.net/wiki/Rock_Tunnel",
+        "referenceSpecies": [
+          41,
+          74,
+          66,
+          95
+        ],
+        "policy": "Rock Tunnel cave habitat reference using supported Zubat, Geodude, Machop and Onix. Levels 23-25 and weights 40/35/15/10 are project tuning. Encounters are limited to B1F optional echo loops so the marked main passage remains safe. No Flash requirement, item, fixed encounter or story gate is implied."
+      }
+    },
+    {
+      "id": "LOCAL-J-ILEX-DAY",
+      "node": "J-ILEX",
+      "levels": [
+        22,
+        24
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 10,
+          "weight": 30
+        },
+        {
+          "speciesId": 13,
+          "weight": 30
+        },
+        {
+          "speciesId": 11,
+          "weight": 17
+        },
+        {
+          "speciesId": 14,
+          "weight": 18
+        },
+        {
+          "speciesId": 41,
+          "weight": 5
+        }
+      ],
+      "source": {
+        "version": "heartgold-soulsilver",
+        "location": "ilex-forest",
+        "url": "https://www.serebii.net/pokearth/johto/ilexforest.shtml",
+        "referenceSpecies": [
+          10,
+          11,
+          13,
+          14,
+          46,
+          41
+        ],
+        "policy": "Combined HeartGold and SoulSilver daytime walking habitat using the currently supported Caterpie, Metapod, Weedle, Kakuna and Zubat. Paras is not yet in the runtime roster. Levels 22-24 and weights 30/17/30/18/5 are project tuning for the existing travel party, not original rates. Encounters use optional southern-loop grass while the marked main road remains safe. No version choice, night, radio, Headbutt, Surf, fishing, gift, Farfetchd puzzle, shrine event or story lock is implied."
+      }
     }
   ],
   "ownable": [
@@ -269,6 +663,10 @@
     5,
     7,
     8,
+    10,
+    11,
+    13,
+    14,
     19,
     21,
     23,
@@ -276,10 +674,12 @@
     39,
     41,
     52,
+    58,
     63,
     66,
     74,
     77,
+    88,
     95,
     96,
     173,
@@ -300,7 +700,9 @@
     427,
     434,
     439,
-    443
+    443,
+    519,
+    548
   ],
   "species": {
     "1": {
@@ -565,6 +967,112 @@
       ],
       "tm": []
     },
+    "10": {
+      "name": "캐터피",
+      "types": [
+        "벌레"
+      ],
+      "stats": {
+        "hp": 45,
+        "attack": 30,
+        "defense": 35,
+        "specialAttack": 20,
+        "specialDefense": 20,
+        "speed": 45
+      },
+      "weight": 29,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 15,
+          "move": "벌레먹기"
+        }
+      ],
+      "tm": []
+    },
+    "11": {
+      "name": "단데기",
+      "types": [
+        "벌레"
+      ],
+      "stats": {
+        "hp": 50,
+        "attack": 20,
+        "defense": 55,
+        "specialAttack": 25,
+        "specialDefense": 25,
+        "speed": 30
+      },
+      "weight": 99,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "단단해지기"
+        },
+        {
+          "level": 7,
+          "move": "단단해지기"
+        }
+      ],
+      "tm": []
+    },
+    "13": {
+      "name": "뿔충이",
+      "types": [
+        "벌레",
+        "독"
+      ],
+      "stats": {
+        "hp": 40,
+        "attack": 35,
+        "defense": 30,
+        "specialAttack": 20,
+        "specialDefense": 20,
+        "speed": 50
+      },
+      "weight": 32,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "독침"
+        },
+        {
+          "level": 15,
+          "move": "벌레먹기"
+        }
+      ],
+      "tm": []
+    },
+    "14": {
+      "name": "딱충이",
+      "types": [
+        "벌레",
+        "독"
+      ],
+      "stats": {
+        "hp": 45,
+        "attack": 25,
+        "defense": 50,
+        "specialAttack": 25,
+        "specialDefense": 25,
+        "speed": 35
+      },
+      "weight": 100,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "단단해지기"
+        },
+        {
+          "level": 7,
+          "move": "단단해지기"
+        }
+      ],
+      "tm": []
+    },
     "19": {
       "name": "꼬렛",
       "types": [
@@ -808,6 +1316,36 @@
         "섀도볼"
       ]
     },
+    "58": {
+      "name": "가디",
+      "types": [
+        "불꽃"
+      ],
+      "stats": {
+        "hp": 55,
+        "attack": 70,
+        "defense": 45,
+        "specialAttack": 70,
+        "specialDefense": 50,
+        "speed": 60
+      },
+      "weight": 190,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "물기"
+        },
+        {
+          "level": 6,
+          "move": "불꽃세례"
+        },
+        {
+          "level": 9,
+          "move": "째려보기"
+        }
+      ],
+      "tm": []
+    },
     "63": {
       "name": "캐이시",
       "types": [
@@ -934,6 +1472,34 @@
         }
       ],
       "tm": []
+    },
+    "88": {
+      "name": "질퍽이",
+      "types": [
+        "독"
+      ],
+      "stats": {
+        "hp": 80,
+        "attack": 80,
+        "defense": 50,
+        "specialAttack": 40,
+        "specialDefense": 50,
+        "speed": 25
+      },
+      "weight": 300,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "막치기"
+        },
+        {
+          "level": 4,
+          "move": "단단해지기"
+        }
+      ],
+      "tm": [
+        "섀도볼"
+      ]
     },
     "92": {
       "name": "고오스",
@@ -1819,6 +2385,81 @@
         "드레인펀치",
         "섀도볼"
       ]
+    },
+    "519": {
+      "name": "콩둘기",
+      "types": [
+        "노말",
+        "비행"
+      ],
+      "stats": {
+        "hp": 50,
+        "attack": 55,
+        "defense": 50,
+        "specialAttack": 36,
+        "specialDefense": 30,
+        "speed": 43
+      },
+      "weight": 21,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "바람일으키기"
+        },
+        {
+          "level": 4,
+          "move": "울음소리"
+        },
+        {
+          "level": 8,
+          "move": "째려보기"
+        },
+        {
+          "level": 11,
+          "move": "전광석화"
+        },
+        {
+          "level": 15,
+          "move": "에어커터"
+        },
+        {
+          "level": 22,
+          "move": "판별"
+        }
+      ],
+      "tm": []
+    },
+    "548": {
+      "name": "치릴리",
+      "types": [
+        "풀"
+      ],
+      "stats": {
+        "hp": 45,
+        "attack": 35,
+        "defense": 50,
+        "specialAttack": 70,
+        "specialDefense": 50,
+        "speed": 30
+      },
+      "weight": 66,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "흡수"
+        },
+        {
+          "level": 13,
+          "move": "메가드레인"
+        },
+        {
+          "level": 19,
+          "move": "매지컬리프"
+        }
+      ],
+      "tm": [
+        "풀묶기"
+      ]
     }
   },
   "moves": {
@@ -1901,6 +2542,14 @@
       "power": 0,
       "priority": 0,
       "rule": "defenseDrop"
+    },
+    "독침": {
+      "id": 40,
+      "slug": "poison-sting",
+      "type": "독",
+      "power": 15,
+      "priority": 0,
+      "rule": "damage"
     },
     "째려보기": {
       "id": 43,
@@ -2254,6 +2903,16 @@
       "from": 7,
       "to": 8,
       "level": 16
+    },
+    {
+      "from": 10,
+      "to": 11,
+      "level": 7
+    },
+    {
+      "from": 13,
+      "to": 14,
+      "level": 7
     }
   ],
   "typeChart": {
@@ -2413,5 +3072,9 @@
       "드래곤": 2.0,
       "악": 2.0
     }
+  },
+  "learnsetOverrides": {
+    "519": "black-2-white-2",
+    "548": "black-2-white-2"
   }
 }

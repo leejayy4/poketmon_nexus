@@ -1,0 +1,55 @@
+{
+  "format": "first-partner-save",
+  "savedAt": "2026-09-10T01:56:22.868Z",
+  "save": {
+    "version": 1,
+    "worldRevision": 24,
+    "map": "tour_route_34",
+    "player": {
+      "x": 10,
+      "y": 15,
+      "facing": "down"
+    },
+    "flags": {
+      "starterReceived": true,
+      "departureCleared": true
+    },
+    "party": [
+      {
+        "species": 7,
+        "level": 25,
+        "experience": 0,
+        "hp": 80,
+        "maxHp": 80,
+        "nature": "성실",
+        "met": "새잎마을 · 포켓몬 연구소",
+        "moves": [
+          "물의파동",
+          "방어"
+        ]
+      }
+    ],
+    "box": [],
+    "pokedex": {
+      "seen": [
+        7
+      ],
+      "caught": [
+        7
+      ]
+    },
+    "inventory": {
+      "pokeBalls": 30,
+      "potions": 20
+    },
+    "badges": [],
+    "keyItems": [],
+    "money": 5000,
+    "healingPoint": "home",
+    "steps": 0,
+    "seconds": 0,
+    "tourVisited": [
+      "tour_route_34"
+    ]
+  }
+}

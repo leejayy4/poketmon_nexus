@@ -1,0 +1,22 @@
+✔ options and header sound toggles keep visible and accessible labels in sync (1.5434ms)
+✔ audio is opt-in; scene/effects/fanfare never create a context or timer while muted (1.4473ms)
+✔ scene changes reset beat and cancel queued audio; repeated same-scene calls keep one timer (0.4547ms)
+✔ mute stops present and future voices and old fanfare never survives re-enable (0.332ms)
+✔ six original scenes have different melodies and bounded gentle voices (0.8588ms)
+✔ technical effects sound distinct and use Web Audio scheduling without adding timers (0.6085ms)
+✔ fanfare ducks music and resumes selected scene without a second timer (1.1714ms)
+✔ hidden or suspended contexts do not advance beats or pile up background notes (0.2612ms)
+✔ ended voices disconnect and invalid public note inputs do not reach Web Audio (0.2499ms)
+✔ failed resume disables cleanly but stale rejection cannot mute a newer user enable (0.4472ms)
+✔ unavailable AudioContext fails safely and closed context can be recreated by a user toggle (0.3677ms)
+✔ Eterna optional trainer cancellation, victory, restoration and repeat interaction preserve one-time reward (6.3156ms)
+✔ Eterna trainer defeat restores the city center without granting victory (0.9701ms)
+✔ Prepared pre-Eterna party can challenge Gardenia without the optional trainer and preserves badge reward on reload (12.4879ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 355.4546

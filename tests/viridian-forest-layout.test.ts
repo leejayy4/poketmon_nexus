@@ -11,7 +11,8 @@ import { TOWN_REVISION } from '../src/town';
 const id='tour_viridian_forest';
 test('Viridian Forest has two marked routes around its central grove and accessible signs and guide',()=>{
   const map=getMap(id),paths=new Set<string>();
-  assert.deepEqual([map.width,map.height],[20,18]);assert.equal(map.terrain,undefined);
+  assert.deepEqual([map.width,map.height],[20,18]);
+  assert.deepEqual(map.terrain,[{kind:'tallGrass',x:14,y:6,w:3,h:3},{kind:'tallGrass',x:2,y:10,w:3,h:2}]);
   assert.deepEqual(map.warps.map(w=>[w.to,w.x,w.y,w.entry]),[
     ['tour_viridian',10,16,'down'],['tour_pewter',10,2,'up'],
   ]);
@@ -47,11 +48,11 @@ test('revision 19 Viridian Forest saves preserve progress and repair only newly 
   assert.deepEqual(parseSave(JSON.stringify(elsewhere))?.player,elsewhere.player);
 });
 
-test('Viridian Forest retains existing observation and exit IDs with no encounter or story replacement',()=>{
+test('Viridian Forest retains observation and exit IDs while its existing guide explains wild encounters',()=>{
   const outdoor=TOUR_OUTDOORS[id],map=getMap(id);
   assert.equal(outdoor.objects.length,5);
   assert.deepEqual([outdoor.objects[0].event,outdoor.objects[0].name],['tourOutdoor0','숲의 나무']);
   assert.deepEqual(outdoor.signs.map(s=>[s.event,s.destination]),[['tourExit0','tour_viridian'],['tourExit1','tour_pewter']]);
-  assert.deepEqual(map.npcs.map(n=>[n.id,n.x,n.y,n.dialogue]),[['tourGuide',12,7,'tourGuide']]);
+  assert.deepEqual(map.npcs.map(n=>[n.id,n.x,n.y,n.dialogue]),[['tourGuide',12,7,'viridianForestGuide']]);
   for(const obj of outdoor.objects)assert(obj.cells.some(c=>[[1,0],[-1,0],[0,1],[0,-1]].some(([dx,dy])=>canStand(map,c.x+dx,c.y+dy))),obj.name+' reachable');
 });

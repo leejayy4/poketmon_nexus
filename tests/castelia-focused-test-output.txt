@@ -1,0 +1,16 @@
+✔ Castelia homes, gallery and Route 1 support engine walking and save restoration in one journey (43.4301ms)
+✔ PC deposit and withdrawal use the species final consonant while preserving the exact Pokemon and save rules (5.0822ms)
+✔ starter declaration boundaries stay deterministic, clipped and restore Canvas (12.1075ms)
+✔ projectiles leave the attacker toward either target and have distinct shapes (1.7549ms)
+✔ starter Canvas state restores even if drawing throws (0.8435ms)
+✔ battleTop keeps a zero HP target visible, uses shown HP and stops recoil during HP phase (2.3802ms)
+✔ forest records distinguish seen, caught, unknown and include boxed ownership without changing save (4.5228ms)
+✔ real exhibit routes to optional notebook, returns after reading, opens party and rejects stale callbacks (3.0962ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1225.0739

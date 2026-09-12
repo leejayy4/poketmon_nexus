@@ -54,13 +54,17 @@ export function parseSave(raw:string|null):SaveData|null {
     }
     for(const p of owned)recordSeen(s,p.species,true);
     if(!s.flags||Array.isArray(s.flags)||typeof s.flags!=='object'||Object.values(s.flags).some(v=>typeof v!=='boolean' && (typeof v!=='number'||!Number.isFinite(v)))) return null;
-    const starters=owned.filter(p=>[1,2,4,5,7,8].includes(p.species)), pikachu=owned.filter(p=>p.species===25);
+    // Only the implemented forest capture provenance is separate from the
+    // researcher's gift. Other legacy Pikachu records retain the gift checks.
+    const wildPikachu=owned.filter(p=>p.species===25&&p.met==='상록숲');
+    const starters=owned.filter(p=>[1,2,4,5,7,8].includes(p.species)), pikachu=owned.filter(p=>p.species===25&&p.met!=='상록숲');
     if(starters.length>1||pikachu.length>1||Boolean(s.flags.starterReceived)!==Boolean(starters.length)||Boolean(s.flags.pikachuReceived)!==Boolean(pikachu.length)) return null;
     if(s.flags.exploration!==undefined&&typeof s.flags.exploration!=='boolean')return null;
+    for(const key of ['cinnabarCliffObserved','cinnabarShoreObserved'])if(s.flags[key]!==undefined&&typeof s.flags[key]!=='boolean')return null;
 
     if(s.flags.exploration===true&&(owned.length||s.badges?.length||s.keyItems?.length||s.money!==0))return null;
     if(s.flags.departureCleared!==undefined&&typeof s.flags.departureCleared!=='boolean')return null;
-    if(owned.some(p=>![1,2,4,5,7,8,25].includes(p.species))&&s.flags.departureCleared!==true)return null;
+    if((wildPikachu.length||owned.some(p=>![1,2,4,5,7,8,25].includes(p.species)))&&s.flags.departureCleared!==true)return null;
     if(s.flags.departureCleared===true&&!starters.length&&!pikachu.length)return null;
     if(!s.inventory||!['pokeBalls','potions'].every(key=>Number.isInteger(s.inventory[key as keyof typeof s.inventory])&&s.inventory[key as keyof typeof s.inventory]>=0&&s.inventory[key as keyof typeof s.inventory]<=999))return null;
     if(!Array.isArray(s.badges)||s.badges.length>4||s.badges.some((b,i)=>b!==GYMS[i].badge)||!Array.isArray(s.keyItems)||s.keyItems.length!==s.badges.length||s.keyItems.some((item,i)=>item!==GYMS[i].tm))return null;
