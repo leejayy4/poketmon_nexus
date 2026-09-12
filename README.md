@@ -1,10 +1,27 @@
 # Pokémon Nexus
 
-2026-09-10 크기 기준 보완: [맵 크기 기준·전체 대장](docs/MAP_SIZE_STANDARDS.md)에 사용자 참고표보다 넓힌 유형별 범위, 현재402개 맵의 실제/목표 크기, 신규 도로·던전의 층별 크기를 명시했다. 이 문서의 현재 크기 기록은 이력이며 새 목표 크기는 해당 대장을 따른다. 게임 확대는 미적용이다.
+> A browser-based Pokémon fan RPG inspired by the dual-screen presentation and lively world design of Nintendo DS-era Black, White, Black 2, and White 2.
 
-포켓몬 세계관에 맞는 Nintendo DS DP/플라티나풍 팬게임입니다. **맵·스토리 구현과 실제 적용을 우선하고, 지방별로 시티·마을 하나씩 완성합니다.** 도시의 포켓몬·주민·디자인과 진입 도로·동굴·다음 여행을 함께 만듭니다.
+Pokémon Nexus is a work-in-progress TypeScript game focused on making preparation, exploration, catching and raising Pokémon, city activities, Gym challenges, and the next journey feel like one connected adventure.
 
-지역별 야생 포켓몬·첫 진화·기술 교체·박스/도감, 도시 사이 통로와 상점·층별 실내를 플레이에 연결했습니다. [현재 데이터 지원 범위](docs/WORLD_DATA_STANDARDS.md)와 [도시 재개 기록](docs/CONTINUE_STATE.md)에서 확인할 수 있습니다.
+포켓몬 넥서스는 Nintendo DS BW·BW2 시대의 이중 화면 구성과 살아 있는 도시·도로 경험을 목표로 개발 중인 TypeScript 기반 팬게임입니다. 준비 → 탐험 → 포획·육성 → 도시 활동 → 체육관 → 다음 여행이 자연스럽게 이어지는 플레이를 만듭니다.
+
+![Pokémon Nexus battle screen](tests/first-adventure-screenshots/battle.png)
+
+## Features / 주요 특징
+
+- Explore connected routes, cities, forests, caves, and multi-floor facilities across regional travel segments.
+- Encounter and catch wild Pokémon, build a party, use the Box and Pokédex, level up, evolve, and replace moves.
+- Battle with type matchups, move PP, physical and special attacks, speed and priority, status conditions, items, switching, and capture decisions.
+- Follow city-centered story slices that connect local residents, Pokémon ecology, activities, Gym preparation, and onward travel.
+- Play through a browser interface built around a Nintendo DS-inspired field screen, lower-screen controls, dialogue, maps, and battle presentation.
+
+- 여러 지방의 도로·도시·숲·동굴·다층 시설을 연결된 여행 구간으로 탐험합니다.
+- 야생 포켓몬 조우와 포획, 파티·박스·도감, 레벨업·진화·기술 교체를 지원합니다.
+- 타입 상성, PP, 물리·특수, 속도·우선도, 상태이상, 아이템, 교체와 포획 판단을 전투에 연결합니다.
+- 주민·포켓몬 생태·도시 활동·체육관 준비·다음 목적지를 하나의 도시 중심 이야기로 구성합니다.
+
+> This is an unofficial, non-commercial fan project. Pokémon and related trademarks belong to their respective owners.
 
 ## 실행
 
@@ -12,6 +29,19 @@
 npm.cmd install
 npm.cmd run dev
 ```
+
+자세한 조작과 진행 방식은 [플레이 안내](docs/GAMEPLAY.md)를 참고하세요.
+
+## Development status / 개발 현황
+
+The project is under active development. Implemented runtime behavior, planned content, and direct-play verification are tracked separately so roadmap items are not presented as completed features.
+
+현재 그래픽은 BW·BW2풍으로 단계적으로 전환 중이며, 목표 디자인이 모든 지역에 적용되었다는 뜻은 아닙니다. 구현된 런타임, 설계 중인 콘텐츠, 직접 플레이 검증은 구분하여 기록합니다.
+
+- [Current runtime data coverage / 현재 데이터 지원 범위](docs/WORLD_DATA_STANDARDS.md)
+- [Current development handoff / 현재 개발 인계](docs/CONTINUE_STATE.md)
+- [BW·BW2 visual direction / BW·BW2풍 시각 기준](docs/VISUAL_STYLE_BW_BW2.md)
+- [Map size standards and ledger / 맵 크기 기준·전체 대장](docs/MAP_SIZE_STANDARDS.md)
 
 ## 문서
 
