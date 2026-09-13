@@ -1,4 +1,7 @@
-import { buildJourneyWorld,ROOM_PARENTS,PASSAGES,PASSAGE_PLACES,FLOOR_INFO,TRANSIT_LINKS } from './journey-world';
+import { installCasteliaSewerPark } from './castelia-sewer-park';
+import { CINNABAR_CONTROL_SITE,installCinnabarControlSite } from './cinnabar-control-site';
+import { SILPH_RECORDS_MAP } from './silph-records-room';
+import { buildJourneyWorld,ROOM_PARENTS,FLOOR_PARENTS,PASSAGES,PASSAGE_PLACES,FLOOR_INFO,TRANSIT_LINKS,MART_ROOMS } from './journey-world';
 import { installGoldenrodHomes } from './goldenrod-homes';
 import { installCasteliaHomes } from './castelia-homes';
 import { installCasteliaInteriorSizes } from './castelia-interiors';
@@ -41,6 +44,16 @@ import { installSinnohRoute209Solaceon } from './sinnoh-route-209-solaceon';
 import { installSinnohRoute212 } from './sinnoh-route-212';
 import { installSinnohSoutheastRoutes } from './sinnoh-southeast-routes';
 import { installSinnohNorthRoute } from './sinnoh-north-route';
+import { installSinnohRoute203Gate } from './sinnoh-route-203-gate';
+import { installSinnohOpeningRoute } from './sinnoh-opening-route';
+import { installSinnohFloaromaRoute } from './sinnoh-floaroma-route';
+import { installSinnohRoute205North } from './sinnoh-route-205-north';
+import { installSinnohRoute206207 } from './sinnoh-route-206-207';
+import { CELESTIC_SHOP,installSinnohCelesticRoute } from './sinnoh-celestic-route';
+import { installSinnohCanonicalLakes } from './sinnoh-canonical-lakes';
+import { installOreburghMine } from './oreburgh-mine';
+import { installLostTower } from './lost-tower';
+import { installValleyWindworks } from './valley-windworks';
 import { installEternaClock } from './eterna-clock-art';
 import { installNimbasaInteriors } from './nimbasa-interiors';
 import { installNimbasaWestRoute } from './nimbasa-west-route';
@@ -49,18 +62,60 @@ import { installMistraltonInteriors } from './mistralton-interiors';
 import { installLentimasInteriors } from './lentimas-interiors';
 import { installUndellaInteriors } from './undella-interiors';
 import { installLacunosaInteriors } from './lacunosa-interiors';
+import { installVillageBridgeInteriors } from './village-bridge-interiors';
+import { installOpelucidInteriors } from './opelucid-interiors';
+import { installIcirrusInteriors } from './icirrus-interiors';
 import { installUnovaRouteSix } from './unova-route-six';
 import { installReversalMountainExterior } from './unova-reversal-mountain';
 import { installUnovaRouteThirteen } from './unova-route-thirteen';
 import { installUnovaRouteTwelve } from './unova-route-twelve';
+import { installUnovaRouteEleven } from './unova-route-eleven';
+import { installUnovaRouteNine } from './unova-route-nine';
+import { installUnovaRouteEight } from './unova-route-eight';
+import { installDragonspiralApproach } from './unova-dragonspiral-approach';
+import { installDragonspiralTower } from './dragonspiral-tower';
+import { installIcirrusMoor } from './unova-icirrus-moor';
 import { installKantoRouteSix } from './kanto-route-six';
 import { installKantoLavenderApproach } from './kanto-lavender-approach';
+import { installKantoSaffronApproach } from './kanto-saffron-approach';
+import { installKantoCyclingRoad,installKantoRouteSixteen } from './kanto-route-sixteen';
+import { installKantoFuchsiaEast } from './kanto-fuchsia-east';
+import { installKantoRouteNineteen } from './kanto-south-sea-route';
+import { installKantoSeafoamIslands } from './kanto-seafoam-islands';
 import { installAzaleaInteriors } from './azalea-interiors';
 import { installJohtoSouthRoute } from './johto-south-route';
+import { installJohtoParkRoutes } from './johto-park-routes';
+import { installJohtoOlivineApproach } from './johto-olivine-approach';
+import { installJohtoSeaRoute } from './johto-sea-route';
+import { installJohtoRoute42 } from './johto-route-42';
+import { installJohtoRoute43 } from './johto-route-43';
+import { installRageLakeDetails } from './rage-lake-layout';
+import { installRageLakeInteriors } from './rage-lake-interiors';
+import { installJohtoIcePath } from './johto-ice-path';
+import { installJohtoDragonsDen } from './johto-dragons-den';
+import { installJohtoBlackthornSouth } from './johto-blackthorn-south';
+import { installJohtoCherrygrove } from './johto-cherrygrove';
+import { installMahoganyDetails } from './mahogany-city-layout';
+import { installBlackthornDetails } from './blackthorn-city-layout';
+import { installMahoganyInteriors } from './mahogany-interiors';
+import { installBlackthornInteriors } from './blackthorn-interiors';
 import { installAzaleaDetails } from './azalea-layout';
 import { installVioletDetails } from './violet-city-layout';
+import { installEcruteakDetails } from './ecruteak-city-layout';
+import { installEcruteakInteriors } from './ecruteak-interiors';
+import { installOlivineInteriors } from './olivine-interiors';
+import { installCianwoodInteriors } from './cianwood-interiors';
+import { installSaffronDetails } from './saffron-city-layout';
+import { installCeladonDetails } from './celadon-city-layout';
+import { installFuchsiaDetails } from './fuchsia-city-layout';
+import { installOlivineDetails } from './olivine-city-layout';
+import { installCianwoodDetails } from './cianwood-city-layout';
+import { installVioletInteriors } from './violet-interiors';
 import { installLavenderDetails } from './lavender-layout';
 import { installLavenderInteriors } from './lavender-interiors';
+import { installSaffronInteriors } from './saffron-interiors';
+import { installCeladonInteriors } from './celadon-interiors';
+import { installFuchsiaInteriors } from './fuchsia-interiors';
 export type TourId=`tour_${string}`;
 export type Theme='village'|'city'|'forest'|'mine'|'port'|'water'|'snow'|'temple'|'factory'|'ghost'|'flowers'|'coast'|'desert'|'dragon'|'airport'|'fair'|'cave';
 export interface Place {id:TourId;name:string;region:string;theme:Theme;concept:string;landmark:string;x:number;y:number}
@@ -92,12 +147,12 @@ const groups:Record<string,[string,string,Theme,string,string,number,number][]>=
     ['castelia','구름시티','city','높은 빌딩과 해안 산책로','항구 갤러리',3,7],['aspertia','부채시티','village','전망 언덕과 학교 운동장','트레이너 학교',0,7],
     ['virbank','모란만시티','factory','굴뚝과 부두 창고가 있는 공업 도시','공장 견학관',1,8],['nimbasa','뇌문시티','fair','관람차와 밝은 놀이 광장','놀이공원 안내소',3,4],
     ['driftveil','물풍경시티','port','큰 창고와 광물 선적 부두','시장',2,3],['mistralton','궐수시티','airport','활주로와 화물 창고가 있는 도시','공항 터미널',2,1],['lentimas','산로마을','desert','화산재 바람과 붉은 암반이 이어지는 작은 마을','산길 안내소',4,1],['undella','물결마을','coast','산의 온기와 푸른 해변이 만나는 휴양 마을','해변 안내소',5,3],['lacunosa','보배마을','village','오래된 성벽과 공동 안뜰을 함께 돌보는 들판 마을','마을 기록관',5,2],
-    ['opelucid','쌍용시티','dragon','석조 기둥과 용의 문양 광장','용의 역사관',6,2],['humilau','기하시티','coast','수상 데크와 밝은 해변 마을','해양 안내소',7,4],
+    ['village_bridge','빌리지브리지','water','긴 다리와 수로 양쪽 주거가 이어지는 마을','다리 생활관',4,2],['opelucid','쌍용시티','dragon','석조 기둥과 용의 문양 광장','용의 역사관',6,2],['icirrus','설화시티','snow','빗물 습지와 마른 둔덕이 만나는 북서부 도시','습지 생활관',3,1],['humilau','기하시티','coast','수상 데크와 밝은 해변 마을','해양 안내소',7,4],
     ['desert','리조트데저트','desert','구름과 뇌문 사이의 짧은 모래 유적','유적 쉼터',3,5],['dragonspiral','용나선탑','dragon','나선형 돌탑이 있는 작은 유적 마당','용나선탑',4,1],
   ],
 };
 export const PLACES:Place[]=Object.entries(groups).flatMap(([region,rows])=>rows.map(([id,name,theme,concept,landmark,x,y])=>({id:`tour_${id}` as TourId,name,theme,region,concept,landmark,x,y})));
-export const placeById=(id:string)=>PLACES.find(p=>p.id===id);
+export const placeById=(id:string)=>PLACES.find(p=>p.id===id)??PASSAGE_PLACES[id];
 const edgeNames=[
   ['jubilife','oreburgh'],['jubilife','eterna_forest'],['eterna_forest','eterna'],['eterna','coronet'],['coronet','hearthome'],['hearthome','veilstone'],['hearthome','pastoria'],['pastoria','sunyshore'],['veilstone','sunyshore'],['coronet','lake'],['lake','snowpoint'],['jubilife','canalave'],
   ['vermilion','cerulean'],['pallet','viridian'],['viridian','viridian_forest'],['viridian_forest','pewter'],['pewter','cerulean'],['viridian','celadon'],['cerulean','saffron'],['saffron','celadon'],['saffron','lavender'],['celadon','fuchsia'],['lavender','fuchsia'],['pallet','cinnabar'],['cinnabar','vermilion'],
@@ -167,11 +222,19 @@ for(const [index,p]of PLACES.entries()){
     TOUR_MAPS[room]={id:room,name:p.name+' · '+interior.title,width:16,height:14,background:room,walkable:rows.map(r=>r.join('')),warps:[{x:8,y:13,to:p.id,spawn:{x:b.door.x,y:b.door.y+1},entry:'down',facing:'down'}],npcs:[{id:'tourHost',name:center?'간호사':'시설 안내원',sprite:center?'pokecenter_nurse':interior.style==='workshop'?'worker':'scientist_f',...interior.host,facing:'down',dialogue:'tourHost'}],props};TOUR_SPAWNS[room]={x:8,y:10};
   }
 }
-{const route=createSinnohRoute218();TOUR_MAPS[SINNOH_ROUTE_218]=route.map;TOUR_FEATURES[SINNOH_ROUTE_218]=route.features;TOUR_BUILDINGS[SINNOH_ROUTE_218]=[];TOUR_SPAWNS[SINNOH_ROUTE_218]={x:2,y:13};}
+{PASSAGE_PLACES[SINNOH_ROUTE_218]={id:SINNOH_ROUTE_218,name:'신오 218번도로 · 육지 접근부',region:'신오',theme:'coast',concept:'축복과 운하 사이의 육지 접근부',landmark:'수로 전망',x:1.5,y:5};const route=createSinnohRoute218();TOUR_MAPS[SINNOH_ROUTE_218]=route.map;TOUR_FEATURES[SINNOH_ROUTE_218]=route.features;TOUR_BUILDINGS[SINNOH_ROUTE_218]=[];TOUR_SPAWNS[SINNOH_ROUTE_218]={x:2,y:13};}
 for(const p of PLACES)TOUR_OUTDOORS[p.id]=prepareTourOutdoors(p,TOUR_MAPS[p.id],TOUR_FEATURES[p.id],SHORT_TOURS.has(p.id),placeById);
 installIlexForestDetails(TOUR_MAPS.tour_ilex,TOUR_OUTDOORS.tour_ilex);
 installAzaleaDetails(TOUR_MAPS.tour_azalea,TOUR_OUTDOORS.tour_azalea);
 installVioletDetails(TOUR_MAPS.tour_violet,TOUR_OUTDOORS.tour_violet);
+installEcruteakDetails(TOUR_MAPS.tour_ecruteak,TOUR_OUTDOORS.tour_ecruteak);
+installSaffronDetails(TOUR_MAPS.tour_saffron,TOUR_OUTDOORS.tour_saffron);
+installCeladonDetails(TOUR_MAPS.tour_celadon,TOUR_OUTDOORS.tour_celadon);
+installFuchsiaDetails(TOUR_MAPS.tour_fuchsia,TOUR_OUTDOORS.tour_fuchsia);
+installOlivineDetails(TOUR_MAPS.tour_olivine,TOUR_OUTDOORS.tour_olivine);
+installCianwoodDetails(TOUR_MAPS.tour_cianwood,TOUR_OUTDOORS.tour_cianwood);
+installMahoganyDetails(TOUR_MAPS.tour_mahogany,TOUR_OUTDOORS.tour_mahogany);
+installBlackthornDetails(TOUR_MAPS.tour_blackthorn,TOUR_OUTDOORS.tour_blackthorn);
 installLavenderDetails(TOUR_MAPS.tour_lavender,TOUR_OUTDOORS.tour_lavender);
 installEternaClock(TOUR_MAPS.tour_eterna,TOUR_OUTDOORS.tour_eterna);
 installEternaGardenCare(TOUR_MAPS.tour_eterna,TOUR_OUTDOORS.tour_eterna);
@@ -216,21 +279,60 @@ installCinnabarHomes(TOUR_MAPS,TOUR_INTERIORS);
 installGoldenrodRadioFloors(TOUR_MAPS,TOUR_INTERIORS);
 installGoldenrodInteriorSizes(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS,FLOOR_INFO);
 installAzaleaInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS);
+installVioletInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS);
+installEcruteakInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS);
+installOlivineInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS);
+installCianwoodInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS);
+installMahoganyInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS);
+installBlackthornInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS);
+installRageLakeInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS);
 installLavenderInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS);
+installSaffronInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS);
+ROOM_PARENTS[SILPH_RECORDS_MAP]=placeById('tour_saffron')!;
+FLOOR_PARENTS[SILPH_RECORDS_MAP]='tour_saffron_hall_2f';
+// Same-level archive annex: no numbered FLOOR_INFO stair marker.
+installCeladonInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS);
+installFuchsiaInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS);
 installNimbasaInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS,FLOOR_INFO);
 installDriftveilInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS,FLOOR_INFO);
 installMistraltonInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS,FLOOR_INFO);
 installLentimasInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS,FLOOR_INFO);
 installUndellaInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS,FLOOR_INFO);
 installLacunosaInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS,FLOOR_INFO);
+installVillageBridgeInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS,FLOOR_INFO);
+installOpelucidInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS,FLOOR_INFO);
+installIcirrusInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS,FLOOR_INFO,TOUR_OUTDOORS.tour_icirrus);
+installDragonspiralTower({places:PLACES,maps:TOUR_MAPS,rooms:TOUR_INTERIORS,spawns:TOUR_SPAWNS,floors:FLOOR_INFO,roomParents:ROOM_PARENTS,floorParents:FLOOR_PARENTS,buildings:TOUR_BUILDINGS,outdoors:TOUR_OUTDOORS});
 installNimbasaWestRoute({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
 installUnovaRouteSix({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS,rooms:TOUR_INTERIORS,parents:ROOM_PARENTS});
 installReversalMountainExterior({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
 installUnovaRouteThirteen({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
 installUnovaRouteTwelve({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installUnovaRouteEleven({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installUnovaRouteNine({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS,rooms:TOUR_INTERIORS});
+installUnovaRouteEight({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installIcirrusMoor({maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installDragonspiralApproach({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
 installKantoRouteSix({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
 installKantoLavenderApproach({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS,rooms:TOUR_INTERIORS,parents:ROOM_PARENTS});
+installKantoSaffronApproach({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installKantoRouteSixteen({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installKantoCyclingRoad({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installKantoFuchsiaEast({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installKantoRouteNineteen({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installKantoSeafoamIslands({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
 installJohtoSouthRoute({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installJohtoParkRoutes({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installJohtoOlivineApproach({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installJohtoSeaRoute({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installJohtoRoute42({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installRageLakeDetails(TOUR_MAPS.tour_rage_lake,TOUR_OUTDOORS.tour_rage_lake,TOUR_BUILDINGS.tour_rage_lake,TOUR_FEATURES.tour_rage_lake);
+installJohtoRoute43({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installJohtoIcePath({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installJohtoDragonsDen({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS,rooms:TOUR_INTERIORS,roomParents:ROOM_PARENTS,buildings:TOUR_BUILDINGS,features:TOUR_FEATURES});
+installJohtoBlackthornSouth({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installJohtoCherrygrove({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS,rooms:TOUR_INTERIORS,roomParents:ROOM_PARENTS,buildings:TOUR_BUILDINGS,features:TOUR_FEATURES});
+MART_ROOMS.add('tour_cherrygrove_mart');
 buildEternaApproaches(PLACES,TOUR_MAPS,PASSAGES,PASSAGE_PLACES,TOUR_SPAWNS);
 installEternaCoronetApproach(PLACES,TOUR_MAPS,PASSAGES,PASSAGE_PLACES,TOUR_SPAWNS);
 installSinnohRoute208(PLACES,TOUR_MAPS,PASSAGES,PASSAGE_PLACES,TOUR_SPAWNS);
@@ -238,6 +340,21 @@ installSinnohRoute209Solaceon({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,pa
 installSinnohRoute212({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
 installSinnohSoutheastRoutes({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
 installSinnohNorthRoute({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
+installSinnohRoute203Gate({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
+installSinnohOpeningRoute({maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
+installSinnohFloaromaRoute({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
+installSinnohRoute205North({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
+installSinnohRoute206207({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
+installSinnohCelesticRoute({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES,edges:TOUR_EDGES,outdoors:TOUR_OUTDOORS,rooms:TOUR_INTERIORS,roomParents:ROOM_PARENTS,buildings:TOUR_BUILDINGS});
+MART_ROOMS.add(CELESTIC_SHOP);
+installSinnohCanonicalLakes({maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
+installOreburghMine({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
+installLostTower({maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES,floorInfo:FLOOR_INFO});
+installValleyWindworks({maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
+installCasteliaSewerPark({maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installCinnabarControlSite(TOUR_MAPS,TOUR_INTERIORS);
+ROOM_PARENTS[CINNABAR_CONTROL_SITE]=placeById('tour_cinnabar')!;
+TOUR_SPAWNS[CINNABAR_CONTROL_SITE]={x:20,y:44};
 // Signs were authored before the connecting roads were inserted.
 for(const route of ETERNA_APPROACHES)for(const [from,to] of [[route.a,route.b],[route.b,route.a]]){
   for(const sign of TOUR_OUTDOORS[from].signs.filter(sign=>sign.destination===to)){

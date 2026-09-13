@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "worldRevision": 24,
+  "map": "tour_icirrus_moor",
+  "player": {
+    "x": 13,
+    "y": 20,
+    "facing": "left"
+  },
+  "flags": {
+    "starterReceived": true,
+    "departureCleared": true,
+    "trainerWon:unova-route-8-practice": true,
+    "icirrusMoorPartnerSlot": 0,
+    "icirrusMoorPartnerSpecies": 7
+  },
+  "party": [
+    {
+      "species": 7,
+      "level": 25,
+      "experience": 0,
+      "hp": 80,
+      "maxHp": 80,
+      "nature": "성실",
+      "met": "새잎마을 · 포켓몬 연구소",
+      "moves": [
+        "몸통박치기",
+        "꼬리흔들기"
+      ]
+    },
+    {
+      "species": 588,
+      "level": 25,
+      "experience": 0,
+      "hp": 88,
+      "maxHp": 88,
+      "nature": "성실",
+      "met": "하나 8번도로",
+      "moves": [
+        "박치기",
+        "째려보기"
+      ]
+    },
+    {
+      "species": 588,
+      "level": 25,
+      "experience": 0,
+      "hp": 88,
+      "maxHp": 88,
+      "nature": "성실",
+      "met": "하나 8번도로",
+      "moves": [
+        "박치기",
+        "째려보기"
+      ]
+    },
+    {
+      "species": 588,
+      "level": 25,
+      "experience": 0,
+      "hp": 88,
+      "maxHp": 88,
+      "nature": "성실",
+      "met": "하나 8번도로",
+      "moves": [
+        "박치기",
+        "째려보기"
+      ]
+    },
+    {
+      "species": 588,
+      "level": 25,
+      "experience": 0,
+      "hp": 88,
+      "maxHp": 88,
+      "nature": "성실",
+      "met": "하나 8번도로",
+      "moves": [
+        "박치기",
+        "째려보기"
+      ]
+    },
+    {
+      "species": 588,
+      "level": 25,
+      "experience": 0,
+      "hp": 88,
+      "maxHp": 88,
+      "nature": "성실",
+      "met": "하나 8번도로",
+      "moves": [
+        "박치기",
+        "째려보기"
+      ]
+    }
+  ],
+  "box": [],
+  "pokedex": {
+    "seen": [
+      7,
+      588
+    ],
+    "caught": [
+      7,
+      588
+    ]
+  },
+  "inventory": {
+    "pokeBalls": 19,
+    "potions": 10
+  },
+  "badges": [],
+  "keyItems": [],
+  "money": 5620,
+  "healingPoint": "tour_icirrus_center",
+  "steps": 24,
+  "seconds": 180,
+  "tourVisited": [
+    "tour_unova_route_08",
+    "tour_icirrus_moor"
+  ]
+}

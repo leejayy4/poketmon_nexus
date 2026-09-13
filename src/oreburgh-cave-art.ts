@@ -12,7 +12,7 @@ export function isOreburghCave(mapId:string):boolean{
 
 /** Cave maps whose encounter areas use loose stone instead of outdoor grass. */
 export function isCaveEncounterMap(mapId:string):boolean{
-  return isOreburghCave(mapId)||mapId==='tour_union_cave_1f';
+  return isOreburghCave(mapId)||mapId==='tour_union_cave_1f'||mapId==='tour_castelia_sewers';
 }
 
 /** Paints one cave encounter tile and, when in front, a small animated foot dust. */

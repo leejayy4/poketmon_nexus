@@ -127,7 +127,8 @@ for line in MAP_TEXT.splitlines():
         NODES[cols[0]] = {'name': cols[1], 'opening': cols[2], 'content': cols[3]}
     elif re.fullmatch(r'G[SKJU]\d{2}', cols[0]):
         GYM_META[cols[0]] = {'city': cols[1], 'node': re.search(r'[SKJU]\d{2}', cols[1])[0],
-                             'type': cols[2], 'mandatory': '본편' in cols[3], 'puzzle': cols[5]}
+                             'type': cols[2], 'mandatory': '기존 필수' in cols[3],
+                             'recommendedMainJourney': any(tag in cols[3] for tag in ('기존 필수', '권장')), 'puzzle': cols[5]}
     elif cols[0].isdigit() and len(cols) == 5:
         REQUESTED.append({'id': sid(cols[1]), 'name': cols[1], 'nodes': cols[2].split('/'),
                           'acquisition': cols[3], 'opening': cols[4]})
@@ -467,7 +468,7 @@ for g in PLAN['gyms']:
         'category': 'TM', 'effect': f'{MOVE_NAMES[mid]} 습득 자격이 있는 개체에게 학습, 반복 사용 가능',
         'moveId': mid, 'buy': 0, 'sell': 0, 'unlock': g['id'], 'node': meta['node'], 'consumed': False, 'cap': 1})
     variants = []
-    if meta['mandatory']:
+    if meta['recommendedMainJourney']:
         squads = [('본편', [m['level'] for m in g['party']])]
         if g['id'] in {'GS05', 'GS06'}:
             squads = [('귀환 첫 도전', [49, 50, 51, 52]), ('귀환 두 번째', [51, 52, 53, 54])]
@@ -659,8 +660,8 @@ def render_gyms():
              '[공식 무청 소개](https://pokemonkorea.co.kr/bdsp/menu135?mode=view&number=2399&stype1=&stype2=)도 대조했다. '
              '이 문서의 팀·퍼즐·획득 조건·돈은 NEXUS 설계값이다.\n\n'
              '## 2. 진행·전투 공통 규칙\n\n'
-             '- 본편 필수 20, 선택 12. 배지 ID별로 검사하며 총 개수만으로 핵심 배지를 대체하지 않는다.\n'
-             '- 필수 20곳은 표의 단계별 고정 팀. GS05·GS06은 먼저 도전한 쪽 에이스52, 나중54다.\n'
+             '- 기존 신오4배지 계약 보존, 후속 권장16, 추가 선택12. 후속 배지는 사건/최종장 잠금이 아니다.\n'
+             '- 대표 여행축20곳은 표의 단계별 고정 팀 후보이며 필수 여부와 분리한다. GS05·GS06은 먼저 도전한 쪽 에이스52, 나중54다.\n'
              '- 선택 12곳은 현재 장별 30/40/49/58/65 팀을 준비한다. 해당 지방 도착 전의 낮은 단계 팀은 노출하지 않는다.\n'
              '- 접수 시 팀을 고정한다. 낮은 레벨에서 진화할 수 없는 최종형은 같은 계열의 이전 단계로 교체했다. 친밀도·도구 진화는 레벨만으로 금지하지 않는다.\n'
              '- 1대1 기본 배틀, 상대 교체 힌트를 주는 Shift형 진행을 기본 제안. 관장 가방 회복은 0회, 보유 열매 효과는 허용한다.\n'
@@ -669,12 +670,12 @@ def render_gyms():
              '- 아래 기술은 1~8세대 기본 모습의 레벨업/TM/교배/가르침 습득 기록 중에서 골랐다. **세대 통합 습득 규칙이라는 창작안**이며 단일 원작 버전 팀이 아니다.\n'
              '- 기술 효과와 특성은 구현 전 별도 검토가 필요하다. 기술명·위력만으로 전투 가능 상태로 판정하지 않는다.\n\n')
     text += md_table(['체육관','도시','관장','타입','본편','배지 ID','초회 TM'],
-        [[g['id'],g['city'],g['leader'],g['type'],'필수' if g['mandatory'] else '선택',g['badgeId'],g['rewardItem']] for g in GYM_DB])
+        [[g['id'],g['city'],g['leader'],g['type'],'기존 필수' if g['mandatory'] else ('권장' if g['recommendedMainJourney'] else '선택'),g['badgeId'],g['rewardItem']] for g in GYM_DB])
     for g in GYM_DB:
         text += f"\n## {g['id']} {g['city']} — {g['leader']}\n\n"
         text += f"퍼즐·체험: {g['puzzle']}\n\n"
         text += f"초회 보상: {g['badgeId']} + {g['rewardItem']}. 상금은 실제 도전 팀 최고 레벨 × 120원. 재도전의 보상 중복 지급은 금지한다.\n\n"
-        if not g['mandatory']:
+        if not g['recommendedMainJourney']:
             text += '선택 체육관의 단계표는 현재 장을 따른다. 아직 해당 지방이 열리지 않은 단계는 데이터 후보일 뿐 실제 접수할 수 없다.\n\n'
         data = []
         for v in g['variants']:
@@ -782,7 +783,7 @@ for line in STORY_TEXT.splitlines():
         if len(c)==4:
             qid=c[0].split()[0]
             QUEST_DB.append({'id':qid,'name':c[0][5:],'kind':'후일담','places':c[1],'condition':c[3], 'result':c[2]})
-CORE_LEGENDS = {sid(n) for n in '뮤츠 라이코 앤테이 스이쿤 칠색조 루기아 레시라무 제크로무 디아루가 펄기아 기라티나'.split()}
+CORE_LEGENDS = {sid(n) for n in '뮤츠 라이코 앤테이 스이쿤 칠색조 루기아 레시라무 제크로무 큐레무 디아루가 펄기아 기라티나'.split()}
 for line in STORY_TEXT.splitlines():
     if not line.startswith('| '): continue
     c=[x.strip() for x in line.strip('|').split('|')]
@@ -798,9 +799,9 @@ for idx,entry in enumerate(AUTO_GIFTS,1):
 
 
 def render_quests():
-    text = '# 개발용 퀘스트 데이터베이스\n\n' + COMMON
+    text = '# 개발용 퀘스트 데이터베이스\n\n' + COMMON + '\n설계 기준: [넥서스 통합 서사](NEXUS_STORY_MASTER.md). CH/SQ/PG/LEG는 설계 ID이며 런타임 완료가 아니다.\n\n'
     text += (f'## 1. 구성\n\n본편 CH·지역 사건 SQ·후일담 PG와 도감 보완 보호 의뢰를 합쳐 **{len(QUEST_DB)}개 관리 레코드**다. '
-             '기존 스토리의 챕터·퀘스트 ID를 유지하고 핵심 전설 11종의 LEG 사건 ID를 추가했다. 포켓몬·아이템 보상 ID는 다른 DB와 연결했다. '
+             '기존 스토리의 챕터·퀘스트 ID를 유지하고 중심 전설 12종의 LEG 사건 ID를 추가했다. 포켓몬·아이템 보상 ID는 다른 DB와 연결했다. '
              '동일 포켓몬이 야생과 선물 양쪽에 있는 경우 선물의 고유 개체와 야생 개체는 다르며 선물 중복을 허용하는 뜻이 아니다.\n\n')
     text += md_table(['퀘스트 ID','이름','종류','장소','개시·완료 조건','결과·보상'],
         [[q['id'],q['name'],q['kind'],q['places'],q['condition'],
@@ -879,7 +880,7 @@ def validate():
     assert all(r['id'] in ids for r in REQUESTED)
     item_ids={x['id'] for x in ITEM_DB}
     assert len(item_ids)==len(ITEM_DB), 'Duplicate item ID'
-    assert len(GYM_DB)==32 and sum(x['mandatory'] for x in GYM_DB)==20
+    assert len(GYM_DB)==32 and sum(x['mandatory'] for x in GYM_DB)==4
     for s in SPECIES_DB:
         assert len(s['stats'])==6 and s['types'] and s['abilities']
         assert all(n in NODES for n in s['familyNodes'])
@@ -914,7 +915,7 @@ def validate():
             links+=1
     return {'date':PLAN['date'],'referenceCommit':SHA,'status':'PASS','species':len(SPECIES_DB),
         'requestedCovered':123,'nodes':len(NODES),'wildPools':len(POOLS),'evolutions':len(EVOLUTION_DB),
-        'gyms':len(GYM_DB),'mandatoryGyms':20,'optionalGyms':12,
+        'gyms':len(GYM_DB),'mandatoryGyms':4,'optionalGyms':28,'recommendedAdditionalGyms':16,
         'gymVariants':sum(len(g['variants']) for g in GYM_DB),'items':len(ITEM_DB),'moves':len(MOVE_DB),
         'quests':len(QUEST_DB),'documentLinksChecked':links,
         'sourceEvolutionTagWarnings':sum(e['sourceTagPredatesSpecies'] for e in EVOLUTION_DB),'runtimeImplemented':False}

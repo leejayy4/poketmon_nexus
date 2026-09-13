@@ -68,6 +68,24 @@ export function createTourResidents(id:string):TourResident[]{
     {id:'tourResident2',dialogue:'tourResident2',name:'식재료 건조 관리인',sprite:'rancher',x:31,y:17,facing:'left',pages:['들판 허브와 열매는 사람용과 포켓몬용을 칸으로 나눠 말려요.','바람이 강하면 안뜰 쪽 낮은 선반으로 옮깁니다.']},
     {id:'tourResident3',dialogue:'tourResident3',name:'12번도로 길 안내원',sprite:'middle_aged_man',x:31,y:31,facing:'left',pages:['서쪽은 하나 12번도로와 빌리지브리지 방향이란다.','전원 초원까지 왕복할 수 있지만 빌리지브리지 경계는 아직 연결되지 않았어.']},
   ];
+  if(id==='tour_village_bridge')return [
+    {id:'tourResident0',dialogue:'tourResident0',name:'12번도로 도착 여행자',sprite:'ace_trainer_f',x:61,y:12,facing:'left',pages:['동쪽 12번도로의 넓은 초원을 지나 다리 마을에 도착했어요.','센터는 북동쪽이고 같은 길로 보배마을까지 돌아갈 수 있어요.']},
+    {id:'tourResident1',dialogue:'tourResident1',name:'다리 보행 관리인',sprite:'worker',x:36,y:28,facing:'up',pages:['사람과 포켓몬이 멈춰 쉴 자리와 계속 걷는 통로를 나눠 두었어.','난간 안쪽을 따라가면 수로 양쪽 둔치를 오갈 수 있지.']},
+    {id:'tourResident2',dialogue:'tourResident2',name:'주민 공연 연습자',sprite:'lass',x:34,y:15,facing:'down',pages:['이웃과 목소리와 손장단을 맞추지만 길을 막지는 않아요.','아직 공연 기능이나 참여 보상을 연결한 장소는 아니에요.']},
+    {id:'tourResident3',dialogue:'tourResident3',name:'11번도로 길 안내원',sprite:'middle_aged_man',x:8,y:41,facing:'right',pages:['서쪽은 하나 11번도로와 쌍용시티 방향이란다.','물길 전망과 바위 단차를 지나 석조 도시까지 왕복할 수 있어.']},
+  ];
+  if(id==='tour_opelucid')return [
+    {id:'tourResident0',dialogue:'tourResident0',name:'11번도로 도착 여행자',sprite:'ace_trainer_f',x:54,y:42,facing:'left',pages:['동쪽 문으로 나가면 하나 11번도로와 빌리지브리지예요.','센터에서 동료를 쉬게 한 뒤 같은 길로 보배마을까지 돌아갈 수 있어요.']},
+    {id:'tourResident1',dialogue:'tourResident1',name:'석조 거리 관리인',sprite:'old_man',x:19,y:20,facing:'left',pages:['오래된 돌길은 표면을 모두 새것처럼 갈지 않고 발이 걸리는 곳부터 손본단다.','포켓몬이 쉬는 벽면 자리와 사람 통행로를 함께 비워 두지.']},
+    {id:'tourResident2',dialogue:'tourResident2',name:'새 거리 화단 관리인',sprite:'pokemon_breeder_f',x:54,y:21,facing:'left',pages:['밝은 포장 옆에도 동료가 그늘에서 쉴 낮은 화단을 남겨요.','옛 거리와 새 거리는 모습보다 생활에 맞는 쓰임을 비교해 보세요.']},
+    {id:'tourResident3',dialogue:'tourResident3',name:'역사관 기록원',sprite:'scientist_f',x:37,y:13,facing:'right',pages:['역사관에서는 확인된 도시 생활과 전해 오는 이야기를 나눠 기록합니다.','광장의 용 문양은 관찰 자료이며 특별한 조우나 사건을 시작하지 않아요.']},
+  ];
+  if(id==='tour_icirrus')return [
+    {id:'tourResident0',dialogue:'tourResident0',name:'8번도로 도착 여행자',sprite:'ace_trainer_f',x:42,y:14,facing:'left',pages:['동쪽 문은 하나 8번도로와 튜브라인브리지 방향이에요.','생활관에서 마른 본선과 빗물 순환로를 나눠 기록할 수 있어요.']},
+    {id:'tourResident1',dialogue:'tourResident1',name:'습지 생활 뜰 돌봄이',sprite:'pokemon_breeder_f',x:14,y:25,facing:'right',pages:['젖은 장화와 포켓몬의 발을 씻는 물은 연못물과 구분해 관리해요.','생활관 2층에는 길과 연못의 물 쓰임을 비교한 자료가 있어요.']},
+    {id:'tourResident2',dialogue:'tourResident2',name:'생활관 기록원',sprite:'scientist_f',x:37,y:13,facing:'left',pages:['8번도로에서 본 길 상태를 생활 기록과 비교하고 있어요.','북쪽 전망은 방향을 살피는 곳이며 용나선탑 사건을 시작하지 않습니다.']},
+    {id:'tourResident3',dialogue:'tourResident3',name:'북쪽 둔덕 산책자',sprite:'old_man',x:25,y:36,facing:'up',pages:['마른 둔덕에서는 습지와 북쪽 탑 방향을 함께 볼 수 있단다.','실제 북쪽 출구가 열렸다는 뜻은 아니니 동쪽 길로 돌아가면 된단다.']},
+  ];
   if(id==='tour_mistralton')return [
     {id:'tourResident0',dialogue:'tourResident0',name:'동굴 도착 여행자',sprite:'ace_trainer_f',x:18,y:48,facing:'left',pages:['전기돌동굴의 푸른빛을 지나오니\n넓은 하늘과 활주로가 먼저 보여요.','센터는 북서쪽, 공항 터미널은 중심가 동쪽이에요.\n남쪽 출구로 돌아가면 동굴 북부 입구입니다.']},
     {id:'tourResident1',dialogue:'tourResident1',name:'활주로 유도원',sprite:'worker',x:40,y:14,facing:'right',pages:['흰 유도선 안쪽은 비행기와 작업 포켓몬의 길이야.','여행자는 울타리 밖 보행로를 따라가 줘.\n동쪽 길과 터미널 입구가 그 길에서 이어져.']},

@@ -167,7 +167,8 @@
         ]
       }
     ],
-    "money": 1440
+    "money": 1440,
+    "recommendedMainJourney": true
   },
   {
     "city": "영원 S06",
@@ -337,7 +338,8 @@
         ]
       }
     ],
-    "money": 1920
+    "money": 1920,
+    "recommendedMainJourney": true
   },
   {
     "city": "연고 S07",
@@ -507,7 +509,8 @@
         ]
       }
     ],
-    "money": 2280
+    "money": 2280,
+    "recommendedMainJourney": true
   },
   {
     "city": "장막 S08",
@@ -677,13 +680,14 @@
         ]
       }
     ],
-    "money": 2760
+    "money": 2760,
+    "recommendedMainJourney": true
   },
   {
     "city": "들판 S09",
     "node": "S09",
     "type": "물",
-    "mandatory": true,
+    "mandatory": false,
     "puzzle": "갸라도스, 수문 높이와 구조 동선",
     "id": "GS05",
     "leader": "맥실러",
@@ -1102,13 +1106,14 @@
         ]
       }
     ],
-    "money": 6240
+    "money": 6240,
+    "recommendedMainJourney": true
   },
   {
     "city": "운하 S10",
     "node": "S10",
     "type": "강철",
-    "mandatory": true,
+    "mandatory": false,
     "puzzle": "바리톱스, 리프트·교량의 이동 순서",
     "id": "GS06",
     "leader": "동관",
@@ -1527,13 +1532,14 @@
         ]
       }
     ],
-    "money": 6240
+    "money": 6240,
+    "recommendedMainJourney": true
   },
   {
     "city": "선단 S12",
     "node": "S12",
     "type": "얼음",
-    "mandatory": true,
+    "mandatory": false,
     "puzzle": "눈설왕·글레이시아, 미끄럼과 정지 발판",
     "id": "GS07",
     "leader": "무청",
@@ -1747,13 +1753,14 @@
         ]
       }
     ],
-    "money": 6840
+    "money": 6840,
+    "recommendedMainJourney": true
   },
   {
     "city": "물가 S13",
     "node": "S13",
     "type": "전기",
-    "mandatory": true,
+    "mandatory": false,
     "puzzle": "렌트라, 안전한 회로 연결",
     "id": "GS08",
     "leader": "전진",
@@ -1967,13 +1974,14 @@
         ]
       }
     ],
-    "money": 7200
+    "money": 7200,
+    "recommendedMainJourney": true
   },
   {
     "city": "회색 K04",
     "node": "K04",
     "type": "바위",
-    "mandatory": true,
+    "mandatory": false,
     "puzzle": "롱스톤, 화석 분류·낙석 우회",
     "id": "GK01",
     "leader": "웅",
@@ -2137,13 +2145,14 @@
         ]
       }
     ],
-    "money": 3000
+    "money": 3000,
+    "recommendedMainJourney": true
   },
   {
     "city": "블루 K06",
     "node": "K06",
     "type": "물",
-    "mandatory": true,
+    "mandatory": false,
     "puzzle": "아쿠스타·라프라스, 수영장 수위",
     "id": "GK02",
     "leader": "이슬",
@@ -2357,13 +2366,14 @@
         ]
       }
     ],
-    "money": 3360
+    "money": 3360,
+    "recommendedMainJourney": true
   },
   {
     "city": "갈색 K01",
     "node": "K01",
     "type": "전기",
-    "mandatory": true,
+    "mandatory": false,
     "puzzle": "라이츄, 항구 신호 조합",
     "id": "GK03",
     "leader": "마티스",
@@ -2577,13 +2587,14 @@
         ]
       }
     ],
-    "money": 3720
+    "money": 3720,
+    "recommendedMainJourney": true
   },
   {
     "city": "무지개 K07",
     "node": "K07",
     "type": "풀",
-    "mandatory": true,
+    "mandatory": false,
     "puzzle": "이상해꽃, 온실 생태·빛 조절",
     "id": "GK04",
     "leader": "민화",
@@ -2797,7 +2808,8 @@
         ]
       }
     ],
-    "money": 4080
+    "money": 4080,
+    "recommendedMainJourney": true
   },
   {
     "city": "연분홍 K12",
@@ -3837,7 +3849,8 @@
         ]
       }
     ],
-    "money": 3600
+    "money": 3600,
+    "recommendedMainJourney": false
   },
   {
     "city": "노랑 K09",
@@ -4877,7 +4890,8 @@
         ]
       }
     ],
-    "money": 3600
+    "money": 3600,
+    "recommendedMainJourney": false
   },
   {
     "city": "홍련 K13",
@@ -5917,7 +5931,8 @@
         ]
       }
     ],
-    "money": 3600
+    "money": 3600,
+    "recommendedMainJourney": false
   },
   {
     "city": "상록 K03",
@@ -6957,13 +6972,14 @@
         ]
       }
     ],
-    "money": 3600
+    "money": 3600,
+    "recommendedMainJourney": false
   },
   {
     "city": "도라지 J02",
     "node": "J02",
     "type": "비행",
-    "mandatory": true,
+    "mandatory": false,
     "puzzle": "피죤투, 바람 방향·새 쉼터",
     "id": "GJ01",
     "leader": "비상",
@@ -7177,13 +7193,14 @@
         ]
       }
     ],
-    "money": 4320
+    "money": 4320,
+    "recommendedMainJourney": true
   },
   {
     "city": "고동 J03",
     "node": "J03",
     "type": "벌레",
-    "mandatory": true,
+    "mandatory": false,
     "puzzle": "스라크, 잎다리·실 연결",
     "id": "GJ02",
     "leader": "호일",
@@ -7397,13 +7414,14 @@
         ]
       }
     ],
-    "money": 4560
+    "money": 4560,
+    "recommendedMainJourney": true
   },
   {
     "city": "금빛 J01",
     "node": "J01",
     "type": "노말",
-    "mandatory": true,
+    "mandatory": false,
     "puzzle": "밀탱크·치라치노, 생활 도구의 규칙",
     "id": "GJ03",
     "leader": "꼭두",
@@ -7617,13 +7635,14 @@
         ]
       }
     ],
-    "money": 4800
+    "money": 4800,
+    "recommendedMainJourney": true
   },
   {
     "city": "인주 J04",
     "node": "J04",
     "type": "고스트",
-    "mandatory": true,
+    "mandatory": false,
     "puzzle": "팬텀, 어둠 속 종소리 길 찾기",
     "id": "GJ04",
     "leader": "유빈",
@@ -7837,7 +7856,8 @@
         ]
       }
     ],
-    "money": 5040
+    "money": 5040,
+    "recommendedMainJourney": true
   },
   {
     "city": "진청 J11",
@@ -8877,7 +8897,8 @@
         ]
       }
     ],
-    "money": 3600
+    "money": 3600,
+    "recommendedMainJourney": false
   },
   {
     "city": "담청 J10",
@@ -9917,7 +9938,8 @@
         ]
       }
     ],
-    "money": 3600
+    "money": 3600,
+    "recommendedMainJourney": false
   },
   {
     "city": "황토 J08",
@@ -10957,7 +10979,8 @@
         ]
       }
     ],
-    "money": 3600
+    "money": 3600,
+    "recommendedMainJourney": false
   },
   {
     "city": "검은먹 J17",
@@ -11997,7 +12020,8 @@
         ]
       }
     ],
-    "money": 3600
+    "money": 3600,
+    "recommendedMainJourney": false
   },
   {
     "city": "부채 U02",
@@ -13037,7 +13061,8 @@
         ]
       }
     ],
-    "money": 3600
+    "money": 3600,
+    "recommendedMainJourney": false
   },
   {
     "city": "모란만 U03",
@@ -14077,13 +14102,14 @@
         ]
       }
     ],
-    "money": 3600
+    "money": 3600,
+    "recommendedMainJourney": false
   },
   {
     "city": "구름 U01",
     "node": "U01",
     "type": "벌레",
-    "mandatory": true,
+    "mandatory": false,
     "puzzle": "모아머, 실·잎으로 만드는 이동로",
     "id": "GU03",
     "leader": "아티",
@@ -14297,13 +14323,14 @@
         ]
       }
     ],
-    "money": 5280
+    "money": 5280,
+    "recommendedMainJourney": true
   },
   {
     "city": "뇌문 U04",
     "node": "U04",
     "type": "전기",
-    "mandatory": true,
+    "mandatory": false,
     "puzzle": "에몽가, 열차 신호·레일 분기",
     "id": "GU04",
     "leader": "카밀레",
@@ -14517,13 +14544,14 @@
         ]
       }
     ],
-    "money": 5520
+    "money": 5520,
+    "recommendedMainJourney": true
   },
   {
     "city": "물풍경 U05",
     "node": "U05",
     "type": "땅",
-    "mandatory": true,
+    "mandatory": false,
     "puzzle": "몰드류, 굴착층·승강기",
     "id": "GU05",
     "leader": "야콘",
@@ -14737,7 +14765,8 @@
         ]
       }
     ],
-    "money": 5760
+    "money": 5760,
+    "recommendedMainJourney": true
   },
   {
     "city": "궐수 U06",
@@ -15777,13 +15806,14 @@
         ]
       }
     ],
-    "money": 3600
+    "money": 3600,
+    "recommendedMainJourney": false
   },
   {
     "city": "쌍용 U07",
     "node": "U07",
     "type": "드래곤",
-    "mandatory": true,
+    "mandatory": false,
     "puzzle": "액스라이즈, 서로 맞물리는 두 통로",
     "id": "GU07",
     "leader": "사간",
@@ -15997,7 +16027,8 @@
         ]
       }
     ],
-    "money": 6000
+    "money": 6000,
+    "recommendedMainJourney": true
   },
   {
     "city": "기하 U08",
@@ -17037,6 +17068,7 @@
         ]
       }
     ],
-    "money": 3600
+    "money": 3600,
+    "recommendedMainJourney": false
   }
 ]

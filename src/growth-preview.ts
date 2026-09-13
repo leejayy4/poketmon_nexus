@@ -1,7 +1,7 @@
 import type { Pokemon } from './types';
 import { RUNTIME_SPECIES, SPECIES, availableMoves, pokemonMoves } from './pokemon';
 import { LEVEL_CAP } from './growth';
-import DATA from './runtime-pokemon-data.json';
+import { RUNTIME_DATA as DATA } from './data/runtime';
 
 // Only report future events supported by the current growth implementation.
 export function growthPreview(p: Pokemon): string {

@@ -28,9 +28,10 @@ export function handleCasteliaHome(g:Engine,event:string):boolean{
     if(!current())return;
     g.say('함께 걷는 동료',[s.party.length?'기술을 준비할 동료를 골라 봐.':'동료를 만난 뒤 다시 찾아와.'],undefined,[
       ...s.party.slice(page*3,page*3+3).map(mon=>({label:SPECIES[mon.species].name,action:()=>{
-        if(!current()||!s.party.includes(mon))return;g.partyIndex=s.party.indexOf(mon);showMoveSchool(g);
+        if(!current()||!s.party.includes(mon))return;g.partyIndex=s.party.indexOf(mon);showMoveSchool(g,0,undefined,false,{label:'동료 준비로 돌아가기',action:()=>{if(current()&&s.party.includes(mon))choose(page);}});
       }})),
       ...(s.party.length>3?[{label:page?'앞 동료들':'다음 동료들',action:()=>choose(page?0:1)}]:[]),
+      {label:'주민과 여행 상담',action:()=>{if(current())handleCasteliaHome(g,event);}},
       {label:'닫기',action:()=>{}},
     ]);
   };

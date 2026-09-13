@@ -22,8 +22,8 @@ export function installSinnohRoute208(places:Place[],maps:Record<TourId,GameMap>
       {x:1,y:10,to:cave.id,spawn:{...back.spawn},entry:'left',facing:back.facing},
       {x:width-2,y:10,to:city.id,spawn:{...outward.spawn},entry:'right',facing:outward.facing},
     ],
-    npcs:[{id:'pathWalker',name:'208번도로 등산객',sprite:'rancher',x:29,y:19,facing:'down',dialogue:'journeyWalker'}],
-    props:[{x:3,y:8,dialogue:'journeySign'},{x:width-4,y:8,dialogue:'journeySign'}],
+    npcs:[{id:'route208Trainer',name:'208번도로 산기슭 트레이너',sprite:'rancher',x:29,y:19,facing:'down',dialogue:'route208Trainer'}],
+    props:[{x:3,y:8,dialogue:'route208Sign'},{x:width-4,y:8,dialogue:'route208Sign'}],
   };
   passages[id]={id,a:cave,b:city,kind:'road',bend:12};
   passagePlaces[id]={id,name,region:'신오',theme:'water',concept:'천관산에서 개울과 계단을 따라 연고로 내려가는 208번도로',landmark:'208번도로 계단과 개울',x:(cave.x+city.x)/2,y:(cave.y+city.y)/2};

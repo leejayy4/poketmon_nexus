@@ -12,6 +12,8 @@ import { MISTRALTON_CITY_SIZE,mistraltonPlan } from './mistralton-city-layout';
 import { LENTIMAS_TOWN_SIZE,lentimasPlan } from './lentimas-town-layout';
 import { UNDELLA_TOWN_SIZE,undellaPlan } from './undella-town-layout';
 import { LACUNOSA_TOWN_SIZE,lacunosaPlan } from './lacunosa-town-layout';
+import { VILLAGE_BRIDGE_SIZE,villageBridgePlan } from './village-bridge-layout';
+import { OPELUCID_CITY_SIZE,opelucidPlan } from './opelucid-city-layout';
 import { HEARTHOME_SIZE,extendHearthomeCity } from './hearthome-layout';
 import { VEILSTONE_CITY_SIZE,extendVeilstoneCity } from './veilstone-city-layout';
 import { PASTORIA_CITY_SIZE,extendPastoriaCity } from './pastoria-city-layout';
@@ -22,6 +24,15 @@ import { AZALEA_SIZE,extendAzaleaTown } from './azalea-layout';
 import { CANALAVE_CITY_SIZE,extendCanalaveCity } from './canalave-layout';
 import { LAVENDER_TOWN_SIZE,extendLavenderTown } from './lavender-layout';
 import { VIOLET_CITY_SIZE,extendVioletCity } from './violet-city-layout';
+import { SAFFRON_CITY_SIZE,extendSaffronCity } from './saffron-city-layout';
+import { ECRUTEAK_CITY_SIZE,extendEcruteakCity } from './ecruteak-city-layout';
+import { CELADON_CITY_SIZE,extendCeladonCity } from './celadon-city-layout';
+import { FUCHSIA_CITY_SIZE,extendFuchsiaCity } from './fuchsia-city-layout';
+import { OLIVINE_CITY_SIZE,extendOlivineCity } from './olivine-city-layout';
+import { CIANWOOD_CITY_SIZE,extendCianwoodCity } from './cianwood-city-layout';
+import { MAHOGANY_TOWN_SIZE,extendMahoganyTown } from './mahogany-city-layout';
+import { BLACKTHORN_CITY_SIZE,extendBlackthornCity } from './blackthorn-city-layout';
+import { ICIRRUS_CITY_SIZE,icirrusPlan } from './icirrus-city-layout';
 
 type Rect=[number,number,number,number];
 export type TownStyle='urban'|'waterfront'|'rural'|'heritage'|'mining';
@@ -48,9 +59,20 @@ export function tourSize(p:Place){
   if(p.id==='tour_lentimas')return LENTIMAS_TOWN_SIZE;
   if(p.id==='tour_undella')return UNDELLA_TOWN_SIZE;
   if(p.id==='tour_lacunosa')return LACUNOSA_TOWN_SIZE;
+  if(p.id==='tour_village_bridge')return VILLAGE_BRIDGE_SIZE;
+  if(p.id==='tour_opelucid')return OPELUCID_CITY_SIZE;
   if(p.id==='tour_cinnabar')return CINNABAR_SIZE;
   if(p.id==='tour_lavender')return LAVENDER_TOWN_SIZE;
   if(p.id==='tour_violet')return VIOLET_CITY_SIZE;
+  if(p.id==='tour_saffron')return SAFFRON_CITY_SIZE;
+  if(p.id==='tour_ecruteak')return ECRUTEAK_CITY_SIZE;
+  if(p.id==='tour_celadon')return CELADON_CITY_SIZE;
+  if(p.id==='tour_fuchsia')return FUCHSIA_CITY_SIZE;
+  if(p.id==='tour_olivine')return OLIVINE_CITY_SIZE;
+  if(p.id==='tour_cianwood')return CIANWOOD_CITY_SIZE;
+  if(p.id==='tour_mahogany')return MAHOGANY_TOWN_SIZE;
+  if(p.id==='tour_blackthorn')return BLACKTHORN_CITY_SIZE;
+  if(p.id==='tour_icirrus')return ICIRRUS_CITY_SIZE;
   if(COMPACT_PLACES.has(p.id))return {width:28,height:24};
   return p.id==='tour_jubilife'?JUBILIFE_SIZE:({urban:{width:40,height:36},waterfront:{width:40,height:32},rural:{width:34,height:30},heritage:{width:36,height:34},mining:{width:34,height:32}})[townStyle(p)];
 }
@@ -62,6 +84,8 @@ export function expandedExits(p:Place){
 }
 export function expandedSigns(p:Place){
   if(p.id==='tour_jubilife')return JUBILIFE_SIGNS;
+  if(p.id==='tour_snowpoint')return {up:{x:16,y:4},right:{x:44,y:10},down:{x:18,y:40},left:{x:3,y:10}} as Record<Direction,Point>;
+  if(p.id==='tour_lake')return {up:{x:16,y:4},right:{x:52,y:10},down:{x:21,y:44},left:{x:3,y:10}} as Record<Direction,Point>;
   if(p.id==='tour_lavender')return {up:{x:16,y:4},right:{x:32,y:10},down:{x:16,y:30},left:{x:3,y:10}} as Record<Direction,Point>;
   const {width,height}=tourSize(p);return {up:{x:16,y:4},right:{x:width-4,y:10},down:{x:16,y:height-4},left:{x:3,y:10}} as Record<Direction,Point>;
 }
@@ -74,6 +98,9 @@ export function expandTown(p:Place,features:TourFeature[],jubilifePaths:Rect[]=[
   if(p.id==='tour_lentimas')return lentimasPlan();
   if(p.id==='tour_undella')return undellaPlan();
   if(p.id==='tour_lacunosa')return lacunosaPlan();
+  if(p.id==='tour_village_bridge')return villageBridgePlan();
+  if(p.id==='tour_opelucid')return opelucidPlan();
+  if(p.id==='tour_icirrus')return icirrusPlan();
   const {width,height}=p.id==='tour_vermilion'?{width:40,height:32}:p.id==='tour_eterna'?{width:36,height:34}:p.id==='tour_goldenrod'?{width:40,height:36}:p.id==='tour_azalea'?{width:34,height:30}:p.id==='tour_cinnabar'?{width:34,height:32}:tourSize(p),style=townStyle(p);
   const urban=style==='urban',wet=style==='waterfront',heritage=style==='heritage';
   const hallX=width-(urban||wet?14:12),hallY=urban?17:wet?11:8;
@@ -99,5 +126,5 @@ export function expandTown(p:Place,features:TourFeature[],jubilifePaths:Rect[]=[
     scenery[1]={...scenery[1],name:'라디오 광장 분수',description:'방송을 기다리는 주민들이 쉬는 곳.\n동쪽 라디오 타워에서 동료를 소개하자.'};
   }
   const plan={width,height,style,buildings,features:scenery,paths,boardwalks};
-  return p.id==='tour_vermilion'?extendVermilionTown(plan):p.id==='tour_eterna'?extendEternaCity(plan):p.id==='tour_hearthome'?extendHearthomeCity(plan):p.id==='tour_veilstone'?extendVeilstoneCity(plan):p.id==='tour_pastoria'?extendPastoriaCity(plan):p.id==='tour_sunyshore'?extendSunyshoreCity(plan):p.id==='tour_lake'?extendSinnohLake(plan):p.id==='tour_snowpoint'?extendSnowpointCity(plan):p.id==='tour_canalave'?extendCanalaveCity(plan):p.id==='tour_goldenrod'?extendGoldenrodCity(plan):p.id==='tour_azalea'?extendAzaleaTown(plan):p.id==='tour_cinnabar'?extendCinnabarTown(plan):p.id==='tour_lavender'?extendLavenderTown(plan):p.id==='tour_violet'?extendVioletCity(plan):plan;
+  return p.id==='tour_vermilion'?extendVermilionTown(plan):p.id==='tour_eterna'?extendEternaCity(plan):p.id==='tour_hearthome'?extendHearthomeCity(plan):p.id==='tour_veilstone'?extendVeilstoneCity(plan):p.id==='tour_pastoria'?extendPastoriaCity(plan):p.id==='tour_sunyshore'?extendSunyshoreCity(plan):p.id==='tour_lake'?extendSinnohLake(plan):p.id==='tour_snowpoint'?extendSnowpointCity(plan):p.id==='tour_canalave'?extendCanalaveCity(plan):p.id==='tour_goldenrod'?extendGoldenrodCity(plan):p.id==='tour_azalea'?extendAzaleaTown(plan):p.id==='tour_cinnabar'?extendCinnabarTown(plan):p.id==='tour_lavender'?extendLavenderTown(plan):p.id==='tour_violet'?extendVioletCity(plan):p.id==='tour_saffron'?extendSaffronCity(plan):p.id==='tour_ecruteak'?extendEcruteakCity(plan):p.id==='tour_celadon'?extendCeladonCity(plan):p.id==='tour_fuchsia'?extendFuchsiaCity(plan):p.id==='tour_olivine'?extendOlivineCity(plan):p.id==='tour_cianwood'?extendCianwoodCity(plan):p.id==='tour_mahogany'?extendMahoganyTown(plan):p.id==='tour_blackthorn'?extendBlackthornCity(plan):plan;
 }

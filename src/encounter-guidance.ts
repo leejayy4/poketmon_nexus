@@ -15,15 +15,21 @@ export function encounterGuidance(map: string): EncounterGuidance {
   const pool = encounterPool(map);
   if(map===CINNABAR_DEPARTURE_ROUTE&&!pool)return {hasEncounters:false,pages:['큰 만의 남쪽을 돌아가는 해안길이야.\n북쪽 전망길에서도 양쪽 큰길로 돌아올 수 있어.']};
   if(map===CINNABAR_ROUTE&&!pool)return {hasEncounters:false,pages:['만을 돌아가는 모래길이 홍련으로 이어져.\n북쪽 전망길과 남쪽 바위 샛길도 돌아봐.']};
-  if (!pool) return { hasEncounters: false, pages: ['도시 사이를 걷기 좋은 길이야.\n북쪽 공터도 둘러보고 가자.'] };
+  if (!pool) return { hasEncounters: false, pages: ['주변 표지에서 다음 목적지와\n돌아가는 길을 확인해 보자.'] };
 
+  const rocky=['tour_union_cave_1f','tour_kanto_seafoam_1f','tour_kanto_seafoam_b1f','tour_kanto_seafoam_b2f','tour_coronet_211_pass','tour_kanto_rock_tunnel_b1f'].includes(map);
   const slots = [...pool.slots].sort((a, b) => b.weight - a.weight);
   const common = slots.slice(0, 2).map(slot => SPECIES[slot.speciesId].name).join('·');
-  const rare = SPECIES[slots.at(-1)!.speciesId].name;
+  const total=slots.reduce((sum,slot)=>sum+slot.weight,0);
+  const groups=[{label:'흔한 동료',min:30,max:Infinity},{label:'만날 수 있는 동료',min:10,max:30},{label:'드문 동료',min:0,max:10}];
+  const distribution=groups.flatMap(group=>{
+    const names=slots.filter(slot=>{const share=total>0?slot.weight/total*100:0;return slot.weight>0&&share>=group.min&&share<group.max;}).map(slot=>SPECIES[slot.speciesId].name);
+    return names.length?[`${group.label}: ${names.join('·')}`]:[];
+  });
   return {
     hasEncounters: true,
     pages: [
-      slots.length<=2?`만날 수 있는 동료: ${common}\n${map==='tour_union_cave_1f'?'부서진 암반 구역':'풀밭'}에서 천천히 살펴봐.`:`흔한 동료: ${common}\n드물게 ${rare}도 만날 수 있어.`,
+      ...(slots.length<=2?[`만날 수 있는 동료: ${common}\n${rocky?'부서진 암반 구역':'풀밭'}에서 천천히 살펴봐.`]:distribution),
       `이곳의 포켓몬은\nLv.${pool.levels[0]}~${pool.levels[1]} 정도야.`,
     ],
   };
@@ -31,12 +37,9 @@ export function encounterGuidance(map: string): EncounterGuidance {
 
 export function routeCompanionPages(map: string): string[] {
   const guidance = encounterGuidance(map);
-  const pool = encounterPool(map);
   return [
-    pool
-      ? `${guidance.pages[0]}\nLv.${pool.levels[0]}~${pool.levels[1]} 정도야.`
-      : guidance.pages[0],
-    'HP를 절반 이하로 줄인 뒤\n몬스터볼을 던져 동료로 맞아 보자.',
+    ...guidance.pages,
+    ...(guidance.hasEncounters?['HP를 절반 이하로 줄인 뒤\n몬스터볼을 던져 동료로 맞아 보자.']:[]),
   ];
 }
 

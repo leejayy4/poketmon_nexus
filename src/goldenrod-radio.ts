@@ -1,4 +1,5 @@
 import type { Engine } from './engine';
+import {handleGoldenrodNexus} from './goldenrod-nexus';
 import { availableMoves,MOVE_RULES,pokemonMoves,RUNTIME_SPECIES,SPECIES } from './pokemon';
 import { GOLDENROD_ROUTE } from './goldenrod-route';
 import { GOLDENROD_STATION } from './goldenrod-station';
@@ -104,7 +105,8 @@ export function route34TacticsPages(save:SaveData):string[]{
 }
 
 /** A local radio rehearsal uses current party facts and never grants story rewards. */
-export function handleGoldenrodRadio(g:Engine,event:string):boolean{
+export function handleGoldenrodRadio(g:Engine,event:string,skipNexus=false):boolean{
+  if(!skipNexus&&handleGoldenrodNexus(g,event,()=>{if(!handleGoldenrodRadio(g,event,true))g.say('라디오 청취 책상',['탁상 라디오 옆에 여행 엽서가 놓여 있다. 주민과 동료가 함께 방송을 듣는 자리다.']);}))return true;
   const upper=g.save.map;
   if(upper==='tour_goldenrod_center'&&event==='goldenrod_centerDetail3'){
     const save=g.save,current=()=>g.save===save&&save.map==='tour_goldenrod_center'&&!g.battle;
@@ -178,8 +180,8 @@ export function handleGoldenrodRadio(g:Engine,event:string):boolean{
       '서쪽 금빛역에서는 노랑시티행 열차를\n운임 없이 왕복할 수 있습니다.',
     ],undefined,[
       {label:'남쪽 34번도로',action:guide(GOLDENROD_ROUTE)},
-      {label:'북쪽 도라지 방향',action:guide('tour_pass_goldenrod_violet')},
-      {label:'동쪽 인주 방향',action:guide('tour_pass_goldenrod_ecruteak')},
+      {label:'북쪽 도라지 방향',action:guide('tour_johto_route_35')},
+      {label:'동쪽 인주 방향',action:guide('tour_johto_route_35')},
       {label:'서쪽 금빛역',action:guide(GOLDENROD_STATION)},
       {label:'안내 마치기',action:()=>{}},
     ]);return true;

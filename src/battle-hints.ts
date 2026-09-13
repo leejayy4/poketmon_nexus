@@ -1,6 +1,6 @@
 import type { SaveData } from './types';
 import { SPECIES,pokemonMoves,MOVE_RULES,isDamagingMove,BOX_CAPACITY } from './pokemon';
-import { effectivenessText,moveEffectiveness,enemyDamage,playerDamage,switchEntryDamage,type Battle } from './battle';
+import { effectivenessText,moveEffectiveness,enemyDamage,enemyMove,playerActsFirst,playerDamage,switchEntryDamage,type Battle } from './battle';
 
 // Read-only previews use the same damage rules as the resolved turn.
 export function battleHint(save:SaveData,b:Battle):[string,string]{
@@ -30,25 +30,19 @@ export function battleHint(save:SaveData,b:Battle):[string,string]{
   if(b.menu==='moves'){
     const move=pokemonMoves(active)[b.selected],rule=MOVE_RULES[move]?.rule;
     if(!move)return ['기억하고 있는 기술을 선택하세요',''];
+    const foe=enemyMove(b,active);
+    const first=playerActsFirst(active,b.enemy,move,foe,()=>0);
+    const last=playerActsFirst(active,b.enemy,move,foe,()=>0.999999);
+    const order=first!==last?'동속 · 선공은 무작위':first?'내 기술이 먼저':'상대 기술이 먼저';
     if(isDamagingMove(move)){
-      const hit=playerDamage(active,b,move);
-      const effect=effectivenessText(moveEffectiveness(move,b.enemy));
-      const reply=enemyDamage({...b,enemy:{...b.enemy,hp:Math.max(0,b.enemy.hp-hit)}},b.enemyAttackDrop,active);
-      if(rule==='struggle'){
-        const recoil=Math.min(active.hp,Math.max(1,Math.floor(active.maxHp/4))),hp=active.hp-recoil;
-        return [`상대에게 ${Math.min(b.enemy.hp,hit)} 피해 · 반동 ${recoil}`,hp===0?'반동으로 기절 · 상대 반격 없음':b.enemy.hp<=hit?`반동 후 HP ${hp}/${active.maxHp} · 반격 없음`:remaining(hp,active.maxHp,reply)];
-      }
-      if(rule==='drain'){
-        const dealt=Math.min(b.enemy.hp,hit),heal=dealt>0?Math.min(active.maxHp-active.hp,Math.max(1,Math.floor(dealt/2))):0,hp=active.hp+heal;
-        return [`상대에게 ${dealt} 피해${effect?` · ${effect}`:''}`,`HP +${heal} · ${b.enemy.hp<=hit?`반격 없음 (${hp}/${active.maxHp})`:remaining(hp,active.maxHp,reply)}`];
-      }
-      return [`상대에게 ${Math.min(b.enemy.hp,hit)} 피해${effect?` · ${effect}`:''}`,b.enemy.hp<=hit?'쓰러뜨리면 반격 없음':remaining(active.hp,active.maxHp,reply)];
+      const hit=playerDamage(active,b,move),effect=effectivenessText(moveEffectiveness(move,b.enemy));
+      const details=rule==='struggle'?` · 반동 최대HP 1/4`:rule==='drain'?' · 준 피해의 절반 흡수':effect?` · ${effect}`:'';
+      return [`기본 예상 피해 ${Math.min(b.enemy.hp,hit)}${details}`,`${order} · 먼저 기절하면 행동 불가`];
     }
-    if(rule==='protect')return ['이번 상대 기술을 막는 방어','연속 사용하면 성공률이 낮아집니다'];
+    if(rule==='protect')return ['자신을 향한 공격을 막는 방어','연속 사용하면 성공률이 낮아집니다'];
     if(rule==='defenseUp'){
       const defense=b.playerDefense?.[b.active]??0,next=Math.min(3,defense+1);
-      const hit=enemyDamage({...b,playerDefense:{...b.playerDefense,[b.active]:next}},b.enemyAttackDrop,active);
-      return [defense>=3?'방어 상승은 이미 최대':`자신 방어 ${defense} → ${next}/3`,active.hp<=hit?'반격 후 기절 (HP 0)':`반격 후 HP ${active.hp-hit}/${active.maxHp}`];
+      return [defense>=3?'방어 상승은 이미 최대':`자신 방어 ${defense} → ${next}/3`,`${order} · 물리 피해에 방어 적용`];
     }
     if(rule==='hazard')return ['다음에 나오는 상대에게 바위 피해','현재 상대에게 즉시 피해는 없음'];
     if(rule==='escape')return [b.kind==='wild'?'전투에서 순간이동으로 벗어납니다':'트레이너전에서는 효과 없음',''];
@@ -56,7 +50,7 @@ export function battleHint(save:SaveData,b:Battle):[string,string]{
     const defense=rule==='defenseDrop';
     const drop=defense?b.enemyDefenseDrop:b.enemyAttackDrop,stat=defense?'방어':'공격';
     if(drop>=3)return [`상대 ${stat} 하락은 이미 최대`,`효과 없이 반격: HP -${Math.min(active.hp,damage)}`];
-    return [`상대 ${stat} 하락 ${drop} → ${drop+1}/3`,defense?`다음 공격 피해 ${Math.min(b.enemy.hp,playerDamage(active,{...b,enemyDefenseDrop:drop+1}))}`:`이번 반격 피해 ${Math.min(active.hp,enemyDamage(b,drop+1,active))}`];
+    return [`상대 ${stat} 하락 ${drop} → ${drop+1}/3`,`${order} · 물리 기술에만 적용`];
   }
   if(b.menu==='bag'){
     if(b.selected===0){

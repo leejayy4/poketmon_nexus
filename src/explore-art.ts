@@ -1,3 +1,4 @@
+import { paintCasteliaSewerPark } from './castelia-sewer-park';
 import { paintJubilifeBuilding,paintJubilifeStreets,paintCityHall } from './explore-jubilife';
 import { GOLDENROD_ROUTE } from './goldenrod-route';
 import { JOIN_AVENUE,UNOVA_ROUTE_FOUR,UNOVA_ROUTE_ONE,paintUnovaRouteNetwork,paintUnovaRouteOne } from './unova-route-one';
@@ -6,6 +7,11 @@ import { CHARGESTONE_1F,CHARGESTONE_B1F,UNOVA_ROUTE_SIX,paintUnovaRouteSix } fro
 import { REVERSAL_MOUNTAIN_A,REVERSAL_MOUNTAIN_B,REVERSAL_MOUNTAIN_EXTERIOR,paintReversalMountain } from './unova-reversal-mountain';
 import { UNOVA_ROUTE_THIRTEEN,paintUnovaRouteThirteen } from './unova-route-thirteen';
 import { UNOVA_ROUTE_TWELVE,paintUnovaRouteTwelve } from './unova-route-twelve';
+import { UNOVA_ROUTE_ELEVEN,paintUnovaRouteEleven } from './unova-route-eleven';
+import { TUBELINE_BRIDGE,UNOVA_ROUTE_NINE,paintUnovaRouteNine } from './unova-route-nine';
+import { UNOVA_ROUTE_EIGHT,paintUnovaRouteEight } from './unova-route-eight';
+import { DRAGONSPIRAL_APPROACH,paintDragonspiralApproach } from './unova-dragonspiral-approach';
+import { ICIRRUS_MOOR,paintIcirrusMoor } from './unova-icirrus-moor';
 import { paintRoute34,paintGoldenrodStation,paintGoldenrodPaving,paintGoldenrodDistricts } from './goldenrod-art';
 import { GOLDENROD_STATION } from './goldenrod-station';
 import { paintCasteliaStreets } from './explore-castelia';
@@ -25,7 +31,24 @@ import { paintJourneyPassage,paintJourneyInterior,paintJourneyMart } from './jou
 import { FOREST_BORDER_MAPS,paintForestBorderGround } from './forest-border-art';
 import { paintIlexForestLandmarks } from './ilex-forest-art';
 import { JOHTO_ROUTE_32,JOHTO_ROUTE_33,UNION_CAVE_1F,paintJohtoSouthRoute } from './johto-south-route';
+import { KANTO_ROUTE_EIGHT,KANTO_ROUTE_SEVEN,KANTO_UNDERGROUND_EW } from './kanto-saffron-approach';
+import { paintSaffronApproach } from './saffron-art';
 import { paintLavenderInteriorDetails,paintLavenderTownDetails } from './lavender-art';
+import { paintCeladonCyclingRoad,paintCeladonInteriorDetails,paintCeladonRoute16,paintCeladonTownDetails } from './celadon-art';
+import { paintFuchsiaInteriorDetails,paintFuchsiaTownDetails,paintKantoRoute12,paintKantoRoute13,paintKantoRoute14,paintKantoRoute15 } from './fuchsia-art';
+import { paintBlackthornInteriorDetails,paintBlackthornTownDetails,paintDragonsDenDetails } from './blackthorn-art';
+import { paintIcirrusInteriorDetails,paintIcirrusTownDetails,paintIcirrusTravelRelief,paintIcirrusLivingYard } from './icirrus-art';
+import { paintIcirrusBuilding } from './icirrus-building-art';
+import { paintIcirrusOverlook } from './icirrus-overlook-art';
+import { paintIcirrusPond } from './icirrus-pond-art';
+import { paintDragonspiralGroundDetails,paintDragonspiralInteriorDetails } from './dragonspiral-art';
+import { paintSinnohCelesticDetails,paintCelesticRuinsFacade } from './sinnoh-celestic-art';
+import { paintUnmappedBoundaries } from './explore-boundary-art';
+import { paintKantoSouthPassage,paintCinnabarLanding } from './kanto-south-art';
+import { paintCherrygroveGround,paintCherrygroveInterior } from './johto-cherrygrove-art';
+import { paintJohtoBlackthornSouth } from './johto-blackthorn-south-art';
+import { KANTO_ROUTE_EIGHTEEN,KANTO_ROUTE_SEVENTEEN,KANTO_ROUTE_SIXTEEN } from './kanto-route-sixteen';
+import { KANTO_ROUTE_FIFTEEN,KANTO_ROUTE_FOURTEEN,KANTO_ROUTE_THIRTEEN,KANTO_ROUTE_TWELVE } from './kanto-fuchsia-east';
 import { TOUR_LAYOUTS } from './explore-layouts';
 import { PLACES,TOUR_PLANS,TOUR_MAPS,TOUR_OUTDOORS,TOUR_INTERIORS,TOUR_BUILDINGS,TOUR_FEATURES,SHORT_TOURS,tourPlaceForMap,type Place,type TourBuilding } from './explore-world';
 
@@ -75,6 +98,8 @@ export function paintJubilifeFountain(c:CanvasRenderingContext2D,x:number,y:numb
   fill(7,h-8,4,2,'#d9f0dd');fill(w-11,h-8,4,2,'#d9f0dd');
 }
 export function paintTourBuilding(c:CanvasRenderingContext2D,images:Images,p:Place,b:TourBuilding){
+  if(p.id==='tour_icirrus'&&paintIcirrusBuilding(c,b))return;
+  if(p.id==='tour_celestic'&&paintCelesticRuinsFacade(c,b))return;
   if(p.id==='tour_vermilion'&&b.kind==='landmark'&&b.room==='tour_vermilion_hall'){paintVermilionTerminal(c,b);return}
   if(p.id==='tour_veilstone'&&b.kind==='house'){
     const gym=TOUR_BUILDINGS[p.id].find(building=>building.kind==='house');
@@ -88,7 +113,7 @@ export function paintTourBuilding(c:CanvasRenderingContext2D,images:Images,p:Pla
     const gym=TOUR_BUILDINGS[p.id].find(building=>building.kind==='house');
     if(gym&&b.door.x===gym.door.x&&b.door.y===gym.door.y){paintEternaGym(c,b);return}
   }
-  if(b.kind==='house'&&b.room&&MART_ROOMS.has(b.room)){paintJourneyMart(c,images,b);return}
+  if(b.room&&MART_ROOMS.has(b.room)&&(b.kind==='house'||TOUR_INTERIORS[b.room]?.style==='shop')){paintJourneyMart(c,images,b);return}
   if(p.id==='tour_jubilife'&&b.kind!=='center'){paintJubilifeBuilding(c,images,b);return}
   if(['urban','waterfront'].includes(TOUR_PLANS[p.id]?.style)){
     if(b.kind==='landmark'){
@@ -107,7 +132,7 @@ export function paintTourBuilding(c:CanvasRenderingContext2D,images:Images,p:Pla
     if(b.kind==='house'){paintJubilifeBuilding(c,images,b);return}
   }
   if(b.kind==='landmark'){paintTourFacade(c,images,p,b);return}
-  if(b.kind==='center'){paintCityBuilding(c,images,b as any);return}
+  if(b.kind==='center'){paintCityBuilding(c,images,{...b,x:b.door.x-2,y:b.door.y-1} as any);return}
   paintTourHouse(c,images,p,b);
 }
 export function paintTourSign(c:CanvasRenderingContext2D,images:Images,point:{x:number;y:number}){
@@ -118,6 +143,7 @@ export function paintTourSign(c:CanvasRenderingContext2D,images:Images,point:{x:
 }
 export function buildExploreArt(images:Images,id:string){
   const map=TOUR_MAPS[id as keyof typeof TOUR_MAPS],p=tourPlaceForMap(id)!;const canvas=document.createElement('canvas');canvas.width=map.width*16;canvas.height=map.height*16;const c=canvas.getContext('2d')!;c.imageSmoothingEnabled=false;
+  if(paintCasteliaSewerPark(c,map))return canvas;
   if(id===GOLDENROD_ROUTE){paintRoute34(c,images,map);return canvas;}
   if(id===GOLDENROD_STATION){paintGoldenrodStation(c,images);return canvas;}
   if(id===UNOVA_ROUTE_ONE){paintUnovaRouteOne(c,images,map);return canvas;}
@@ -127,9 +153,22 @@ export function buildExploreArt(images:Images,id:string){
   if(id===REVERSAL_MOUNTAIN_EXTERIOR||id===REVERSAL_MOUNTAIN_A||id===REVERSAL_MOUNTAIN_B){paintReversalMountain(c,images,map);return canvas;}
   if(id===UNOVA_ROUTE_THIRTEEN){paintUnovaRouteThirteen(c,images,map);return canvas;}
   if(id===UNOVA_ROUTE_TWELVE){paintUnovaRouteTwelve(c,images,map);return canvas;}
+  if(id===UNOVA_ROUTE_ELEVEN){paintUnovaRouteEleven(c,images,map);return canvas;}
+  if(id===UNOVA_ROUTE_NINE||id===TUBELINE_BRIDGE){paintUnovaRouteNine(c,images,map);return canvas;}
+  if(id===UNOVA_ROUTE_EIGHT){paintUnovaRouteEight(c,images,map);return canvas;}
+  if(id===DRAGONSPIRAL_APPROACH){paintDragonspiralApproach(c,images,map);return canvas;}
+  if(id===ICIRRUS_MOOR){paintIcirrusMoor(c,images,map);return canvas;}
   if(id===JOHTO_ROUTE_32||id===JOHTO_ROUTE_33||id===UNION_CAVE_1F){paintJohtoSouthRoute(c,images,map);return canvas;}
+  if(id===KANTO_ROUTE_SEVEN||id===KANTO_UNDERGROUND_EW||id===KANTO_ROUTE_EIGHT){paintSaffronApproach(c,images,map);return canvas;}
+  if(id===KANTO_ROUTE_SIXTEEN){paintCeladonRoute16(c,map);return canvas;}
+  if(id===KANTO_ROUTE_SEVENTEEN||id===KANTO_ROUTE_EIGHTEEN){paintCeladonCyclingRoad(c,map);return canvas;}
+  if(id===KANTO_ROUTE_FIFTEEN){paintKantoRoute15(c,map);return canvas;}
+  if(id===KANTO_ROUTE_FOURTEEN){paintKantoRoute14(c,map);return canvas;}
+  if(id===KANTO_ROUTE_THIRTEEN){paintKantoRoute13(c,map);return canvas;}
+  if(id===KANTO_ROUTE_TWELVE){paintKantoRoute12(c,map);return canvas;}
+  if(paintKantoSouthPassage(c,map))return canvas;
   if(PASSAGES[id]){paintJourneyPassage(c,images,map);return canvas;}
-  if(TOUR_INTERIORS[id]){if(TOUR_INTERIORS[id].style==='center')paintTourCenter(c,images,map);else paintTourInterior(c,images,TOUR_INTERIORS[id],map);paintJourneyInterior(c,images,map,TOUR_INTERIORS[id]);paintLavenderInteriorDetails(c,map);return canvas;}
+  if(TOUR_INTERIORS[id]){if(TOUR_INTERIORS[id].style==='center')paintTourCenter(c,images,map);else paintTourInterior(c,images,TOUR_INTERIORS[id],map);paintJourneyInterior(c,images,map,TOUR_INTERIORS[id]);paintCherrygroveInterior(c,map);paintLavenderInteriorDetails(c,map);paintCeladonInteriorDetails(c,map);paintFuchsiaInteriorDetails(c,map);paintBlackthornInteriorDetails(c,map);paintIcirrusInteriorDetails(c,map);paintDragonspiralInteriorDetails(c,map);return canvas;}
   const short=SHORT_TOURS.has(p.id),cx=short?10:14,cy=short?9:12;
   const tiles=images['town-reference'];
   for(let y=0;y<map.height;y++)for(let x=0;x<map.width;x++){
@@ -141,17 +180,20 @@ export function buildExploreArt(images:Images,id:string){
   if(id==='tour_coronet')paintCoronetBoundary(c,map);
   const paths=new Set<string>();const path=(x:number,y:number,w:number,h:number)=>{for(let j=y;j<y+h;j++)for(let i=x;i<x+w;i++)if(map.walkable[j]?.[i]==='.')paths.add(i+','+j)};
   const layout=TOUR_PLANS[p.id]??TOUR_LAYOUTS[p.id];
-  if(layout){for(const r of layout.paths)path(...r)}else{path(cx-1,3,3,map.height-5);path(2,cy-1,map.width-4,3);if(!short)path(10,10,8,8)}
-  if(!short)for(const b of TOUR_BUILDINGS[p.id]){path(b.door.x,b.door.y+1,1,Math.max(1,cy-b.door.y));if(b.y>cy)path(b.door.x,cy,1,b.door.y-cy+2);}
+  if(!layout)paintUnmappedBoundaries(c,map,p.theme,images['sandgem-reference'],TOUR_BUILDINGS[id]??[],TOUR_FEATURES[id]??[]);
+  if(layout){for(const r of layout.paths)path(...r)}else if(id==='tour_cherrygrove'){/* The coastal street painter owns this town's paths. */}else if(!PLACES.some(place=>place.id===id)){path(0,0,map.width,map.height)}else{path(cx-1,3,3,map.height-5);path(2,cy-1,map.width-4,3);if(!short)path(10,10,8,8)}
+  // Standalone route/dungeon maps can have no town buildings or scenery collections.
+  if(!short&&id!=='tour_cherrygrove'&&id!=='tour_cinnabar')for(const b of TOUR_BUILDINGS[p.id]??[]){path(b.door.x,b.door.y+1,1,Math.max(1,cy-b.door.y));if(b.y>cy)path(b.door.x,cy,1,b.door.y-cy+2);}
   for(const w of map.warps){path(w.x,w.y,1,1);}
   if(id==='tour_coronet')paintCoronetPaths(c,paths);else if(id==='tour_castelia')paintCasteliaStreets(c,images['jubilife-reference'],map.walkable,paths);else if(TOUR_PLANS[p.id]?.style==='urban')paintJubilifeStreets(c,images,map.walkable,paths,p.id==='tour_jubilife');else paintTourPaths(c,tiles,paths,p.theme);
+  paintJohtoBlackthornSouth(c,map,images['grass-reference']);
   if(id==='tour_goldenrod')paintGoldenrodPaving(c,map.walkable);
   for(const [x,y,w,h] of layout?.boardwalks??[])for(let j=y;j<y+h;j++)for(let i=x;i<x+w;i++)if(map.walkable[j]?.[i]==='.'){
     rect(c,i*16,j*16,16,16,'#866d54');rect(c,i*16+1,j*16,14,16,'#bb9b70');
     for(let k=3;k<16;k+=4)rect(c,i*16+1,j*16+k,14,1,'#927754');
     rect(c,i*16+2,j*16+1,1,1,'#e4c99a');rect(c,i*16+12,j*16+13,1,1,'#645e51');
   }
-  for(const f of TOUR_FEATURES[p.id]){
+  for(const f of TOUR_FEATURES[p.id]??[]){
     const x=f.x*16,y=f.y*16,w=f.w*16,h=f.h*16;
     if(f.kind==='fountain'&&p.id==='tour_jubilife'){
       paintJubilifeFountain(c,x,y,w,h);
@@ -164,12 +206,15 @@ export function buildExploreArt(images:Images,id:string){
       rect(c,x+w/2-1,y-4,2,4,'#edf3e8');rect(c,x+w/2-11,y+12,2,4,'#cbebec');rect(c,x+w/2+9,y+12,2,4,'#cbebec');
     }
     if(f.kind==='water'){
+      if(p.id==='tour_icirrus'&&f.name==='도시 빗물 연못'){paintIcirrusPond(c,map);continue;}
       rect(c,x,y,w,h,'#788b81');rect(c,x+2,y+2,w-4,h-4,'#63aaca');rect(c,x+3,y+3,w-6,4,'#aed9d9');
       for(let j=13;j<h-4;j+=24)for(let i=8;i<w-16;i+=23)rect(c,x+i,y+j,13,2,'#a7dce1');
       if(p.theme==='water')for(let j=14;j<h-8;j+=22){rect(c,x+5,y+j,2,8,'#526f4e');rect(c,x+9,y+j-3,2,11,'#78925c');rect(c,x+8,y+j-5,4,3,'#b7a575');rect(c,x+w-15,y+j,9,3,'#81ad83');}
       if(p.theme==='port'||p.theme==='coast'){rect(c,x+w-12,y+12,10,h-24,'#c19b70');for(let j=13;j<h-12;j+=8){rect(c,x+w-11,y+j,8,1,'#886e57');rect(c,x+w-14,y+j,3,4,'#5f6c64');}}
     }
+    if(p.id==='tour_icirrus'&&f.kind==='garden'&&f.name==='습지 생활 뜰'){paintIcirrusLivingYard(c,map,x,y,w,h);continue;}
     if(f.kind==='statue'){
+      if(p.id==='tour_icirrus'&&f.name==='남쪽 풍차와 귀환 안내판'){paintIcirrusTravelRelief(c,x,y,w,h,map);continue;}
       rect(c,x,y,w,h,'#929e80');rect(c,x+3,y+3,w-6,h-6,'#c2c3a3');
       rect(c,x+7,y+h-13,w-14,9,'#697a78');rect(c,x+9,y+h-15,w-18,5,'#d1d0b6');
       const sx=x+w/2;rect(c,sx-10,y+16,20,h-30,'#7a8985');rect(c,sx-7,y+17,12,h-32,'#a8b3a4');
@@ -181,6 +226,7 @@ export function buildExploreArt(images:Images,id:string){
       if(p.theme==='fair'){c.strokeStyle='#626e7f';c.lineWidth=3;c.beginPath();c.arc(x+w/2,y+25,34,0,Math.PI*2);c.stroke();for(let i=0;i<8;i++){const a=i*Math.PI/4,px=Math.round(x+w/2+34*Math.cos(a)),py=Math.round(y+25+34*Math.sin(a));rect(c,px-5,py-5,10,10,['#cf9278','#d2bd77','#81acb2'][i%3])}rect(c,x+w/2-2,y+23,4,49,'#768b91')}
     }
     if(f.kind==='rocks'){
+      if(p.id==='tour_icirrus'&&f.name==='용나선탑 전망 둔덕'){paintIcirrusOverlook(c,map,x,y,w,h);continue;}
       if(p.id==='tour_coronet')paintCoronetRock(c,x,y,w,h);
       else if(p.id==='tour_desert')paintDesertRuinsRock(c,x,y,w,h);
       else if(p.id==='tour_cinnabar')paintCinnabarRock(c,x,y,w,h);
@@ -200,7 +246,16 @@ export function buildExploreArt(images:Images,id:string){
   if(id==='tour_goldenrod')paintGoldenrodDistricts(c);
   if(id==='tour_ilex')paintIlexForestLandmarks(c);
   if(id==='tour_lavender')paintLavenderTownDetails(c);
-  if(p.theme==='port'||p.theme==='coast'){const bx=50,by=canvas.height-30;rect(c,bx,by,78,16,'#f0ecd7');rect(c,bx+5,by+14,66,5,'#8b7259');rect(c,bx+18,by-8,37,12,'#f0e6c7');rect(c,bx+23,by-5,10,5,'#709bad');rect(c,bx+39,by-5,10,5,'#709bad');rect(c,bx+7,by+2,5,6,'#bc8d65');}
+  if(id==='tour_celadon')paintCeladonTownDetails(c);
+  if(id==='tour_fuchsia')paintFuchsiaTownDetails(c);
+  if(id==='tour_blackthorn')paintBlackthornTownDetails(c);
+  if(id==='tour_icirrus')paintIcirrusTownDetails(c,map);
+  paintCherrygroveGround(c,map);
+  paintDragonspiralGroundDetails(c,map);
+  paintSinnohCelesticDetails(c,map);
+  paintDragonsDenDetails(c,map);
   if(short){for(const[x,y]of [[4,5],[14,12]])if(p.id==='tour_coronet')paintCoronetRock(c,x*16,y*16,32,32);else if(p.id==='tour_desert')paintDesertRuinsRock(c,x*16,y*16,32,32);else if(p.theme==='cave')rock(c,x*16,y*16,22,19);}
+  paintCinnabarLanding(c,map);
   return canvas;
 }
+

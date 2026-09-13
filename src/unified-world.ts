@@ -24,6 +24,12 @@ export function createUnifiedWorld(base:Record<MapId,GameMap>):Partial<Record<Ma
   edit('tour_castelia').terrain=CASTELIA_GRASS.map(r=>({...r}));
   const route=edit('route_s01');route.warps.find(w=>w.to==='jubilife')!.to='tour_jubilife';route.warps.find(w=>w.to==='tour_jubilife')!.spawn={x:37,y:24};
   const jubilife=edit('tour_jubilife'),entrance=jubilife.warps.find(w=>w.to==='town')!;entrance.to='route_s01';entrance.spawn={x:3,y:12};
+  const town=edit('town'),departure=town.warps.find(w=>w.to==='route_s01')!;departure.to='tour_sinnoh_route_201';departure.spawn={x:3,y:15};
+  const r201=edit('tour_sinnoh_route_201'),sandgem=edit('tour_sandgem'),r202=edit('tour_sinnoh_route_202');
+  r201.warps=[{x:1,y:15,to:'town',spawn:{x:3,y:15},entry:'left',facing:'left'},{x:62,y:11,to:'tour_sandgem',spawn:{x:3,y:18},entry:'right',facing:'right'}];
+  sandgem.warps=[{x:2,y:18,to:'tour_sinnoh_route_201',spawn:{x:60,y:11},entry:'left',facing:'left'},{x:20,y:1,to:'tour_sinnoh_route_202',spawn:{x:14,y:61},entry:'up',facing:'up'}];
+  r202.warps=[{x:14,y:62,to:'tour_sandgem',spawn:{x:20,y:3},entry:'down',facing:'down'},{x:14,y:1,to:'tour_jubilife',spawn:{x:37,y:24},entry:'up',facing:'up'}];
+  entrance.to='tour_sinnoh_route_202';entrance.spawn={x:14,y:3};
   // S03 in the authored encounter DB is the city's outskirts, away from its
   // plaza and building doors. Keep the pavement route around this optional lawn.
   jubilife.terrain=[{kind:'tallGrass',x:3,y:29,w:6,h:3}];

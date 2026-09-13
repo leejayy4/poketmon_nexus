@@ -29,13 +29,23 @@ export function handleEternaLife(g:Engine,event:string):boolean{
   };
   const objective=adventureObjective(s);
   const nextGym=GYMS.find(gym=>gym.id===objective?.id);
-  g.say('도시 안내원',['영원숲 북쪽길을 지나 오셨군요.\n영원에서는 쉬며 동료를 돌봐 주세요.',
+  const exits=()=>{
+    if(!current())return;
+    g.say('영원시티 출구 안내',['도시의 세 여행 출구는 서로 다른 경계에 있습니다.\n표시할 방향을 골라 주세요.'],undefined,[
+      {label:'남쪽 · 205번도로 북부',action:guide('tour_sinnoh_route_205_north','남쪽 출구는 205번도로 북부예요.\n강과 다리를 지나 영원숲으로 돌아갑니다.')},
+      {label:'북쪽 · 206번도로',action:guide('tour_sinnoh_route_206','북쪽 출구는 206번도로예요.\n고가와 아래길을 지나 207번도로·천관산으로 이어집니다.')},
+      {label:'동쪽 · 211번도로 서부',action:guide('tour_sinnoh_route_211_west','동쪽 출구는 211번도로 서부예요.\n천관산 통과층과 211번도로 동부를 지나 봉신마을로 이어집니다.')},
+      {label:'안내 마치기',action:()=>{}},
+    ]);
+  };
+  g.say('도시 안내원',['205번도로 북부를 지나 오셨군요.\n영원에서는 쉬며 동료를 돌봐 주세요.',
     s.badges.includes('BADGE-GS02')?(nextGym?`${nextGym.name}에게 도전할 차례예요.\n아래 안내에서 목적지를 확인하세요.`:`다음 여행: ${objective?.title??'주변 둘러보기'}\n아래 안내에서 목적지를 확인하세요.`):'역사관 동쪽에 숲 경계 산책길이 있어요.\n체육관에 가기 전 보급도 잊지 마세요.'],undefined,[
     {label:'센터에서 쉬기',action:guide('tour_eterna_center','도시 서쪽 포켓몬센터에서\n동료를 회복하고 PC를 이용할 수 있어요.')},
     {label:'상점에서 준비',action:guide('tour_eterna_mart','남쪽 주택가 상점에서\n몬스터볼과 상처약을 준비하세요.')},
     {label:s.badges.includes('BADGE-GS02')?'유채 정원 다시 보기':'유채 도전 준비',action:()=>{if(current())g.say('체육관 준비',gardeniaPreparationPages(s),()=>{if(current())g.setTourDestination('eterna_gym');});}},
     {label:'역사관 답사',action:guide('tour_eterna_hall','역사관의 옛 지도에서 동료를 골라\n석상과 동쪽 돌담을 답사할 수 있어요.')},
-    {label:objective&&s.badges.includes('BADGE-GS02')?'다음 여행 목적지':'천관산 방향 확인',action:guide(objective&&s.badges.includes('BADGE-GS02')?objective.map:'tour_eterna_coronet_approach',objective&&s.badges.includes('BADGE-GS02')?`다음 여행: ${objective.title}\n목적지까지 이어지는 길을 표시할게요.`:'북쪽 출구는 천관산 영원 입구길이에요.\n현재 축약 여행에서는 산 하부로 이어져요.')},
+    {label:'도시 출구 확인',action:exits},
+    ...(objective&&s.badges.includes('BADGE-GS02')?[{label:'다음 여행 목적지',action:guide(objective.map,`다음 여행: ${objective.title}\n도로 표지와 경유지를 따라 이동하세요.`)}]:[]),
     {label:'안내 마치기',action:()=>{}}
   ]);return true;
 }

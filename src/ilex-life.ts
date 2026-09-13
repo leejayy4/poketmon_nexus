@@ -1,17 +1,24 @@
 import type { Engine } from './engine';
 import { encounterGuidance } from './encounter-guidance';
+import { GOLDENROD_ROUTE } from './goldenrod-route';
 
 const ILEX_FOREST='tour_ilex';
 
 /** Ilex ecology and directions without turning the shrine into a story gate. */
 export function handleIlexLife(g:Engine,event:string):boolean{
   if(g.save.map!==ILEX_FOREST)return false;
+  const save=g.save,player=save.player;
+  const guide=(map:Parameters<Engine['setTourDestination']>[0],event?:string)=>()=>{if(g.save===save&&save.player===player&&save.map===ILEX_FOREST&&!g.battle)g.setTourDestination(map,event);};
   if(event==='tourGuide'){
     g.say('너도밤나무숲 안내원',[
       '북쪽 길은 34번도로와 금빛시티,\n동쪽 긴 길은 고동마을로 이어집니다.',
       ...encounterGuidance(ILEX_FOREST).pages,
       '표시된 흙길은 조우 없이 통과할 수 있어요.\n포켓몬을 찾으려면 남쪽 순환길의 긴풀로 들어가세요.',
       '숲 사당은 조용히 살펴보는 장소입니다.\n방문만으로 특별한 만남이나 통행 조건이 생기지 않아요.',
+    ],undefined,[
+      {label:'동쪽 고동 공방으로',action:guide('tour_azalea_hall','azaleaHallSortingDesk')},
+      {label:'북쪽 34번도로로',action:guide(GOLDENROD_ROUTE)},
+      {label:'숲에 머문다',action:()=>{}},
     ]);return true;
   }
   if(event==='tourIlexTracks'){

@@ -63,14 +63,17 @@ export function installSinnohRoute212(args:{
     {kind:'grove',x:2,y:58,w:8,h:15,name:'들판 북쪽 갈대숲',description:'들판시티가 가까워지며 길가를 채우는 습지 식생이다.'},
   ];
   maps[SINNOH_ROUTE_212_SOUTH]={id:SINNOH_ROUTE_212_SOUTH,name:'신오 212번도로 · 남부 습지',width:36,height:88,background:SINNOH_ROUTE_212_SOUTH,
-    walkable:southRows.map(r=>r.join('')),terrain:[],
+    walkable:southRows.map(r=>r.join('')),terrain:[
+      {kind:'tallGrass',x:13,y:56,w:6,h:5},
+      {kind:'tallGrass',x:22,y:70,w:4,h:6},
+    ],
     warps:[
       {x:17,y:1,to:SINNOH_ROUTE_212_NORTH,spawn:{x:16,y:69},entry:'up',facing:'up'},
       {x:22,y:86,to:pastoria.id,spawn:{...legacySouth.spawn},entry:'down',facing:'down'},
     ],
     npcs:[
       {id:'route212BoardwalkKeeper',name:'212번도로 데크 관리인',sprite:'worker',x:23,y:51,facing:'left',dialogue:'route212BoardwalkKeeper'},
-      {id:'route212MarshTraveler',name:'습지 여행자',sprite:'rancher',x:15,y:65,facing:'right',dialogue:'route212MarshTraveler'},
+      {id:'route212MarshTrainer',name:'212번도로 습지 트레이너',sprite:'rancher',x:15,y:65,facing:'right',dialogue:'route212MarshTrainer'},
     ],
     props:[{x:22,y:8,dialogue:'route212SouthSign'},{x:28,y:55,dialogue:'route212MarshSign'},{x:19,y:80,dialogue:'route212SouthSign'}],
   };

@@ -1,10 +1,12 @@
+import { POKE_BALL, POTION } from './data/items';
 import type { Pokemon, SaveData } from './types';
 import { SPECIES, pokemonMoves, pokemonSnapshot, MOVE_RULES, RUNTIME_SPECIES, BOX_CAPACITY, recordSeen, isDamagingMove } from './pokemon';
-import DATA from './runtime-pokemon-data.json';
+import { RUNTIME_DATA as DATA } from './data/runtime';
 import { wildPokemon } from './runtime-encounters';
-import { gainExperience, minimumLevel, LEVEL_CAP, type GrowthStep } from './growth';
+import { gainExperience, LEVEL_CAP, minimumLevel, maxHpAtLevel, type GrowthStep } from './growth';
 import { gymTeam,gymById,type GymId } from './gyms';
 import { withParticle } from './korean-text';
+import { trackFieldPartners } from './field-partner-party';
 
 export interface TrainerBattleInfo {id:string;name:string;reward:number;team:Pokemon[]}
 export interface Battle {
@@ -15,8 +17,9 @@ export interface Battle {
   betweenOpponents:boolean;
   moveSelections:number[];
   turn?:number; playerDefense?:Record<number,number>; playerAttackDrop?:Record<number,number>; playerDefenseDrop?:Record<number,number>; enemyDefense?:number;
-  playerRocks?:boolean; enemyRocks?:boolean; protectStreak?:number;
+  playerRocks?:boolean; enemyRocks?:boolean; protectStreak?:number; enemyProtectStreak?:number;
   caughtBeforeBattle?:boolean;
+  special?:{eventId:string;allowCapture:boolean};
 }
 export function createBattle(save:SaveData,kind:'wild'|'gym'='wild',gymId:GymId='roark',random:()=>number=Math.random):Battle|null {
   const active=save.party.findIndex(p=>p.hp>0);
@@ -34,6 +37,29 @@ export function createBattle(save:SaveData,kind:'wild'|'gym'='wild',gymId:GymId=
   return {kind,gymId,opponents,enemyIndex:0,enemy:opponents[0],
     active,participants:[active],forcedSwitch:false,betweenOpponents:false,moveSelections:save.party.map(()=>0),menu:'actions',selected:0,enemyAttackDrop:0,enemyDefenseDrop:0,result:false,
     ...(kind==='wild'?{caughtBeforeBattle}:{})};
+}
+/** Explicit story opponent, independent of the map's ordinary encounter pool. */
+export function createSpecialBattle(save:SaveData,encounter:{eventId:string;species:number;level:number;met:string;allowCapture:boolean;shiny?:boolean}):Battle|null{
+  const {eventId,species,level,met,allowCapture,shiny}=encounter;
+  if(shiny!==undefined&&typeof shiny!=='boolean'||shiny&&species!==130)return null;
+  if(!/^[a-z][a-z0-9-]{0,79}$/.test(eventId)||!RUNTIME_SPECIES[species]||!Number.isInteger(level)||level<minimumLevel(species)||level>LEVEL_CAP||typeof met!=='string'||!met||met.length>100||typeof allowCapture!=='boolean')return null;
+  if(allowCapture&&!(DATA.ownable as number[]).includes(species))return null;
+  const active=save.party.findIndex(p=>p.hp>0);if(active<0)return null;
+  const maxHp=maxHpAtLevel(species,level);
+  const enemy:Pokemon={species,level,hp:maxHp,maxHp,experience:0,nature:'성실',met,...(shiny?{shiny:true}:{})};
+  enemy.moves=pokemonMoves(enemy);
+  const caughtBeforeBattle=save.pokedex?.caught.includes(species)===true||[...save.party,...save.box??[]].some(p=>p.species===species);
+  recordSeen(save,species);
+  return {kind:'wild',gymId:'roark',opponents:[enemy],enemy,enemyIndex:0,active,participants:[active],forcedSwitch:false,betweenOpponents:false,moveSelections:save.party.map(()=>0),menu:'actions',selected:0,enemyAttackDrop:0,enemyDefenseDrop:0,result:false,caughtBeforeBattle,special:{eventId,allowCapture}};
+}
+export function specialBattleResultFlag(eventId:string,outcome:'won'|'caught'|'escaped'|'lost'):string{
+  return `specialBattle:${eventId}:${outcome}`;
+}
+/** Called once by the engine for an actual terminal turn, before defeat recovery. */
+export function recordSpecialBattleResult(save:SaveData,b:Battle,outcome:TurnResult['outcome']):void{
+  if(!b.special||!b.result||!outcome)return;
+  save.flags[specialBattleResultFlag(b.special.eventId,outcome)]=true;
+  save.flags[`specialBattle:${b.special.eventId}:last`]=({won:1,caught:2,escaped:3,lost:4} as const)[outcome];
 }
 export function experienceParticipants(save:SaveData,b:Battle):number[]{
   return [...new Set(b.participants)].filter(i=>save.party[i]?.hp>0&&save.party[i].level<LEVEL_CAP).sort((a,b)=>a-b);
@@ -71,8 +97,16 @@ export function techniqueDamage(p:Pokemon,target:Pokemon,move:string,attackDrop=
   if(rule.rule==='levelDamage')return p.level;
   const weight=(RUNTIME_SPECIES[target.species]?.weight??100)/10;
   const power=rule.rule==='weightDamage'?(weight<10?20:weight<25?40:weight<50?60:weight<100?80:weight<200?100:120):rule.power;
-  const base=(p.species===25?7:p.species===399?4:6)+Math.floor((p.level-Math.min(5,minimumLevel(p.species)))/2)+([2,5,8].includes(p.species)?2:0);
-  return Math.max(1,Math.floor(Math.max(1,base+defenseDrop-attackDrop-defenseUp)*power/40*effectiveness));
+  const special=rule.category==='special';
+  // Neutral nature, zero IV/EV: these are derived combat values, not save fields.
+  const stat=(mon:Pokemon,key:'attack'|'defense'|'specialAttack'|'specialDefense')=>
+    Math.max(1,Math.floor(2*RUNTIME_SPECIES[mon.species].stats[key]*mon.level/100)+5);
+  const stage=(value:number)=>{const n=Math.max(-3,Math.min(3,value));return n>=0?(2+n)/2:2/(2-n);};
+  const attack=Math.max(1,Math.floor(stat(p,special?'specialAttack':'attack')*(special?1:stage(-attackDrop))));
+  const defense=Math.max(1,Math.floor(stat(target,special?'specialDefense':'defense')*(special?1:stage(defenseUp-defenseDrop))));
+  const base=Math.floor(Math.floor((Math.floor(2*p.level/5)+2)*power*attack/defense)/50)+2;
+  const sameType=rule.rule!=='struggle'&&SPECIES[p.species].types.includes(rule.type)?1.5:1;
+  return Math.max(1,Math.floor(Math.floor(base*sameType)*effectiveness));
 }
 export function playerDamage(p:Pokemon,b:Battle,move=pokemonMoves(p)[0]):number{
   return techniqueDamage(p,b.enemy,move,b.playerAttackDrop?.[b.active]??0,b.enemyDefenseDrop,b.enemyDefense??0);
@@ -89,7 +123,9 @@ export function enemyDamage(b:Battle,attackDrop=b.enemyAttackDrop,target?:Pokemo
 }
 function rewardParticipants(save:SaveData,b:Battle,total:number,onStep:(page:string,step:GrowthStep,index:number)=>void){
   const eligible=experienceParticipants(save,b);
+  const track=trackFieldPartners(save);
   eligible.forEach((index,i)=>gainExperience(save.party[index],Math.floor(total/eligible.length)+(i<total%eligible.length?1:0),(page,step)=>onStep(page,step,index)));
+  track();
 }
 export type BattleAction = 'move0'|'move1'|'move2'|'move3'|'ball'|'potion'|'run'|{switch:number}|{potion:number};
 export interface BattleFrame {
@@ -105,13 +141,22 @@ export function captureBattleFrame(save:SaveData,b:Battle):BattleFrame {
 }
 export interface TurnResult { pages:string[]; frames?:BattleFrame[]; outcome?:'won'|'caught'|'escaped'|'lost'; retry?:boolean; caughtInBox?:boolean; reward?:number }
 function rejectAction(message:string):TurnResult{return {pages:[message],retry:true};}
+export function battleSpeed(p:Pokemon):number{
+  return Math.floor(2*RUNTIME_SPECIES[p.species].stats.speed*p.level/100)+5;
+}
+export function playerActsFirst(player:Pokemon,enemy:Pokemon,move:string,foeMove:string,random:()=>number=Math.random):boolean{
+  const priority=(MOVE_RULES[move]?.priority??0)-(MOVE_RULES[foeMove]?.priority??0);
+  if(priority!==0)return priority>0;
+  const speed=battleSpeed(player)-battleSpeed(enemy);
+  return speed!==0?speed>0:random()<0.5;
+}
 // Small battle rules: level-based damage, up to four moves and HP-based wild catching.
 // Resolve the whole turn synchronously; dialogue callbacks never apply damage or items.
 export function battleTurn(save:SaveData,b:Battle,action:BattleAction,random:()=>number=Math.random):TurnResult {
   if(b.result)return {pages:[]};
   let active=save.party[b.active],name=SPECIES[active.species].name;
   const enemyName=SPECIES[b.enemy.species].name,prefix=b.kind!=='wild'?opponentTrainerName(b)+'의':'야생',pages:string[]=[],frames:BattleFrame[]=[];
-  let protectedTurn=false;
+  let protectedTurn=false,enemyProtectedTurn=false;
   const show=(...lines:string[])=>{for(const line of lines){pages.push(line);frames.push(captureBattleFrame(save,b));}};
   const enter=():TurnResult|undefined=>{
     b.playerDefense??={};b.playerAttackDrop??={};b.playerDefenseDrop??={};b.playerDefense[b.active]=0;b.playerAttackDrop[b.active]=0;b.playerDefenseDrop[b.active]=0;b.protectStreak=0;
@@ -129,7 +174,7 @@ export function battleTurn(save:SaveData,b:Battle,action:BattleAction,random:()=
           show(page);frames[frames.length-1].growth={...step,index};
           if(step.kind==='evolution')recordSeen(save,step.after.species,true);
         });
-        if(b.enemyIndex+1<b.opponents.length){b.enemy=b.opponents[++b.enemyIndex];b.enemyAttackDrop=0;b.enemyDefenseDrop=0;b.enemyDefense=0;b.turn=0;b.participants=[b.active];b.betweenOpponents=save.party.some((p,i)=>i!==b.active&&p.hp>0);recordSeen(save,b.enemy.species);show(`${withParticle(opponentTrainerName(b),'은/는')} ${withParticle(SPECIES[b.enemy.species].name,'을/를')}\n내보냈다!`);if(b.enemyRocks){const hit=rockEntryDamage(b.enemy);b.enemy.hp-=hit;show('뾰족한 바위가 상대를 찔렀다!');frames.at(-1)!.effect={target:'enemy',kind:'damage',amount:hit};}if(active.hp===0){b.forcedSwitch=true;b.menu='party';b.selected=save.party.findIndex(p=>p.hp>0);}return b.enemy.hp===0?finishEnemy():{pages,frames};}
+        if(b.enemyIndex+1<b.opponents.length){b.enemy=b.opponents[++b.enemyIndex];b.enemyAttackDrop=0;b.enemyDefenseDrop=0;b.enemyDefense=0;b.enemyProtectStreak=0;b.turn=0;b.participants=[b.active];b.betweenOpponents=save.party.some((p,i)=>i!==b.active&&p.hp>0);recordSeen(save,b.enemy.species);show(`${withParticle(opponentTrainerName(b),'은/는')} ${withParticle(SPECIES[b.enemy.species].name,'을/를')}\n내보냈다!`);if(b.enemyRocks){const hit=rockEntryDamage(b.enemy);b.enemy.hp-=hit;show('뾰족한 바위가 상대를 찔렀다!');frames.at(-1)!.effect={target:'enemy',kind:'damage',amount:hit};}if(active.hp===0){b.forcedSwitch=true;b.menu='party';b.selected=save.party.findIndex(p=>p.hp>0);}return b.enemy.hp===0?finishEnemy():{pages,frames};}
         b.result=true;const reward=b.kind==='trainer'?Math.min(b.trainer!.reward,999999-save.money):0;if(reward)save.money+=reward;
         show(b.kind==='gym'?`체육관 관장 ${opponentTrainerName(b)}에게 이겼다!`:b.kind==='trainer'?`${opponentTrainerName(b)}에게 이겼다!\n상금 ${reward}원을 받았다!`:'싸움에서 이겼다!');return {pages,frames,outcome:'won',...(reward?{reward}:{})};
   };
@@ -146,6 +191,39 @@ export function battleTurn(save:SaveData,b:Battle,action:BattleAction,random:()=
     b.active=next;if(!b.participants.includes(next))b.participants.push(next);
     show(`힘내! ${SPECIES[save.party[next].species].name}!`);
     return enter()??{pages,frames};
+  };
+  let foeActed=false;
+  let plannedFoeMove:string|undefined;
+  const takeEnemyTurn=(foeMove:string):TurnResult|undefined=>{
+    foeActed=true;
+  const foeRule=MOVE_RULES[foeMove]?.rule;
+  const selfTarget=['protect','defenseUp','escape','nothing'].includes(foeRule??'');
+  show(`${prefix} ${enemyName}의 ${foeMove}!`);frames.at(-1)!.technique={move:foeMove,target:selfTarget?'enemy':'player'};
+  b.turn=(b.turn??0)+1;
+  if(foeRule==='protect'){
+    const streak=b.enemyProtectStreak??0;
+    enemyProtectedTurn=streak===0||random()<1/3**streak;b.enemyProtectStreak=streak+1;
+    show(enemyProtectedTurn?`${withParticle(enemyName,'은/는')} 방어 태세를 취했다!`:'하지만 잘되지 않았다!');return;
+  }
+  b.enemyProtectStreak=0;
+  if(foeRule==='escape'||foeRule==='nothing'){show('하지만 아무 일도 일어나지 않았다!');return;}
+  const blocked=protectedTurn&&!selfTarget&&foeRule!=='hazard';
+  const damage=blocked?0:Math.min(active.hp,techniqueDamage(b.enemy,active,foeMove,b.enemyAttackDrop,b.playerDefenseDrop?.[b.active]??0,b.playerDefense?.[b.active]??0));
+  active.hp=Math.max(0,active.hp-damage);
+  if(foeRule==='hazard'){b.playerRocks=true;show('아군 주위에 뾰족한 바위가 떠 있다!');}
+  else if(blocked)show(`${withParticle(name,'은/는')} 공격을 막아냈다!`);
+  else if(foeRule==='attackDrop'){b.playerAttackDrop??={};b.playerAttackDrop[b.active]=Math.min(3,(b.playerAttackDrop[b.active]??0)+1);show(`${name}의 공격이 떨어졌다!`);}
+  else if(foeRule==='defenseDrop'){b.playerDefenseDrop??={};b.playerDefenseDrop[b.active]=Math.min(3,(b.playerDefenseDrop[b.active]??0)+1);show(`${name}의 방어가 떨어졌다!`);}
+  else if(foeRule==='defenseUp'){
+    if((b.enemyDefense??0)>=3)show(`${enemyName}의 방어는\n더 이상 올라가지 않는다!`);
+    else {b.enemyDefense=(b.enemyDefense??0)+1;show(`${enemyName}의 방어가 올라갔다!`);}
+  }
+  else show(`${name}에게 ${damage}의 피해!`);
+  frames[frames.length-1].effect={target:'player',kind:'damage',amount:damage};
+  if(foeRule==='drain'&&damage>0){const heal=Math.min(b.enemy.maxHp-b.enemy.hp,Math.max(1,Math.floor(damage/2)));b.enemy.hp+=heal;if(heal){show(`${withParticle(enemyName,'은/는')} HP를 ${heal} 흡수했다!`);frames.at(-1)!.effect={target:'enemy',kind:'heal',amount:heal};}}
+  if(foeRule==='struggle'&&damage>0){const hit=Math.min(b.enemy.hp,Math.max(1,Math.floor(b.enemy.maxHp/4)));b.enemy.hp-=hit;show(`${withParticle(enemyName,'은/는')} 반동으로 ${hit} 피해를 입었다!`);frames.at(-1)!.effect={target:'enemy',kind:'damage',amount:hit};}
+  if(active.hp===0)return finishPlayer();
+  if(b.enemy.hp===0)return finishEnemy();
   };
   if(action==='run'){b.betweenOpponents=false;b.result=true;return {pages:[b.kind!=='wild'?'도전을 그만두었다.\n준비를 마치고 다시 도전하자!':'무사히 도망쳤다!'],outcome:'escaped'};}
   if(b.forcedSwitch&&!(typeof action==='object'&&'switch' in action))return rejectAction('다음에 싸울 포켓몬을\n먼저 선택하자.');
@@ -169,11 +247,12 @@ export function battleTurn(save:SaveData,b:Battle,action:BattleAction,random:()=
     const entry=enter();if(entry)return entry;
   }else if(action==='ball') {
     if(b.kind!=='wild')return rejectAction('다른 트레이너의 포켓몬은\n잡을 수 없다.');
+    if(b.special&&!b.special.allowCapture)return rejectAction('지금은 포획보다\n상황을 가라앉히는 데 집중하자.');
     if(save.party.length>=6&&(save.box?.length??0)>=BOX_CAPACITY)return rejectAction('파티와 PC 박스가 가득 찼다.\n다른 행동을 선택하자.');
     if(save.inventory.pokeBalls<=0)return rejectAction(`몬스터볼이 없다. ${save.badges.length?'마을 상점에서':'길 안내원에게'}\n도구를 보충받을 수 있다.`);
     b.betweenOpponents=false;b.protectStreak=0;save.inventory.pokeBalls--;
     show('몬스터볼을 던졌다!');frames[frames.length-1].capture='throw';
-    if(b.enemy.hp<=b.enemy.maxHp/2||random()<.55){
+    if(b.enemy.hp<=b.enemy.maxHp*POKE_BALL.effect.guaranteedHpRatio||random()<POKE_BALL.effect.baseChance){
       const caughtInBox=save.party.length>=6;save.box??=[];
       (caughtInBox?save.box:save.party).push({...b.enemy,moves:pokemonMoves(b.enemy)});b.result=true;recordSeen(save,b.enemy.species,true);
       show(`좋아! ${withParticle(enemyName,'을/를')} 잡았다!\n${withParticle(enemyName,'이/가')} ${caughtInBox?'PC 박스로 보내졌다.':'파티에 등록되었다.'}`);return {pages,frames,outcome:'caught',caughtInBox};
@@ -185,7 +264,7 @@ export function battleTurn(save:SaveData,b:Battle,action:BattleAction,random:()=
     if(target.hp<=0)return rejectAction('쓰러진 포켓몬에게는 쓸 수 없다.\n센터에서 회복해 주자.');
     if(save.inventory.potions<=0)return rejectAction(`상처약이 없다. ${save.badges.length?'마을 상점에서':'길 안내원에게'}\n도구를 보충받을 수 있다.`);
     if(target.hp===target.maxHp)return rejectAction('아직 상처약을 쓸 필요가 없다.');
-    b.betweenOpponents=false;b.protectStreak=0;save.inventory.potions--;const healed=Math.min(20,target.maxHp-target.hp);target.hp+=healed;
+    b.betweenOpponents=false;b.protectStreak=0;save.inventory.potions--;const healed=Math.min(POTION.effect.hp,target.maxHp-target.hp);target.hp+=healed;
     show(`상처약을 사용했다!\n${SPECIES[target.species].name}의 HP가 ${healed} 회복되었다.`);
     if(index===b.active)frames[frames.length-1].effect={target:'player',kind:'heal',amount:healed};
   } else {
@@ -194,11 +273,17 @@ export function battleTurn(save:SaveData,b:Battle,action:BattleAction,random:()=
     if(!move)return rejectAction('기억하고 있는 기술을 선택하자.');
     b.betweenOpponents=false;
     b.moveSelections[b.active]=slot;
+    plannedFoeMove=enemyMove(b,active);
+    if(!playerActsFirst(active,b.enemy,move,plannedFoeMove,random)){
+      const result=takeEnemyTurn(plannedFoeMove);if(result)return result;
+    }
     const rule=MOVE_RULES[move]?.rule;
     show(`${name}의 ${move}!`);
     frames[frames.length-1].technique={move,target:['defenseUp','protect','escape','nothing'].includes(rule??'')?'player':'enemy'};
     if(rule!=='protect')b.protectStreak=0;
-    if(isDamagingMove(move)) {
+    if(enemyProtectedTurn&&(isDamagingMove(move)||rule==='attackDrop'||rule==='defenseDrop')){
+      show(`${withParticle(enemyName,'은/는')} 공격을 막아냈다!`);
+    } else if(isDamagingMove(move)) {
       const damage=Math.min(b.enemy.hp,playerDamage(active,b,move));
       const effectiveness=moveEffectiveness(move,b.enemy);
       b.enemy.hp=Math.max(0,b.enemy.hp-damage);
@@ -231,23 +316,6 @@ export function battleTurn(save:SaveData,b:Battle,action:BattleAction,random:()=
       show('하지만 아무 일도 일어나지 않았다!');
     }
   }
-  const foeMove=enemyMove(b,active),foeRule=MOVE_RULES[foeMove]?.rule;
-  show(`${prefix} ${enemyName}의 ${foeMove}!`);frames.at(-1)!.technique={move:foeMove,target:'player'};
-  const damage=protectedTurn?0:Math.min(active.hp,enemyDamage(b,b.enemyAttackDrop,active));b.turn=(b.turn??0)+1;
-  active.hp=Math.max(0,active.hp-damage);
-  if(foeRule==='hazard'){b.playerRocks=true;show('아군 주위에 뾰족한 바위가 떠 있다!');}
-  else if(protectedTurn)show(`${withParticle(name,'은/는')} 공격을 막아냈다!`);
-  else if(foeRule==='attackDrop'){b.playerAttackDrop??={};b.playerAttackDrop[b.active]=Math.min(3,(b.playerAttackDrop[b.active]??0)+1);show(`${name}의 공격이 떨어졌다!`);}
-  else if(foeRule==='defenseDrop'){b.playerDefenseDrop??={};b.playerDefenseDrop[b.active]=Math.min(3,(b.playerDefenseDrop[b.active]??0)+1);show(`${name}의 방어가 떨어졌다!`);}
-  else if(foeRule==='defenseUp'){
-    if((b.enemyDefense??0)>=3)show(`${enemyName}의 방어는\n더 이상 올라가지 않는다!`);
-    else {b.enemyDefense=(b.enemyDefense??0)+1;show(`${enemyName}의 방어가 올라갔다!`);}
-  }
-  else show(`${name}에게 ${damage}의 피해!`);
-  frames[frames.length-1].effect={target:'player',kind:'damage',amount:damage};
-  if(foeRule==='drain'&&damage>0){const heal=Math.min(b.enemy.maxHp-b.enemy.hp,Math.max(1,Math.floor(damage/2)));b.enemy.hp+=heal;if(heal){show(`${withParticle(enemyName,'은/는')} HP를 ${heal} 흡수했다!`);frames.at(-1)!.effect={target:'enemy',kind:'heal',amount:heal};}}
-  if(foeRule==='struggle'&&damage>0){const hit=Math.min(b.enemy.hp,Math.max(1,Math.floor(b.enemy.maxHp/4)));b.enemy.hp-=hit;show(`${withParticle(enemyName,'은/는')} 반동으로 ${hit} 피해를 입었다!`);frames.at(-1)!.effect={target:'enemy',kind:'damage',amount:hit};}
-  if(active.hp===0)return finishPlayer();
-  if(b.enemy.hp===0)return finishEnemy();
+  if(!foeActed){const result=takeEnemyTurn(plannedFoeMove??enemyMove(b,active));if(result)return result;}
   return {pages,frames};
 }

@@ -46,7 +46,7 @@ export function installSinnohRoute209Solaceon(args:{
       {x:15,y:70,to:hearthome.id,spawn:{...legacyWest.spawn},entry:'down',facing:'down'},
       {x:14,y:1,to:SOLACEON_TOWN,spawn:{x:20,y:37},entry:'up',facing:'up'},
     ],
-    npcs:[{id:'route209Walker',name:'209번도로 여행자',sprite:'rancher',x:11,y:39,facing:'right',dialogue:'route209Walker'}],
+    npcs:[{id:'route209Trainer',name:'209번도로 초원 트레이너',sprite:'rancher',x:11,y:39,facing:'right',dialogue:'route209Trainer'}],
     props:[{x:12,y:64,dialogue:'route209Sign'},{x:25,y:30,dialogue:'route209TowerSign'},{x:17,y:6,dialogue:'route209Sign'}],
   };
   features[SINNOH_ROUTE_209]=routeFeatures;spawns[SINNOH_ROUTE_209]={x:15,y:68};
@@ -92,6 +92,7 @@ export function installSinnohRoute209Solaceon(args:{
     npcs:[
       {id:'route210CafeKeeper',name:'210번도로 카페 주인',sprite:'pokemon_breeder_f',x:6,y:26,facing:'right',dialogue:'route210CafeKeeper'},
       {id:'route210Rancher',name:'210번도로 목장 일꾼',sprite:'rancher',x:21,y:31,facing:'down',dialogue:'route210Rancher'},
+      {id:'route210Trainer',name:'210번도로 목장길 트레이너',sprite:'school_kid_f',x:11,y:47,facing:'right',dialogue:'route210Trainer'},
     ],
     props:[{x:12,y:65,dialogue:'route210SouthSign'},{x:7,y:23,dialogue:'route210CafeSign'},{x:19,y:7,dialogue:'route210SouthSign'}],
   };
@@ -108,14 +109,17 @@ export function installSinnohRoute209Solaceon(args:{
     {kind:'grove',x:57,y:23,w:11,h:8,name:'장막 서쪽 비숲',description:'비를 머금은 나무가 장막 진입로를 감싼다.'},
   ];
   maps[SINNOH_ROUTE_215]={id:SINNOH_ROUTE_215,name:'신오 215번도로 · 비와 다리',width:88,height:36,background:SINNOH_ROUTE_215,
-    walkable:route215Rows.map(r=>r.join('')),terrain:[],
+    walkable:route215Rows.map(r=>r.join('')),terrain:[
+      {kind:'tallGrass',x:24,y:25,w:12,h:4},
+      {kind:'tallGrass',x:55,y:12,w:6,h:4},
+    ],
     warps:[
       {x:1,y:18,to:SINNOH_ROUTE_210_SOUTH,spawn:{x:15,y:2},entry:'left',facing:'left'},
       {x:86,y:21,to:veilstone.id,spawn:{...legacyEast.spawn},entry:'right',facing:'right'},
     ],
     npcs:[
       {id:'route215BridgeKeeper',name:'215번도로 다리 관리인',sprite:'worker',x:38,y:22,facing:'right',dialogue:'route215BridgeKeeper'},
-      {id:'route215Traveler',name:'비를 피하는 여행자',sprite:'ace_trainer_f',x:61,y:14,facing:'left',dialogue:'route215Traveler'},
+      {id:'route215Trainer',name:'215번도로 비바람 트레이너',sprite:'ace_trainer_f',x:61,y:14,facing:'left',dialogue:'route215Trainer'},
     ],
     props:[{x:5,y:14,dialogue:'route215Sign'},{x:46,y:18,dialogue:'route215BridgeSign'},{x:82,y:25,dialogue:'route215Sign'}],
   };

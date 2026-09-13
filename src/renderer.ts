@@ -1,3 +1,22 @@
+import { openingCompanionLayer } from './opening-companion-art';
+import { mortarDrainageLayers } from './mortar-drainage-art';
+import { MAHOGANY_POWER_NPC,mahoganyPowerPosition } from './mahogany-power';
+import { paintMahoganyPowerFurnishing,mahoganyPowerLayers } from './mahogany-power-art';
+import { paintCasteliaProjectExhibit,paintCasteliaFieldSites,casteliaRestingPokemonLayers } from './castelia-field-intro';
+import { SEAFOAM_BOULDER_MAP,paintSeafoamBoulderGround,paintSeafoamBoulder,seafoamBoulderView,seafoamBoulderPushView } from './seafoam-boulder';
+import { cinnabarEvacuationMotionView } from './cinnabar-evacuation-motion';
+import { mortarHeatLayers } from './mortar-heat-art';
+import { paintEcruteakDisclosureFurnishing } from './ecruteak-disclosure-art';
+import { rageLakeGyaradosLayers,paintRageLakeRecoveryFurnishing } from './rage-lake-gyarados-art';
+import { paintMahoganyTransmitterFurnishing,mahoganyTransmitterLayers } from './mahogany-transmitter-art';
+import { rageLakeReliefLayers,paintRageLakeReliefFurnishing } from './rage-lake-relief-art';
+import { rageLakeNexusLayers } from './rage-lake-nexus-art';
+import { paintAzaleaWorkshopFurnishing } from './azalea-workshop-art';
+import { paintGoldenrodNexusFurnishing } from './goldenrod-nexus-art';
+import { paintCinnabarEvacuationNpc } from './cinnabar-evacuation-state';
+import { paintCinnabarRescueFurnishing } from './cinnabar-rescue-work';
+import { paintIcirrusMinimapAccess } from './icirrus-city-layout';
+import { paintCoronetSurveyNotes } from './sinnoh-strata-art';
 import { withParticle } from './korean-text';
 import { paintOreburghGymBattleArena } from './oreburgh-gym-art';
 import { paintEternaGymBattleArena } from './eterna-gym-art';
@@ -17,7 +36,12 @@ import { fieldPotionPreview } from './team';
 import { experienceParticipants,moveType,opponentTrainerName } from './battle';
 import { battleHint } from './battle-hints';
 import { paintCenterFurnishing,paintCenterReception } from './explore-center-art';
+import { minimapTravelMarkers,paintCelesticMinimapPaths } from './sinnoh-celestic-markers';
 import { paintTourFurnishing } from './explore-interior-art';
+import { paintCinnabarFurnishing } from './cinnabar-interior-art';
+import { cinnabarCircuitPreview } from './cinnabar-circuit-model';
+import { paintIcirrusHallFurnishing } from './icirrus-hall-art';
+import { paintIcirrusHomeFurnishing } from './icirrus-home-art';
 import { tourMapMarkers,tourMinimapLayout,tourMarkerBounds } from './explore-minimap';
 import { FIELD_POKEMON } from './explore-pokemon';
 import { paintTownPokemon,paintTourWaterMotion } from './explore-life-art';
@@ -37,15 +61,25 @@ import { buildExploreArt,paintTourSign,paintTourBuilding,TOUR_COLORS } from './e
 import { SINNOH_MAPS,SINNOH_CITIES,buildSinnohArt } from './sinnoh-maps';
 import { buildRouteArt, ROUTE_SIGN } from './route';
 import { paintChargestoneMainCrystal } from './unova-route-six';
+import { paintFuchsiaTownMotion } from './fuchsia-art';
+import { paintIcirrusPond } from './icirrus-pond-art';
+import { UNOVA_ROUTE_EIGHT,paintUnovaRouteEightMotion } from './unova-route-eight';
+import { UNOVA_ROUTE_NINE,TUBELINE_BRIDGE,paintUnovaRouteNineMotion } from './unova-route-nine';
+import { ICIRRUS_MOOR,paintIcirrusMoorMotion } from './unova-icirrus-moor';
+import { icirrusMoorObservationLayers,icirrusMoorPartnerLayer } from './icirrus-moor-observation-art';
+import { DRAGONSPIRAL_APPROACH,paintDragonspiralApproachMotion } from './unova-dragonspiral-approach';
+import { paintDragonspiralMotion } from './dragonspiral-art';
+import { paintJohtoBlackthornSouthMotion } from './johto-blackthorn-south-art';
+import { paintCherrygroveCare } from './johto-cherrygrove-art';
 import { spriteFrame,recolorSprite } from './sprites';
 type Hit = { x:number;y:number;w:number;h:number;action:()=>void };
 const W=256,H=192;
 const INK='#384750',PAPER='#f8f8e8';
-const TYPE_COLORS:Record<string,string>={'노말':'#9b9983','풀':'#6c9c4d','독':'#a16ca0','물':'#5c91b1','불꽃':'#c87d55','전기':'#bba149','바위':'#9a8861','땅':'#aa8455','고스트':'#79648f','에스퍼':'#bd7189','격투':'#a56b59'};
+const TYPE_COLORS:Record<string,string>={'얼음':'#79bcc7','노말':'#9b9983','풀':'#6c9c4d','독':'#a16ca0','물':'#5c91b1','불꽃':'#c87d55','전기':'#bba149','바위':'#9a8861','땅':'#aa8455','고스트':'#79648f','에스퍼':'#bd7189','격투':'#a56b59'};
 export class Renderer {
   ctx:CanvasRenderingContext2D; touch:CanvasRenderingContext2D; images:Record<string,HTMLImageElement|HTMLCanvasElement>={}; hits:Hit[]=[];
   constructor(public game:Engine,public field:HTMLCanvasElement,public bottom:HTMLCanvasElement){this.ctx=field.getContext('2d')!;this.touch=bottom.getContext('2d')!;this.ctx.imageSmoothingEnabled=false;this.touch.imageSmoothingEnabled=false;}
-  async load(){const names=[...FIELD_POKEMON.map(n=>'field-'+n),'center-reference','pokecenter_nurse','jubilife-reference','eevee-play','bedroom-reference','home-reference','town-reference','lab-reference','sandgem-reference','grass-reference','player_m','mom','prof_rowan','scientist_m','youngster','lass','old_man','middle_aged_man','ace_trainer_m','ace_trainer_f','scientist_f','pokemon_breeder_f','worker','rancher','school_kid_m','school_kid_f',...Object.keys(SPECIES).flatMap(n=>['pokemon-'+n,'pokemon-back-'+n])];await Promise.all(names.map(name=>new Promise<void>((resolve,reject)=>{const im=new Image();im.onload=()=>{this.images[name]=im;resolve()};im.onerror=()=>reject(Error('리소스를 불러오지 못했습니다: '+name));im.src='/assets/'+name+'.png'})));await document.fonts.load('10px Galmuri');
+  async load(){const names=['pokemon-shiny-130','pokemon-back-shiny-130',...FIELD_POKEMON.map(n=>'field-'+n),'center-reference','pokecenter_nurse','jubilife-reference','eevee-play','bedroom-reference','home-reference','town-reference','lab-reference','sandgem-reference','grass-reference','player_m','mom','prof_rowan','scientist_m','youngster','lass','old_man','middle_aged_man','ace_trainer_m','ace_trainer_f','scientist_f','pokemon_breeder_f','worker','rancher','school_kid_m','school_kid_f',...Object.keys(SPECIES).flatMap(n=>['pokemon-'+n,'pokemon-back-'+n])];await Promise.all(names.map(name=>new Promise<void>((resolve,reject)=>{const im=new Image();im.onload=()=>{this.images[name]=im;resolve()};im.onerror=()=>reject(Error('리소스를 불러오지 못했습니다: '+name));im.src='/assets/'+name+'.png'})));await document.fonts.load('10px Galmuri');
     this.images.hero=recolorSprite(this.images.ace_trainer_m as HTMLImageElement,{'637b4a':'4a627b','425239':'303e53','8ca563':'7894a5','9c5a63':'b57947','de8c73':'ebba73','4a3139':'493e38'});
     this.images.professor=recolorSprite(this.images.scientist_f as HTMLImageElement,{'525a52':'696078','848c6b':'aaa0b1','313139':'40384d','c66b52':'579e96'});
     this.images.mother=recolorSprite(this.images.pokemon_breeder_f as HTMLImageElement,{'42735a':'706492','52a584':'9b8bbb','294a4a':'453d65'});
@@ -70,23 +104,61 @@ export class Renderer {
     this.rect(c,marker-3,101,7,8,'#537d88');this.rect(c,marker-2,102,5,5,'#c4d9cd');
     this.text(c,'바다를 건너고 있어요',128,133,'#627d79',9,'center');
   }
-  world(){const c=this.ctx,g=this.game,map=g.map;if(g.showingGymReward){this.gymRewardTop(c);if(g.dialogue)this.dialogue(c,false);return}if(g.showingCatch){this.catchTop(c);if(g.dialogue)this.dialogue(c,false);return}if(g.presentedBattle){this.battleTop(c);if(g.dialogue)this.dialogue(c);return}this.rect(c,0,0,W,H,'#101b20');const pos=g.position;
+  world(){const c=this.ctx,g=this.game,map=g.map;if(g.showingGymReward){this.gymRewardTop(c);if(g.dialogue)this.dialogue(c,false);return}if(g.showingCatch){this.catchTop(c);if(g.dialogue)this.dialogue(c,false);return}if(g.presentedBattle){this.battleTop(c);if(g.dialogue)this.dialogue(c);return}this.rect(c,0,0,W,H,'#101b20');const push=seafoamBoulderPushView(g),pos=push?.player??g.position,evacuation=cinnabarEvacuationMotionView(g),focus=evacuation??pos;
     const camera=(p:number,total:number,view:number)=>total<view?(total-view)/2:Math.max(0,Math.min(total-view,p-view/2));
-    const cx=Math.round(camera(pos.x*16+8,map.width*16,W)),cy=Math.round(camera(pos.y*16+8,map.height*16,H));
+    const cx=Math.round(camera(focus.x*16+8,map.width*16,W)),cy=Math.round(camera(focus.y*16+8,map.height*16,H));
     c.save();c.translate(-cx,-cy);c.drawImage(this.images[map.background],0,0);
+    paintSeafoamBoulderGround(c,map);
+    paintCasteliaFieldSites(c,map,g.save);
     if(map.id==='tour_chargestone_b1f')paintChargestoneMainCrystal(c,Boolean(g.save.flags.chargestoneMainCrystalMoved));
-    paintTourWaterMotion(c,TOUR_FEATURES[map.id]??[],g.clock);
+    paintTourWaterMotion(c,(TOUR_FEATURES[map.id]??[]).filter(f=>map.id!=='tour_icirrus'||f.name!=='도시 빗물 연못'),g.clock);
+    if(map.id==='tour_icirrus')paintIcirrusPond(c,map,g.clock,!!g.save.flags.icirrusWaterCompared);
+    paintCherrygroveCare(c,map,Boolean(g.save.flags.cherrygroveCareDone));
+    paintCoronetSurveyNotes(c,map,g.save);
+    if(map.id==='tour_fuchsia')paintFuchsiaTownMotion(c,g.clock);
+    if(map.id===UNOVA_ROUTE_EIGHT)paintUnovaRouteEightMotion(c,g.clock);
+    if(map.id===UNOVA_ROUTE_NINE||map.id===TUBELINE_BRIDGE)paintUnovaRouteNineMotion(c,map.id,g.clock);
+    if(map.id===ICIRRUS_MOOR)paintIcirrusMoorMotion(c,g.clock,map,!!g.save.flags.icirrusMoorBirdsObserved);
+    if(map.id===DRAGONSPIRAL_APPROACH)paintDragonspiralApproachMotion(c,g.clock);
+    paintDragonspiralMotion(c,map.id,g.clock);
+    paintJohtoBlackthornSouthMotion(c,map,g.clock);
     if(map.id==='tour_jubilife')for(const r of map.terrain??[]){this.rect(c,r.x*16-3,r.y*16-3,r.w*16+6,r.h*16+6,'#8c9c77');this.rect(c,r.x*16-1,r.y*16-1,r.w*16+2,r.h*16+2,'#cee0a4');}
-    if(['tour_eterna_forest','tour_viridian_forest','tour_coronet','tour_jubilife','tour_cinnabar','tour_castelia'].includes(map.id))for(const r of map.terrain??[])for(let y=r.y;y<r.y+r.h;y++)for(let x=r.x;x<r.x+r.w;x++)paintTallGrass(c,x*16,y*16,false,g.clock,this.images['grass-reference']);
+    // Encounter visibility follows the map data, including newly installed routes.
+    // A city-name allowlist left real encounter patches looking like empty ground.
+    const caveTerrain=isCaveEncounterMap(map.id)||tourPlaceForMap(map.id)?.theme==='cave';
+    for(const r of map.terrain??[]){
+      const left=Math.max(0,r.x,Math.floor(cx/16)),top=Math.max(0,r.y,Math.floor(cy/16));
+      const right=Math.min(map.width,r.x+r.w,Math.ceil((cx+W)/16)),bottom=Math.min(map.height,r.y+r.h,Math.ceil((cy+H)/16));
+      for(let y=top;y<bottom;y++)for(let x=left;x<right;x++)if(map.walkable[y]?.[x]==='.'){
+        if(caveTerrain)paintCaveEncounter(c,x*16,y*16,false);
+        else paintTallGrass(c,x*16,y*16,false,g.clock,this.images['grass-reference']);
+      }
+    }
     if(map.id==='town')for(let k=0;k<4;k++){this.rect(c,465+((k*19+Math.floor(g.clock*3))%78),237+(k%2)*17,7,1,'#a3d9ed')}
     const layers:{depth:number;draw:()=>void}[]=[];
+    if(map.id===SEAFOAM_BOULDER_MAP){const rock=push?.rock??seafoamBoulderView(g.save.flags);layers.push({depth:rock.y+.9,draw:()=>paintSeafoamBoulder(c,g.save.flags,rock)});}
+    layers.push(...rageLakeNexusLayers(c,map,g.save.flags));
+    layers.push(...rageLakeReliefLayers(c,map,g.save.flags));
+    layers.push(...rageLakeGyaradosLayers(c,map,g.save.flags,this.images));
+    layers.push(...mahoganyTransmitterLayers(c,map));
+    layers.push(...mahoganyPowerLayers(c,map,g.save.flags));
+    const companion=openingCompanionLayer(g,this.images);if(companion)layers.push({depth:companion.depth,draw:()=>companion.draw(c)});
+    layers.push(...mortarHeatLayers(c,map,g.save.flags));
+    layers.push(...mortarDrainageLayers(c,map,g.save.flags,g.clock));
     if(map.id==='oreburgh_gym'){const view=gymCartView(g);layers.push({depth:7.9,draw:()=>paintGymCart(c,view)},{depth:10.9,draw:()=>paintGymCartSamples(c,view)});}
     for(const tree of forestBorderTrees(map))layers.push({depth:tree.depth,draw:()=>paintGroveTree(c,this.images['sandgem-reference'],tree)});
     for(const f of TOUR_FEATURES[map.id]??[])for(const tree of groveTrees(f))layers.push({depth:tree.depth,draw:()=>paintGroveTree(c,this.images['sandgem-reference'],tree)});
-    for(const n of [...map.npcs.map(n=>({...n,...(n.id==='tourPokemon'?g.roaming?.position:{}),player:false})),{...pos,facing:g.save.player.facing,sprite:'hero',player:true}])layers.push({depth:n.y,draw:()=>{
-      if(n.sprite.startsWith('field-')&&g.roaming)paintTownPokemon(c,this.images,g.roaming.position,g.clock,g.save.player.facing,g.dialogue?.speaker===g.roaming.npc.name,g.roaming.move?g.roaming.move.elapsed/g.roaming.move.duration:undefined);
+    for(const n of [...map.npcs.map(n=>({...n,...(n.id==='tourPokemon'?g.roaming?.position:{}),...(n.id===evacuation?.id?evacuation:{}),...(n.id===MAHOGANY_POWER_NPC?mahoganyPowerPosition(g):{}),player:false})),{...pos,facing:g.save.player.facing,sprite:'hero',player:true}])layers.push({depth:n.y,draw:()=>{
+      if('id' in n&&paintCinnabarEvacuationNpc(c,n))return;
+      const fieldSpecies=FIELD_POKEMON.find(species=>n.sprite==='field-'+species);
+      if(fieldSpecies&&'id' in n){
+        // Only the roaming actor owns roaming coordinates. Resident Pokémon
+        // keep their own species, position and sprite-sheet format (e.g. Pidove).
+        const roaming=n.id==='tourPokemon'?g.roaming:null;
+        paintTownPokemon(c,this.images,roaming?.position??{...n,species:fieldSpecies,pages:[]},g.clock,g.save.player.facing,g.dialogue?.speaker===n.name,roaming?.move?roaming.move.elapsed/roaming.move.duration:undefined);
+      }
       else if(n.sprite==='eevee-play')this.eevee(c,n.x*16+8,n.y*16+8);
-      else this.character(c,n.sprite,n.x*16+8,n.y*16+8,n.facing,n.player&&!!g.move);
+      else {const walk='walkStep' in n&&typeof n.walkStep==='number'&&'walkProgress' in n&&typeof n.walkProgress==='number'?{step:n.walkStep,progress:n.walkProgress}:undefined;this.character(c,n.sprite,n.x*16+8,n.y*16+8,n.facing,n.player&&!!g.move||!!walk,walk);}
     }});
     if(map.id==='town'){
       for(const b of TOWN_BUILDINGS)layers.push({depth:b.y+b.h-1.1,draw:()=>paintBuilding(c,this.images,b)});
@@ -113,9 +185,20 @@ export class Renderer {
       for(const o of room.objects)layers.push({depth:o.y+o.h-.1,draw:()=>paintCenterFurnishing(c,this.images,o)});
       layers.push({depth:room.reception!.y+.9,draw:()=>paintCenterReception(c,this.images,room)});
     }
-    else if(room)for(const o of room.objects)layers.push({depth:o.y+o.h-.1,draw:()=>paintTourFurnishing(c,this.images,room,o)});
+    else if(room)for(const o of room.objects)layers.push({depth:o.y+o.h-.1,draw:()=>{if(!paintCasteliaProjectExhibit(c,map.id,o)&&!paintCinnabarFurnishing(c,room,o,cinnabarCircuitPreview(g),g.clock)&&!paintIcirrusHallFurnishing(c,map.id,o,g.save)&&!paintIcirrusHomeFurnishing(c,map.id,o,g.save))paintTourFurnishing(c,this.images,room,o);paintCinnabarRescueFurnishing(c,o,g.save.flags);paintGoldenrodNexusFurnishing(c,map.id,o,g.save.flags,this.images);paintAzaleaWorkshopFurnishing(c,map.id,o,g.save.flags);paintRageLakeReliefFurnishing(c,map.id,o,g.save.flags);paintRageLakeRecoveryFurnishing(c,map.id,o,g.save.flags,this.images);paintMahoganyTransmitterFurnishing(c,map.id,o,g.save.flags);paintMahoganyPowerFurnishing(c,map.id,o,g.save.flags);paintEcruteakDisclosureFurnishing(c,map.id,o,g.save.flags);}});
+    layers.push(...icirrusMoorObservationLayers(c,map,g.save,g.clock));
+    if(!g.move)layers.push(...icirrusMoorPartnerLayer(map,g.save,(species,x,y)=>{
+      const sprite=this.images['pokemon-'+species];if(!sprite)return;
+      c.save();c.imageSmoothingEnabled=false;
+      c.fillStyle='rgba(36,57,49,.25)';c.fillRect(x-7,y+4,14,3);
+      c.drawImage(sprite,x-12,y-17,24,24);c.restore();
+    }));
+    layers.push(...casteliaRestingPokemonLayers(map,g.save,(species,x,y,size)=>{
+      const sprite=this.images['pokemon-'+species];if(!sprite)return;
+      c.save();c.imageSmoothingEnabled=false;c.drawImage(sprite,x,y,size,size);c.restore();
+    }));
     layers.sort((a,b)=>a.depth-b.depth).forEach(l=>l.draw());
-    {const x=Math.round(pos.x),y=Math.round(pos.y);if(map.terrain?.some(r=>x>=r.x&&x<r.x+r.w&&y>=r.y&&y<r.y+r.h)){if(isCaveEncounterMap(map.id))paintCaveEncounter(c,x*16,y*16,true,g.move?g.clock:0);else paintTallGrass(c,x*16,y*16,true,g.clock*2+x,this.images['grass-reference']);}}
+    {const x=Math.round(pos.x),y=Math.round(pos.y);if(map.terrain?.some(r=>x>=r.x&&x<r.x+r.w&&y>=r.y&&y<r.y+r.h)){if(caveTerrain)paintCaveEncounter(c,x*16,y*16,true,g.move?g.clock:0);else paintTallGrass(c,x*16,y*16,true,g.clock*2+x,this.images['grass-reference']);}}
     paintJourneyOverlay(c,this.images,map,g.save.flags,g.clock);
     c.restore();
     if(g.labelTime>0){const alpha=Math.min(1,g.labelTime*2),w=Math.min(132,22+map.name.length*9);c.globalAlpha=alpha;this.rect(c,6,6,w,17,'#263c42');this.rect(c,7,7,w-2,15,'#708777');this.rect(c,9,9,w-6,11,'#d9d8ab');this.text(c,map.name,15,11,'#35483e',8);c.globalAlpha=1}
@@ -125,16 +208,16 @@ export class Renderer {
     if(g.panel==='fieldHeal')this.fieldHealTop(c);
     if(g.dialogue)this.dialogue(c);
   }
-  character(c:CanvasRenderingContext2D,name:string,x:number,y:number,dir:Direction,moving:boolean){const g=this.game,image=this.images[name];const frame=spriteFrame(dir,moving,g.stepPhase,g.move?g.move.elapsed/g.move.duration:0,g.keys.has('Shift'),image.height/32);c.fillStyle='#293d393d';c.beginPath();c.ellipse(Math.round(x),Math.round(y-2),6,2,0,0,Math.PI*2);c.fill();c.drawImage(image,0,frame*32,32,32,Math.round(x-16),Math.round(y-30),32,32)}
+  character(c:CanvasRenderingContext2D,name:string,x:number,y:number,dir:Direction,moving:boolean,walk?:{step:number;progress:number}){const g=this.game,image=this.images[name];const frame=spriteFrame(dir,moving,walk?.step??g.stepPhase,walk?.progress??(g.move?g.move.elapsed/g.move.duration:0),!walk&&g.keys.has('Shift'),image.height/32);c.fillStyle='#293d393d';c.beginPath();c.ellipse(Math.round(x),Math.round(y-2),6,2,0,0,Math.PI*2);c.fill();c.drawImage(image,0,frame*32,32,32,Math.round(x-16),Math.round(y-30),32,32)}
   eevee(c:CanvasRenderingContext2D,x:number,y:number){const t=this.game.clock,hop=Math.max(0,Math.sin(t*4))*3;const active=!this.game.dialogue;const frame=active?Math.floor(t*4)%2:0;c.fillStyle='#293d393d';c.beginPath();c.ellipse(x,y-2,6,2,0,0,Math.PI*2);c.fill();c.drawImage(this.images['eevee-play'],0,frame*32,32,32,x-16,Math.round(y-31-(active?hop:0)),32,32);}
   labTable(c:CanvasRenderingContext2D){this.rect(c,78,98,52,13,'#5b727a');this.rect(c,78,96,52,10,'#a9bbc5');this.rect(c,80,96,48,5,'#e2e3d3');this.rect(c,80,107,3,6,'#546873');this.rect(c,125,107,3,6,'#546873');if(!this.game.save.flags.starterReceived)for(let i=0;i<3;i++)this.ball(c,87+i*16,97,4);}
   dialogue(c:CanvasRenderingContext2D,showChoices=true){const d=this.game.dialogue!;const page=d.pages[d.page];if(showChoices&&d.choices&&d.page===d.pages.length-1&&d.shown>=page.length){const max=Math.max(...d.choices.map(q=>q.label.length));const w=Math.max(80,max*10+30),h=d.choices.length*19+12;this.frame(c,250-w,128-h,w,h);d.choices.forEach((q,i)=>{this.text(c,q.label,268-w,134-h+i*19,INK,9);if(i===d.selected)this.text(c,'▶',256-w,134-h+i*19,'#b15b45',9)})}this.frame(c,3,132,250,57,'#fffef0');if(d.speaker){this.rect(c,12,126,d.speaker.length*9+14,14,'#415b66');this.text(c,d.speaker,19,128,'#fffde3',8)}this.text(c,page.slice(0,Math.floor(d.shown)),15,146,INK,10);if(d.shown>=page.length&&Math.floor(this.game.clock*3)%2===0)this.text(c,'▼',233,174,'#bd6957',9)}
   menuTop(c:CanvasRenderingContext2D){const labels=['포켓몬','가방','트레이너','리포트','설정','닫기'];this.frame(c,161,5,91,145);labels.forEach((label,i)=>{if(this.game.menuIndex===i){this.rect(c,167,12+i*22,79,21,'#e9deae');this.text(c,'▶',171,18+i*22,'#ad6351',8)}this.text(c,label,187,18+i*22,INK,10)})}
   starterTop(c:CanvasRenderingContext2D){const id=STARTERS[this.game.starterIndex],p=SPECIES[id];this.frame(c,14,19,228,153,'#edf1df');this.rect(c,20,25,216,19,'#547b7e');this.text(c,'함께할 포켓몬을 골라 주세요',128,29,'#fffdea',9,'center');this.pokemon(c,id,44,46,1);this.text(c,p.name,138,62,INK,13);this.text(c,p.genus,139,84,'#7c857a',8);this.typePills(c,p.types,138,102);this.text(c,p.description,128,134,INK,9,'center')}
-  pokemon(c:CanvasRenderingContext2D,id:number,x:number,y:number,scale=1){c.drawImage(this.images['pokemon-'+id],x,y,80*scale,80*scale)}
+  pokemon(c:CanvasRenderingContext2D,id:number,x:number,y:number,scale=1,shiny=false){c.drawImage(this.images['pokemon-'+(shiny&&id===130?'shiny-':'')+id],x,y,80*scale,80*scale)}
   typePills(c:CanvasRenderingContext2D,types:string[],x:number,y:number){for(const [i,type]of types.entries())this.typeBadge(c,type,x+i*33,y)}
   typeBadge(c:CanvasRenderingContext2D,type:string,x:number,y:number){this.rect(c,x,y,30,13,'#43545a');this.rect(c,x+1,y+1,28,11,TYPE_COLORS[type]??'#7a8582');this.rect(c,x+2,y+2,26,1,'#fff8d8');this.text(c,type,x+14,y+3,'#fffdec',7,'center')}
-  summaryTop(c:CanvasRenderingContext2D){const pokemon=this.game.save.party[this.game.partyIndex];if(!pokemon)return;const p=SPECIES[pokemon.species];this.rect(c,0,0,256,192,'#dce8e7');for(let y=25;y<192;y+=4)this.rect(c,0,y,256,1,'#d2e0df');this.rect(c,0,0,256,24,'#547f8b');this.text(c,'포켓몬의 정보',12,8,'#fffbea');this.text(c,`${this.game.partyIndex+1} / ${this.game.save.party.length}`,244,9,'#dfeee3',8,'right');this.frame(c,7,32,104,113,'#f8f3da');this.pokemon(c,pokemon.species,19,38);this.text(c,p.name,59,123,INK,10,'center');this.text(c,`No. ${String(pokemon.species).padStart(3,'0')}`,121,39,'#6c7f7f',8);this.text(c,`Lv. ${pokemon.level}`,239,39,INK,10,'right');this.typePills(c,p.types,121,58);this.text(c,`성격  ${pokemon.nature}`,121,82,INK,9);this.text(c,'만난 장소',121,104,'#7b8984',8);this.text(c,pokemon.met.replace(' · ','\n'),121,120,INK,9);this.frame(c,7,151,242,34);this.text(c,`HP  ${pokemon.hp} / ${pokemon.maxHp}`,19,162,INK,9);this.hp(c,120,164,114,pokemon)}
+  summaryTop(c:CanvasRenderingContext2D){const pokemon=this.game.save.party[this.game.partyIndex];if(!pokemon)return;const p=SPECIES[pokemon.species];this.rect(c,0,0,256,192,'#dce8e7');for(let y=25;y<192;y+=4)this.rect(c,0,y,256,1,'#d2e0df');this.rect(c,0,0,256,24,'#547f8b');this.text(c,'포켓몬의 정보',12,8,'#fffbea');this.text(c,`${this.game.partyIndex+1} / ${this.game.save.party.length}`,244,9,'#dfeee3',8,'right');this.frame(c,7,32,104,113,'#f8f3da');this.pokemon(c,pokemon.species,19,38,1,pokemon.shiny);this.text(c,p.name,59,123,INK,10,'center');this.text(c,`No. ${String(pokemon.species).padStart(3,'0')}`,121,39,'#6c7f7f',8);this.text(c,`Lv. ${pokemon.level}`,239,39,INK,10,'right');this.typePills(c,p.types,121,58);this.text(c,`성격  ${pokemon.nature}`,121,82,INK,9);this.text(c,'만난 장소',121,104,'#7b8984',8);this.text(c,pokemon.met.replace(' · ','\n'),121,120,INK,9);this.frame(c,7,151,242,34);this.text(c,`HP  ${pokemon.hp} / ${pokemon.maxHp}`,19,162,INK,9);this.hp(c,120,164,114,pokemon)}
   hp(c:CanvasRenderingContext2D,x:number,y:number,w:number,p:Pokemon){
     const ratio=Math.max(0,Math.min(1,p.hp/p.maxHp));
     const [fill,shine]=ratio<=.2?['#cc595b','#ef9690']:ratio<=.5?['#cfaa45','#f3d57b']:['#64ad73','#a9d78d'];
@@ -169,7 +252,7 @@ export class Renderer {
   catchTop(c:CanvasRenderingContext2D){
     const g=this.game,p=g.caughtPokemon!,species=SPECIES[p.species];
     this.rect(c,0,0,W,H,'#dce8e7');this.topbar(c,'새로운 친구를 만났다!');
-    this.frame(c,7,33,242,94,'#f8f3da');this.pokemon(c,p.species,10,39,.95);
+    this.frame(c,7,33,242,94,'#f8f3da');this.pokemon(c,p.species,10,39,.95,p.shiny);
     this.text(c,species.name,100,44,INK,13);this.text(c,`Lv.${p.level}`,232,47,INK,10,'right');this.typePills(c,species.types,100,66);
     this.text(c,`HP ${p.hp} / ${p.maxHp}`,100,87,INK,9);this.hp(c,100,106,132,p);
   }
@@ -182,7 +265,7 @@ export class Renderer {
   }
   recovery(c:CanvasRenderingContext2D){
     const s=this.game.save;this.topbar(c,'포켓몬 회복 완료');
-    s.party.forEach((p,i)=>{const x=8+(i%2)*124,y=34+Math.floor(i/2)*32;this.frame(c,x,y,116,29,'#f8f3da');this.pokemon(c,p.species,x+1,y-1,.35);this.text(c,SPECIES[p.species].name,x+32,y+5,INK,9);this.text(c,`HP ${p.hp}/${p.maxHp}`,x+32,y+17,'#527a69',7);});
+    s.party.forEach((p,i)=>{const x=8+(i%2)*124,y=34+Math.floor(i/2)*32;this.frame(c,x,y,116,29,'#f8f3da');this.pokemon(c,p.species,x+1,y-1,.35,p.shiny);this.text(c,SPECIES[p.species].name,x+32,y+5,INK,9);this.text(c,`HP ${p.hp}/${p.maxHp}`,x+32,y+17,'#527a69',7);});
     this.text(c,`출전 ${s.party.filter(p=>p.hp>0).length}/${s.party.length} · 상처약 ${s.inventory.potions}개`,128,137,INK,9,'center');
   }
   gymPreparation(c:CanvasRenderingContext2D){
@@ -199,7 +282,7 @@ export class Renderer {
     this.text(c,g.map.name,124,48,'#2f4938',9,'center');
     if(guide){this.text(c,guide.objective.title,124,71,'#2b4434',12,'center');this.text(c,guide.lines.join('\n'),124,96,'#304b39',9,'center');}
     this.line(c,34,128,214,128,'#778e68');
-    if(g.save.party.length)this.pokemon(c,g.save.party[0].species,34,132,.4);else this.ball(c,50,148,9);
+    if(g.save.party.length)this.pokemon(c,g.save.party[0].species,34,132,.4,g.save.party[0].shiny);else this.ball(c,50,148,9);
     this.text(c,`출전 가능 ${g.save.party.filter(p=>p.hp>0).length}/${g.save.party.length}`,145,136,'#304b39',9,'center');
     this.text(c,`배지 ${g.save.badges.length}/4 · 상처약 ${g.save.inventory.potions}`,145,151,'#304b39',9,'center');
     this.rect(c,238,66,15,48,'#8c493f');this.rect(c,239,65,14,43,'#de6b57');this.rect(c,241,69,9,34,'#ec9670');this.text(c,'▶',242,83,'#8e5445',8);this.hits.push({x:233,y:0,w:23,h:192,action:()=>g.cancel()});
@@ -216,7 +299,9 @@ export class Renderer {
     for(let y=0;y<m.height;y++)for(let x=0;x<m.width;x++)this.rect(c,ox+x*scale,oy+y*scale,Math.ceil(scale),Math.ceil(scale),m.walkable[y][x]==='.'?'#d4d6b0':'#829c8b');
     for(const b of TOUR_BUILDINGS[m.id]??[])this.rect(c,ox+b.x*scale,oy+b.y*scale,b.w*scale,b.h*scale,b.kind==='center'?'#c77969':'#6f869f');
     for(const f of TOUR_FEATURES[m.id]??[])this.rect(c,ox+f.x*scale,oy+f.y*scale,f.w*scale,f.h*scale,f.kind==='water'?'#70b9ce':'#718977');
-    for(const sign of TOUR_OUTDOORS[m.id]?.signs??[])this.rect(c,ox+sign.x*scale,oy+sign.y*scale,scale,scale,'#ae8356');
+    paintCelesticMinimapPaths(c,m,ox,oy,scale);
+    paintIcirrusMinimapAccess(c,m,ox,oy,scale);
+    for(const sign of minimapTravelMarkers(m,TOUR_OUTDOORS[m.id]?.signs??[]))this.rect(c,ox+sign.x*scale,oy+sign.y*scale,scale,scale,'#ae8356');
     const route=g.tourNavigation;
     if(route?.status==='walking')for(const tile of route.tiles)this.rect(c,ox+tile.x*scale+scale*.25,oy+tile.y*scale+scale*.25,Math.max(2,scale*.5),Math.max(2,scale*.5),'#f6e785');
     for(const w of m.warps)this.rect(c,ox+w.x*scale,oy+w.y*scale,scale,scale,'#ebbb57');
@@ -248,12 +333,12 @@ export class Renderer {
   }
   menuLower(c:CanvasRenderingContext2D){this.topbar(c,'메뉴');const labels=['포켓몬','가방','트레이너','리포트','설정','닫기'];labels.forEach((label,i)=>{const x=9+(i%2)*124,y=36+Math.floor(i/2)*45;this.button(c,x,y,114,38,label,()=>{this.game.menuIndex=i;this.game.selectMenu(i)},this.game.menuIndex===i)});this.text(c,'방향키로 선택 · Z로 확인',128,177,'#687d73',8,'center')}
   starters(c:CanvasRenderingContext2D){const g=this.game;this.topbar(c,'첫 번째 파트너');this.text(c,'마음이 끌리는 몬스터볼을 선택하세요',128,37,INK,8,'center');STARTERS.forEach((id,i)=>{const x=7+i*83,selected=g.starterIndex===i;this.frame(c,x,57,77,92,selected?'#f0dfa6':'#f8f7e6');this.ball(c,x+38,78,7,selected);this.pokemon(c,id,x+8,81,.75);this.text(c,SPECIES[id].name,x+38,130,INK,10,'center');if(selected)this.text(c,'▼',x+35,48,'#b56f4c',8);this.hits.push({x,y:57,w:77,h:92,action:()=>{if(g.starterIndex===i)g.chooseStarter();else g.starterIndex=i}})});this.button(c,9,159,145,27,'Z  이 친구로 결정',()=>g.chooseStarter(),true);this.button(c,162,159,86,27,'X  돌아가기',()=>g.cancel())}
-  party(c:CanvasRenderingContext2D){const g=this.game,healing=g.panel==='fieldHeal';this.topbar(c,healing?'상처약을 쓸 포켓몬':'함께하는 포켓몬');if(!g.save.party.length){this.frame(c,15,52,226,87);this.text(c,'아직 함께하는 포켓몬이 없어요.\n\n연구소에서 첫 친구를 만나 보세요!',128,68,INK,9,'center')}else{g.save.party.forEach((p,i)=>{const data=SPECIES[p.species],x=8+(i%2)*124,y=35+Math.floor(i/2)*41;this.frame(c,x,y,116,37,g.partyIndex===i?'#efe2ad':'#f4f5e7');this.pokemon(c,p.species,x+1,y-4,.55);this.text(c,data.name,x+44,y+7,INK,9);this.text(c,`Lv.${p.level}`,x+100,y+8,'#697e7a',7,'right');this.hp(c,x+45,y+22,60,p);this.hits.push({x,y,w:116,h:37,action:()=>{if(healing)g.useFieldPotion(i);else{g.partyIndex=i;g.panel='summary';g.summaryActionIndex=0;}}})});for(let i=g.save.party.length;i<6;i++){const x=8+(i%2)*124,y=35+Math.floor(i/2)*41;this.rect(c,x,y,116,37,'#c3d1c9');this.rect(c,x+2,y+2,112,33,'#cedad0');this.text(c,'—',x+58,y+12,'#9aaeaa',9,'center')}}this.text(c,healing?'남은 상처약 '+g.save.inventory.potions+'개':'포켓몬을 선택해 주세요',10,173,INK,8);this.back(c)}
+  party(c:CanvasRenderingContext2D){const g=this.game,healing=g.panel==='fieldHeal';this.topbar(c,healing?'상처약을 쓸 포켓몬':'함께하는 포켓몬');if(!g.save.party.length){this.frame(c,15,52,226,87);this.text(c,'아직 함께하는 포켓몬이 없어요.\n\n연구소에서 첫 친구를 만나 보세요!',128,68,INK,9,'center')}else{g.save.party.forEach((p,i)=>{const data=SPECIES[p.species],x=8+(i%2)*124,y=35+Math.floor(i/2)*41;this.frame(c,x,y,116,37,g.partyIndex===i?'#efe2ad':'#f4f5e7');this.pokemon(c,p.species,x+1,y-4,.55,p.shiny);this.text(c,data.name,x+44,y+7,INK,9);this.text(c,`Lv.${p.level}`,x+100,y+8,'#697e7a',7,'right');this.hp(c,x+45,y+22,60,p);this.hits.push({x,y,w:116,h:37,action:()=>{if(healing)g.useFieldPotion(i);else{g.partyIndex=i;g.panel='summary';g.summaryActionIndex=0;}}})});for(let i=g.save.party.length;i<6;i++){const x=8+(i%2)*124,y=35+Math.floor(i/2)*41;this.rect(c,x,y,116,37,'#c3d1c9');this.rect(c,x+2,y+2,112,33,'#cedad0');this.text(c,'—',x+58,y+12,'#9aaeaa',9,'center')}}this.text(c,healing?'남은 상처약 '+g.save.inventory.potions+'개':'포켓몬을 선택해 주세요',10,173,INK,8);this.back(c)}
   moves(c:CanvasRenderingContext2D){const p=this.game.save.party[this.game.partyIndex];if(!p)return;this.topbar(c,'기억하고 있는 기술');pokemonMoves(p).forEach((m,i)=>{const x=8+(i%2)*124,y=32+Math.floor(i/2)*29;this.frame(c,x,y,116,25);this.text(c,m,x+9,y+8,INK,9)});this.text(c,growthPreview(p),128,96,'#345c49',8,'center');this.button(c,8,139,78,23,'선두로',()=>this.game.manageParty(0),this.game.summaryActionIndex===0);this.button(c,89,139,78,23,'상처약 '+this.game.save.inventory.potions,()=>this.game.manageParty(1),this.game.summaryActionIndex===1);this.button(c,170,139,78,23,'기술 배우기',()=>this.game.manageParty(2),this.game.summaryActionIndex===2);this.text(c,p.level===LEVEL_CAP?`현재 성장 한도 Lv.${LEVEL_CAP}`:`다음 레벨까지 ${nextLevelXp(p.level)-p.experience} EXP`,128,111,'#657a72',9,'center');this.text(c,'EXP',14,125,'#52758d',7);this.experience(c,37,127,203,p);if(this.game.save.party.length>1){this.button(c,8,164,68,23,'↑ 이전',()=>this.game.browseParty(-1));this.button(c,81,164,68,23,'↓ 다음',()=>this.game.browseParty(1));}this.back(c)}
   fieldHealTop(c:CanvasRenderingContext2D){
     const g=this.game,p=g.save.party[g.partyIndex];if(!p)return;
     this.rect(c,0,0,256,192,'#dce8e7');this.topbar(c,'포켓몬 회복');
-    this.frame(c,8,33,240,89);this.pokemon(c,p.species,17,35,.9);
+    this.frame(c,8,33,240,89);this.pokemon(c,p.species,17,35,.9,p.shiny);
     this.text(c,SPECIES[p.species].name,109,47,INK,11);this.text(c,`Lv.${p.level}`,235,49,INK,8,'right');
     this.text(c,p.hp>0?`HP ${p.hp} / ${p.maxHp}`:'기절',110,69,INK,9);this.hp(c,110,90,123,p);
     this.frame(c,3,132,250,57);this.text(c,fieldPotionPreview(g.save,g.partyIndex).join('\n'),15,146,INK,9);
@@ -275,7 +360,7 @@ export class Renderer {
     const g=this.game,b=g.battle!,p=g.save.party[b.selected],species=SPECIES[p.species];
     this.rect(c,0,0,256,192,'#dce8e7');this.topbar(c,b.menu==='heal'?'상처약을 사용할 포켓몬':'교대할 포켓몬');
     this.text(c,`${b.selected+1}/${g.save.party.length}`,222,9,'#fffce7',9,'right');
-    this.frame(c,7,33,242,101,'#f8f3da');this.pokemon(c,p.species,10,34,.95);
+    this.frame(c,7,33,242,101,'#f8f3da');this.pokemon(c,p.species,10,34,.95,p.shiny);
     this.text(c,species.name,100,42,INK,12);this.text(c,`Lv.${p.level}`,235,45,INK,9,'right');this.typePills(c,species.types,100,62);
     this.text(c,`HP ${p.hp} / ${p.maxHp}`,100,81,p.hp?'#384750':'#a3463f',9);this.hp(c,100,98,132,p);
     const moves=pokemonMoves(p);for(let row=0;row<Math.ceil(moves.length/2);row++)this.text(c,moves.slice(row*2,row*2+2).join(' · '),128,109+row*13,'#617878',8,'center');
@@ -287,8 +372,8 @@ export class Renderer {
     const effect=presentation?null:this.game.battleEffect,capture=this.game.captureMotion;
     const hit=presentation?.phase==='impact',target=view?.effect?.target;
     const recoil=hit?Math.round(Math.sin(this.game.dialogueElapsed/.15*Math.PI*4)*3):0;
-    if((enemy.hp>0||presentation?.keepEnemyVisible)&&!capture?.hideEnemy)this.pokemon(c,enemy.species,155+(hit&&target==='enemy'?recoil:effect?.target==='enemy'?effect.recoil:0),9);
-    if(p.hp>0||presentation?.keepPlayerVisible)c.drawImage(this.images['pokemon-back-'+p.species],20+(hit&&target==='player'?recoil:effect?.target==='player'?effect.recoil:0),65,96,96);
+    if((enemy.hp>0||presentation?.keepEnemyVisible)&&!capture?.hideEnemy)this.pokemon(c,enemy.species,155+(hit&&target==='enemy'?recoil:effect?.target==='enemy'?effect.recoil:0),9,1,enemy.shiny);
+    if(p.hp>0||presentation?.keepPlayerVisible)c.drawImage(this.images['pokemon-back-'+(p.shiny&&p.species===130?'shiny-':'')+p.species],20+(hit&&target==='player'?recoil:effect?.target==='player'?effect.recoil:0),65,96,96);
     if(hit){
       const x=target==='enemy'?196:64,y=target==='enemy'?58:103;
       this.rect(c,x-9,y-1,19,3,'#fff2b3');this.rect(c,x-1,y-9,3,19,'#fffce9');
@@ -310,12 +395,13 @@ export class Renderer {
   }
   battleGrowth(c:CanvasRenderingContext2D){
     const growth=this.game.battleFrame!.growth!,p=growth.after,levelUp=growth.kind==='level',evolution=growth.kind==='evolution',move=growth.kind==='move';
-    this.topbar(c,evolution?'축하합니다! 진화했어요':move?'새로운 기술을 배울 수 있어요':levelUp?'레벨 업!':'경험치 획득');
-    this.frame(c,7,33,242,108,'#f8f3da');this.pokemon(c,p.species,9,36,.85);
+    const learned=move&&!!growth.move&&p.moves?.includes(growth.move);
+    this.topbar(c,evolution?'축하합니다! 진화했어요':move?(learned?'새로운 기술을 배웠어요':'새로운 기술을 배울 수 있어요'):levelUp?'레벨 업!':'경험치 획득');
+    this.frame(c,7,33,242,108,'#f8f3da');this.pokemon(c,p.species,9,36,.85,p.shiny);
     this.text(c,SPECIES[p.species].name,89,42,INK,12);this.text(c,`파티 ${growth.index+1}`,237,44,'#617878',8,'right');
-    this.text(c,evolution?`${SPECIES[growth.before.species].name} →`:move?'정보 → 기술 배우기':levelUp?`Lv.${growth.before.level} → Lv.${p.level}`:`Lv.${p.level}  EXP +${growth.amount}`,89,63,levelUp?'#a36536':INK,10);
+    this.text(c,evolution?`${SPECIES[growth.before.species].name} →`:move?(learned?growth.move!:'정보 → 기술 배우기'):levelUp?`Lv.${growth.before.level} → Lv.${p.level}`:`Lv.${p.level}  EXP +${growth.amount}`,89,63,levelUp?'#a36536':INK,10);
     this.text(c,`HP ${p.hp} / ${p.maxHp}`,89,82,INK,9);this.hp(c,89,97,147,p);
-    this.text(c,evolution?'새로운 모습의 파트너!':move?'배울 기술을 직접 선택해 주세요':levelUp?`최대 HP +${p.maxHp-growth.before.maxHp}`:'함께 싸워 얻은 경험치',16,115,'#617878',8);
+    this.text(c,evolution?'새로운 모습의 파트너!':move?(learned?'다음 행동에서 새 기술을 골라 보세요':'배울 기술을 직접 선택해 주세요'):levelUp?`최대 HP +${p.maxHp-growth.before.maxHp}`:'함께 싸워 얻은 경험치',16,115,'#617878',8);
     const status=p.level>=LEVEL_CAP?`성장 한도 Lv.${LEVEL_CAP}`:p.experience>=nextLevelXp(p.level)?'레벨업!':`다음까지 ${nextLevelXp(p.level)-p.experience} EXP`;
     this.text(c,status,237,115,'#52758d',8,'right');this.experience(c,16,131,221,p);
   }
@@ -333,7 +419,7 @@ export class Renderer {
     }
     if(b.menu==='party'||b.menu==='heal'){
       g.save.party.forEach((mon,i)=>{const x=8+(i%2)*124,y=32+Math.floor(i/2)*41;
-        this.frame(c,x,y,116,37,b.selected===i?'#f3df9f':'#fbf9e6');this.pokemon(c,mon.species,x,y-4,.5);
+        this.frame(c,x,y,116,37,b.selected===i?'#f3df9f':'#fbf9e6');this.pokemon(c,mon.species,x,y-4,.5,mon.shiny);
         this.text(c,SPECIES[mon.species].name,x+43,y+5,INK,9);
         this.text(c,mon.hp<=0?'기절':b.menu!=='heal'&&i===b.active?'전투 중':`Lv.${mon.level}  ${mon.hp}/${mon.maxHp}`,x+43,y+17,'#687b70',7);
         this.hp(c,x+43,y+28,65,mon);this.hits.push({x,y,w:116,h:37,action:()=>{b.selected=i;g.selectBattle()}});

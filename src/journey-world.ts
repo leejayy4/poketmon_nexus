@@ -85,7 +85,7 @@ export function buildJourneyWorld(w:World){
     }
     const hall=`${p.id}_hall` as TourId;
     // Urban landmarks are visibly tall DS buildings too, not just named towers.
-    if(!w.rooms[hall]||!(/탑|타워|등대|백화점|사옥|방송국/.test(p.landmark)||['city','factory','airport','fair'].includes(p.theme)||['tour_castelia','tour_vermilion','tour_lentimas','tour_undella','tour_lacunosa'].includes(p.id)))continue;
+    if(!w.rooms[hall]||!(/탑|타워|등대|백화점|사옥|방송국/.test(p.landmark)||['city','factory','airport','fair'].includes(p.theme)||['tour_castelia','tour_vermilion','tour_lentimas','tour_undella','tour_lacunosa','tour_village_bridge','tour_opelucid','tour_icirrus'].includes(p.id)))continue;
     const total=3,ids=[hall,`${hall}_2f`,`${hall}_3f`] as TourId[];
     // Department stores have an actual shop counter on their first floor.
     if(p.landmark==='백화점'){

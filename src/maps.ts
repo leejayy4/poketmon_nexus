@@ -1,3 +1,8 @@
+import { applyMahoganyPower } from './mahogany-power';
+import { applySeafoamBoulder } from './seafoam-boulder';
+import { applyMortarRescue } from './mortar-rescue';
+import { applyCinnabarEvacuation } from './cinnabar-evacuation-state';
+import { createWorldDatabase } from './data/world';
 import { createUnifiedWorld,worldMapId } from './unified-world';
 import { TOUR_MAPS,TOUR_OUTDOORS } from './explore-world';
 import { SINNOH_MAPS } from './sinnoh-maps';
@@ -22,7 +27,7 @@ export const MAPS: Record<MapId, GameMap> = {
     props:[{...ROUTE_SIGN,dialogue:'routeSign'}]},
   bedroom: { id:'bedroom',name:'우리 집 · 2층',width:13,height:10,background:'bedroom-reference',
     walkable:grid(13,10,[[1,4,10,5]],[[1,4,1,1],[9,7,2,2],[1,7,1,2]],[[8,4]]),
-    warps:[{x:8,y:4,to:'home',spawn:{x:10,y:4},facing:'down',entry:'up'}],npcs:[],
+    warps:[{x:8,y:4,to:'home',spawn:{x:10,y:4},facing:'down',entry:'right'}],npcs:[],
     props:[{x:3,y:3,dialogue:'computer'},{x:4,y:3,dialogue:'tv'},{x:9,y:7,dialogue:'bed'},{x:6,y:3,dialogue:'window'},{x:2,y:3,dialogue:'books'}] },
   home: {id:'home',name:'우리 집 · 1층',width:13,height:10,background:'home-reference',walkable:homeFloor,
     warps:[{x:10,y:3,to:'bedroom',spawn:{x:8,y:5},facing:'down',entry:'up'},{x:6,y:8,to:'town',spawn:{x:8,y:25},facing:'down',entry:'down'}],
@@ -42,6 +47,7 @@ export const MAPS: Record<MapId, GameMap> = {
 };
 export const UNIFIED_MAPS=createUnifiedWorld(MAPS);
 export const ACTIVE_MAPS=Object.fromEntries(Object.entries(MAPS).filter(([id])=>worldMapId(id as MapId)===id).map(([id,map])=>[id,UNIFIED_MAPS[id as MapId]??map])) as Record<MapId,GameMap>;
+export const WORLD_DATABASE=createWorldDatabase(()=>ACTIVE_MAPS,worldMapId);
 export function getWorldOutdoors(map:GameMap){
   const source=TOUR_OUTDOORS[map.id];if(!source)return undefined;
   return {...source,signs:source.signs.map(sign=>{
@@ -63,12 +69,12 @@ export function canEnter(map:GameMap,x:number,y:number,direction:import('./types
 
 // Position and access derive from this save; loading another slot cannot leak gate state.
 export function getMap(id:MapId,flags:SaveData['flags']={}):GameMap {
-  id=worldMapId(id);const map=UNIFIED_MAPS[id]??MAPS[id];
+  id=worldMapId(id);const map=WORLD_DATABASE.require(id);
   const collected=flags['pickup:'+id]?map.props.find(p=>p.dialogue==='journeyItem'):undefined;
   let walkable=collected?map.walkable.map((row,y)=>y===collected.y?row.slice(0,collected.x)+'.'+row.slice(collected.x+1):row):map.walkable;
   let props=collected?map.props.filter(p=>p!==collected):map.props;
   if(id==='tour_chargestone_b1f'&&flags.chargestoneMainCrystalMoved===true){walkable=walkable.map((row,y)=>y===23?row.slice(0,25)+'.'+row.slice(26):row);props=props.filter(p=>p.dialogue!=='tourChargestoneMainCrystal');}
-  return {...map,walkable,
+  return applyMahoganyPower(applySeafoamBoulder(applyMortarRescue(applyCinnabarEvacuation({...map,walkable,
     props,warps:map.warps.filter(w=>!w.requiresFlag||flags[w.requiresFlag]===true),
-    npcs:map.npcs.map(n=>n.id==='gatekeeper'&&flags.departureCleared===true?{...n,x:4,y:14,facing:'down'}:n)};
+    npcs:map.npcs.map(n=>n.id==='gatekeeper'&&flags.departureCleared===true?{...n,x:4,y:14,facing:'down'}:n)},flags),flags),flags),flags);
 }

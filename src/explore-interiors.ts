@@ -10,6 +10,12 @@ interface Collection { style:RoomStyle; exhibits:[Exhibit,Exhibit,Exhibit] }
 const exhibit=(kind:FurnishingKind,name:string,text:string):Exhibit=>[kind,name,text];
 // Facility names and exhibits are authored for the compressed tour, not story rewards.
 const collections:Record<string,Collection>={
+  // Initial rooms are needed before journey floors and city-specific interiors are installed.
+  lentimas:{style:'terminal',exhibits:[exhibit('chart','산길 준비표','동료의 상태와 물, 귀환 방향을 확인한다.'),exhibit('model','화산 지형 모형','산로마을과 리버스마운틴의 높이 차를 보여 준다.'),exhibit('bench','동행 휴게석','재바람을 피해 사람과 포켓몬이 쉬는 자리다.')]},
+  undella:{style:'garden',exhibits:[exhibit('chart','산길 도착 안내','리버스마운틴에서 도착한 여행자의 귀환길을 안내한다.'),exhibit('model','해안 지형 모형','산길과 해변, 마을 시설을 구분해 놓았다.'),exhibit('bench','해변 휴게석','동료와 모래를 털고 쉬는 자리다.')]},
+  lacunosa:{style:'museum',exhibits:[exhibit('chart','마을 기록','성벽과 공동 안뜰의 생활을 기록했다.'),exhibit('model','성벽 모형','마을 문과 오래된 돌담의 위치를 보여 준다.'),exhibit('shelf','생활 수첩','주민이 함께 관리한 길의 기록이 꽂혀 있다.')]},
+  village_bridge:{style:'terminal',exhibits:[exhibit('chart','다리 통행 안내','중앙 보행선과 양쪽 도로 방향을 표시했다.'),exhibit('model','수로 모형','다리 기둥과 물길의 위치를 보여 준다.'),exhibit('bench','동료 휴게석','통행선을 비워 두고 동료와 쉬는 자리다.')]},
+  icirrus:{style:'garden',exhibits:[exhibit('chart','습지 귀환 지도','마른 본선과 도시의 출구를 구분했다.'),exhibit('model','빗물 순환 모형','도시 연못과 낮은 습지의 물길을 보여 준다.'),exhibit('bench','따뜻한 휴게석','습지를 걸은 동료가 몸을 말리는 자리다.')]},
   jubilife:{style:'studio',exhibits:[exhibit('console','방송 조정석','화면에 마을 풍경이 비친다.\n작은 조절 손잡이가 줄지어 있다.'),exhibit('camera','스튜디오 카메라','광장을 소개하는 방송 세트다.\n카메라 앞에 빈 인터뷰 자리가 있다.'),exhibit('shelf','방송 자료실','여행과 포켓몬 생활을 다룬\n방송 기록이 날짜별로 꽂혀 있다.')]},
   oreburgh:{style:'museum',exhibits:[exhibit('mineral','광석 표본','반짝이는 광물과 검은 석탄이\n채굴한 깊이에 따라 놓여 있다.'),exhibit('model','탄광 모형','작은 광차가 레일 위에 있다.\n갱도와 운반 길을 한눈에 볼 수 있다.'),exhibit('workbench','광부의 도구','곡괭이와 작업등에\n오랫동안 사용한 흔적이 남아 있다.')]},
   eterna:{style:'shrine',exhibits:[exhibit('altar','옛 석상 전시','오래된 석상의 문양을 살펴보는 전시다.\n광장의 석상 주변과 비교해 보자.'),exhibit('chart','옛 도시 지도와 답사 수첩','동료와 광장 석상·동쪽 숲 경계를\n직접 살펴보고 옛 지도와 비교한다.'),exhibit('plants','이끼 정원','축축한 돌 사이로 이끼가 자란다.\n오래된 숲 냄새가 난다.')]},

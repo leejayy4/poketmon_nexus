@@ -1,5 +1,11 @@
+import { paintCinnabarControlFloor,paintCinnabarSiteFurnishing } from './cinnabar-control-site';
+import { paintSilphRecordsFloor } from './silph-records-room';
 import type { Furnishing,TourInterior,RoomStyle } from './explore-interiors';
 import type { GameMap } from './types';
+import { paintCherrygroveFurnishing } from './johto-cherrygrove-furniture-art';
+import { paintCelesticRuinsRoom,paintCelesticRuinsExhibit } from './sinnoh-celestic-ruins-art';
+import { paintCinnabarFurnishing,paintCinnabarLabFloor } from './cinnabar-interior-art';
+import { paintCelesticFurnishing,paintCelesticInteriorFloor } from './sinnoh-celestic-interior-art';
 type Images=Record<string,HTMLImageElement|HTMLCanvasElement>;
 export const HALL_SAMPLES={tile:['lab-reference',80,80,16,16],wood:['home-reference',160,80,16,16],shelf:['lab-reference',42,20,30,32],desk:['lab-reference',24,55,48,24],monitor:['home-reference',94,48,30,28],window:['lab-reference',105,13,26,17]} as const;
 function sample(c:CanvasRenderingContext2D,images:Images,key:keyof typeof HALL_SAMPLES,x:number,y:number){const [name,sx,sy,w,h]=HALL_SAMPLES[key];c.drawImage(images[name],sx,sy,w,h,x,y,w,h);}
@@ -16,6 +22,11 @@ const PALETTES:Record<RoomStyle,[string,string,string,string]>={
 };
 
 export function paintTourFurnishing(c:CanvasRenderingContext2D,images:Images,room:TourInterior,o:Furnishing){
+  if(paintCinnabarSiteFurnishing(c,o))return;
+  if(paintCherrygroveFurnishing(c,o))return;
+  if(paintCelesticRuinsExhibit(c,o))return;
+  if(paintCinnabarFurnishing(c,room,o))return;
+  if(paintCelesticFurnishing(c,o))return;
   const accent=PALETTES[room.style][3],x=o.x*16,y=o.y*16-8,w=o.w*16,h=o.h*16+8;
   c.save();c.beginPath();c.rect(x,y-4,w,h+4);c.clip();
   // The footprint stays fixed; raised faces overlap actors behind the exhibit.
@@ -121,7 +132,8 @@ function paintExpandedTourInterior(c:CanvasRenderingContext2D,images:Images,room
 }
 
 export function paintTourInterior(c:CanvasRenderingContext2D,images:Images,room:TourInterior,map?:GameMap){
-  if(map&&map.width>16){paintExpandedTourInterior(c,images,room,map);return;}
+  if(map&&paintCelesticRuinsRoom(c,map))return;
+  if(map&&map.width>16){paintExpandedTourInterior(c,images,room,map);paintCelesticInteriorFloor(c,map);paintCinnabarLabFloor(c,map);paintSilphRecordsFloor(c,map);paintCinnabarControlFloor(c,map);return;}
   const [wall,floor,,accent]=PALETTES[room.style],style=room.style;
   const wood=['shrine','stage','school','workshop','dojo','gallery'].includes(style);
   box(c,0,0,256,224,'#172b34');box(c,28,10,200,184,'#354746');
@@ -167,4 +179,5 @@ export function paintTourInterior(c:CanvasRenderingContext2D,images:Images,room:
   box(c,28,47,4,145,'#6b786b');box(c,224,47,4,145,'#6b786b');
   box(c,32,189,96,3,'#7b806a');box(c,144,189,80,3,'#7b806a');
   box(c,128,176,16,48,'#865d57');box(c,130,178,12,46,'#bb816e');for(let y=181;y<224;y+=8)box(c,132,y,8,1,'#d8a383');
+  if(map)paintCinnabarLabFloor(c,map);
 }

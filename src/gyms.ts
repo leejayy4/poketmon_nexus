@@ -1,3 +1,4 @@
+import { createCatalog } from './data/catalog';
 import type { Pokemon, SaveData } from './types';
 export const GYMS = [
   {id:'roark',name:'강석',badge:'BADGE-GS01',label:'콜배지',tm:'TM-stealth-rock',move:'스텔스록',level:8,damage:5,xp:50,team:[[74,10,22],[95,11,24],[408,12,26]]},
@@ -6,7 +7,8 @@ export const GYMS = [
   {id:'maylene',name:'자두',badge:'BADGE-GS04',label:'코블배지',tm:'TM-drain-punch',move:'드레인펀치',level:15,damage:7,xp:110,team:[[307,21,38],[66,22,40],[448,23,42]]},
 ] as const;
 export type GymId=typeof GYMS[number]['id'];
-export function gymById(id:GymId){return GYMS.find(g=>g.id===id)!}
+export const GYM_DATABASE=createCatalog('gyms',GYMS,gym=>gym.id);
+export function gymById(id:GymId){return GYM_DATABASE.require(id)}
 export function gymTeam(id:GymId):Pokemon[]{return gymById(id).team.map(([species,level,maxHp])=>({species,level,maxHp,hp:maxHp,experience:0,nature:'성실',met:'체육관'}))}
 export function gymChallengeBlock(save:SaveData,id:GymId):string|null{
   if(!save.party.length)return '먼저 새잎마을 연구소에서\n함께할 첫 파트너를 만나 줘.';

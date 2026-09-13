@@ -1,10 +1,11 @@
 /** Page-local, deterministic DS pixels. Call after sprites and before HP/dialogue. */
 export const MOVE_TECHNIQUE_SECONDS = .7;
 export type MoveTechnique = {move:string; target:'player'|'enemy'};
-export type MoveStyle = 'fire'|'water'|'vine'|'leaf'|'absorb'|'electric'|'rock'|'ghost'|'lick'|'psychic'|'fight'|'scratch'|'wing'|'quick'|'guard'|'cry'|'tail'|'impact';
+export type MoveStyle = 'ice'|'fire'|'water'|'vine'|'leaf'|'absorb'|'electric'|'rock'|'ghost'|'lick'|'psychic'|'fight'|'scratch'|'wing'|'quick'|'guard'|'cry'|'tail'|'impact';
 
 const STYLES: Record<string, MoveStyle> = {
   불꽃세례:'fire',화염방사:'fire',불꽃엄니:'fire',불꽃펀치:'fire',
+  얼음뭉치:'ice',
   물대포:'water',거품:'water',거품광선:'water',파도타기:'water',
   덩굴채찍:'vine',잎날가르기:'leaf',매지컬리프:'leaf',흡수:'absorb',메가드레인:'absorb',기가드레인:'absorb',
   전기쇼크:'electric',스파크:'electric','10만볼트':'electric',번개:'electric',
@@ -65,6 +66,13 @@ export function paintMoveTechnique(c:CanvasRenderingContext2D, technique:MoveTec
           rect(fx,fy-2,2,4,'#ffe99c');rect(fx+2,fy-10,2,3,'#f7c66a');
         }
         if(p===1)scatter('#efad48');break;
+      case 'ice':
+        for(let i=0;i<4;i++){
+          const ix=x-dir*i*8,iy=y+(i%2?3:-3);
+          diamond(ix,iy,5,'#6daebd');diamond(ix,iy,3,'#d9f5f4');
+          line(ix-dir*3,iy,ix+dir*4,iy,'#f2ffff');
+        }
+        if(p===1){scatter('#a7dfe8',8);spark(end.x,end.y,7,'#efffff');}break;
       case 'water':
         for(let i=0;i<10;i++){
           const wx=x-dir*i*5,wy=y+Math.sin(frame*.45-i*.7)*3;

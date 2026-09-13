@@ -1,5 +1,7 @@
 import type { Furnishing,TourInterior } from './explore-interiors';
 import type { GameMap } from './types';
+import { paintCherrygroveCenterFurnishing } from './johto-cherrygrove-art';
+import { paintCelesticCenterFloor,paintCelesticCenterFurnishing,paintCelesticCenterReception } from './sinnoh-celestic-center-art';
 
 type Images=Record<string,HTMLImageElement|HTMLCanvasElement>;
 // Native DPPt samples, composed into our existing 16 × 14 exploration room.
@@ -21,7 +23,7 @@ function paintExpandedCenter(c:CanvasRenderingContext2D,images:Images,map:GameMa
 }
 
 export function paintTourCenter(c:CanvasRenderingContext2D,images:Images,map?:GameMap){
-  if(map&&map.width>16){paintExpandedCenter(c,images,map);return;}
+  if(map&&map.width>16){paintExpandedCenter(c,images,map);paintCelesticCenterFloor(c,map);return;}
   box(c,0,0,256,224,'#172b34');box(c,28,18,200,176,'#705644');
   for(let y=3;y<12;y++)for(let x=2;x<14;x++)sample(c,images,'floor',x*16,y*16);
   box(c,32,31,192,17,'#e7a35d');box(c,32,42,192,6,'#bd6039');
@@ -37,6 +39,8 @@ export function paintTourCenter(c:CanvasRenderingContext2D,images:Images,map?:Ga
   c.drawImage(images['center-reference'],204,20,23,26,194,18,23,26);
 }
 export function paintCenterFurnishing(c:CanvasRenderingContext2D,images:Images,o:Furnishing){
+  if(paintCherrygroveCenterFurnishing(c,o))return;
+  if(paintCelesticCenterFurnishing(c,o))return;
   const x=o.x*16,y=(o.y+o.h)*16;
   if(o.kind==='healer'){
     box(c,x,y-32,32,32,'#bcbcab');box(c,x+2,y-29,28,27,'#d8d8c5');
@@ -50,6 +54,7 @@ export function paintCenterFurnishing(c:CanvasRenderingContext2D,images:Images,o
   }
 }
 export function paintCenterReception(c:CanvasRenderingContext2D,images:Images,room:TourInterior){
+  if(paintCelesticCenterReception(c,room))return;
   const r=room.reception!;for(let i=0;i<r.w;i+=2)sample(c,images,'counter',(r.x+i)*16,(r.y+r.h)*16-21);
   box(c,r.x*16+2,r.y*16-5,r.w*16-4,3,'#eff3df');
   box(c,r.x*16+27,r.y*16+1,12,3,'#e5eee5');

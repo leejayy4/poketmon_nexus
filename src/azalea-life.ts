@@ -1,4 +1,5 @@
 import type { Engine } from './engine';
+import {handleAzaleaWorkshop} from './azalea-workshop';
 import { SPECIES } from './pokemon';
 import { JOHTO_ROUTE_32,JOHTO_ROUTE_33,UNION_CAVE_1F } from './johto-south-route';
 
@@ -6,6 +7,7 @@ const AZALEA_MAPS=new Set(['tour_azalea','tour_azalea_center','tour_azalea_hall'
 
 /** Optional village-life observations. They never grant items, heal, or gate travel. */
 export function handleAzaleaLife(g:Engine,event:string):boolean{
+  if(handleAzaleaWorkshop(g,event))return true;
   if(!AZALEA_MAPS.has(g.save.map))return false;
   const save=g.save,current=(map=save.map)=>g.save===save&&save.map===map&&!g.battle;
   const guide=(map:Parameters<Engine['setTourDestination']>[0],title:string,text:string)=>()=>{

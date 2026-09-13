@@ -1,6 +1,10 @@
 import type { SaveData } from './types';
 
 export function motherConversation(save: SaveData): string[] {
+  if(save.flags.researchDelivered){
+    if(save.flags.ferryPass)return ['다녀왔구나. 바다 건너 여행은 어땠니?\n너와 친구들이 돌아와서 기쁘구나.','잠깐 쉬면서 들려주렴. 다음 길을 고르기 전에\n함께 걸어온 친구들도 돌아보고.'];
+    return ['관측 자료를 무사히 전했구나.\n이제 바다 건너에서도 비교 조사를 돕는다고?','처음 집 앞길을 나설 때가 생각나는구나.\n이제는 네가 갈 길을 직접 고르는구나.','어떤 곳을 만나더라도 친구들과 함께하렴.\n이 집은 언제든 돌아올 수 있는 곳이란다.'];
+  }
   if (save.party.some(p=>p.species===399)) {
     return ['모험길에서 새 친구를 만났구나!\n함께하는 친구들을 모두 아껴 주렴.'];
   }
@@ -13,7 +17,7 @@ export function motherConversation(save: SaveData): string[] {
   if (save.flags.starterReceived) {
     return ['어머, 새로운 친구가 생겼구나!\n앞으로 서로 아껴 주렴.'];
   }
-  return ['잘 잤니? 박사님이 연구소에서\n너를 기다리고 계신단다.', '집 앞길을 따라 위쪽으로 가 보렴.\n파란 지붕의 건물이 연구소야.'];
+  return ['잘 잤니? 포켓몬과 여행할 날을\n그렇게 기다리더니, 오늘은 일찍 일어났네.', '박사님이 연구소에서 기다리고 계신단다.\n집 앞길 위쪽, 파란 지붕의 건물이야.', '새 친구를 만나면 엄마에게도 소개해 주렴.\n출발 인사는 함께 하고 가자.'];
 }
 
 export function professorConversation(save: SaveData): { pages:string[]; offerStarter:boolean } {

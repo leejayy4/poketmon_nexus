@@ -1,0 +1,79 @@
+{
+  "format": "first-partner-save",
+  "savedAt": "2026-09-12T15:00:00Z",
+  "save": {
+    "version": 1,
+    "worldRevision": 24,
+    "map": "tour_blackthorn_hall",
+    "player": {
+      "x": 18,
+      "y": 15,
+      "facing": "up"
+    },
+    "flags": {
+      "starterReceived": true,
+      "departureCleared": true,
+      "blackthornTrainingSpecies": 41,
+      "blackthornWaterBreathing": true
+    },
+    "party": [
+      {
+        "species": 7,
+        "level": 25,
+        "experience": 0,
+        "hp": 80,
+        "maxHp": 80,
+        "nature": "성실",
+        "met": "검증용 준비 사본",
+        "moves": [
+          "물의파동",
+          "방어"
+        ]
+      },
+      {
+        "species": 41,
+        "level": 24,
+        "experience": 0,
+        "hp": 84,
+        "maxHp": 84,
+        "nature": "성실",
+        "met": "얼음샛길 B1F",
+        "moves": [
+          "날개치기",
+          "물기"
+        ]
+      }
+    ],
+    "box": [],
+    "pokedex": {
+      "seen": [
+        7,
+        41
+      ],
+      "caught": [
+        7,
+        41
+      ]
+    },
+    "inventory": {
+      "pokeBalls": 30,
+      "potions": 20
+    },
+    "badges": [],
+    "keyItems": [],
+    "money": 5000,
+    "healingPoint": "tour_blackthorn_center",
+    "steps": 0,
+    "seconds": 0,
+    "tourVisited": [
+      "tour_mahogany",
+      "tour_johto_route_44",
+      "tour_johto_ice_path_1f",
+      "tour_johto_ice_path_b1f",
+      "tour_johto_ice_path_b2f",
+      "tour_johto_ice_path_b3f",
+      "tour_blackthorn",
+      "tour_blackthorn_hall"
+    ]
+  }
+}

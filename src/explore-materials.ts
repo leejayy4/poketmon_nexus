@@ -6,7 +6,10 @@ const roofColors:Record<string,string>={city:'#667fa2',mine:'#9c815e',port:'#718
 const facades=new WeakMap<Images,Map<string,HTMLCanvasElement>>();
 
 export function paintTourHouse(c:CanvasRenderingContext2D,images:Images,p:Place,b:TourBuilding){
-  const source=TOWN_BUILDINGS[3],x=b.x*16,y=(b.y+2)*16-85;
+  const source=TOWN_BUILDINGS[3];
+  // Align the source door to the real warp, including taller/wider authored plots.
+  const x=b.door.x*16-(source.door.x*16-source.draw.x);
+  const y=b.door.y*16-(source.door.y*16-source.draw.y);
   c.save();c.translate(x-source.draw.x,y-source.draw.y);paintBuilding(c,images,source);c.restore();
   // Tint only the sloping roof, retaining the original DS pixel shading and walls.
   c.save();c.beginPath();[[3,20],[35,0],[65,22],[65,49],[37,29],[7,51],[3,50]].forEach(([a,d],i)=>i?c.lineTo(x+a,y+d):c.moveTo(x+a,y+d));c.closePath();c.clip();
@@ -25,7 +28,8 @@ export function paintTourFacade(c:CanvasRenderingContext2D,images:Images,p:Place
     a.fillStyle=roofColors[p.theme]??'#689c89';a.fillRect(5,4,87,59);a.globalAlpha=1;a.globalCompositeOperation='source-over';
     cache.set(p.theme,art);
   }
-  c.drawImage(art,b.x*16-8,b.y*16-53);
+  const source=TOWN_BUILDINGS[0];
+  c.drawImage(art,b.door.x*16-(source.door.x*16-source.draw.x),b.door.y*16-(source.door.y*16-source.draw.y));
 }
 
 export function paintTourGround(c:CanvasRenderingContext2D,source:CanvasImageSource,x:number,y:number,theme:string){

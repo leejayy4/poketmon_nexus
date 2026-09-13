@@ -5,10 +5,11 @@ import { moveDescription } from './move-description';
 import { withParticle } from './korean-text';
 
 const schoolSessions=new WeakMap<Engine,object>();
-export function showMoveSchool(g:Engine,page=0,preferredMove?:string,replace=false){
-  const s=g.save,index=g.partyIndex,p=s.party[index];if(!p||g.battle)return;
+export function showMoveSchool(g:Engine,page=0,preferredMove?:string,replace=false,returnTo?:Choice){
+  const s=g.save,map=s.map,index=g.partyIndex,p=s.party[index];if(!p||g.battle)return;
   const session={};schoolSessions.set(g,session);
-  const current=()=>schoolSessions.get(g)===session&&g.save===s&&s.party[index]===p&&!g.battle;
+  const current=()=>schoolSessions.get(g)===session&&g.save===s&&s.map===map&&s.party[index]===p&&!g.battle;
+  const reopen=(nextPage:number,move?:string,replacing=false)=>{if(current())showMoveSchool(g,nextPage,move,replacing,returnTo);};
   const moves=availableMoves(p,s),pages=Math.max(1,Math.ceil(moves.length/3));
   const selected=pokemonMoves(p),preferredIndex=preferredMove===undefined?-1:moves.indexOf(preferredMove);
   const canAdd=selected.length<MOVE_CAPACITY;
@@ -26,12 +27,12 @@ export function showMoveSchool(g:Engine,page=0,preferredMove?:string,replace=fal
           confirmed=true;
           const learned=unchanged()&&teachMove(s,index,move,selected.length);
           if(learned){g.persist();g.audio.play('receive');}
-          g.say(SPECIES[p.species].name,[learned?`${withParticle(move,'을/를')} 배웠다!\n기억하는 기술 ${pokemonMoves(p).length}/${MOVE_CAPACITY}`:'지금은 이 기술을 배울 수 없다.'],()=>showMoveSchool(g,page));
-        }},{label:'기존 기술과 비교',action:()=>{if(current())showMoveSchool(g,page,move,true);}},
-        {label:'기술 목록으로',action:()=>showMoveSchool(g,page)}
+          g.say(SPECIES[p.species].name,[learned?`${withParticle(move,'을/를')} 배웠다!\n기억하는 기술 ${pokemonMoves(p).length}/${MOVE_CAPACITY}`:'지금은 이 기술을 배울 수 없다.'],()=>reopen(page));
+        }},{label:'기존 기술과 비교',action:()=>{if(current())reopen(page,move,true);}},
+        {label:'기술 목록으로',action:()=>reopen(page)}
       ]);return;
     }
-    g.say(move,[moveDescription(move),selected.includes(move)?'이미 기억하고 있는 기술이다.':'어느 기술과 비교할까요?'],undefined,selected.includes(move)?[{label:'기술 목록으로',action:()=>showMoveSchool(g,page)}]:[
+    g.say(move,[moveDescription(move),selected.includes(move)?'이미 기억하고 있는 기술이다.':'어느 기술과 비교할까요?'],undefined,selected.includes(move)?[{label:'기술 목록으로',action:()=>reopen(page)}]:[
       ...selected.map((old,slot)=>({label:withParticle(old,'과/와')+' 비교',action:()=>{
         if(!current())return;
         let confirmed=false;
@@ -44,14 +45,14 @@ export function showMoveSchool(g:Engine,page=0,preferredMove?:string,replace=fal
           confirmed=true;
           const learned=unchanged()&&teachMove(s,index,move,slot);
           if(learned){g.persist();g.audio.play('receive');}
-          g.say(SPECIES[p.species].name,[learned?`${old} 대신\n${withParticle(move,'을/를')} 배웠다!`:'지금은 이 기술을 배울 수 없다.'],()=>showMoveSchool(g,page));
-        }},{label:'기술 목록으로',action:()=>showMoveSchool(g,page)}]);
-      }})),{label:'돌아가기',action:()=>showMoveSchool(g,page)}
+          g.say(SPECIES[p.species].name,[learned?`${old} 대신\n${withParticle(move,'을/를')} 배웠다!`:'지금은 이 기술을 배울 수 없다.'],()=>reopen(page));
+        }},{label:'기술 목록으로',action:()=>reopen(page)}]);
+      }})),{label:'돌아가기',action:()=>reopen(page)}
     ]);
   }}));
-  if(page<pages-1)choices.push({label:'다음 페이지',action:()=>showMoveSchool(g,page+1)});
-  if(page>0)choices.push({label:'이전 페이지',action:()=>showMoveSchool(g,page-1)});
-  choices.push({label:'정보 화면으로',action:()=>{if(current())schoolSessions.delete(g);}});
+  if(page<pages-1)choices.push({label:'다음 페이지',action:()=>reopen(page+1)});
+  if(page>0)choices.push({label:'이전 페이지',action:()=>reopen(page-1)});
+  choices.push({label:returnTo?.label??'정보 화면으로',action:()=>{if(!current())return;schoolSessions.delete(g);returnTo?.action();}});
   // Reuse the full-party comparison flow when the player chooses replacement
   // while slots are still free. Re-entering creates a fresh guarded session.
   if(replace&&shouldFocusPreferred){choices[preferredIndex%3].action();return;}

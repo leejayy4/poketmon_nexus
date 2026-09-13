@@ -2,6 +2,7 @@ import type { Engine } from './engine';
 import { SPECIES } from './pokemon';
 import { KANTO_ROUTE_NINE,KANTO_ROCK_TUNNEL_1F,KANTO_ROCK_TUNNEL_B1F,KANTO_ROUTE_TEN_SOUTH } from './kanto-lavender-approach';
 import { trainerWinFlag } from './road-trainers';
+import { KANTO_ROUTE_TWELVE } from './kanto-fuchsia-east';
 
 const LAVENDER_MAPS=new Set(['tour_lavender','tour_lavender_center','tour_lavender_hall','tour_lavender_hall_2f','tour_lavender_hall_3f','tour_lavender_mart','tour_lavender_home1','tour_lavender_home2']);
 
@@ -45,7 +46,7 @@ export function handleLavenderLife(g:Engine,event:string):boolean{
   }
   if(event==='tourLavenderArrivalStone'||event==='lavenderCenterRouteChart'){
     const center=event==='lavenderCenterRouteChart';
-    g.say(center?'보라타운 여행 안내도':'10번도로 도착 표석',[crossedTunnel?'9번도로와 10번도로 북부, 돌산터널1F/B1F, 10번도로 남부를 지나 보라타운까지 온 기록이 이어져 있다.':'북쪽 본선은 10번도로 남부 → 돌산터널1F/B1F → 10번도로 북부 → 9번도로 → 블루시티 순서다.',...(center?[localLine,challengeLine,partyLine,surveyLine]:[]),'서쪽은 노랑시티 방향, 남쪽은 연분홍시티 방향의 기존 연결길이다.'],undefined,[
+    g.say(center?'보라타운 여행 안내도':'10번도로 도착 표석',[crossedTunnel?'9번도로와 10번도로 북부, 돌산터널1F/B1F, 10번도로 남부를 지나 보라타운까지 온 기록이 이어져 있다.':'북쪽 본선은 10번도로 남부 → 돌산터널1F/B1F → 10번도로 북부 → 9번도로 → 블루시티 순서다.',...(center?[localLine,challengeLine,partyLine,surveyLine]:[]),'서쪽은 노랑시티 방향, 남쪽은12→13→14→15번도로를 거쳐 연분홍시티로 이어진다.'],undefined,[
       ...(center?[
         {label:'현재 파티 확인',action:()=>{if(!current('tour_lavender_center'))return;g.panel='party';g.partyIndex=0;}},
         {label:'센터 PC 안내',action:()=>{if(!current('tour_lavender_center'))return;g.setTourDestination('tour_lavender_center','pc');g.say('보라 편성 안내',['센터 안 PC에서 파티와 박스의 동료를 맡기거나 데려올 수 있다.',localLine,'지도 표시는 자동 편성이나 회복을 하지 않는다.']);}},
@@ -53,15 +54,17 @@ export function handleLavenderLife(g:Engine,event:string):boolean{
       {label:'10번도로 남부',action:guide(KANTO_ROUTE_TEN_SOUTH,'보라 북쪽 안내','북쪽 출구에서 10번도로 남부 전망 언덕으로 올라간다.')},
       {label:'돌산터널 B1F',action:guide(KANTO_ROCK_TUNNEL_B1F,'돌산터널 안내','10번도로 남부에서 1F 북부로 들어가 밝은 표식을 따라 B1F 선택 순환로에 닿는다.')},
       {label:'9번도로',action:guide(KANTO_ROUTE_NINE,'9번도로 안내','돌산터널과 10번도로 북부를 지나 9번도로로 돌아간다.')},
+      {label:'12번도로·연분홍',action:guide(KANTO_ROUTE_TWELVE,'보라 남쪽 안내','12번도로 사일런스브리지에서13→14→15번도로를 지나 연분홍시티로 내려간다.')},
       {label:'안내를 마친다',action:()=>{}}
     ]);return true;
   }
   if(save.map==='tour_lavender'&&event==='tourGuide'){
-    g.say('보라타운 안내원',[partyLine,crossedTunnel?'돌산터널을 지나왔다면 먼저 센터에서 동료 상태를 살피고, 추모 꽃정원과 탑에서는 조용히 걸어 주세요.':'북쪽은 10번도로 남부와 돌산터널, 서쪽과 남쪽은 기존 도시 연결길이다.',surveyLine,'꽃정원 돌봄과 추모탑 기록은 선택 생활이며 사건 해결이나 보상이 아니다.'],undefined,[
+    g.say('보라타운 안내원',[partyLine,crossedTunnel?'돌산터널을 지나왔다면 먼저 센터에서 동료 상태를 살피고, 추모 꽃정원과 탑에서는 조용히 걸어 주세요.':'북쪽은 10번도로 남부와 돌산터널, 서쪽은8번도로, 남쪽은12번도로 사일런스브리지다.',surveyLine,'꽃정원 돌봄과 추모탑 기록은 선택 생활이며 사건 해결이나 보상이 아니다.'],undefined,[
       {label:'센터에서 쉬기',action:guide('tour_lavender_center','보라 회복 안내','북서쪽 포켓몬센터에서 동료를 실제로 회복하고 PC를 이용할 수 있다.')},
       {label:'추모탑 둘러보기',action:guide('tour_lavender_hall','추모탑 안내','동쪽 추모탑에서 공동 기억·돌봄 기록·마을 전망을 층별로 볼 수 있다.')},
       {label:'꽃 작업대 찾기',action:guide('tour_lavender','추모 꽃정원 안내','서쪽 꽃정원 가장자리의 공동 작업대에서 건강한 동료와 꽃을 돌볼 수 있다.')},
       {label:'10번도로로 돌아가기',action:guide(KANTO_ROUTE_TEN_SOUTH,'보라 북쪽 안내','북쪽 출구로 나가 10번도로 남부와 돌산터널 방향으로 올라간다.')},
+      {label:'12번도로·연분홍',action:guide(KANTO_ROUTE_TWELVE,'보라 남쪽 안내','남쪽 출구에서12번도로 사일런스브리지를 지나13→14→15번도로와 연분홍시티로 이어진다.')},
       {label:'갈색항 귀환 길',action:guide(KANTO_ROUTE_NINE,'갈색항 방향 안내','9번도로 서쪽 블루시티에서 5번도로 → 남북 지하통로 → 6번도로 순서로 내려가면 갈색시티다. 조사선은 항구의 별도 선원에게 확인한다.')},
       {label:'안내를 마친다',action:()=>{}}
     ]);return true;

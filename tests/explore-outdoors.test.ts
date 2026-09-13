@@ -35,6 +35,11 @@ for(const id of Object.keys(TOUR_OUTDOORS))test('outdoor investigation through r
           assert(g.dialogue?.choices?.some(c=>c.label==='계속 걷기'));assert.equal(g.interactionHint,null);
           g.cancel();assert.equal(g.dialogue,null);assert.deepEqual(g.save,before);assert.equal(g.battle,null);checked++;continue;
         }
+        if(id==='tour_fuchsia'&&obj.event.startsWith('tourFuchsia')){
+          const before=structuredClone(g.save);g.confirm();assert.equal(g.dialogue?.speaker,obj.name);assert(g.dialogue?.pages.length);
+          if(g.dialogue?.choices)g.cancel();else for(let page=0;g.dialogue&&page<12;page++){g.dialogue.shown=1000;g.confirm();}
+          assert.equal(g.dialogue,null);assert.deepEqual(g.save,before);assert.equal(g.battle,null);checked++;continue;
+        }
         const passageSign=PASSAGES[id]&&obj.event==='journeySign';
         const before=structuredClone(g.save);g.confirm();assert.equal(g.dialogue?.speaker,passageSign?'이정표':obj.name);assert.deepEqual(g.dialogue?.pages,passageSign?passageSignPages(id,PASSAGES[id].a.name,PASSAGES[id].b.name):obj.pages);assert.equal(g.interactionHint,null);
         for(let page=0;g.dialogue&&page<12;page++){g.dialogue.shown=1000;g.confirm()}

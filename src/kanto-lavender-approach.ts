@@ -112,7 +112,7 @@ function installRouteTenNorth(world:{
       {id:'route10Hiker',name:'10번도로 산행객',sprite:'worker',x:18,y:28,facing:'down',dialogue:'journeyWalker'},
       {id:'route10Partner',name:'산행객의 피카츄',sprite:'field-pikachu',x:19,y:28,facing:'left',dialogue:'tourRoute10Partner'},
     ],
-    props:[...signs.map(p=>({x:p.x,y:p.y,dialogue:p.event})),...objects.flatMap(o=>o.cells.map(p=>({...p,dialogue:o.event)))],
+    props:[...signs.map(p=>({x:p.x,y:p.y,dialogue:p.event})),...objects.flatMap(o=>o.cells.map(p=>({...p,dialogue:o.event})))],
   };
   world.passages[KANTO_ROUTE_TEN_NORTH]={id:KANTO_ROUTE_TEN_NORTH,a:world.passagePlaces[KANTO_ROUTE_NINE],b:lavender,kind:'road',bend:31};
   world.passagePlaces[KANTO_ROUTE_TEN_NORTH]={id:KANTO_ROUTE_TEN_NORTH,name:'관동 10번도로 북부',region:'관동',theme:'cave',concept:'9번도로에서 산기슭을 올라 돌산터널 입구와 회복 거점에 닿는 북부 산길',landmark:'터널 앞 포켓몬센터',x:lavender.x-0.5,y:lavender.y-1};

@@ -1,3 +1,4 @@
+import { SEAFOAM_BOULDER_MAP,SEAFOAM_BOULDER_EVENT,SEAFOAM_BOULDER_START } from './seafoam-boulder';
 import { canEnter,getMap,ACTIVE_MAPS } from './maps';
 import { TOUR_INTERIORS,placeById,tourPlaceForMap } from './explore-world';
 import { WORLD_GYMS,isWorldCenter } from './unified-world';
@@ -21,7 +22,7 @@ export function tourMapRoute(start:MapId,target:MapId,flags:SaveData['flags']):M
   return [];
 }
 
-export function tourExitPath(map:GameMap,start:Point,exit:Warp):Point[]{
+export function tourExitPath(map:GameMap,start:Point,exit:Pick<Warp,'x'|'y'>):Point[]{
   const key=(p:Point)=>p.x+','+p.y,queue:Point[]=[{x:start.x,y:start.y}],previous=new Map<string,Point|null>([[key(start),null]]);
   for(let i=0;i<queue.length;i++){
     const point=queue[i];if(point.x===exit.x&&point.y===exit.y){const path:Point[]=[];let cursor:Point|null=point;while(cursor){path.unshift(cursor);cursor=previous.get(key(cursor))??null}return path}
@@ -43,6 +44,9 @@ export function objectiveInteractionPath(map:GameMap,start:Point,event:string):{
       const x=point.x+dx,y=point.y+dy,object=map.npcs.find(n=>n.x===x&&n.y===y)??map.props.find(p=>p.x===x&&p.y===y);
       const dialogue=object?.dialogue==='tourHost'&&isWorldCenter(map.id)?'nurse':object?.dialogue;
       if(dialogue!==event)continue;
+      // An unmoved boulder can only be pushed from its north approach.
+      if(map.id===SEAFOAM_BOULDER_MAP&&event===SEAFOAM_BOULDER_EVENT
+        &&x===SEAFOAM_BOULDER_START.x&&y===SEAFOAM_BOULDER_START.y&&facing!=='down')continue;
       const tiles:Point[]=[];let cursor:Point|null=point;while(cursor){tiles.unshift(cursor);cursor=previous.get(key(cursor))??null;}
       return {tiles,interaction:{x,y,facing}};
     }
@@ -54,15 +58,21 @@ export function objectiveInteractionPath(map:GameMap,start:Point,event:string):{
   return null;
 }
 
-export function planTourNavigation(save:SaveData,target:MapId,currentMap?:GameMap,event?:string):TourNavigation|null {
+export function planTourNavigation(save:SaveData,target:MapId,currentMap?:GameMap,event?:string,point?:Point):TourNavigation|null {
   if(!Object.hasOwn(ACTIVE_MAPS,target))return null;
   const place=placeById(target);
   const result:TourNavigation={destination:target,name:place?.name??getMap(target).name,status:'blocked',maps:[],tiles:[],nextName:null,exit:null};
+  if(save.map===target&&point){
+    const map=currentMap?.id===save.map?currentMap:getMap(save.map,save.flags);
+    if(!Number.isInteger(point.x)||!Number.isInteger(point.y)||map.warps.some(w=>w.x===point.x&&w.y===point.y))return result;
+    const tiles=tourExitPath(map,save.player,point);
+    return {...result,tiles,maps:[save.map],status:tiles.length?(tiles.length>1?'walking':'arrived'):'blocked'};
+  }
   if(save.map===target&&event){
     const map=currentMap?.id===save.map?currentMap:getMap(save.map,save.flags),path=objectiveInteractionPath(map,save.player,event);
     return path?{...result,...path,maps:[save.map],status:path.tiles.length>1?'walking':'arrived'}:result;
   }
-  if((save.map===target||(place&&tourPlaceForMap(save.map)?.id===target))&&!event)return {...result,status:'arrived',maps:[save.map]};
+  if((save.map===target||(place&&tourPlaceForMap(save.map)?.id===target))&&!event&&!point)return {...result,status:'arrived',maps:[save.map]};
   const maps=tourMapRoute(save.map,target,save.flags);if(maps.length<2)return result;
   const map=currentMap?.id===save.map?currentMap:getMap(save.map,save.flags),exit=map.warps.find(w=>w.to===maps[1])!;
   const tiles=tourExitPath(map,save.player,exit);

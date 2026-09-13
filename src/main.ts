@@ -2,12 +2,20 @@ import './style.css';
 import { Engine, KEY_DIRECTION } from './engine';
 import { Renderer } from './renderer';
 import { setupTestPanel } from './test-panel';
+import { guardedPanelUpdate } from './panel-update';
 const game=new Engine();
 const query=new URLSearchParams(location.search);if(query.has('explore')){query.delete('explore');history.replaceState(null,'',location.pathname+(query.size?'?'+query:'')+location.hash);}
 const field=document.querySelector<HTMLCanvasElement>('#field')!;
 const touch=document.querySelector<HTMLCanvasElement>('#touch')!;
 const renderer=new Renderer(game,field,touch);
-const updatePanel=setupTestPanel(game);
+const reportPanelError=(error:unknown)=>{
+  console.error('Developer panel update failed',error);
+  const message=document.createElement('p');message.setAttribute('role','alert');
+  message.textContent='개발 도구 갱신 중 오류가 발생했습니다. 게임 조작은 계속할 수 있습니다.';
+  document.querySelector('#test-panel')?.append(message);
+};
+let updatePanel=()=>{};
+try{updatePanel=guardedPanelUpdate(setupTestPanel(game),reportPanelError);}catch(error){reportPanelError(error);}
 const allowed=(key:string)=>KEY_DIRECTION[key]||['Shift','m','z','x','Enter',' ','Escape'].includes(key);
 const normalize=(key:string)=>key.length===1?key.toLowerCase():key;
 window.addEventListener('keydown',event=>{if(event.target instanceof HTMLElement&&event.target.closest('#test-panel, .header-actions, #help'))return;const key=normalize(event.key);if(allowed(key)){event.preventDefault();game.press(key,event.repeat)}});

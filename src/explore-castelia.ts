@@ -1,10 +1,16 @@
 import type { ExpandedTown } from './explore-expansion';
 import type { TourBuilding,TourFeature } from './explore-world';
 import { cityRoadTiles,paintCityStreets } from './city-street-art';
+import { paintCasteliaSewerEntrance } from './castelia-sewer-park';
 
 export const CASTELIA_SIZE={width:72,height:64};
 export const CASTELIA_HABITAT='구름시티 북쪽 정원';
 export const CASTELIA_GRASS=[{kind:'tallGrass' as const,x:26,y:4,w:5,h:3},{kind:'tallGrass' as const,x:45,y:5,w:5,h:3}];
+// Existing urban habitat: dry perimeter and south approaches, not the original sewer park.
+export const CASTELIA_GARDEN_PATHS:[number,number,number,number][]=[
+  [27,7,3,5],[25,3,7,1],[25,7,7,1],[25,3,1,5],[31,3,1,5],
+  [46,8,3,4],[44,4,7,1],[44,8,7,1],[44,4,1,5],[50,4,1,5],
+];
 const CASTELIA_STREETS:[number,number,number,number][]=[
   [12,3,4,45],[2,11,68,3],[2,24,52,3],[35,12,4,36],
   [52,12,4,37],[14,46,44,4],[14,58,44,4],
@@ -12,6 +18,15 @@ const CASTELIA_STREETS:[number,number,number,number][]=[
 
 export function paintCasteliaStreets(c:CanvasRenderingContext2D,reference:HTMLImageElement|HTMLCanvasElement,walkable:string[],paths:Set<string>){
   paintCityStreets(c,reference,cityRoadTiles(walkable,CASTELIA_STREETS),paths,[9,23,31]);
+  if(walkable[48]?.[59]==='.')paintCasteliaSewerEntrance(c);
+  for(const [x,y,w,h] of CASTELIA_GARDEN_PATHS)for(let ty=y;ty<y+h;ty++)for(let tx=x;tx<x+w;tx++){
+    if(walkable[ty]?.[tx]!=='.')continue;
+    c.fillStyle='#b8b79b';c.fillRect(tx*16,ty*16,16,16);
+    c.fillStyle='#909d80';c.fillRect(tx*16,ty*16+14,16,1);
+    if(CASTELIA_GRASS.some(p=>tx===p.x-1||tx===p.x+p.w)){
+      c.fillStyle='#d6cfaa';c.fillRect(tx*16+7,ty*16+4,2,5);
+    }
+  }
 }
 
 /** Existing doors and scenery footprints stay intact; new districts grow east/south. */
@@ -41,6 +56,8 @@ export function casteliaPlan():ExpandedTown {
   return {
     ...CASTELIA_SIZE,style:'urban',buildings,features,
     paths:[
+      ...CASTELIA_GARDEN_PATHS,
+      ...CASTELIA_GRASS.map(p=>[p.x,p.y,p.w,p.h] as [number,number,number,number]),
       [12,3,5,59],[2,11,68,3],[2,24,54,3],
       [7,9,9,2],[7,18,9,2],[7,27,9,1],[20,9,3,3],
       [15,21,23,3],[24,29,13,3],

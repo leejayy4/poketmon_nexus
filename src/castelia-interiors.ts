@@ -42,6 +42,9 @@ export function installCasteliaInteriorSizes(maps:Record<string,GameMap>,rooms:R
     const rows=Array.from({length:height},(_,y)=>Array.from({length:width},(_,x)=>x>=2&&x<=width-3&&y>=3&&y<=height-3?'.':'#'));
     if(!upper){rows[height-2][center]='.';rows[height-1][center]='.';}
     const positions=objectPositions(id);
+    if(id==='tour_castelia_hall'&&room.objects[1]){
+      Object.assign(room.objects[1],{name:'항만 사업 동선 전시',event:'tourCasteliaProjectExhibit',pages:['큰길과 화물 부두의 운송 동선을 보여 주는 전시다. 현장의 생활 골목과 비교해 볼 수 있다.']});
+    }
     room.objects.forEach((object,index)=>Object.assign(object,positions[index]??positions.at(-1)));
     if(id==='tour_castelia_center'){
       room.host={x:center,y:5};room.reception={x:center-4,y:6,w:8,h:1};

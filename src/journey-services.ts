@@ -1,8 +1,10 @@
+import { RUNTIME_RULES } from './data/rules';
+import { BASIC_SHOP_ITEMS } from './data/items';
 import type { Engine } from './engine';
 import { handleCasteliaHome } from './castelia-homes';
 import { handleCasteliaGallery } from './castelia-gallery';
 import type { Choice,Pokemon,SaveData } from './types';
-import { SPECIES } from './pokemon';
+import { SPECIES,RUNTIME_SPECIES,availableMoves,pokemonMoves } from './pokemon';
 import { encounterGuidance, passageSignPages, passageWalkerPages } from './encounter-guidance';
 import { isWorldCenter } from './unified-world';
 import { MART_ROOMS,PASSAGES } from './journey-world';
@@ -19,6 +21,7 @@ import { handleCinnabarLife } from './cinnabar-life';
 import { handleVermilionLife } from './vermilion-life';
 import { handleEternaHistory } from './eterna-history';
 import { handleEternaLife } from './eterna-life';
+import { handleSinnohCelesticLife } from './sinnoh-celestic-life';
 import { handleHearthomePerformance } from './hearthome-performance';
 import { handleVeilstoneTraining } from './veilstone-training';
 import { handleVeilstoneLife } from './veilstone-life';
@@ -33,16 +36,57 @@ import { handleCanalaveLife } from './canalave-life';
 import { handleAzaleaLife } from './azalea-life';
 import { handleJohtoSouthLife } from './johto-south-life';
 import { handleIlexLife } from './ilex-life';
+import { handleVioletLife } from './violet-life';
+import { handleEcruteakLife } from './ecruteak-life';
+import { handleJohtoParkLife } from './johto-park-life';
+import { handleJohtoOlivineLife } from './johto-olivine-life';
+import { handleOlivineLife } from './olivine-life';
+import { handleJohtoSeaLife } from './johto-sea-life';
+import { handleCianwoodLife } from './cianwood-life';
+import { handleJohtoRoute42Life } from './johto-route-42-life';
+import { handleMahoganyLife } from './mahogany-life';
+import { handleJohtoRoute43Life } from './johto-route-43-life';
+import { handleRageLakeLife } from './rage-lake-life';
+import { handleJohtoIcePathLife } from './johto-ice-path-life';
+import { handleBlackthornLife } from './blackthorn-life';
+import { handleJohtoBlackthornSouthLife } from './johto-blackthorn-south-life';
 import { handleLavenderLife } from './lavender-life';
+import { handleDragonspiralLife } from './dragonspiral-life';
+import { handleIcirrusMoorLife } from './icirrus-moor-life';
+import { handleIcirrusHomeLife } from './icirrus-home-life';
+import { handleIcirrusMartLife } from './icirrus-mart-life';
+import { handleUnovaRouteNineLife } from './unova-route-nine-life';
+
+const OPELUCID_ROUTE_SPECIES=new Set([183,588,616]);
+const OPELUCID_ROUTE_MET='하나 11번도로';
+const OPELUCID_ROUTE_TRAINER_WIN='trainerWon:unova-route-11-practice';
+const ICIRRUS_ROUTE_SPECIES=new Set([588,616]);
+const ICIRRUS_ROUTE_MET='하나 8번도로';
+const ICIRRUS_ROUTE_TRAINER_WIN='trainerWon:unova-route-8-practice';
+function opelucidRouteMovePages(save:SaveData):string[]{
+  const owned=[...save.party,...save.box??[]];
+  return [...OPELUCID_ROUTE_SPECIES].flatMap(id=>{
+    const species=SPECIES[id],supported=(RUNTIME_SPECIES[id]?.learnset??[]).filter(entry=>entry.level<=25).map(entry=>entry.move),local=owned.filter(mon=>mon.species===id&&mon.met===OPELUCID_ROUTE_MET);
+    const pages=[`${species.name} · Lv.23~25 선택 조우\n지원 레벨 기술: ${supported.join(' · ')||'없음'}`];
+    if(!local.length)return [...pages,`${species.name} 현지 동료 없음\n포획하지 않아도 안전 본선과 역사관 활동을 이용할 수 있다.`];
+    for(const mon of local){const current=pokemonMoves(mon),options=availableMoves(mon,save).filter(move=>!current.includes(move));pages.push(`${species.name} Lv.${mon.level} · ${save.party.includes(mon)?'현재 파티':'센터 PC'}\n현재 기술: ${current.join(' · ')}`,`${species.name} · 확인 가능한 다른 지원 기술\n${options.length?options.join(' · '):'현재 새 후보 없음'}`);}
+    return pages;
+  });
+}
+import { handleSaffronLife } from './saffron-life';
+import { handleCeladonLife } from './celadon-life';
+import { handleCeladonResearchStory } from './celadon-research-story';
+import { handleFuchsiaLife } from './fuchsia-life';
+import { trackFieldPartners } from './field-partner-party';
 
 // Prices are the NEXUS items.json project values, not another generation's prices.
-export const SHOP_ITEMS=[{key:'pokeBalls' as const,name:'몬스터볼',price:200,source:'IT-poke-ball'},{key:'potions' as const,name:'상처약',price:200,source:'IT-potion'}];
-export const BOX_CAPACITY=60;
+export const SHOP_ITEMS=BASIC_SHOP_ITEMS;
+export const BOX_CAPACITY=RUNTIME_RULES.boxCapacity;
 type CollectionSave=SaveData&{box?:Pokemon[];pokedex?:{seen:number[];caught:number[]}};
 export function purchase(s:SaveData,index:number,quantity:number):string{
   const item=SHOP_ITEMS[index];
-  if(!item||!Number.isInteger(quantity)||quantity<1||quantity>99)return '구매할 수량을 다시 선택해 주세요.';
-  if(s.inventory[item.key]+quantity>999)return '가방에 더 담을 수 없어요.\n수량을 줄여 주세요.';
+  if(!item||!Number.isInteger(quantity)||quantity<1||quantity>RUNTIME_RULES.purchaseQuantityLimit)return '구매할 수량을 다시 선택해 주세요.';
+  if(s.inventory[item.key]+quantity>RUNTIME_RULES.inventoryCapacity)return '가방에 더 담을 수 없어요.\n수량을 줄여 주세요.';
   const cost=item.price*quantity;if(s.money<cost)return `돈이 부족해요.\n필요 금액 ${cost}원 · 소지금 ${s.money}원`;
   s.money-=cost;s.inventory[item.key]+=quantity;
   return `${item.name} ${quantity}개를 샀다!\n남은 돈 ${s.money}원`;
@@ -51,7 +95,8 @@ export function depositPokemon(s:CollectionSave,index:number):string{
   const p=s.party[index];if(!Number.isInteger(index)||!p)return '맡길 포켓몬을 선택해 주세요.';
   if((s.box?.length??0)>=BOX_CAPACITY)return '박스가 가득 찼어요. (60마리)';
   if(s.party.length<=1||!s.party.some((mon,i)=>i!==index&&mon.hp>0))return '모험할 수 있는 건강한 포켓몬을\n한 마리 이상 데리고 있어야 해요.';
-  (s.box??=[]).push(s.party.splice(index,1)[0]);
+  const track=trackFieldPartners(s);
+  (s.box??=[]).push(s.party.splice(index,1)[0]);track();
   return `${withParticle(SPECIES[p.species].name,'을/를')} 박스에 맡겼다.\n센터 PC에서 다시 데려올 수 있다.`;
 }
 export function withdrawPokemon(s:CollectionSave,index:number):string{
@@ -111,15 +156,39 @@ function shopQuantity(g:Engine,index:number){
   }})),{label:'상품 목록으로',action:()=>shopMenu(g)}]);
 }
 export function handleJourneyEvent(g:Engine,id:string):boolean{
+  if(handleUnovaRouteNineLife(g,id))return true;
+  if(handleIcirrusMartLife(g,id))return true;
+  if(handleIcirrusHomeLife(g,id))return true;
+  if(handleIcirrusMoorLife(g,id))return true;
+  if(handleDragonspiralLife(g,id))return true;
   if(handleAzaleaLife(g,id))return true;
   if(handleIlexLife(g,id))return true;
+  if(handleVioletLife(g,id))return true;
+  if(handleEcruteakLife(g,id))return true;
+  if(handleJohtoParkLife(g,id))return true;
+  if(handleJohtoOlivineLife(g,id))return true;
+  if(handleOlivineLife(g,id))return true;
+  if(handleJohtoSeaLife(g,id))return true;
+  if(handleCianwoodLife(g,id))return true;
+  if(handleJohtoRoute42Life(g,id))return true;
+  if(handleMahoganyLife(g,id))return true;
+  if(handleJohtoRoute43Life(g,id))return true;
+  if(handleRageLakeLife(g,id))return true;
+  if(handleJohtoIcePathLife(g,id))return true;
+  if(handleBlackthornLife(g,id))return true;
+  if(handleJohtoBlackthornSouthLife(g,id))return true;
   if(handleJohtoSouthLife(g,id))return true;
   if(handleLavenderLife(g,id))return true;
+  if(handleCeladonResearchStory(g,id))return true;
+  if(handleSaffronLife(g,id))return true;
+  if(handleCeladonLife(g,id))return true;
+  if(handleFuchsiaLife(g,id))return true;
   if(handleCasteliaHome(g,id))return true;
   if(handleCinnabarLife(g,id))return true;
   if(handleVermilionLife(g,id))return true;
   if(handleCasteliaGallery(g,id))return true;
   if(handleEternaLife(g,id))return true;
+  if(handleSinnohCelesticLife(g,id))return true;
   if(handleHearthomePerformance(g,id))return true;
   if(handleVeilstoneTraining(g,id))return true;
   if(handleVeilstoneLife(g,id))return true;
@@ -234,7 +303,88 @@ export function handleJourneyEvent(g:Engine,id:string):boolean{
   }
   if(g.save.map==='tour_lacunosa'&&id==='tourResident0'){g.say('13번도로 도착 주민',[g.save.flags.lacunosaWallLogged?'기록관에 남쪽 성벽 점검을 남겼군요. 13번도로 귀환 표지도 함께 확인했겠어요.':'기록관 1층에서 남쪽 문과 13번도로 귀환 표지를 동료와 살필 수 있어요.','점검 기록 없이도 13번도로를 왕복할 수 있습니다.']);return true;}
   if(g.save.map==='tour_lacunosa'&&id==='tourResident1'){const species=Number(g.save.flags.lacunosaCourtyardSpecies??0);g.say('공동 안뜰 돌봄이',[g.save.flags.lacunosaCourtyardCared?(species&&SPECIES[species]?`${SPECIES[species].name}와 안뜰을 살폈군요. 고마워요.`:'안뜰 물그릇과 통로를 살폈군요. 고마워요.'):'기록관 3층에서 건강한 동료와 안뜰 돌봄 순서를 확인할 수 있어요.','이 활동은 선택이며 실제 회복은 센터에서 받아 주세요.']);return true;}
-  if(g.save.map==='tour_unova_route_12'&&id==='tourRouteTwelveWalker'){g.say('12번도로 들판 여행자',['동쪽은 보배마을 성벽, 서쪽은 빌리지브리지 방향이에요.','넓은 초원길의 두 쉼터는 본선으로 다시 합류합니다. 야생 조우나 트레이너전은 아직 연결되지 않았어요.']);return true;}
+  if(g.save.map==='tour_unova_route_12'&&id==='tourRouteTwelveWalker'){g.say('12번도로 들판 여행자',['동쪽은 보배마을 성벽, 서쪽은 빌리지브리지예요.','넓은 초원길의 두 쉼터는 본선으로 다시 합류합니다. 야생 조우나 트레이너전은 아직 연결되지 않았어요.']);return true;}
+  if(g.save.map==='tour_unova_route_11'&&id==='tourRouteElevenKeeper'){g.say('11번도로 길지기',['동쪽은 빌리지브리지, 서쪽은 쌍용시티예요.','전망길과 바위 단차 길은 본선으로 다시 합류하고 가운데 넓은 길은 조우 없는 안전 본선입니다.',...encounterGuidance(g.save.map).pages,'물길 전망 순환로에는 거절하거나 패배 뒤 다시 도전할 수 있는 생태 트레이너가 있어요.','흔들리는 풀·수상·낚시·특별 조우는 아직 연결되지 않았어요.']);return true;}
+  if(g.save.map==='tour_unova_route_08'&&id==='tourGuide'){
+    const save=g.save,local=save.party.filter(mon=>mon.met===ICIRRUS_ROUTE_MET&&ICIRRUS_ROUTE_SPECIES.has(mon.species));
+    const tired=save.party.some(mon=>mon.hp<mon.maxHp),balls=save.inventory.pokeBalls;
+    const guide=(map:string,event?:string)=>()=>{if(g.save===save&&save.map==='tour_unova_route_08'&&!g.battle)g.setTourDestination(map,event);};
+    const choices=[
+      {label:'설화센터 회복·PC',action:guide('tour_icirrus_center')},
+      {label:'몬스터볼 보충',action:guide('tour_icirrus_mart','martClerk')},
+      {label:'북쪽 서식지로',action:guide('tour_unova_route_08','tourRouteEightMarsh')},
+      {label:'습지 트레이너에게',action:guide('tour_unova_route_08','tourRouteEightTrainer')},
+      {label:'습지 동료 관찰',action:guide('tour_icirrus_moor','icirrusMoorKeeper')},
+      {label:'튜브라인브리지로',action:guide('tour_tubeline_bridge')},
+      {label:'계속 걷는다',action:()=>{}},
+    ];
+    if(!tired&&balls>0){const preferred=local.length?3:2;choices.unshift(...choices.splice(preferred,1));}
+    g.say('8번도로 우산 여행자',[
+      '서쪽은 설화시티 센터, 동쪽은 튜브라인브리지·9번도로·쌍용시티입니다.',
+      tired?'지친 동료가 있군요. 마른 본선을 따라 설화센터에서 회복하고 다시 와도 됩니다.':balls===0?'몬스터볼이 없군요. 설화 상점에서 준비한 뒤 풀밭으로 돌아오세요.':local.length?'이 길에서 만난 동료와 북쪽 공터의 선택 배틀을 해 볼 수 있어요.':'북쪽·남쪽 선택 풀밭에서 동료를 만날 수 있어요. 가운데 본선은 조우가 없습니다.',
+      ...encounterGuidance(save.map).pages,
+      '북쪽 풀밭 아래 마른 샛길로 본선에 돌아올 수 있어요. 풀을 밟지 않고 트레이너에게 가는 길도 열려 있습니다.',
+      save.flags[ICIRRUS_ROUTE_TRAINER_WIN]?'트레이너에게 이긴 기록이 있습니다. 다음은 습지 동행 관찰이나 동쪽 다리 여행을 이어가세요.':'트레이너전은 선택입니다. 포획 여부와 승패로 통행이 막히지 않습니다.',
+    ],undefined,choices);return true;
+  }
+  if(g.save.map==='tour_opelucid_hall'&&id==='tourOpelucidCityLog'){
+    const save=g.save,healthy=save.party.filter(mon=>mon.hp>0).sort((a,b)=>Number(b.met===OPELUCID_ROUTE_MET&&OPELUCID_ROUTE_SPECIES.has(b.species))-Number(a.met===OPELUCID_ROUTE_MET&&OPELUCID_ROUTE_SPECIES.has(a.species))),record=(species:number)=>{if(g.save!==save||save.map!=='tour_opelucid_hall')return;save.flags.opelucidCityLogged=true;save.flags.opelucidArrivalSpecies=species;g.persist();g.say('쌍용 도시 생활 기록',[species&&SPECIES[species]?`${SPECIES[species].name}와 11번도로 도착문·오래된 석조 거리·새 거리의 보행 여백을 확인했다.`:'혼자 11번도로 도착문·오래된 석조 거리·새 거리의 보행 여백을 확인했다.','현재 파티의 동행 기록이며 실제 만난 장소는 각 포켓몬의 출처 기록을 따른다.','보상·체육관·배지·통행 조건은 바뀌지 않는다.']);};
+    g.say('도시 생활 기록대',[save.flags.opelucidCityLogged?'앞서 남긴 쌍용 도시 생활 기록이 있다. 동료나 혼자 다시 살필 수 있다.':'11번도로 도착문과 두 생활 거리의 현재 쓰임을 확인해 보자.','11번도로 출신의 건강한 파티 동료는 목록 앞에 표시한다. 없어도 다른 동료나 혼자 기록할 수 있다.'],undefined,[...healthy.map(mon=>({label:`${SPECIES[mon.species].name}${mon.met===OPELUCID_ROUTE_MET&&OPELUCID_ROUTE_SPECIES.has(mon.species)?' · 11번도로':''}`,action:()=>{if(save.party.includes(mon)&&mon.hp>0)record(mon.species);}})),{label:'혼자 기록한다',action:()=>record(0)},{label:'나중에 확인한다',action:()=>{}}]);return true;
+  }
+  if(g.save.map==='tour_opelucid_hall_2f'&&id==='tourOpelucidMoveStudy'){
+    const save=g.save,local=[...save.party,...save.box??[]].filter(mon=>mon.met===OPELUCID_ROUTE_MET&&OPELUCID_ROUTE_SPECIES.has(mon.species));
+    g.say('11번도로 동료 기술 자료',[`11번도로 현지 동료 ${local.length}마리\n파티 ${local.filter(mon=>save.party.includes(mon)).length} · PC ${local.filter(mon=>!save.party.includes(mon)).length}`,...opelucidRouteMovePages(save),'이 자료는 현재 지원 기술을 비교할 뿐 기술을 지급·교체하거나 필드 효과를 일으키지 않는다.'],undefined,[{label:'자료를 덮는다',action:()=>{}}]);return true;
+  }
+  if(g.save.map==='tour_opelucid_hall_3f'&&id==='tourOpelucidCompanionObserve'){
+    const save=g.save,healthy=save.party.filter(mon=>mon.hp>0).sort((a,b)=>Number(b.met===OPELUCID_ROUTE_MET&&OPELUCID_ROUTE_SPECIES.has(b.species))-Number(a.met===OPELUCID_ROUTE_MET&&OPELUCID_ROUTE_SPECIES.has(a.species))),record=(species:number)=>{if(g.save!==save||save.map!=='tour_opelucid_hall_3f')return;save.flags.opelucidCompanionObserved=true;save.flags.opelucidObservedSpecies=species;g.persist();g.say('동행 문양 관찰 기록',[species&&SPECIES[species]?`${SPECIES[species].name}와 광장 기둥의 선·비늘·발자국 모양을 비교했다.`:'혼자 광장 기둥의 선·비늘·발자국 모양을 비교했다.','문양 관찰은 전설 포켓몬 조우나 사건 해결이 아니며 HP·능력치도 변하지 않는다.']);};
+    g.say('동행 관찰석',[save.flags.opelucidCompanionObserved?'앞서 남긴 문양 관찰 기록이 있다.':'건강한 동료와 광장의 용 문양을 천천히 비교해 보자.','11번도로 출신 동료는 목록 앞에 표시하며 필수 포획 조건은 아니다.'],undefined,[...healthy.map(mon=>({label:`${SPECIES[mon.species].name}${mon.met===OPELUCID_ROUTE_MET&&OPELUCID_ROUTE_SPECIES.has(mon.species)?' · 11번도로':''}`,action:()=>{if(save.party.includes(mon)&&mon.hp>0)record(mon.species);}})),{label:'혼자 관찰한다',action:()=>record(0)},{label:'나중에 확인한다',action:()=>{}}]);return true;
+  }
+  if(g.save.map==='tour_opelucid_center'&&id==='tourOpelucidCenterGuide'){
+    const save=g.save,healthy=save.party.filter(mon=>mon.hp===mon.maxHp).length,hurt=save.party.filter(mon=>mon.hp>0&&mon.hp<mon.maxHp).length,fainted=save.party.filter(mon=>mon.hp<=0).length,species=Number(save.flags.opelucidObservedSpecies??save.flags.opelucidArrivalSpecies??0),partyLocal=save.party.filter(mon=>mon.met===OPELUCID_ROUTE_MET&&OPELUCID_ROUTE_SPECIES.has(mon.species)),boxLocal=(save.box??[]).filter(mon=>mon.met===OPELUCID_ROUTE_MET&&OPELUCID_ROUTE_SPECIES.has(mon.species)),localNames=[...new Set([...partyLocal,...boxLocal].map(mon=>SPECIES[mon.species]?.name).filter(Boolean))];
+    const current=()=>g.save===save&&save.map==='tour_opelucid_center'&&!g.battle;
+    g.say('쌍용 여행 준비 지도',[save.party.length?`현재 파티 ${save.party.length}마리 · 건강 ${healthy} · 부상 ${hurt} · 기절 ${fainted}`:'현재 함께 걷는 동료가 없다. PC에서 맡긴 동료를 확인할 수 있다.',`11번도로 출신 동료 · 파티 ${partyLocal.length}마리 · PC ${boxLocal.length}마리${localNames.length?'\n'+localNames.join(' · '):'\n아직 현지 출신 동료 없음'}`,...opelucidRouteMovePages(save),save.flags[OPELUCID_ROUTE_TRAINER_WIN]?'11번도로 생태 트레이너와 겨룬 기록이 있다. 상금은 이미 받았으며 현지 동료를 편성해 다시 길을 나설 수 있다.':'11번도로 물길 전망 순환로에서 현지 세 종을 사용하는 선택 트레이너와 겨룰 수 있다.',save.flags.opelucidCityLogged?'역사관 1층에 11번도로 도착문과 두 거리의 생활 기록이 남아 있다.':'역사관 1층에서 11번도로 도착문과 두 거리의 현재 생활을 기록할 수 있다.',save.flags.opelucidCompanionObserved?(species&&SPECIES[species]?`3층에는 ${SPECIES[species].name}와 남긴 문양 관찰 기록이 있다.`:'3층에 혼자 남긴 문양 관찰 기록이 있다.'):'3층 동행 관찰석은 선택이며 전설 사건이나 통행 조건이 아니다.','역사관 2층에서 세 종의 현재 기술과 확인 가능한 지원 기술을 다시 비교할 수 있다.','동쪽은 공식 11번도로·빌리지브리지 방향이다. 기존 궐수·기하 축약 통로는 별도 귀환길로 표시한다.'],undefined,[
+      {label:'센터 PC를 연다',action:()=>{if(current())pcMenu(g);}},
+      {label:save.flags[OPELUCID_ROUTE_TRAINER_WIN]?'11번도로 재방문':'11번도로 트레이너',action:()=>{if(current())g.setTourDestination('tour_unova_route_11','tourRouteElevenTrainer');}},
+      {label:'역사관 기술 자료',action:()=>{if(current())g.setTourDestination('tour_opelucid_hall_2f','tourOpelucidMoveStudy');}},
+      {label:'지도를 덮는다',action:()=>{}},
+    ]);return true;
+  }
+  if(g.save.map==='tour_opelucid'&&id==='tourResident0'){const species=Number(g.save.flags.opelucidArrivalSpecies??0);g.say('11번도로 도착 여행자',[g.save.flags.opelucidCityLogged?(species&&SPECIES[species]?`${SPECIES[species].name}와 도착문부터 두 거리를 살펴 기록했군요.`:'도착문부터 두 거리를 살펴 기록했군요.'):'역사관 1층에서 11번도로 도착문과 두 거리의 생활을 기록할 수 있어요.',g.save.flags[OPELUCID_ROUTE_TRAINER_WIN]?'물길 전망 공터의 생태 트레이너와 겨룬 기록도 남았군요. 센터에서 동료를 회복·편성하고 같은 길로 다시 떠날 수 있어요.':'물길 전망 공터의 선택 트레이너는 거절해도 길을 막지 않아요.','기록이나 승리 없이도 11번도로를 자유롭게 왕복할 수 있습니다.']);return true;}
+  if(g.save.map==='tour_opelucid'&&id==='tourResident3'){const species=Number(g.save.flags.opelucidObservedSpecies??0);g.say('역사관 기록원',[g.save.flags.opelucidCompanionObserved?(species&&SPECIES[species]?`${SPECIES[species].name}와 문양을 비교한 기록을 분류해 둘게요.`:'혼자 문양을 비교한 기록을 분류해 둘게요.'):'역사관 3층에서 건강한 동료와 광장 문양을 관찰할 수 있어요.',g.save.flags[OPELUCID_ROUTE_TRAINER_WIN]?'11번도로 전투 뒤에는 2층에서 현지 동료의 현재 기술과 지원 기술을 비교해 보세요.':'2층 자료와 11번도로 선택 전투를 오가며 동료의 기술 역할을 확인할 수 있어요.','그 기록은 전설 포켓몬이나 본편 사건의 증거로 취급하지 않습니다.']);return true;}
+  if(g.save.map==='tour_opelucid'&&id==='tourPokemon'){const species=Number(g.save.flags.opelucidObservedSpecies??0);g.say('석조 광장의 콩둘기',[g.save.flags.opelucidCompanionObserved?(species&&SPECIES[species]?`${SPECIES[species].name}와 남긴 문양 기록 옆에서 콩둘기가 비늘 모양 선을 따라 고개를 움직인다.`:'혼자 남긴 문양 기록 옆에서 콩둘기가 비늘 모양 선을 따라 고개를 움직인다.'):'구구구. 용 문양 기둥의 그늘에서 돌바닥 무늬를 살피고 있다.','주민과 함께 지내는 생활 개체이며 쌍용시티 야생 조우나 포획 대상은 아니다.']);return true;}
+  if(g.save.map==='tour_icirrus_hall'&&id==='tourIcirrusArrivalLog'){
+    const corner=()=>{if(g.save===save&&save.map==='tour_icirrus_hall'&&!g.battle)g.setTourDestination('tour_icirrus_hall','tourIcirrusCompanionCorner');};
+    const save=g.save,healthy=save.party.filter(mon=>mon.hp>0),record=(species:number)=>{if(g.save!==save||save.map!=='tour_icirrus_hall')return;save.flags.icirrusArrivalLogged=true;save.flags.icirrusArrivalSpecies=species;g.persist();g.say('8번도로 도착 기록',[species&&SPECIES[species]?`${SPECIES[species].name}와 설화 동문·마른 본선·빗물 순환로의 이동 순서를 기록했다.`:'혼자 설화 동문·마른 본선·빗물 순환로의 이동 순서를 기록했다.','2층에서 물길의 생활 쓰임을 비교할 수 있다.'],undefined,[{label:'동료와 교류 코너로',action:corner},{label:'2층 물 비교로',action:()=>{if(g.save===save&&save.map==='tour_icirrus_hall'&&!g.battle)g.setTourDestination('tour_icirrus_hall_2f','tourIcirrusWaterStudy');}},{label:'기록을 덮는다',action:()=>{}}]);};
+    g.say('8번도로 도착 기록대',[save.flags.icirrusArrivalLogged?'앞서 남긴 8번도로 도착 기록이 있다. 동료나 혼자 다시 기록할 수 있다.':'동쪽 문에서 8번도로를 지나온 순서와 도시의 마른 길을 확인해 보자.','건강한 동료를 선택하거나 혼자 기록할 수 있으며 특정 포획 출처는 요구하지 않는다.'],undefined,[...healthy.map(mon=>({label:SPECIES[mon.species].name,action:()=>{if(save.party.includes(mon)&&mon.hp>0)record(mon.species);}})),{label:'동료 교류 코너부터 보기',action:corner},{label:'혼자 기록한다',action:()=>record(0)},{label:'나중에 확인한다',action:()=>{}}]);return true;
+  }
+  if(g.save.map==='tour_icirrus_hall_2f'&&id==='tourIcirrusWaterStudy'){
+    const save=g.save;
+    const guide=(map:Parameters<Engine['setTourDestination']>[0],target:string)=>()=>{if(g.save===save&&save.map==='tour_icirrus_hall_2f'&&!g.battle)g.setTourDestination(map,target);};
+    if(!save.flags.icirrusArrivalLogged){g.say('습지 생활 비교표',['1층 도착 기록대에서 8번도로의 마른 본선과 빗물 순환로를 먼저 구분할 수 있다.','기록하지 않아도 자료실과 도시 이동은 자유롭다.'],undefined,[{label:'1층 도착 기록대로',action:guide('tour_icirrus_hall','tourIcirrusArrivalLog')},{label:'도시 연못으로',action:guide('tour_icirrus','tourOutdoor0')},{label:'자료를 덮는다',action:()=>{}}]);return true;}
+    const first=!save.flags.icirrusWaterCompared;save.flags.icirrusWaterCompared=true;if(first)g.persist();g.say('습지 생활 비교',[first?'8번도로의 웅덩이, 도시 빗물 연못, 생활 뜰의 씻는 물을 서로 다른 쓰임으로 나누어 기록했다.':'앞서 나눈 길·연못·생활용 물 기록을 다시 읽었다.',save.flags.icirrusMoorObservationCompleted?'습지의 갈대 수위와 물새 흔적 기록을 도시 자료와 나란히 펼쳤다.':'현장 관찰은 동쪽 8번도로 북쪽 분기의 설화의 습지에서 이어갈 수 있다.','3층 전망에서 여행을 돌아보거나 실제 연못 수위판으로 돌아가 비교한 내용을 살펴보자.'],undefined,[{label:'연못 수위판으로',action:guide('tour_icirrus','tourOutdoor0')},{label:'3층 전망 휴게실',action:guide('tour_icirrus_hall_3f','tourIcirrusCompanionRest')},{label:'습지 현장 관찰',action:guide('tour_icirrus_moor','icirrusMoorKeeper')},{label:'자료를 덮는다',action:()=>{}}]);return true;
+  }
+  if(g.save.map==='tour_icirrus_hall_3f'&&id==='tourIcirrusCompanionRest'){
+    const save=g.save,healthy=save.party.filter(mon=>mon.hp>0),record=(species:number)=>{if(g.save!==save||save.map!=='tour_icirrus_hall_3f')return;save.flags.icirrusCompanionRested=true;save.flags.icirrusRestSpecies=species;g.persist();g.say('북쪽 전망 휴게 기록',[species&&SPECIES[species]?`${SPECIES[species].name}와 습지와 북쪽 용나선 방향을 바라보며 걸어온 길을 정리했다.`:'혼자 습지와 북쪽 용나선 방향을 바라보며 걸어온 길을 정리했다.','북문 접근로와 동쪽 8번도로는 서로 다른 길이다.'],undefined,[{label:'북문 접근로로',action:()=>{if(g.save===save&&save.map==='tour_icirrus_hall_3f'&&!g.battle)g.setTourDestination('tour_dragonspiral_approach');}},{label:'설화센터로 귀환',action:()=>{if(g.save===save&&save.map==='tour_icirrus_hall_3f'&&!g.battle)g.setTourDestination('tour_icirrus_center');}},{label:'기록을 덮는다',action:()=>{}}]);};
+    const tower=save.flags.dragonspiralWindRecorded?'용나선탑 3층에서 세 방향 바람을 기록하고 돌아왔다.':save.flags.dragonspiralBaseObserved?'용나선탑 1층 기단 관찰을 시작한 기록이 있다.':save.flags.dragonspiralApproachMoatObserved?'번호 없는 북문 접근로의 해자 가장자리를 살핀 기록이 있다.':'북문 접근로와 탑 관찰 기록은 아직 비어 있다.';
+    g.say('용나선 방향 전망석',[save.flags.icirrusCompanionRested?'앞서 남긴 북쪽 전망 휴게 기록이 있다.':'건강한 동료와 마른 전망석에서 8번도로와 북쪽 방향을 돌아보자.',save.flags.icirrusWaterCompared?'2층에서 빗물 생활 비교를 마쳤다.':'2층 비교 전에도 쉴 수 있으며 활동 순서는 통행 조건이 아니다.',tower],undefined,[...healthy.map(mon=>({label:SPECIES[mon.species].name,action:()=>{if(save.party.includes(mon)&&mon.hp>0)record(mon.species);}})),{label:'혼자 쉰다',action:()=>record(0)},{label:'나중에 쉰다',action:()=>{}}]);return true;
+  }
+  if(g.save.map==='tour_icirrus_center'&&id==='tourIcirrusCenterGuide'){
+    const save=g.save,healthy=save.party.filter(mon=>mon.hp===mon.maxHp).length,hurt=save.party.filter(mon=>mon.hp>0&&mon.hp<mon.maxHp).length,fainted=save.party.filter(mon=>mon.hp<=0).length,species=Number(save.flags.icirrusRestSpecies??save.flags.icirrusArrivalSpecies??0),current=()=>g.save===save&&save.map==='tour_icirrus_center'&&!g.battle,partyLocal=save.party.filter(mon=>mon.met===ICIRRUS_ROUTE_MET&&ICIRRUS_ROUTE_SPECIES.has(mon.species)),boxLocal=(save.box??[]).filter(mon=>mon.met===ICIRRUS_ROUTE_MET&&ICIRRUS_ROUTE_SPECIES.has(mon.species)),localNames=[...new Set([...partyLocal,...boxLocal].map(mon=>SPECIES[mon.species]?.name).filter(Boolean))].join(' · ')||'아직 없음';
+    const towerSpecies=SPECIES[Number(save.flags.dragonspiralPartnerSpecies??save.flags.dragonspiralApproachPartnerSpecies??0)]?.name,towerState=save.flags.dragonspiralWindRecorded?(towerSpecies?`용나선탑 공개 1~3층 관찰 완료 · ${towerSpecies}`:'용나선탑 공개 1~3층 관찰 완료'):save.flags.dragonspiralMasonryObserved?'용나선탑 2층 석재 관찰까지 기록':save.flags.dragonspiralBaseObserved?'용나선탑 1층 기단 관찰까지 기록':save.flags.dragonspiralApproachMoatObserved?(towerSpecies?`북문 접근로 해자 관찰 완료 · ${towerSpecies}`:'북문 접근로 해자 관찰 완료'):'북문 접근로·용나선탑 관찰 기록 없음';
+    g.say('설화 여행 준비 지도',[save.party.length?`현재 파티 ${save.party.length}마리 · 건강 ${healthy} · 부상 ${hurt} · 기절 ${fainted}`:'현재 함께 걷는 동료가 없다. 센터 PC에서 동료를 확인할 수 있다.',`8번도로 출신 동료 · 파티 ${partyLocal.length}마리 · PC ${boxLocal.length}마리\n${localNames}`,save.flags[ICIRRUS_ROUTE_TRAINER_WIN]?'8번도로 습지 트레이너와 겨룬 기록이 있다. 상금은 이미 받았다.':'8번도로 북쪽 마른 공터에서 선택 배틀을 할 수 있다.',save.flags.icirrusMoorObservationCompleted?'설화의 습지에서 갈대 수위와 물새 흔적을 모두 살핀 기록이 있다.':'설화의 습지에서는 건강한 동료와 두 순환로를 관찰할 수 있다.',save.flags.icirrusArrivalLogged?'생활관 1층에 8번도로 도착 기록이 남아 있다.':'생활관 1층에서 8번도로 도착 순서를 동료나 혼자 기록할 수 있다.',save.flags.icirrusWaterCompared?'2층에서 빗물 길과 생활용 물을 비교했다.':'2층에는 마른 본선·빗물 순환로·도시 연못의 쓰임을 나눈 자료가 있다.',save.flags.icirrusCompanionRested?(species&&SPECIES[species]?`3층에는 ${SPECIES[species].name}와 남긴 북쪽 전망 휴게 기록이 있다.`:'3층에 혼자 남긴 북쪽 전망 휴게 기록이 있다.'):'3층 전망 휴게는 선택이며 실제 회복이나 용나선탑 사건 조건이 아니다.',towerState,'동쪽 문은 하나 8번도로→튜브라인브리지→9번도로→쌍용시티로 이어진다. 북쪽 문은 도로 번호 없는 접근로를 지나 용나선탑 기슭으로 이어진다.'],undefined,[{label:'센터 PC를 연다',action:()=>{if(current())pcMenu(g);}},{label:save.flags[ICIRRUS_ROUTE_TRAINER_WIN]?'8번도로 재방문':'8번도로 트레이너',action:()=>{if(current())g.setTourDestination('tour_unova_route_08','tourRouteEightTrainer');}},{label:'설화의 습지 관찰',action:()=>{if(current())g.setTourDestination('tour_icirrus_moor','icirrusMoorKeeper');}},{label:save.flags.dragonspiralWindRecorded?'용나선탑 기록 다시 보기':'용나선탑 관찰',action:()=>{if(current())g.setTourDestination('tour_dragonspiral','tourGuide');}},{label:'생활관 도착 기록',action:()=>{if(current())g.setTourDestination('tour_icirrus_hall','tourIcirrusArrivalLog');}},{label:'지도를 덮는다',action:()=>{}}]);return true;
+  }
+  if(g.save.map==='tour_icirrus'&&id==='tourResident0'){const species=Number(g.save.flags.icirrusArrivalSpecies??0),local=[...g.save.party,...g.save.box??[]].filter(mon=>mon.met===ICIRRUS_ROUTE_MET&&ICIRRUS_ROUTE_SPECIES.has(mon.species));g.say('8번도로 도착 여행자',[g.save.flags.icirrusArrivalLogged?(species&&SPECIES[species]?`${SPECIES[species].name}와 8번도로 도착 순서를 기록했군요.`:'8번도로 도착 순서를 기록했군요.'):'생활관 1층에서 동문과 8번도로의 이동 순서를 기록할 수 있어요.',local.length?`8번도로에서 만난 동료가 파티와 PC에 ${local.length}마리 있군요. 센터 지도에서 편성 위치를 확인할 수 있어요.`:'북쪽·남쪽 선택 풀밭에는 딱정곤과 쪼마리가 살고 있어요. 잡지 않아도 마른 본선은 안전합니다.',g.save.flags[ICIRRUS_ROUTE_TRAINER_WIN]?'습지 트레이너와 겨룬 뒤에도 동쪽 문으로 같은 길을 왕복할 수 있습니다.':'선택 배틀이나 기록 없이도 동쪽 문으로 자유롭게 돌아갈 수 있습니다.']);return true;}
+  if(g.save.map==='tour_icirrus'&&id==='tourResident1'){g.say('습지 생활 뜰 돌봄이',[g.save.flags.icirrusWaterCompared?'길의 빗물과 연못물, 발을 씻는 물의 쓰임을 잘 나누었군요.':'생활관 2층에서 길·연못·생활 뜰의 물 쓰임을 비교할 수 있어요.','관찰은 계절이나 결빙 이동 효과를 바꾸지 않습니다.']);return true;}
+  if(g.save.map==='tour_icirrus'&&id==='tourResident2'){const species=Number(g.save.flags.icirrusRestSpecies??0),towerSpecies=SPECIES[Number(g.save.flags.dragonspiralPartnerSpecies??0)]?.name;g.say('생활관 기록원',[g.save.flags.icirrusCompanionRested?(species&&SPECIES[species]?`${SPECIES[species].name}와 북쪽 전망에서 쉬었다는 기록을 보관할게요.`:'북쪽 전망 휴게 기록을 보관할게요.'):'생활관 3층에서 동료와 걸어온 길을 돌아볼 수 있어요.',g.save.flags.dragonspiralWindRecorded?(towerSpecies?`${towerSpecies}와 탑 3층까지 살핀 기록은 북쪽 전망 수첩에 함께 분류해 둘게요.`:'탑 3층까지 살핀 기록은 북쪽 전망 수첩에 함께 분류해 둘게요.'):'용나선탑 관찰은 북문 접근로에서 시작할 수 있지만 생활관 기록의 완료 조건은 아닙니다.','전망 기록은 용나선탑 사건이나 북쪽 통행의 증거가 아닙니다.']);return true;}
+  if(g.save.map==='tour_icirrus'&&id==='tourResident3'){g.say('북쪽 둔덕 산책자',[g.save.flags.icirrusCompanionRested?'전망에서 길을 잘 돌아보았구나. 북문 접근로와 동쪽 8번도로 모두 돌아올 수 있단다.':'생활관 3층 전망석에서도 이 둔덕과 북쪽 방향을 볼 수 있단다.',g.save.flags.dragonspiralWindRecorded?'용나선탑의 기단·석재·바람을 살피고 같은 북문 길로 잘 돌아왔구나.':g.save.flags.dragonspiralApproachMoatObserved?'북문 접근로 해자까지 살폈구나. 중앙 마른 길은 용나선탑 기슭으로 이어진단다.':'북문은 번호 없는 용나선탑 접근로이며 관찰하지 않아도 탑 기슭까지 갈 수 있단다.',g.save.flags.icirrusMoorObservationCompleted?'8번도로 북쪽 분기의 설화의 습지에서 갈대와 물새 흔적을 모두 살폈구나.':'설화의 습지는 동쪽 8번도로의 북쪽 분기로 들어간다. 북문은 용나선탑 접근로다.','북문 접근로와 설화의 습지는 서로 다른 길이며 어느 기록도 통행 조건이 아니다.']);return true;}
+  if(g.save.map==='tour_icirrus'&&id==='tourPokemon'){g.say('생활 뜰의 콩둘기',[g.save.flags.icirrusWaterCompared?'구구구. 물그릇과 빗물 고인 길을 구분하듯 마른 가장자리를 따라 걷는다.':'구구구. 빗물이 튀지 않는 마른 길 가장자리에서 깃을 고른다.','주민과 함께 지내는 생활 개체이며 설화시티 야생 조우나 포획 대상은 아니다.']);return true;}
+  if(g.save.map==='tour_village_bridge_hall'&&id==='tourVillageBridgeWalkLog'){
+    const save=g.save,healthy=save.party.filter(mon=>mon.hp>0),record=(species:number)=>{if(g.save!==save||save.map!=='tour_village_bridge_hall')return;save.flags.villageBridgeWalkLogged=true;save.flags.villageBridgeWalkSpecies=species;g.persist();g.say('다리 통행 기록',[species&&SPECIES[species]?`${SPECIES[species].name}와 12번도로 도착점·중앙 보행선·11번도로 방향을 확인했다.`:'혼자 12번도로 도착점·중앙 보행선·11번도로 방향을 확인했다.','통행 기록은 공연 보상이나 11번도로 조건이 아니다.']);};g.say('다리 통행 기록대',[save.flags.villageBridgeWalkLogged?'앞서 남긴 통행 기록이 있다. 동료나 혼자 다시 확인할 수 있다.':'긴 다리의 보행선과 양쪽 방향을 살펴보자.'],undefined,[...healthy.map(mon=>({label:SPECIES[mon.species].name,action:()=>{if(save.party.includes(mon)&&mon.hp>0)record(mon.species);}})),{label:'혼자 확인한다',action:()=>record(0)},{label:'나중에 확인한다',action:()=>{}}]);return true;
+  }
+  if(g.save.map==='tour_village_bridge_hall_3f'&&id==='tourVillageBridgeRestLog'){
+    const save=g.save,healthy=save.party.filter(mon=>mon.hp>0),record=(species:number)=>{if(g.save!==save||save.map!=='tour_village_bridge_hall_3f')return;save.flags.villageBridgeRested=true;save.flags.villageBridgeRestSpecies=species;g.persist();g.say('동행 휴게 기록',[species&&SPECIES[species]?`${SPECIES[species].name}와 물그릇·그늘·통행 여백을 살폈다.`:'혼자 휴게뜰의 물그릇·그늘·통행 여백을 살폈다.','HP 회복이나 능력 변화는 없다.']);};g.say('동행 휴게 기록대',[save.flags.villageBridgeRested?'앞서 남긴 휴게뜰 기록이 있다.':'다리를 건넌 동료가 안전하게 쉴 자리를 살펴보자.'],undefined,[...healthy.map(mon=>({label:SPECIES[mon.species].name,action:()=>{if(save.party.includes(mon)&&mon.hp>0)record(mon.species);}})),{label:'혼자 살핀다',action:()=>record(0)},{label:'나중에 확인한다',action:()=>{}}]);return true;
+  }
+  if(g.save.map==='tour_village_bridge'&&id==='tourResident1'){const species=Number(g.save.flags.villageBridgeWalkSpecies??0);g.say('다리 보행 관리인',[g.save.flags.villageBridgeWalkLogged?(species&&SPECIES[species]?`${SPECIES[species].name}와 보행선을 확인했군. 통행 여백도 잘 남아 있어.`:'다리 보행선을 확인했군. 고마워.'):'생활관 1층에서 동료와 다리 보행선을 확인할 수 있어.','기록 없이도 12번도로로 돌아갈 수 있고 11번도로가 열리는 조건은 아니야.']);return true;}
   if(g.save.map==='tour_mistralton_center'&&id==='tourMistraltonCenterGuide'){
     const healthy=g.save.party.filter(p=>p.hp===p.maxHp).length,hurt=g.save.party.filter(p=>p.hp>0&&p.hp<p.maxHp).length,fainted=g.save.party.filter(p=>p.hp<=0).length;
     g.say('궐수 여행 준비 안내',[g.save.party.length?`현재 동료 ${g.save.party.length}마리 · 건강 ${healthy} · 부상 ${hurt} · 기절 ${fainted}`:'현재 함께 걷는 동료가 없다. PC에서 맡긴 동료를 확인할 수 있다.',g.save.flags.mistraltonArrivalLogged?'공항 터미널에 궐수 도착 기록이 남아 있다.':'공항 터미널 1층 도착 안내도에서 지나온 육로를 확인할 수 있다.','남쪽은 전기돌동굴을 거쳐 6번도로와 물풍경시티로 돌아간다. 다른 출구는 실제 연결된 육로 표지를 따른다.']);return true;
@@ -260,7 +410,9 @@ export function handleJourneyEvent(g:Engine,id:string):boolean{
   if(g.save.map==='tour_mistralton'&&id==='tourResident3'){g.say('바람쉼터 관리인',[g.save.flags.mistraltonCompanionRested?'전망실에서 동료와 쉬었군요. 필요하면 센터에서 실제 회복도 해 주세요.':'터미널 3층은 사람과 포켓몬이 함께 바람을 보며 쉬는 곳이에요.','휴식 기록은 선택이며 통행 조건이 아닙니다.']);return true;}
   if(id==='jubilifeGrassSign'&&g.save.map==='tour_jubilife'){g.say('축복시티 외곽 풀밭',encounterGuidance(g.save.map).pages);return true;}
   if(id==='martClerk'&&MART_ROOMS.has(g.save.map)){shopMenu(g);return true;}
-  if(isWorldCenter(g.save.map)&&id==='tourExhibit1'){pcMenu(g);return true;}
+  // Celestic's dedicated console keeps its map/painter/navigation event ID.
+  const centerPc=id==='tourExhibit1'||(g.save.map==='tour_celestic_center'&&id==='tourPC');
+  if(isWorldCenter(g.save.map)&&centerPc){pcMenu(g);return true;}
   const passage=PASSAGES[g.save.map];if(!passage)return false;
   if(g.save.map==='tour_unova_route_01'&&id==='journeySign'){
     g.say('4번도로 이정표',['4번도로 · 리조트데저트 입구\n← 4번도로 본선  → 리조트데저트','남쪽 사암 전망길은 큰길로 돌아옵니다.\n이 구간에는 야생 조우가 없습니다.']);return true;

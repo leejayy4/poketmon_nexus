@@ -5,7 +5,9 @@ import { MOVE_RULES } from './pokemon';
 export function moveDescription(move:string):string {
   const data=MOVE_RULES[move];
   if(!data)return '효과 정보 없음';
-  const header=`${data.type} 타입`;
+  const category=data.category==='physical'?'물리':data.category==='special'?'특수':'변화';
+  const priority=data.priority?` · 우선도 ${data.priority>0?'+':''}${data.priority}`:'';
+  const header=`${data.type} · ${category}${priority}`;
   switch(data.rule){
     case 'fixedDamage':return `${header} · 고정 피해 40\n타입 무효인 상대에게는 피해 없음`;
     case 'levelDamage':return `${header} · 자기 레벨만큼 피해\n타입 무효인 상대에게는 피해 없음`;

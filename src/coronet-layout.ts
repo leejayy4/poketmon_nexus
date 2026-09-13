@@ -34,6 +34,7 @@ export function makeCoronetFloor():string[][]{
   const {width,height}=CORONET_SIZE;
   return Array.from({length:height},(_,y)=>Array.from({length:width},(_,x)=>{
     if(x>=9&&x<=10&&y>=16&&y<=17)return '.';
+    if(x>=18&&x<=20&&y>=8&&y<=11)return '.';
     if(x<20&&y<30){
       if(y<18)return x>=2&&x<=17&&y>=3&&y<=15?'.':'#';
       return x>=2&&x<=17&&y<28?'.':'#';

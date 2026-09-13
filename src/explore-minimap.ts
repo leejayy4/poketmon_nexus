@@ -8,7 +8,7 @@ export interface TourMapMarker extends Point {
   id:string; name:string; kind:'center'|'facility'|'gym'|'person'|'pokemon'|'exit'; destination?:MapId; event?:string;
 }
 export function tourMinimapLayout(map:GameMap){
-  const scale=Math.min(6,106/map.height);
+  const scale=Math.min(6,228/map.width,106/map.height);
   return {scale,x:(256-map.width*scale)/2,y:56};
 }
 export function tourMapMarkers(map:GameMap):TourMapMarker[]{
@@ -17,6 +17,8 @@ export function tourMapMarkers(map:GameMap):TourMapMarker[]{
   const travelExitMaps=new Set<MapId>([
     'tour_vermilion','tour_kanto_route_6','tour_kanto_underground_ns','tour_kanto_route_5','tour_pass_vermilion_cinnabar','tour_pass_vermilion_cerulean',
     'tour_goldenrod','tour_route_34','tour_ilex','tour_pass_goldenrod_violet','tour_pass_goldenrod_ecruteak',
+    'tour_johto_route_35','tour_johto_national_park','tour_johto_route_36','tour_johto_route_37',
+    'tour_ecruteak','tour_johto_route_38','tour_johto_route_39','tour_johto_moomoo_farm','tour_olivine','tour_johto_route_40','tour_johto_route_41','tour_johto_whirl_islands_exterior','tour_cianwood','tour_johto_route_42','tour_johto_mt_mortar_1f','tour_mahogany','tour_johto_route_43','tour_rage_lake','tour_johto_route_44','tour_johto_ice_path_1f','tour_johto_ice_path_b1f','tour_johto_ice_path_b2f','tour_johto_ice_path_b3f','tour_blackthorn','tour_johto_route_45','tour_johto_route_46','tour_johto_route_29',
   ]);
   const exitDirection:Record<string,string>={left:'←',right:'→',up:'↑',down:'↓'};
   const exits=travelExitMaps.has(map.id)?map.warps.filter(w=>!doorTargets.has(w.to)).map(w=>({id:'exit:'+w.to,name:`${exitDirection[w.entry]??'◇'} ${getMap(w.to).name}`,kind:'exit' as const,x:w.x,y:w.y,destination:w.to})):[];

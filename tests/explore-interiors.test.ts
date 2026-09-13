@@ -70,6 +70,12 @@ for(const [id,room]of Object.entries(TOUR_INTERIORS))test('room investigation an
         }
         continue;
       }
+      if(id.startsWith('tour_fuchsia_')&&o.event.startsWith('fuchsia')){
+        g.save.player={x:o.x,y:o.y+o.h,facing:'up'};const before=structuredClone(g.save);
+        g.confirm();assert.equal(g.dialogue?.speaker,o.name);assert(g.dialogue?.pages.length);
+        if(g.dialogue?.choices)g.cancel();else for(let page=0;g.dialogue&&page<12;page++){g.dialogue.shown=1000;g.confirm();}
+        assert.equal(g.dialogue,null);assert.deepEqual(g.save,before);assert.equal(g.battle,null);continue;
+      }
       if(room.style==='center'&&o.event==='tourExhibit1'){
         g.save.player={x:o.x,y:o.y+o.h,facing:'up'};const before=structuredClone(g.save);g.confirm();
         assert(g.dialogue?.choices?.some(c=>c.label==='포켓몬 맡기기'));assert(g.dialogue?.choices?.some(c=>c.label==='포켓몬도감'));g.dialogue=null;assert.deepEqual(g.save,before);continue;

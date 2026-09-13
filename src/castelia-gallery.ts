@@ -3,6 +3,7 @@ import type { Choice,MapId,SaveData } from './types';
 import { SPECIES } from './pokemon';
 import { TOUR_OUTDOORS } from './explore-world';
 import { encounterGuidance } from './encounter-guidance';
+import { handleCasteliaFieldIntro } from './castelia-field-intro';
 
 const CITY='tour_castelia',HALL='tour_castelia_hall';
 const DISPLAY='casteliaGalleryDisplay';
@@ -21,6 +22,7 @@ export function casteliaChosenSketch(flags:SaveData['flags']):string|undefined{
 
 /** Optional sketches record an observed view and species, not a quest or capture. */
 export function handleCasteliaGallery(g:Engine,event:string):boolean{
+  if(handleCasteliaFieldIntro(g,event))return true;
   const s=g.save,map=s.map;
   if(map!==CITY&&map!==HALL)return false;
   const current=()=>g.save===s&&s.map===map&&!g.battle;

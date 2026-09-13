@@ -57,7 +57,7 @@ export function handleHearthomePerformance(g:Engine,event:string):boolean{
     g.say('연습 순서',['무대에서 무엇을 맞춰 볼까요?'],undefined,[...routineNames.map((name,index)=>({label:name,action:()=>{
       if(!current()||selected()!==mon||mon.hp<=0)return;
       save.flags[ROUTINE]=index;save.flags[DONE]=true;g.persist();g.audio.play('confirm');
-      const detail=index===0?'서로의 속도에 맞춰 무대를 한 바퀴 돌았다.':index===1?`${mon.moves[0]??'움직임'}의 자세를 천천히 보여 주었다.`:'관객석을 향해 나란히 고개를 숙였다.';
+      const detail=index===0?'서로의 속도에 맞춰 무대를 한 바퀴 돌았다.':index===1?`${mon.moves?.[0]??'움직임'}의 자세를 천천히 보여 주었다.`:'관객석을 향해 나란히 고개를 숙였다.';
       g.say('동료 공연 연습',[`${SPECIES[mon.species].name}와 ${name}를 시작했다.\n${detail}`,'승패나 보상은 없지만 서로의 움직임을 익혔다.\n다른 순서도 언제든 다시 연습할 수 있다.'],menu);
     }})),{label:'돌아가기',action:menu}]);
   }

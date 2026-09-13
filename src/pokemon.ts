@@ -1,5 +1,6 @@
 import type { Pokemon, SaveData } from './types';
-import DATA from './runtime-pokemon-data.json';
+import { RUNTIME_DATABASE, RUNTIME_SPECIES_DATA, RUNTIME_MOVE_DATA } from './data/runtime';
+import { RUNTIME_RULES } from './data/rules';
 export const SPECIES: Record<number, { name: string; genus: string; types: string[]; color: string; description: string; moves: string[]; hp: number }> = {
   406:{name:'꼬몽울',genus:'관장 파트너',types:['풀'],color:'#8796a2',description:'체육관에서 만나는 파트너.',moves:['흡수','방어'],hp:30},
   420:{name:'체리버',genus:'관장 파트너',types:['풀'],color:'#8796a2',description:'체육관에서 만나는 파트너.',moves:['몸통박치기','방어'],hp:30},
@@ -20,10 +21,10 @@ export const SPECIES: Record<number, { name: string; genus: string; types: strin
   25: { name: '피카츄', genus: '쥐포켓몬', types: ['전기'], color: '#caaa35', description: '아직 사람을 조금 경계한다.\n천천히 서로를 알아가 보자.', moves: ['전기쇼크', '울음소리'], hp: 19 },
 };
 export const STARTERS = [7, 4, 1];
-export const RUNTIME_SPECIES=DATA.species as Record<number,(typeof DATA.species)['1']>;
-export const MOVE_RULES=DATA.moves as Record<string,{id:number;slug:string;type:string;power:number;priority:number;rule:string}>;
-export const BOX_CAPACITY=60;
-export const MOVE_CAPACITY=4;
+export const RUNTIME_SPECIES=RUNTIME_SPECIES_DATA;
+export const MOVE_RULES=RUNTIME_MOVE_DATA;
+export const BOX_CAPACITY=RUNTIME_RULES.boxCapacity;
+export const MOVE_CAPACITY=RUNTIME_RULES.moveCapacity;
 export function pokemonSnapshot(p:Pokemon):Pokemon{return {...p,...(p.moves?{moves:[...p.moves]}:{})};}
 for(const [key,data] of Object.entries(RUNTIME_SPECIES)){
   const id=Number(key),old=SPECIES[id];
@@ -31,7 +32,7 @@ for(const [key,data] of Object.entries(RUNTIME_SPECIES)){
 }
 function levelMoves(p:Pokemon):string[]{
   const own=RUNTIME_SPECIES[p.species]?.learnset.filter(m=>m.level<=p.level).map(m=>m.move)??[];
-  const evo=DATA.evolutions.find(e=>e.to===p.species);
+  const evo=RUNTIME_DATABASE.evolutionInto(p.species);
   // Forest cocoons can evolve after learning Bug Bite at level 15. Preserve
   // that move; keep the existing starter acquisition schedule unchanged.
   const inheritedLevel=evo?([11,14].includes(p.species)?p.level:evo.level-1):0;

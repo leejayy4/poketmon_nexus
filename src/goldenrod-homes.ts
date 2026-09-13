@@ -1,3 +1,4 @@
+import { GOLDENROD_ROUTE } from './goldenrod-route';
 import type { GameMap } from './types';
 import type { TourInterior } from './explore-interiors';
 import type { Engine } from './engine';
@@ -22,6 +23,7 @@ export function installGoldenrodHomes(maps:Record<string,GameMap>,rooms:Record<s
     if(floor===1)room.objects.forEach((object,index)=>{
       object.name=home.objects[index][0];object.pages=[home.objects[index][1]];
       if(home.id==='tour_goldenrod_home3'&&index===0)object.kind='console';
+      if(home.id==='tour_goldenrod_home3'&&index===2){object.name='피카츄의 청취 자리';object.pages=['청취 소파의 낮은 방석과 물그릇 자리에서 피카츄가 주민과 함께 방송을 듣는다.'];}
     });
     if(floor===2){room.objects[2].name=home.title+'의 수첩';room.objects[2].pages=[home.greeting];}
   }
@@ -30,7 +32,7 @@ export function installGoldenrodHomes(maps:Record<string,GameMap>,rooms:Record<s
 export function handleGoldenrodHome(g:Engine,event:string):boolean{
   const home=homes.find(h=>h.id===g.save.map);
   if(!home||!['tourHost','tourDetail4_7'].includes(event))return false;
-  const save=g.save,current=()=>g.save===save&&save.map===home.id&&!g.battle;
+  const save=g.save,player=save.player,current=()=>g.save===save&&save.player===player&&save.map===home.id&&!g.battle;
   const guide=(map:'tour_goldenrod_center'|'tour_goldenrod_hall',event:string)=>()=>{if(current())g.setTourDestination(map,event);};
   const choose=(page=0)=>{
     if(!current())return;
@@ -38,10 +40,10 @@ export function handleGoldenrodHome(g:Engine,event:string):boolean{
     g.say('여행 동료 준비',['기술을 살펴볼 동료를 골라 주세요.\n현재 레벨과 가진 기술머신을 사용합니다.'],undefined,[
       ...save.party.slice(page*3,page*3+3).map(mon=>({label:SPECIES[mon.species].name,action:()=>{
         if(!current()||!save.party.includes(mon))return;
-        g.partyIndex=save.party.indexOf(mon);showMoveSchool(g);
+        g.partyIndex=save.party.indexOf(mon);showMoveSchool(g,0,undefined,false,{label:'작업방 동료 선택으로',action:()=>{if(current()&&save.party.includes(mon))choose(page);}});
       }})),
       ...(save.party.length>3?[{label:page?'앞 동료들':'다음 동료들',action:()=>choose(page?0:1)}]:[]),
-      {label:'그만 살펴보기',action:()=>{}},
+      {label:'주민과 출발 준비',action:()=>{if(current())handleGoldenrodHome(g,event);}},
     ]);
   };
   const injured=save.party.filter(mon=>mon.hp<mon.maxHp).length;
@@ -51,6 +53,7 @@ export function handleGoldenrodHome(g:Engine,event:string):boolean{
     {label:'동료 기술 준비',action:()=>choose()},
     {label:'센터까지 안내',action:guide('tour_goldenrod_center','nurse')},
     {label:'라디오 체험 안내',action:guide('tour_goldenrod_hall','tourExhibit0')},
+    ...(home.id==='tour_goldenrod_home2'?[{label:'34번도로로 출발 안내',action:()=>{if(current())g.setTourDestination(GOLDENROD_ROUTE);}}]:[]),
     {label:'인사하고 떠나기',action:()=>{}},
   ]);return true;
 }

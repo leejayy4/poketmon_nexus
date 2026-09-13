@@ -1,0 +1,833 @@
+
+> first-partner-platinum@0.1.0 test
+> tsx --test tests/*.test.ts
+
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\adventure-guide.test.ts (3346.6316ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\adventure-map.test.ts (4501.1526ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\audio-controls.test.ts (3334.6286ms)
+✔ audio is opt-in; scene/effects/fanfare never create a context or timer while muted (2.0721ms)
+✔ scene changes reset beat and cancel queued audio; repeated same-scene calls keep one timer (0.6829ms)
+✔ mute stops present and future voices and old fanfare never survives re-enable (0.4ms)
+✔ six original scenes have different melodies and bounded gentle voices (2.0401ms)
+✔ technical effects sound distinct and use Web Audio scheduling without adding timers (1.1648ms)
+✔ fanfare ducks music and resumes selected scene without a second timer (0.6758ms)
+✔ hidden or suspended contexts do not advance beats or pile up background notes (0.442ms)
+✔ ended voices disconnect and invalid public note inputs do not reach Web Audio (0.3966ms)
+✔ failed resume disables cleanly but stale rejection cannot mute a newer user enable (0.6735ms)
+✔ unavailable AudioContext fails safely and closed context can be recreated by a user toggle (0.6632ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\battle-arena-art.test.ts (4140.7835ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\battle-caught-record.test.ts (3969.1788ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\battle-caught-ui.test.ts (3863.3744ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\battle-counter-order.test.ts (4004.9172ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\battle-effects.test.ts (3581.5461ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\battle-growth.test.ts (3995.4329ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\battle-healing.test.ts (3381.6267ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\battle-hints.test.ts (2892.0728ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\battle-korean-text.test.ts (2744.8431ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\battle-menu-flow.test.ts (3994.3727ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\battle-move-types.test.ts (4231.0054ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\battle-polish.test.ts (3799.9131ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\battle-presentation.test.ts (3718.4844ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\battle-replacement.test.ts (3258.1989ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\battle-selection-preview.test.ts (3382.646ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\battle-supply-message.test.ts (2405.2247ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\capped-training.test.ts (2526.7168ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\capture-motion.test.ts (3543.9822ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\castelia-city.test.ts (3271.7392ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\catch-summary.test.ts (3525.6009ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\cinnabar-recovery.test.ts (2808.2812ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\cinnabar-research.test.ts (2474.2439ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\city-activities.test.ts (2169.822ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\city-street-art.test.ts (2170.3406ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\collision.test.ts (2766.091ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\coronet-art.test.ts (3271.44ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\coronet-layout.test.ts (3079.3292ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\defeat-recovery.test.ts (3684.4041ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\defense-preview.test.ts (2425.7101ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\desert-art.test.ts (2547.3476ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\desert-layout.test.ts (2644.769ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\drain-preview.test.ts (2573.6716ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\encounter-guidance.test.ts (3303.277ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\eterna-city-layout.test.ts (2374.6622ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\eterna-clock.test.ts (3272.4641ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\eterna-combat.test.ts (2929.3413ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\eterna-forest-layout.test.ts (3409.0365ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\eterna-gym-art.test.ts (3374.2685ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\eterna-history.test.ts (2585.3131ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\explore-centers.test.ts (4288.4259ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\explore-expansion.test.ts (2966.0518ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\explore-interiors.test.ts (3045.112ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\explore-journal.test.ts (3157.4843ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\explore-layouts.test.ts (2752.526ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\explore-minimap.test.ts (3335.9065ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\explore-navigation.test.ts (3258.6882ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\explore-outdoors.test.ts (3218.5687ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\explore-pokemon.test.ts (3697.8459ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\explore-residents.test.ts (3315.3836ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\explore-roaming.test.ts (2752.9783ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\explore-tree-art.test.ts (4107.3878ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\explore-world.test.ts (4007.8847ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\facility-navigation.test.ts (4514.0883ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\fantina-preparation.test.ts (3495.7492ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\ferry-art.test.ts (4650.1302ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\ferry-journey.test.ts (3753.6723ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\field-bag.test.ts (4718.1281ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\field-input.test.ts (4901.5262ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\first-adventure.test.ts (4766.9883ms)
+C:\my_play\poketmon_demo\src\explore-interiors.ts:59
+  if(!collection)throw Error('Missing tour interior: '+p.id);
+                       ^
+
+Error: Missing tour interior: tour_lentimas
+    at createTourInterior (C:\my_play\poketmon_demo\src\explore-interiors.ts:59:24)
+    at <anonymous> (C:\my_play\poketmon_demo\src\explore-world.ts:198:20)
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:643:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.18.0
+✖ tests\first-badge-town.test.ts (4405.2124ms)

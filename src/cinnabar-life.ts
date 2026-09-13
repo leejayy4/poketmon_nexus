@@ -1,7 +1,14 @@
 import type { Engine } from './engine';
+import { handleCinnabarEvacuation } from './cinnabar-evacuation';
+import { handleCinnabarRescueWork } from './cinnabar-rescue-work';
+import { handleCinnabarRescueArrival } from './cinnabar-rescue-arrival';
 import type { GameMap } from './types';
-import type { TourInterior } from './explore-interiors';
+import type { TourInterior,FurnishingKind } from './explore-interiors';
 import { CINNABAR_ROUTE,CINNABAR_DEPARTURE_ROUTE } from './cinnabar-layout';
+import { KANTO_ROUTE_TWENTY } from './kanto-south-sea-route';
+import { handleSeafoamExploration,showSeafoamNotebook } from './seafoam-exploration';
+
+let seafoamNotebookEvent:string|undefined;
 
 const homes=[
   {id:'tour_cinnabar_home1',title:'바닷가 동료의 집',host:'동료를 돌보는 주민',objects:[['함께 쓰는 식탁','사람의 식기 옆에 낮은 물그릇이 있다.\n바닷바람에 날리지 않게 받침을 놓았다.'],['돌봄 기록','풀밭에서 돌아오면 몸 상태를 살피고\n다쳤을 때는 센터에 가자는 메모다.'],['동료의 잠자리','모래를 털어 낸 작은 방석이다.\n창가에는 그늘이 드리워져 있다.'],['창가 화분','짠 바람을 피하도록 창 안쪽에 두었다.']]},
@@ -13,11 +20,18 @@ export function installCinnabarHomes(maps:Record<string,GameMap>,rooms:Record<st
     const map=maps[home.id],room=rooms[home.id];
     map.name='홍련섬 · '+home.title;room.title=home.title;map.npcs[0].name=home.host;
     room.greeting=['포켓몬과 함께 사는 집이에요.\n여행 준비를 하고 가세요.'];
-    room.objects.forEach((o,i)=>{o.name=home.objects[i][0];o.pages=[home.objects[i][1]];});
+    const kinds:FurnishingKind[]=['workbench','chart','bench','plants'];
+    room.objects.forEach((o,i)=>{o.name=home.objects[i][0];o.pages=[home.objects[i][1]];o.kind=kinds[i]??o.kind;});
+    if(home.id==='tour_cinnabar_home2')seafoamNotebookEvent=room.objects[1]?.event;
   }
 }
 
 export function handleCinnabarLife(g:Engine,event:string):boolean{
+  if(handleCinnabarEvacuation(g,event))return true;
+  if(handleCinnabarRescueWork(g,event))return true;
+  if(handleCinnabarRescueArrival(g,event))return true;
+  if(handleSeafoamExploration(g,event))return true;
+  if(g.save.map==='tour_cinnabar_home2'&&event===seafoamNotebookEvent){showSeafoamNotebook(g);return true;}
   if(g.save.map===CINNABAR_ROUTE&&event==='journeyWalker'){
     const save=g.save,current=()=>g.save===save&&save.map===CINNABAR_ROUTE&&!g.battle;
     g.say('해안길 여행자',['서쪽은 태초마을, 동쪽은 홍련섬이야.\n만을 돌아가는 모래길을 따라가면 돼.','북쪽 전망길과 남쪽 바위 샛길은\n다시 큰길로 돌아올 수 있어.','홍련에서는 바닷가 돌을 관찰해 봐.\n외곽 풀밭에서는 새 동료도 만날 수 있어.'],undefined,[
@@ -34,7 +48,8 @@ export function handleCinnabarLife(g:Engine,event:string):boolean{
   const guide=(target:Parameters<Engine['setTourDestination']>[0],event?:string)=>()=>{if(current())g.setTourDestination(target,event);};
   const departure=()=>{
     if(!current())return;
-    g.say('홍련에서 다음 여행',['북쪽 해안길 → 태초마을\n동쪽 해안길 → 갈색시티','현재 두 길은 걸어서 왕복할 수 있어요.\n연구소 관찰이나 포획은 출발 조건이 아니에요.'],undefined,[
+    g.say('홍련에서 다음 여행',['서쪽 관동20번수로 → 쌍둥이섬 → 19번수로 → 연분홍시티','북쪽 태초–홍련 해안길은 공식21번수로를 대신하는 현재 도보 재구성이며, 동쪽 홍련–갈색 해안길은 원작에 없는 창작 직결로예요.','세 길은 연구소 관찰이나 포획을 출발 조건으로 삼지 않아요.'],undefined,[
+      {label:'연분홍행 공식 항로',action:guide(KANTO_ROUTE_TWENTY)},
       {label:'태초행 길 안내',action:guide(CINNABAR_ROUTE)},
       {label:'갈색행 길 안내',action:guide(CINNABAR_DEPARTURE_ROUTE)},
       {label:'먼저 파티 살피기',action:()=>{if(current()){g.panel='party';g.partyIndex=0;}}},
@@ -47,6 +62,7 @@ export function handleCinnabarLife(g:Engine,event:string):boolean{
     injured?`회복이 필요한 동료 ${injured}마리\n센터에서 쉬게 해 주세요.`:'동료들의 HP가 모두 건강해요.\n기술과 도구도 확인하고 출발해요.',
     `몬스터볼 ${save.inventory.pokeBalls}개 · 상처약 ${save.inventory.potions}개\n상점은 주거 구역 서쪽에 있어요.`,
   ],undefined,[
+    ...(home?.id==='tour_cinnabar_home2'?[{label:'쌍둥이섬 수첩 보기',action:()=>{if(current())showSeafoamNotebook(g);}}]:[]),
     {label:'센터·PC 안내',action:guide('tour_cinnabar_center','nurse')},
     {label:'상점 안내',action:guide('tour_cinnabar_mart','martClerk')},
     {label:'다음 여행 준비',action:departure},
