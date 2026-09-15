@@ -1,7 +1,9 @@
 import type {Engine} from './engine';
 import {SPECIES} from './pokemon';
+import {JOHTO_SOUTH_BATTLE} from './johto-south-battle';
 
 const SLOT='cherrygroveCareSlot',SPECIES_ID='cherrygroveCareSpecies',WIND='cherrygroveCareWind',DONE='cherrygroveCareDone';
+const SOUTH_ORIGINS=new Set(['성도 29번도로','성도 45번도로','성도 46번도로','성도 29번도로 · 동쪽 합류부','성도 29번도로 · 무궁-46 합류 구간']);
 export function handleCherrygroveCare(g:Engine,event:string):boolean{
   const start=g.save.map==='tour_cherrygrove_home1'&&(event==='cherrygroveHomeFlowers'||event==='tourHost');
   const coast=g.save.map==='tour_cherrygrove'&&event==='tourCherrygroveCoast';
@@ -11,13 +13,29 @@ export function handleCherrygroveCare(g:Engine,event:string):boolean{
   const guide=(target:typeof save.map,id:string)=>()=>{if(active())g.setTourDestination(target,id);};
   const selected=()=>{const slot=save.flags[SLOT];const mon=typeof slot==='number'?save.party[slot]:undefined;return mon?.species===save.flags[SPECIES_ID]?mon:undefined;};
   const name=()=>{const mon=selected();return mon?SPECIES[mon.species].name:'동료';};
+  const southBattlePartner=()=>{
+    const f=JOHTO_SOUTH_BATTLE,slot=save.flags[f.slot];
+    if(save.flags[f.participated]!==true||typeof slot!=='number')return undefined;
+    const mon=save.party[slot];
+    return mon?.species===save.flags[f.partner]?mon:undefined;
+  };
+  const journeyLine=(mon:NonNullable<ReturnType<typeof selected>>)=>{
+    const actual=southBattlePartner()===mon;
+    if(actual){
+      const startLevel=Number(save.flags[JOHTO_SOUTH_BATTLE.level]??mon.level);
+      return `${SPECIES[mon.species].name}는 남쪽 산길 실전에서 직접 싸운 동료예요. Lv.${startLevel}에서 지금 Lv.${mon.level}까지 이어진 여정을 꽃길 돌봄에도 남기고 있군요.`;
+    }
+    return SOUTH_ORIGINS.has(mon.met)
+      ?`${mon.met.replace('성도 ','')}에서 내려온 동료와 꽃길도 함께 돌보고 있군요.`
+      :'함께 고른 동료와 하던 일을 이어가 주세요.';
+  };
   const choose=(page=0)=>g.say('꽃길 바람막이 준비',['동료와 서쪽 해안의 바람을 확인한 뒤 공동 화단에 바람막이를 세워 주세요.'],undefined,[
     ...save.party.slice(page*3,page*3+3).map(mon=>({label:SPECIES[mon.species].name,action:()=>{
       if(!active()||!save.party.includes(mon))return;
       if(mon.hp<=0){g.say('꽃길 주민',['이 동료는 먼저 센터에서 회복해야 해요.']);return;}
       save.flags[SLOT]=save.party.indexOf(mon);save.flags[SPECIES_ID]=mon.species;save.flags[WIND]=false;save.flags[DONE]=false;g.persist();
       g.setTourDestination('tour_cherrygrove','tourCherrygroveCoast');
-      g.say('꽃길 주민',[`${SPECIES[mon.species].name}와 준비했어요. 서쪽 해안 관찰대에서 바람을 확인해 주세요.`]);
+      g.say('꽃길 주민',[`${SPECIES[mon.species].name}와 준비했어요. 서쪽 해안 관찰대에서 바람을 확인해 주세요.`,journeyLine(mon)]);
     }})),
     ...(save.party.length>3?[{label:page?'앞 동료':'다음 동료',action:()=>{if(active())choose(page?0:1);}}]:[]),
     {label:'나중에 하기',action:()=>{}},
@@ -45,7 +63,7 @@ export function handleCherrygroveCare(g:Engine,event:string):boolean{
     };
     g.say('꽃길 주민',[
       `${SPECIES[partner.species].name}와 준비한 기록이 남아 있어요.`,
-      partner.met==='성도 46번도로'?'46번도로에서 내려온 동료와 꽃길도 함께 돌보고 있군요.':'함께 고른 동료와 하던 일을 이어가 주세요.',
+      journeyLine(partner),
       partner.hp<=0?'먼저 센터에서 회복해 주세요. 확인한 바람 방향은 그대로 기억해 둘게요.':observed?'서쪽 바람을 확인했으니 이제 공동 화단에 바람막이를 세우면 돼요.':'서쪽 해안 관찰대에서 바람 방향을 확인하면 돼요.',
     ],undefined,[
       {label:partner.hp<=0?'센터에서 회복':observed?'화단에서 이어하기':'해안에서 이어하기',action:destination},

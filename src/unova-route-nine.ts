@@ -21,16 +21,17 @@ export function installUnovaRouteNine(w:World){
   open(route,40,19,9,5);open(route,44,16,5,8);   // southeast rest loop
   const routeObjects=[
     {name:'쇼핑몰 나인 외부 접근부',event:'tourRouteNineMall',cells:[{x:27,y:6}],pages:['북쪽 건물 앞의 넓은 진입 광장이다.','쇼핑몰 공개 1층과 이어지며 판매 서비스와 도시 결빙 사건은 아직 적용하지 않았다.']},
-    {name:'남쪽 숲 풀길',event:'tourRouteNineGrass',cells:[{x:16,y:21}],pages:['포장도로 아래 나무 사이로 굽은 풀길이 이어진다.','야생 조우와 도전자굴 입구는 아직 적용하지 않았으며 같은 포장 본선으로 돌아간다.']},
+    {name:'남쪽 숲 풀길',event:'tourRouteNineGrass',cells:[{x:16,y:21}],pages:['포장도로 아래 나무 사이로 굽은 선택 풀길이 이어진다.','치라미가 머무는 풀밭을 지나거나 바깥 흙길로 같은 포장 본선에 돌아간다.']},
     {name:'쌍용 서문 쉼터',event:'tourRouteNineRest',cells:[{x:46,y:21}],pages:['쌍용시티 서문을 앞둔 사람과 포켓몬이 쉬는 마른 공터다.','회복 시설은 아니며 실제 회복은 쌍용 포켓몬센터에서 받는다.']},
   ];
   for(const object of routeObjects)for(const cell of object.cells)route[cell.y][cell.x]='#';
-  w.maps[UNOVA_ROUTE_NINE]={id:UNOVA_ROUTE_NINE,name:'하나 9번도로',width:56,height:28,background:UNOVA_ROUTE_NINE,walkable:route.map(row=>row.join('')),terrain:[],warps:[
+  w.maps[UNOVA_ROUTE_NINE]={id:UNOVA_ROUTE_NINE,name:'하나 9번도로',width:56,height:28,background:UNOVA_ROUTE_NINE,walkable:route.map(row=>row.join('')),terrain:[{kind:'tallGrass',x:8,y:20,w:7,h:3},{kind:'tallGrass',x:17,y:20,w:4,h:3}],warps:[
     {x:54,y:14,to:city.id,spawn:{x:3,y:45},entry:'right',facing:'right'},
     {x:1,y:14,to:TUBELINE_BRIDGE,spawn:{x:77,y:9},entry:'left',facing:'left'},
     {x:28,y:4,to:SHOPPING_MALL_NINE,spawn:{x:18,y:25},entry:'up',facing:'up'},
   ],npcs:[
     {id:'routeNineGuide',name:'9번도로 안내원',sprite:'ace_trainer_f',x:37,y:15,facing:'left',dialogue:'tourGuide'},
+    {id:'routeNineTrainer',name:'9번도로 라이더',sprite:'ace_trainer_m',x:24,y:15,facing:'right',dialogue:'tourRouteNineTrainer'},
     {id:'tourPokemon',name:'서문 쉼터의 콩둘기',sprite:'field-pidove',x:43,y:21,facing:'left',dialogue:'tourPokemon'},
   ],props:[
     {x:50,y:9,dialogue:'tourRouteNineSign'},{x:5,y:9,dialogue:'tourRouteNineSign'},

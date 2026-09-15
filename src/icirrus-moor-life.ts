@@ -1,9 +1,11 @@
 import type { Engine } from './engine';
 import { SPECIES } from './pokemon';
+import { ROUTE_EIGHT_JOURNEY,routeEightTrackedPartner } from './unova-route-eight-journey';
 
 const MAP='tour_icirrus_moor';
 const SLOT='icirrusMoorPartnerSlot',MON='icirrusMoorPartnerSpecies';
 const REEDS='icirrusMoorReedsObserved',BIRDS='icirrusMoorBirdsObserved',DONE='icirrusMoorObservationCompleted';
+const ROUTE_EIGHT_CONTINUED='icirrusMoorRouteEightPartnerContinued';
 
 /** A voluntary companion walk through the two dry boardwalk loops. */
 export function handleIcirrusMoorLife(g:Engine,event:string):boolean{
@@ -11,6 +13,8 @@ export function handleIcirrusMoorLife(g:Engine,event:string):boolean{
   const save=g.save,current=()=>g.save===save&&save.map===MAP&&!g.battle;
   const selected=()=>{const slot=save.flags[SLOT],mon=typeof slot==='number'?save.party[slot]:undefined;return mon&&mon.species===save.flags[MON]&&mon.hp>0?mon:undefined;};
   const name=SPECIES[Number(save.flags[MON]??0)]?.name;
+  const routeEightPartner=routeEightTrackedPartner(save);
+  const continued=save.flags[ROUTE_EIGHT_CONTINUED]===true;
   const guide=(target:string)=>()=>{if(current())g.setTourDestination(MAP,target);};
   if(event==='tourIcirrusMoorWestStump'||event==='tourIcirrusMoorEastStump'){
     const west=event==='tourIcirrusMoorWestStump';
@@ -24,15 +28,17 @@ export function handleIcirrusMoorLife(g:Engine,event:string):boolean{
 
   if(event==='tourGuide'){
     const healthy=save.party.map((mon,slot)=>({mon,slot})).filter(({mon})=>mon.hp>0);
-    const choices=healthy.map(({mon,slot})=>({label:`${SPECIES[mon.species].name}와 걷기`,action:()=>{
+    const choices=healthy.map(({mon,slot})=>({label:`${SPECIES[mon.species].name}${mon===routeEightPartner?' · 8번도로 실전 동료':''}와 걷기`,action:()=>{
       if(!current()||save.party[slot]!==mon||mon.hp<=0)return;
       if(!save.flags[DONE]&&save.flags[SLOT]===slot&&save.flags[MON]===mon.species){
         g.say('습지 관찰원',[status,'함께 걷던 동료와 남긴 기록을 그대로 이어가자.'],undefined,[{label:next.label,action:guide(next.target)},{label:'그대로 걷기',action:()=>{}}]);return;
       }
       const begin=()=>{
         if(!current()||save.party[slot]!==mon||mon.hp<=0)return;
-        save.flags[SLOT]=slot;save.flags[MON]=mon.species;delete save.flags[REEDS];delete save.flags[BIRDS];delete save.flags[DONE];g.persist();
-        g.say('습지 관찰원',[`${SPECIES[mon.species].name}와 서쪽 갈대 수위 말뚝부터 살펴보자.`,'서쪽과 동쪽 순환로는 모두 마른 데크이며 중앙길로 돌아온다.','관찰은 HP·경험치·통행 조건을 바꾸지 않는다.'],undefined,[{label:'갈대 관찰로',action:guide('tourIcirrusMoorReeds')},{label:'먼저 둘러보기',action:()=>{}}]);
+        save.flags[SLOT]=slot;save.flags[MON]=mon.species;delete save.flags[REEDS];delete save.flags[BIRDS];delete save.flags[DONE];
+        if(mon===routeEightTrackedPartner(save)&&save.flags[ROUTE_EIGHT_JOURNEY.participated]===true)save.flags[ROUTE_EIGHT_CONTINUED]=true;else delete save.flags[ROUTE_EIGHT_CONTINUED];
+        g.persist();
+        g.say('습지 관찰원',[`${SPECIES[mon.species].name}와 서쪽 갈대 수위 말뚝부터 살펴보자.`,save.flags[ROUTE_EIGHT_CONTINUED]?'8번도로 선택 실전에 참가하고 설화 동문까지 온 같은 동료의 여행을 이어 기록한다.':'이 관찰은 8번도로 실전 동료와 별도로 시작한 선택 기록이다.','서쪽과 동쪽 순환로는 모두 마른 데크이며 중앙길로 돌아온다.','관찰은 HP·경험치·통행 조건을 바꾸지 않는다.'],undefined,[{label:'갈대 관찰로',action:guide('tourIcirrusMoorReeds')},{label:'먼저 둘러보기',action:()=>{}}]);
       };
       if(save.flags[DONE]){
         g.say('새 관찰 시작',[`${SPECIES[mon.species].name}와 다시 관찰하면 기존 완료 기록을 새 관찰 기록으로 바꾼다.`,'갈대 수위와 물새 흔적을 처음부터 다시 살펴볼까?'],undefined,[{label:'새 관찰 시작',action:begin},{label:'완료 기록 유지',action:()=>{}}]);
@@ -97,7 +103,7 @@ export function handleIcirrusMoorLife(g:Engine,event:string):boolean{
       ]);return true;
     }
     const mon=selected();if(!save.flags[REEDS]||!save.flags[BIRDS]||!mon){g.say('북쪽 습지 전망대',[status,'갈대 수위와 물새 흔적을 모두 살핀 뒤 같은 건강한 동료와 기록을 맞출 수 있다.','추가 출구나 보상은 없으며 남쪽 중앙 데크로 돌아간다.']);return true;}
-    const first=!save.flags[DONE];save.flags[DONE]=true;if(first)g.persist();g.say('설화의 습지 관찰 기록',[`${SPECIES[mon.species].name}와 서쪽 갈대밭에서 동쪽 물가로 이어지는 생활 흔적을 한눈에 맞췄다.`,first?'습지 순환 관찰을 마쳤다.':'완성된 습지 기록을 다시 펼쳐 보았다.','8번도로로 돌아가는 남쪽 중앙 데크를 수첩에 짚었다.'],undefined,[{label:'귀환 데크로',action:guide('tourIcirrusMoorRoute8')},{label:'기록을 덮는다',action:()=>{}}]);return true;
+    const first=!save.flags[DONE];save.flags[DONE]=true;if(first)g.persist();g.say('설화의 습지 관찰 기록',[`${SPECIES[mon.species].name}와 서쪽 갈대밭에서 동쪽 물가로 이어지는 생활 흔적을 한눈에 맞췄다.`,continued?'8번도로 포획·선택 실전·설화 동문 도착에 이어 같은 동료와 습지 순환 관찰까지 마쳤다.':first?'습지 순환 관찰을 마쳤다.':'완성된 습지 기록을 다시 펼쳐 보았다.','8번도로로 돌아가는 남쪽 중앙 데크를 수첩에 짚었다.'],undefined,[{label:'귀환 데크로',action:guide('tourIcirrusMoorRoute8')},{label:'기록을 덮는다',action:()=>{}}]);return true;
   }
   if(event==='tourIcirrusMoorRoute8'){g.say('8번도로 귀환 데크',[status,'남쪽 출구는 하나 8번도로 북쪽 분기로 이어진다.','8번도로 서쪽은 설화시티, 동쪽은 튜브라인브리지와 9번도로·쌍용시티 방향이다.'],undefined,[{label:'설화 포켓몬센터로',action:()=>{if(current())g.setTourDestination('tour_icirrus_center');}},{label:'8번도로 실전 준비로',action:()=>{if(current())g.setTourDestination('tour_unova_route_08','tourRouteEightTrainer');}},{label:'8번도로로 돌아가기',action:()=>{if(current())g.setTourDestination('tour_unova_route_08');}},{label:'기록 지점 다시 보기',action:guide(save.flags[DONE]?'tourIcirrusMoorNorth':next.target)},{label:'그대로 걷기',action:()=>{}}]);return true;}
   return false;

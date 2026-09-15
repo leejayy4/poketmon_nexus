@@ -43,6 +43,12 @@ const residents:Record<string,[ResidentLine,ResidentLine]>={
 };
 
 export function createTourResidents(id:string):TourResident[]{
+  if(id==='tour_oreburgh')return [
+    {id:'tourResident0',dialogue:'tourResident0',name:'광부',sprite:'worker',x:10,y:13,facing:'right',pages:['돌마다 색과 무게가 다르지.\n쉬는 날에도 반짝이는 돌이 눈에 들어와.']},
+    {id:'tourResident1',dialogue:'tourResident1',name:'전시관 학생',sprite:'school_kid_m',x:29,y:12,facing:'up',pages:['광차 모형을 보러 왔어요.\n바퀴가 어떻게 움직이는지 궁금해요.']},
+    {id:'oreburghVentWorker',dialogue:'oreburghVentWorker',name:'환기 설비 작업자',sprite:'worker',x:35,y:31,facing:'right',pages:['동쪽 암반의 환기 설비를 살피고 있어.']},
+    {id:'oreburghRailDispatcher',dialogue:'oreburghRailDispatcher',name:'광차 신호원',sprite:'middle_aged_man',x:19,y:31,facing:'down',pages:['남쪽 레일의 운반 신호를 확인하고 있어.']},
+  ];
   if(id==='tour_canalave')return [
     {id:'tourResident0',dialogue:'tourResident0',name:'부두 작업자',sprite:'worker',x:43,y:29,facing:'down',pages:['작업 포켓몬과 신호를 맞추며 화물 간격을 확인하고 있어.']},
     {id:'tourResident1',dialogue:'tourResident1',name:'항구 여행객',sprite:'ace_trainer_f',x:18,y:30,facing:'right',pages:['서부 연구길과 일반 지방 연결, 조사선 안내를 따로 확인하고 있어요.']},
@@ -73,6 +79,9 @@ export function createTourResidents(id:string):TourResident[]{
     {id:'tourResident1',dialogue:'tourResident1',name:'다리 보행 관리인',sprite:'worker',x:36,y:28,facing:'up',pages:['사람과 포켓몬이 멈춰 쉴 자리와 계속 걷는 통로를 나눠 두었어.','난간 안쪽을 따라가면 수로 양쪽 둔치를 오갈 수 있지.']},
     {id:'tourResident2',dialogue:'tourResident2',name:'주민 공연 연습자',sprite:'lass',x:34,y:15,facing:'down',pages:['이웃과 목소리와 손장단을 맞추지만 길을 막지는 않아요.','아직 공연 기능이나 참여 보상을 연결한 장소는 아니에요.']},
     {id:'tourResident3',dialogue:'tourResident3',name:'11번도로 길 안내원',sprite:'middle_aged_man',x:8,y:41,facing:'right',pages:['서쪽은 하나 11번도로와 쌍용시티 방향이란다.','물길 전망과 바위 단차를 지나 석조 도시까지 왕복할 수 있어.']},
+    {id:'villageFlute',dialogue:'tourVillageBridgeFlute',name:'동쪽 난간 풀피리 주민',sprite:'youngster',x:58,y:21,facing:'down',pages:['물길 바람에 맞춰 긴 숨의 간격을 맞춘다.']},
+    {id:'villageGuitar',dialogue:'tourVillageBridgeGuitar',name:'서쪽 둔치 기타 주민',sprite:'lass',x:20,y:27,facing:'up',pages:['돌 아치의 울림을 들으며 짧게 현을 고른다.']},
+    {id:'villageBeatbox',dialogue:'tourVillageBridgeBeatbox',name:'다리 끝 박자 주민',sprite:'school_kid_m',x:47,y:21,facing:'down',pages:['보행자의 발걸음을 피해 낮은 리듬을 맞춘다.']},
   ];
   if(id==='tour_opelucid')return [
     {id:'tourResident0',dialogue:'tourResident0',name:'11번도로 도착 여행자',sprite:'ace_trainer_f',x:54,y:42,facing:'left',pages:['동쪽 문으로 나가면 하나 11번도로와 빌리지브리지예요.','센터에서 동료를 쉬게 한 뒤 같은 길로 보배마을까지 돌아갈 수 있어요.']},

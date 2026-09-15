@@ -37,7 +37,7 @@ export function paintCelesticRuinsRoom(c:CanvasRenderingContext2D,map:GameMap):b
 }
 
 export function paintCelesticRuinsExhibit(c:CanvasRenderingContext2D,o:Furnishing):boolean{
-  if(!['tourCelesticRuinsMural','tourCelesticRuinsRecord','tourCelesticRuinsStone'].includes(o.event))return false;
+  if(!['tourCelesticRuinsMural','tourCelesticRuinsRecord','tourCelesticRuinsStone','tourCelesticRuinsReturn'].includes(o.event))return false;
   const x=o.x*16,y=o.y*16,w=o.w*16,h=o.h*16;
   c.save();c.beginPath();c.rect(x,y,w,h);c.clip();
   r(c,x,y,w,h,'#697b68');r(c,x+2,y+2,w-4,h-7,'#b6b49a');
@@ -54,12 +54,16 @@ export function paintCelesticRuinsExhibit(c:CanvasRenderingContext2D,o:Furnishin
   }else if(o.event==='tourCelesticRuinsRecord'){
     r(c,x+5,y+7,w-10,h-20,'#dcd0ad');r(c,x+w/2,y+8,2,h-23,'#a39170');
     for(let j=12;j<h-15;j+=5){r(c,x+9,y+j,w/2-14,1,'#8f977c');r(c,x+w/2+6,y+j,w/2-16,1,'#8f977c');}
-  }else{
+  }else if(o.event==='tourCelesticRuinsStone'){
     for(let i=0;i<2;i++){
       const bx=x+7+i*w/2;
       paintSinnohStratum(c,bx,y+9,w/2-14,h-24,i===0);
       r(c,bx+2,y+h-12,w/2-18,3,'#e1d5b3');
     }
+  }else{
+    r(c,x+5,y+7,w-10,h-14,'#d7c9a2');
+    r(c,x+Math.floor(w/2)-2,y+10,4,h-20,'#6f806d');
+    r(c,x+Math.floor(w/2)-7,y+10,14,3,'#6f806d');
   }
   c.restore();return true;
 }

@@ -10,6 +10,17 @@ export function minimumLevel(species:number){return [2,5,8].includes(species)?16
 export function maxHpAtLevel(species:number,level:number){return SPECIES[species].hp+(level-minimumLevel(species))*3}
 export function nextLevelXp(level:number){return level*10}
 export interface GrowthStep { kind:'experience'|'level'|'evolution'|'move'; amount:number; before:Pokemon; after:Pokemon; move?:string }
+function learnNewGrowthMoves(p:Pokemon,previousMoves:string[],show:(page:string,kind:GrowthStep['kind'],before:Pokemon,move?:string)=>void){
+  for(const move of availableMoves(p).filter(m=>!previousMoves.includes(m))){
+      const beforeMove=pokemonSnapshot(p),moves=pokemonMoves(p);
+      if(!moves.includes(move)&&moves.length<MOVE_CAPACITY){
+        p.moves=[...moves,move];
+        show(`${withParticle(SPECIES[p.species].name,'은/는')} ${withParticle(move,'을/를')}\n새로 배웠다!`,'move',beforeMove,move);
+      }else if(!moves.includes(move)){
+        show(`${withParticle(SPECIES[p.species].name,'은/는')} ${withParticle(move,'을/를')}\n배울 수 있다! 정보에서 기술을 바꿔 보자.`,'move',beforeMove,move);
+      }
+    }
+}
 export function gainExperience(p:Pokemon,amount:number,onStep?:(page:string,step:GrowthStep)=>void):string[]{
   if(p.level>=LEVEL_CAP||!Number.isInteger(amount)||amount<=0)return [];
   const pages:string[]=[];
@@ -31,16 +42,22 @@ export function gainExperience(p:Pokemon,amount:number,onStep?:(page:string,step
       if(p.hp>0)p.hp=Math.min(p.maxHp,p.hp+p.maxHp-oldHp);
       show(`${withParticle(SPECIES[previous.species].name,'은/는')}\n${withParticle(SPECIES[p.species].name,'으로/로')} 진화했다!`,'evolution',previous);
     }
-    for(const move of availableMoves(p).filter(m=>!previousMoves.includes(m))){
-      const beforeMove=pokemonSnapshot(p),moves=pokemonMoves(p);
-      if(!moves.includes(move)&&moves.length<MOVE_CAPACITY){
-        p.moves=[...moves,move];
-        show(`${withParticle(SPECIES[p.species].name,'은/는')} ${withParticle(move,'을/를')}\n새로 배웠다!`,'move',beforeMove,move);
-      }else if(!moves.includes(move)){
-        show(`${withParticle(SPECIES[p.species].name,'은/는')} ${withParticle(move,'을/를')}\n배울 수 있다! 정보에서 기술을 바꿔 보자.`,'move',beforeMove,move);
-      }
-    }
+    learnNewGrowthMoves(p,previousMoves,show);
   }
   if(p.level===LEVEL_CAP)p.experience=0;
   return pages;
+}
+
+/** Project cap compatibility: one eligible stage after a won battle, never on save load. */
+export function evolveAtLevelCap(p:Pokemon,onStep?:(page:string,step:GrowthStep)=>void):void{
+  if(p.level!==LEVEL_CAP||p.hp<=0)return;
+  const evolution=RUNTIME_DATABASE.evolutionFrom(p.species,p.level);
+  if(!evolution||!OWNABLE_SPECIES.includes(evolution.to))return;
+  const before=pokemonSnapshot(p),oldHp=p.maxHp,previousMoves=availableMoves(p);
+  p.moves??=pokemonMoves(p);
+  p.species=evolution.to;p.maxHp=maxHpAtLevel(p.species,p.level);
+  p.hp=Math.max(1,Math.min(p.maxHp,p.hp+p.maxHp-oldHp));
+  const page=`${withParticle(SPECIES[before.species].name,'은/는')}\n${withParticle(SPECIES[p.species].name,'으로/로')} 진화했다!`;
+  onStep?.(page,{kind:'evolution',amount:0,before,after:pokemonSnapshot(p)});
+  learnNewGrowthMoves(p,previousMoves,(page,kind,before,move)=>onStep?.(page,{kind,amount:0,before:pokemonSnapshot(before),after:pokemonSnapshot(p),...(move?{move}:{})}));
 }

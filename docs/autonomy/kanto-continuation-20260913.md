@@ -1,3 +1,23 @@
+## 2026-09-15 쌍둥이섬 B1F·B2F — 계단 사이 얼음 지형과 현장 표석
+
+HGSS 쌍둥이섬의 층별 얼음 지형을 현재 48×48 재구성 맵에 적용했다. `seafoam-chamber-art.ts`에서 B1F 서쪽 1F계단→남쪽 B2F계단, B2F 북서 B1F계단→남쪽 B3F계단 및 동쪽 상승 통로 사이의 실제 walkable에 서로 다른 얼음판 표면·균열·테두리를 그린다. `kanto-seafoam-islands.ts`에는 기존 막힌 칸 `(15,19)`, `(25,24)`을 쓰는 현장 표석을 추가해 층별 다음 계단·귀환 계단·현지 암반 조우·선택 바위 곁길을 구분했다. 계단·워프·조우 지형·B1F 수로·B2F 동적 바위 포켓·기존 저장 좌표는 바꾸지 않았다.
+
+확인 자료(2026-09-15, Pokémon HeartGold·SoulSilver): `https://bulbapedia.bulbagarden.net/wiki/Seafoam`은 쌍둥이섬이 관동20번수로 가운데 있는 5층 얼음 동굴이며 HGSS에서 기존 해류 바위 퍼즐이 미끄러운 얼음판 탐색으로 바뀌었다고 설명한다. `https://bulbapedia.bulbagarden.net/wiki/Appendix:HeartGold_and_SoulSilver_walkthrough/Section_27`은 B1F 암반 능선·계단 전환과 B2F 여러 얼음판을 지나는 순서를 명시한다. 층 지도 원본 `https://bulbapedia.bulbagarden.net/wiki/File:Seafoam_Islands_B2F_HGSS.png`(832×448)와 `https://www.serebii.net/pokearth/kanto/4th/seafoamislands.shtml`의 B1F/B2F 층별 지도·조우·아이템 구분도 대조했다.
+
+원작 차이: 이번 적용은 원작 타일 복제나 얼음 미끄럼·괴력·파도타기·해류·트레이너·아이템·프리져 구현이 아니다. 현재 넥서스의 안전한 계단 본선과 선택 탐험을 읽기 쉽게 만드는 BW·BW2풍 재구성 표현이다. 적용 MapId는 `tour_kanto_seafoam_b1f`, `tour_kanto_seafoam_b2f`, 이벤트는 `tourSeafoamB1IceRidge`, `tourSeafoamB2IceField`다. 기존 `paintKantoSouthPassage`가 `paintSeafoamChamberRelief`를 이미 호출하므로 중앙 renderer 추가 훅은 없다. QA 중단에 따라 테스트·빌드·브라우저·시각·음향·저장 검증은 모두 미실행이며 홍련·쌍둥이섬 도시 단위 완료로 판정하지 않는다.
+
+## 쌍둥이섬 B1F — 현지 동료 기술로 비상 보관함 정리
+
+2026-09-13. `seafoam-supply.ts`에 B1F `(24,18)` 기존 막힌 칸의 보관함과 실제 `(23,18)` 곁길 접근을 연결했다. 현지 조우 출처 `isSeafoamCompanion`과 현재 `pokemonMoves`를 사용한다. 건강한 현지 동료가 편성한 박치기/날개치기로 눈 낀 덮개를 정리하고, 별도 꺼내기 행동으로 공통 가방의 상처약 한 개를 한 번 지급한다. 기술을 표시만 하는 관찰 대신 현장의 닫힘→열림→빈 보관함 결과가 생긴다. 포켓몬·기술·아이템 정의, 전투·성장 규칙은 복제하지 않는다. PP/경험치 지급 기능은 추가하지 않았다.
+
+실제 소비: `installKantoSeafoamIslands`에서 props/outdoors 등록, `handleSeafoamExploration`에서 이벤트 우선 처리, B1F 현장 메뉴·해안길 수첩·홍련 동료 준비에서 보관함 길안내. 이미 지원하는 연구소 기술 편성으로 준비하고 보관함에서 가방/홍련센터 간호사 길안내로 이어진다. 상태 변경은 save/player 동일 객체·동일 맵·현장 인접·비전투/비이동/비전환·선택 동료의 현재 소속/HP/기술을 재확인한다. `seafoamSupplyCleared`, `seafoamSupplyTaken`, `seafoamSupplyPartner`는 선택 활동만 기록하며 본편·통행 조건이 아니다.
+
+참고: `https://www.serebii.net/pokearth/kanto/4th/seafoamislands.shtml` (2026-09-13 확인, HGSS)의 B1F 주뱃/쥬쥬 조우와 다층 얼음 동굴 환경. 원작 층별 아이템과 별개인 프로젝트 재구성 보관함이며 원작 아이템 배치 재현이 아니다. 기존 공통 데이터에서 쥬쥬 박치기 Lv.1/주뱃 날개치기 Lv.17을 읽어 지원 기술만 채택했다. 출처 대장은 REFERENCE_RESEARCH, 기존 20번수로/계단 왕복은 WORLD_ROUTES, 본편과 선택 활동 경계는 MAP_STORY_DESIGN을 따른다.
+
+중앙 연결 계약: `paintSeafoamSupply(ctx,map,save.flags)`를 캐시 바탕 뒤·액터 앞에 호출하면 실제 상태에 맞춘 보관함 그림이 표시된다. 지역 handler/등록은 연결했으며 중앙 renderer 회신을 별도 기록한다. QA/테스트/빌드/브라우저/저장 검증 모두 중단 유지, 도시 미완료.
+
+중앙 연결 회신 수신: renderer에서 실제 export를 import하고 `paintSeafoamBoulderGround` 다음 world좌표에 `paintSeafoamSupply(c,map,g.save.flags)` 호출을 반영했다. 캐시 바탕 뒤·액터 전의 상태별 그림까지 연결한 묶음이다. 중앙 CONTINUE_STATE 반영, 실행 검증은 하지 않았다. 현장 변경은 `(23,18)`에서 오른쪽을 바라보는 자세에서만 허용한다.
+
 ## 쌍둥이섬 B1F·B2F — 충돌 지형에 맞춘 얼음벽 표현
 
 2026-09-13. `seafoam-chamber-art.ts`를 추가하고 실제 소비 중인 `kanto-south-art.ts`의 바탕 다음·조사물/계단 이전에 연결했다. 실제 walkable의 북쪽 벽 아래 그림자, 좌우 가장자리, 넓은 방의 평평한 바닥 이음선과 막힌 칸의 얼음 절벽 면을 구분한다. 별도 그림 경로를 만들지 않으며 지형·계단·워프·48×48 크기는 그대로다. 조우 terrain, B1F 중앙 물, B2F 바위 홈과 동적 밀기 바탕은 덮어쓰지 않는다. 새 미끄럼·괴력·파도타기 기능은 없다.

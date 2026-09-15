@@ -3,6 +3,7 @@ import {SPECIES} from './pokemon';
 import {leadPokemon} from './team';
 import {showMoveSchool} from './move-school';
 import {handleRoadTrainer,trainerWinFlag} from './road-trainers';
+import {JOHTO_SOUTH_BATTLE,canRetryJohtoSouthPartnerBattle} from './johto-south-battle';
 
 export const ROUTE46_PRACTICE='johtoRoute46Practice';
 
@@ -30,15 +31,19 @@ export function handleRoute46Practice(g:Engine,event:string){
     ]);
   };
   const won=Boolean(save.flags[trainerWinFlag('johto-route-46-practice')]);
+  const retry=canRetryJohtoSouthPartnerBattle(save,'johto-route-46-practice');
   const hurt=save.party.filter(mon=>mon.hp<mon.maxHp).length;
   const lead=save.party[0];
+  const f=JOHTO_SOUTH_BATTLE,recordedSpecies=Number(save.flags[f.partner]??0),recordedName=SPECIES[recordedSpecies]?.name,recordedSlot=save.flags[f.slot],recorded=typeof recordedSlot==='number'&&save.party[recordedSlot]?.species===recordedSpecies?save.party[recordedSlot]:undefined;
+  const result=save.flags[f.participated]===true&&recordedName?(recorded?`${recordedName}가 실제로 상대를 쓰러뜨린 기록 · Lv.${Number(save.flags[f.level]??recorded.level)}→${recorded.level} · HP ${recorded.hp}/${recorded.maxHp}`:`${recordedName}가 실제로 상대를 쓰러뜨린 기록 · 현재 PC 또는 다른 편성`):won?'승리 기록은 있지만 현지 동료의 실제 격파 증거는 없다. 현지 동료를 선두로 세우면 상금 없는 재확인전을 할 수 있다.':'현지 동료의 실제 격파 기록은 아직 없다.';
   g.say('46번도로 산기슭 트레이너',[
     won?'이 공터에서 겨룬 승리 기록이 남아 있어. 다음 여행 전에 동료 상태를 살펴보자.':'꼬렛·깨비참·꼬마돌과 겨루기 전에 먼저 나갈 동료와 기술을 준비해 봐.',
     lead?`현재 선두는 ${SPECIES[lead.species].name}, HP ${lead.hp}/${lead.maxHp}.`:'현재 파티에 동료가 없어.',
     hurt?`회복이 필요한 동료가 ${hurt}마리야. 남쪽29번도로에서 서쪽 무궁센터로 돌아갈 수 있어.`:'현재 동료 상태를 살피고 준비되면 다음 길을 골라 봐.',
+    result,
   ],undefined,[
     {label:'동료·기술 준비',action:()=>prepare()},
-    won?{label:'45번도로로 출발',action:guide('tour_johto_route_45')}:{label:'기존 선택 배틀에 도전',action:()=>{if(current())handleRoadTrainer(g,'tourRoute46Trainer');}},
+    won&&retry?{label:'현지 동료 재확인전',action:()=>{if(current())handleRoadTrainer(g,'tourRoute46Trainer');}}:won?{label:'45번도로로 출발',action:guide('tour_johto_route_45')}:{label:'기존 선택 배틀에 도전',action:()=>{if(current())handleRoadTrainer(g,'tourRoute46Trainer');}},
     {label:'무궁센터로 귀환',action:guide('tour_cherrygrove_center','tourHost')},
     {label:'계속 걷기',action:()=>{}},
   ]);

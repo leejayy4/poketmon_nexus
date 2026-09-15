@@ -1,3 +1,5 @@
+import { leadPokemon } from './team';
+import { trainerWinFlag } from './road-trainers';
 import { CASTELIA_HOMES as HOMES } from './castelia-home-data';
 import type { GameMap,MapId } from './types';
 import type { TourInterior } from './explore-interiors';
@@ -28,7 +30,21 @@ export function handleCasteliaHome(g:Engine,event:string):boolean{
     if(!current())return;
     g.say('함께 걷는 동료',[s.party.length?'기술을 준비할 동료를 골라 봐.':'동료를 만난 뒤 다시 찾아와.'],undefined,[
       ...s.party.slice(page*3,page*3+3).map(mon=>({label:SPECIES[mon.species].name,action:()=>{
-        if(!current()||!s.party.includes(mon))return;g.partyIndex=s.party.indexOf(mon);showMoveSchool(g,0,undefined,false,{label:'동료 준비로 돌아가기',action:()=>{if(current()&&s.party.includes(mon))choose(page);}});
+        if(!current()||!s.party.includes(mon))return;g.partyIndex=s.party.indexOf(mon);showMoveSchool(g,0,undefined,false,{label:'출전 준비로',action:()=>{
+          if(!current()||!s.party.includes(mon))return;
+          g.say('준비한 동료와 출발',[`${SPECIES[mon.species].name} · HP ${mon.hp}/${mon.maxHp}`,'선두로 편성하면 다음 전투에 먼저 나간다.'],undefined,[
+            {label:'이 동료를 선두로',action:()=>{
+              if(!current())return;const index=s.party.indexOf(mon);if(index<0)return;
+              const message=leadPokemon(s,index);g.partyIndex=s.party.indexOf(mon);g.persist();
+              g.say('출전 준비',[message],undefined,[
+                ...(mon.hp>0?[{label:s.flags[trainerWinFlag('castelia-park-practice')]?'공원으로 산책':'공원 트레이너에게',action:()=>guide('tour_castelia_park','tourCasteliaParkTrainer')}]:[]),
+                {label:'센터에서 회복',action:()=>guide('tour_castelia_center','nurse')},
+                {label:'동료 선택으로',action:()=>choose(page)},
+              ]);
+            }},
+            {label:'편성을 유지한다',action:()=>choose(page)},
+          ]);
+        }});
       }})),
       ...(s.party.length>3?[{label:page?'앞 동료들':'다음 동료들',action:()=>choose(page?0:1)}]:[]),
       {label:'주민과 여행 상담',action:()=>{if(current())handleCasteliaHome(g,event);}},

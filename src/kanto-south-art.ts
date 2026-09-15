@@ -7,6 +7,7 @@ import { CINNABAR_RESEARCH_ROCKS,CINNABAR_HABITAT_PATHS } from './cinnabar-layou
 
 const routes=new Set(['tour_kanto_route_19','tour_kanto_route_20']);
 const caves=new Set(['tour_kanto_seafoam_1f','tour_kanto_seafoam_b1f','tour_kanto_seafoam_b2f','tour_kanto_seafoam_b3f','tour_kanto_seafoam_b4f']);
+const seafoamDepth:Record<string,number>={tour_kanto_seafoam_1f:0,tour_kanto_seafoam_b1f:1,tour_kanto_seafoam_b2f:2,tour_kanto_seafoam_b3f:3,tour_kanto_seafoam_b4f:4};
 const fill=(c:CanvasRenderingContext2D,x:number,y:number,w:number,h:number,color:string)=>{c.fillStyle=color;c.fillRect(x,y,w,h);};
 const walk=(map:GameMap,x:number,y:number)=>map.walkable[y]?.[x]==='.';
 
@@ -48,6 +49,25 @@ function seafoamLandmark(c:CanvasRenderingContext2D,event:string,x:number,y:numb
       fill(c,x+2,y+8,12,2,'#c5d9d5');fill(c,x+7,y+3,2,7,'#acbaa9');
       fill(c,x+5,y+1,6,5,'#d4c697');fill(c,x+6,y+2,4,3,'#4b8396');
       fill(c,x+2,y+3,2,3,'#a3d3dc');fill(c,x+12,y+5,2,2,'#c5e6e8');return true;
+    case 'tourSeafoamB3EastReturn':
+    case 'tourSeafoamB2EastReturn':
+    case 'tourSeafoamB1EastReturn':
+    case 'tourSeafoam1FWestReturn':
+      fill(c,x+3,y+2,10,13,'#41586a');fill(c,x+4,y+3,8,8,'#d4e2d9');
+      fill(c,x+7,y+5,2,7,'#557889');fill(c,x+5,y+9,6,2,'#557889');
+      fill(c,x+4,y+12,8,2,'#c8ad72');fill(c,x+6,y+14,4,2,'#765d43');return true;
+    case 'tourSeafoamB1WalkStart':
+    case 'tourSeafoamB2WalkStart':
+      fill(c,x+2,y+11,12,3,'#647f8c');fill(c,x+7,y+4,2,8,'#d9eeea');
+      fill(c,x+4,y+6,4,2,'#b8d8dc');fill(c,x+8,y+6,4,2,'#8fb8c5');return true;
+    case 'tourSeafoamB1WalkMainEnd':
+    case 'tourSeafoamB1WalkRidgeCheck':
+    case 'tourSeafoamB1WalkRidgeEnd':
+    case 'tourSeafoamB2WalkSideMark':
+    case 'tourSeafoamB2WalkEnd':
+      fill(c,x+2,y+12,12,2,'#536e7d');
+      fill(c,x+3,y+7,4,3,'#d7ece7');fill(c,x+9,y+4,4,3,'#a9ced4');
+      fill(c,x+4,y+10,2,2,'#86aeba');fill(c,x+10,y+7,2,2,'#688f9f');return true;
     default:return false;
   }
 }
@@ -122,8 +142,8 @@ export function paintKantoSouthPassage(c:CanvasRenderingContext2D,map:GameMap):b
     if(cave&&caves.has(w.to)){
       fill(c,x,y,16,16,'#34465b');
       for(let j=2;j<16;j+=3){fill(c,x+2,y+j,12,2,'#bfd1d0');fill(c,x+2,y+j+2,12,1,'#648297');}
-      if(map.id==='tour_kanto_seafoam_b1f'||map.id==='tour_kanto_seafoam_b2f'){
-        const up=w.to===(map.id==='tour_kanto_seafoam_b1f'?'tour_kanto_seafoam_1f':'tour_kanto_seafoam_b1f');
+      if(Object.hasOwn(seafoamDepth,map.id)&&Object.hasOwn(seafoamDepth,w.to)){
+        const up=seafoamDepth[w.to]<seafoamDepth[map.id];
         fill(c,x+6,y+(up?2:11),4,2,'#f2e7bb');
         fill(c,x+4,y+(up?4:9),8,2,'#f2e7bb');
         for(const [dx,dy] of [[0,-1],[0,1],[-1,0],[1,0]]){

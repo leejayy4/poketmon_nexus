@@ -1,5 +1,9 @@
 import { paintCasteliaSewerPark } from './castelia-sewer-park';
-import { paintJubilifeBuilding,paintJubilifeStreets,paintCityHall } from './explore-jubilife';
+import { JOHTO_ROUTE_43,paintJohtoRoute43 } from './johto-route-43';
+import { paintJohtoIcePath } from './johto-ice-path';
+import { paintJohtoDarkCaveWest } from './johto-dark-cave-west';
+import { paintJohtoDarkCaveEast } from './johto-dark-cave-east';
+import { paintJubilifeBuilding,paintJubilifeStreets,paintJubilifeWayfindingGround,paintCityHall } from './explore-jubilife';
 import { GOLDENROD_ROUTE } from './goldenrod-route';
 import { JOIN_AVENUE,UNOVA_ROUTE_FOUR,UNOVA_ROUTE_ONE,paintUnovaRouteNetwork,paintUnovaRouteOne } from './unova-route-one';
 import { DRIFTVEIL_DRAWBRIDGE,UNOVA_ROUTE_FIVE,paintNimbasaWestRoute } from './nimbasa-west-route';
@@ -46,6 +50,7 @@ import { paintSinnohCelesticDetails,paintCelesticRuinsFacade } from './sinnoh-ce
 import { paintUnmappedBoundaries } from './explore-boundary-art';
 import { paintKantoSouthPassage,paintCinnabarLanding } from './kanto-south-art';
 import { paintCherrygroveGround,paintCherrygroveInterior } from './johto-cherrygrove-art';
+import { paintOreburghBuilding,paintOreburghCityDetails } from './oreburgh-city-art';
 import { paintJohtoBlackthornSouth } from './johto-blackthorn-south-art';
 import { KANTO_ROUTE_EIGHTEEN,KANTO_ROUTE_SEVENTEEN,KANTO_ROUTE_SIXTEEN } from './kanto-route-sixteen';
 import { KANTO_ROUTE_FIFTEEN,KANTO_ROUTE_FOURTEEN,KANTO_ROUTE_THIRTEEN,KANTO_ROUTE_TWELVE } from './kanto-fuchsia-east';
@@ -98,6 +103,7 @@ export function paintJubilifeFountain(c:CanvasRenderingContext2D,x:number,y:numb
   fill(7,h-8,4,2,'#d9f0dd');fill(w-11,h-8,4,2,'#d9f0dd');
 }
 export function paintTourBuilding(c:CanvasRenderingContext2D,images:Images,p:Place,b:TourBuilding){
+  if(p.id==='tour_oreburgh'&&paintOreburghBuilding(c,b))return;
   if(p.id==='tour_icirrus'&&paintIcirrusBuilding(c,b))return;
   if(p.id==='tour_celestic'&&paintCelesticRuinsFacade(c,b))return;
   if(p.id==='tour_vermilion'&&b.kind==='landmark'&&b.room==='tour_vermilion_hall'){paintVermilionTerminal(c,b);return}
@@ -158,6 +164,10 @@ export function buildExploreArt(images:Images,id:string){
   if(id===UNOVA_ROUTE_EIGHT){paintUnovaRouteEight(c,images,map);return canvas;}
   if(id===DRAGONSPIRAL_APPROACH){paintDragonspiralApproach(c,images,map);return canvas;}
   if(id===ICIRRUS_MOOR){paintIcirrusMoor(c,images,map);return canvas;}
+  if(id===JOHTO_ROUTE_43){paintJohtoRoute43(c,map);return canvas;}
+  if(paintJohtoDarkCaveWest(c,map))return canvas;
+  if(paintJohtoDarkCaveEast(c,map))return canvas;
+  if(paintJohtoIcePath(c,map))return canvas;
   if(id===JOHTO_ROUTE_32||id===JOHTO_ROUTE_33||id===UNION_CAVE_1F){paintJohtoSouthRoute(c,images,map);return canvas;}
   if(id===KANTO_ROUTE_SEVEN||id===KANTO_UNDERGROUND_EW||id===KANTO_ROUTE_EIGHT){paintSaffronApproach(c,images,map);return canvas;}
   if(id===KANTO_ROUTE_SIXTEEN){paintCeladonRoute16(c,map);return canvas;}
@@ -250,6 +260,8 @@ export function buildExploreArt(images:Images,id:string){
   if(id==='tour_fuchsia')paintFuchsiaTownDetails(c);
   if(id==='tour_blackthorn')paintBlackthornTownDetails(c);
   if(id==='tour_icirrus')paintIcirrusTownDetails(c,map);
+  if(id==='tour_jubilife')paintJubilifeWayfindingGround(c);
+  paintOreburghCityDetails(c,map);
   paintCherrygroveGround(c,map);
   paintDragonspiralGroundDetails(c,map);
   paintSinnohCelesticDetails(c,map);

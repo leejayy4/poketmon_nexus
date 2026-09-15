@@ -61,7 +61,7 @@ export function installKantoRouteNineteen(world:{
     {name:'19번수로 동쪽 환승표',event:'tourRoute20Route19Board',cells:[{x:82,y:9}],pages:['동쪽 연락선은 관동19번수로를 거쳐 연분홍시티로 돌아간다.\n서쪽은 쌍둥이섬 상륙 데크 방향이다.']},
     {name:'20번수로 해류 관측판',event:'tourRoute20CurrentBoard',cells:[{x:65,y:27}],pages:['섬 양쪽에서 바닷물의 방향과 파도 높이를 기록한다.\n해류 퍼즐·수영·낚시·수상 야생 조우는 아직 적용하지 않았다.']},
     {name:'쌍둥이섬 상륙 안내',event:'tourRoute20SeafoamBoard',cells:[{x:52,y:12}],pages:['북쪽 보조 데크에서 쌍둥이섬 외부로 상륙할 수 있다.\n동굴 내부를 통과하기 전에는 서쪽 홍련 방면 연락선이 출항하지 않는다.']},
-    {name:'홍련 방면 항로표',event:'tourRoute20CinnabarClosed',cells:[{x:29,y:27}],pages:['쌍둥이섬 전 층을 통과하면20번수로 서쪽 연락선으로 나온다.\n다음 목적지는 홍련섬이지만 도시 상륙 출구는 아직 연결하지 않았다.']},
+    {name:'홍련 방면 항로표',event:'tourRoute20CinnabarClosed',cells:[{x:29,y:27}],pages:['쌍둥이섬 전 층을 통과하면20번수로 서쪽 연락선으로 나온다.\n서쪽 끝 출구는 홍련섬 상륙 데크로 이어진다.','홍련에서 센터와 연구소에 들른 뒤 같은 항로로 쌍둥이섬과 연분홍시티까지 돌아갈 수 있다.']},
   ];
   for(const object of objects20)for(const cell of object.cells)route20[cell.y][cell.x]='#';
   world.maps[KANTO_ROUTE_TWENTY]={id:KANTO_ROUTE_TWENTY,name:'관동 20번수로 · 연락선',width:width20,height:height20,background:KANTO_ROUTE_TWENTY,walkable:route20.map(row=>row.join('')),terrain:[],warps:[
@@ -70,6 +70,7 @@ export function installKantoRouteNineteen(world:{
   ],npcs:[
     {id:'route20Deckhand',name:'20번수로 연락선 선원',sprite:'sailor',x:72,y:18,facing:'left',dialogue:'journeyWalker'},
     {id:'route20Observer',name:'20번수로 해류 관찰자',sprite:'scientist_f',x:45,y:18,facing:'right',dialogue:'journeyWalker'},
+    {id:'route20HomewardKeeper',name:'20번수로 새 조련사',sprite:'rancher',x:63,y:25,facing:'right',dialogue:'route20HomewardKeeper'},
   ],props:objects20.flatMap(object=>object.cells.map(cell=>({...cell,dialogue:object.event})))};
 
   const islandWidth=64,islandHeight=48,island=Array.from({length:islandHeight},()=>Array<string>(islandWidth).fill('#'));
@@ -88,7 +89,7 @@ export function installKantoRouteNineteen(world:{
 
   for(const [id,name,concept,landmark] of [
     [KANTO_ROUTE_TWENTY,'관동 20번수로 · 연락선','19번수로 남단에서 쌍둥이섬 외부까지 동서로 이어지는 안전 연락선','쌍둥이섬 상륙 안내'],
-    [KANTO_SEAFOAM_EXTERIOR,'쌍둥이섬 · 외부 상륙지','20번수로 연락선에서 내리는 얼음바위 섬의 외부 관찰지','닫힌 동굴 입구'],
+    [KANTO_SEAFOAM_EXTERIOR,'쌍둥이섬 · 외부 상륙지','20번수로 연락선에서 내리는 얼음바위 섬의 외부 관찰지','쌍둥이섬 동쪽 동굴 입구'],
   ] as const){
     world.passages[id]={id,a:fuchsia,b:fuchsia,kind:id===KANTO_ROUTE_TWENTY?'coast':'cave',bend:id===KANTO_ROUTE_TWENTY?48:32};
     world.passagePlaces[id]={id,name,region:'관동',theme:id===KANTO_ROUTE_TWENTY?'coast':'cave',concept,landmark,x:fuchsia.x-.3,y:fuchsia.y+.75};

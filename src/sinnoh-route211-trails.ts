@@ -18,10 +18,13 @@ export function openRoute211Trails(map:GameMap,side:'west'|'east'){
     for(let j=y;j<y+h;j++)for(let i=x;i<x+w;i++)rows[j][i]='.';
   }
   map.walkable=rows.map(row=>row.join(''));
-  const habitat=side==='west'?{x:12,y:6,w:6,h:1}:{x:32,y:6,w:7,h:1};
-  // y=7 remains a dry return lane. Neither patch touches the east-west main road.
+  const habitats=side==='west'
+    ?[{x:12,y:6,w:6,h:1},{x:28,y:18,w:7,h:1}]
+    :[{x:32,y:6,w:7,h:1},{x:15,y:21,w:7,h:1}];
+  // The adjacent row of each two-tile trail remains a dry return lane. Neither
+  // patch touches the five-tile east-west main road or a warp/NPC/prop cell.
   // Regional MAP_POOLS bindings supply the supported Pt-derived encounter subsets.
-  if(!map.terrain.some(t=>t.kind==='tallGrass'&&t.x===habitat.x&&t.y===habitat.y))
+  for(const habitat of habitats)if(!map.terrain.some(t=>t.kind==='tallGrass'&&t.x===habitat.x&&t.y===habitat.y))
     map.terrain.push({kind:'tallGrass',...habitat});
 }
 

@@ -27,7 +27,7 @@ export const REGION_ATLASES:Record<string,RegionAtlas>={
   '하나':{
     land:['0,0 256,0 256,90 238,90 238,120 250,120 250,164 232,164 232,178 214,178 214,154 196,154 196,142 184,142 184,102 170,102 170,62 152,62 152,22 136,22 136,0','0,0 100,0 100,34 112,34 112,60 100,60 100,92 110,92 110,130 98,130 98,148 86,148 86,158 54,158 54,172 26,172 26,188 0,188','112,0 134,0 134,36 150,36 150,64 166,64 166,110 180,110 180,130 164,130 164,158 158,158 158,174 150,174 150,164 142,164 142,180 134,180 134,166 126,166 126,176 120,176 120,150 112,150 112,124 118,124 118,88 110,88 110,62 122,62 122,38 112,38'],
     hills:['12,0 92,0 92,40 76,40 76,62 44,62 44,82 18,82','170,0 236,0 236,24 214,24 214,46 186,46 186,32 170,32','14,120 42,120 42,148 26,148 26,170 14,170'],
-    points:{castelia:[140,156],aspertia:[26,174],virbank:[74,146],nimbasa:[140,100],driftveil:[74,100],mistralton:[44,66],lentimas:[178,72],undella:[230,88],lacunosa:[210,52],village_bridge:[178,44],icirrus:[76,44],opelucid:[146,44],humilau:[234,38],desert:[132,124],dragonspiral:[76,20]},
+    points:{castelia:[140,156],castelia_sewers:[156,164],castelia_park:[156,144],aspertia:[26,174],virbank:[74,146],nimbasa:[140,100],driftveil:[74,100],mistralton:[44,66],lentimas:[178,72],undella:[230,88],lacunosa:[210,52],village_bridge:[178,44],icirrus:[76,44],opelucid:[146,44],humilau:[234,38],desert:[132,124],dragonspiral:[76,20]},
   },
 };
 export function atlasPoint(region:string,id:string):Point {
@@ -35,7 +35,7 @@ export function atlasPoint(region:string,id:string):Point {
   if(!point)throw new Error(`Missing atlas location: ${region}/${id}`);
   return point;
 }
-export const atlasNature=(id:string)=>/_(forest|ilex|coronet|lake|rage_lake|desert|dragonspiral)$/.test(id);
+export const atlasNature=(id:string)=>/_(forest|ilex|coronet|lake|rage_lake|desert|dragonspiral|park|sewers)$/.test(id);
 const polygon=(points:string,fill:string,stroke=fill,width=1)=>`<polygon points="${points}" fill="${fill}" stroke="${stroke}" stroke-width="${width}" stroke-linejoin="miter"/>`;
 function relief(shapes:string[]):string {
   // Small stepped contours stay inside the higher ground, at native town-map pixel scale.

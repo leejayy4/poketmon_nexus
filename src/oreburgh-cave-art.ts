@@ -12,11 +12,23 @@ export function isOreburghCave(mapId:string):boolean{
 
 /** Cave maps whose encounter areas use loose stone instead of outdoor grass. */
 export function isCaveEncounterMap(mapId:string):boolean{
-  return isOreburghCave(mapId)||mapId==='tour_union_cave_1f'||mapId==='tour_castelia_sewers';
+  return mapId.startsWith('tour_johto_ice_path_')||isOreburghCave(mapId)||mapId==='tour_union_cave_1f'||mapId==='tour_castelia_sewers';
 }
 
 /** Paints one cave encounter tile and, when in front, a small animated foot dust. */
-export function paintCaveEncounter(c:CanvasRenderingContext2D,x:number,y:number,foreground:boolean,clock=0):void{
+export function paintCaveEncounter(c:CanvasRenderingContext2D,x:number,y:number,foreground:boolean,clock=0,icy=false):void{
+  if(icy){
+    c.save();
+    if(!foreground){
+      rect(c,x,y,16,16,'#a8c8cc');rect(c,x,y,16,2,'#d1e4df');
+      rect(c,x+2,y+6,7,1,'#e0eeea');rect(c,x+9,y+10,5,2,'#769ca9');
+      rect(c,x+4,y+12,3,1,'#c9e1df');
+    }else{
+      const phase=Math.floor(clock*4)%2;
+      rect(c,x+3+phase,y+13,3,1,'#e3f0ed');rect(c,x+10-phase,y+14,2,1,'#bfdadd');
+    }
+    c.restore();return;
+  }
   const px=Math.round(x),py=Math.round(y);
   c.save();
   if(!foreground){
@@ -38,36 +50,36 @@ export function paintCaveEncounter(c:CanvasRenderingContext2D,x:number,y:number,
 }
 
 /** Paints the 256x192 cave battle arena while preserving the existing actor layout. */
-export function paintCaveBattleArena(c:CanvasRenderingContext2D):void{
+export function paintCaveBattleArena(c:CanvasRenderingContext2D,icy=false):void{
   c.save();
-  rect(c,0,0,256,192,'#9b9888');
-  rect(c,0,0,256,62,'#77786f');
+  rect(c,0,0,256,192,(icy?'#bad2d4':'#9b9888'));
+  rect(c,0,0,256,62,(icy?'#60818f':'#77786f'));
   for(let y=8;y<62;y+=13){
-    rect(c,0,y,256,2,y%26===8?'#aaa58e':'#646963');
-    rect(c,0,y+2,256,1,'#858777');
+    rect(c,0,y,256,2,y%26===8?(icy?'#c3dddf':'#aaa58e'):(icy?'#4c7182':'#646963'));
+    rect(c,0,y+2,256,1,(icy?'#90b2bd':'#858777'));
   }
   // Low-contrast rock plates and short stalactite silhouettes keep the upper
   // field readable as a cave without competing with actors or the HUD.
   for(const [x,y,w,h] of [[8,18,31,8],[52,34,26,7],[91,13,23,6],[130,42,36,9],[177,24,29,7],[219,48,24,6]] as const){
-    rect(c,x,y,w,h,'#6b706a');
-    rect(c,x+3,y+2,w-7,2,'#858879');
+    rect(c,x,y,w,h,(icy?'#577c8d':'#6b706a'));
+    rect(c,x+3,y+2,w-7,2,(icy?'#a6cbd2':'#858879'));
   }
   for(const [x,y,w,h] of [[37,51,7,7],[83,55,6,5],[119,47,8,8],[169,53,7,6],[207,44,6,7],[242,54,5,5]] as const){
-    rect(c,x,y,w,2,'#60655f');
-    rect(c,x+2,y+2,w-4,h-2,'#676c65');
+    rect(c,x,y,w,2,(icy?'#d5e6e5':'#60655f'));
+    rect(c,x+2,y+2,w-4,h-2,(icy?'#8eb6c3':'#676c65'));
   }
-  rect(c,0,62,256,130,'#898675');
+  rect(c,0,62,256,130,(icy?'#91b4c1':'#898675'));
   for(let y=70;y<192;y+=16){
-    rect(c,0,y,256,1,'#a59d82');
-    for(let x=(y%32?7:15);x<256;x+=37)rect(c,x,y+6,4,1,'#6e7168');
+    rect(c,0,y,256,1,(icy?'#d1e4e3':'#a59d82'));
+    for(let x=(y%32?7:15);x<256;x+=37)rect(c,x,y+6,4,1,(icy?'#668a9a':'#6e7168'));
   }
   const platform=(x:number,y:number,rx:number,ry:number)=>{
-    c.fillStyle='#5f5e58';c.beginPath();c.ellipse(x,y+3,rx,ry,0,0,Math.PI*2);c.fill();
-    c.fillStyle='#8d806c';c.beginPath();c.ellipse(x,y,rx,ry,0,0,Math.PI*2);c.fill();
-    c.fillStyle='#a59678';c.beginPath();c.ellipse(x,y,rx-2,ry-3,0,0,Math.PI*2);c.fill();
-    c.fillStyle='#b1a487';c.beginPath();c.ellipse(x,y-3,rx-7,ry-6,0,0,Math.PI*2);c.fill();
-    rect(c,Math.round(x-rx+12),Math.round(y-2),Math.round(rx-13),1,'#d0bd94');
-    rect(c,Math.round(x+5),Math.round(y+5),Math.round(rx-13),1,'#716956');
+    c.fillStyle=(icy?'#4e7689':'#5f5e58');c.beginPath();c.ellipse(x,y+3,rx,ry,0,0,Math.PI*2);c.fill();
+    c.fillStyle=(icy?'#83adbd':'#8d806c');c.beginPath();c.ellipse(x,y,rx,ry,0,0,Math.PI*2);c.fill();
+    c.fillStyle=(icy?'#b3d2d8':'#a59678');c.beginPath();c.ellipse(x,y,rx-2,ry-3,0,0,Math.PI*2);c.fill();
+    c.fillStyle=(icy?'#d2e7e5':'#b1a487');c.beginPath();c.ellipse(x,y-3,rx-7,ry-6,0,0,Math.PI*2);c.fill();
+    rect(c,Math.round(x-rx+12),Math.round(y-2),Math.round(rx-13),1,(icy?'#f1f7ef':'#d0bd94'));
+    rect(c,Math.round(x+5),Math.round(y+5),Math.round(rx-13),1,(icy?'#81a9bb':'#716956'));
   };
   platform(196,84,53,12);
   platform(59,133,70,19);

@@ -23,7 +23,7 @@ function installRoom(w:World,id:TourId,title:string,style:RoomStyle,width:number
   w.spawns[id]={x:entrance.x,y:height-3};w.roomParents[id]=w.passagePlaces[JOHTO_CHERRYGROVE];
 }
 
-/** Install Cherrygrove as the west end of Route 29 and preserve Route 30 as the next boundary. */
+/** Install Cherrygrove between Route 29 and the separately registered Route 30. */
 export function installJohtoCherrygrove(w:World){
   if(w.maps[JOHTO_CHERRYGROVE])return;
   const anchor=w.places.find(place=>place.id==='tour_blackthorn');if(!anchor)return;
@@ -36,7 +36,7 @@ export function installJohtoCherrygrove(w:World){
   const objects:ObjectInfo[]=[
     {name:'공동 화단 바람막이',event:'tourCherrygroveWindbreak',cells:[{x:21,y:27}],pages:['꽃길 주민과 동료가 함께 돌보는 화단이다.']},
     {name:'무궁시티 안내판',event:'tourCherrygroveWelcome',cells:[{x:35,y:19}],pages:['무궁시티 ― 꽃향기와 바닷바람이 만나는 작은 도시.\n동쪽 출구는 성도29번도로와46번도로 합류점으로 이어진다.']},
-    {name:'30번도로 북문 표석',event:'tourCherrygroveRoute30Boundary',cells:[{x:22,y:3}],pages:['북쪽은 성도30번도로 방향이다.\n북쪽 길은 정비 중입니다. 동쪽29번도로를 이용해 주세요.']},
+    {name:'30번도로 북문 표석',event:'tourCherrygroveRoute30Boundary',cells:[{x:25,y:4}],pages:['북쪽은 성도30번도로다.\n연못 갈림길과 선택 풀밭을 지나31번도로 예정 경계까지 왕복할 수 있다.']},
     {name:'서쪽 바닷길 표석',event:'tourCherrygroveWestBoundary',cells:[{x:6,y:20}],pages:['서쪽 해안 너머 길은 아직 이동 구간으로 열리지 않았다.\n현재 왕복할 수 있는 육로는 동쪽29번도로다.']},
     {name:'바닷바람 관찰대',event:'tourCherrygroveCoast',cells:[{x:7,y:23}],pages:['낮은 방파제 너머로 성도 서쪽 바다가 펼쳐진다.\n돌담 안쪽에서 동료와 파도 소리를 들어 보자.']},
   ];
@@ -77,7 +77,7 @@ export function installJohtoCherrygrove(w:World){
     furnishing('healer','포켓몬 회복 장치','간호사에게 동료의 회복을 부탁한다.',3,8,2,2,'tourHost'),
     furnishing('console','포켓몬 보관 PC','동료를 맡기거나 데려와 다음 여행의 파티를 준비한다.',11,8,2,2,'tourExhibit1'),
     furnishing('bench','29번도로 동료 휴게석','29번도로를 걸어온 동료가 꽃향기와 바닷바람을 맞으며 쉬는 자리다.\n실제 회복은 간호사에게 부탁한다.',18,7,6,2,'cherrygroveCenterBench'),
-    furnishing('chart','무궁 여행 안내도','동쪽29번도로와 북쪽30번도로 방향을 구분한다.\n현재 실제 왕복 출구는29번도로뿐이다.',18,13,6,2,'cherrygroveCenterChart'),
+    furnishing('chart','무궁 여행 안내도','동쪽29번도로와 북쪽30번도로 방향을 구분한다.\n두 도로 모두 무궁시티와 실제 왕복할 수 있다.',18,13,6,2,'cherrygroveCenterChart'),
   ],'center');
   installRoom(w,'tour_cherrygrove_mart','프렌들리숍','shop',24,20,{x:32,y:11},[
     furnishing('shelf','초행길 여행용품대','29번도로를 걷는 여행자를 위한 물통과 지도 견본이다.\n물품 구매는 앞쪽 점원에게 부탁하자.',15,8,6,2,'tourCherrygroveMartTravelShelf'),

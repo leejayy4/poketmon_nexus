@@ -1,7 +1,9 @@
 import type {GameMap,SaveData} from './types';
 import type {Furnishing} from './explore-interiors';
 import {MAHOGANY_POWER_MAP,MAHOGANY_POWER_FLAGS,MAHOGANY_POWER_PATH} from './mahogany-power';
+import {paintMahoganyHomecoming} from './mahogany-homecoming';
 export function paintMahoganyPowerFurnishing(c:CanvasRenderingContext2D,mapId:string,o:Furnishing,f:SaveData['flags']):void{
+  paintMahoganyHomecoming(c,mapId,o,f);
   if(mapId!==MAHOGANY_POWER_MAP||o.event!=='mahoganyHallLakeBook')return;
   c.save();c.beginPath();c.rect(9*16,17*16,32,32);c.clip();c.fillStyle='#576b69';c.fillRect(9*16,17*16,32,32);c.fillStyle='#bdc4ae';c.fillRect(9*16+3,17*16+3,26,9);
   c.fillStyle=f[MAHOGANY_POWER_FLAGS.allocation]===1?'#f0d589':'#75806f';c.fillRect(9*16+5,17*16+5,7,4);

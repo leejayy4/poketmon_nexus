@@ -1,3 +1,27 @@
+import { paintChargestoneBattleArena } from './chargestone-battle-art';
+import { paintUnovaRouteThirteenBattleArena } from './unova-route-thirteen-battle-art';
+import { paintUnovaRouteTwelveBattleArena } from './unova-route-twelve-battle-art';
+import { paintVillageBridgeBattleArena } from './village-bridge-battle-art';
+import { paintVillageBridgeField } from './village-bridge-field-art';
+import { paintOpelucidBattleArena } from './opelucid-battle-art';
+import { paintOpelucidField } from './opelucid-field-art';
+import { paintJohtoRoute30BattleArena } from './johto-route30-battle-art';
+import { paintJohtoRoute31BattleArena } from './johto-route31-battle-art';
+import { paintJohtoDarkCaveBattleArena } from './johto-dark-cave-battle-art';
+import { paintUnovaRouteNineBattleArena } from './unova-route-nine-battle-art';
+import { paintIcirrusWetlandBattleArena } from './unova-icirrus-battle-art';
+import { paintOreburghGateBattleArena } from './oreburgh-gate-battle-art';
+import { paintSinnohRoute203BattleArena } from './sinnoh-route203-battle-art';
+import { paintSinnohRoute203Field } from './sinnoh-route203-field-art';
+import { paintOreburghGateField } from './oreburgh-gate-field-art';
+import { paintJohtoRoute30Field } from './johto-route30-field-art';
+import { paintSeafoamSupply } from './seafoam-supply';
+import { driftveilWorkLayers } from './driftveil-work-art';
+import { mistraltonWorkLayers } from './mistralton-work-art';
+import { paintDrawbridgeShadow,paintDrawbridgeBattleArena } from './drawbridge-shadow-art';
+import { paintCelesticTrace } from './sinnoh-celestic-trace';
+import { paintNimbasaNexusLights } from './nimbasa-nexus';
+import { paintCasteliaSewerBattleArena } from './castelia-sewer-battle-art';
 import { openingCompanionLayer } from './opening-companion-art';
 import { mortarDrainageLayers } from './mortar-drainage-art';
 import { MAHOGANY_POWER_NPC,mahoganyPowerPosition } from './mahogany-power';
@@ -11,6 +35,7 @@ import { rageLakeGyaradosLayers,paintRageLakeRecoveryFurnishing } from './rage-l
 import { paintMahoganyTransmitterFurnishing,mahoganyTransmitterLayers } from './mahogany-transmitter-art';
 import { rageLakeReliefLayers,paintRageLakeReliefFurnishing } from './rage-lake-relief-art';
 import { rageLakeNexusLayers } from './rage-lake-nexus-art';
+import { rageRouteHomecomingLayers } from './rage-route-homecoming-art';
 import { paintAzaleaWorkshopFurnishing } from './azalea-workshop-art';
 import { paintGoldenrodNexusFurnishing } from './goldenrod-nexus-art';
 import { paintCinnabarEvacuationNpc } from './cinnabar-evacuation-state';
@@ -91,7 +116,7 @@ export class Renderer {
   text(c:CanvasRenderingContext2D,text:string,x:number,y:number,color=INK,size=10,align:CanvasTextAlign='left'){c.fillStyle=color;c.font=`${size}px Galmuri`;c.textBaseline='top';c.textAlign=align;for(const [i,line]of text.split('\n').entries())c.fillText(line,Math.round(x),Math.round(y+i*(size+5)));c.textAlign='left'}
   frame(c:CanvasRenderingContext2D,x:number,y:number,w:number,h:number,fill=PAPER){this.rect(c,x,y,w,h,'#394954');this.rect(c,x+1,y+1,w-2,h-2,'#a0b1b9');this.rect(c,x+3,y+3,w-6,h-6,'#fff');this.rect(c,x+5,y+5,w-10,h-10,fill);}
   ball(c:CanvasRenderingContext2D,x:number,y:number,r=5,selected=false){c.fillStyle='#34464b';c.beginPath();c.arc(x,y,r+1,0,Math.PI*2);c.fill();c.fillStyle=selected?'#f39867':'#de6a62';c.beginPath();c.arc(x,y,r,Math.PI,0);c.fill();c.fillStyle='#f2f1df';c.beginPath();c.arc(x,y,r,0,Math.PI);c.fill();this.rect(c,x-r,y-1,r*2,2,'#34464b');this.rect(c,x-2,y-2,4,4,'#34464b');this.rect(c,x-1,y-1,2,2,'#f6f9e5')}
-  battleArena(c:CanvasRenderingContext2D){const battle=this.game.presentedBattle;if(battle?.kind==='gym'&&battle.gymId==='maylene'){paintVeilstoneGymBattleArena(c);return;}if(battle?.kind==='gym'&&battle.gymId==='fantina'){paintHearthomeGymBattleArena(c);return;}if(battle?.kind==='gym'&&battle.gymId==='gardenia'){paintEternaGymBattleArena(c);return;}if((battle?.kind==='gym'&&battle.gymId==='roark')||(battle?.kind==='trainer'&&this.game.save.map==='oreburgh_gym')){paintOreburghGymBattleArena(c);return;}if(battle?.kind==='wild'&&this.game.save.map==='tour_coronet'){paintCoronetBattleArena(c);return;}if(isCaveEncounterMap(this.game.save.map)){paintCaveBattleArena(c);return;}this.rect(c,0,0,256,192,'#e7edd5');for(let y=0;y<62;y+=3)this.rect(c,0,y,256,1,'#dce7cb');const drift=Math.floor(this.game.clock*5)%286;for(const [x,y,w]of [[-12,12,18],[84,31,24],[194,8,16]] as const){const px=(x+drift)%286-15;this.rect(c,px,y,w,2,'#f3f3dc');this.rect(c,px+4,y-2,w-8,2,'#f3f3dc');this.rect(c,px+7,y+2,w-13,1,'#d4dfca');}for(const [x,w,h]of [[-20,56,7],[48,42,4],[126,68,8],[212,51,5]] as const)this.rect(c,x,62-h,w,h,'#b4c69a');this.rect(c,0,62,256,130,'#c7d7aa');for(let y=72;y<192;y+=16)for(let x=(y%32?7:15);x<256;x+=37)this.rect(c,x,y,5,1,'#afc58d');for(const [x,y,rx,ry]of [[196,84,53,12],[59,133,70,19]] as const){c.fillStyle='#76996e';c.beginPath();c.ellipse(x,y+3,rx,ry,0,0,Math.PI*2);c.fill();c.fillStyle='#9fbd7e';c.beginPath();c.ellipse(x,y,rx-2,ry-3,0,0,Math.PI*2);c.fill();c.fillStyle='#dbe5b6';c.beginPath();c.ellipse(x,y-3,rx-7,ry-6,0,0,Math.PI*2);c.fill();this.rect(c,x-rx+12,y-2,rx-13,1,'#eef0cc');this.rect(c,x+5,y+5,rx-13,1,'#8bad76');}}
+  battleArena(c:CanvasRenderingContext2D){const battle=this.game.presentedBattle;if(battle?.kind==='gym'&&battle.gymId==='maylene'){paintVeilstoneGymBattleArena(c);return;}if(battle?.kind==='gym'&&battle.gymId==='fantina'){paintHearthomeGymBattleArena(c);return;}if(battle?.kind==='gym'&&battle.gymId==='gardenia'){paintEternaGymBattleArena(c);return;}if((battle?.kind==='gym'&&battle.gymId==='roark')||(battle?.kind==='trainer'&&this.game.save.map==='oreburgh_gym')){paintOreburghGymBattleArena(c);return;}if(battle?.kind==='wild'&&this.game.save.map==='tour_coronet'){paintCoronetBattleArena(c);return;}if(this.game.save.map==='tour_driftveil_drawbridge'){paintDrawbridgeBattleArena(c);return;}if(this.game.save.map==='tour_chargestone_1f'||this.game.save.map==='tour_chargestone_b1f'){paintChargestoneBattleArena(c);return;}if(this.game.save.map==='tour_castelia_sewers'){paintCasteliaSewerBattleArena(c);return;}if(isCaveEncounterMap(this.game.save.map)||tourPlaceForMap(this.game.save.map)?.theme==='cave'){paintCaveBattleArena(c,this.game.save.map.startsWith('tour_johto_ice_path_'));return;}this.rect(c,0,0,256,192,'#e7edd5');for(let y=0;y<62;y+=3)this.rect(c,0,y,256,1,'#dce7cb');const drift=Math.floor(this.game.clock*5)%286;for(const [x,y,w]of [[-12,12,18],[84,31,24],[194,8,16]] as const){const px=(x+drift)%286-15;this.rect(c,px,y,w,2,'#f3f3dc');this.rect(c,px+4,y-2,w-8,2,'#f3f3dc');this.rect(c,px+7,y+2,w-13,1,'#d4dfca');}for(const [x,w,h]of [[-20,56,7],[48,42,4],[126,68,8],[212,51,5]] as const)this.rect(c,x,62-h,w,h,'#b4c69a');this.rect(c,0,62,256,130,'#c7d7aa');for(let y=72;y<192;y+=16)for(let x=(y%32?7:15);x<256;x+=37)this.rect(c,x,y,5,1,'#afc58d');for(const [x,y,rx,ry]of [[196,84,53,12],[59,133,70,19]] as const){c.fillStyle='#76996e';c.beginPath();c.ellipse(x,y+3,rx,ry,0,0,Math.PI*2);c.fill();c.fillStyle='#9fbd7e';c.beginPath();c.ellipse(x,y,rx-2,ry-3,0,0,Math.PI*2);c.fill();c.fillStyle='#dbe5b6';c.beginPath();c.ellipse(x,y-3,rx-7,ry-6,0,0,Math.PI*2);c.fill();this.rect(c,x-rx+12,y-2,rx-13,1,'#eef0cc');this.rect(c,x+5,y+5,rx-13,1,'#8bad76');}}
   draw(){if(this.game.ferryJourney){this.ferry(this.game.ferryJourney);return;}this.world();this.lower();if(this.game.transition){const alpha=this.game.transition>.18?Math.min(1,(.4-this.game.transition)/.16):this.game.transition/.18;this.ctx.fillStyle=`rgba(0,0,0,${alpha})`;this.ctx.fillRect(0,0,W,H)}if(this.game.toastTime>0){this.frame(this.touch,8,153,240,31);this.text(this.touch,this.game.toast,128,163,INK,8,'center')}}
   ferry(view:FerryJourneyView){
     this.hits=[];paintFerryJourney(this.ctx,view);
@@ -108,8 +133,16 @@ export class Renderer {
     const camera=(p:number,total:number,view:number)=>total<view?(total-view)/2:Math.max(0,Math.min(total-view,p-view/2));
     const cx=Math.round(camera(focus.x*16+8,map.width*16,W)),cy=Math.round(camera(focus.y*16+8,map.height*16,H));
     c.save();c.translate(-cx,-cy);c.drawImage(this.images[map.background],0,0);
+    paintVillageBridgeField(c,map,g.clock);
+    paintOpelucidField(c,map,g.clock);
+    paintJohtoRoute30Field(c,map,g.clock);
+    paintOreburghGateField(c,map,g.clock);
+    paintSinnohRoute203Field(c,map,g.clock);
     paintSeafoamBoulderGround(c,map);
+    paintSeafoamSupply(c,map,g.save.flags);
+    paintCelesticTrace(c,map,g.save.flags);
     paintCasteliaFieldSites(c,map,g.save);
+    paintNimbasaNexusLights(c,map.id,g.save);
     if(map.id==='tour_chargestone_b1f')paintChargestoneMainCrystal(c,Boolean(g.save.flags.chargestoneMainCrystalMoved));
     paintTourWaterMotion(c,(TOUR_FEATURES[map.id]??[]).filter(f=>map.id!=='tour_icirrus'||f.name!=='도시 빗물 연못'),g.clock);
     if(map.id==='tour_icirrus')paintIcirrusPond(c,map,g.clock,!!g.save.flags.icirrusWaterCompared);
@@ -130,7 +163,9 @@ export class Renderer {
       const left=Math.max(0,r.x,Math.floor(cx/16)),top=Math.max(0,r.y,Math.floor(cy/16));
       const right=Math.min(map.width,r.x+r.w,Math.ceil((cx+W)/16)),bottom=Math.min(map.height,r.y+r.h,Math.ceil((cy+H)/16));
       for(let y=top;y<bottom;y++)for(let x=left;x<right;x++)if(map.walkable[y]?.[x]==='.'){
-        if(caveTerrain)paintCaveEncounter(c,x*16,y*16,false);
+        if(map.id==='tour_driftveil_drawbridge')paintDrawbridgeShadow(c,x*16,y*16,g.clock);
+        else if(map.id.startsWith('tour_johto_ice_path_'))continue; // Dedicated floor already paints the frosted encounter strips.
+        else if(caveTerrain)paintCaveEncounter(c,x*16,y*16,false);
         else paintTallGrass(c,x*16,y*16,false,g.clock,this.images['grass-reference']);
       }
     }
@@ -138,6 +173,9 @@ export class Renderer {
     const layers:{depth:number;draw:()=>void}[]=[];
     if(map.id===SEAFOAM_BOULDER_MAP){const rock=push?.rock??seafoamBoulderView(g.save.flags);layers.push({depth:rock.y+.9,draw:()=>paintSeafoamBoulder(c,g.save.flags,rock)});}
     layers.push(...rageLakeNexusLayers(c,map,g.save.flags));
+    layers.push(...driftveilWorkLayers(c,map,g.save.flags));
+    layers.push(...mistraltonWorkLayers(c,map,g.save.flags));
+    layers.push(...rageRouteHomecomingLayers(c,map,g.save.flags));
     layers.push(...rageLakeReliefLayers(c,map,g.save.flags));
     layers.push(...rageLakeGyaradosLayers(c,map,g.save.flags,this.images));
     layers.push(...mahoganyTransmitterLayers(c,map));
@@ -185,7 +223,7 @@ export class Renderer {
       for(const o of room.objects)layers.push({depth:o.y+o.h-.1,draw:()=>paintCenterFurnishing(c,this.images,o)});
       layers.push({depth:room.reception!.y+.9,draw:()=>paintCenterReception(c,this.images,room)});
     }
-    else if(room)for(const o of room.objects)layers.push({depth:o.y+o.h-.1,draw:()=>{if(!paintCasteliaProjectExhibit(c,map.id,o)&&!paintCinnabarFurnishing(c,room,o,cinnabarCircuitPreview(g),g.clock)&&!paintIcirrusHallFurnishing(c,map.id,o,g.save)&&!paintIcirrusHomeFurnishing(c,map.id,o,g.save))paintTourFurnishing(c,this.images,room,o);paintCinnabarRescueFurnishing(c,o,g.save.flags);paintGoldenrodNexusFurnishing(c,map.id,o,g.save.flags,this.images);paintAzaleaWorkshopFurnishing(c,map.id,o,g.save.flags);paintRageLakeReliefFurnishing(c,map.id,o,g.save.flags);paintRageLakeRecoveryFurnishing(c,map.id,o,g.save.flags,this.images);paintMahoganyTransmitterFurnishing(c,map.id,o,g.save.flags);paintMahoganyPowerFurnishing(c,map.id,o,g.save.flags);paintEcruteakDisclosureFurnishing(c,map.id,o,g.save.flags);}});
+    else if(room)for(const o of room.objects)layers.push({depth:o.y+o.h-.1,draw:()=>{if(!paintCasteliaProjectExhibit(c,map.id,o,g.save.flags)&&!paintCinnabarFurnishing(c,room,o,cinnabarCircuitPreview(g),g.clock)&&!paintIcirrusHallFurnishing(c,map.id,o,g.save)&&!paintIcirrusHomeFurnishing(c,map.id,o,g.save))paintTourFurnishing(c,this.images,room,o);paintCinnabarRescueFurnishing(c,o,g.save.flags);paintGoldenrodNexusFurnishing(c,map.id,o,g.save.flags,this.images);paintAzaleaWorkshopFurnishing(c,map.id,o,g.save.flags);paintRageLakeReliefFurnishing(c,map.id,o,g.save.flags);paintRageLakeRecoveryFurnishing(c,map.id,o,g.save.flags,this.images);paintMahoganyTransmitterFurnishing(c,map.id,o,g.save.flags);paintMahoganyPowerFurnishing(c,map.id,o,g.save.flags);paintEcruteakDisclosureFurnishing(c,map.id,o,g.save.flags);}});
     layers.push(...icirrusMoorObservationLayers(c,map,g.save,g.clock));
     if(!g.move)layers.push(...icirrusMoorPartnerLayer(map,g.save,(species,x,y)=>{
       const sprite=this.images['pokemon-'+species];if(!sprite)return;
@@ -198,7 +236,7 @@ export class Renderer {
       c.save();c.imageSmoothingEnabled=false;c.drawImage(sprite,x,y,size,size);c.restore();
     }));
     layers.sort((a,b)=>a.depth-b.depth).forEach(l=>l.draw());
-    {const x=Math.round(pos.x),y=Math.round(pos.y);if(map.terrain?.some(r=>x>=r.x&&x<r.x+r.w&&y>=r.y&&y<r.y+r.h)){if(caveTerrain)paintCaveEncounter(c,x*16,y*16,true,g.move?g.clock:0);else paintTallGrass(c,x*16,y*16,true,g.clock*2+x,this.images['grass-reference']);}}
+    {const x=Math.round(pos.x),y=Math.round(pos.y);if(map.terrain?.some(r=>x>=r.x&&x<r.x+r.w&&y>=r.y&&y<r.y+r.h)){if(caveTerrain)paintCaveEncounter(c,x*16,y*16,true,g.move?g.clock:0,map.id.startsWith('tour_johto_ice_path_'));else if(map.id!=='tour_driftveil_drawbridge')paintTallGrass(c,x*16,y*16,true,g.clock*2+x,this.images['grass-reference']);}}
     paintJourneyOverlay(c,this.images,map,g.save.flags,g.clock);
     c.restore();
     if(g.labelTime>0){const alpha=Math.min(1,g.labelTime*2),w=Math.min(132,22+map.name.length*9);c.globalAlpha=alpha;this.rect(c,6,6,w,17,'#263c42');this.rect(c,7,7,w-2,15,'#708777');this.rect(c,9,9,w-6,11,'#d9d8ab');this.text(c,map.name,15,11,'#35483e',8);c.globalAlpha=1}
@@ -297,6 +335,14 @@ export class Renderer {
     const {scale,x:ox,y:oy}=tourMinimapLayout(m);
     this.frame(c,ox-4,oy-4,m.width*scale+8,m.height*scale+8);
     for(let y=0;y<m.height;y++)for(let x=0;x<m.width;x++)this.rect(c,ox+x*scale,oy+y*scale,Math.ceil(scale),Math.ceil(scale),m.walkable[y][x]==='.'?'#d4d6b0':'#829c8b');
+    // Show the same encounter patches used in the field, retaining safe paths.
+    for(const terrain of m.terrain){
+      if(terrain.kind!=='tallGrass')continue;
+      const color=m.id==='tour_driftveil_drawbridge'?'#657786':(isCaveEncounterMap(m.id)||tourPlaceForMap(m.id)?.theme==='cave')?'#687784':'#66894b';
+      for(let y=Math.max(0,terrain.y);y<Math.min(m.height,terrain.y+terrain.h);y++)for(let x=Math.max(0,terrain.x);x<Math.min(m.width,terrain.x+terrain.w);x++){
+        if(m.walkable[y]?.[x]==='.')this.rect(c,ox+x*scale,oy+y*scale,Math.ceil(scale),Math.ceil(scale),color);
+      }
+    }
     for(const b of TOUR_BUILDINGS[m.id]??[])this.rect(c,ox+b.x*scale,oy+b.y*scale,b.w*scale,b.h*scale,b.kind==='center'?'#c77969':'#6f869f');
     for(const f of TOUR_FEATURES[m.id]??[])this.rect(c,ox+f.x*scale,oy+f.y*scale,f.w*scale,f.h*scale,f.kind==='water'?'#70b9ce':'#718977');
     paintCelesticMinimapPaths(c,m,ox,oy,scale);
@@ -317,14 +363,14 @@ export class Renderer {
       else{this.rect(c,x-1,y-3,2,2,'#42618d');this.rect(c,x-2,y,4,3,'#42618d')}
       if(!g.locked&&!g.move)this.hits.push({...b,action:()=>{
         if(g.locked||g.move||g.map.id!==m.id)return;
-        if(marker.destination)g.setTourDestination(marker.destination,marker.event);
+        if(marker.destination)g.setTourDestination(marker.destination,marker.event,marker.npcId);
         else g.notice(marker.name+' · 앞에서 Z 대화');
       }});
     }
     this.rect(c,ox+g.save.player.x*scale,oy+g.save.player.y*scale,scale,scale,'#bf5d56');
     if(route?.interaction){const b=tourMarkerBounds(m,route.interaction);this.rect(c,b.cx-5,b.cy-5,10,10,'#b671a4');this.text(c,'!',b.cx,b.cy-4,'#fffbe2',8,'center');}
     const goal=g.followingObjective?adventureGuide(g.save):null;
-    this.text(c,route?route.status==='arrived'?(route.interaction?DIRECTION_LABEL[route.interaction.facing]+'을 보고 Z 대화':goal?.objective.action??route.name+' 도착'):route.status==='blocked'?'길이 막혔어요. 출발 준비·주변 길을 확인하세요':route.interaction?(goal?.objective.action??'목표 인물을 만나자'):`${route.name} · ${DIRECTION_LABEL[route.exit!.entry]} ${tourPassageLabel(route.exit!)} → ${route.nextName}`:'시설·사람·출구 표식을 누르면 길안내',128,44,INK,7,'center');
+    this.text(c,route?route.status==='arrived'?(route.interaction?DIRECTION_LABEL[route.interaction.facing]+'을 보고 Z 대화':goal?.objective.action??route.name+' 도착'):route.status==='blocked'?'길이 막혔어요. 출발 준비·주변 길을 확인하세요':route.interaction?(goal?.objective.action??'목표 인물을 만나자'):!route.exit?(goal?.objective.action??'목표 지점까지 노란 길을 따라가자'):`${route.name} · ${DIRECTION_LABEL[route.exit!.entry]} ${tourPassageLabel(route.exit!)} → ${route.nextName}`:'시설·사람·출구 표식을 누르면 길안내',128,44,INK,7,'center');
     if(!g.locked&&!g.move){
       this.button(c,4,170,80,20,g.followingObjective?'목표 추적 중':'목표 안내',()=>g.guideObjective(),g.followingObjective);
       this.button(c,88,170,80,20,'안내 해제',()=>{if(!g.locked&&!g.move)g.setTourDestination(null)});
@@ -368,7 +414,19 @@ export class Renderer {
   }
   battleTop(c:CanvasRenderingContext2D){const presentation=this.game.battlePresentation,b=this.game.presentedBattle!,view=presentation?.frame??this.game.battleFrame,p=view?.player??this.game.save.party[b.active],enemy=view?.enemy??b.enemy,attackDrop=view?.enemyAttackDrop??b.enemyAttackDrop,defenseDrop=view?.enemyDefenseDrop??b.enemyDefenseDrop;
     if(!this.game.dialogue&&(b.menu==='party'||b.menu==='heal')&&this.game.save.party[b.selected]){this.battleSelectionTop(c);return;}
-    this.battleArena(c);
+    if(this.game.save.map==='tour_opelucid')paintOpelucidBattleArena(c);
+    else if(this.game.save.map==='tour_village_bridge')paintVillageBridgeBattleArena(c);
+    else if(this.game.save.map==='tour_johto_route_30')paintJohtoRoute30BattleArena(c);
+    else if(this.game.save.map==='tour_johto_route_31')paintJohtoRoute31BattleArena(c);
+    else if(this.game.save.map==='tour_johto_dark_cave_west')paintJohtoDarkCaveBattleArena(c,this.game.save.player.y>=33);
+    else if(this.game.save.map==='tour_unova_route_09')paintUnovaRouteNineBattleArena(c,this.game.save.player.y>=18);
+    else if(this.game.save.map==='tour_unova_route_08')paintIcirrusWetlandBattleArena(c,this.game.save.map,this.game.save.player.y<=12||this.game.save.player.y>=24);
+    else if(this.game.save.map==='tour_icirrus_moor')paintIcirrusWetlandBattleArena(c,this.game.save.map,this.game.save.player.x<=11&&this.game.save.player.y>=27);
+    else if(this.game.save.map==='tour_sinnoh_route_203')paintSinnohRoute203BattleArena(c,this.game.save.player.y<=13||this.game.save.player.y>=20);
+    else if(this.game.save.map==='tour_oreburgh_gate_1f')paintOreburghGateBattleArena(c);
+    else if(this.game.save.map==='tour_unova_route_12')paintUnovaRouteTwelveBattleArena(c);
+    else if(this.game.save.map==='tour_unova_route_13')paintUnovaRouteThirteenBattleArena(c,this.game.save.player.y>62);
+    else this.battleArena(c);
     const effect=presentation?null:this.game.battleEffect,capture=this.game.captureMotion;
     const hit=presentation?.phase==='impact',target=view?.effect?.target;
     const recoil=hit?Math.round(Math.sin(this.game.dialogueElapsed/.15*Math.PI*4)*3):0;

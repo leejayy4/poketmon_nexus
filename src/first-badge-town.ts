@@ -72,20 +72,20 @@ export function handleFirstBadgeTown(game: Engine, id: string): boolean {
     map === 'tour_oreburgh'
       ? save.badges.includes(gymById('roark').badge)
         ? '콜배지를 얻었군요.\n다음 여행을 준비해 볼까요?'
-        : '무쇠시티에서 첫 배지를 준비하고 있군요.'
+        : '무쇠게이트를 지나 광산 도시까지 왔군요.\n첫 배지와 탄갱 여행을 준비해 볼까요?'
       : '축복시티에서 동료와\n여행 준비를 시작해 볼까요?',
     '센터에서는 포켓몬을 회복하고\nPC에 동료를 맡길 수 있어요.',
     '상점에서는 몬스터볼과\n상처약을 살 수 있어요.',
     map === 'tour_oreburgh'
-      ? `${town.npcs.find(npc => npc.dialogue === residentEvent[map])?.name ?? '광부'}의 부탁이에요.\n두 친구를 모두 회복한 뒤\n한 친구를 레벨 8까지 키워 봐요.`
+      ? `${town.npcs.find(npc => npc.dialogue === residentEvent[map])?.name ?? '광부'}의 준비 부탁과 남쪽 탄갱 작업은 선택이에요.\n북동쪽 전시관에서는 도시와 광산의 구조를 볼 수 있어요.`
       : `${town.npcs.find(npc => npc.dialogue === residentEvent[map])?.name ?? '방송국 직원'}은 서로 다른 두 종을\n만나 소개해 달라고 부탁했어요.`,
     save.badges.includes(gymById('roark').badge)
       ? !save.badges.includes(gymById('gardenia').badge)
         ? '다음 여행은 영원숲으로 이어져요.\n축복시티를 거쳐 가세요.'
         : '다음 길 안내에서 현재 모험의\n목적지를 확인할 수 있어요.'
       : map === 'tour_oreburgh'
-      ? '체육관에서는 강석과\n첫 배지를 겨룰 수 있어요.'
-      : '남쪽 암반굴을 지나면 무쇠시티와\n첫 배지로 이어져요.',
+      ? '동쪽 체육관에서는 강석과 첫 배지를 겨룰 수 있어요.\n서쪽은 무쇠게이트, 북쪽은 207번도로, 남쪽은 탄갱이에요.'
+      : '동쪽 203번도로와 무쇠게이트 1층을 지나면\n무쇠시티와 첫 배지로 이어져요.',
     '안내는 선택사항이에요.\n원할 때만 골라 주세요.',
   ];
   const guideDialogue = game.dialogue;

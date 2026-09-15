@@ -3,7 +3,7 @@ import type { Pokemon, SaveData } from './types';
 import { SPECIES, pokemonMoves, pokemonSnapshot, MOVE_RULES, RUNTIME_SPECIES, BOX_CAPACITY, recordSeen, isDamagingMove } from './pokemon';
 import { RUNTIME_DATA as DATA } from './data/runtime';
 import { wildPokemon } from './runtime-encounters';
-import { gainExperience, LEVEL_CAP, minimumLevel, maxHpAtLevel, type GrowthStep } from './growth';
+import { evolveAtLevelCap, gainExperience, LEVEL_CAP, minimumLevel, maxHpAtLevel, type GrowthStep } from './growth';
 import { gymTeam,gymById,type GymId } from './gyms';
 import { withParticle } from './korean-text';
 import { trackFieldPartners } from './field-partner-party';
@@ -13,6 +13,8 @@ export interface Battle {
   kind:'wild'|'gym'|'trainer'; trainer?:TrainerBattleInfo; gymId:GymId; opponents:Pokemon[]; enemyIndex:number; enemy:Pokemon; active:number; menu:'actions'|'moves'|'bag'|'party'|'heal'|'between'; selected:number;
   enemyAttackDrop:number; enemyDefenseDrop:number; result:boolean;
   participants:number[];
+  /** Actual companions involved against defeated opponents across the whole battle. */
+  defeatedOpponentParticipants?:Pokemon[];
   forcedSwitch:boolean;
   betweenOpponents:boolean;
   moveSelections:number[];
@@ -122,9 +124,11 @@ export function enemyDamage(b:Battle,attackDrop=b.enemyAttackDrop,target?:Pokemo
   return techniqueDamage(b.enemy,p,enemyMove(b,target),attackDrop,b.playerDefenseDrop?.[b.active]??0,b.playerDefense?.[b.active]??0);
 }
 function rewardParticipants(save:SaveData,b:Battle,total:number,onStep:(page:string,step:GrowthStep,index:number)=>void){
+  const capped=[...new Set(b.participants)].filter(index=>save.party[index]?.hp>0&&save.party[index].level===LEVEL_CAP);
   const eligible=experienceParticipants(save,b);
   const track=trackFieldPartners(save);
   eligible.forEach((index,i)=>gainExperience(save.party[index],Math.floor(total/eligible.length)+(i<total%eligible.length?1:0),(page,step)=>onStep(page,step,index)));
+  for(const index of capped)evolveAtLevelCap(save.party[index],(page,step)=>onStep(page,step,index));
   track();
 }
 export type BattleAction = 'move0'|'move1'|'move2'|'move3'|'ball'|'potion'|'run'|{switch:number}|{potion:number};
@@ -170,6 +174,10 @@ export function battleTurn(save:SaveData,b:Battle,action:BattleAction,random:()=
   const finishEnemy=():TurnResult=>{
         show(`${prefix} ${withParticle(SPECIES[b.enemy.species].name,'이/가')} 쓰러졌다!`);
         if(!save.party.some(p=>p.hp>0)){b.result=true;show('싸울 수 있는 포켓몬이 없다!');return {pages,frames,outcome:'lost'};}
+        b.defeatedOpponentParticipants=[...new Set([
+          ...(b.defeatedOpponentParticipants??[]),
+          ...b.participants.map(index=>save.party[index]).filter((p):p is Pokemon=>!!p),
+        ])];
         rewardParticipants(save,b,b.kind==='gym'?gymById(b.gymId).xp:b.enemy.level*10,(page,step,index)=>{
           show(page);frames[frames.length-1].growth={...step,index};
           if(step.kind==='evolution')recordSeen(save,step.after.species,true);

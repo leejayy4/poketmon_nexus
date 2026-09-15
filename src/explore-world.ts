@@ -6,6 +6,7 @@ import { installGoldenrodHomes } from './goldenrod-homes';
 import { installCasteliaHomes } from './castelia-homes';
 import { installCasteliaInteriorSizes } from './castelia-interiors';
 import { installCinnabarHomes } from './cinnabar-life';
+import { installCinnabarInteriors } from './cinnabar-interiors';
 import { installVermilionInteriors } from './vermilion-interiors';
 import { installGoldenrodRadioFloors } from './goldenrod-radio';
 import { installUnovaRouteOne } from './unova-route-one';
@@ -46,12 +47,20 @@ import { installSinnohSoutheastRoutes } from './sinnoh-southeast-routes';
 import { installSinnohNorthRoute } from './sinnoh-north-route';
 import { installSinnohRoute203Gate } from './sinnoh-route-203-gate';
 import { installSinnohOpeningRoute } from './sinnoh-opening-route';
+import { installJubilifeTrainerSchool } from './jubilife-trainer-school';
+import { installJubilifeCityLearning } from './jubilife-city-learning';
+import { installJubilifePoketchCompany } from './jubilife-poketch-company';
+import { installJubilifeDailyInteriors } from './jubilife-daily-interiors';
+import { installJubilifeWayfinding } from './jubilife-wayfinding';
 import { installSinnohFloaromaRoute } from './sinnoh-floaroma-route';
 import { installSinnohRoute205North } from './sinnoh-route-205-north';
 import { installSinnohRoute206207 } from './sinnoh-route-206-207';
 import { CELESTIC_SHOP,installSinnohCelesticRoute } from './sinnoh-celestic-route';
+import { installCelesticTrace } from './sinnoh-celestic-trace';
 import { installSinnohCanonicalLakes } from './sinnoh-canonical-lakes';
 import { installOreburghMine } from './oreburgh-mine';
+import { installOreburghInteriors } from './oreburgh-interiors';
+import { installOreburghWayfinding } from './oreburgh-wayfinding';
 import { installLostTower } from './lost-tower';
 import { installValleyWindworks } from './valley-windworks';
 import { installEternaClock } from './eterna-clock-art';
@@ -95,6 +104,9 @@ import { installJohtoIcePath } from './johto-ice-path';
 import { installJohtoDragonsDen } from './johto-dragons-den';
 import { installJohtoBlackthornSouth } from './johto-blackthorn-south';
 import { installJohtoCherrygrove } from './johto-cherrygrove';
+import { installJohtoRoute30 } from './johto-route-30';
+import { installJohtoDarkCaveWest } from './johto-dark-cave-west';
+import { installJohtoDarkCaveEast } from './johto-dark-cave-east';
 import { installMahoganyDetails } from './mahogany-city-layout';
 import { installBlackthornDetails } from './blackthorn-city-layout';
 import { installMahoganyInteriors } from './mahogany-interiors';
@@ -163,7 +175,7 @@ const edgeNames=[
 export const TOUR_EDGES=edgeNames.map(([a,b])=>[`tour_${a}`,`tour_${b}`] as [TourId,TourId]);
 export const TOUR_NEIGHBORS=(id:TourId)=>TOUR_EDGES.filter(e=>e.includes(id)).map(e=>e[0]===id?e[1]:e[0]);
 export const TOUR_W=28,TOUR_H=24;
-export interface TourBuilding {kind:'house'|'center'|'landmark';x:number;y:number;w:number;h:number;door:Point;room?:TourId}
+export interface TourBuilding {kind:'house'|'center'|'landmark'|'school'|'office';x:number;y:number;w:number;h:number;door:Point;room?:TourId}
 export interface TourFeature extends Point {w:number;h:number;kind:'water'|'garden'|'rocks'|'grove'|'runway'|'fountain'|'rail'|'statue';name?:string;description?:string}
 export const TOUR_BUILDINGS:Record<string,TourBuilding[]>={};
 export const TOUR_PLANS:Record<string,ExpandedTown>={};
@@ -224,6 +236,8 @@ for(const [index,p]of PLACES.entries()){
 }
 {PASSAGE_PLACES[SINNOH_ROUTE_218]={id:SINNOH_ROUTE_218,name:'신오 218번도로 · 육지 접근부',region:'신오',theme:'coast',concept:'축복과 운하 사이의 육지 접근부',landmark:'수로 전망',x:1.5,y:5};const route=createSinnohRoute218();TOUR_MAPS[SINNOH_ROUTE_218]=route.map;TOUR_FEATURES[SINNOH_ROUTE_218]=route.features;TOUR_BUILDINGS[SINNOH_ROUTE_218]=[];TOUR_SPAWNS[SINNOH_ROUTE_218]={x:2,y:13};}
 for(const p of PLACES)TOUR_OUTDOORS[p.id]=prepareTourOutdoors(p,TOUR_MAPS[p.id],TOUR_FEATURES[p.id],SHORT_TOURS.has(p.id),placeById);
+installJubilifeWayfinding(TOUR_MAPS.tour_jubilife,TOUR_OUTDOORS.tour_jubilife);
+installJubilifeCityLearning(TOUR_MAPS.tour_jubilife,TOUR_OUTDOORS.tour_jubilife);
 installIlexForestDetails(TOUR_MAPS.tour_ilex,TOUR_OUTDOORS.tour_ilex);
 installAzaleaDetails(TOUR_MAPS.tour_azalea,TOUR_OUTDOORS.tour_azalea);
 installVioletDetails(TOUR_MAPS.tour_violet,TOUR_OUTDOORS.tour_violet);
@@ -261,6 +275,10 @@ export const TOUR_POKEMON:Record<string,TownPokemon>={};
 for(const p of PLACES){const residents=createTourResidents(p.id);if(residents.length){TOUR_RESIDENTS[p.id]=residents;const pokemon=createTownPokemon(p);TOUR_POKEMON[p.id]=pokemon;TOUR_MAPS[p.id].npcs.push(...residents,pokemon)}}
 TOUR_MAPS.tour_lentimas.npcs.push({id:'lentimasPilot',name:'궐수행 조종사',sprite:'ace_trainer_f',x:12,y:11,facing:'right',dialogue:'tourLentimasReturnFlight'});
 buildJourneyWorld({places:PLACES,maps:TOUR_MAPS,buildings:TOUR_BUILDINGS,rooms:TOUR_INTERIORS,spawns:TOUR_SPAWNS});
+installJubilifeTrainerSchool({maps:TOUR_MAPS,rooms:TOUR_INTERIORS,spawns:TOUR_SPAWNS,roomParents:ROOM_PARENTS,place:placeById('tour_jubilife')!});
+installJubilifePoketchCompany({maps:TOUR_MAPS,rooms:TOUR_INTERIORS,spawns:TOUR_SPAWNS,roomParents:ROOM_PARENTS,floorParents:FLOOR_PARENTS,floorInfo:FLOOR_INFO,place:placeById('tour_jubilife')!});
+installJubilifeDailyInteriors({maps:TOUR_MAPS,rooms:TOUR_INTERIORS,spawns:TOUR_SPAWNS,floorInfo:FLOOR_INFO});
+installOreburghInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS);
 installEternaInteriorSizes(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS);
 installHearthomeInteriorSizes(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS);
 installVeilstoneInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS,FLOOR_INFO);
@@ -275,6 +293,7 @@ installGoldenrodHomes(TOUR_MAPS,TOUR_INTERIORS,FLOOR_INFO);
 installCasteliaHomes(TOUR_MAPS,TOUR_INTERIORS,FLOOR_INFO);
 installCasteliaInteriorSizes(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS,FLOOR_INFO);
 installVermilionInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS,FLOOR_INFO);
+installCinnabarInteriors(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS);
 installCinnabarHomes(TOUR_MAPS,TOUR_INTERIORS);
 installGoldenrodRadioFloors(TOUR_MAPS,TOUR_INTERIORS);
 installGoldenrodInteriorSizes(TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS,FLOOR_INFO);
@@ -332,6 +351,9 @@ installJohtoIcePath({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlace
 installJohtoDragonsDen({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS,rooms:TOUR_INTERIORS,roomParents:ROOM_PARENTS,buildings:TOUR_BUILDINGS,features:TOUR_FEATURES});
 installJohtoBlackthornSouth({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
 installJohtoCherrygrove({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS,rooms:TOUR_INTERIORS,roomParents:ROOM_PARENTS,buildings:TOUR_BUILDINGS,features:TOUR_FEATURES});
+installJohtoRoute30({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS,features:TOUR_FEATURES});
+installJohtoDarkCaveWest({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
+installJohtoDarkCaveEast({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});
 MART_ROOMS.add('tour_cherrygrove_mart');
 buildEternaApproaches(PLACES,TOUR_MAPS,PASSAGES,PASSAGE_PLACES,TOUR_SPAWNS);
 installEternaCoronetApproach(PLACES,TOUR_MAPS,PASSAGES,PASSAGE_PLACES,TOUR_SPAWNS);
@@ -341,14 +363,16 @@ installSinnohRoute212({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePla
 installSinnohSoutheastRoutes({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
 installSinnohNorthRoute({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
 installSinnohRoute203Gate({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
-installSinnohOpeningRoute({maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
+installSinnohOpeningRoute({maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES,buildings:TOUR_BUILDINGS,rooms:TOUR_INTERIORS,roomParents:ROOM_PARENTS});
 installSinnohFloaromaRoute({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
 installSinnohRoute205North({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
 installSinnohRoute206207({places:PLACES,maps:TOUR_MAPS,passages:PASSAGES,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
 installSinnohCelesticRoute({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES,edges:TOUR_EDGES,outdoors:TOUR_OUTDOORS,rooms:TOUR_INTERIORS,roomParents:ROOM_PARENTS,buildings:TOUR_BUILDINGS});
+installCelesticTrace(TOUR_MAPS.tour_celestic_ruins,TOUR_INTERIORS.tour_celestic_ruins);
 MART_ROOMS.add(CELESTIC_SHOP);
 installSinnohCanonicalLakes({maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
 installOreburghMine({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
+installOreburghWayfinding(TOUR_MAPS.tour_oreburgh,TOUR_OUTDOORS.tour_oreburgh);
 installLostTower({maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES,floorInfo:FLOOR_INFO});
 installValleyWindworks({maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
 installCasteliaSewerPark({maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});

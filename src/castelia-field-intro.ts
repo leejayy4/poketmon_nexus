@@ -2,6 +2,7 @@ import type { Engine } from './engine';
 import { TOUR_OUTDOORS } from './explore-world';
 import type { Furnishing } from './explore-interiors';
 import type { GameMap,SaveData } from './types';
+import { CASTELIA_COMPARISON,casteliaOriginalComparisonChoices } from './castelia-original-comparison';
 
 export function casteliaRestMatCell(map:GameMap){
   if(map.id!=='tour_castelia')return;
@@ -31,7 +32,7 @@ export function paintCasteliaFieldSites(c:CanvasRenderingContext2D,map:GameMap,s
   c.fillStyle='#d6c99c';c.fillRect(x+2,y+6,12,2);c.fillRect(x+2,y+12,12,2);
 }
 
-export function paintCasteliaProjectExhibit(c:CanvasRenderingContext2D,mapId:string,o:Furnishing):boolean{
+export function paintCasteliaProjectExhibit(c:CanvasRenderingContext2D,mapId:string,o:Furnishing,flags:SaveData['flags']):boolean{
   if(mapId!=='tour_castelia_hall'||o.event!=='tourCasteliaProjectExhibit')return false;
   const x=o.x*16,y=o.y*16,w=o.w*16,h=o.h*16;
   c.save();c.beginPath();c.rect(x,y,w,h);c.clip();
@@ -39,6 +40,21 @@ export function paintCasteliaProjectExhibit(c:CanvasRenderingContext2D,mapId:str
   r(0,2,w,h-2,'#4a6569');r(2,0,w-4,h-5,'#d4ceb0');
   r(5,5,w-10,3,'#8aab9d');r(7,9,3,h-14,'#a69774');r(7,h-9,w-14,3,'#a69774');
   for(let a=15;a<w-7;a+=10){r(a,12,6,8,'#688d98');r(a+1,10,4,2,'#b6c9b8');}
+  if(flags[CASTELIA_COMPARISON.opened]){
+    // Local comparison notes, not the original documents kept in Ecruteak.
+    const py=Math.max(9,h-16),left=Math.max(3,Math.floor(w/2)-13);
+    r(left-1,py-1,26,14,'#4a5d5d');
+    r(left,py,11,12,'#eee5c6');r(left+13,py,11,12,'#eee5c6');
+    r(left+1,py+1,9,2,'#739aa4');r(left+14,py+1,9,2,'#879b6a');
+    for(const [offset,flag] of [[0,CASTELIA_COMPARISON.worker],[13,CASTELIA_COMPARISON.resident]] as const){
+      if(!flags[flag])continue;
+      for(let line=0;line<3;line++)r(left+offset+2,py+4+line*2,7-line,1,'#7b806f');
+    }
+    if(flags[CASTELIA_COMPARISON.preserved]){
+      r(left+10,py+10,5,2,'#9f7750');
+      r(left+11,py+9,3,4,'#c5a269');
+    }
+  }
   c.restore();return true;
 }
 
@@ -56,9 +72,10 @@ export function handleCasteliaFieldIntro(g:Engine,event:string):boolean{
     g.say('구름 현장 수첩',[...pages,first?'본 장소와 들은 말을 구분해 수첩에 남겼다.':'앞서 남긴 현장 기록을 다시 살폈다.'],undefined,[{label:'다음 장소로',action:guide(next,id)},{label:'계속 둘러본다',action:()=>{}}]);
   };
   if(map==='tour_castelia_hall'&&event==='tourCasteliaProjectExhibit'){
+    const fieldComplete=Boolean(save.flags[CARGO]&&save.flags.casteliaFieldWorker&&save.flags.casteliaFieldRestMat&&save.flags[HOME]);
     const nextEvent=!save.flags[CARGO]?cargo?.event:!save.flags.casteliaFieldWorker?'tourResident0':!save.flags.casteliaFieldRestMat?alley?.event:!save.flags[HOME]?'tourResident1':cargo?.event;
 
-    g.say('항만 사업 전시',['전시에는 큰길과 부두를 잇는 운송 동선이 그려져 있다.','편리해진 길을 보여 주는 발표다. 골목에서 사는 사람에게도 같은 경험인지 현장에서 살펴보자.',save.flags[CARGO]&&save.flags.casteliaFieldWorker&&save.flags[HOME]?'넓은 화물 동선과 좁은 생활 골목을 모두 보았다. 다른 도시에서도 어느 구간이 편리해졌는지 직접 확인해 보자.':'동쪽 화물 부두와 주택 옆 화분 골목이 비교할 장소다.'],undefined,[{label:save.flags[EXHIBIT]?'현장 답사 이어가기':'전시 동선 따라 현장으로',action:()=>{if(current()&&nextEvent)record(EXHIBIT,[save.flags[EXHIBIT]?'앞서 살핀 현장과 들은 증언을 보존하고 답사를 이어간다.':'발표의 운송 동선을 수첩에 옮겼다.'],'tour_castelia',nextEvent);}},{label:'4번도로·뇌문 방향으로',action:guide('tour_unova_route_04')},{label:'전시를 더 본다',action:()=>{}}]);return true;
+    g.say('항만 사업 전시',['전시에는 큰길과 부두를 잇는 운송 동선이 그려져 있다.','편리해진 길을 보여 주는 발표다. 골목에서 사는 사람에게도 같은 경험인지 현장에서 살펴보자.',save.flags[CARGO]&&save.flags.casteliaFieldWorker&&save.flags[HOME]?'넓은 화물 동선과 좁은 생활 골목을 모두 보았다. 다른 도시에서도 어느 구간이 편리해졌는지 직접 확인해 보자.':'동쪽 화물 부두와 주택 옆 화분 골목이 비교할 장소다.'],undefined,[...casteliaOriginalComparisonChoices(g),{label:fieldComplete?'화물 부두 기록 다시 살피기':save.flags[EXHIBIT]?'현장 답사 이어가기':'전시 동선 따라 현장으로',action:()=>{if(fieldComplete){guide('tour_castelia',cargo?.event)();return;}if(current()&&nextEvent)record(EXHIBIT,[save.flags[EXHIBIT]?'앞서 살핀 현장과 들은 증언을 보존하고 답사를 이어간다.':'발표의 운송 동선을 수첩에 옮겼다.'],'tour_castelia',nextEvent);}},{label:fieldComplete?'답사를 마치고 4번도로로':'4번도로·뇌문 방향으로',action:guide('tour_unova_route_04')},{label:'전시를 더 본다',action:()=>{}}]);return true;
   }
   if(map!=='tour_castelia'||!save.flags[EXHIBIT])return false;
   if(event===cargo?.event){
@@ -71,7 +88,7 @@ export function handleCasteliaFieldIntro(g:Engine,event:string):boolean{
     if(!save.flags.casteliaFieldWorker){
       g.say('화분 골목',['수레 자국만으로 일하는 사람의 경험을 알 수는 없다. 해안 직장인에게 먼저 물어보자.'],undefined,[{label:'해안 직장인에게',action:guide('tour_castelia','tourResident0')},{label:'그대로 둘러본다',action:()=>{}}]);return true;
     }
-    g.say('주택 옆 화분 골목',['집으로 이어지는 좁은 통로와 화분 사이의 빈 받침이 보인다.',save.flags.casteliaFieldRestMat?(casteliaRestMatCell(g.map)?'펼친 매트 위에서 콩둘기 한 마리가 날개를 접고 쉬고 있다. 집으로 가는 길은 비어 있다.':'빈 받침에 펼친 휴식 매트가 남아 있다. 길은 그대로 열려 있다.'):'화분 받침 안의 접힌 매트를 펴면 길을 차지하지 않는 휴식 자리가 된다.'],undefined,[{label:save.flags.casteliaFieldRestMat?'휴식 자리 다시 살피기':'빈 받침에 휴식 매트 펼치기',action:()=>{if(current())record('casteliaFieldRestMat',['화분 받침 안에 매트를 펼쳤다. 집으로 오가는 통로는 비워 두었다.'],'tour_castelia','tourResident1');}},{label:'나중에 살핀다',action:()=>{}}]);return true;
+    g.say('주택 옆 화분 골목',['집으로 이어지는 좁은 통로와 화분 사이의 빈 받침이 보인다.',save.flags.casteliaFieldRestMat?(casteliaRestMatCell(g.map)?'펼친 매트 위에서 콩둘기 한 마리가 날개를 접고 쉬고 있다. 집으로 가는 길은 비어 있다.':'빈 받침에 펼친 휴식 매트가 남아 있다. 길은 그대로 열려 있다.'):'화분 받침 안의 접힌 매트를 펴면 길을 차지하지 않는 휴식 자리가 된다.'],undefined,[{label:save.flags.casteliaFieldRestMat?'휴식 자리 다시 살피기':'빈 받침에 휴식 매트 펼치기',action:()=>{if(current())record('casteliaFieldRestMat',[save.flags.casteliaFieldRestMat?'화분 받침의 매트와 비어 있는 통로를 다시 살폈다.':'화분 받침 안에 매트를 펼쳤다. 집으로 오가는 통로는 비워 두었다.'],'tour_castelia','tourResident1');}},{label:'나중에 살핀다',action:()=>{}}]);return true;
   }
   if(event==='tourResident1'&&save.flags.casteliaFieldRestMat&&!save.flags[HOME]){
     record(HOME,['“그 골목은 우리 작업실로 가는 길이에요. 부두는 편해졌지만 동료와 쉬어 갈 자리는 작지요. 화분 옆 자리는 통로를 비울 수 있어 좋네요.”','부두의 이익과 거처의 불편을 함께 남겼다. 뇌문 철도와 물풍경 운송 현장에서도 다른 경험을 들어 보자.'],'tour_castelia_hall','tourCasteliaProjectExhibit');return true;

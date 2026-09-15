@@ -32,6 +32,7 @@ export function installVioletDetails(map:GameMap,outdoors:TourOutdoors){
     {name:'32번도로 도착 기록석',event:'tourVioletRoute32Stone',cells:[{x:19,y:5}],pages:['북쪽 출구 아래 돌에 32번도로의 물가와 연결동굴 방향이 새겨져 있다.\n고동마을까지 같은 길로 돌아갈 수 있다.']},
     {name:'탑 수련 앞마당',event:'tourVioletTrainingYard',cells:[{x:32,y:15}],pages:['나무 기둥의 흔들림을 따라 발을 옮기는 표시가 그려져 있다.\n모다피의 탑 내부 수련과 체육관은 서로 다른 장소다.']},
     {name:'새 포켓몬 물그릇',event:'tourVioletBirdBasin',cells:[{x:36,y:27}],pages:['낮은 물그릇 가장자리에 작은 발자국과 깃털이 남아 있다.\n마을 사람들이 물을 갈아 주는 생활 자리다.']},
+    {name:'31번도로 동문 기록석',event:'tourVioletRoute31Stone',cells:[{x:43,y:15}],pages:['동쪽 출구는31번도로의 작은 연못과 어둠의동굴 서쪽 입구를 지난다.\n남쪽30번도로를 따라 무궁시티까지 같은 길로 돌아갈 수 있다.']},
     {name:'남쪽 길 방향 표석',event:'tourVioletSouthStone',cells:[{x:19,y:38}],pages:['남쪽 길은 현재 연결 표지를 따라 금빛시티 방향으로 이어진다.\n35번도로·자연공원·36번도로 분리는 후속 경계다.']},
   ];
   for(const object of objects)for(const cell of object.cells){rows[cell.y][cell.x]='#';map.props.push({...cell,dialogue:object.event});}

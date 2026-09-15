@@ -31,10 +31,15 @@ export function installUnovaRouteSix(world:World){
     {name:'푸른 결정 조각',event:'tourRouteSixCrystalShard',cells:[{x:17,y:8}],pages:['동굴 쪽에서 굴러온 듯한 푸른 결정 조각이 희미하게 빛난다.','북쪽 출구 너머가 전기돌동굴 1층이다.']},
   ];
   for(const object of routeObjects)for(const cell of object.cells)route[cell.y][cell.x]='#';
-  legacy.name='하나 6번도로';legacy.width=40;legacy.height=88;legacy.background=UNOVA_ROUTE_SIX;legacy.walkable=route.map(row=>row.join(''));legacy.terrain=[];
+  legacy.name='하나 6번도로';legacy.width=40;legacy.height=88;legacy.background=UNOVA_ROUTE_SIX;legacy.walkable=route.map(row=>row.join(''));legacy.terrain=[
+    {kind:'tallGrass',x:8,y:13,w:4,h:4},{kind:'tallGrass',x:28,y:39,w:4,h:4},
+  ];
   legacy.warps=[{x:19,y:86,to:driftveil.id,spawn:{...toDriftveil.spawn},entry:'down',facing:toDriftveil.facing},{x:19,y:1,to:CHARGESTONE_1F,spawn:{x:31,y:52},entry:'up',facing:'up'}];
   legacy.warps.push({x:13,y:27,to:ROUTE_SIX_LAB,spawn:{x:14,y:18},entry:'up',facing:'up'});
-  legacy.npcs=[{id:'routeSixResearcher',name:'계절 연구원',sprite:'scientist_f',x:15,y:29,facing:'left',dialogue:'tourRouteSixResearcher'}];
+  legacy.npcs=[
+    {id:'routeSixResearcher',name:'계절 연구원',sprite:'scientist_f',x:15,y:29,facing:'left',dialogue:'tourRouteSixResearcher'},
+    {id:'routeSixTrainer',name:'6번도로 생태 트레이너',sprite:'pokemon_breeder_f',x:25,y:40,facing:'right',dialogue:'tourRouteSixTrainer'},
+  ];
   legacy.props=[{x:17,y:82,dialogue:'tourRouteSixSign'},{x:22,y:5,dialogue:'tourRouteSixSign'},...objectProps(routeObjects)];
   world.passages[UNOVA_ROUTE_SIX]={...passage,a:driftveil,b:mistralton,kind:'road',bend:44};
   world.passagePlaces[UNOVA_ROUTE_SIX]={id:UNOVA_ROUTE_SIX,name:'하나 6번도로',region:'하나',theme:'forest',concept:'물풍경시티에서 강과 계절 연구소를 지나 전기돌동굴로 오르는 연구도로',landmark:'계절 연구소와 목재 다리',x:driftveil.x,y:driftveil.y-1};
@@ -66,7 +71,9 @@ export function installUnovaRouteSix(world:World){
     {name:'북부 출구 결정',event:'tourChargestoneNorthCrystal',cells:[{x:35,y:11}],pages:['위층 출구 쪽으로 갈수록 결정의 빛이 옅어진다.','북쪽 길은 궐수시티 활주로 외곽으로 이어진다.']},
   ];
   for(const object of oneObjects)for(const cell of object.cells)one[cell.y][cell.x]='#';
-  world.maps[CHARGESTONE_1F]={id:CHARGESTONE_1F,name:'전기돌동굴 1층',width:64,height:56,background:CHARGESTONE_1F,walkable:one.map(row=>row.join('')),terrain:[],
+  world.maps[CHARGESTONE_1F]={id:CHARGESTONE_1F,name:'전기돌동굴 1층',width:64,height:56,background:CHARGESTONE_1F,walkable:one.map(row=>row.join('')),terrain:[
+    {kind:'tallGrass',x:13,y:43,w:3,h:3},{kind:'tallGrass',x:35,y:29,w:3,h:3},
+  ],
     warps:[
       {x:31,y:54,to:UNOVA_ROUTE_SIX,spawn:{x:19,y:3},entry:'down',facing:'down'},
       {x:15,y:32,to:CHARGESTONE_B1F,spawn:{x:7,y:42},entry:'left',facing:'left'},
@@ -87,7 +94,9 @@ export function installUnovaRouteSix(world:World){
     {name:'아래층 균열 전망',event:'tourChargestoneLowerView',cells:[{x:27,y:17}],pages:['난간 아래로 더 깊은 결정층이 희미하게 보인다.','선택 B2F는 후속 후보이며 현재 내려가는 길은 없다.']},
   ];
   for(const object of basementObjects)for(const cell of object.cells)basement[cell.y][cell.x]='#';
-  world.maps[CHARGESTONE_B1F]={id:CHARGESTONE_B1F,name:'전기돌동굴 B1F',width:56,height:48,background:CHARGESTONE_B1F,walkable:basement.map(row=>row.join('')),terrain:[],
+  world.maps[CHARGESTONE_B1F]={id:CHARGESTONE_B1F,name:'전기돌동굴 B1F',width:56,height:48,background:CHARGESTONE_B1F,walkable:basement.map(row=>row.join('')),terrain:[
+    {kind:'tallGrass',x:10,y:30,w:3,h:5},{kind:'tallGrass',x:31,y:25,w:3,h:3},
+  ],
     warps:[{x:6,y:42,to:CHARGESTONE_1F,spawn:{x:16,y:32},entry:'down',facing:'right'},{x:49,y:7,to:CHARGESTONE_1F,spawn:{x:41,y:21},entry:'up',facing:'left'}],
     npcs:[{id:'chargestoneHiker',name:'결정길 산행객',sprite:'worker',x:25,y:35,facing:'left',dialogue:'tourChargestoneHiker'}],
     props:[{x:8,y:38,dialogue:'tourChargestoneSign'},{x:47,y:10,dialogue:'tourChargestoneSign'},...objectProps(basementObjects)],

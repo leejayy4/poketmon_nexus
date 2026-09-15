@@ -21,15 +21,19 @@ export function installUnovaRouteThirteen(world:World){
   const objects=[
     {name:'물결 해안 전망대',event:'tourRouteThirteenCoast',cells:[{x:9,y:72}],pages:['물결마을 해변과 리버스마운틴의 붉은 절벽을 함께 볼 수 있다.','바닷바람이 강할 때 사람과 포켓몬이 난간 안쪽에서 쉬는 자리다.']},
     {name:'절벽 샘 관찰지',event:'tourRouteThirteenSpring',cells:[{x:27,y:48}],pages:['바위 틈에서 나온 맑은 물이 낮은 홈을 따라 흐른다.','마실 수 있는 물이나 회복 지점으로 확인된 장소는 아니므로 관찰선 밖에서 살핀다.']},
-    {name:'숨은동굴 흔적판',event:'tourRouteThirteenGrotto',cells:[{x:26,y:59}],pages:['절벽 식생 사이 작은 틈과 포켓몬 발자국을 구분해 그린 관찰판이다.','숨은동굴 내부·야생 조우·도구 획득은 아직 연결하지 않았다.']},
-    {name:'고지 초원 바람표',event:'tourRouteThirteenMeadow',cells:[{x:12,y:25}],pages:['해안의 습한 바람이 고지의 마른 풀밭으로 바뀌는 지점이다.','확인되지 않은 조우종 대신 풀의 눕는 방향과 발자국만 기록한다.']},
+    {name:'숨은동굴 흔적판',event:'tourRouteThirteenGrotto',cells:[{x:26,y:59}],pages:['절벽 식생 사이 작은 틈과 포켓몬 발자국을 구분해 그린 관찰판이다.','숨은동굴 내부·재생 도구·특별 조우는 연결하지 않았다. 도로의 일반 풀밭 생태와 구분한다.']},
+    {name:'고지 초원 바람표',event:'tourRouteThirteenMeadow',cells:[{x:12,y:25}],pages:['해안의 습한 바람이 고지의 마른 풀밭으로 바뀌는 지점이다.','덩쿠리와 패리퍼가 머무는 곁풀과 조우 없는 가운데 길을 나누어 표시했다.']},
   ];
   for(const object of objects)for(const cell of object.cells)rows[cell.y][cell.x]='#';
-  const map:GameMap={id:UNOVA_ROUTE_THIRTEEN,name:'하나 13번도로',width:36,height:96,background:UNOVA_ROUTE_THIRTEEN,walkable:rows.map(row=>row.join('')),terrain:[],
+  const map:GameMap={id:UNOVA_ROUTE_THIRTEEN,name:'하나 13번도로',width:36,height:96,background:UNOVA_ROUTE_THIRTEEN,walkable:rows.map(row=>row.join('')),terrain:[
+    {kind:'tallGrass',x:7,y:76,w:6,h:3},{kind:'tallGrass',x:9,y:66,w:6,h:3},
+    {kind:'tallGrass',x:21,y:51,w:7,h:3},{kind:'tallGrass',x:6,y:25,w:7,h:3},
+  ],
     warps:[{x:17,y:94,to:undella.id,spawn:{x:45,y:13},entry:'down',facing:'left'},{x:17,y:1,to:lacunosa.id,spawn:{x:14,y:37},entry:'up',facing:'up'}],
     npcs:[
       {id:'routeThirteenRanger',name:'13번도로 해안지기',sprite:'rancher',x:12,y:67,facing:'right',dialogue:'tourRouteThirteenRanger'},
       {id:'routeThirteenHiker',name:'고지 산행객',sprite:'worker',x:18,y:39,facing:'down',dialogue:'tourRouteThirteenHiker'},
+      {id:'routeThirteenTrainer',name:'13번도로 해안 생태 트레이너',sprite:'ace_trainer_f',x:24,y:52,facing:'left',dialogue:'tourRouteThirteenTrainer'},
     ],
     props:[{x:13,y:89,dialogue:'tourRouteThirteenSign'},{x:21,y:8,dialogue:'tourRouteThirteenSign'},...objectProps(objects)],
   };

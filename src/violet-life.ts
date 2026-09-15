@@ -2,7 +2,7 @@ import type { Engine } from './engine';
 import { SPECIES } from './pokemon';
 
 const VIOLET_MAPS=new Set(['tour_violet','tour_violet_center','tour_violet_hall','tour_violet_hall_2f','tour_violet_hall_3f','tour_violet_mart','tour_violet_home1','tour_violet_home2']);
-const SOUTH_ORIGINS=new Set(['성도 32번도로','연결동굴 1층','성도 33번도로','너도밤나무숲']);
+const SOUTH_ORIGINS=new Set(['성도 32번도로','연결동굴 1층','성도 33번도로','너도밤나무숲','성도 31번도로','성도 30번도로']);
 
 /** Connect the Route 32 arrival party to a voluntary three-floor tower practice. */
 export function handleVioletLife(g:Engine,event:string):boolean{
@@ -18,12 +18,13 @@ export function handleVioletLife(g:Engine,event:string):boolean{
     const hurt=save.party.filter(mon=>mon.hp>0&&mon.hp<mon.maxHp).length,fainted=save.party.filter(mon=>mon.hp<=0).length;
     g.say('도라지시티 안내원',[
       `현재 파티 ${save.party.length}마리 · 부상 ${hurt} · 기절 ${fainted}`,
-      '북쪽은 32번도로·연결동굴·고동 방향, 남쪽은 36번도로 갈림길과 자연공원·35번도로를 지나 금빛 방향이다.',
+      '동쪽은31·30번도로와 무궁 방향, 북쪽은32번도로·연결동굴·고동 방향, 남쪽은36번도로 갈림길과 자연공원·35번도로를 지나 금빛 방향이다.',
       '모다피의 탑에서는 동료와 세 층의 균형 수련을 할 수 있다. 체육관 도전과는 별개다.',
     ],undefined,[
       {label:'센터에서 준비',action:guide('tour_violet_center','도라지 회복 안내','센터에서 회복과 PC 편성을 한 뒤 탑으로 갈 수 있다.')},
       {label:'모다피의 탑 수련',action:guide('tour_violet_hall','모다피의 탑 안내','1층 흔들리는 기둥 앞에서 건강한 동료와 첫걸음을 시작한다.','violetTowerFirstStep')},
       {label:'32번도로 귀환',action:guide('tour_johto_route_32','성도 남부 귀환 안내','북쪽 출구에서 32번도로로 돌아가 연결동굴과 고동 방향으로 내려갈 수 있다.')},
+      {label:'31번도로·무궁 방향',action:guide('tour_johto_route_31','성도 남동부 귀환 안내','동쪽 출구에서31번도로로 나가 남쪽30번도로와 무궁시티까지 돌아갈 수 있다.')},
       {label:'남쪽 금빛 방향',action:guide('tour_johto_route_36','도라지 남쪽 안내','남쪽 출구에서 36번도로 갈림길로 나가 자연공원과 35번도로를 지나 금빛시티로 간다.')},
       {label:'안내를 마친다',action:()=>{}},
     ]);return true;
@@ -32,6 +33,21 @@ export function handleVioletLife(g:Engine,event:string):boolean{
     g.say('32번도로 도착 기록석',['도라지시티 → 32번도로 → 연결동굴 1층 → 33번도로 → 고동마을',`성도 남부에서 만난 보유 동료 ${local.length}마리\n${localNames}`,'특정 포획은 통행이나 탑 수련 조건이 아니다.'],undefined,[
       {label:'센터에서 편성',action:guide('tour_violet_center','도라지센터 안내','회복 장치와 PC를 이용한 뒤 탑 수련을 준비할 수 있다.','pc')},
       {label:'32번도로 표시',action:guide('tour_johto_route_32','32번도로 안내','도시 북쪽 출구에서 긴 물가길로 돌아간다.')},
+      {label:'기록을 덮는다',action:()=>{}},
+    ]);return true;
+  }
+  if(event==='tourVioletRoute31Stone'){
+    const southeast=[...save.party,...save.box??[]].filter(mon=>mon.met==='성도 30번도로'||mon.met==='성도 31번도로');
+    const names=[...new Set(southeast.map(mon=>SPECIES[mon.species].name))].slice(0,5).join('·')||'아직 없음';
+    const cave=[...save.party,...save.box??[]].filter(mon=>mon.met==='어둠의동굴 남서 구역');
+    const caveSpecies=Number(save.flags.darkCaveSurveyPartnerSpecies??0),caveName=SPECIES[caveSpecies]?.name;
+    const caveRecord=save.flags.darkCaveSurveyCompleted&&caveName
+      ?`${caveName}와 어둠의동굴 입구 탐사를 마치고31번도로로 돌아온 기록이 있다. Lv.${Number(save.flags.darkCaveSurveyStartLevel??0)} → 완료 당시 Lv.${Number(save.flags.darkCaveSurveyEndLevel??save.flags.darkCaveSurveyStartLevel??0)}.`
+      :`어둠의동굴에서 만난 보유 동료 ${cave.length}마리. 현지 동료와 입구 탐사 기록을 남길 수 있다.`;
+    g.say('31번도로 동문 기록석',['도라지시티 → 31번도로 → 30번도로 → 무궁시티',`30·31번도로에서 만난 보유 동료 ${southeast.length}마리\n${names}`,caveRecord,'31번도로 동쪽 어둠의동굴은 남서 탐사 고리까지 왕복할 수 있다. 북동 심부와46·45번도로 관통은 아직 경계다.','특정 포획·배틀·배지는 통행 조건이 아니다.'],undefined,[
+      {label:'31번도로로 나가기',action:guide('tour_johto_route_31','31번도로 안내','동쪽 문에서 작은 연못과 어둠의동굴 입구를 지나30번도로로 내려간다.')},
+      {label:'어둠의동굴 탐사',action:guide('tour_johto_dark_cave_west','어둠의동굴 안내','31번도로 동쪽 입구에서 밝은 돌 고리와 선택 암반 지대를 살핀다.','tourDarkCaveHabitat')},
+      {label:'센터에서 회복',action:guide('tour_violet_center','도라지센터 안내','동료를 회복하고 PC에서 다음 파티를 준비할 수 있다.')},
       {label:'기록을 덮는다',action:()=>{}},
     ]);return true;
   }

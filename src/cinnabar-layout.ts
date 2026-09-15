@@ -1,7 +1,7 @@
 import type { ExpandedTown } from './explore-expansion';
 import type { TourFeature } from './explore-world';
 
-export const CINNABAR_SIZE={width:50,height:44};
+export const CINNABAR_SIZE={width:56,height:48};
 export const CINNABAR_ROUTE='tour_pass_pallet_cinnabar';
 export const CINNABAR_ROUTE_NAME='태초–홍련 해안길';
 export const CINNABAR_DEPARTURE_ROUTE='tour_pass_vermilion_cinnabar';
@@ -28,8 +28,10 @@ export function extendCinnabarTown(plan:ExpandedTown):ExpandedTown{
       {kind:'water',x:35,y:17,w:10,h:8,name:'홍련 물가 관찰 데크',description:'바위 사이로 바닷물이 드나든다.\n데크를 돌아 남쪽 해안으로 내려갈 수 있다.'},
       {kind:'water',x:22,y:34,w:20,h:6,name:'남쪽 작은 만',description:'둥근 만 안쪽은 물결이 잔잔하다.\n알통몬과 주민들이 쉬어 가는 물가다.'},
       CINNABAR_RESEARCH_ROCKS[1],
+      {kind:'rocks',x:48,y:28,w:6,h:10,name:'동쪽 냉각 용암턱',description:'분화 뒤 바다 쪽에서 식은 검은 용암층이다.\n동쪽 창작 해안길과 공식 20번수로를 같은 길로 부르지 않는다.'},
+      {kind:'water',x:24,y:43,w:20,h:3,name:'남쪽 잔물결 포구',description:'연구 장비와 돌봄 물품을 내리는 작은 포구다.\n서쪽 상륙 데크의 20번수로 여객 동선과 분리돼 있다.'},
     ],
-    paths:[...plan.paths,[30,11,19,3],[31,12,3,20],[12,28,3,13],[12,30,34,3],[43,14,3,19],[11,39,34,2],[34,15,12,2],[33,16,2,11],[34,25,12,2]],
-    boardwalks:[...plan.boardwalks,[33,16,2,11],[34,25,12,2],[45,16,2,11],[21,32,24,2],[20,34,2,7],[22,40,23,2]],
+    paths:[...plan.paths,[30,11,25,3],[31,12,3,20],[12,28,3,19],[12,30,34,3],[43,14,3,19],[11,39,34,2],[34,15,12,2],[33,16,2,11],[34,25,12,2],[43,11,12,3],[12,39,5,8],[2,39,15,3]],
+    boardwalks:[...plan.boardwalks,[33,16,2,11],[34,25,12,2],[45,16,2,11],[21,32,24,2],[20,34,2,7],[22,40,23,2],[2,39,15,3],[17,42,28,2]],
   };
 }

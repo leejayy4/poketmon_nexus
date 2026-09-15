@@ -8,6 +8,7 @@ export const JOHTO_ICE_PATH_1F='tour_johto_ice_path_1f' as const;
 export const JOHTO_ICE_PATH_B1F='tour_johto_ice_path_b1f' as const;
 export const JOHTO_ICE_PATH_B2F='tour_johto_ice_path_b2f' as const;
 export const JOHTO_ICE_PATH_B3F='tour_johto_ice_path_b3f' as const;
+export const JOHTO_ICE_PATH_MAPS=new Set<string>([JOHTO_ICE_PATH_1F,JOHTO_ICE_PATH_B1F,JOHTO_ICE_PATH_B2F,JOHTO_ICE_PATH_B3F]);
 const COMPAT='tour_pass_mahogany_blackthorn' as const;
 type ObjectInfo={name:string;event:string;cells:Point[];pages:string[]};
 const carve=(rows:string[][],x:number,y:number,w:number,h:number)=>{for(let j=y;j<y+h;j++)for(let i=x;i<x+w;i++)rows[j][i]='.';};
@@ -44,7 +45,9 @@ export function installJohtoIcePath(world:{places:Place[];maps:Record<TourId,Gam
     {x:31,y:8,to:JOHTO_ICE_PATH_B1F,spawn:{x:8,y:9},entry:'up',facing:'down'},
     {x:44,y:38,to:JOHTO_ICE_PATH_B3F,spawn:{x:30,y:29},entry:'down',facing:'up'},
     {x:54,y:24,to:blackthorn.id,spawn:{...toB.spawn},entry:'right',facing:toB.facing},
-  ],npcs:[{id:'icePathGuide',name:'얼음샛길 산행객',sprite:'ace_trainer_m',x:18,y:24,facing:'right',dialogue:'journeyWalker'}],props:props(f1Objects),terrain:[]};
+  ],npcs:[{id:'icePathGuide',name:'얼음샛길 산행객',sprite:'ace_trainer_m',x:18,y:24,facing:'right',dialogue:'journeyWalker'}],props:props(f1Objects),terrain:[
+    {kind:'tallGrass',x:12,y:23,w:8,h:3},{kind:'tallGrass',x:43,y:29,w:4,h:6},
+  ]};
 
   const b1=Array.from({length:48},()=>Array<string>(48).fill('#'));
   carve(b1,5,5,9,36);carve(b1,12,32,29,9);carve(b1,32,12,9,27);carve(b1,12,12,22,7);
@@ -55,7 +58,9 @@ export function installJohtoIcePath(world:{places:Place[];maps:Record<TourId,Gam
   ];blockObjects(b1,b1Objects);
   world.maps[JOHTO_ICE_PATH_B1F]={id:JOHTO_ICE_PATH_B1F,name:'얼음샛길 B1F',width:48,height:48,background:JOHTO_ICE_PATH_B1F,walkable:b1.map(r=>r.join('')),warps:[
     {x:8,y:7,to:JOHTO_ICE_PATH_1F,spawn:{x:31,y:10},entry:'up',facing:'down'},{x:38,y:38,to:JOHTO_ICE_PATH_B2F,spawn:{x:8,y:37},entry:'down',facing:'up'},
-  ],npcs:[{id:'icePathTrainer',name:'얼음샛길 동굴 트레이너',sprite:'ace_trainer_m',x:27,y:35,facing:'right',dialogue:'tourIcePathTrainer'}],props:props(b1Objects),terrain:[]};
+  ],npcs:[{id:'icePathTrainer',name:'얼음샛길 동굴 트레이너',sprite:'ace_trainer_m',x:27,y:35,facing:'right',dialogue:'tourIcePathTrainer'}],props:props(b1Objects),terrain:[
+    {kind:'tallGrass',x:7,y:20,w:4,h:8},{kind:'tallGrass',x:20,y:34,w:8,h:4},
+  ]};
 
   const b2=Array.from({length:48},()=>Array<string>(48).fill('#'));
   carve(b2,5,30,10,13);carve(b2,12,30,29,9);carve(b2,33,7,9,27);carve(b2,12,7,23,8);carve(b2,20,14,8,17);
@@ -66,7 +71,9 @@ export function installJohtoIcePath(world:{places:Place[];maps:Record<TourId,Gam
   ];blockObjects(b2,b2Objects);
   world.maps[JOHTO_ICE_PATH_B2F]={id:JOHTO_ICE_PATH_B2F,name:'얼음샛길 B2F',width:48,height:48,background:JOHTO_ICE_PATH_B2F,walkable:b2.map(r=>r.join('')),warps:[
     {x:8,y:40,to:JOHTO_ICE_PATH_B1F,spawn:{x:38,y:36},entry:'down',facing:'up'},{x:38,y:8,to:JOHTO_ICE_PATH_B3F,spawn:{x:8,y:9},entry:'up',facing:'down'},
-  ],npcs:[],props:props(b2Objects),terrain:[]};
+  ],npcs:[],props:props(b2Objects),terrain:[
+    {kind:'tallGrass',x:7,y:33,w:4,h:6},{kind:'tallGrass',x:22,y:17,w:4,h:9},{kind:'tallGrass',x:35,y:18,w:4,h:8},
+  ]};
 
   const b3=Array.from({length:40},()=>Array<string>(40).fill('#'));
   carve(b3,5,5,9,29);carve(b3,12,26,22,8);carve(b3,27,12,8,18);carve(b3,12,12,17,7);
@@ -77,10 +84,47 @@ export function installJohtoIcePath(world:{places:Place[];maps:Record<TourId,Gam
   ];blockObjects(b3,b3Objects);
   world.maps[JOHTO_ICE_PATH_B3F]={id:JOHTO_ICE_PATH_B3F,name:'얼음샛길 B3F',width:40,height:40,background:JOHTO_ICE_PATH_B3F,walkable:b3.map(r=>r.join('')),warps:[
     {x:8,y:7,to:JOHTO_ICE_PATH_B2F,spawn:{x:38,y:10},entry:'up',facing:'down'},{x:30,y:31,to:JOHTO_ICE_PATH_1F,spawn:{x:44,y:36},entry:'right',facing:'down'},
-  ],npcs:[],props:props(b3Objects),terrain:[]};
+  ],npcs:[],props:props(b3Objects),terrain:[
+    {kind:'tallGrass',x:7,y:18,w:4,h:8},{kind:'tallGrass',x:16,y:28,w:7,h:4},{kind:'tallGrass',x:29,y:16,w:4,h:8},
+  ]};
 
   const maps=[[JOHTO_ROUTE_44,'성도 44번도로',routeObjects,'village'],[JOHTO_ICE_PATH_1F,'얼음샛길 1F',f1Objects,'cave'],[JOHTO_ICE_PATH_B1F,'얼음샛길 B1F',b1Objects,'cave'],[JOHTO_ICE_PATH_B2F,'얼음샛길 B2F',b2Objects,'cave'],[JOHTO_ICE_PATH_B3F,'얼음샛길 B3F',b3Objects,'cave']] as const;
   for(const [id,name,objects,theme] of maps){world.passages[id]={id,a:mahogany,b:blackthorn,kind:theme==='cave'?'cave':'road',bend:theme==='cave'?20:30};world.passagePlaces[id]={id,name,region:'성도',theme,concept:'황토마을에서44번도로와 얼음샛길을 지나 검은먹시티로 가는 동부 산악 본선',landmark:theme==='cave'?'서리 계단과 얼음 회랑':'쌍둥이 연못과 찬바람 쉼터',x:(mahogany.x+blackthorn.x)/2,y:(mahogany.y+blackthorn.y)/2};world.outdoors[id]={objects:[...objects],signs:[]};}
   world.spawns[JOHTO_ROUTE_44]={x:3,y:15};world.spawns[JOHTO_ICE_PATH_1F]={x:3,y:24};world.spawns[JOHTO_ICE_PATH_B1F]={x:8,y:9};world.spawns[JOHTO_ICE_PATH_B2F]={x:8,y:37};world.spawns[JOHTO_ICE_PATH_B3F]={x:8,y:9};
   mExit.to=JOHTO_ROUTE_44;mExit.spawn={x:3,y:15};mExit.facing='right';bExit.to=JOHTO_ICE_PATH_1F;bExit.spawn={x:52,y:24};bExit.facing='left';
+}
+
+/** BW/BW2-style cave floor that keeps stairs, dry bypasses and frosted encounter strips legible. */
+export function paintJohtoIcePath(c:CanvasRenderingContext2D,map:GameMap):boolean{
+  if(!JOHTO_ICE_PATH_MAPS.has(map.id))return false;
+  const depth=map.id===JOHTO_ICE_PATH_1F?0:map.id===JOHTO_ICE_PATH_B1F?1:map.id===JOHTO_ICE_PATH_B2F?2:3;
+  const inEncounter=(x:number,y:number)=>(map.terrain??[]).some(r=>x>=r.x&&x<r.x+r.w&&y>=r.y&&y<r.y+r.h);
+  for(let y=0;y<map.height;y++)for(let x=0;x<map.width;x++){
+    const px=x*16,py=y*16,walk=map.walkable[y]?.[x]==='.';
+    if(!walk){
+      c.fillStyle=depth>1?'#45535d':'#52616a';c.fillRect(px,py,16,16);
+      c.fillStyle=(x+y+depth)%3?'#687881':'#71828a';c.fillRect(px+1,py+2,14,9);
+      c.fillStyle='#34434d';c.fillRect(px,py+11,16,5);
+      c.fillStyle='#9bb6b7';c.fillRect(px+3,py+2,9,1);continue;
+    }
+    const frost=inEncounter(x,y);
+    c.fillStyle=frost?'#8eabb2':'#87949a';c.fillRect(px,py,16,16);
+    c.fillStyle=frost?'#bfdcda':'#aeb8b7';c.fillRect(px+1,py+1,14,14);
+    c.fillStyle=frost?'#e5f2e9':'#d2d7cf';c.fillRect(px+3,py+3,8,1);
+    c.fillStyle=frost?'#8fbcc2':'#778a8e';c.fillRect(px+10-(y%3)*2,py+9,5,1);
+    if((x*3+y+depth)%7===0){c.fillStyle=frost?'#789fa9':'#697d81';c.fillRect(px+5,py+7,1,5);c.fillRect(px+6,py+11,4,1);}
+  }
+  for(const warp of map.warps){
+    const px=warp.x*16,py=warp.y*16;
+    c.fillStyle='#48565d';c.fillRect(px+1,py+3,14,12);c.fillStyle='#d7e1d8';
+    for(let i=0;i<4;i++)c.fillRect(px+3+i,py+5+i*2,10-i*2,2);
+    c.fillStyle='#8fc0c3';c.fillRect(px+4,py+3,8,2);
+  }
+  for(const prop of map.props){
+    const px=prop.x*16,py=prop.y*16,isStair=String(prop.dialogue).toLowerCase().includes('stair')||String(prop.dialogue).includes('Return');
+    c.fillStyle='#536169';c.fillRect(px,py,16,16);
+    if(isStair){c.fillStyle='#d8e0d6';for(let i=0;i<4;i++)c.fillRect(px+2+i,py+3+i*3,12-i*2,2);}
+    else{c.fillStyle='#b6d0cc';c.fillRect(px+2,py+3,12,9);c.fillStyle='#5c7476';c.fillRect(px+4,py+6,8,1);c.fillRect(px+7,py+12,2,4);}
+  }
+  return true;
 }

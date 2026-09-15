@@ -19,12 +19,14 @@ export function installReversalMountainExterior(world:World){
     {name:'화산재 바람막이',event:'tourReversalAshShelter',cells:[{x:14,y:20}],pages:['낮은 돌담이 산에서 내려오는 재바람을 막아 준다.','사람과 포켓몬이 눈과 발을 닦을 마른 천이 밀폐함에 들어 있다.']},
     {name:'식은 용암층',event:'tourReversalLavaShelf',cells:[{x:30,y:14}],pages:['검붉은 바위 표면에 오래전에 식은 흐름의 결이 남아 있다.','현재 뜨거운 용암이 흐른다는 뜻은 아니며 표시선 안으로 들어가지 않는다.']},
     {name:'동굴 입구 안전선',event:'tourReversalCaveBoundary',cells:[{x:50,y:12}],pages:['리버스마운틴 통과구역 A 입구다.','내부 MapId와 귀환 경로가 연결되기 전에는 안전선 밖에서 돌아간다.']},
-    {name:'화산재 발자국판',event:'tourReversalTracks',cells:[{x:23,y:28}],pages:['작은 포켓몬과 등산화 자국이 재 위에 겹쳐 있다.','현재 조우종을 확정한 표본이 아니므로 특정 포켓몬의 흔적이라고 단정하지 않는다.']},
+    {name:'화산재 발자국판',event:'tourReversalTracks',cells:[{x:23,y:28}],pages:['스콜피의 가는 발자국과 톱치가 모래를 밀어낸 홈이 재 위에 겹쳐 있다.','서쪽 곁풀은 야생 포켓몬이 머무는 곳이다. 마른 가운데 길로는 조우 없이 동굴 입구까지 갈 수 있다.']},
   ];
   for(const object of objects)for(const cell of object.cells)rows[cell.y][cell.x]='#';
-  world.maps[REVERSAL_MOUNTAIN_EXTERIOR]={id:REVERSAL_MOUNTAIN_EXTERIOR,name:'리버스마운틴 외부',width:56,height:48,background:REVERSAL_MOUNTAIN_EXTERIOR,walkable:rows.map(row=>row.join('')),terrain:[],
+  world.maps[REVERSAL_MOUNTAIN_EXTERIOR]={id:REVERSAL_MOUNTAIN_EXTERIOR,name:'리버스마운틴 외부',width:56,height:48,background:REVERSAL_MOUNTAIN_EXTERIOR,walkable:rows.map(row=>row.join('')),terrain:[
+    {kind:'tallGrass',x:9,y:31,w:6,h:3},{kind:'tallGrass',x:19,y:27,w:7,h:3},
+  ],
     warps:[{x:1,y:24,to:lentimas.id,spawn:{x:37,y:12},entry:'left',facing:'left'}],
-    npcs:[{id:'reversalRanger',name:'재바람 산길지기',sprite:'rancher',x:18,y:17,facing:'right',dialogue:'tourReversalRanger'}],
+    npcs:[{id:'reversalRanger',name:'재바람 산길지기',sprite:'rancher',x:18,y:17,facing:'right',dialogue:'tourReversalRanger'},{id:'reversalExteriorTrainer',name:'리버스마운틴 자전거 트레이너',sprite:'ace_trainer_m',x:16,y:29,facing:'right',dialogue:'tourReversalExteriorTrainer'}],
     props:[{x:4,y:20,dialogue:'tourReversalSign'},...objects.flatMap(object=>object.cells.map(cell=>({...cell,dialogue:object.event})))]};
   world.passagePlaces[REVERSAL_MOUNTAIN_EXTERIOR]={id:REVERSAL_MOUNTAIN_EXTERIOR,name:'리버스마운틴 외부',region:'하나',theme:'desert',concept:'산로마을에서 재바람 능선과 식은 용암층을 지나 동굴 입구로 오르는 외부 산길',landmark:'화산재 바람막이',x:lentimas.x+.5,y:lentimas.y};
   world.spawns[REVERSAL_MOUNTAIN_EXTERIOR]={x:3,y:24};
@@ -45,7 +47,9 @@ export function installReversalMountainExterior(world:World){
     {name:'통과구역 B 경계 표지',event:'tourReversalBoundaryB',cells:[{x:56,y:11}],pages:['리버스마운틴 통과구역 B 방향이다.','B의 동쪽 출구는 물결마을 서쪽 절벽으로 이어지며 같은 길로 돌아올 수 있다.']},
   ];
   for(const object of caveObjects)for(const cell of object.cells)cave[cell.y][cell.x]='#';
-  world.maps[REVERSAL_MOUNTAIN_A]={id:REVERSAL_MOUNTAIN_A,name:'리버스마운틴 통과구역 A',width:64,height:56,background:REVERSAL_MOUNTAIN_A,walkable:cave.map(row=>row.join('')),terrain:[],
+  world.maps[REVERSAL_MOUNTAIN_A]={id:REVERSAL_MOUNTAIN_A,name:'리버스마운틴 통과구역 A',width:64,height:56,background:REVERSAL_MOUNTAIN_A,walkable:cave.map(row=>row.join('')),terrain:[
+    {kind:'tallGrass',x:18,y:42,w:5,h:3},{kind:'tallGrass',x:38,y:29,w:7,h:3},
+  ],
     warps:[{x:1,y:46,to:REVERSAL_MOUNTAIN_EXTERIOR,spawn:{x:52,y:12},entry:'left',facing:'left'}],
     npcs:[{id:'reversalCaveGuide',name:'화산 동굴 조사원',sprite:'scientist_f',x:16,y:45,facing:'up',dialogue:'tourReversalCaveGuide'}],
     props:[{x:4,y:42,dialogue:'tourReversalCaveSign'},...caveObjects.flatMap(object=>object.cells.map(cell=>({...cell,dialogue:object.event})))]};
@@ -66,7 +70,9 @@ export function installReversalMountainExterior(world:World){
     {name:'물결마을 출구 안전선',event:'tourReversalUndellaBoundary',cells:[{x:49,y:10}],pages:['리버스마운틴 동쪽 출구와 물결마을 방향이다.','동쪽으로 나가면 물결마을 서쪽 절벽이며 서쪽은 통과구역 A 귀환길이다.']},
   ];
   for(const object of deepObjects)for(const cell of object.cells)deep[cell.y][cell.x]='#';
-  world.maps[REVERSAL_MOUNTAIN_B]={id:REVERSAL_MOUNTAIN_B,name:'리버스마운틴 통과구역 B',width:56,height:56,background:REVERSAL_MOUNTAIN_B,walkable:deep.map(row=>row.join('')),terrain:[],
+  world.maps[REVERSAL_MOUNTAIN_B]={id:REVERSAL_MOUNTAIN_B,name:'리버스마운틴 통과구역 B',width:56,height:56,background:REVERSAL_MOUNTAIN_B,walkable:deep.map(row=>row.join('')),terrain:[
+    {kind:'tallGrass',x:18,y:39,w:5,h:3},{kind:'tallGrass',x:34,y:26,w:4,h:7},
+  ],
     warps:[{x:1,y:44,to:REVERSAL_MOUNTAIN_A,spawn:{x:61,y:11},entry:'left',facing:'left'}],
     npcs:[{id:'reversalDeepGuide',name:'고온 지대 산길지기',sprite:'worker',x:15,y:32,facing:'right',dialogue:'tourReversalDeepGuide'}],
     props:[{x:4,y:40,dialogue:'tourReversalDeepSign'},...deepObjects.flatMap(object=>object.cells.map(cell=>({...cell,dialogue:object.event})))]};

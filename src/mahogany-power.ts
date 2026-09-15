@@ -46,7 +46,7 @@ export function handleMahoganyPower(g:Engine,event:string):boolean{
   const player=save.player,x=player.x,y=player.y,token={};sessions.set(g,token);
   const active=()=>g.save===save&&save.player===player&&save.map===MAHOGANY_POWER_MAP&&player.x===x&&player.y===y&&!g.battle&&sessions.get(g)===token;
   const guide=(id:string)=>{if(active())g.setTourDestination(MAHOGANY_POWER_MAP,id);};
-  const onward=()=>{if(!active())return;g.say('황토에서 이어지는 길',['서쪽 42번도로로 나가면 절구산 갈림길을 만나요. 산행객들이 열기를 피해 돌아갈 길을 살피고 있어요.'],undefined,[{label:'42번도로 절구산 갈림길',action:()=>{if(active())g.setTourDestination('tour_johto_route_42','tourRoute42MortarBoard');}},{label:'황토 센터에서 동료 회복',action:()=>{if(active())g.setTourDestination('tour_mahogany_center','tourHost');}},{label:'여기서 더 둘러본다',action:()=>{}}]);};
+  const onward=()=>{if(!active())return;g.say('황토에서 이어지는 길',['서쪽 42번도로로 나가면 절구산 갈림길을 만나요. 산행객들이 열기를 피해 돌아갈 길을 살피고 있어요.'],undefined,[{label:'산기슭 주택에서 주민과 동료 만나기',action:()=>{if(active())g.setTourDestination('tour_mahogany_home1','tourHost');}},{label:'42번도로 절구산 갈림길',action:()=>{if(active())g.setTourDestination('tour_johto_route_42','tourRoute42MortarBoard');}},{label:'황토 센터에서 동료 회복',action:()=>{if(active())g.setTourDestination('tour_mahogany_center','tourHost');}},{label:'여기서 더 둘러본다',action:()=>{}}]);};
   if(!allowed(save.flags)){g.say('안내소의 예비 조명',['전시를 비추는 등과 남쪽 문으로 이어지는 유도등을 살피는 자리다. 일반 출입과 기존 생활 공급은 계속 이용할 수 있다.']);return true;}
   if(save.flags[MAHOGANY_POWER_FLAGS.done]){g.say('남쪽 안내 자리',['주민: 밝은 전시만으로는 문으로 가는 길이 보이지 않았어요. 유도등을 따라 이 자리까지 걸어왔죠.','생활 공급반은 그대로 켜져 있고 송신기는 정지한 상태다. 이곳의 안내가 다른 전력 현장까지 해결한 것은 아니다.'],undefined,[{label:'다음 여행과 회복 안내',action:onward},{label:'이야기를 마친다',action:()=>{}}]);return true;}
   if(event===MAHOGANY_POWER_SWITCH){

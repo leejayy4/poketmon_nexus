@@ -4,6 +4,12 @@ import { createTourResidents } from './explore-residents';
 import { SPECIES } from './pokemon';
 import { gymById } from './gyms';
 import { handleFirstBadgeTown } from './first-badge-town';
+import { handleNimbasaNexus,handleNimbasaNexusExhibit } from './nimbasa-nexus';
+import { handleDriftveilCity,handleDriftveilLedger } from './driftveil-nexus';
+import { handleMistraltonNexus } from './mistralton-nexus';
+import { handleJubilifeCityLearning } from './jubilife-city-learning';
+import { handleJubilifePoketchCompany } from './jubilife-poketch-company';
+import { handleJubilifeDailyInteriors } from './jubilife-daily-interiors';
 
 // Optional local errands, independent of CH/SQ/PG design quests and gym gates.
 // Parent integration: call before Engine.event's generic tour resident branch.
@@ -66,6 +72,12 @@ const activities: Activity[] = [
 
 /** True only for one of the two existing outdoor resident conversations. */
 export function handleCityActivity(game: Engine, id: string): boolean {
+  if(handleJubilifeCityLearning(game,id))return true;
+  if(handleJubilifePoketchCompany(game,id))return true;
+  if(handleJubilifeDailyInteriors(game,id))return true;
+  if(handleMistraltonNexus(game,id))return true;
+  if(handleDriftveilCity(game,id)||handleDriftveilLedger(game,id))return true;
+  if(handleNimbasaNexus(game,id)||handleNimbasaNexusExhibit(game,id))return true;
   if (game.save.map === 'tour_oreburgh' && id === 'tourResident1') {
     const species = Number(game.save.flags.oreburghMineWorkSpecies ?? 0);
     const partner = game.save.party.find(p => p.species === species && p.hp > 0);

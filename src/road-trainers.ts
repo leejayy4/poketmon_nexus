@@ -8,14 +8,34 @@ import { pokemonMoves,SPECIES } from './pokemon';
 import { maxHpAtLevel } from './growth';
 import { getMap } from './maps';
 import { journeyConnection } from './journey-world';
+import { CELESTIC_ROUTE_BATTLE,celesticTrainerCode } from './sinnoh-celestic-battle';
+import { prepareRoute43PartnerBattle } from './johto-route-43-battle';
+import { JOHTO_EAST_BATTLE,canRetryJohtoEastPartnerBattle,prepareJohtoEastPartnerBattle } from './johto-east-battle';
+import { canRetryJohtoSouthPartnerBattle,prepareJohtoSouthPartnerBattle } from './johto-south-battle';
+import { ROUTE_TWELVE_JOURNEY,ROUTE_TWELVE_TRAINER,canRetryRouteTwelvePartnerBattle,prepareRouteTwelvePartnerBattle } from './unova-route-twelve-journey';
+import { ROUTE_ELEVEN_JOURNEY,ROUTE_ELEVEN_TRAINER,canRetryRouteElevenPartnerBattle,prepareRouteElevenPartnerBattle } from './unova-route-eleven-journey';
+import { ROUTE_NINE_JOURNEY,ROUTE_NINE_TRAINER,canRetryRouteNinePartnerBattle,prepareRouteNinePartnerBattle } from './unova-route-nine-journey';
+import { ROUTE_EIGHT_JOURNEY,ROUTE_EIGHT_TRAINER,canRetryRouteEightPartnerBattle,prepareRouteEightPartnerBattle } from './unova-route-eight-journey';
+import { ROUTE203_JOURNEY,ROUTE203_TRAINER,canRetryRoute203PartnerBattle,prepareRoute203PartnerBattle } from './sinnoh-route203-journey';
+import { OREBURGH_GATE_JOURNEY,OREBURGH_GATE_TRAINER,canRetryOreburghGatePartnerBattle,prepareOreburghGatePartnerBattle } from './oreburgh-gate-journey';
 
 type PracticeTrainer={map:string;event:string;id:string;name:string;reward:number;team:number[][];lesson?:'type'|'switch';localPages?:string[];battlePage?:string};
 const trainers:PracticeTrainer[]=[
+  {map:'tour_pass_nimbasa_driftveil',event:'tourRouteFiveTrainer',id:'unova-route-5-practice',name:'5번도로 공연가',reward:560,team:[[572,23]],battlePage:'북쪽 풀밭에서 만난 치라미와 박자를 맞춰 봤어.\n포장 본선 옆 마른 공연 자리에서 시작하자!',localPages:['치라미와 함께 5번도로의 공연 길을 걷고 있어.\n물풍경도개교로 가기 전에 선택 배틀을 할래?','치라미의 빠른 몸놀림에 맞춰 기술과 교대할 동료를 골라 봐.\n북쪽 풀밭에서는 직접 치라미를 만날 수 있어.','거절하거나 져도 동쪽 뇌문시티와 서쪽 물풍경도개교를 잇는 포장 본선은 계속 열려 있어.']},
+  {map:'tour_pass_driftveil_mistralton',event:'tourRouteSixTrainer',id:'unova-route-6-practice',name:'6번도로 생태 트레이너',reward:600,team:[[588,24],[616,25]],battlePage:'강가 풀에서 움직임을 비교한 두 동료야.\n동쪽 마른 공터에서 시작하자!',localPages:['딱정곤과 쪼마리를 번갈아 돌보며 6번도로를 조사하고 있어.\n계절 연구소 앞 공터에서 선택 배틀을 할래?','단단히 버티는 방식이 다른 두 벌레포켓몬을 보고\n기술과 교대할 동료를 골라 봐.','거절하거나 져도 물풍경시티와 전기돌동굴을 잇는\n가운데 본선과 두 목재 다리는 계속 열려 있어.']},
+  {map:'tour_reversal_mountain_exterior',event:'tourReversalExteriorTrainer',id:'unova-reversal-exterior-practice',name:'리버스마운틴 자전거 트레이너',reward:640,team:[[451,24],[328,25]],battlePage:'재바람 곁풀에서 만난 스콜피와 톱치야.\n가운데 마른 길을 비운 공터에서 시작하자!',localPages:['스콜피와 톱치의 발자국을 따라 외부 능선을 달리고 있어.\n동굴에 들어가기 전에 선택 배틀을 할래?','독·벌레 타입과 땅 타입이 차례로 나온다.\n상대가 바뀌면 기술과 교대할 동료를 다시 골라 봐.','거절하거나 져도 서쪽 산로마을과 동쪽 통과구역 A를 잇는 가운데 길은 계속 열려 있어.']},
+  {map:'tour_unova_route_13',event:'tourRouteThirteenTrainer',id:'unova-route-13-practice',name:'13번도로 해안 생태 트레이너',reward:660,team:[[114,24],[279,25]],battlePage:'고지 풀과 해풍을 오간 덩쿠리와 패리퍼야.\n절벽 곁 마른 공터에서 시작하자!',localPages:['덩쿠리와 패리퍼가 해안 절벽의 서로 다른 자리를 쓰는 모습을 살피고 있어.\n물결마을로 돌아가기 전에 선택 배틀을 할래?','풀 타입 뒤 물·비행 타입이 나온다.\n상대가 바뀌면 기술과 교대할 동료를 다시 골라 봐.','거절하거나 져도 남쪽 물결마을과 북쪽 보배마을을 잇는 가운데 길은 계속 열려 있어.']},
+  {map:'tour_unova_route_12',event:'tourRouteTwelveTrainer',id:'unova-route-12-practice',name:'12번도로 초원 트레이너',reward:680,team:[[315,24],[415,24],[520,25]],battlePage:'언덕과 풀밭을 함께 오간 로젤리아·세꿀버리·유토브야.\n낮은 길 옆 마른 공터에서 시작하자!',localPages:['12번도로의 세 포켓몬이 풀과 바람을 다르게 쓰는 모습을 보고 있어.\n빌리지브리지에 가기 전 선택 배틀을 할래?','풀·독 타입, 벌레·비행 타입, 비행 타입이 차례로 나온다.\n상대가 바뀔 때 기술과 교대를 다시 골라 봐.','거절하거나 져도 동쪽 보배마을과 서쪽 빌리지브리지를 잇는 낮은 길은 계속 열려 있어.']},
+  {map:'tour_unova_route_09',event:'tourRouteNineTrainer',id:'unova-route-9-practice',name:'9번도로 라이더',reward:640,team:[[572,24],[451,25]],battlePage:'포장도로와 남쪽 숲길을 오가는 치라미와 스콜피야.\n본선 바깥 마른 공터에서 겨뤄 보자!',localPages:['B2W2 9번도로의 치라미와 라이더의 스콜피를 함께 돌보고 있어.\n쇼핑몰 나인 남쪽 공터에서 선택 배틀을 할래?','노말 타입 치라미 뒤에는 독·벌레 타입 스콜피가 나와.\n상대가 바뀌면 기술과 교대를 다시 골라 봐.','거절하거나 져도 동쪽 쌍용시티와 서쪽 튜브라인브리지를 잇는 포장 본선은 계속 열려 있어.']},
+  {map:'tour_castelia_park',event:'tourCasteliaParkTrainer',id:'castelia-park-practice',name:'공원 산책 트레이너',reward:320,team:[[519,16],[548,17]],battlePage:'풀밭 밖 산책길에서 겨뤄 보자. 콩둘기, 먼저 나와!',localPages:['이 공원에서 만난 동료와 함께 산책하고 있어.\n네 동료들과 배틀해 볼래?','콩둘기 뒤에는 치릴리가 나와. 상대의 타입과 남은 HP를 보고 기술이나 교대를 골라 봐.','풀밭에서 새 동료를 만났다면 출전 순서를 골라 함께 연습해 봐. 남쪽 하수도를 거쳐 항구 센터로 돌아갈 수 있어.']},
   {map:'tour_johto_route_45',event:'tourRoute45Trainer',id:'johto-route-45-practice',name:'45번도로 산악 트레이너',reward:640,team:[[74,24],[95,25]],battlePage:'산길 풀숲에서 돌본 꼬마돌과 롱스톤이야.\n동쪽 오르막 옆 마른 공터에서 시작하자!',localPages:['45번도로에서 만난 꼬마돌과 함께 절벽을 내려왔어.\n산악 동료를 상대로 선택 배틀을 할래?','꼬마돌 다음에는 더 단단한 롱스톤이 나와.\n물·풀 기술이나 교대할 동료를 살펴봐.','거절하거나 져도 검은먹과46번도로,\n일방 턱의 동쪽 귀환 오르막은 계속 열려 있어.']},
+  {map:'tour_johto_route_30',event:'tourRoute30Trainer',id:'johto-route-30-practice',name:'30번도로 곤충채집가',reward:500,team:[[10,22],[13,22],[16,23]],battlePage:'연못 양쪽 풀길에서 관찰한 세 동료야.\n동쪽 마른 공터에서 시작하자!',localPages:['캐터피·뿔충이·구구와 30번도로를 걷고 있어.\n연못 동쪽의 마른 공터에서 선택 배틀을 할래?','애벌레포켓몬 뒤 구구가 나오면 기술과 교대할 동료를 다시 살펴봐.','거절하거나 져도 무궁시티와31번도로 예정 경계를 잇는 가운데 길은 계속 열려 있어.']},
+  {map:'tour_johto_route_31',event:'tourRoute31Trainer',id:'johto-route-31-practice',name:'31번도로 곤충채집가',reward:520,team:[[10,22],[10,22],[13,23],[16,23]],battlePage:'작은 연못 곁 풀숲에서 관찰한 동료들이야.\n남쪽 마른 우회로에서 시작하자!',localPages:['캐터피와 뿔충이를 돌보며 도라지까지 걷는 중이야.\n풀숲 밖 마른 길에서 선택 배틀을 할래?','애벌레포켓몬 뒤 구구가 나오면 남은 HP와 교대를 다시 살펴봐.','거절하거나 져도30번도로와 도라지시티를 잇는 본선은 계속 열려 있어. 동쪽 동굴은 입구 탐사 뒤 같은 길로 돌아올 수 있어.']},
   {map:'tour_johto_route_46',event:'tourRoute46Trainer',id:'johto-route-46-practice',name:'46번도로 산기슭 트레이너',reward:620,team:[[19,23],[21,24],[74,24]],battlePage:'평지와 바위턱에서 함께 키운 세 동료야.\n남쪽 합류부 앞 마른 공터에서 시작하자!',localPages:['46번도로의 꼬렛·깨비참·꼬마돌과 보폭을 맞췄어.\n29번도로에 합류하기 전 선택 배틀을 할래?','빠른 노말·비행 동료 뒤 바위·땅 동료가 나와.\n상대가 바뀔 때 기술과 교대를 다시 골라 봐.','배틀하지 않아도45번도로와29번도로 동쪽 합류부를\n계속 왕복할 수 있어.']},
   {map:'tour_johto_route_44',event:'tourRoute44Trainer',id:'johto-route-44-practice',name:'44번도로 풀숲 트레이너',reward:620,team:[[114,24]],battlePage:'쌍둥이 연못 사이 풀숲에서 만난 덩쿠리야.\n본선 밖 마른 공터에서 시작하자!',localPages:['44번도로 풀숲에서 만난 덩쿠리를 키우고 있어.\n얼음샛길에 들어가기 전 선택 배틀을 할래?','덩굴 공격과 버티는 힘을 살펴보고\n유리한 기술이나 교대를 골라 봐.','거절하거나 져도 황토와 얼음샛길 본선은 계속 열려 있어.']},
   {map:'tour_johto_ice_path_b1f',event:'tourIcePathTrainer',id:'johto-ice-path-practice',name:'얼음샛길 동굴 트레이너',reward:640,team:[[41,24],[114,25]],battlePage:'동굴의 주뱃과44번도로의 덩쿠리를 함께 돌봤어.\n얼음마루 밖 암반 공터에서 시작하자!',localPages:['주뱃과 덩쿠리로 차가운 동굴을 건너는 연습을 하고 있어.\n선택 배틀을 할래?','빠른 비행·독 동료 다음에는 풀 타입 동료가 나와.\n상대가 바뀌면 기술과 교대를 다시 골라 봐.','거절하거나 져도 네 층 계단과 검은먹 출구는 모두 열려 있어.']},
   {map:'tour_johto_route_43',event:'tourRoute43Trainer',id:'johto-route-43-practice',name:'43번도로 새잡이',reward:600,team:[[17,25]],battlePage:'호숫바람을 타고 단련한 피죤이야.\n서쪽 풀밭 옆 마른 공터에서 시작하자!',localPages:['43번도로에서 만난 피죤과 호수까지 걷고 있어.\n서쪽 풀밭 옆에서 선택 배틀을 할래?','빠른 비행 공격을 견딜 동료와 기술을 골라 봐.\n배틀 뒤에도 피죤을 직접 만날 풀밭은 그대로 열려 있어.','거절하거나 져도 가운데 본선으로 황토마을과\n분노의호수를 계속 오갈 수 있어.']},
+  {map:'tour_johto_route_43',event:'tourRoute43Camper',id:'johto-route-43-camper-practice',name:'43번도로 야영객',reward:520,team:[[41,24]],battlePage:'서쪽 숲그늘에서 함께 쉬며 키운 주뱃이야.\n북쪽 풀밭 아래 마른 자리에서 겨뤄 보자!',localPages:['원작 43번도로의 야영객처럼 숲길 포켓몬과 함께 걷고 있어.\n북쪽 풀밭을 지난 동료와 선택 배틀을 할래?','주뱃의 빠른 비행·독 공격을 보고 기술과 교대할 동료를 골라 봐.\n남쪽 풀밭에서는 피죤을 만나 새잡이전까지 이어갈 수 있어.','거절하거나 져도 서쪽 길과 동쪽 옛 검문 길은 모두 열려 있어.']},
   {map:'tour_johto_route_38',event:'tourRoute38Trainer',id:'johto-route-38-practice',name:'38번도로 목초지 트레이너',reward:560,team:[[96,24],[19,25]],battlePage:'바람 센 목초지를 함께 걸은 두 동료야.\n마른 샛길 공터에서 시작하자!',localPages:['슬리프와 꼬렛을 번갈아 돌보며 38번도로를 걷고 있어.\n선택 배틀을 할래?','염동력 뒤 빠른 노말 공격이 이어져.\n남은 HP와 교대 순서를 함께 살펴봐.','배틀하지 않아도 동쪽 인주와 서쪽39번도로 본선은 계속 열려 있어.']},
   {map:'tour_johto_route_39',event:'tourRoute39Trainer',id:'johto-route-39-practice',name:'39번도로 목장 트레이너',reward:580,team:[[16,24],[19,25]],battlePage:'목장 울타리와 바닷바람에 익숙한 두 동료야.\n본선 밖 마른 공터에서 시작하자!',localPages:['구구와 꼬렛을 데리고 목장과 담청 사이를 걷고 있어.\n선택 배틀을 할래?','비행 공격 뒤 빠른 노말 공격이 이어져.\n담청에 닿기 전 파티의 힘을 나눠 봐.','거절하거나 져도 북쪽38번도로·동쪽 목장·남쪽 담청 길은 열려 있어.']},
   {map:'tour_olivine',event:'olivineDockTrainer',id:'olivine-dock-practice',name:'담청 작업항 트레이너',reward:600,team:[[66,24],[21,25]],battlePage:'짐을 나르는 힘과 바닷바람을 읽는 속도를 보여 줄게.\n안전선 안쪽 공터에서 시작하자!',localPages:['등대에서 외항의 빛과 안전선을 기록했구나.\n알통몬과 깨비참을 상대로 작업항 선택 배틀을 할래?','격투 타입 뒤 빠른 비행 타입이 나온다.\n상대가 바뀌면 기술과 교대를 다시 고르자.','배틀하지 않아도 센터·등대·39번도로와 기존 여객 항로는 계속 이용할 수 있어.']},
@@ -231,6 +251,11 @@ const trainers:PracticeTrainer[]=[
     '거절하거나 져도 북쪽 216번도로와 남쪽 예지호수 근처를\n잇는 표석 본선은 계속 열려 있어.'
   ]},
   {map:'route_s01',event:'roadworker',id:'west-road-practice',name:'도로 정비원',reward:160,team:[[396,4]]},
+  {map:'tour_sinnoh_route_202',event:'route202TrainerStarly',id:'sinnoh-route-202-starly',name:'202번도로 소년',reward:80,team:[[396,5]],battlePage:'찌르꼬와 함께 첫 실전을 시작하자!',localPages:['찌르꼬와 잔모래에서 축복까지 걷고 있어.\n첫 트레이너 배틀을 해 볼래?','빠른 찌르꼬를 상대하며 파트너의 HP와 기술을 살펴봐.','거절하거나 져도 202번도로 본선은 계속 열려 있어.']},
+  {map:'tour_sinnoh_route_202',event:'route202TrainerBidoof',id:'sinnoh-route-202-bidoof',name:'202번도로 소녀',reward:80,team:[[399,5]],battlePage:'비버니와 차근차근 겨뤄 보자!',localPages:['비버니와 풀밭 가장자리를 걷고 있어.\n포켓몬 배틀을 해 볼래?','남은 HP를 확인하고 필요하면 동료를 교대해 봐.','배틀하지 않아도 잔모래와 축복을 계속 오갈 수 있어.']},
+  {map:'tour_sinnoh_route_202',event:'route202TrainerBurmy',id:'sinnoh-route-202-burmy',name:'202번도로 소년',reward:80,team:[[412,5]],battlePage:'도롱충이와 축복 입구에서 기다렸어!',localPages:['도롱충이와 북쪽 풀길을 살피고 있어.\n축복시티에 가기 전 한 번 겨뤄 볼래?','풀 타입에 유리한 기술이 있다면 이번에 시험해 봐.','거절하거나 져도 북쪽 축복시티 출구는 막히지 않아.']},
+  {map:'tour_jubilife_school',event:'jubilifeSchoolStarly',id:'sinnoh-jubilife-school-starly',name:'트레이너스쿨 학생',reward:120,team:[[396,6]],battlePage:'202번도로에서 키운 찌르꼬와 수업 실전을 시작하자!',localPages:['찌르꼬와 함께 선공과 남은 HP를 공부하고 있어.\n파란 실습 매트에서 선택 배틀을 할래?','빠른 상대를 만나면 기술 설명과 파티 상태를 먼저 확인해 봐.','배틀을 하지 않아도 수업과 203번도로 출발은 계속 열려 있어.']},
+  {map:'tour_jubilife_school',event:'jubilifeSchoolBidoof',id:'sinnoh-jubilife-school-bidoof',name:'트레이너스쿨 학생',reward:120,team:[[399,6]],battlePage:'비버니와 배운 기본기를 차근차근 확인해 보자!',localPages:['비버니와 함께 교대와 회복 시점을 공부하고 있어.\n파란 실습 매트에서 선택 배틀을 할래?','상대가 버틸 때는 남은 HP를 보고 기술이나 동료를 다시 골라 봐.','배틀을 거절하거나 져도 학교 출입과 동쪽 여행길은 막히지 않아.']},
   {map:'tour_pass_jubilife_oreburgh',event:'journeyWalker',id:'oreburgh-cave-practice',name:'산행객',reward:300,team:[[74,7],[41,7]]},
   {map:'tour_sinnoh_route_203',event:'route203Walker',id:'sinnoh-route-203-practice',name:'203번도로 초보 트레이너',reward:180,team:[[396,6],[403,7]],battlePage:'연못과 바위턱 사이 마른 공터에서 찌르꼬와 꼬링크의 호흡을 보여 줄게!',localPages:['찌르꼬와 꼬링크를 데리고 축복에서 무쇠게이트까지 걷고 있어.\n연못 옆 마른 공터에서 선택 배틀을 할래?','빠른 비행 동료 뒤 전기 동료가 나와.\n상대가 바뀌면 남은 HP와 기술을 다시 살펴봐.','거절하거나 져도 서쪽 축복시티와 동쪽 무쇠게이트를\n잇는 203번도로 본선은 계속 열려 있어.']},
   {map:'tour_oreburgh_gate_1f',event:'oreburghGateWorker',id:'oreburgh-gate-1f-practice',name:'무쇠게이트 작업자',reward:240,team:[[41,7],[74,8]],battlePage:'조명 통과로 옆 공터에서 주뱃과 꼬마돌의 동굴 움직임을 보여 줄게!',localPages:['주뱃과 꼬마돌이 밝은 통과로와 광석벽을 살피고 있어.\n작업선 밖 공터에서 선택 배틀을 할래?','빠른 비행·독 동료 뒤 단단한 바위·땅 동료가 나와.\n상대가 바뀌면 유리한 기술과 교대를 다시 골라 봐.','배틀하지 않아도 서쪽 203번도로와 동쪽 무쇠시티를\n잇는 1층 본선은 열려 있어. B1F는 아직 개방하지 않았어.']},
@@ -283,14 +308,38 @@ const johtoWestWinRoutes:Record<string,{next:string;nextLabel:string;advice:stri
   'cianwood-dojo-practice':{next:'tour_johto_route_41',nextLabel:'41번수로로 돌아가기',advice:'격투에서 바위·땅, 다시 비행 타입으로 바뀔 때 기술과 교대를 잘 나눴어.'},
 };
 const johtoLakeWinRoutes:Record<string,{next:string;nextLabel:string;advice:string}>={
+  'johto-route-43-camper-practice':{next:'tour_rage_lake',nextLabel:'분노의호수로 진행',advice:'주뱃의 빠른 비행·독 공격에 맞춰 동료와 기술을 잘 골랐어.'},
   'johto-route-43-practice':{next:'tour_rage_lake',nextLabel:'분노의호수로 진행',advice:'피죤의 빠른 비행 공격에 맞춰 동료와 기술을 잘 골랐어.'},
 };
 const johtoEastWinRoutes:Record<string,{next:string;nextLabel:string;advice:string}>={
   'johto-route-44-practice':{next:'tour_johto_ice_path_1f',nextLabel:'얼음샛길로 진행',advice:'덩쿠리의 풀 공격에 맞춰 유리한 기술과 동료를 잘 골랐어.'},
   'johto-ice-path-practice':{next:'tour_blackthorn',nextLabel:'검은먹시티로 진행',advice:'주뱃에서 덩쿠리로 상대가 바뀔 때 기술과 교대를 잘 조정했어.'},
 };
+const sinnohCelesticWinRoutes:Record<string,{next:string;nextEvent:string;nextLabel:string;advice:string}>={
+  'sinnoh-route-211-west-practice':{next:'tour_coronet_211_pass',nextEvent:'coronet211Guide',nextLabel:'천관산 통과층으로',advice:'꼬마돌에서 요가랑으로 상대가 바뀔 때 기술과 교대를 다시 살폈어.'},
+  'sinnoh-route-211-east-practice':{next:'tour_celestic_center',nextEvent:'tourCelesticCenterGuide',nextLabel:'봉신센터로 돌아가기',advice:'포니타의 빠른 불꽃 공격 뒤 알통몬의 격투 공격에 맞춰 파티의 힘을 나누었어.'},
+  'sinnoh-route-210-north-practice':{next:'tour_celestic_center',nextEvent:'tourCelesticCenterGuide',nextLabel:'봉신센터로 돌아가기',advice:'서로 다른 움직임을 가진 요가랑과 알통몬에 맞춰 기술과 교대를 다시 골랐어.'},
+};
 export function handleRoadTrainer(g:Engine,event:string):boolean{
   const trainer=ROAD_TRAINER_DATABASE.get(`${g.save.map}:${event}`);if(!trainer)return false;
+  const parkRetry=()=>{
+    const slot=g.save.flags.nexusCasteliaSewerParkPartnerSlot;
+    const mon=typeof slot==='number'?g.save.party[slot]:undefined;
+    return trainer.id==='castelia-park-practice'&&!g.save.flags.nexusCasteliaSewerParkPartnerWon&&!!mon&&mon.species===g.save.flags.nexusCasteliaSewerParkPartner&&['구름하수도','구름시티 공원'].includes(mon.met);
+  };
+  const celesticRetry=()=>{
+    const f=CELESTIC_ROUTE_BATTLE,slot=g.save.flags[f.slot];
+    const mon=typeof slot==='number'?g.save.party[slot]:undefined;
+    return !!g.save.flags[trainerWinFlag(trainer.id)]&&!g.save.flags[f.participated]&&g.save.flags[f.trainer]===celesticTrainerCode(trainer.id)&&!!mon&&mon.species===g.save.flags[f.partner]&&['신오 210번도로 북부','천관산 211 통과층','신오 211번도로 서부','신오 211번도로 동부'].includes(mon.met);
+  };
+  const eastRetry=()=>canRetryJohtoEastPartnerBattle(g.save,trainer.id);
+  const southRetry=()=>canRetryJohtoSouthPartnerBattle(g.save,trainer.id);
+  const routeTwelveRetry=()=>canRetryRouteTwelvePartnerBattle(g.save,trainer.id);
+  const routeElevenRetry=()=>canRetryRouteElevenPartnerBattle(g.save,trainer.id);
+  const routeNineRetry=()=>canRetryRouteNinePartnerBattle(g.save,trainer.id);
+  const routeEightRetry=()=>canRetryRouteEightPartnerBattle(g.save,trainer.id);
+  const route203Retry=()=>canRetryRoute203PartnerBattle(g.save,trainer.id);
+  const oreburghGateRetry=()=>canRetryOreburghGatePartnerBattle(g.save,trainer.id);
   const badged=g.save.badges.includes('BADGE-GS01');
   if(trainer.id==='sinnoh-route-205-north-practice'&&g.save.flags[trainerWinFlag(trainer.id)]){
     const save=g.save,current=()=>g.save===save&&save.map===trainer.map&&!g.battle;
@@ -313,6 +362,23 @@ export function handleRoadTrainer(g:Engine,event:string):boolean{
       {label:'현재 파티 확인',action:()=>{if(current()){g.panel='party';g.partyIndex=0;}}},
       {label:'천관산 쉼터 안내',action:()=>{if(current())g.setTourDestination('tour_coronet','trailGuide');}},
       {label:'연고시티 센터 안내',action:()=>{if(current())g.setTourDestination('tour_hearthome_center','nurse');}},
+      {label:'계속 걷기',action:()=>{}},
+    ]);return true;
+  }
+  const celesticWin=sinnohCelesticWinRoutes[trainer.id];
+  if(celesticWin&&g.save.flags[trainerWinFlag(trainer.id)]&&!celesticRetry()){
+    const save=g.save,current=()=>g.save===save&&save.map===trainer.map&&!g.battle;
+    const origins=new Set(['신오 210번도로 북부','천관산 211 통과층','신오 211번도로 서부','신오 211번도로 동부']);
+    const party=save.party.filter(mon=>origins.has(mon.met)),boxed=(save.box??[]).filter(mon=>origins.has(mon.met));
+    const names=[...new Set([...party,...boxed].map(mon=>SPECIES[mon.species]?.name).filter(Boolean))].slice(0,5).join('·')||'아직 없음';
+    const hurt=save.party.filter(mon=>mon.hp>0&&mon.hp<mon.maxHp).length,fainted=save.party.filter(mon=>mon.hp<=0).length;
+    const f=CELESTIC_ROUTE_BATTLE,slot=save.flags[f.slot],partner=typeof slot==='number'?save.party[slot]:undefined;
+    const joined=save.flags[f.trainer]===celesticTrainerCode(trainer.id)&&save.flags[f.participated]&&partner&&partner.species===save.flags[f.partner];
+    const start=Number(save.flags[f.level]??0);
+    g.say(trainer.name,['이 산길 선택 배틀의 승리 기록이 남아 있어. 상금은 이미 받았어.',celesticWin.advice,joined?`${SPECIES[partner.species].name}가 실제 승리에 참가했다.\n출발 Lv.${start} → 현재 Lv.${partner.level} · HP ${partner.hp}/${partner.maxHp}`:'선택한 현지 동료의 실제 승리 참가는 아직 기록되지 않았다.',`210·211번도로와 천관산에서 만난 보유 동료 ${party.length+boxed.length}마리\n파티 ${party.length} · PC ${boxed.length} · ${names}`,save.party.length?`현재 파티 ${save.party.length}마리 · 부상 ${hurt} · 기절 ${fainted}`:'현재 파티가 비어 있어. 봉신센터 PC에서 동료를 편성하자.'],undefined,[
+      {label:'현재 파티 확인',action:()=>{if(current()){g.panel='party';g.partyIndex=0;}}},
+      {label:'봉신센터에서 회복·편성',action:()=>{if(current())g.setTourDestination('tour_celestic_center','tourHost');}},
+      {label:celesticWin.nextLabel,action:()=>{if(current())g.setTourDestination(celesticWin.next,celesticWin.nextEvent);}},
       {label:'계속 걷기',action:()=>{}},
     ]);return true;
   }
@@ -381,27 +447,49 @@ export function handleRoadTrainer(g:Engine,event:string):boolean{
     g.say(trainer.name,['43번도로 선택 배틀의 승리 기록이 남아 있어. 상금은 이미 받았어.',lakeWin.advice,`43번도로에서 만난 보유 동료 ${owned.length}마리 · ${names}`,`현재 파티 ${save.party.length}마리 · 부상 ${hurt} · 기절 ${fainted}`],undefined,[{label:'현재 파티 확인',action:()=>{if(current()){g.panel='party';g.partyIndex=0;}}},{label:'황토센터에서 편성',action:()=>{if(current())g.setTourDestination('tour_mahogany_center','pc');}},{label:lakeWin.nextLabel,action:()=>{if(current())g.setTourDestination(lakeWin.next);}},{label:'계속 걷기',action:()=>{}}]);return true;
   }
   const eastWin=johtoEastWinRoutes[trainer.id];
-  if(eastWin&&g.save.flags[trainerWinFlag(trainer.id)]){
+  if(eastWin&&g.save.flags[trainerWinFlag(trainer.id)]&&!eastRetry()){
     const save=g.save,current=()=>g.save===save&&save.map===trainer.map&&!g.battle,origins=new Set(['성도 44번도로','얼음샛길']);
     const owned=[...save.party,...save.box??[]].filter(mon=>origins.has(mon.met)),names=[...new Set(owned.map(mon=>SPECIES[mon.species].name))].join('·')||'아직 없음';
     const hurt=save.party.filter(mon=>mon.hp>0&&mon.hp<mon.maxHp).length,fainted=save.party.filter(mon=>mon.hp<=0).length;
-    g.say(trainer.name,['성도 동부 선택 배틀의 승리 기록이 남아 있어. 상금은 이미 받았어.',eastWin.advice,`44번도로·얼음샛길에서 만난 보유 동료 ${owned.length}마리 · ${names}`,`현재 파티 ${save.party.length}마리 · 부상 ${hurt} · 기절 ${fainted}`],undefined,[{label:'현재 파티 확인',action:()=>{if(current()){g.panel='party';g.partyIndex=0;}}},{label:'황토센터에서 편성',action:()=>{if(current())g.setTourDestination('tour_mahogany_center','pc');}},{label:eastWin.nextLabel,action:()=>{if(current())g.setTourDestination(eastWin.next);}},{label:'계속 걷기',action:()=>{}}]);return true;
+    const f=JOHTO_EAST_BATTLE,slot=save.flags[f.slot],partner=typeof slot==='number'?save.party[slot]:undefined,start=Number(save.flags[f.level]??0),recorded=SPECIES[Number(save.flags[f.partner]??0)]?.name;
+    const result=save.flags[f.participated]===true&&recorded?(partner&&partner.species===save.flags[f.partner]?`${recorded}가 실제로 상대를 쓰러뜨린 기록 · Lv.${start}→${partner.level} · HP ${partner.hp}/${partner.maxHp}`:`${recorded}가 실제로 상대를 쓰러뜨린 기록 · 시작 Lv.${start} · 현재 PC 또는 다른 편성`):'현지 동료의 실제 상대 격파 기록은 아직 없다. 현지 동료를 선두로 편성한 뒤 다시 말을 걸면 상금 없는 재확인전을 할 수 있다.';
+    g.say(trainer.name,['성도 동부 선택 배틀의 승리 기록이 남아 있어. 상금은 이미 받았어.',eastWin.advice,result,`44번도로·얼음샛길에서 만난 보유 동료 ${owned.length}마리 · ${names}`,`현재 파티 ${save.party.length}마리 · 부상 ${hurt} · 기절 ${fainted}`],undefined,[{label:'현재 파티 확인',action:()=>{if(current()){g.panel='party';g.partyIndex=0;}}},{label:'황토센터에서 편성',action:()=>{if(current())g.setTourDestination('tour_mahogany_center','pc');}},{label:eastWin.nextLabel,action:()=>{if(current())g.setTourDestination(eastWin.next);}},{label:'계속 걷기',action:()=>{}}]);return true;
   }
-  if(trainer.id==='unova-route-11-practice'&&g.save.flags[trainerWinFlag(trainer.id)]){
+  if(trainer.id===ROUTE_ELEVEN_TRAINER&&g.save.flags[trainerWinFlag(trainer.id)]&&g.save.flags[ROUTE_ELEVEN_JOURNEY.participated]===true&&!routeElevenRetry()){
     const save=g.save,current=()=>g.save===save&&save.map===trainer.map&&!g.battle;
     const localSpecies=new Set([183,588,616]);
     const party=save.party.filter(mon=>mon.met==='하나 11번도로'&&localSpecies.has(mon.species));
     const boxed=(save.box??[]).filter(mon=>mon.met==='하나 11번도로'&&localSpecies.has(mon.species));
     const names=[...new Set([...party,...boxed].map(mon=>SPECIES[mon.species].name))].join('·')||'아직 없음';
-    const hurt=save.party.filter(mon=>mon.hp<mon.maxHp).length,fainted=save.party.filter(mon=>mon.hp<=0).length;
-    g.say(trainer.name,['11번도로 선택 배틀의 승리 기록이 남아 있어. 상금은 이미 받았어.','물 기술을 쓰는 마릴과 서로 다른 벌레 기술을 쓰는\n딱정곤·쪼마리에 맞춰 기술과 교대를 잘 골랐구나.',`11번도로에서 만난 보유 동료 ${party.length+boxed.length}마리\n파티 ${party.length} · PC ${boxed.length} · ${names}`,save.party.length?`현재 파티 ${save.party.length}마리 · 부상 ${hurt} · 기절 ${fainted}`:'현재 파티가 비어 있어. 쌍용센터 PC에서 동료를 편성하자.'],undefined,[
+    const f=ROUTE_ELEVEN_JOURNEY,slot=save.flags[f.slot],partner=typeof slot==='number'?save.party[slot]:undefined,start=Number(save.flags[f.level]??0),recorded=SPECIES[Number(save.flags[f.partner]??0)]?.name??'11번도로 동료';
+    const state=partner&&partner.species===save.flags[f.partner]?`${recorded}가 실제 승리에 참가했다.\n출발 Lv.${start} → 현재 Lv.${partner.level} · HP ${partner.hp}/${partner.maxHp}`:`${recorded}가 실제 승리에 참가한 기록이 있다. 현재는 PC 또는 다른 편성에 있다.`;
+    g.say(trainer.name,['11번도로 선택 배틀의 승리 기록이 남아 있어. 상금은 이미 받았어.',state,`11번도로에서 만난 보유 동료 ${party.length+boxed.length}마리\n파티 ${party.length} · PC ${boxed.length} · ${names}`,'같은 동료와 빌리지브리지 서쪽 안내원에게 돌아가면 포획·성장·귀환을 함께 기록할 수 있어.'],undefined,[
       {label:'현재 파티 확인',action:()=>{if(current()){g.panel='party';g.partyIndex=0;}}},
-      {label:'쌍용센터에서 편성',action:()=>{if(current())g.setTourDestination('tour_opelucid_center','pc');}},
-      {label:'역사관 기술 자료',action:()=>{if(current())g.setTourDestination('tour_opelucid_hall_2f','tourOpelucidMoveStudy');}},
+      {label:'빌리지브리지로 귀환',action:()=>{if(current())g.setTourDestination('tour_village_bridge','tourResident3');}},
       {label:'계속 걷기',action:()=>{}},
     ]);return true;
   }
-  if(trainer.id==='unova-route-8-practice'&&g.save.flags[trainerWinFlag(trainer.id)]){showIcirrusRouteBattle(g);return true;}
+  if(trainer.id===ROUTE_NINE_TRAINER&&g.save.flags[trainerWinFlag(trainer.id)]&&g.save.flags[ROUTE_NINE_JOURNEY.participated]===true&&!routeNineRetry()){
+    const save=g.save,current=()=>g.save===save&&save.map===trainer.map&&!g.battle,f=ROUTE_NINE_JOURNEY,slot=save.flags[f.slot],partner=typeof slot==='number'?save.party[slot]:undefined,start=Number(save.flags[f.level]??0);
+    const state=partner&&partner.species===save.flags[f.partner]?`치라미가 실제 승리에 참가했다.\n출발 Lv.${start} → 현재 Lv.${partner.level} · HP ${partner.hp}/${partner.maxHp}`:`치라미가 실제 승리에 참가한 기록이 있다. 현재는 PC 또는 다른 편성에 있다.`;
+    g.say(trainer.name,['9번도로 선택 배틀의 승리 기록이 남아 있어. 상금은 이미 받았어.',state,'같은 치라미와 쌍용 서문 쉼터 또는 튜브라인브리지 동쪽 점검원에게 가면 포획·성장·귀환을 함께 확인할 수 있어.'],undefined,[{label:'현재 파티 확인',action:()=>{if(current()){g.panel='party';g.partyIndex=0;}}},{label:'쌍용 서문 쉼터',action:()=>{if(current())g.setTourDestination('tour_unova_route_09','tourRouteNineRest');}},{label:'튜브라인브리지',action:()=>{if(current())g.setTourDestination('tour_tubeline_bridge','tourGuide');}},{label:'계속 걷기',action:()=>{}}]);return true;
+  }
+  if(trainer.id===ROUTE_TWELVE_TRAINER&&g.save.flags[trainerWinFlag(trainer.id)]&&g.save.flags[ROUTE_TWELVE_JOURNEY.participated]===true&&!routeTwelveRetry()){
+    const save=g.save,current=()=>g.save===save&&save.map===trainer.map&&!g.battle,f=ROUTE_TWELVE_JOURNEY,slot=save.flags[f.slot],partner=typeof slot==='number'?save.party[slot]:undefined,start=Number(save.flags[f.level]??0),recorded=SPECIES[Number(save.flags[f.partner]??0)]?.name??'12번도로 동료';
+    const state=partner&&partner.species===save.flags[f.partner]?`${recorded}가 실제 승리에 참가했다.\n출발 Lv.${start} → 현재 Lv.${partner.level} · HP ${partner.hp}/${partner.maxHp}`:`${recorded}가 실제 승리에 참가한 기록이 있다. 현재는 PC 또는 다른 편성에 있다.`;
+    g.say(trainer.name,['12번도로 선택 배틀의 승리 기록이 남아 있어. 상금은 이미 받았어.',state,'같은 동료와 보배마을 서쪽 안내원에게 돌아가면 포획·성장·귀환을 함께 기록할 수 있어.'],undefined,[{label:'현재 파티 확인',action:()=>{if(current()){g.panel='party';g.partyIndex=0;}}},{label:'보배마을로 귀환',action:()=>{if(current())g.setTourDestination('tour_lacunosa','tourResident3');}},{label:'계속 걷기',action:()=>{}}]);return true;
+  }
+  if(trainer.id===ROUTE203_TRAINER&&g.save.flags[trainerWinFlag(trainer.id)]&&g.save.flags[ROUTE203_JOURNEY.participated]===true&&!route203Retry()){
+    const save=g.save,current=()=>g.save===save&&save.map===trainer.map&&!g.battle,f=ROUTE203_JOURNEY,slot=save.flags[f.slot],partner=typeof slot==='number'?save.party[slot]:undefined,start=Number(save.flags[f.level]??0),recorded=SPECIES[Number(save.flags[f.partner]??0)]?.name??'203번도로 동료';
+    const state=partner&&partner.species===save.flags[f.partner]?`${recorded}가 실제 승리에 참가했다.\n출발 Lv.${start} → 현재 Lv.${partner.level} · HP ${partner.hp}/${partner.maxHp}`:`${recorded}가 실제 승리에 참가한 기록이 있다. 현재는 PC 또는 다른 편성에 있다.`;
+    g.say(trainer.name,['203번도로 선택 배틀의 승리 기록이 남아 있어. 상금은 이미 받았어.',state,'같은 동료와 축복시티 동문 안내원에게 돌아가면 포획·성장·귀환을 함께 기록할 수 있어.'],undefined,[{label:'현재 파티 확인',action:()=>{if(current()){g.panel='party';g.partyIndex=0;}}},{label:'축복시티로 귀환',action:()=>{if(current())g.setTourDestination('tour_jubilife','jubilifeEastGuide');}},{label:'무쇠게이트로 계속',action:()=>{if(current())g.setTourDestination('tour_oreburgh_gate_1f','oreburghGateSign');}}]);return true;
+  }
+  if(trainer.id===OREBURGH_GATE_TRAINER&&g.save.flags[trainerWinFlag(trainer.id)]&&g.save.flags[OREBURGH_GATE_JOURNEY.participated]===true&&!oreburghGateRetry()){
+    const save=g.save,current=()=>g.save===save&&save.map===trainer.map&&!g.battle,f=OREBURGH_GATE_JOURNEY,slot=save.flags[f.slot],partner=typeof slot==='number'?save.party[slot]:undefined,start=Number(save.flags[f.level]??0),recorded=SPECIES[Number(save.flags[f.partner]??0)]?.name??'무쇠게이트 동료';
+    const state=partner&&partner.species===save.flags[f.partner]?`${recorded}가 실제 승리에 참가했다.\n출발 Lv.${start} → 현재 Lv.${partner.level} · HP ${partner.hp}/${partner.maxHp}`:`${recorded}가 실제 승리에 참가한 기록이 있다. 현재는 PC 또는 다른 편성에 있다.`;
+    g.say(trainer.name,['무쇠게이트 선택 배틀의 승리 기록이 남아 있어. 상금은 이미 받았어.',state,'같은 동료와 동쪽 무쇠시티 도착 안내원에게 가면 동굴 여행과 성장을 함께 기록할 수 있어.'],undefined,[{label:'현재 파티 확인',action:()=>{if(current()){g.panel='party';g.partyIndex=0;}}},{label:'무쇠시티로 이동',action:()=>{if(current())g.setTourDestination('tour_oreburgh','oreburghWestArrivalGuide');}},{label:'203번도로로 귀환',action:()=>{if(current())g.setTourDestination('tour_sinnoh_route_203','route203Sign');}}]);return true;
+  }
+  if(trainer.id===ROUTE_EIGHT_TRAINER&&g.save.flags[trainerWinFlag(trainer.id)]&&g.save.flags[ROUTE_EIGHT_JOURNEY.participated]===true&&!routeEightRetry()){showIcirrusRouteBattle(g);return true;}
   const johtoWin=johtoWinRoutes[trainer.id];
   if(johtoWin&&g.save.flags[trainerWinFlag(trainer.id)]){
     const save=g.save,current=()=>g.save===save&&save.map===trainer.map&&!g.battle;
@@ -416,34 +504,43 @@ export function handleRoadTrainer(g:Engine,event:string):boolean{
       {label:'계속 걷기',action:()=>{}},
     ]);return true;
   }
-  if(trainer.localPages&&g.save.flags[trainerWinFlag(trainer.id)]){g.say(trainer.name,['함께 연습하니 동료들의 장점이 보이네!\n다음 여행에서도 서로 도와주자.',...trainer.localPages.slice(1)]);return true;}
-  if(g.save.flags[trainerWinFlag(trainer.id)]){g.say(trainer.name,trainer.lesson?[
+  if(trainer.localPages&&g.save.flags[trainerWinFlag(trainer.id)]&&!parkRetry()&&!celesticRetry()&&!eastRetry()&&!southRetry()&&!routeTwelveRetry()&&!routeElevenRetry()&&!routeNineRetry()&&!routeEightRetry()&&!route203Retry()&&!oreburghGateRetry()){g.say(trainer.name,['함께 연습하니 동료들의 장점이 보이네!\n다음 여행에서도 서로 도와주자.',...trainer.localPages.slice(1)]);return true;}
+  if(g.save.flags[trainerWinFlag(trainer.id)]&&!parkRetry()&&!celesticRetry()&&!eastRetry()&&!southRetry()&&!routeTwelveRetry()&&!routeElevenRetry()&&!routeNineRetry()&&!routeEightRetry()&&!route203Retry()&&!oreburghGateRetry()){g.say(trainer.name,trainer.lesson?[
     badged?'콜배지 축하해! 함께 연습한 판단을\n다음 여행에서도 살려 봐.':'좋은 연습이었어! 준비가 되면\n가운데 길로 강석에게 가 봐.',...gymLesson(trainer.lesson)
   ]:trainer.map==='route_s01'?[`좋은 연습이었어! ${roadGuidance()[0]}`,`${roadGuidance()[1]}\n센터와 상점에서 준비하고 가.`]:['좋은 연습이었어! 동료마다 잘하는\n기술을 살려 다음 도전도 힘내 봐.','바위와 동굴의 포켓몬은 약점도 달라.\n배운 기술 중 무엇을 쓸지 살펴봐.']);return true;}
   const needsDeparture=trainer.map!=='tour_route_34'&&trainer.id!=='violet-tower-practice';
   if((needsDeparture&&!g.save.flags.departureCleared)||!g.save.party.some(p=>p.hp>0)){g.say(trainer.name,[needsDeparture?'건강한 파트너와 출발 준비를 마치면\n짧은 연습 배틀을 해 보자.':trainer.id==='violet-tower-practice'?'도라지센터에서 동료를 회복하거나 편성한 뒤\n2층 수련 자리로 돌아오면 겨뤄 보자.':'건강한 동료와 함께 돌아오면\n34번도로에서 겨뤄 보자.']);return true;}
   const save=g.save;
-  const current=()=>g.save===save&&save.map===trainer.map&&!g.battle&&!save.flags[trainerWinFlag(trainer.id)];
+  const current=()=>g.save===save&&save.map===trainer.map&&!g.battle&&(!save.flags[trainerWinFlag(trainer.id)]||parkRetry()||celesticRetry()||eastRetry()||southRetry()||routeTwelveRetry()||routeElevenRetry()||routeNineRetry()||routeEightRetry()||route203Retry()||oreburghGateRetry());
   const startBattle=()=>{
     if(!current()||!save.party.some(mon=>mon.hp>0))return;
+    prepareRoute43PartnerBattle(save,trainer.id);
+    prepareJohtoEastPartnerBattle(save,trainer.id);
+    prepareJohtoSouthPartnerBattle(save,trainer.id);
+    prepareRouteTwelvePartnerBattle(save,trainer.id);
+    prepareRouteElevenPartnerBattle(save,trainer.id);
+    prepareRouteNinePartnerBattle(save,trainer.id);
+    prepareRouteEightPartnerBattle(save,trainer.id);
+    prepareRoute203PartnerBattle(save,trainer.id);
+    prepareOreburghGatePartnerBattle(save,trainer.id);
     const team:Pokemon[]=trainer.team.map(([species,level])=>{
       const maxHp=maxHpAtLevel(species,level);
       const mon:Pokemon={species,level,hp:maxHp,maxHp,experience:0,nature:'성실',met:'연습 배틀'};
       mon.moves=pokemonMoves(mon);return mon;
     });
-    g.battle=createTrainerBattle(save,{...trainer,team});
+    g.battle=createTrainerBattle(save,{...trainer,reward:save.flags[trainerWinFlag(trainer.id)]?0:trainer.reward,team});
     if(g.battle){g.persist();g.say(trainer.name,[trainer.battlePage??`좋아! ${SPECIES[team[0].species].name},\n같이 연습해 보자!`]);}
   };
-  if(trainer.id==='unova-route-8-practice'){showIcirrusRouteBattle(g,startBattle);return true;}
+  if(trainer.id===ROUTE_EIGHT_TRAINER){showIcirrusRouteBattle(g,startBattle);return true;}
   if(trainer.localPages){
-    g.say(trainer.name,[trainer.localPages[0],trainer.team.map(([id,level])=>`${SPECIES[id].name} Lv.${level}`).join(' / ')+`\n이기면 ${trainer.reward}원을 줄게.`],undefined,[
+    g.say(trainer.name,[trainer.localPages[0],trainer.team.map(([id,level])=>`${SPECIES[id].name} Lv.${level}`).join(' / ')+(save.flags[trainerWinFlag(trainer.id)]?'\n상금 없는 재확인전이야.':`\n이기면 ${trainer.reward}원을 줄게.`)],undefined,[
       {label:'배틀한다',action:startBattle},
       {label:'출전 동료를 고른다',action:()=>showTrainerPreparation(g,current,startBattle)},
       {label:'준비 이야기를 듣는다',action:()=>{if(current())g.say(trainer.name,trainer.localPages!.slice(1));}},
       {label:'다음에 한다',action:()=>{}}
     ]);return true;
   }
-  g.say(trainer.name,[trainer.lesson?(badged?'콜배지 축하해! 다음 여행 전에\n함께 연습 배틀을 해 볼까?':'관장전 전에 연습 배틀을 해 볼까?\n바로 강석에게 도전해도 괜찮아.'):'길에서 만난 트레이너끼리\n짧게 연습 배틀을 해 볼까?',...(trainer.map==='route_s01'?roadGuidance():[]),trainer.team.map(([id,level])=>`${SPECIES[id].name} Lv.${level}`).join(' / ')+`\n이기면 ${trainer.reward}원을 줄게.`],undefined,[
+  g.say(trainer.name,[trainer.lesson?(badged?'콜배지 축하해! 다음 여행 전에\n함께 연습 배틀을 해 볼까?':'관장전 전에 연습 배틀을 해 볼까?\n바로 강석에게 도전해도 괜찮아.'):'길에서 만난 트레이너끼리\n짧게 연습 배틀을 해 볼까?',...(trainer.map==='route_s01'?roadGuidance():[]),trainer.team.map(([id,level])=>`${SPECIES[id].name} Lv.${level}`).join(' / ')+(save.flags[trainerWinFlag(trainer.id)]?'\n상금 없는 재확인전이야.':`\n이기면 ${trainer.reward}원을 줄게.`)],undefined,[
     {label:'배틀한다',action:startBattle},
       {label:'출전 동료를 고른다',action:()=>showTrainerPreparation(g,current,startBattle)},
     {label:'도움말을 듣는다',action:()=>{if(current())g.say(trainer.name,trainer.lesson?gymLesson(trainer.lesson):trainer.map==='route_s01'?[...roadGuidance(),'풀밭에서 새 동료를 만나고\n센터에서 회복한 뒤 도전해 봐.','기술을 바꾸려면 X → 포켓몬 →\n정보 화면의 기술 배우기를 선택해.']:[ '남쪽 자갈밭에서 동료를 만나 봐.\n밝은 통로는 조우를 피하는 길이야.', '센터에서 회복한 뒤 도전해 봐.','기술을 바꾸려면 X → 포켓몬 →\n정보 화면의 기술 배우기를 선택해.']);}},

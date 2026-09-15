@@ -1,16 +1,20 @@
 import type { Engine } from './engine';
+import { SEAFOAM_SUPPLY_MAP,SEAFOAM_SUPPLY_EVENT } from './seafoam-supply';
 import { handleCinnabarAftermath } from './cinnabar-aftermath';
 import type { SaveData,Pokemon } from './types';
 import { createTrainerBattle } from './battle';
 import { handleCinnabarCircuitModel } from './cinnabar-circuit-model';
 import { maxHpAtLevel } from './growth';
-import { CINNABAR_RESEARCH_HABITATS,isCinnabarResearchCompanion as regionalCompanion } from './cinnabar-habitats';
+import { CINNABAR_RESEARCH_HABITATS,isCinnabarResearchCompanion as regionalCompanion,isSeafoamCompanion } from './cinnabar-habitats';
 import { encounterPool,encounterOrigin } from './runtime-encounters';
 import { encounterGuidance } from './encounter-guidance';
 import { SPECIES,pokemonMoves } from './pokemon';
 import { showMoveSchool } from './move-school';
 import { leadPokemon } from './team';
 import { TOUR_OUTDOORS } from './explore-world';
+import { SEAFOAM_B1_HABITAT_OBSERVED,SEAFOAM_B2_ICE_OBSERVED,SEAFOAM_FINDINGS_COMPARED } from './seafoam-ice-walk';
+import { ROUTE20_PARTNER } from './route20-homeward-battle';
+import { SEAFOAM_B4_BATTLE_RETURN_OBSERVED } from './seafoam-exploration';
 
 const CLIFF_OBSERVED='cinnabarCliffObserved',SHORE_OBSERVED='cinnabarShoreObserved';
 function guideResearchSite(g:Engine,name:string){
@@ -93,10 +97,12 @@ function handlePublicCinnabarResearch(g:Engine,event:string):boolean{
     const select=(page=0)=>{
       if(!current())return;
       const companions=save.party.map((p,index)=>({p,index})).filter(({p})=>regionalCompanion(p));
-      g.say('홍련 동료 관찰',companions.length?['관찰할 동료를 골라 주세요.\n지금 기억하는 기술을 함께 살펴봐요.']:['홍련 외곽·쌍둥이섬 1층/지하1·2층 동료가\n현재 파티에 없어요.','박스에 있다면 센터 PC에서 데려오세요.\n관찰하지 않아도 자유롭게 여행할 수 있어요.'],undefined,[
+      g.say('홍련 동료 관찰',companions.length?['관찰할 동료를 골라 주세요.\n지금 기억하는 기술을 함께 살펴봐요.']:['홍련 외곽·쌍둥이섬 전 층에서 만난 동료가\n현재 파티에 없어요.','박스에 있다면 센터 PC에서 데려오세요.\n관찰하지 않아도 자유롭게 여행할 수 있어요.'],undefined,[
         ...companions.slice(page*3,page*3+3).map(({p,index})=>({label:`${SPECIES[p.species].name} Lv.${p.level}`,action:()=>{
           if(!current()||save.party[index]!==p||!regionalCompanion(p))return;
-          g.say('홍련 동료 관찰',[`${SPECIES[p.species].name} · ${SPECIES[p.species].types.join('·')}\n${p.met}`,`현재 기술\n${pokemonMoves(p).join(' / ')}`,'새 기술은 현재 레벨과 배운 기록에 맞춰\n기술 편성에서 확인할 수 있어요.'],undefined,[
+          const battleSlot=save.flags[ROUTE20_PARTNER.slot];
+          const wonWithPartner=save.flags[ROUTE20_PARTNER.participated]===true&&typeof battleSlot==='number'&&save.party[battleSlot]===p;
+          g.say('홍련 동료 관찰',[`${SPECIES[p.species].name} · ${SPECIES[p.species].types.join('·')}\n${p.met}`,`현재 기술\n${pokemonMoves(p).join(' / ')}`,'새 기술은 현재 레벨과 배운 기록에 맞춰\n기술 편성에서 확인할 수 있어요.',...(wonWithPartner?[`20번수로 귀환전 실제 참가\n시작 Lv.${Number(save.flags[ROUTE20_PARTNER.level])} → 현재 Lv.${p.level} · HP ${p.hp}/${p.maxHp}`,save.flags[SEAFOAM_B4_BATTLE_RETURN_OBSERVED]===true?'귀환전 뒤 B4F 냉기 관찰대까지 다시 걸어가 환경과 성장을 비교했다.':'B4F 냉기 관찰대로 다시 가면 같은 동료의 실전 뒤 재탐험 기록을 남길 수 있다.']:[])],undefined,[
             {label:'기술 편성',action:()=>{if(current()&&save.party[index]===p){g.partyIndex=index;showMoveSchool(g,0,undefined,false,{label:'동료 준비로 돌아가기',action:()=>{if(current()&&save.party[index]===p)select(page);}});}}},
             {label:'이 동료와 현장으로',action:()=>{
               if(!current()||save.party[index]!==p)return;
@@ -110,7 +116,9 @@ function handlePublicCinnabarResearch(g:Engine,event:string):boolean{
               g.partyIndex=0;g.persist();
               g.say('동료와 출발',[message,'포장길을 따라 관찰 장소로 가 보자.\n외곽 풀밭에서 야생 포켓몬을 만나면 이 동료가 먼저 나간다.'],undefined,[
                 {label:'관찰 장소 안내',action:()=>{if(current())guideResearchSite(g,save.flags[CLIFF_OBSERVED]===true?'물에 닳은 화산암':'붉은 화산암 절벽');}},
+                ...(!save.flags.seafoamSupplyTaken?[{label:'B1F 동료 현장 작업',action:()=>{if(current())g.setTourDestination(SEAFOAM_SUPPLY_MAP,SEAFOAM_SUPPLY_EVENT);}}]:[]),
                 ...(!save.flags['trainerWon:cinnabar-field-practice']?[{label:'연구원 배틀로',action:()=>{if(current())g.setTourDestination('tour_cinnabar','tourResident0');}}]:[{label:'쌍둥이섬에서 성장',action:()=>{if(current())g.setTourDestination('tour_kanto_seafoam_1f');}}]),
+                ...(isSeafoamCompanion(p)?[{label:'20번수로 귀환전으로',action:()=>{if(current())g.setTourDestination('tour_kanto_route_20','route20HomewardKeeper');}}]:[]),
                 {label:'준비 더 하기',action:()=>select()},
               ]);
             }},
@@ -125,6 +133,12 @@ function handlePublicCinnabarResearch(g:Engine,event:string):boolean{
     const menu=()=>{
       if(!current())return;
       g.say('홍련 서식 관찰판',[...encounterGuidance('tour_cinnabar').pages,...cinnabarCompanionPages(save),'도감 기록과 홍련에서 만난 동료를\n구분해서 살펴봅니다.'],undefined,[
+        ...((save.flags[SEAFOAM_B1_HABITAT_OBSERVED]||save.flags[SEAFOAM_B2_ICE_OBSERVED])?[{label:'쌍둥이섬 길 기록 비교',action:()=>{
+          if(!current())return;
+          const b1=save.flags[SEAFOAM_B1_HABITAT_OBSERVED]===true,b2=save.flags[SEAFOAM_B2_ICE_OBSERVED]===true;
+          if(b1&&b2&&!save.flags[SEAFOAM_FINDINGS_COMPARED]){save.flags[SEAFOAM_FINDINGS_COMPARED]=true;g.persist();}
+          g.say('쌍둥이섬 길 기록',[b1?'B1F 조우 능선에서 젖은 둥근 발자국과 천장 쪽 작은 날개 흔적을 확인했다.':'B1F 조우 능선의 서식 흔적은 아직 기록하지 않았다.',b2?'B2F 서쪽 얼음판에서는 얼음 아래 조개껍질 같은 광택을 채취하지 않고 위치만 기록했다.':'B2F 서쪽 얼음판의 광택은 아직 기록하지 않았다.',b1&&b2?'두 기록은 물가 포켓몬의 이동과 차가운 수로가 남긴 서로 다른 현장 흔적이다. 원작 숨은 아이템을 얻거나 본편 사건을 완료한 기록은 아니다.':'두 층을 모두 살피지 않아도 동굴과 20번수로는 자유롭게 왕복할 수 있다.'],undefined,[{label:'홍련센터에서 쉬기',action:()=>{if(current())g.setTourDestination('tour_cinnabar_center','nurse');}},{label:'20번수로로 돌아가기',action:()=>{if(current())g.setTourDestination('tour_kanto_route_20');}},{label:'관찰판으로',action:menu}]);
+        }}]:[]),
         {label:'현지 동료·기술 관찰',action:()=>select()},
         {label:'센터 PC 안내',action:()=>{if(current())g.setTourDestination('tour_cinnabar_center','tourExhibit1');}},
         {label:'관찰 마치기',action:()=>{}},

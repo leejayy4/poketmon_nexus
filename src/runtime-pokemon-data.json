@@ -2,7 +2,7 @@
   "referenceCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
   "learnsetVersion": "platinum",
   "timePolicy": "day-only",
-  "limits": "Up to four selected moves; direct damage ignores secondary effects, accuracy and PP. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. First starter and Caterpie/Weedle cocoon evolutions enabled. Eevee, Skitty, Pidove, Petilil, Karrablast and Shelmet use Black 2/White 2 acquisition; their evolutions are not enabled.",
+  "limits": "Up to four selected moves; direct damage ignores secondary effects, accuracy and PP. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. First starter, complete Caterpie/Weedle level evolution lines and Pidove level-21 evolutions enabled. Eevee, Skitty, Pidove, Tranquill, Petilil, Karrablast and Shelmet use Black 2/White 2 acquisition. Only Pidove to Tranquill is enabled among these evolution lines.",
   "pools": [
     {
       "id": "ENC-001",
@@ -292,6 +292,222 @@
         27
       ],
       "levelPolicy": "Runtime range limited to level 25; design source remains 22-27."
+    },
+    {
+      "id": "LOCAL-S-R201-DAY",
+      "node": "S-R201-DAY",
+      "levels": [
+        2,
+        3
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 396,
+          "weight": 40
+        },
+        {
+          "speciesId": 399,
+          "weight": 60
+        }
+      ],
+      "source": {
+        "file": "https://bulbapedia.bulbagarden.net/wiki/Sinnoh_Route_201",
+        "crossCheck": "https://www.serebii.net/pokearth/sinnoh/4th/route201.shtml",
+        "version": "platinum",
+        "checked": "2026-09-15",
+        "policy": "Platinum daytime regular grass: Starly 40%, Bidoof 60%, levels 2-3. Morning/night Kricketot, swarm, Poke Radar and dual-slot encounters are omitted by the runtime day-only policy."
+      }
+    },
+    {
+      "id": "LOCAL-S-R202-DAY",
+      "node": "S-R202-DAY",
+      "levels": [
+        2,
+        4
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 399,
+          "weight": 50,
+          "levelChoices": [
+            2,
+            3
+          ]
+        },
+        {
+          "speciesId": 396,
+          "weight": 30,
+          "levelChoices": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "speciesId": 403,
+          "weight": 20,
+          "levelChoices": [
+            3,
+            4
+          ]
+        }
+      ],
+      "source": {
+        "file": "https://www.serebii.net/pokearth/sinnoh/4th/route202.shtml",
+        "crossCheck": "https://bulbapedia.bulbagarden.net/wiki/Sinnoh_Route_202",
+        "version": "platinum",
+        "checked": "2026-09-15",
+        "policy": "Platinum daytime regular grass: Bidoof 50%, Starly 30%, Shinx 20%. Morning/night Kricketot and special encounter methods are omitted by the runtime day-only policy."
+      }
+    },
+    {
+      "id": "LOCAL-S-R203-DAY",
+      "node": "S-R203-DAY",
+      "levels": [
+        4,
+        7
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 396,
+          "weight": 35,
+          "levelChoices": [
+            4,
+            6,
+            7
+          ]
+        },
+        {
+          "speciesId": 399,
+          "weight": 25,
+          "levelChoices": [
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "speciesId": 403,
+          "weight": 25,
+          "levelChoices": [
+            4,
+            5
+          ]
+        },
+        {
+          "speciesId": 63,
+          "weight": 15,
+          "levelChoices": [
+            4,
+            5
+          ]
+        }
+      ],
+      "source": {
+        "file": "https://www.serebii.net/pokearth/sinnoh/4th/route203.shtml",
+        "crossCheck": "https://bulbapedia.bulbagarden.net/wiki/Sinnoh_Route_203",
+        "version": "platinum",
+        "checked": "2026-09-16",
+        "policy": "Platinum daytime regular grass: Starly 35%, Bidoof 25%, Shinx 25%, Abra 15%, levels 4-7 with original species-specific level slots. Morning/night substitutions, swarm, Poke Radar, GBA insertion, Surf and fishing are omitted by the runtime day-only walking policy."
+      }
+    },
+    {
+      "id": "LOCAL-S-OREBURGH-GATE-1F-PT",
+      "node": "S-OREBURGH-GATE-1F-PT",
+      "levels": [
+        5,
+        8
+      ],
+      "method": "walk",
+      "condition": "always",
+      "slots": [
+        {
+          "speciesId": 41,
+          "weight": 50,
+          "levelChoices": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "speciesId": 54,
+          "weight": 35,
+          "levelChoices": [
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "speciesId": 74,
+          "weight": 15,
+          "levelChoices": [
+            5,
+            7
+          ]
+        }
+      ],
+      "source": {
+        "file": "https://bulbapedia.bulbagarden.net/wiki/Oreburgh_Gate",
+        "crossCheck": "https://www.serebii.net/pokearth/sinnoh/4th/oreburghgate.shtml",
+        "version": "platinum",
+        "checked": "2026-09-15",
+        "policy": "Pokemon Platinum Oreburgh Gate 1F standard cave encounters: Zubat 50% levels 5-8, Psyduck 35% levels 5-7, Geodude 15% levels 5 and 7. B1F, Surf, fishing, items and Rock Smash progression are excluded."
+      }
+    },
+    {
+      "id": "LOCAL-U-R05-BW2",
+      "node": "U-R05-BW2",
+      "levels": [
+        21,
+        24
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 572,
+          "weight": 100
+        }
+      ],
+      "source": {
+        "file": "https://bulbapedia.bulbagarden.net/wiki/Unova_Route_5",
+        "crossCheck": "https://www.serebii.net/pokearth/unova/route5.shtml",
+        "version": "black-2-white-2",
+        "checked": "2026-09-15",
+        "policy": "B2W2 regular grass includes Minccino at levels 21-24. Runtime exposes the supported Minccino subset only; Liepard, Trubbish and version-exclusive Gothita/Solosis remain omitted, so this is not the complete original table."
+      }
+    },
+    {
+      "id": "LOCAL-U-DRIFTVEIL-DRAWBRIDGE-BW2",
+      "node": "U-DRIFTVEIL-DRAWBRIDGE-BW2",
+      "levels": [
+        23,
+        25
+      ],
+      "method": "bridge-spots",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 580,
+          "weight": 100
+        }
+      ],
+      "source": {
+        "file": "https://bulbapedia.bulbagarden.net/wiki/Driftveil_Drawbridge",
+        "version": "black-2-white-2",
+        "checked": "2026-09-15",
+        "policy": "B2W2 flying Pokemon shadows yield Ducklett at levels 23-26. Runtime keeps the species and encounter method but caps the authored range at level 25; feather drops are not implemented."
+      }
     },
     {
       "id": "LOCAL-K-SEAFOAM-1F",
@@ -1182,7 +1398,7 @@
           180,
           203
         ],
-        "policy": "HeartGold and SoulSilver daytime walking habitat using supported Pidgeotto only. Levels 24-25 and the single-species runtime weight are project tuning for the existing level-25 travel cap, not original rates. Encounters stay in optional west and east grass branches while the marked north-south road remains safe. Venonat, Noctowl, Mareep, Flaaffy and Girafarig, radio, night, Surf, fishing, Headbutt, items, the toll gate and story locks are excluded."
+        "policy": "HeartGold and SoulSilver daytime walking habitat using supported Pidgeotto only. Levels 24-25 and the single-species runtime weight are project tuning for the existing level-25 travel cap, not original rates. Encounters stay in two optional western grass stretches while the shorter eastern old-gate path remains grass-free. Venonat, Noctowl, Mareep, Flaaffy and Girafarig, radio, night, Surf, fishing, Headbutt, items, the toll gate and story locks are excluded."
       }
     },
     {
@@ -1239,7 +1455,7 @@
           220,
           225
         ],
-        "policy": "HeartGold and SoulSilver cave habitat using exact supported Zubat only across the four implemented floors. Levels 22-24 and the single-species weight are project tuning for the level-25 travel cap, not original rates or floor-specific rates. Golbat, Jynx, Swinub and Delibird, items, Waterfall HM, forced sliding, boulder puzzles and story locks are excluded."
+        "policy": "HeartGold and SoulSilver cave habitat using exact supported Zubat only across the four implemented floors. Levels 22-24 and the single-species weight are project tuning for the level-25 travel cap, not original rates or floor-specific rates. Encounters use optional frosted side strips on every floor while a dry-rock bypass remains available between each pair of stairs. Golbat, Jynx, Swinub and Delibird, items, Waterfall HM, forced sliding, boulder puzzles and story locks are excluded."
       }
     },
     {
@@ -1481,6 +1697,200 @@
       }
     },
     {
+      "id": "LOCAL-U-R09-BW2",
+      "node": "U-R09-BW2",
+      "levels": [
+        24,
+        25
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 572,
+          "weight": 100
+        }
+      ],
+      "source": {
+        "version": "black-2-white-2",
+        "location": "unova-route-9",
+        "url": "https://www.serebii.net/pokearth/unova/route9.shtml",
+        "sourceLevels": [
+          37,
+          40
+        ],
+        "referenceSpecies": [
+          572,
+          575,
+          578,
+          569,
+          624,
+          510,
+          89
+        ],
+        "policy": "B2W2 standard walking habitat using Minccino, the only currently supported original normal-grass species. Levels 24-25 are project tuning for the level-25 travel cap. Encounters are limited to optional southern grass patches while the paved east-west road remains safe. Version-exclusive Gothorita or Duosion, Garbodor, Pawniard, Liepard, Muk, dark grass, rustling grass, swarms, Hidden Grotto, items, Challenger's Cave and the Plasma freeze event are excluded."
+      }
+    },
+    {
+      "id": "LOCAL-J-R30-DAY",
+      "node": "J-R30-DAY",
+      "levels": [
+        20,
+        23
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 16,
+          "weight": 50
+        },
+        {
+          "speciesId": 10,
+          "weight": 18
+        },
+        {
+          "speciesId": 13,
+          "weight": 17
+        },
+        {
+          "speciesId": 11,
+          "weight": 8
+        },
+        {
+          "speciesId": 14,
+          "weight": 7
+        }
+      ],
+      "source": {
+        "version": "heartgold-soulsilver",
+        "location": "johto-route-30",
+        "url": "https://www.serebii.net/pokearth/johto/route30.shtml",
+        "checked": "2026-09-15",
+        "referenceSpecies": [
+          16,
+          10,
+          11,
+          13,
+          14
+        ],
+        "policy": "HGSS daytime HeartGold and SoulSilver walking tables combined for the supported Pidgey, Caterpie, Metapod, Weedle and Kakuna. Version-exclusive bugs are both available as a Nexus project blend. Levels 20-23 are project tuning for the current Johto party, not original levels 2-4. Encounters occur only in optional side grass; the marked central route remains safe. No night, radio, Headbutt, Surf, fishing, gifts, Apricorn Box, Mystery Egg or story lock."
+      }
+    },
+    {
+      "id": "LOCAL-J-R31-DAY",
+      "node": "J-R31-DAY",
+      "levels": [
+        21,
+        23
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 16,
+          "weight": 30
+        },
+        {
+          "speciesId": 10,
+          "weight": 28
+        },
+        {
+          "speciesId": 13,
+          "weight": 27
+        },
+        {
+          "speciesId": 11,
+          "weight": 8
+        },
+        {
+          "speciesId": 14,
+          "weight": 7
+        }
+      ],
+      "source": {
+        "version": "heartgold-soulsilver",
+        "location": "johto-route-31",
+        "url": "https://www.serebii.net/pokearth/johto/route31.shtml",
+        "checked": "2026-09-16",
+        "referenceSpecies": [
+          16,
+          10,
+          11,
+          13,
+          14,
+          69
+        ],
+        "policy": "HGSS daytime HeartGold and SoulSilver walking tables combined for supported Pidgey, Caterpie, Metapod, Weedle and Kakuna. Bellsprout is part of the original table but unsupported by the current runtime and excluded. Levels 21-23 are project tuning rather than original levels 3-5. Encounters stay in optional side grass while the Route 30 to Violet path remains safe. No night, radio, Headbutt, Surf, fishing, Dark Cave interior, mail delivery, gifts, items or story lock."
+      }
+    },
+    {
+      "id": "LOCAL-J-DARK-CAVE-WEST",
+      "node": "J-DARK-CAVE-WEST",
+      "levels": [
+        22,
+        24
+      ],
+      "method": "walk",
+      "condition": "all-day",
+      "slots": [
+        {
+          "speciesId": 74,
+          "weight": 60
+        },
+        {
+          "speciesId": 41,
+          "weight": 39
+        }
+      ],
+      "source": {
+        "version": "heartgold-soulsilver",
+        "location": "dark-cave-route-31-side",
+        "url": "https://www.serebii.net/pokearth/johto/darkcave.shtml",
+        "checked": "2026-09-16",
+        "referenceSpecies": [
+          74,
+          41,
+          206
+        ],
+        "policy": "HGSS Route 31-side standard walking habitat. Supported Geodude and Zubat retain the original 60/39 relative weights; unsupported Dunsparce at the original 1 percent is documented and excluded rather than replaced. Levels 22-24 are Nexus tuning for the current level-25 travel cap, not the original levels 2-4. Encounters occur only on optional loose-rock strips around a marked safe survey loop. Surfing, fishing, radio, swarm, Rock Smash encounters, items, field-move locks and the Route 45/46 through-route are excluded."
+      }
+    },
+    {
+      "id": "LOCAL-J-DARK-CAVE-EAST",
+      "node": "J-DARK-CAVE-EAST",
+      "levels": [
+        23,
+        25
+      ],
+      "method": "walk",
+      "condition": "all-day",
+      "slots": [
+        {
+          "speciesId": 41,
+          "weight": 50
+        },
+        {
+          "speciesId": 74,
+          "weight": 50
+        }
+      ],
+      "source": {
+        "version": "heartgold-soulsilver",
+        "location": "dark-cave-route-45-side",
+        "url": "https://www.serebii.net/pokearth/johto/darkcave.shtml",
+        "checked": "2026-09-16",
+        "referenceSpecies": [
+          41,
+          42,
+          74,
+          75,
+          202
+        ],
+        "policy": "HGSS Route 45-side standard walking habitat. Current runtime supports only Zubat and Geodude from the original Zubat30, Golbat5, Geodude30, Graveler20 and Wobbuffet15 table, so the two supported equal original weights are normalized to 50/50; unsupported species are documented and not replaced. Levels 23-25 preserve the original late-route band within the project level cap. Encounters stay on optional rough shelves in both return pockets. Surfing, fishing, radio encounters, items, gifts, field-move locks and through-travel between Route 45, Route 46 and the Route 31 side are excluded."
+      }
+    },
+    {
       "id": "LOCAL-U-MOOR-DAY",
       "node": "U-MOOR-DAY",
       "levels": [
@@ -1594,6 +2004,54 @@
         "version": "heartgold-soulsilver",
         "checked": "2026-09-13",
         "policy": "HGSS B2F standard walking Seel30% Lv33-35 and Zubat10% Lv29-30. Supported subset normalized75/25; project Lv24-25 on optional rock loop. Golbat/Psyduck/Golduck omitted; not original full table."
+      }
+    },
+    {
+      "id": "LOCAL-K-SEAFOAM-B3F",
+      "node": "K-SEAFOAM-B3F",
+      "levels": [
+        24,
+        25
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 86,
+          "weight": 50
+        },
+        {
+          "speciesId": 41,
+          "weight": 50
+        }
+      ],
+      "source": {
+        "file": "https://bulbapedia.bulbagarden.net/wiki/Seafoam_Islands",
+        "version": "heartgold-soulsilver",
+        "checked": "2026-09-15",
+        "policy": "HGSS B3F walking includes Golbat30%, Dewgong24%, Golduck14%, Psyduck12%, Zubat10% and Seel10%. Supported subset Seel/Zubat is normalized50/50; project Lv24-25 on the optional winding cold-rock corridor. Other species, Surf/fishing, radio encounters, items, HM puzzles and Articuno are excluded."
+      }
+    },
+    {
+      "id": "LOCAL-K-SEAFOAM-B4F",
+      "node": "K-SEAFOAM-B4F",
+      "levels": [
+        24,
+        25
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 86,
+          "weight": 100
+        }
+      ],
+      "source": {
+        "file": "https://bulbapedia.bulbagarden.net/wiki/Seafoam_Islands",
+        "version": "heartgold-soulsilver",
+        "checked": "2026-09-15",
+        "policy": "HGSS B4F walking includes Golbat30%, Dewgong24%, Golduck14%, Jynx12%, Psyduck10% and Seel10%. The supported subset is Seel100%; project Lv24-25 appears only on optional cold-rock shelves beside a continuous safe route. Other species, Surf/fishing, items, HM puzzles and Articuno are excluded."
       }
     },
     {
@@ -1753,6 +2211,359 @@
         "location": "castelia-park",
         "policy": "White 2 regular grass table checked 2026-09-13. Species, relative weights and discrete species levels retained. No dark-grass double battles, shaking grass, season or gift Eevee. Separate from project northern U01-GARDEN. Map binding pending."
       }
+    },
+    {
+      "id": "LOCAL-U-R06-B2",
+      "node": "U-R06-B2",
+      "levels": [
+        23,
+        25
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 588,
+          "weight": 17,
+          "levelChoices": [
+            23,
+            25
+          ]
+        },
+        {
+          "speciesId": 616,
+          "weight": 83,
+          "levelChoices": [
+            23,
+            25
+          ]
+        }
+      ],
+      "source": {
+        "url": "https://bulbapedia.bulbagarden.net/wiki/Unova_Route_6",
+        "version": "black-2",
+        "checked": "2026-09-15",
+        "sourceLevels": [
+          23,
+          26
+        ],
+        "policy": "Black 2 regular-grass supported subset: Karrablast 5% and Shelmet 25%, normalized to 17/83. Source Lv26 is capped at project Lv25. Deerling, Marill, Tranquill, Swadloon, Foongus, dark/rustling grass, Surf and fishing are excluded. Encounters occur only in two optional side patches; the central bridges and road remain safe."
+      }
+    },
+    {
+      "id": "LOCAL-U-CHARGESTONE-1F-BW2",
+      "node": "U-CHARGESTONE-1F-BW2",
+      "levels": [
+        24,
+        25
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 299,
+          "weight": 10,
+          "levelChoices": [
+            25
+          ]
+        },
+        {
+          "speciesId": 595,
+          "weight": 39,
+          "levelChoices": [
+            25
+          ]
+        },
+        {
+          "speciesId": 597,
+          "weight": 20,
+          "levelChoices": [
+            24,
+            25
+          ]
+        },
+        {
+          "speciesId": 599,
+          "weight": 24,
+          "levelChoices": [
+            24,
+            25
+          ]
+        }
+      ],
+      "source": {
+        "url": "https://bulbapedia.bulbagarden.net/wiki/Chargestone_Cave",
+        "version": "black-2-white-2",
+        "checked": "2026-09-15",
+        "sourceLevels": [
+          25,
+          28
+        ],
+        "policy": "B2W2 1F cave table subset keeps Nosepass10, Joltik39, Ferroseed20 and Klink24 relative weights, normalized by runtime. Original Lv25-28 is adapted to project Lv24-25. Boldore and Tynamo, dust clouds, held items and Memory Link encounters are excluded. Encounter crystal fields are off the direct stair route."
+      }
+    },
+    {
+      "id": "LOCAL-U-CHARGESTONE-B1F-BW2",
+      "node": "U-CHARGESTONE-B1F-BW2",
+      "levels": [
+        25,
+        25
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 299,
+          "weight": 10
+        },
+        {
+          "speciesId": 595,
+          "weight": 39
+        },
+        {
+          "speciesId": 597,
+          "weight": 20
+        },
+        {
+          "speciesId": 599,
+          "weight": 24
+        }
+      ],
+      "source": {
+        "url": "https://bulbapedia.bulbagarden.net/wiki/Chargestone_Cave",
+        "version": "black-2-white-2",
+        "checked": "2026-09-15",
+        "sourceLevels": [
+          28,
+          31
+        ],
+        "policy": "B2W2 B1F cave table subset keeps Nosepass10, Joltik39, Ferroseed20 and Klink24 relative weights, normalized by runtime. All original Lv28-31 are capped at project Lv25. Boldore and Tynamo, dust clouds, held items and deeper B2F encounters are excluded. Encounter crystal fields sit outside the one-cell magnetic-crystal gate."
+      }
+    },
+    {
+      "id": "LOCAL-U-REVERSAL-EXTERIOR-B2",
+      "node": "U-REVERSAL-EXTERIOR-B2",
+      "levels": [
+        24,
+        25
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 451,
+          "weight": 67,
+          "levelChoices": [
+            24,
+            25
+          ]
+        },
+        {
+          "speciesId": 328,
+          "weight": 33,
+          "levelChoices": [
+            24,
+            25
+          ]
+        }
+      ],
+      "source": {
+        "url": "https://bulbapedia.bulbagarden.net/wiki/Reversal_Mountain",
+        "version": "black-2",
+        "checked": "2026-09-15",
+        "sourceLevels": [
+          31,
+          34
+        ],
+        "policy": "Black 2 regular-grass supported subset: Skorupi30 and Trapinch15 normalized to 67/33. Original Lv31-34 is capped at project Lv24-25. Spoink, Grumpig, Drifblim, Skarmory, dark/rustling grass and swarms are excluded. Two optional ash-grass branches leave the direct Lentimas-to-cave route safe."
+      }
+    },
+    {
+      "id": "LOCAL-U-REVERSAL-ENTRANCE-B2",
+      "node": "U-REVERSAL-ENTRANCE-B2",
+      "levels": [
+        24,
+        25
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 325,
+          "weight": 25,
+          "levelChoices": [
+            24
+          ]
+        },
+        {
+          "speciesId": 451,
+          "weight": 19,
+          "levelChoices": [
+            25
+          ]
+        },
+        {
+          "speciesId": 525,
+          "weight": 31,
+          "levelChoices": [
+            24,
+            25
+          ]
+        },
+        {
+          "speciesId": 527,
+          "weight": 44,
+          "levelChoices": [
+            24,
+            25
+          ]
+        }
+      ],
+      "source": {
+        "url": "https://bulbapedia.bulbagarden.net/wiki/Reversal_Mountain",
+        "version": "black-2",
+        "checked": "2026-09-15",
+        "sourceLevels": [
+          31,
+          35
+        ],
+        "policy": "Black 2 entrance cave supported subset keeps Spoink20, Skorupi15, Boldore25 and Woobat35 relative weights; runtime normalizes the listed values. Original Lv31-35 is capped at project Lv24-25. Grumpig, dust clouds and version-exclusive Numel/Camerupt are excluded. Encounter shelves are off the direct passage."
+      }
+    },
+    {
+      "id": "LOCAL-U-REVERSAL-MAIN-B2",
+      "node": "U-REVERSAL-MAIN-B2",
+      "levels": [
+        24,
+        25
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 325,
+          "weight": 6,
+          "levelChoices": [
+            24
+          ]
+        },
+        {
+          "speciesId": 451,
+          "weight": 18,
+          "levelChoices": [
+            25
+          ]
+        },
+        {
+          "speciesId": 525,
+          "weight": 29,
+          "levelChoices": [
+            24,
+            25
+          ]
+        },
+        {
+          "speciesId": 527,
+          "weight": 41,
+          "levelChoices": [
+            24,
+            25
+          ]
+        }
+      ],
+      "source": {
+        "url": "https://bulbapedia.bulbagarden.net/wiki/Reversal_Mountain",
+        "version": "black-2",
+        "checked": "2026-09-15",
+        "sourceLevels": [
+          31,
+          35
+        ],
+        "policy": "Black 2 main-cavern supported subset keeps Spoink5, Skorupi15, Boldore25 and Woobat35 relative weights; runtime normalizes the listed values. Original Lv31-35 is capped at project Lv24-25. Grumpig, dust clouds, Bianca double battles and Heatran are excluded because shared partner/double/special encounter contracts are not implemented. Side shelves leave the Undella passage safe."
+      }
+    },
+    {
+      "id": "LOCAL-U-R13-BW2",
+      "node": "U-R13-BW2",
+      "levels": [
+        24,
+        25
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 114,
+          "weight": 50,
+          "levelChoices": [
+            24,
+            25
+          ]
+        },
+        {
+          "speciesId": 279,
+          "weight": 50,
+          "levelChoices": [
+            24,
+            25
+          ]
+        }
+      ],
+      "source": {
+        "url": "https://bulbapedia.bulbagarden.net/wiki/Unova_Route_13",
+        "version": "black-2-white-2",
+        "checked": "2026-09-15",
+        "sourceLevels": [
+          34,
+          37
+        ],
+        "policy": "B2W2 regular-grass supported subset keeps Tangela25 and Pelipper25, normalized to equal weights. Original Lv34-37 is capped at project Lv24-25. Lunatone, Solrock, Absol, Drifblim, dark/rustling grass, water encounters, swarms, Hidden Grottoes and Cobalion are excluded. Four side grass patches preserve a safe central route between Undella and Lacunosa."
+      }
+    },
+    {
+      "id": "LOCAL-U-R12-BW2",
+      "node": "U-R12-BW2",
+      "levels": [
+        24,
+        25
+      ],
+      "method": "walk",
+      "condition": "day-only",
+      "slots": [
+        {
+          "speciesId": 315,
+          "weight": 25,
+          "levelChoices": [
+            24,
+            25
+          ]
+        },
+        {
+          "speciesId": 415,
+          "weight": 20,
+          "levelChoices": [
+            24
+          ]
+        },
+        {
+          "speciesId": 520,
+          "weight": 25,
+          "levelChoices": [
+            24,
+            25
+          ]
+        }
+      ],
+      "source": {
+        "url": "https://bulbapedia.bulbagarden.net/wiki/Unova_Route_12",
+        "version": "black-2-white-2",
+        "checked": "2026-09-15",
+        "sourceLevels": [
+          35,
+          38
+        ],
+        "policy": "B2W2 regular-grass supported subset keeps Roselia25, Combee20 and Tranquill25 relative weights; runtime normalizes the listed values. Original Lv35-38 is capped at project Lv24-25. Black 2 Pinsir, White 2 Heracross, Sewaddle, dark/rustling grass, swarms and special encounters are excluded. Two side grass patches preserve the lower safe path between Lacunosa and Village Bridge."
+      }
     }
   ],
   "ownable": [
@@ -1764,8 +2575,10 @@
     8,
     10,
     11,
+    12,
     13,
     14,
+    15,
     16,
     17,
     19,
@@ -1775,6 +2588,7 @@
     39,
     41,
     52,
+    54,
     58,
     63,
     66,
@@ -1793,10 +2607,14 @@
     265,
     266,
     268,
+    279,
     280,
     299,
     300,
     307,
+    315,
+    325,
+    328,
     396,
     399,
     401,
@@ -1810,9 +2628,18 @@
     436,
     439,
     443,
+    451,
     519,
+    520,
+    525,
+    527,
     548,
+    572,
+    580,
     588,
+    595,
+    597,
+    599,
     616
   ],
   "species": {
@@ -2130,6 +2957,43 @@
       ],
       "tm": []
     },
+    "12": {
+      "name": "버터플",
+      "types": [
+        "벌레",
+        "비행"
+      ],
+      "stats": {
+        "hp": 60,
+        "attack": 45,
+        "defense": 50,
+        "specialAttack": 90,
+        "specialDefense": 80,
+        "speed": 70
+      },
+      "weight": 320,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "염동력"
+        },
+        {
+          "level": 10,
+          "move": "염동력"
+        },
+        {
+          "level": 16,
+          "move": "바람일으키기"
+        },
+        {
+          "level": 24,
+          "move": "환상빔"
+        }
+      ],
+      "tm": [
+        "섀도볼"
+      ]
+    },
     "13": {
       "name": "뿔충이",
       "types": [
@@ -2182,6 +3046,24 @@
           "move": "단단해지기"
         }
       ],
+      "tm": []
+    },
+    "15": {
+      "name": "독침붕",
+      "types": [
+        "벌레",
+        "독"
+      ],
+      "stats": {
+        "hp": 65,
+        "attack": 90,
+        "defense": 40,
+        "specialAttack": 45,
+        "specialDefense": 80,
+        "speed": 75
+      },
+      "weight": 295,
+      "learnset": [],
       "tm": []
     },
     "16": {
@@ -2492,6 +3374,44 @@
       "tm": [
         "섀도볼"
       ]
+    },
+    "54": {
+      "name": "고라파덕",
+      "types": [
+        "물"
+      ],
+      "stats": {
+        "hp": 50,
+        "attack": 52,
+        "defense": 48,
+        "specialAttack": 65,
+        "specialDefense": 50,
+        "speed": 55
+      },
+      "weight": 196,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "할퀴기"
+        },
+        {
+          "level": 5,
+          "move": "꼬리흔들기"
+        },
+        {
+          "level": 9,
+          "move": "물대포"
+        },
+        {
+          "level": 18,
+          "move": "염동력"
+        },
+        {
+          "level": 22,
+          "move": "물의파동"
+        }
+      ],
+      "tm": []
     },
     "58": {
       "name": "가디",
@@ -2820,12 +3740,16 @@
       "weight": 350,
       "learnset": [
         {
-          "level": 8,
+          "level": 7,
+          "move": "덩굴채찍"
+        },
+        {
+          "level": 10,
           "move": "흡수"
         },
         {
-          "level": 19,
-          "move": "덩굴채찍"
+          "level": 23,
+          "move": "메가드레인"
         }
       ],
       "tm": [
@@ -2954,6 +3878,10 @@
         {
           "level": 10,
           "move": "놀래키기"
+        },
+        {
+          "level": 23,
+          "move": "환상빔"
         }
       ],
       "tm": [
@@ -3067,6 +3995,49 @@
         {
           "level": 7,
           "move": "단단해지기"
+        }
+      ],
+      "tm": []
+    },
+    "279": {
+      "name": "패리퍼",
+      "types": [
+        "물",
+        "비행"
+      ],
+      "stats": {
+        "hp": 60,
+        "attack": 50,
+        "defense": 100,
+        "specialAttack": 95,
+        "specialDefense": 70,
+        "speed": 65
+      },
+      "weight": 280,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "날개치기"
+        },
+        {
+          "level": 1,
+          "move": "물대포"
+        },
+        {
+          "level": 1,
+          "move": "울음소리"
+        },
+        {
+          "level": 9,
+          "move": "날개치기"
+        },
+        {
+          "level": 17,
+          "move": "물의파동"
+        },
+        {
+          "level": 25,
+          "move": "방어"
         }
       ],
       "tm": []
@@ -3205,6 +4176,28 @@
         "섀도볼",
         "풀묶기"
       ]
+    },
+    "328": {
+      "name": "톱치",
+      "types": [
+        "땅"
+      ],
+      "stats": {
+        "hp": 45,
+        "attack": 100,
+        "defense": 45,
+        "specialAttack": 45,
+        "specialDefense": 45,
+        "speed": 10
+      },
+      "weight": 150,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "물기"
+        }
+      ],
+      "tm": []
     },
     "396": {
       "name": "찌르꼬",
@@ -3677,6 +4670,10 @@
         {
           "level": 1,
           "move": "염동력"
+        },
+        {
+          "level": 25,
+          "move": "환상빔"
         }
       ],
       "tm": [
@@ -3795,6 +4792,132 @@
       ],
       "tm": []
     },
+    "520": {
+      "name": "유토브",
+      "types": [
+        "노말",
+        "비행"
+      ],
+      "stats": {
+        "hp": 62,
+        "attack": 77,
+        "defense": 62,
+        "specialAttack": 50,
+        "specialDefense": 42,
+        "speed": 65
+      },
+      "weight": 150,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "바람일으키기"
+        },
+        {
+          "level": 1,
+          "move": "울음소리"
+        },
+        {
+          "level": 1,
+          "move": "전광석화"
+        },
+        {
+          "level": 1,
+          "move": "째려보기"
+        },
+        {
+          "level": 4,
+          "move": "울음소리"
+        },
+        {
+          "level": 8,
+          "move": "째려보기"
+        },
+        {
+          "level": 11,
+          "move": "전광석화"
+        },
+        {
+          "level": 15,
+          "move": "에어커터"
+        },
+        {
+          "level": 23,
+          "move": "판별"
+        }
+      ],
+      "tm": []
+    },
+    "525": {
+      "name": "암트르",
+      "types": [
+        "바위"
+      ],
+      "stats": {
+        "hp": 70,
+        "attack": 105,
+        "defense": 105,
+        "specialAttack": 50,
+        "specialDefense": 40,
+        "speed": 20
+      },
+      "weight": 1020,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "단단해지기"
+        },
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 1,
+          "move": "박치기"
+        },
+        {
+          "level": 4,
+          "move": "단단해지기"
+        },
+        {
+          "level": 10,
+          "move": "박치기"
+        }
+      ],
+      "tm": []
+    },
+    "527": {
+      "name": "또르박쥐",
+      "types": [
+        "에스퍼",
+        "비행"
+      ],
+      "stats": {
+        "hp": 65,
+        "attack": 45,
+        "defense": 43,
+        "specialAttack": 55,
+        "specialDefense": 43,
+        "speed": 72
+      },
+      "weight": 21,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "염동력"
+        },
+        {
+          "level": 8,
+          "move": "바람일으키기"
+        },
+        {
+          "level": 21,
+          "move": "에어커터"
+        }
+      ],
+      "tm": [
+        "섀도볼"
+      ]
+    },
     "548": {
       "name": "치릴리",
       "types": [
@@ -3826,6 +4949,118 @@
       "tm": [
         "풀묶기"
       ]
+    },
+    "572": {
+      "name": "치라미",
+      "types": [
+        "노말"
+      ],
+      "stats": {
+        "hp": 55,
+        "attack": 50,
+        "defense": 40,
+        "specialAttack": 40,
+        "specialDefense": 40,
+        "speed": 75
+      },
+      "weight": 58,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "막치기"
+        },
+        {
+          "level": 3,
+          "move": "울음소리"
+        }
+      ],
+      "tm": [
+        "풀묶기"
+      ]
+    },
+    "580": {
+      "name": "꼬지보리",
+      "types": [
+        "물",
+        "비행"
+      ],
+      "stats": {
+        "hp": 62,
+        "attack": 44,
+        "defense": 50,
+        "specialAttack": 44,
+        "specialDefense": 50,
+        "speed": 55
+      },
+      "weight": 55,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "물대포"
+        },
+        {
+          "level": 9,
+          "move": "날개치기"
+        },
+        {
+          "level": 13,
+          "move": "물의파동"
+        },
+        {
+          "level": 15,
+          "move": "제비반환"
+        }
+      ],
+      "tm": []
+    },
+    "595": {
+      "name": "파쪼옥",
+      "types": [
+        "벌레",
+        "전기"
+      ],
+      "stats": {
+        "hp": 50,
+        "attack": 47,
+        "defense": 50,
+        "specialAttack": 57,
+        "specialDefense": 50,
+        "speed": 65
+      },
+      "weight": 6,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "흡혈"
+        },
+        {
+          "level": 18,
+          "move": "벌레먹기"
+        }
+      ],
+      "tm": []
+    },
+    "599": {
+      "name": "기어르",
+      "types": [
+        "강철"
+      ],
+      "stats": {
+        "hp": 40,
+        "attack": 55,
+        "defense": 70,
+        "specialAttack": 45,
+        "specialDefense": 60,
+        "speed": 30
+      },
+      "weight": 210,
+      "learnset": [
+        {
+          "level": 11,
+          "move": "전기쇼크"
+        }
+      ],
+      "tm": []
     },
     "183": {
       "name": "마릴",
@@ -3901,6 +5136,68 @@
         "풀묶기"
       ]
     },
+    "325": {
+      "name": "피그점프",
+      "types": [
+        "에스퍼"
+      ],
+      "stats": {
+        "hp": 60,
+        "attack": 25,
+        "defense": 35,
+        "specialAttack": 70,
+        "specialDefense": 80,
+        "speed": 60
+      },
+      "weight": 306,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "튀어오르기"
+        },
+        {
+          "level": 14,
+          "move": "환상빔"
+        }
+      ],
+      "tm": [
+        "섀도볼",
+        "풀묶기"
+      ]
+    },
+    "451": {
+      "name": "스콜피",
+      "types": [
+        "독",
+        "벌레"
+      ],
+      "stats": {
+        "hp": 40,
+        "attack": 50,
+        "defense": 90,
+        "specialAttack": 30,
+        "specialDefense": 55,
+        "speed": 65
+      },
+      "weight": 120,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "물기"
+        },
+        {
+          "level": 1,
+          "move": "째려보기"
+        },
+        {
+          "level": 20,
+          "move": "벌레먹기"
+        }
+      ],
+      "tm": [
+        "섀도볼"
+      ]
+    },
     "588": {
       "name": "딱정곤",
       "types": [
@@ -3923,6 +5220,33 @@
         {
           "level": 20,
           "move": "박치기"
+        }
+      ],
+      "tm": []
+    },
+    "597": {
+      "name": "철시드",
+      "types": [
+        "풀",
+        "강철"
+      ],
+      "stats": {
+        "hp": 44,
+        "attack": 50,
+        "defense": 91,
+        "specialAttack": 24,
+        "specialDefense": 86,
+        "speed": 10
+      },
+      "weight": 188,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "단단해지기"
+        },
+        {
+          "level": 1,
+          "move": "몸통박치기"
         }
       ],
       "tm": []
@@ -4096,6 +5420,15 @@
       "type": "물",
       "category": "special",
       "power": 40,
+      "priority": 0,
+      "rule": "damage"
+    },
+    "환상빔": {
+      "id": 60,
+      "slug": "psybeam",
+      "type": "에스퍼",
+      "category": "special",
+      "power": 65,
       "priority": 0,
       "rule": "damage"
     },
@@ -4464,9 +5797,24 @@
       "level": 7
     },
     {
+      "from": 11,
+      "to": 12,
+      "level": 10
+    },
+    {
       "from": 13,
       "to": 14,
       "level": 7
+    },
+    {
+      "from": 14,
+      "to": 15,
+      "level": 10
+    },
+    {
+      "from": 519,
+      "to": 520,
+      "level": 21
     }
   ],
   "typeChart": {
@@ -4628,11 +5976,26 @@
     }
   },
   "learnsetOverrides": {
+    "114": "black-2-white-2",
     "133": "black-2-white-2",
+    "279": "black-2-white-2",
     "300": "black-2-white-2",
+    "315": "black-2-white-2",
+    "325": "black-2-white-2",
+    "328": "black-2-white-2",
+    "415": "black-2-white-2",
+    "451": "black-2-white-2",
     "519": "black-2-white-2",
+    "520": "black-2-white-2",
+    "525": "black-2-white-2",
+    "527": "black-2-white-2",
     "548": "black-2-white-2",
+    "572": "black-2-white-2",
+    "580": "black-2-white-2",
     "588": "black-2-white-2",
+    "595": "black-2-white-2",
+    "597": "black-2-white-2",
+    "599": "black-2-white-2",
     "616": "black-2-white-2"
   }
 }

@@ -1,5 +1,15 @@
 # 무궁시티 보유 동료 반응
 
+## 최신 묶음 — 황토 주택의 동료와 잠깐 휴식
+
+- 2026-09-15 출발 보완: 휴식 직후와 주민 재방문에서 서쪽 `tour_johto_route_42`·인주, 북쪽 `tour_johto_route_43`·분노의호수, 동쪽 `tour_johto_route_44`·얼음샛길, 황토 센터를 선택해 기존 목적지 안내로 이어지게 했다. 실제 워프를 걷는 길안내이며 순간이동·새 통행 잠금·사건 완료가 아니다. QA 중단으로 경로 소비는 미검증이다.
+- 변경: `tour_mahogany_home1` 기존 주민 `tourHost` → `mahoganyHomeHerbTable` 빈 바구니 정돈 → `mahoganyHomeCompanionSeat` 방석 펼치기와 휴식. 실제 건강한 파티 개체를 선택하며 재방문에는 정돈/방석 상태를 보존한다. `nexusMahoganyHomeTablePrepared`, `nexusMahoganyHomeRested`는 선택 생활 상태다. 경험치·HP·아이템·CH05 완료를 바꾸지 않는다.
+- 선행/경계: `nexusMahoganyPowerHandoff` 이후 열린다. 안내소 출구 조명 인계와 `nexusMortarDownstreamChecked` 국소 배수 개선은 별개로 설명한다. 등대·상류 전체·성도 전체 복구를 주장하지 않는다. 동료 선택 후 저장/맵/플레이어/좌표/파티/HP 및 대화 세션을 다시 확인한다.
+- 실제 소비: `mahogany-life.ts` 첫 분기 → `handleMahoganyHomecoming`. 기존 renderer 가구 호출 → `paintMahoganyPowerFurnishing` → `paintMahoganyHomecoming`으로 바구니와 방석 상태를 그린다. 공통 renderer 직접 수정 없음. 상호작용의 `setTourDestination`으로 손질대와 휴식자리 연결. 없는 동료를 가구 위에 생성하지 않는다.
+- 공간: 기존 24×18 주택과 기존 가구 footprint 유지. 황토 서문42번도로↔인주, 북문43번도로↔분노의호수, 동문44번도로↔얼음샛길 연결은 변경하지 않는다. 크기 기준은 MAP_SIZE_STANDARDS, 여행 계약은 WORLD_ROUTES, 장면 설계는 MAP_STORY_DESIGN 및 NEXUS_STORY_MASTER의 작은 생활 결말을 따른다.
+- 출처: https://bulbapedia.bulbagarden.net/wiki/Mahogany_Town (2026-09-13 열람, HGSS 구분). 원작의 작은 마을과 서42/북43/동44 연결을 참고했다. 이 주택의 정돈·휴식 및 예비 전원/국소 배수 후 반응은 넥서스 각색이며 원작 사건 복제가 아니다. 외부 코드·자산 재사용 없음.
+- 검증: 소스 소비 위치를 읽은 구현 기록뿐이다. 사용자 중단 지시에 따라 테스트·빌드·브라우저·시청각·저장 QA 모두 미실행. 도시 완료 아님. 다음: 중앙 인계 후 생활 장면의 발견 안내와 채택된 후속 사건 경계를 이어 정리한다.
+
 ## 최신 묶음 — 42번도로·절구산 작은 배수홈의 재유입 개선
 
 - 중앙 연결 회신: renderer의두맵`mortarDrainageLayers`소비와DownstreamCloudy시작후미완료6단계guide연결완료. 인주공개후자유분기이며절구산구조완료를선행조건으로넣지않았다. 기존조사물event는보존하고신규두props는별도event,기존42번난간은ordinary복귀를제공한다. 실행QA는없다.

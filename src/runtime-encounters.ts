@@ -8,11 +8,17 @@ import { CINNABAR_HABITAT_NAME } from './cinnabar-layout';
 // Exact geography only. New passages elsewhere have no encounter pool until
 // their own design node is selected; CH numbers are never runtime locks.
 const MAP_POOLS:Record<string,{node:string;name:string}>={
+  tour_sinnoh_route_201:{node:'S-R201-DAY',name:'신오 201번도로'},
+  tour_sinnoh_route_202:{node:'S-R202-DAY',name:'신오 202번도로'},
+  tour_sinnoh_route_203:{node:'S-R203-DAY',name:'신오 203번도로'},
+  tour_oreburgh_gate_1f:{node:'S-OREBURGH-GATE-1F-PT',name:'무쇠게이트 1층'},
   tour_castelia_sewers:{node:'U-CASTELIA-SEWERS',name:'구름하수도'},
   tour_castelia_park:{node:'U-CASTELIA-PARK-W2',name:'구름시티 공원'},
   tour_sinnoh_route_211_west:{node:'S-R211-WEST',name:'신오 211번도로 서부'},
   tour_sinnoh_route_211_east:{node:'S-R211-EAST',name:'신오 211번도로 동부'},
   tour_kanto_seafoam_b2f:{node:'K-SEAFOAM-B2F',name:'쌍둥이섬 지하2층'},
+  tour_kanto_seafoam_b3f:{node:'K-SEAFOAM-B3F',name:'쌍둥이섬 지하3층'},
+  tour_kanto_seafoam_b4f:{node:'K-SEAFOAM-B4F',name:'쌍둥이섬 지하4층'},
   tour_coronet_211_pass:{node:'S-CORONET-211',name:'천관산 211 통과층'},
   tour_kanto_seafoam_b1f:{node:'K-SEAFOAM-B1F',name:'쌍둥이섬 지하1층'},
   tour_kanto_seafoam_1f:{node:'K-SEAFOAM-1F',name:'쌍둥이섬 1층'},
@@ -61,9 +67,24 @@ const MAP_POOLS:Record<string,{node:string;name:string}>={
   tour_johto_route_45:{node:'J-R45-DAY',name:'성도 45번도로'},
   tour_johto_route_46:{node:'J-R46-DAY',name:'성도 46번도로'},
   tour_johto_route_29:{node:'J-R29-DAY',name:'성도 29번도로'},
+  tour_johto_route_30:{node:'J-R30-DAY',name:'성도 30번도로'},
+  tour_johto_route_31:{node:'J-R31-DAY',name:'성도 31번도로'},
+  tour_johto_dark_cave_west:{node:'J-DARK-CAVE-WEST',name:'어둠의동굴 남서 구역'},
+  tour_johto_dark_cave_east:{node:'J-DARK-CAVE-EAST',name:'어둠의동굴 북동 구역'},
   tour_johto_ice_path_1f:{node:'J-ICE-PATH',name:'얼음샛길'},tour_johto_ice_path_b1f:{node:'J-ICE-PATH',name:'얼음샛길'},tour_johto_ice_path_b2f:{node:'J-ICE-PATH',name:'얼음샛길'},tour_johto_ice_path_b3f:{node:'J-ICE-PATH',name:'얼음샛길'},
   tour_unova_route_11:{node:'U-R11-DAY',name:'하나 11번도로'},
+  tour_unova_route_09:{node:'U-R09-BW2',name:'하나 9번도로'},
   tour_unova_route_08:{node:'U-R08-DAY',name:'하나 8번도로'},
+  tour_pass_nimbasa_driftveil:{node:'U-R05-BW2',name:'하나 5번도로'},
+  tour_driftveil_drawbridge:{node:'U-DRIFTVEIL-DRAWBRIDGE-BW2',name:'물풍경도개교'},
+  tour_pass_driftveil_mistralton:{node:'U-R06-B2',name:'하나 6번도로'},
+  tour_chargestone_1f:{node:'U-CHARGESTONE-1F-BW2',name:'전기돌동굴 1층'},
+  tour_chargestone_b1f:{node:'U-CHARGESTONE-B1F-BW2',name:'전기돌동굴 B1F'},
+  tour_reversal_mountain_exterior:{node:'U-REVERSAL-EXTERIOR-B2',name:'리버스마운틴 외부'},
+  tour_reversal_mountain_a:{node:'U-REVERSAL-ENTRANCE-B2',name:'리버스마운틴 통과구역 A'},
+  tour_reversal_mountain_b:{node:'U-REVERSAL-MAIN-B2',name:'리버스마운틴 통과구역 B'},
+  tour_unova_route_13:{node:'U-R13-BW2',name:'하나 13번도로'},
+  tour_unova_route_12:{node:'U-R12-BW2',name:'하나 12번도로'},
 };
 export const ENCOUNTER_TIME_POLICY='day-only' as const;
 export function encounterPool(map:string){const binding=MAP_POOLS[map];return binding?RUNTIME_DATABASE.poolByNode(binding.node):undefined;}

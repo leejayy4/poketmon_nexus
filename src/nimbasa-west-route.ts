@@ -25,12 +25,12 @@ export function installNimbasaWestRoute(world:World){
     {name:'도개교 바람 표지',event:'tourRouteFiveBridgeWeather',cells:[{x:51,y:8}],pages:['물풍경도개교 위 바람과 개폐 점검 시간을 알리는 표지다.','현재 통행을 막는 조건은 없으며\n서쪽 큰길을 따라 다리 입구로 갈 수 있다.']},
   ];
   for(const object of objects)for(const cell of object.cells)route[cell.y][cell.x]='#';
-  legacy.name='하나 5번도로';legacy.width=64;legacy.height=28;legacy.background=UNOVA_ROUTE_FIVE;legacy.walkable=route.map(row=>row.join(''));legacy.terrain=[];
+  legacy.name='하나 5번도로';legacy.width=64;legacy.height=28;legacy.background=UNOVA_ROUTE_FIVE;legacy.walkable=route.map(row=>row.join(''));legacy.terrain=[{kind:'tallGrass',x:18,y:4,w:10,h:3}];
   legacy.warps=[
     {x:1,y:13,to:DRIFTVEIL_DRAWBRIDGE,spawn:{x:85,y:13},entry:'left',facing:'left'},
     {...fromNimbasa,x:62,y:11,to:nimbasa.id,entry:'right'},
   ];
-  legacy.npcs=[{id:'routeFivePerformer',name:'5번도로 공연가',sprite:'ace_trainer_f',x:38,y:22,facing:'left',dialogue:'journeyWalker'}];
+  legacy.npcs=[{id:'routeFivePerformer',name:'5번도로 공연가',sprite:'ace_trainer_f',x:38,y:22,facing:'left',dialogue:'tourRouteFiveTrainer'}];
   legacy.props=[{x:4,y:10,dialogue:'journeySign'},{x:59,y:8,dialogue:'journeySign'},...objects.flatMap(object=>object.cells.map(cell=>({...cell,dialogue:object.event})))];
   world.passages[UNOVA_ROUTE_FIVE]={...routePassage,a:nimbasa,b:driftveil,kind:'road',bend:15};
   world.passagePlaces[UNOVA_ROUTE_FIVE]={id:UNOVA_ROUTE_FIVE,name:'하나 5번도로',region:'하나',theme:'forest',concept:'뇌문시티 공연 거리에서 물풍경도개교 동쪽 입구로 이어지는 완만한 들길',landmark:'여행 공연 공터',x:(nimbasa.x+driftveil.x)/2,y:(nimbasa.y+driftveil.y)/2};
@@ -44,10 +44,10 @@ export function installNimbasaWestRoute(world:World){
   open(bridge,1,11,86,5);open(bridge,18,9,14,2);open(bridge,55,16,14,2);
   const bridgeObjects=[
     {name:'도개 장치 관찰판',event:'tourDrawbridgeMechanism',cells:[{x:28,y:10}],pages:['큰 다리 상판을 들어 올리는 도르래와 균형추 구조를 그린 판이다.','관리원이 통행로와 수면을 모두 확인한 뒤\n장치를 움직인다고 적혀 있다.']},
-    {name:'날개 포켓몬 관찰 자리',event:'tourDrawbridgeWingWatch',cells:[{x:62,y:17}],pages:['강바람을 타는 포켓몬을 멀리서 살피는 표시선이다.','이 장소에는 아직 야생 조우나\n떨어지는 도구 획득이 연결되어 있지 않다.']},
+    {name:'날개 포켓몬 관찰 자리',event:'tourDrawbridgeWingWatch',cells:[{x:62,y:17}],pages:['강바람을 타는 꼬지보리의 그림자가 보행판 위를 스친다.','그림자가 머무는 표시선에서는 선택 조우가 생길 수 있다.\n떨어지는 날개 도구는 아직 구현하지 않았다.']},
   ];
   for(const object of bridgeObjects)for(const cell of object.cells)bridge[cell.y][cell.x]='#';
-  world.maps[DRIFTVEIL_DRAWBRIDGE]={id:DRIFTVEIL_DRAWBRIDGE,name:'물풍경도개교',width:88,height:28,background:DRIFTVEIL_DRAWBRIDGE,walkable:bridge.map(row=>row.join('')),terrain:[],
+  world.maps[DRIFTVEIL_DRAWBRIDGE]={id:DRIFTVEIL_DRAWBRIDGE,name:'물풍경도개교',width:88,height:28,background:DRIFTVEIL_DRAWBRIDGE,walkable:bridge.map(row=>row.join('')),terrain:[{kind:'tallGrass',x:58,y:13,w:3,h:2}],
     warps:[{x:1,y:13,to:driftveil.id,spawn:{...toDriftveil.spawn},entry:'left',facing:toDriftveil.facing},{x:86,y:13,to:UNOVA_ROUTE_FIVE,spawn:{x:2,y:13},entry:'right',facing:'right'}],
     npcs:[{id:'drawbridgeKeeper',name:'도개교 관리원',sprite:'worker',x:46,y:14,facing:'up',dialogue:'journeyWalker'}],
     props:[{x:5,y:10,dialogue:'journeySign'},{x:82,y:10,dialogue:'journeySign'},{x:28,y:10,dialogue:'tourDrawbridgeMechanism'},{x:62,y:17,dialogue:'tourDrawbridgeWingWatch'}],
@@ -79,7 +79,9 @@ export function paintNimbasaWestRoute(c:CanvasRenderingContext2D,images:Record<s
     for(let x=1;x<map.width-1;x++){fill(x*16,10*16+12,16,4,'#4d6064');fill(x*16,16*16,16,3,'#4d6064');}
     for(let x=4;x<map.width-4;x+=6){fill(x*16+6,9*16,3,32,'#65777a');fill(x*16+2,9*16+4,11,3,'#c8c8ae');}
     fill(42*16,10*16,4*16,7*16,'#596b70');fill(43*16,11*16,2*16,5*16,'#b5aa83');
+    // Encounter shadows are drawn from terrain cells by the dynamic renderer.
   }else{
+    for(let x=18;x<28;x++)for(let y=4;y<7;y++){fill(x*16+2,y*16+4,3,10,'#32673f');fill(x*16+8,y*16+2,3,12,'#477d49');fill(x*16+13,y*16+5,2,9,'#2e6039');}
     for(const [x,y] of [[17,7],[34,14],[51,8]]){fill(x*16+2,y*16+3,12,11,'#665844');fill(x*16+4,y*16+5,8,5,'#e0cf96');}
   }
 }

@@ -33,6 +33,7 @@ import { CIANWOOD_CITY_SIZE,extendCianwoodCity } from './cianwood-city-layout';
 import { MAHOGANY_TOWN_SIZE,extendMahoganyTown } from './mahogany-city-layout';
 import { BLACKTHORN_CITY_SIZE,extendBlackthornCity } from './blackthorn-city-layout';
 import { ICIRRUS_CITY_SIZE,icirrusPlan } from './icirrus-city-layout';
+import { OREBURGH_CITY_SIZE,oreburghPlan } from './oreburgh-city-layout';
 
 type Rect=[number,number,number,number];
 export type TownStyle='urban'|'waterfront'|'rural'|'heritage'|'mining';
@@ -41,6 +42,7 @@ export function townStyle(p:Place):TownStyle {
   return ['city','factory','airport','fair'].includes(p.theme)?'urban':['port','water','coast'].includes(p.theme)?'waterfront':['temple','ghost','dragon','snow'].includes(p.theme)?'heritage':['mine','desert'].includes(p.theme)?'mining':'rural';
 }
 export function tourSize(p:Place){
+  if(p.id==='tour_oreburgh')return OREBURGH_CITY_SIZE;
   if(p.id==='tour_vermilion')return VERMILION_SIZE;
   if(p.id==='tour_eterna')return ETERNA_CITY_SIZE;
   if(p.id==='tour_hearthome')return HEARTHOME_SIZE;
@@ -91,6 +93,7 @@ export function expandedSigns(p:Place){
 }
 export interface ExpandedTown {width:number;height:number;style:TownStyle;buildings:TourBuilding[];features:TourFeature[];paths:Rect[];boardwalks:Rect[]}
 export function expandTown(p:Place,features:TourFeature[],jubilifePaths:Rect[]=[]):ExpandedTown {
+  if(p.id==='tour_oreburgh')return oreburghPlan();
   if(p.id==='tour_castelia')return casteliaPlan();
   if(p.id==='tour_nimbasa')return nimbasaPlan();
   if(p.id==='tour_driftveil')return driftveilPlan();

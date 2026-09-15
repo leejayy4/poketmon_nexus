@@ -22,10 +22,14 @@ export function installJohtoRoute42(world:{places:Place[];maps:Record<TourId,Gam
     {name:'절구산 선택 분기표',event:'tourRoute42MortarBoard',cells:[{x:45,y:10}],pages:['북쪽은 절구산 1층 선택 탐험, 동쪽 본선은 황토마을이다.\n동굴을 방문하지 않아도 두 도시를 왕복할 수 있다.']},
     {name:'산물길 관찰 난간',event:'tourRoute42WaterRail',cells:[{x:64,y:9}],pages:['산에서 내려온 물이 도로 옆 낮은 바위 사이로 흐른다.\n난간에서 물빛을 살핀 뒤 북쪽 절구산 입구로 돌아갈 수 있다.']},
     {name:'황토 서쪽 도착 표지',event:'tourRoute42MahoganyStone',cells:[{x:79,y:20}],pages:['동쪽은 황토마을 장터와 43·44번도로 준비 지점이다.\n서쪽은 절구산 분기와 인주시티다.']},
+    {name:'규토리나무 아래 깨비참',event:'route42SpearowGrove',cells:[{x:24,y:7}],pages:['절구산 기슭의 나무 아래에 깨비참이 내려와 있다.\n마른 길에서 동료와 천천히 살펴볼 수 있다.']},
   ];for(const o of objects)for(const c of o.cells)rows[c.y][c.x]='#';
   world.maps[JOHTO_ROUTE_42]={id:JOHTO_ROUTE_42,name:'성도 42번도로',width:88,height:32,background:JOHTO_ROUTE_42,walkable:rows.map(r=>r.join('')),warps:[
     {x:1,y:15,to:ecruteak.id,spawn:{...toE.spawn},entry:'left',facing:toE.facing},{x:86,y:15,to:mahogany.id,spawn:{...toM.spawn},entry:'right',facing:toM.facing},{x:45,y:7,to:JOHTO_MT_MORTAR_1F,spawn:{x:28,y:52},entry:'up',facing:'up'},
-  ],npcs:[{id:'route42Traveler',name:'42번도로 산물길 여행자',sprite:'ace_trainer_m',x:35,y:15,facing:'right',dialogue:'journeyWalker'}],props:props(objects),terrain:[]};
+  ],npcs:[
+    {id:'route42Traveler',name:'42번도로 산물길 여행자',sprite:'ace_trainer_m',x:35,y:15,facing:'right',dialogue:'journeyWalker'},
+    {id:'route42GroveTrainer',name:'42번도로 기슭 트레이너',sprite:'youngster',x:29,y:10,facing:'left',dialogue:'route42GroveTrainer'},
+  ],props:props(objects),terrain:[]};
 
   const cave=Array.from({length:56},()=>Array<string>(56).fill('#'));
   carve(cave,25,39,7,16);carve(cave,10,34,36,8);carve(cave,9,15,8,20);carve(cave,39,12,8,23);carve(cave,15,12,25,7);carve(cave,24,18,8,17);

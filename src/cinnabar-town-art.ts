@@ -29,8 +29,10 @@ export function paintCinnabarTownApproaches(c:CanvasRenderingContext2D,map:GameM
     if(!parents.has(key(end)))return;
     let p:Point|undefined=end;while(p){painted.add(key(p));p=parents.get(key(p));}
   };
-  const dock={x:3,y:40},center=approach('tour_cinnabar_center'),lab=approach('tour_cinnabar_hall'),site={x:44,y:3};
-  route(dock,center);route(center,lab);route(lab,site);route(site,{x:43,y:40});route({x:43,y:40},{x:40,y:40});
+  const dock={x:3,y:40},hub={x:14,y:12},site={x:44,y:3};
+  route(dock,hub);
+  for(const destination of ['tour_cinnabar_center','tour_cinnabar_mart','tour_cinnabar_home1','tour_cinnabar_home2','tour_cinnabar_hall'])route(hub,approach(destination));
+  route(hub,site);route(hub,approach('tour_pass_pallet_cinnabar'));route(hub,approach('tour_pass_vermilion_cinnabar'));route(hub,approach('tour_kanto_route_20'));
   c.save();
   for(const k of painted){
     const [x,y]=k.split(',').map(Number);if(roof(x,y))continue;
@@ -41,7 +43,7 @@ export function paintCinnabarTownApproaches(c:CanvasRenderingContext2D,map:GameM
     c.fillStyle='#796f68';c.fillRect(x*16+7,y*16+1,1,5);c.fillRect(x*16+((y%2)?4:11),y*16+8,1,6);
   }
   // Basalt rubble and sparse salt-tolerant growth belong only to already blocked margins.
-  for(const [left,top,width,height] of [[30,2,4,7],[46,27,3,15],[16,35,3,4]]){
+  for(const [left,top,width,height] of [[30,2,4,7],[46,27,9,19],[16,35,3,4]]){
     for(let y=top;y<top+height;y++)for(let x=left;x<left+width;x++){
       if(map.walkable[y]?.[x]!=='#'||roof(x,y)||habitat(x,y)||map.props.some(p=>p.x===x&&p.y===y)||features.some(f=>x>=f.x&&x<f.x+f.w&&y>=f.y&&y<f.y+f.h))continue;
       c.fillStyle='#665c58';c.fillRect(x*16,y*16,16,16);

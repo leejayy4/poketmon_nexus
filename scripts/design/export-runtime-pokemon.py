@@ -42,21 +42,21 @@ for pool in pools:
         pool['levels'] = [22, 25]
         pool['levelPolicy'] = 'Runtime range limited to level 25; design source remains 22-27.'
 # Story capture uses an explicit encounter API, never an ordinary pool slot.
-owned = sorted({1,2,4,5,7,8,25,130} | {s['speciesId'] for p in pools for s in p['slots']})
+owned = sorted({1,2,4,5,7,8,12,15,25,130,520} | {s['speciesId'] for p in pools for s in p['slots']})
 # Gyarados is acquired only through the separately gated story encounter.
 ids = set(owned) | {420,315,425,92,200,448,408,86,130}
 names = {int(r['move_id']):r['name'] for r in rows('move_names') if r['local_language_id']=='3'}
 types = {int(r['type_id']):r['name'] for r in rows('type_names') if r['local_language_id']=='3'}
 # Every exposed move has a runtime rule. Secondary status chances, crits, PP and
 # accuracy are intentionally not simulated; these damage moves use direct damage.
-damage = set('ice-shard pound poison-sting karate-chop gust wing-attack slam headbutt tackle scratch vine-whip bite ember water-gun bubble razor-leaf thunder-shock confusion quick-attack rock-throw slash spark astonish lick magical-leaf force-palm aerial-ace air-cutter bug-bite hyper-fang rapid-spin water-pulse shadow-ball'.split())
+damage = set('ice-shard pound poison-sting karate-chop gust wing-attack slam headbutt tackle scratch vine-whip bite ember water-gun bubble razor-leaf thunder-shock confusion psybeam quick-attack rock-throw slash spark astonish lick magical-leaf force-palm aerial-ace air-cutter bug-bite hyper-fang rapid-spin water-pulse shadow-ball'.split())
 rules = {s:'damage' for s in damage}
 rules.update({s:'drain' for s in ['absorb','mega-drain','leech-life','drain-punch']})
 rules.update({'growl':'attackDrop','charm':'attackDrop','tail-whip':'defenseDrop','leer':'defenseDrop','harden':'defenseUp','withdraw':'defenseUp','defense-curl':'defenseUp','protect':'protect','detect':'protect','teleport':'escape','splash':'nothing','stealth-rock':'hazard','grass-knot':'weightDamage','low-kick':'weightDamage','struggle':'struggle','dragon-rage':'fixedDamage','seismic-toss':'levelDamage'})
 move_rows = {int(r['id']):r for r in rows('moves') if r['identifier'] in rules}
 moves = {names[i]:{'id':i,'slug':r['identifier'],'type':types[int(r['type_id'])],'category':{1:'status',2:'physical',3:'special'}[int(r['damage_class_id'])],'power':int(r['power'] or 0),'priority':int(r['priority']),'rule':rules[r['identifier']]} for i,r in move_rows.items()}
 learn = {i:[] for i in ids}
-learnset_overrides = {133:14, 300:14, 519:14, 548:14, 588:14, 616:14}  # BW2 acquisition for the park roster and selected Gen V species.
+learnset_overrides = {114:14, 133:14, 279:14, 300:14, 315:14, 325:14, 328:14, 415:14, 451:14, 519:14, 520:14, 525:14, 527:14, 548:14, 572:14, 580:14, 588:14, 595:14, 597:14, 599:14, 616:14}  # BW2 acquisition for the park and Unova field rosters.
 tm = {i:[] for i in ids}
 tm_slugs = {'stealth-rock','grass-knot','shadow-ball','drain-punch'}
 for r in rows('pokemon_moves'):
@@ -97,16 +97,16 @@ if missing:
     for i in sorted(missing):
         if i not in species_names or not species_types[i] or len(species_stats[i])!=6: raise RuntimeError(f'Incomplete pinned species data for {i}')
         species[i]={'name':species_names[i],'types':[name for _,name in sorted(species_types[i])],'stats':species_stats[i],'weight':weights[i],'learnset':sorted(learn[i],key=lambda r:(r['level'],r['move'])),'tm':sorted(tm[i])}
-evolutions = [{'from':r['from'],'to':r['to'],'level':int(r['sourceRule']['minimum_level'])} for r in read('evolutions') if (r['from'],r['to']) in [(1,2),(4,5),(7,8),(10,11),(13,14)]]
+evolutions = [{'from':r['from'],'to':r['to'],'level':int(r['sourceRule']['minimum_level'])} for r in read('evolutions') if (r['from'],r['to']) in [(1,2),(4,5),(7,8),(10,11),(13,14),(11,12),(14,15),(519,520)]]
 chart = {}
 for r in rows('type_efficacy'):
     a,b=int(r['damage_type_id']),int(r['target_type_id'])
     if a in types and b in types and int(r['damage_factor'])!=100:
         chart.setdefault(types[a],{})[types[b]]=int(r['damage_factor'])/100
-out = {'referenceCommit':SHA,'learnsetVersion':'platinum','timePolicy':'day-only','limits':'Up to four selected moves; direct damage ignores secondary effects, accuracy and PP. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. First starter and Caterpie/Weedle cocoon evolutions enabled.','pools':pools,'ownable':owned,'species':species,'moves':moves,'evolutions':evolutions,'typeChart':chart}
+out = {'referenceCommit':SHA,'learnsetVersion':'platinum','timePolicy':'day-only','limits':'Up to four selected moves; direct damage ignores secondary effects, accuracy and PP. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. First starter, complete Caterpie/Weedle level evolution lines and Pidove level-21 evolutions enabled.','pools':pools,'ownable':owned,'species':species,'moves':moves,'evolutions':evolutions,'typeChart':chart}
 manifest={'dataCommit':SHA,'learnsetVersionGroup':9,'sources':[],'sprites':[]}
 out['learnsetOverrides']={str(i):'black-2-white-2' for i in learnset_overrides if i in ids}
-out['limits']+=' Eevee, Skitty, Pidove, Petilil, Karrablast and Shelmet use Black 2/White 2 acquisition; their evolutions are not enabled.'
+out['limits']+=' Eevee, Skitty, Pidove, Tranquill, Petilil, Karrablast and Shelmet use Black 2/White 2 acquisition. Only Pidove to Tranquill is enabled among these evolution lines.'
 (ROOT/'src/runtime-pokemon-data.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
 manifest['learnsetVersionGroupOverrides']={str(i):v for i,v in learnset_overrides.items() if i in ids}
 manifest['sources'].append({'file':'scripts/design/runtime-local-pools.json','sha256':hashlib.sha256(local_pools.read_bytes()).hexdigest()})

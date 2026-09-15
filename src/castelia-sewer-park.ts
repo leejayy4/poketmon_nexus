@@ -32,10 +32,16 @@ export function installCasteliaSewerPark(w:World){
     w.passagePlaces[id]={id,name,region:'하나',theme,concept:id===CASTELIA_SEWERS?'항구와 숨은 공원을 잇는 마른 하수 통로':'빌딩 안쪽 햇볕과 풀밭이 남은 공원',landmark:id===CASTELIA_SEWERS?'북서쪽 공원 계단':'남쪽 하수도 계단',x:4.1,y:id===CASTELIA_SEWERS?5.1:4.9};
     w.spawns[id]=spawn;w.outdoors[id]={objects:[...objects],signs:[]};
   }
+  w.maps[CASTELIA_PARK].npcs.push({id:'casteliaParkTrainer',name:'공원 산책 트레이너',sprite:'ace_trainer_f',x:18,y:29,facing:'left',dialogue:'tourCasteliaParkTrainer'});
+  w.maps[CASTELIA_SEWERS].npcs.push({id:'casteliaSewerScientist',name:'배수 연구원',sprite:'scientist_f',x:28,y:11,facing:'down',dialogue:'tourCasteliaSewerScientist'});
   const row=city.walkable[48];city.walkable[48]=row.slice(0,59)+'.'+row.slice(60);
   city.warps.push({x:59,y:48,to:CASTELIA_SEWERS,spawn:{x:44,y:24},entry:'right',facing:'left'});
   const sign={name:'구름하수도 입구',event:'tourCasteliaSewerEntrance',cells:[{x:59,y:47}],pages:['동쪽 계단 → 구름하수도','하수도의 서쪽 통로 끝 북쪽 계단은 빌딩 사이 숨은 공원으로 이어진다. 돌아올 때도 같은 길을 이용한다.']};
   outside.objects.push(sign);city.props.push({x:59,y:47,dialogue:sign.event});
+  // The east street remains open at y=11..13; this blocked wall cell gives
+  // departure preparation an actual place beside, rather than on, the road.
+  const routeFourDesk={name:'4번도로 출발 점검대',event:'tourCasteliaRouteFourDesk',cells:[{x:66,y:10}],pages:['구름시티 동쪽 큰길에서 4번도로로 나가기 전 동료와 보급 상태를 확인하는 자리다.','표지 옆 길은 언제나 열려 있으며 점검 기록은 통행 조건이 아니다.']};
+  outside.objects.push(routeFourDesk);city.props.push({x:66,y:10,dialogue:routeFourDesk.event});
 }
 
 /** Render the same cell geometry used by collision; terrain encounters are drawn by the common renderer. */
@@ -66,11 +72,31 @@ export function paintCasteliaSewerPark(c:CanvasRenderingContext2D,map:GameMap):b
       if(map.walkable[y+1]?.[x]==='.')r(px,py+14,16,2,'#8b9271');
     }
   }
+  if(sewer){
+    // Recessed dry drains occupy blocked cells beside the maintenance walkways.
+    // This is the project's fixed dry layout, not a seasonal Surf state.
+    const drain=(x:number,y:number,horizontal:boolean)=>{
+      if(map.walkable[y]?.[x]!=='#'||map.props.some(p=>p.x===x&&p.y===y))return;
+      const px=x*16,py=y*16;
+      r(px,py,16,16,'#253a40');
+      r(px+2,py+2,12,12,'#52635b');
+      if(horizontal){r(px,py,16,2,'#b0b29c');r(px,py+14,16,2,'#687b77');r(px+4,py+8,7,1,'#778478');}
+      else{r(px,py,2,16,'#687b77');r(px+14,py,2,16,'#b0b29c');r(px+8,py+4,1,7,'#778478');}
+    };
+    for(let x=4;x<=45;x++)drain(x,26,true);
+    for(let y=4;y<=25;y++)drain(4,y,false);
+    // Grated inlet at the side room; its narrow bars do not suggest a doorway.
+    if(map.walkable[14]?.[30]==='#'){
+      r(30*16,14*16,16,32,'#263b42');
+      for(let bar=2;bar<16;bar+=4)r(30*16+bar,14*16+2,2,28,'#8c9b91');
+      r(30*16,14*16,16,2,'#b0b29c');r(30*16,16*16-2,16,2,'#687b77');
+    }
+  }
   if(!sewer){
     // A distinct mature tree in the blocked central island, clear of both circulation loops.
-    r(10*16+4,23*16,8,28,'#76644b');r(10*16+7,23*16,3,28,'#ad9170');
-    r(9*16,21*16,44,28,'#365f49');r(9*16+4,20*16+7,36,25,'#56824f');
-    r(9*16+10,20*16+5,22,9,'#83a361');
+    r(11*16+4,23*16,8,28,'#76644b');r(11*16+7,23*16,3,28,'#ad9170');
+    r(10*16,21*16,44,28,'#365f49');r(10*16+4,20*16+7,36,25,'#56824f');
+    r(10*16+10,20*16+5,22,9,'#83a361');
   }
   if(sewer)for(let x=12;x<43;x+=5){r(x*16,20*16,48,4,'#607e79');r(x*16+2,20*16-2,3,8,'#a0aaa0');}
   for(const warp of map.warps){

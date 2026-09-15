@@ -2,11 +2,14 @@ import type { Engine } from './engine';
 import { SPECIES } from './pokemon';
 import {handleMahoganyTransmitter} from './mahogany-transmitter';
 import {handleMahoganyPower} from './mahogany-power';
+import {handleMahoganyHomecoming} from './mahogany-homecoming';
+import {RAGE_RECOVERY_FLAGS} from './rage-lake-gyarados';
 
 const MAPS=new Set(['tour_mahogany','tour_mahogany_center','tour_mahogany_hall','tour_mahogany_mart','tour_mahogany_home1','tour_mahogany_home2']);
 
 /** Mahogany village life and a voluntary companion preparation loop for Routes 42, 43 and 44. */
 export function handleMahoganyLife(g:Engine,event:string):boolean{
+  if(handleMahoganyHomecoming(g,event))return true;
   if(handleMahoganyPower(g,event))return true;
   if(handleMahoganyTransmitter(g,event))return true;
   if(!MAPS.has(g.save.map))return false;
@@ -22,6 +25,29 @@ export function handleMahoganyLife(g:Engine,event:string):boolean{
   const species=Number(save.flags.mahoganyPrepSpecies??0),partnerName=SPECIES[species]?.name;
   const partner=()=>save.party.find(mon=>mon.species===species&&mon.hp>0);
   const guide=(map:Parameters<Engine['setTourDestination']>[0],title:string,text:string,eventId?:string)=>()=>{if(!current())return;g.setTourDestination(map,eventId);g.say(title,[text,'아래 지도에 목적지를 표시했다. 실제 표지와 길을 따라 걸어가자.']);};
+
+  if(save.map==='tour_mahogany_center'&&event==='mahoganyCenterPartyTable'&&save.flags[RAGE_RECOVERY_FLAGS.residents]){
+    const healthy=save.party.filter(mon=>mon.hp>0),recorded=Number(save.flags.nexusMahoganyRecoverySpecies??0),recordedName=SPECIES[recorded]?.name;
+    const after=()=>[
+      {label:'43번도로·호수 결과 재확인',action:()=>{if(current())g.setTourDestination('tour_johto_route_43','tourRoute43LakeBoard');}},
+      {label:'44번도로·얼음샛길 준비',action:()=>{if(current())g.setTourDestination('tour_johto_route_44');}},
+      {label:'센터 간호사에게 회복',action:()=>{if(current())g.setTourDestination('tour_mahogany_center','tourHost');}},
+      {label:'산기슭 주택에서 쉬기',action:()=>{if(current())g.setTourDestination('tour_mahogany_home1','tourHost');}},
+      {label:'편성대를 닫는다',action:()=>{}},
+    ];
+    if(save.flags.nexusMahoganyRecoveryDebriefed){
+      g.say('호수 귀환 편성 기록',[`${recordedName??'동료'}의 현재 상태와 기술을 확인하고 호수 생활 재개 결과를 황토센터에 남겼다.`,'43번도로로 돌아가 물과 경보를 다시 확인하거나, 동쪽 44번도로와 얼음샛길 여행을 준비할 수 있다. 어느 길도 배지·포획·이 기록으로 잠기지 않는다.'],undefined,after());return true;
+    }
+    if(!healthy.length){g.say('호수 귀환 편성대',['호수 주민이 물 받이와 갈대 작업을 다시 시작했다는 기록이 도착했다.','현장에서 돌아온 동료가 모두 기절해 있다. 앞쪽 간호사에게 회복을 부탁한 뒤 레벨과 기술을 함께 정리하자.'],undefined,[{label:'센터 간호사에게',action:()=>{if(current())g.setTourDestination('tour_mahogany_center','tourHost');}},{label:'나중에 기록한다',action:()=>{}}]);return true;}
+    const choose=(page=0)=>{if(!current())return;g.say('호수 귀환 동료 점검',['송신 장치를 분리한 뒤 붉은 갸라도스를 진정시키고 주민의 생활 재개까지 확인했다. 현장에 함께한 파티에서 다음 길을 준비할 동료 한 마리를 살펴보자.'],undefined,[
+      ...healthy.slice(page*3,page*3+3).map(mon=>({label:`${SPECIES[mon.species].name} Lv.${mon.level} · HP ${mon.hp}/${mon.maxHp}`,action:()=>{
+        if(!current()||!save.party.includes(mon)||mon.hp<=0)return;
+        const moves=(mon.moves?.length?mon.moves:SPECIES[mon.species]?.moves??[]).join(' · ')||'확인 가능한 기술 없음';
+        save.flags.nexusMahoganyRecoveryDebriefed=true;save.flags.nexusMahoganyRecoverySpecies=mon.species;g.persist();
+        g.say('황토 귀환 성장 기록',[`${SPECIES[mon.species].name} Lv.${mon.level} · HP ${mon.hp}/${mon.maxHp}`,`현재 기술: ${moves}`,'호수의 물과 경보가 주민 생활로 돌아온 결과를 파티 상태와 함께 남겼다. 이 기록은 경험치나 기술을 임의로 바꾸지 않는다.'],undefined,after());
+      }})),...(healthy.length>3?[{label:page?'앞 동료':'다음 동료',action:()=>choose(page?0:1)}]:[]),{label:'현재 파티 화면',action:()=>{if(current()){g.panel='party';g.partyIndex=0;}}},{label:'나중에 기록한다',action:()=>{}}]);};
+    choose();return true;
+  }
 
   if(save.map==='tour_mahogany'&&event==='tourGuide'){
     g.say('황토마을 안내원',[partyLine,arrivalLine,'산기슭 장터에서 건강한 동료와 세 방향 산길 준비를 시작할 수 있다. 선택 기록이며 통행 조건은 아니다.'],undefined,[
@@ -66,7 +92,7 @@ export function handleMahoganyLife(g:Engine,event:string):boolean{
     g.say(event==='mahoganyCenterRouteChart'?'황토 세 방향 여행도':event==='mahoganyCenterPartyTable'?'산길 편성 점검대':'42번도로 동료 휴게석',[partyLine,arrivalLine,route43Line,lakeLine,partnerName?`${partnerName}와 시작한 산길 준비 기록이 있다.`:'아직 선택한 준비 동료가 없다.',hurt.length||fainted.length?'실제 회복은 앞쪽 간호사에게 부탁하자.':'이 조사에서는 HP나 능력치가 변하지 않는다.'],undefined,choices);return true;
   }
   if(/^mahoganyMart/.test(event)){g.say('황토 산길 보급 안내',[partyLine,arrivalLine,'점원에게 몬스터볼과 상처약을 살 수 있다. 북쪽은 43번도로와 분노의호수, 동쪽은 44번도로와 얼음샛길이다. 동굴에 들어가기 전에 동료를 돌보고 보급품을 챙기자.']);return true;}
-  if(/^mahoganyHome/.test(event)){g.say('황토 산기슭 생활 기록',[partyLine,partnerName?`${partnerName}와 시작한 산길 준비 기록을 주민 생활표와 함께 볼 수 있다.`:'산나물 건조·상류 빗물·방한 준비를 주민과 포켓몬이 함께 맡는다.','호수 사건이나 얼음샛길 통과를 완료했다는 기록은 아니다.']);return true;}
+  if(/^mahoganyHome/.test(event)){g.say('황토 산기슭 생활 기록',[partyLine,partnerName?`${partnerName}와 시작한 산길 준비 기록을 주민 생활표와 함께 볼 수 있다.`:'산나물 건조·상류 빗물·방한 준비를 주민과 포켓몬이 함께 맡는다.',save.flags.nexusMahoganyRecoveryDebriefed?'호수 주민이 물 받이와 갈대 작업을 다시 시작한 결과가 센터 편성 기록에도 남아 있다.':'호수 사건이나 얼음샛길 통과를 완료했다는 기록은 아니다.']);return true;}
   if(save.map==='tour_mahogany'&&(event==='tourResident0'||event==='tourResident1')){g.say(event==='tourResident0'?'산기슭 장터 주민':'산길 여행객',[partyLine,arrivalLine,save.flags.mahoganyRoutePrepared&&partnerName?`${partnerName}와 세 방향 준비를 마쳤군요.`:'장터 건조대에서 건강한 동료와 산길 준비를 시작할 수 있어요.','그 기록 없이도 세 방향 길과 시설은 이용할 수 있습니다.']);return true;}
   if(save.map==='tour_mahogany'&&event==='tourPokemon'){const lead=save.party[0];g.say('장터의 생활 포켓몬',[lead?`${SPECIES[lead.species].name}을 바라본 뒤 건조대 그늘로 자리를 옮긴다.`:'건조대와 물통 사이를 오가며 주민의 일을 돕는다.','주민과 함께 사는 생활 개체이며 황토마을 야생 조우·포획 대상이 아니다.']);return true;}
   return false;

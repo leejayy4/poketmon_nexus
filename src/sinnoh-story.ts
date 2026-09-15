@@ -8,6 +8,8 @@ import { adventureObjective } from './adventure-guide';
 import { MAPS } from './maps';
 import { SPECIES } from './pokemon';
 import { viridianForestGuidePages } from './encounter-guidance';
+import { ROUTE203_JOURNEY,isRoute203Partner } from './sinnoh-route203-journey';
+import { OREBURGH_GATE_JOURNEY,isOreburghGatePartner } from './oreburgh-gate-journey';
 const canonicalLakeEvents:Record<string,{key:string;name:string}>={
   verityLakeKeeper:{key:'verityLake',name:'진실호수'},valorLakeBodyKeeper:{key:'valorLakeBody',name:'입지호수'},acuityLakeBodyKeeper:{key:'acuityLakeBody',name:'예지호수'},
   verityLakeSign:{key:'verityLake',name:'진실호수'},valorLakeBodySign:{key:'valorLakeBody',name:'입지호수'},acuityLakeBodySign:{key:'acuityLakeBody',name:'예지호수'},
@@ -70,6 +72,64 @@ export function sinnohEvent(g:Engine,id:string):boolean {
     if(!g.save.flags.observationCollected){g.say('연구 통로 안내원',['무쇠·영원·연고·장막의 네 배지와\n장막 관측 연구원의 자료가 필요해요.']);return true}
     if(!g.save.flags.researchDelivered){g.say('연구 통로 안내원',['장막의 관측 자료를 받았어요.\n은솔박사의 공동조사 소개도 도착했어요.','연구 연결길로 운하시티에 가세요.\n선원이 무료 왕복 승선을 도와줄 거예요.'],()=>{if(g.save!==save||save.map!==map||g.battle||!save.flags.observationCollected||save.flags.researchDelivered)return;save.flags.researchDelivered=true;g.persist()});return true}
     g.say('연구 통로 안내원',['연구 연결길은 운하시티로 이어져요.\n배를 타도 이곳으로 돌아올 수 있어요.']);return true;
+  }
+  if(id==='jubilifeSouthGreeter'&&g.save.map==='tour_jubilife'){
+    const owned=[...g.save.party,...g.save.box??[]].filter(mon=>mon.met==='신오 202번도로');
+    const names=[...new Set(owned.map(mon=>SPECIES[mon.species]?.name).filter(Boolean))].join('·')||'아직 없음';
+    const wins=['sinnoh-route-202-starly','sinnoh-route-202-bidoof','sinnoh-route-202-burmy'].filter(trainer=>g.save.flags['trainerWon:'+trainer]).length;
+    const hurt=g.save.party.filter(mon=>mon.hp>0&&mon.hp<mon.maxHp).length,fainted=g.save.party.filter(mon=>mon.hp<=0).length;
+    if(!g.save.flags.jubilifeArrivedVia202){g.save.flags.jubilifeArrivedVia202=true;g.persist();}
+    g.say('축복 남문 여행자',['202번도로를 지나 축복시티 남문에 도착했군요.',`202번도로 출신 보유 동료 ${owned.length}마리 · ${names}`,`지나온 초보 트레이너 승리 ${wins}/3`,hurt||fainted?`현재 부상 ${hurt} · 기절 ${fainted}. 북서쪽 포켓몬센터에서 먼저 쉬세요.`:'파티가 건강해요. 서쪽 트레이너스쿨에서 동료 상태와 실전을 배워 보세요.','다음 본선은 동쪽 203번도로→무쇠게이트→무쇠시티입니다. 북쪽은 204번도로, 서쪽은 218번도로예요.']);return true;
+  }
+  if(id==='jubilifeEastGuide'&&g.save.map==='tour_jubilife'){
+    const f=ROUTE203_JOURNEY,local=[...g.save.party,...g.save.box??[]].filter(isRoute203Partner),slot=g.save.flags[f.slot];
+    const partner=typeof slot==='number'?g.save.party[slot]:undefined,same=partner&&partner.species===g.save.flags[f.partner]&&isRoute203Partner(partner)?partner:undefined;
+    const won=g.save.flags['trainerWon:sinnoh-route-203-practice']===true,participated=g.save.flags[f.participated]===true;
+    if(same&&same.hp>0&&won&&participated){
+      if(!g.save.flags.jubilifeRoute203ReturnReviewed){g.save.flags.jubilifeRoute203ReturnReviewed=true;g.persist();}
+      const start=Number(g.save.flags[f.level]??same.level);
+      g.say('축복 동문 길 안내원',[`${SPECIES[same.species].name}가 203번도로 선택 실전에 실제로 참가하고 돌아왔군요.`,`포획 뒤 실전 시작 Lv.${start} → 현재 Lv.${same.level} · HP ${same.hp}/${same.maxHp}`,'동쪽으로 다시 나가면 203번도로와 무쇠게이트, 무쇠시티까지 이어집니다. 같은 길로 축복에 돌아올 수 있어요.']);return true;
+    }
+    const names=[...new Set(local.map(mon=>SPECIES[mon.species]?.name).filter(Boolean))].join('·')||'아직 없음';
+    g.say('축복 동문 길 안내원',['동쪽은 203번도로 → 무쇠게이트 1층 → 무쇠시티로 이어집니다.',`203번도로 출신 보유 동료 ${local.length}마리 · ${names}`,local.length?'건강한 현지 동료를 선두로 두고 연못과 바위턱 사이 트레이너와 선택 실전을 해 보세요.':'서쪽·동쪽 풀밭에서 찌르꼬·비버니·꼬링크·캐이시를 만날 수 있어요. 포획하지 않아도 본선은 열려 있습니다.',won&&!participated?'이미 이긴 트레이너에게 현지 동료를 선두로 보여 주면 상금 없는 재확인전을 할 수 있어요.':'실전 뒤 같은 동료와 돌아오면 성장과 귀환을 함께 기록할게요.']);return true;
+  }
+  if(id==='oreburghWestArrivalGuide'&&g.save.map==='tour_oreburgh'){
+    const f=OREBURGH_GATE_JOURNEY,local=[...g.save.party,...g.save.box??[]].filter(isOreburghGatePartner),slot=g.save.flags[f.slot];
+    const partner=typeof slot==='number'?g.save.party[slot]:undefined,same=partner&&partner.species===g.save.flags[f.partner]&&isOreburghGatePartner(partner)?partner:undefined;
+    const won=g.save.flags['trainerWon:oreburgh-gate-1f-practice']===true,participated=g.save.flags[f.participated]===true;
+    if(!g.save.flags.oreburghGateArrivalReviewed){g.save.flags.oreburghGateArrivalReviewed=true;g.persist();}
+    if(same&&same.hp>0&&won&&participated){
+      const start=Number(g.save.flags[f.level]??same.level);
+      g.say('무쇠 서문 동굴 안내원',[`${SPECIES[same.species].name}와 무쇠게이트 1층을 지나 도착했군요.`,`선택 실전 시작 Lv.${start} → 현재 Lv.${same.level} · HP ${same.hp}/${same.maxHp}`,'북쪽 광산 전시관에서 도시와 탄갱의 관계를 살피고, 남쪽 무쇠탄갱에서 강석을 만날 수 있어요. 서쪽 게이트로 되돌아갈 수도 있습니다.']);return true;
+    }
+    const names=[...new Set(local.map(mon=>SPECIES[mon.species]?.name).filter(Boolean))].join('·')||'아직 없음';
+    g.say('무쇠 서문 동굴 안내원',['서쪽 무쇠게이트 1층은 203번도로와 축복시티로 이어집니다.',`무쇠게이트 출신 보유 동료 ${local.length}마리 · ${names}`,local.length?'건강한 현지 동료를 선두로 두고 게이트 작업자와 선택 실전을 해 보세요.':'광석 곁 느슨한 돌길에서 주뱃·고라파덕·꼬마돌을 만날 수 있어요. 포획과 실전은 통행 조건이 아닙니다.',won&&!participated?'이미 이긴 작업자에게 현지 동료를 선두로 보여 주면 상금 없는 재확인전을 할 수 있어요.':'동굴 동료가 실제 승리에 참가한 뒤 다시 도착하면 여행과 성장을 기록할게요.']);return true;
+  }
+  if(id==='oreburghCityDirectory'&&g.save.map==='tour_oreburgh'){
+    const hurt=g.save.party.filter(mon=>mon.hp>0&&mon.hp<mon.maxHp).length,fainted=g.save.party.filter(mon=>mon.hp<=0).length;
+    g.say('무쇠시티 광산 안내판',['← 서쪽 무쇠게이트 1층 · 축복시티','↑ 북쪽 207번도로 · 206번도로/천관산 방면','→ 동쪽 강석의 무쇠체육관','↓ 남쪽 광재 언덕·운반 레일·무쇠탄갱',g.save.party.length?`현재 파티 ${g.save.party.length}마리 · 부상 ${hurt} · 기절 ${fainted}. 북서 포켓몬센터에서 회복할 수 있습니다.`:'현재 파티가 비어 있습니다. 북서 포켓몬센터 PC에서 동료를 편성하세요.','북동 광산 전시관은 탄갱 작업과 도시 아래 탄층을 설명합니다.']);return true;
+  }
+  if(id==='oreburghWestGateSign'){g.say('무쇠시티 서문 표지',['← 무쇠게이트 1층 → 203번도로 → 축복시티','밝은 동서 본선으로 걸으면 되돌아갈 수 있습니다. 포획과 선택전은 통행 조건이 아닙니다.']);return true;}
+  if(id==='oreburghNorth207Sign'){g.say('무쇠시티 북문 표지',['↑ 207번도로','207번도로 갈림에서 서쪽 206번도로·영원시티, 동쪽 천관산 하부로 이어집니다. 자전거 기능 없이 열린 현재 보행로입니다.']);return true;}
+  if(id==='oreburghSouthMineSign'){g.say('무쇠시티 남문 표지',['↓ 무쇠탄갱','광재 언덕과 운반 레일을 지나 탄갱 입구로 이어집니다. 같은 길로 센터·전시관·체육관에 돌아올 수 있습니다.']);return true;}
+  if(id==='oreburghVentWorker'&&g.save.map==='tour_oreburgh'){
+    const first=!g.save.flags.oreburghVentObserved;
+    g.say('환기 설비 작업자',first?['도시 동쪽 암반의 굴뚝은 지하 작업장으로 신선한 공기를 보내는 환기 설비야.','동료와 함께 소리와 바람을 확인해 보자. 막힌 곳 없이 일정하게 흐르는군.','환기 설비를 조사했다. 광차 신호원에게 현장 상태를 전할 수 있다.']:['환기구의 바람은 계속 일정해. 남쪽 운반 레일과 탄갱을 오가는 포켓몬도 이곳에서 잠깐 숨을 고르지.'],()=>{if(first&&g.save.map==='tour_oreburgh'&&!g.save.flags.oreburghVentObserved){g.save.flags.oreburghVentObserved=true;g.persist();}});return true;
+  }
+  if(id==='oreburghRailDispatcher'&&g.save.map==='tour_oreburgh'){
+    if(!g.save.flags.oreburghVentObserved){g.say('광차 신호원',['탄갱에서 올라온 광차는 남쪽 레일에서 속도를 낮춰.','동쪽 환기 설비 작업자에게 바람 상태를 확인한 뒤 운반 신호를 맞추고 있어.']);return true;}
+    const first=!g.save.flags.oreburghWorkCircuitReviewed;
+    g.say('광차 신호원',first?['환기구의 흐름이 정상이라는 연락이 왔군. 이제 작업 포켓몬과 보행자가 지나갈 시간을 나눠 신호를 맞출 수 있어.','전시관의 자동 운반 모형은 이 레일과 탄갱의 실제 작업을 설명해. 도시 북동쪽에서 비교해 봐.','무쇠시티의 환기 설비와 운반선 관계를 확인했다.']:['환기 설비 → 남쪽 운반 레일 → 무쇠탄갱이 한 작업선으로 이어져 있어. 서쪽 게이트와 북쪽 207번도로는 여행자의 길이고.'],()=>{if(first&&g.save.map==='tour_oreburgh'&&g.save.flags.oreburghVentObserved&&!g.save.flags.oreburghWorkCircuitReviewed){g.save.flags.oreburghWorkCircuitReviewed=true;g.persist();}});return true;
+  }
+  if(g.save.map==='tour_jubilife_school'&&id==='jubilifeSchoolBoard'){
+    g.say('상태이상 칠판',['독과 마비처럼 포켓몬의 상태가 달라지면 전투 흐름도 달라집니다.','기술 설명과 전투 메시지를 읽고 현재 동료의 HP와 행동을 확인하세요.']);return true;
+  }
+  if(g.save.map==='tour_jubilife_school'&&id==='jubilifeSchoolNotebook'){
+    const hurt=g.save.party.filter(mon=>mon.hp>0&&mon.hp<mon.maxHp).length,fainted=g.save.party.filter(mon=>mon.hp<=0).length;
+    g.say('트레이너의 노트',[`파티 ${g.save.party.length}마리 · 부상 ${hurt} · 기절 ${fainted}`,'배틀 전에는 포켓몬의 HP·레벨·기술을 확인한다.\n상대가 바뀌면 유리한 동료와 기술도 다시 고른다.','두 학생과의 실전은 선택이며, 학교와 203번도로를 막지 않는다.']);return true;
+  }
+  if(g.save.map==='tour_jubilife_school'&&id==='jubilifeSchoolRouteBoard'){
+    g.say('축복 여행 칠판',['남쪽 202번도로 → 축복시티 → 동쪽 203번도로\n→ 무쇠게이트 1층 → 무쇠시티','북쪽은 204번도로, 서쪽은 218번도로다.\n모든 개방 구간은 걸어서 되돌아올 수 있다.']);return true;
   }
   if(id==='sinnohWestRouteSign'&&g.save.map==='research_path'){g.say('서부 연구 연결길 이정표',['← 축복시티 · → 운하시티','현재는 218번도로의 육로·수상 구간을 대신하는 창작 도보 우회로예요. 물 위 이동 없이 걸어서 왕복할 수 있습니다.']);return true;}
   if(id==='sinnohWestResearcher'&&g.save.map==='research_path'){g.say('수로 조사원',['풀밭 가장자리에서 수위와 바람 흔적을 기록하고 있어요.','이 길의 풀밭은 현재 조우가 확인된 장소가 아니니 새 포켓몬이 나온다고 안내하지 않아요.','운하의 일반 도보 출구와 자료 전달 뒤 조사선 승선은 서로 다른 이동입니다.']);return true;}
@@ -136,18 +196,27 @@ export function sinnohEvent(g:Engine,id:string):boolean {
   }
   if(id==='acuityLakeSign'){g.say('예지호수 전망',['북쪽 길에서 예지호수 본체의 둘레길로 들어갈 수 있습니다.','중앙섬·호수 동굴·전설 사건은 아직 열리지 않았으며 창작 통합 호수와도 별개입니다.']);return true;}
   if(id==='route203Sign'){g.say('203번도로 이정표',['← 축복시티 · → 무쇠게이트 · 무쇠시티','연못과 바위턱을 지나 동굴 입구로 이어집니다.']);return true;}
-  if(id==='route203Walker'){g.say('203번도로 소년',['축복에서 처음으로 바위가 많은 길을 걷고 있어요.','현재 새 조우나 트레이너전은 배치하지 않았습니다.']);return true;}
+  if(id==='route203Walker'){g.say('203번도로 소년',['축복에서 처음으로 바위가 많은 길을 걷고 있어요.','풀밭에서 만난 동료를 선두로 두면 이 마른 공터에서 선택 실전을 할 수 있어요. 통행은 막지 않습니다.']);return true;}
   if(id==='oreburghGateSign'){g.say('무쇠게이트 이정표',['← 203번도로 · 축복시티 · → 무쇠시티','밝은 통과로와 광석벽을 따라가면 도시 입구가 나옵니다.']);return true;}
   if(id==='oreburghGateBasementSign'){g.say('무쇠게이트 지하 표지',['아래쪽은 선택 탐험구역 B1F 방향입니다.','현재 계단·지하층·아이템은 아직 적용하지 않았습니다.']);return true;}
-  if(id==='oreburghGateWorker'){g.say('무쇠게이트 작업자',['야외 203번도로와 광산 도시 사이의 조명을 살피고 있어요.','본선은 막히지 않았으니 포켓몬과 함께 밝은 길을 따라가세요.']);return true;}
+  if(id==='oreburghGateWorker'){g.say('무쇠게이트 작업자',['야외 203번도로와 광산 도시 사이의 조명을 살피고 있어요.','느슨한 돌길에서 만난 동료를 선두로 두면 작업선 밖에서 선택 실전을 할 수 있어요. 동쪽 본선은 계속 열려 있습니다.']);return true;}
+  if(id==='route207OreburghSign'){g.say('207번도로 남쪽 갈림 표지',['↓ 무쇠시티 · 무쇠탄갱','← 206번도로 · 영원시티','→ 천관산 하부','세 방향은 현재 도보로 왕복할 수 있으며 선택 트레이너전은 통행 조건이 아닙니다.']);return true;}
   if(id==='route201Sign'){g.say('201번도로 이정표',['← 새잎마을 · → 잔모래마을','첫 파트너와 낮은 초원길을 따라 해안 연구 마을로 향합니다.']);return true;}
   if(id==='verityApproachSign'){g.say('진실호수근처 방향 표지',['북서쪽 길은 진실호수 근처와 호수 본체 둘레길로 이어집니다.','중앙섬·호수 동굴·전설 사건은 아직 열리지 않았습니다.']);return true;}
-  if(id==='route201Walker'){g.say('201번도로 산책객',['파트너와 처음 걷는다면 풀과 나무 사이에서 서로의 속도를 맞춰 봐요.','이 신규 구간에는 확인된 조우나 트레이너전을 아직 배치하지 않았습니다.']);return true;}
+  if(id==='route201Walker'){g.say('201번도로 산책객',['파트너와 처음 걷는다면 풀과 나무 사이에서 서로의 속도를 맞춰 봐요.','길가 풀밭에서는 찌르꼬와 비버니를 만날 수 있고, 마른 본선으로 걸으면 조우를 피할 수 있어요.','이 도로에는 일반 트레이너가 없습니다. 북서쪽은 진실호수 근처, 동쪽은 잔모래마을입니다.']);return true;}
   if(id==='sandgemSign'){g.say('잔모래마을 이정표',['← 201번도로 · 새잎마을','↑ 202번도로 · 축복시티']);return true;}
   if(id==='sandgemLabSign'){g.say('잔모래 연구 안내',['이곳은 해안 생태를 정리하는 연구 공간입니다.','새잎마을의 은솔박사 연구소와 첫 파트너 수령 계약은 그대로 유지됩니다.']);return true;}
-  if(id==='sandgemResearcher'||id==='sandgemResident'){g.say('잔모래마을 주민',['201번도로의 초원과 남쪽 해안에서 포켓몬의 생활 흔적을 살펴요.','북쪽 202번도로를 따라가면 축복시티에 도착합니다.']);return true;}
+  if(id==='sandgemCenterSign'){g.say('잔모래 포켓몬센터',['201번도로와 202번도로 사이의 회복·편성 거점입니다.','문으로 들어가 간호사와 PC를 이용하세요.']);return true;}
+  if(['sandgemResearcher','sandgemResident','sandgemLabResearcher','sandgemRoute201Record','sandgemRoute202Record','sandgemHabitatConsole'].includes(id)){
+    const owned=[...g.save.party,...g.save.box??[]],r201=owned.filter(mon=>mon.met==='신오 201번도로'),r202=owned.filter(mon=>mon.met==='신오 202번도로');
+    const names=(mons:typeof owned)=>[...new Set(mons.map(mon=>SPECIES[mon.species]?.name).filter(Boolean))].join('·')||'아직 없음';
+    const hurt=g.save.party.filter(mon=>mon.hp>0&&mon.hp<mon.maxHp).length,fainted=g.save.party.filter(mon=>mon.hp<=0).length;
+    if(id==='sandgemRoute201Record'){g.say('201번도로 낮 생태표',['Pt 낮 기록: 찌르꼬 40% · 비버니 60% · Lv.2~3',`현재 보유한 201번도로 동료 ${r201.length}마리 · ${names(r201)}`,'마른 본선으로 걸으면 풀밭 조우를 피할 수 있습니다.']);return true;}
+    if(id==='sandgemRoute202Record'){g.say('202번도로 여행 지도',['Pt 낮 기록: 비버니 50% · 찌르꼬 30% · 꼬링크 20% · Lv.2~4',`현재 보유한 202번도로 동료 ${r202.length}마리 · ${names(r202)}`,'초보 트레이너 세 명과의 선택전은 축복시티 통행 조건이 아닙니다.']);return true;}
+    if(id==='sandgemHabitatConsole'){g.say('도로 관찰 단말',[`201번도로 보유 ${r201.length}마리 · ${names(r201)}`,`202번도로 보유 ${r202.length}마리 · ${names(r202)}`,g.save.party.length?`현재 파티 ${g.save.party.length}마리 · 부상 ${hurt} · 기절 ${fainted}`:'현재 파티가 비어 있습니다. 포켓몬센터 PC에서 편성하세요.']);return true;}
+    g.say(id==='sandgemLabResearcher'?'잔모래 연구원':'잔모래마을 주민',['201번도로의 초원과 202번도로의 풀길은 사는 포켓몬의 비율이 달라요.',`현재 보유 기록: 201번도로 ${r201.length}마리 · 202번도로 ${r202.length}마리`,hurt||fainted?'동료가 지쳤다면 서쪽 포켓몬센터에서 먼저 쉬게 해 주세요.':'파티가 건강하다면 북쪽 202번도로를 따라 축복시티로 갈 수 있어요.']);return true;
+  }
   if(id==='route202Sign'){g.say('202번도로 이정표',['↓ 잔모래마을 · ↑ 축복시티','풀길과 낮은 턱을 따라 북쪽 교류 도시로 이동합니다.']);return true;}
-  if(id==='route202Walker'){g.say('202번도로 초보 트레이너',['나도 파트너와 도시까지 걷는 연습을 하고 있어요.','현재는 대화만 하며 트레이너전이나 보상을 새로 만들지 않았습니다.']);return true;}
   if(id==='route204Sign'||id==='route204Walker'){g.say('204번도로 남부 안내',['↓ 축복시티 · ↑ 험한샛길','연못과 숲 가장자리를 지나 짧은 동굴로 들어갑니다.']);return true;}
   if(id==='ravagedPathSign'||id==='ravagedPathHiker'){g.say('험한샛길 안내',['↓ 204번도로 남부 · ↑ 꽃향기마을','밝은 본선을 따라 암반 사이를 통과하세요. 선택 탐험구역은 아직 열리지 않았습니다.']);return true;}
   if(id==='floaromaSign'){g.say('꽃향기마을 이정표',['↓ 험한샛길 · 축복시티','↑ 205번도로 남부 · 영원숲']);return true;}
@@ -195,9 +264,11 @@ export function sinnohEvent(g:Engine,id:string):boolean {
   if(id==='oreburghMineForeman'){
     const species=Number(g.save.flags.oreburghMineWorkSpecies??0),done=Boolean(g.save.flags.oreburghMineWorkComplete);
     const partner=g.save.party.find(mon=>mon.species===species&&mon.hp>0),healthy=g.save.party.map((mon,index)=>({mon,index})).filter(x=>x.mon.hp>0);
-    if(done&&partner){g.say('무쇠탄갱 작업반장',[`${SPECIES[partner.species].name}와 레일 폭과 광맥 울림을 모두 확인했군요.`,'이 작업 기록은 강석 도전·콜배지·통행 조건이나 보상과 관계없습니다.']);return true;}
-    if(!healthy.length){g.say('무쇠탄갱 작업반장',['건강한 파티 동료와 오면 작업로의 안전을 함께 확인할 수 있어요.','탄갱 출입과 도시 귀환은 이 활동을 하지 않아도 자유롭습니다.']);return true;}
-    g.say('무쇠탄갱 작업반장',[partner?`${SPECIES[partner.species].name}와 작업 확인을 이어 갈 수 있어요.`:'운반 레일을 함께 살필 건강한 파티 동료를 골라 주세요.','먼저 운반 레일, 다음으로 측면 갱도 광맥을 살펴보세요.'],undefined,[...healthy.map(({mon,index})=>({label:`${SPECIES[mon.species].name} Lv.${mon.level}`,action:()=>{g.save.flags.oreburghMineWorkSpecies=mon.species;g.save.flags.oreburghMineRailChecked=false;g.save.flags.oreburghMineWorkComplete=false;g.persist();g.say('무쇠탄갱 작업반장',[`${index+1}번째 동료 ${SPECIES[mon.species].name}와 작업 확인을 시작합니다.`,'운반 레일의 빈 폭부터 살펴보세요.']);}})),{label:'다음에 돕는다',action:()=>{}}]);return true;
+    if(!g.save.flags.oreburghRoarkMineBriefed){g.save.flags.oreburghRoarkMineBriefed=true;g.persist();}
+    const roark='강석은 이곳의 작업 안전과 포켓몬 서식 구역을 확인한 뒤 동쪽 체육관으로 돌아갔습니다. 준비가 되면 도전할 수 있어요.';
+    if(done&&partner){g.say('무쇠탄갱 작업반장',[roark,`${SPECIES[partner.species].name}와 레일 폭과 광맥 울림을 모두 확인했군요.`,'이 작업 기록은 강석 도전·콜배지·통행 조건이나 보상과 관계없습니다.']);return true;}
+    if(!healthy.length){g.say('무쇠탄갱 작업반장',[roark,'건강한 파티 동료와 오면 작업로의 안전을 함께 확인할 수 있어요.','탄갱 출입과 도시 귀환은 이 활동을 하지 않아도 자유롭습니다.']);return true;}
+    g.say('무쇠탄갱 작업반장',[roark,partner?`${SPECIES[partner.species].name}와 작업 확인을 이어 갈 수 있어요.`:'운반 레일을 함께 살필 건강한 파티 동료를 골라 주세요.','먼저 운반 레일, 다음으로 측면 갱도 광맥을 살펴보세요.'],undefined,[...healthy.map(({mon,index})=>({label:`${SPECIES[mon.species].name} Lv.${mon.level}`,action:()=>{g.save.flags.oreburghMineWorkSpecies=mon.species;g.save.flags.oreburghMineRailChecked=false;g.save.flags.oreburghMineWorkComplete=false;g.persist();g.say('무쇠탄갱 작업반장',[`${index+1}번째 동료 ${SPECIES[mon.species].name}와 작업 확인을 시작합니다.`,'운반 레일의 빈 폭부터 살펴보세요.']);}})),{label:'다음에 돕는다',action:()=>{}}]);return true;
   }
   if(id==='oreburghMineRail'){
     const species=Number(g.save.flags.oreburghMineWorkSpecies??0),partner=g.save.party.find(mon=>mon.species===species&&mon.hp>0);

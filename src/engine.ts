@@ -12,6 +12,18 @@ import { handleGymCart, updateGymCart, gymCartMoving, gymCartView } from './gym-
 import { routeCompanionPages } from './encounter-guidance';
 import { hasWildEncounters } from './runtime-encounters';
 import { handleRoadTrainer,trainerWinFlag } from './road-trainers';
+import { recordCasteliaSewerPartnerBattle } from './castelia-sewer-journey';
+import { recordCelesticRoutePartnerBattle } from './sinnoh-celestic-battle';
+import { recordRoute43PartnerBattle } from './johto-route-43-battle';
+import { recordJohtoEastPartnerBattle } from './johto-east-battle';
+import { recordJohtoSouthPartnerBattle } from './johto-south-battle';
+import { recordRouteTwelvePartnerBattle } from './unova-route-twelve-journey';
+import { recordRouteElevenPartnerBattle } from './unova-route-eleven-journey';
+import { recordRouteNinePartnerBattle } from './unova-route-nine-journey';
+import { recordRouteEightPartnerBattle } from './unova-route-eight-journey';
+import { recordRoute203PartnerBattle } from './sinnoh-route203-journey';
+import { recordOreburghGatePartnerBattle } from './oreburgh-gate-journey';
+import { recordRoute20PartnerBattle } from './route20-homeward-battle';
 import { PASSAGES } from './journey-world';
 import { handleCityActivity } from './city-activities';
 import { showMoveSchool } from './move-school';
@@ -89,8 +101,9 @@ export class Engine {
   fieldMap=false;followingObjective=false;
   tourDestination:MapId|null=null;
   tourEvent:string|null=null;
+  tourNpcId:string|undefined;
   toggleFieldMap(){if(this.locked||this.deferFieldAction('map'))return;this.clearInput();this.fieldMap=!this.fieldMap;}
-  guideObjective(){if(this.locked||this.move)return;this.clearInput();this.followingObjective=true;this.tourEvent=null;this.fieldMap=true;this.navigationCache=null;}
+  guideObjective(){if(this.locked||this.move)return;this.clearInput();this.followingObjective=true;this.tourEvent=null;this.tourNpcId=undefined;this.fieldMap=true;this.navigationCache=null;}
   private navigationCache:{key:string;value:TourNavigation|null}|null=null;
   private roamingState:TownRoaming|null=null;
   private roamingSave:SaveData|null=null;
@@ -100,7 +113,7 @@ export class Engine {
     if(this.roamingSave!==this.save||this.roamingState?.base.id!==this.save.map){this.roamingState=new TownRoaming(getMap(this.save.map,this.save.flags),home,this.save.player);this.roamingSave=this.save;}
     return this.roamingState;
   }
-  setTourDestination(id:string|null,event?:string){if(id!==null&&!Object.hasOwn(ACTIVE_MAPS,id))return;this.followingObjective=false;this.tourEvent=event??null;this.tourDestination=id as MapId|null;if(id)this.fieldMap=true;this.navigationCache=null;}
+  setTourDestination(id:string|null,event?:string,npcId?:string){if(id!==null&&!Object.hasOwn(ACTIVE_MAPS,id))return;this.followingObjective=false;this.tourNpcId=npcId;this.tourEvent=event??null;this.tourDestination=id as MapId|null;if(id)this.fieldMap=true;this.navigationCache=null;}
   get tourNavigation(){
     const objective=this.followingObjective?adventureGuide(this.save)?.objective:null;
     if(this.followingObjective)this.tourDestination=objective?.map??null;
@@ -109,8 +122,8 @@ export class Engine {
     // Scripted residents can move without changing flags or the player's tile.
     // Re-plan only when their collision cells or reserved approach cells change.
     const occupancy=[map.npcs.map(n=>[n.id,n.x,n.y,n.dialogue]),map.reserved??[]];
-    const key=JSON.stringify([this.save.map,this.save.player.x,this.save.player.y,this.tourDestination,objective?.event??this.tourEvent,objective?.point,this.save.flags,this.roaming?.revision,this.roaming?.npc.x,this.roaming?.npc.y,occupancy]);
-    if(this.navigationCache?.key!==key)this.navigationCache={key,value:planTourNavigation(this.save,this.tourDestination,map,objective?.event??this.tourEvent??undefined,objective?.point)};
+    const key=JSON.stringify([this.save.map,this.save.player.x,this.save.player.y,this.tourDestination,objective?.event??this.tourEvent,objective?.point,this.followingObjective?undefined:this.tourNpcId,this.save.flags,this.roaming?.revision,this.roaming?.npc.x,this.roaming?.npc.y,occupancy]);
+    if(this.navigationCache?.key!==key)this.navigationCache={key,value:planTourNavigation(this.save,this.tourDestination,map,objective?.event??this.tourEvent??undefined,objective?.point,this.followingObjective?undefined:this.tourNpcId)};
     return this.navigationCache.value;
   }
   get map(){return applyMahoganyPower(applySeafoamBoulder(applyMortarRescue(applyCinnabarEvacuation(this.roaming?.map??getMap(this.save.map,this.save.flags),this.save.flags),this.save.flags),this.save.flags),this.save.flags,mahoganyPowerPosition(this))}
@@ -231,7 +244,7 @@ export class Engine {
   chooseStarter(){const species=STARTERS[this.starterIndex],name=SPECIES[species].name;this.say('은솔박사',[`${name}! 이 포켓몬을\n너의 첫 파트너로 선택하겠니?`],undefined,[{label:'예',action:()=>{this.receive(species)}},{label:'아니요',action:()=>{this.panel='starters'}}]);}
   receive(species:number){this.panel='field';if(!grantPokemon(this.save,species)){this.say('',['이미 함께하고 있는 친구입니다.']);return}this.audio.play('receive');this.persist();const name=SPECIES[species].name;this.say('',[`${withParticle(name,'과/와')} 친구가 되었다!`,`${withParticle(name,'이/가')} 파티에 등록되었다!\nX → 포켓몬에서 확인할 수 있다.`],()=>{if(species===25)this.say('연구원',['정말 고마워! 서두르지 말고\n이 친구의 마음을 알아가 줘.\n엄마에게도 소개하고 오렴.']);else this.say('은솔박사',['이제 너도 포켓몬 트레이너로구나!\n엄마에게 첫 파트너를 소개하고 오렴.'])});}
   assistant(){if(this.save.flags.pikachuReceived){this.say('연구원',['피카츄가 널 조금씩 믿는 것 같아.\n이 친구를 맡아 줘서 고마워!']);return}const count=Math.min(4,Number(this.save.flags.assistantTalks??0)+1);this.save.flags.assistantTalks=count;this.persist();if(count===1)this.say('연구원',['말을 안 듣는 포켓몬이 있어\n고민이야…']);else if(count===2)this.say('연구원',['이 녀석을 데려갈 트레이너가\n없으려나…']);else if(count===3)this.say('연구원',['…','피카츄도 사실은\n친구가 필요한 걸지도 모르겠어.']);else this.say('연구원',['네가 혹시 이 친구를\n데려가 주겠니?'],undefined,[{label:'피카츄를 데려간다',action:()=>this.receive(25)},{label:'조금 더 생각한다',action:()=>this.say('연구원',['괜찮아. 마음이 바뀌면\n다시 이야기해 줘.'])}]);}
-  restore(save:SaveData){cancelSeafoamBoulderPush(this);cancelCinnabarEvacuationMotion(this);cancelFerryJourney(this);const canonical=worldMapId(save.map);if(canonical!==save.map)save={...save,map:canonical,player:{...worldSpawn(canonical)!,facing:'down'},healingPoint:worldMapId(save.healingPoint)};if(save.flags.exploration){save={...structuredClone(this.save),map:save.map,player:{...save.player},tourVisited:[...new Set([...(this.save.tourVisited??[]),...(save.tourVisited??[])])]};}save={...save,flags:{...save.flags}};delete save.flags.exploration;this.save=checkpoint(save);this.tourEvent=null;this.caughtPreview=null;this.caughtBoxPreview=null;this.gymReward=null;this.confirmingBattleExit=false;this.defeatScene=null;this.recoveryPreview=false;this.battle=null;this.battleFrames=null;this.gymPreview=null;this.grassSteps=0;this.clearInput();this.move=null;this.transition=0;this.transitionWarp=null;this.dialogue=null;this.dialogueElapsed=0;this.panel='field';this.menuIndex=0;this.partyIndex=0;this.bagIndex=1;this.starterIndex=0;this.optionIndex=0;this.stepPhase=0;this.labelTime=2.6;this.toastTime=0;if(this.save.party.length&&this.save.party.every(p=>p.hp===0))this.returnHome();this.persist();}
+  restore(save:SaveData){cancelSeafoamBoulderPush(this);cancelCinnabarEvacuationMotion(this);cancelFerryJourney(this);const canonical=worldMapId(save.map);if(canonical!==save.map)save={...save,map:canonical,player:{...worldSpawn(canonical)!,facing:'down'},healingPoint:worldMapId(save.healingPoint)};if(save.flags.exploration){save={...structuredClone(this.save),map:save.map,player:{...save.player},tourVisited:[...new Set([...(this.save.tourVisited??[]),...(save.tourVisited??[])])]};}save={...save,flags:{...save.flags}};delete save.flags.exploration;this.save=checkpoint(save);this.tourEvent=null;this.tourNpcId=undefined;this.caughtPreview=null;this.caughtBoxPreview=null;this.gymReward=null;this.confirmingBattleExit=false;this.defeatScene=null;this.recoveryPreview=false;this.battle=null;this.battleFrames=null;this.gymPreview=null;this.grassSteps=0;this.clearInput();this.move=null;this.transition=0;this.transitionWarp=null;this.dialogue=null;this.dialogueElapsed=0;this.panel='field';this.menuIndex=0;this.partyIndex=0;this.bagIndex=1;this.starterIndex=0;this.optionIndex=0;this.stepPhase=0;this.labelTime=2.6;this.toastTime=0;if(this.save.party.length&&this.save.party.every(p=>p.hp===0))this.returnHome();this.persist();}
 
   healParty(){for(const p of this.save.party)p.hp=p.maxHp}
   returnHome(){cancelSeafoamBoulderPush(this);cancelCinnabarEvacuationMotion(this);cancelFerryJourney(this);this.defeatScene=null;this.recoveryPreview=false;this.battleFrames=null;this.battle=null;this.grassSteps=0;this.clearInput();this.move=null;this.transition=0;this.transitionWarp=null;this.save.map=worldMapId(this.save.healingPoint);this.save.healingPoint=this.save.map;this.save.player=this.save.map==='home'?{x:4,y:5,facing:'up'}:{...(worldSpawn(this.save.map)??{x:8,y:10}),facing:'up'};this.panel='field';this.healParty();this.labelTime=2.6;this.persist()}
@@ -325,6 +338,18 @@ export class Engine {
     this.clearInput();const turn=battleTurn(this.save,b,action,this.random);if(b.forcedSwitch)b.menu='party';else if(b.betweenOpponents&&!turn.retry){b.menu='between';b.selected=0;}else if(!turn.retry){b.menu='actions';b.selected=0;}
     collectGrowthLearning(this,b,turn.frames);
     recordSpecialBattleResult(this.save,b,turn.outcome);
+    recordCasteliaSewerPartnerBattle(this.save,b,turn.outcome);
+    recordCelesticRoutePartnerBattle(this.save,b,turn.outcome);
+    recordRoute43PartnerBattle(this.save,b,turn.outcome);
+    recordJohtoEastPartnerBattle(this.save,b,turn.outcome);
+    recordJohtoSouthPartnerBattle(this.save,b,turn.outcome);
+    recordRouteTwelvePartnerBattle(this.save,b,turn.outcome);
+    recordRouteElevenPartnerBattle(this.save,b,turn.outcome);
+    recordRouteNinePartnerBattle(this.save,b,turn.outcome);
+    recordRouteEightPartnerBattle(this.save,b,turn.outcome);
+    recordRoute203PartnerBattle(this.save,b,turn.outcome);
+    recordOreburghGatePartnerBattle(this.save,b,turn.outcome);
+    recordRoute20PartnerBattle(this.save,b,turn.outcome);
     this.battleFanfare=turn.outcome==='caught'?'catch':turn.outcome==='won'?'victory':null;
     if(turn.outcome==='lost'){
       // Commit a safe, healed checkpoint now; the remaining defeat scene is display only.

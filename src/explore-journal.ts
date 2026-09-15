@@ -1,6 +1,23 @@
-import { PLACES,TOUR_MAPS,TOUR_INTERIORS,tourPlaceForMap,type TourId } from './explore-world';
-import { PASSAGES } from './journey-world';
+import { PLACES,placeById,TOUR_MAPS,TOUR_INTERIORS,tourPlaceForMap,type TourId } from './explore-world';
+import { PASSAGE_PLACES } from './journey-world';
 import type { SaveData } from './types';
+
+export function journalPlaces(){
+  const extras=['tour_celestic','tour_castelia_sewers','tour_castelia_park'].map(placeById).filter((p):p is NonNullable<typeof p>=>Boolean(p));
+  return [...new Map([...PLACES,...extras].map(p=>[p.id,p])).values()];
+}
+
+/** Routes and cave floors keep their own visited identity instead of masquerading as towns. */
+export function journalPassages(region:string){
+  const towns=new Set(PLACES.map(place=>place.id));
+  const kantoSouth=['tour_kanto_route_19','tour_kanto_route_20','tour_kanto_seafoam_exterior','tour_kanto_seafoam_1f','tour_kanto_seafoam_b1f','tour_kanto_seafoam_b2f','tour_kanto_seafoam_b3f','tour_kanto_seafoam_b4f'];
+  const order=region==='관동'?new Map(kantoSouth.map((id,index)=>[id,index])):new Map<string,number>();
+  return Object.values(PASSAGE_PLACES)
+    .filter(place=>place.region===region&&!towns.has(place.id)&&Object.hasOwn(TOUR_MAPS,place.id))
+    .map((place,index)=>({place,index,journey:order.get(place.id)}))
+    .sort((a,b)=>(a.journey??Number.MAX_SAFE_INTEGER)-(b.journey??Number.MAX_SAFE_INTEGER)||a.index-b.index)
+    .map(entry=>entry.place);
+}
 
 export function validTourVisits(value:unknown):value is TourId[]{
   return Array.isArray(value)&&value.length<=Object.keys(TOUR_MAPS).length&&new Set(value).size===value.length&&value.every(id=>typeof id==='string'&&Object.hasOwn(TOUR_MAPS,id));
@@ -20,8 +37,9 @@ export function markTourVisit(save:SaveData){
 }
 
 export function tourVisitSummary(save:SaveData,region:string){
-  const visited=new Set(save.tourVisited??[]),places=PLACES.filter(p=>p.region===region);
-  return {outdoors:PLACES.filter(p=>visited.has(p.id)).length,interiors:[...visited].filter(id=>Object.hasOwn(TOUR_INTERIORS,id)).length,
-    passages:[...visited].filter(id=>Object.hasOwn(PASSAGES,id)).length,interiorTotal:Object.keys(TOUR_INTERIORS).length,passageTotal:Object.keys(PASSAGES).length,
+  const visited=new Set(save.tourVisited??[]),places=journalPlaces().filter(p=>p.region===region);
+  const passages=journalPassages(region);
+  return {outdoors:places.filter(p=>visited.has(p.id)).length,interiors:[...visited].filter(id=>Object.hasOwn(TOUR_INTERIORS,id)).length,
+    passages:passages.filter(p=>visited.has(p.id)).length,interiorTotal:Object.keys(TOUR_INTERIORS).length,passageTotal:passages.length,
     regionVisited:places.filter(p=>visited.has(p.id)).length,regionTotal:places.length};
 }

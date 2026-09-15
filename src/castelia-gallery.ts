@@ -4,6 +4,9 @@ import { SPECIES } from './pokemon';
 import { TOUR_OUTDOORS } from './explore-world';
 import { encounterGuidance } from './encounter-guidance';
 import { handleCasteliaFieldIntro } from './castelia-field-intro';
+import { handleCasteliaOriginalWitness } from './castelia-original-comparison';
+import { handleCasteliaSewerJourney } from './castelia-sewer-journey';
+import { handleCasteliaRouteFourDeparture } from './castelia-route-four-departure';
 
 const CITY='tour_castelia',HALL='tour_castelia_hall';
 const DISPLAY='casteliaGalleryDisplay';
@@ -22,6 +25,9 @@ export function casteliaChosenSketch(flags:SaveData['flags']):string|undefined{
 
 /** Optional sketches record an observed view and species, not a quest or capture. */
 export function handleCasteliaGallery(g:Engine,event:string):boolean{
+  if(handleCasteliaRouteFourDeparture(g,event))return true;
+  if(handleCasteliaSewerJourney(g,event))return true;
+  if(handleCasteliaOriginalWitness(g,event))return true;
   if(handleCasteliaFieldIntro(g,event))return true;
   const s=g.save,map=s.map;
   if(map!==CITY&&map!==HALL)return false;

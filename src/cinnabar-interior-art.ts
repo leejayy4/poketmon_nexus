@@ -22,11 +22,11 @@ export function paintCinnabarLabFloor(c:CanvasRenderingContext2D,map:GameMap){
   // Floor inlays indicate public activities without adding a wall or locking a door.
   for(let y=3;y<map.height-2;y++)for(let x=2;x<map.width-2;x++){
     if(map.walkable[y]?.[x]!=='.')continue;
-    c.fillStyle=x<7?'#bca387':x>9?'#87aaa7':'#bbc8b8';
+    c.fillStyle=x<Math.floor(map.width/3)?'#bca387':x>Math.floor(map.width*2/3)?'#87aaa7':'#bbc8b8';
     c.fillRect(x*16+1,y*16+14,14,1);
   }
   const painted=new Set<string>();
-  for(const start of [{x:6,y:6},{x:10,y:6},{x:6,y:10}]){
+  for(const start of [{x:7,y:11},{x:21,y:11},{x:7,y:17}]){
     let point=start;
     for(let step=0;step<map.width*map.height;step++){
       const k=key(point.x,point.y),next=toward.get(k);
