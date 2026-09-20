@@ -31,7 +31,7 @@ export function handleRouteFourNexus(g:Engine,event:string):boolean{
 
 export function handleNimbasaNexus(g:Engine,event:string):boolean{
   if(g.save.map!=='tour_nimbasa'||!prerequisite(g))return false;
-  const f=NIMBASA_NEXUS,{save,guide,commit}=scene(g);
+  const f=NIMBASA_NEXUS,{save,active,guide,commit}=scene(g);
   if(event==='tourResident0'&&save.flags[f.route]&&!save.flags[f.arrival]){
     commit(f.arrival,['조인애버뉴 여행자: 4번도로의 단단한 본선 덕분에 모래를 피해 왔어요. 동쪽 사암 쪽은 돌아보지 않아도 도시로 올 수 있었고요.','통행의 이익은 확인했다. 이제 도시 불빛이 사람과 포켓몬에게 똑같이 편리한지 조명 점검원에게 물어보자.'],'tour_nimbasa','tourResident4');return true;
   }

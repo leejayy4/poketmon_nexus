@@ -1,6 +1,7 @@
 import type { Pokemon, SaveData } from './types';
 import { RUNTIME_DATABASE, RUNTIME_SPECIES_DATA, RUNTIME_MOVE_DATA } from './data/runtime';
 import { RUNTIME_RULES } from './data/rules';
+import { resetSlotPp, validPokemonPp } from './move-pp';
 export const SPECIES: Record<number, { name: string; genus: string; types: string[]; color: string; description: string; moves: string[]; hp: number }> = {
   406:{name:'꼬몽울',genus:'관장 파트너',types:['풀'],color:'#8796a2',description:'체육관에서 만나는 파트너.',moves:['흡수','방어'],hp:30},
   420:{name:'체리버',genus:'관장 파트너',types:['풀'],color:'#8796a2',description:'체육관에서 만나는 파트너.',moves:['몸통박치기','방어'],hp:30},
@@ -25,7 +26,7 @@ export const RUNTIME_SPECIES=RUNTIME_SPECIES_DATA;
 export const MOVE_RULES=RUNTIME_MOVE_DATA;
 export const BOX_CAPACITY=RUNTIME_RULES.boxCapacity;
 export const MOVE_CAPACITY=RUNTIME_RULES.moveCapacity;
-export function pokemonSnapshot(p:Pokemon):Pokemon{return {...p,...(p.moves?{moves:[...p.moves]}:{})};}
+export function pokemonSnapshot(p:Pokemon):Pokemon{return {...p,...(p.moves?{moves:[...p.moves]}:{}),...(p.pp?{pp:[...p.pp]}:{})};}
 for(const [key,data] of Object.entries(RUNTIME_SPECIES)){
   const id=Number(key),old=SPECIES[id];
   SPECIES[id]={name:data.name,genus:old?.genus??'여행의 동료',types:data.types,color:old?.color??'#8796a2',description:old?.description??'여행 중 만난 포켓몬.\n함께 싸우고 성장하는 동료다.',hp:old?.hp??({2:57,5:56,8:57}[id]??12+Math.floor(data.stats.hp/12)),moves:old?.moves??['발버둥','튀어오르기']};
@@ -59,6 +60,7 @@ export function availableMoves(p:Pokemon,save?:SaveData):string[]{
   return [...new Set([...levelMoves(p),...pokemonMoves(p),...tm])];
 }
 export function validPokemonMoves(p:Pokemon,keyItems:string[]):boolean{
+  if(!validPokemonPp(p,pokemonMoves(p)))return false;
   if(p.moves===undefined)return true;
   if(!Array.isArray(p.moves)||p.moves.length<1||p.moves.length>MOVE_CAPACITY||p.moves.some(m=>typeof m!=='string'||!MOVE_RULES[m]))return false;
   // Legacy two-slot defaults can repeat the only available move.
@@ -72,7 +74,7 @@ export function teachMove(save:SaveData,index:number,move:string,slot:number):bo
   const p=save.party[index];
   if(!Number.isInteger(index)||!p||!Number.isInteger(slot)||slot<0||slot>=MOVE_CAPACITY||!availableMoves(p,save).includes(move))return false;
   const moves=pokemonMoves(p);if(slot>moves.length||moves.includes(move))return false;
-  moves[slot]=move;p.moves=moves;return true;
+  moves[slot]=move;p.moves=moves;resetSlotPp(p,moves,slot);return true;
 }
 export function recordSeen(save:SaveData,species:number,caught=false){
   save.pokedex??={seen:[],caught:[]};

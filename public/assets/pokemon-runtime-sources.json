@@ -4,7 +4,7 @@
   "sources": [
     {
       "file": "scripts/design/runtime-local-pools.json",
-      "sha256": "fafec8710bbacde2d76705113cf6cf9c91ae1817eedd63bf305b43acc7f8faa7"
+      "sha256": "854416b02b11185a81bdfe3fd8ec2c37be862c98e2523c6269bb765c458d9a47"
     },
     {
       "file": "pokemon_moves.csv",

@@ -23,7 +23,7 @@ export function handleGoldenrodNexus(g:Engine,event:string,ordinary:()=>void):bo
   if(!station&&!save.flags[GOLDENROD_IAN_BRIEFED])return false;
   const token={},player=save.player,x=player.x,y=player.y;sessions.set(g,token);
   const current=()=>g.save===save&&save.player===player&&save.map===map&&save.player.x===x&&save.player.y===y&&!g.battle&&sessions.get(g)===token&&Boolean(save.flags.nexusCinnabarIanContactConfirmed);
-  const guide=(target:typeof map,id:string)=>()=>{if(current())g.setTourDestination(target,id);};
+  const guide=(target:string,id:string)=>()=>{if(current())g.setTourDestination(target,id);};
   const publicActivity=()=>{if(current()){sessions.delete(g);ordinary();}};
   const record=(flag:string,pages:string[],next:()=>void)=>{
     if(!current())return;

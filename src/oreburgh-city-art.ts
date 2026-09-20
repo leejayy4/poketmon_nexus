@@ -1,4 +1,4 @@
-import type { MapData } from './types';
+import type { GameMap } from './types';
 import type { TourBuilding } from './explore-world';
 
 const rect=(c:CanvasRenderingContext2D,x:number,y:number,w:number,h:number,color:string)=>{c.fillStyle=color;c.fillRect(x,y,w,h)};
@@ -22,7 +22,7 @@ export function paintOreburghBuilding(c:CanvasRenderingContext2D,b:TourBuilding)
   return false;
 }
 
-export function paintOreburghCityDetails(c:CanvasRenderingContext2D,map:MapData){
+export function paintOreburghCityDetails(c:CanvasRenderingContext2D,map:GameMap){
   if(map.id!=='tour_oreburgh')return;
   const arrow=(x:number,y:number,dir:'left'|'up'|'down',text:string)=>{
     const px=x*16,py=y*16;rect(c,px-2,py-2,52,13,'#59666a');c.save();c.fillStyle='#e6d89e';c.beginPath();

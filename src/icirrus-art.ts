@@ -85,7 +85,7 @@ export function paintIcirrusTownDetails(c:CanvasRenderingContext2D,map?:GameMap)
   }
   // The pond-side bank connects the low southern street to the northern dry approach.
   if(map){const r=ICIRRUS_POND_BANK;
-    for(let y=r.y;y<r.y+r.h;y++)for(let x=r.x;x<r.x+r.w;x++){
+    for(let y:number=r.y;y<r.y+r.h;y++)for(let x:number=r.x;x<r.x+r.w;x++){
       if(map.walkable[y]?.[x]!=='.')continue;
       box(c,t(x),t(y),16,16,'#b5b7a0');
       if(y===12||y===13)for(const offset of [3,8,13]){

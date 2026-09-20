@@ -1,5 +1,5 @@
 import { leadPokemon } from './team';
-import { trainerWinFlag } from './road-trainers';
+import { trainerWinFlag } from './trainer-flags';
 import { CASTELIA_HOMES as HOMES } from './castelia-home-data';
 import type { GameMap,MapId } from './types';
 import type { TourInterior } from './explore-interiors';

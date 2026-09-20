@@ -22,6 +22,7 @@ const FANFARES:Record<Fanfare,{notes:readonly number[];step:number}> = {
   evolution:{notes:[60,64,67,71,72,76,79,0,77,76,72],step:.16},
 };
 const MOVE_SOUNDS:Record<MoveStyle,readonly [number,number,number,OscillatorType]> = {
+  ice:[880,560,4,'sine'],
   fire:[185,420,5,'triangle'],water:[460,240,7,'sine'],vine:[210,510,3,'triangle'],
   leaf:[680,380,5,'triangle'],absorb:[240,660,6,'sine'],electric:[740,260,7,'triangle'],
   rock:[180,85,4,'triangle'],ghost:[270,160,5,'sine'],lick:[330,160,3,'sine'],

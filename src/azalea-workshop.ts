@@ -12,7 +12,7 @@ export function handleAzaleaWorkshop(g:Engine,event:string):boolean{
   if(!yard&&!desk&&!shelf&&!rest)return false;
   const token={},player=save.player,x=player.x,y=player.y;sessions.set(g,token);
   const active=()=>g.save===save&&save.player===player&&save.map===map&&player.x===x&&player.y===y&&!g.battle&&sessions.get(g)===token;
-  const guide=(target:typeof map,id?:string)=>()=>{if(active())g.setTourDestination(target,id);};
+  const guide=(target:string,id?:string)=>()=>{if(active())g.setTourDestination(target,id);};
   const done=(flag:string,text:string)=>{if(!active())return;if(!save.flags[flag]){save.flags[flag]=true;g.persist();}g.say('공방 작업',[text]);};
   const choose=(work:(mon:typeof save.party[number],valid:()=>boolean)=>void,page=0)=>{
     if(!active())return;

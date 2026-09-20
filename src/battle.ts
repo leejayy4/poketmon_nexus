@@ -1,6 +1,7 @@
 import { POKE_BALL, POTION } from './data/items';
 import type { Pokemon, SaveData } from './types';
 import { SPECIES, pokemonMoves, pokemonSnapshot, MOVE_RULES, RUNTIME_SPECIES, BOX_CAPACITY, recordSeen, isDamagingMove } from './pokemon';
+import { STRUGGLE, anyUsablePp, spendPp, usablePp } from './move-pp';
 import { RUNTIME_DATA as DATA } from './data/runtime';
 import { wildPokemon } from './runtime-encounters';
 import { evolveAtLevelCap, gainExperience, LEVEL_CAP, minimumLevel, maxHpAtLevel, type GrowthStep } from './growth';
@@ -277,15 +278,25 @@ export function battleTurn(save:SaveData,b:Battle,action:BattleAction,random:()=
     if(index===b.active)frames[frames.length-1].effect={target:'player',kind:'heal',amount:healed};
   } else {
     const slot=typeof action==='string'&&/^move[0-3]$/.test(action)?Number(action.slice(4)):-1;
-    const move=pokemonMoves(active)[slot];
-    if(!move)return rejectAction('기억하고 있는 기술을 선택하자.');
+    const known=pokemonMoves(active);
+    const selected=known[slot];
+    if(!selected)return rejectAction('기억하고 있는 기술을 선택하자.');
+    // Out of PP on this move: refuse while another move can still act, and fall
+    // back to Struggle only once every move is empty, as the series does.
+    const exhausted=!usablePp(active,known,slot);
+    if(exhausted&&anyUsablePp(active,known))return rejectAction(`${selected}의 PP가 남아 있지 않다.\n다른 기술을 선택하자.`);
+    const move=exhausted?STRUGGLE:selected;
     b.betweenOpponents=false;
     b.moveSelections[b.active]=slot;
     plannedFoeMove=enemyMove(b,active);
     if(!playerActsFirst(active,b.enemy,move,plannedFoeMove,random)){
       const result=takeEnemyTurn(plannedFoeMove);if(result)return result;
     }
+    // Charged only once the move actually reaches the field: a companion that
+    // faints, or a battle that ends, before acting keeps its PP, as the series does.
+    if(!exhausted)spendPp(active,known,slot);
     const rule=MOVE_RULES[move]?.rule;
+    if(exhausted)show(`${withParticle(name,'은/는')} 쓸 수 있는 기술이 없다!`);
     show(`${name}의 ${move}!`);
     frames[frames.length-1].technique={move,target:['defenseUp','protect','escape','nothing'].includes(rule??'')?'player':'enemy'};
     if(rule!=='protect')b.protectStreak=0;

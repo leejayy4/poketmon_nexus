@@ -2,7 +2,8 @@ import type {Engine} from './engine';
 import {SPECIES} from './pokemon';
 import {leadPokemon} from './team';
 import {showMoveSchool} from './move-school';
-import {handleRoadTrainer,trainerWinFlag} from './road-trainers';
+import {handleRoadTrainer} from './road-trainers';
+import { trainerWinFlag } from './trainer-flags';
 import {JOHTO_SOUTH_BATTLE,canRetryJohtoSouthPartnerBattle} from './johto-south-battle';
 
 export const ROUTE46_PRACTICE='johtoRoute46Practice';

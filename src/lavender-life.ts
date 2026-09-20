@@ -1,7 +1,7 @@
 import type { Engine } from './engine';
 import { SPECIES } from './pokemon';
 import { KANTO_ROUTE_NINE,KANTO_ROCK_TUNNEL_1F,KANTO_ROCK_TUNNEL_B1F,KANTO_ROUTE_TEN_SOUTH } from './kanto-lavender-approach';
-import { trainerWinFlag } from './road-trainers';
+import { trainerWinFlag } from './trainer-flags';
 import { KANTO_ROUTE_TWELVE } from './kanto-fuchsia-east';
 
 const LAVENDER_MAPS=new Set(['tour_lavender','tour_lavender_center','tour_lavender_hall','tour_lavender_hall_2f','tour_lavender_hall_3f','tour_lavender_mart','tour_lavender_home1','tour_lavender_home2']);

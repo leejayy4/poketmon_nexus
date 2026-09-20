@@ -4,6 +4,12 @@
 
 작업 우선순위는 [지방별 구현 지시](../REGIONAL_IMPLEMENTATION_DIRECTIVES.md), 현재 담당과 재개 지점은 [CONTINUE_STATE](../CONTINUE_STATE.md)를 따른다. 아래 링크는 변경 근거이며 QA 재개 지시가 아니다.
 
+| 묶음 | 기록 |
+| --- | --- |
+| 전체 구현도 평가·참고 사이트 대조·컴파일 복구 | [넥서스 구현도 평가 2026-09-20](nexus-implementation-review-20260920.md) |
+| 모듈 순환 해소·PP 소모 시점·무쇠탄갱 생태 | [순환 해소와 무쇠탄갱 2026-09-20](nexus-cycle-and-oreburgh-20260920.md) |
+| 장기 Goal 등록·장별 현황 조회·서사 v3 보완·문서 정리 | [스토리 기준 Goal 등록 2026-09-20](story-axis-goal-20260920.md) |
+
 | 묶음 | 통합 기록 | 지방별 세부 기록 |
 | --- | --- | --- |
 | 기존 맵 지형·표시 보수 | [중앙 통합](regional-map-repair-20260913.md) | [신오](sinnoh-celestic-map-repair-20260913.md) · [관동](kanto-map-repair-20260913.md) · [성도](cherrygrove-repair-20260913.md) · [하나](unova-wetland-repair-20260913.md) |

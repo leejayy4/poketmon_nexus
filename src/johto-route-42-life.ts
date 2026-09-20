@@ -1,6 +1,7 @@
 import type { Engine } from './engine';
 import type { Pokemon } from './types';
-import {SPECIES,pokemonMoves} from './pokemon';
+import {SPECIES,pokemonMoves,MOVE_RULES} from './pokemon';
+import { RUNTIME_DATABASE } from './data/runtime';
 import {createSpecialBattle,createTrainerBattle,specialBattleResultFlag} from './battle';
 import {maxHpAtLevel} from './growth';
 import {showTrainerPreparation} from './trainer-preparation';
@@ -59,7 +60,8 @@ export function handleJohtoRoute42Life(g:Engine,event:string,skipStory=false):bo
       {label:'42번도로를 더 걷는다',action:()=>{}},
     ];
     if(save.flags[SPEAROW_DONE]){
-      const species=Number(save.flags.nexusRoute42FieldSpecies??0),move=String(save.flags.nexusRoute42FieldMove??'기술');
+      const species=Number(save.flags.nexusRoute42FieldSpecies??0);
+      const move=RUNTIME_DATABASE.moves.get(Number(save.flags.nexusRoute42FieldMove??0))?.name??'기술';
       const caught=save.flags[specialBattleResultFlag(SPEAROW_ENCOUNTER,'caught')]===true;
       const won=save.flags[specialBattleResultFlag(SPEAROW_ENCOUNTER,'won')]===true,resolved=caught||won;
       const startEncounter=()=>{if(!active()||resolved)return;const battle=createSpecialBattle(save,{eventId:SPEAROW_ENCOUNTER,species:21,level:16,met:'성도 42번도로',allowCapture:true});if(!battle){g.say('기슭의 깨비참',['싸울 수 있는 동료와 몬스터볼을 준비해 다시 오자. 포획하지 않아도 길은 열린다.']);return;}g.battle=battle;sessions.delete(g);g.persist();};
@@ -71,7 +73,7 @@ export function handleJohtoRoute42Life(g:Engine,event:string,skipStory=false):bo
       const moves=(mon.moves?.length?mon.moves:SPECIES[mon.species]?.moves??[]).slice(0,4);
       g.say('동료의 기술 고르기',[`${SPECIES[mon.species].name}이 알고 있는 기술 가운데 하나를 세기를 낮춰 보여 주자.`,'깨비참과 싸우거나 붙잡는 행동이 아니다. 기술의 방향을 보고 젖은 돌에서 물러날 틈을 만든다.'],undefined,[...moves.map(move=>({label:move,action:()=>{
         if(!active()||!save.party.includes(mon)||mon.hp<=0)return;
-        save.flags[SPEAROW_DONE]=true;save.flags.nexusRoute42FieldSpecies=mon.species;save.flags.nexusRoute42FieldMove=move;g.persist();
+        save.flags[SPEAROW_DONE]=true;save.flags.nexusRoute42FieldSpecies=mon.species;save.flags.nexusRoute42FieldMove=MOVE_RULES[move]?.id??0;g.persist();
         g.say('나무 위로 돌아간 깨비참',[`${SPECIES[mon.species].name}이 ${move}의 세기를 낮춰 마른 쪽을 보여 주었다.`,'깨비참은 젖은 돌을 피해 규토리나무 가지로 올라갔다. 동료의 HP·경험치·능력치와 깨비참의 포획 상태는 변하지 않는다.','서쪽은 인주, 동쪽은 황토다. 황토센터에서 동료를 돌보거나 산기슭 주택에서 쉬어 갈 수 있다.'],undefined,returnChoices());
       }})),{label:'다른 동료를 고른다',action:()=>choosePartner()},{label:'그대로 지나간다',action:()=>{}}]);
     };

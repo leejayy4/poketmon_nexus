@@ -2,7 +2,7 @@
   "referenceCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
   "learnsetVersion": "platinum",
   "timePolicy": "day-only",
-  "limits": "Up to four selected moves; direct damage ignores secondary effects, accuracy and PP. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. First starter, complete Caterpie/Weedle level evolution lines and Pidove level-21 evolutions enabled. Eevee, Skitty, Pidove, Tranquill, Petilil, Karrablast and Shelmet use Black 2/White 2 acquisition. Only Pidove to Tranquill is enabled among these evolution lines.",
+  "limits": "Up to four selected moves; direct damage ignores secondary effects and accuracy. Each move carries its pinned PP; the player party consumes it and Pokemon Center rest restores it, while opposing Pokemon are not PP limited. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. First starter, complete Caterpie/Weedle level evolution lines and Pidove level-21 evolutions enabled. Eevee, Skitty, Pidove, Tranquill, Petilil, Karrablast and Shelmet use Black 2/White 2 acquisition. Only Pidove to Tranquill is enabled among these evolution lines.",
   "pools": [
     {
       "id": "ENC-001",
@@ -462,6 +462,54 @@
         "version": "platinum",
         "checked": "2026-09-15",
         "policy": "Pokemon Platinum Oreburgh Gate 1F standard cave encounters: Zubat 50% levels 5-8, Psyduck 35% levels 5-7, Geodude 15% levels 5 and 7. B1F, Surf, fishing, items and Rock Smash progression are excluded."
+      }
+    },
+    {
+      "id": "LOCAL-S-OREBURGH-MINE-PT",
+      "node": "S-OREBURGH-MINE-PT",
+      "levels": [
+        5,
+        9
+      ],
+      "method": "walk",
+      "condition": "always",
+      "slots": [
+        {
+          "speciesId": 74,
+          "weight": 65,
+          "levelChoices": [
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "speciesId": 41,
+          "weight": 25,
+          "levelChoices": [
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "speciesId": 95,
+          "weight": 10,
+          "levelChoices": [
+            6,
+            7,
+            8,
+            9
+          ]
+        }
+      ],
+      "source": {
+        "file": "https://bulbapedia.bulbagarden.net/wiki/Oreburgh_Mine",
+        "crossCheck": "https://www.serebii.net/pokearth/sinnoh/4th/oreburghmine.shtml",
+        "version": "platinum",
+        "checked": "2026-09-20",
+        "policy": "Pokemon Platinum Oreburgh Mine upper explorable floor: Geodude 65% levels 5-8, Zubat 25% levels 5-7, Onix 10% levels 6-9, taken from Serebii Pokearth 1F which Bulbapedia labels B1F. The project has a single mine floor, so the deeper floor roster, Rock Smash progression, the original two Worker trainers, floor items and the Roark discovery scene are excluded. Bulbapedia lists Geodude 4-8 and Onix 6,8 for the same floor; the Serebii Platinum ranges are used and the difference is recorded."
       }
     },
     {
@@ -5285,6 +5333,7 @@
       "type": "노말",
       "category": "physical",
       "power": 40,
+      "pp": 35,
       "priority": 0,
       "rule": "damage"
     },
@@ -5294,6 +5343,7 @@
       "type": "격투",
       "category": "physical",
       "power": 50,
+      "pp": 25,
       "priority": 0,
       "rule": "damage"
     },
@@ -5303,6 +5353,7 @@
       "type": "노말",
       "category": "physical",
       "power": 40,
+      "pp": 35,
       "priority": 0,
       "rule": "damage"
     },
@@ -5312,6 +5363,7 @@
       "type": "비행",
       "category": "special",
       "power": 40,
+      "pp": 35,
       "priority": 0,
       "rule": "damage"
     },
@@ -5321,6 +5373,7 @@
       "type": "비행",
       "category": "physical",
       "power": 60,
+      "pp": 35,
       "priority": 0,
       "rule": "damage"
     },
@@ -5330,6 +5383,7 @@
       "type": "노말",
       "category": "physical",
       "power": 80,
+      "pp": 20,
       "priority": 0,
       "rule": "damage"
     },
@@ -5339,6 +5393,7 @@
       "type": "풀",
       "category": "physical",
       "power": 45,
+      "pp": 25,
       "priority": 0,
       "rule": "damage"
     },
@@ -5348,6 +5403,7 @@
       "type": "노말",
       "category": "physical",
       "power": 70,
+      "pp": 15,
       "priority": 0,
       "rule": "damage"
     },
@@ -5357,6 +5413,7 @@
       "type": "노말",
       "category": "physical",
       "power": 40,
+      "pp": 35,
       "priority": 0,
       "rule": "damage"
     },
@@ -5366,6 +5423,7 @@
       "type": "노말",
       "category": "status",
       "power": 0,
+      "pp": 30,
       "priority": 0,
       "rule": "defenseDrop"
     },
@@ -5375,6 +5433,7 @@
       "type": "독",
       "category": "physical",
       "power": 15,
+      "pp": 35,
       "priority": 0,
       "rule": "damage"
     },
@@ -5384,6 +5443,7 @@
       "type": "노말",
       "category": "status",
       "power": 0,
+      "pp": 30,
       "priority": 0,
       "rule": "defenseDrop"
     },
@@ -5393,6 +5453,7 @@
       "type": "악",
       "category": "physical",
       "power": 60,
+      "pp": 25,
       "priority": 0,
       "rule": "damage"
     },
@@ -5402,6 +5463,7 @@
       "type": "노말",
       "category": "status",
       "power": 0,
+      "pp": 40,
       "priority": 0,
       "rule": "attackDrop"
     },
@@ -5411,6 +5473,7 @@
       "type": "불꽃",
       "category": "special",
       "power": 40,
+      "pp": 25,
       "priority": 0,
       "rule": "damage"
     },
@@ -5420,6 +5483,7 @@
       "type": "물",
       "category": "special",
       "power": 40,
+      "pp": 25,
       "priority": 0,
       "rule": "damage"
     },
@@ -5429,6 +5493,7 @@
       "type": "에스퍼",
       "category": "special",
       "power": 65,
+      "pp": 20,
       "priority": 0,
       "rule": "damage"
     },
@@ -5438,6 +5503,7 @@
       "type": "격투",
       "category": "physical",
       "power": 0,
+      "pp": 20,
       "priority": 0,
       "rule": "weightDamage"
     },
@@ -5447,6 +5513,7 @@
       "type": "격투",
       "category": "physical",
       "power": 0,
+      "pp": 20,
       "priority": 0,
       "rule": "levelDamage"
     },
@@ -5456,6 +5523,7 @@
       "type": "풀",
       "category": "special",
       "power": 20,
+      "pp": 25,
       "priority": 0,
       "rule": "drain"
     },
@@ -5465,6 +5533,7 @@
       "type": "풀",
       "category": "special",
       "power": 40,
+      "pp": 15,
       "priority": 0,
       "rule": "drain"
     },
@@ -5474,6 +5543,7 @@
       "type": "풀",
       "category": "physical",
       "power": 55,
+      "pp": 25,
       "priority": 0,
       "rule": "damage"
     },
@@ -5483,6 +5553,7 @@
       "type": "드래곤",
       "category": "special",
       "power": 0,
+      "pp": 10,
       "priority": 0,
       "rule": "fixedDamage"
     },
@@ -5492,6 +5563,7 @@
       "type": "전기",
       "category": "special",
       "power": 40,
+      "pp": 30,
       "priority": 0,
       "rule": "damage"
     },
@@ -5501,6 +5573,7 @@
       "type": "바위",
       "category": "physical",
       "power": 50,
+      "pp": 15,
       "priority": 0,
       "rule": "damage"
     },
@@ -5510,6 +5583,7 @@
       "type": "에스퍼",
       "category": "special",
       "power": 50,
+      "pp": 25,
       "priority": 0,
       "rule": "damage"
     },
@@ -5519,6 +5593,7 @@
       "type": "노말",
       "category": "physical",
       "power": 40,
+      "pp": 30,
       "priority": 1,
       "rule": "damage"
     },
@@ -5528,6 +5603,7 @@
       "type": "에스퍼",
       "category": "status",
       "power": 0,
+      "pp": 20,
       "priority": -6,
       "rule": "escape"
     },
@@ -5537,6 +5613,7 @@
       "type": "노말",
       "category": "status",
       "power": 0,
+      "pp": 30,
       "priority": 0,
       "rule": "defenseUp"
     },
@@ -5546,6 +5623,7 @@
       "type": "물",
       "category": "status",
       "power": 0,
+      "pp": 40,
       "priority": 0,
       "rule": "defenseUp"
     },
@@ -5555,6 +5633,7 @@
       "type": "노말",
       "category": "status",
       "power": 0,
+      "pp": 40,
       "priority": 0,
       "rule": "defenseUp"
     },
@@ -5564,6 +5643,7 @@
       "type": "고스트",
       "category": "physical",
       "power": 30,
+      "pp": 30,
       "priority": 0,
       "rule": "damage"
     },
@@ -5573,6 +5653,7 @@
       "type": "벌레",
       "category": "physical",
       "power": 80,
+      "pp": 10,
       "priority": 0,
       "rule": "drain"
     },
@@ -5582,6 +5663,7 @@
       "type": "물",
       "category": "special",
       "power": 40,
+      "pp": 30,
       "priority": 0,
       "rule": "damage"
     },
@@ -5591,6 +5673,7 @@
       "type": "노말",
       "category": "status",
       "power": 0,
+      "pp": 40,
       "priority": 0,
       "rule": "nothing"
     },
@@ -5600,6 +5683,7 @@
       "type": "노말",
       "category": "physical",
       "power": 80,
+      "pp": 15,
       "priority": 0,
       "rule": "damage"
     },
@@ -5609,6 +5693,7 @@
       "type": "노말",
       "category": "physical",
       "power": 70,
+      "pp": 20,
       "priority": 0,
       "rule": "damage"
     },
@@ -5618,6 +5703,7 @@
       "type": "노말",
       "category": "physical",
       "power": 50,
+      "pp": 1,
       "priority": 0,
       "rule": "struggle"
     },
@@ -5627,6 +5713,7 @@
       "type": "노말",
       "category": "status",
       "power": 0,
+      "pp": 10,
       "priority": 4,
       "rule": "protect"
     },
@@ -5636,6 +5723,7 @@
       "type": "격투",
       "category": "status",
       "power": 0,
+      "pp": 5,
       "priority": 4,
       "rule": "protect"
     },
@@ -5645,6 +5733,7 @@
       "type": "페어리",
       "category": "status",
       "power": 0,
+      "pp": 20,
       "priority": 0,
       "rule": "attackDrop"
     },
@@ -5654,6 +5743,7 @@
       "type": "전기",
       "category": "physical",
       "power": 65,
+      "pp": 20,
       "priority": 0,
       "rule": "damage"
     },
@@ -5663,6 +5753,7 @@
       "type": "노말",
       "category": "physical",
       "power": 50,
+      "pp": 40,
       "priority": 0,
       "rule": "damage"
     },
@@ -5672,6 +5763,7 @@
       "type": "고스트",
       "category": "special",
       "power": 80,
+      "pp": 15,
       "priority": 0,
       "rule": "damage"
     },
@@ -5681,6 +5773,7 @@
       "type": "고스트",
       "category": "physical",
       "power": 30,
+      "pp": 15,
       "priority": 0,
       "rule": "damage"
     },
@@ -5690,6 +5783,7 @@
       "type": "비행",
       "category": "special",
       "power": 60,
+      "pp": 25,
       "priority": 0,
       "rule": "damage"
     },
@@ -5699,6 +5793,7 @@
       "type": "비행",
       "category": "physical",
       "power": 60,
+      "pp": 20,
       "priority": 0,
       "rule": "damage"
     },
@@ -5708,6 +5803,7 @@
       "type": "풀",
       "category": "special",
       "power": 60,
+      "pp": 20,
       "priority": 0,
       "rule": "damage"
     },
@@ -5717,6 +5813,7 @@
       "type": "물",
       "category": "special",
       "power": 60,
+      "pp": 20,
       "priority": 0,
       "rule": "damage"
     },
@@ -5726,6 +5823,7 @@
       "type": "격투",
       "category": "physical",
       "power": 60,
+      "pp": 10,
       "priority": 0,
       "rule": "damage"
     },
@@ -5735,6 +5833,7 @@
       "type": "격투",
       "category": "physical",
       "power": 75,
+      "pp": 10,
       "priority": 0,
       "rule": "drain"
     },
@@ -5744,6 +5843,7 @@
       "type": "얼음",
       "category": "physical",
       "power": 40,
+      "pp": 30,
       "priority": 1,
       "rule": "damage"
     },
@@ -5753,6 +5853,7 @@
       "type": "바위",
       "category": "status",
       "power": 0,
+      "pp": 20,
       "priority": 0,
       "rule": "hazard"
     },
@@ -5762,6 +5863,7 @@
       "type": "풀",
       "category": "special",
       "power": 0,
+      "pp": 20,
       "priority": 0,
       "rule": "weightDamage"
     },
@@ -5771,6 +5873,7 @@
       "type": "벌레",
       "category": "physical",
       "power": 60,
+      "pp": 20,
       "priority": 0,
       "rule": "damage"
     }

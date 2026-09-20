@@ -12,13 +12,13 @@ Pokémon Nexus is a work-in-progress TypeScript game focused on making preparati
 
 - Explore connected routes, cities, forests, caves, and multi-floor facilities across regional travel segments.
 - Encounter and catch wild Pokémon, build a party, use the Box and Pokédex, level up, evolve, and replace moves.
-- Battle with type matchups, move PP, physical and special attacks, speed and priority, status conditions, items, switching, and capture decisions.
+- Battle with type matchups, physical and special attacks, speed and priority, move PP with Struggle as the fallback, stat changes, field hazards, items, switching, and capture decisions. Accuracy, critical hits, status conditions and Abilities are not implemented yet.
 - Follow city-centered story slices that connect local residents, Pokémon ecology, activities, Gym preparation, and onward travel.
 - Play through a browser interface built around a Nintendo DS-inspired field screen, lower-screen controls, dialogue, maps, and battle presentation.
 
 - 여러 지방의 도로·도시·숲·동굴·다층 시설을 연결된 여행 구간으로 탐험합니다.
 - 야생 포켓몬 조우와 포획, 파티·박스·도감, 레벨업·진화·기술 교체를 지원합니다.
-- 타입 상성, PP, 물리·특수, 속도·우선도, 상태이상, 아이템, 교체와 포획 판단을 전투에 연결합니다.
+- 타입 상성, 물리·특수, 속도·우선도, 기술 PP와 발버둥 폴백, 랭크 변화, 필드 함정, 아이템, 교체와 포획 판단을 전투에 연결합니다. 명중률·급소·상태이상·특성은 아직 미구현입니다.
 - 주민·포켓몬 생태·도시 활동·체육관 준비·다음 목적지를 하나의 도시 중심 이야기로 구성합니다.
 
 > This is an unofficial, non-commercial fan project. Pokémon and related trademarks belong to their respective owners.

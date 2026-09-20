@@ -3,7 +3,7 @@ import type { Pokemon } from './types';
 import { createTrainerBattle } from './battle';
 import { maxHpAtLevel } from './growth';
 import { pokemonMoves } from './pokemon';
-import { trainerWinFlag } from './road-trainers';
+import { trainerWinFlag } from './trainer-flags';
 import { showTrainerPreparation } from './trainer-preparation';
 import { SILPH_RECORDS_MAP } from './silph-records-room';
 

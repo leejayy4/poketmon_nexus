@@ -1,5 +1,6 @@
 import type { SaveData } from './types';
 import { SPECIES,pokemonMoves,MOVE_RULES,isDamagingMove,BOX_CAPACITY } from './pokemon';
+import { anyUsablePp, usablePp } from './move-pp';
 import { effectivenessText,moveEffectiveness,enemyDamage,enemyMove,playerActsFirst,playerDamage,switchEntryDamage,type Battle } from './battle';
 
 // Read-only previews use the same damage rules as the resolved turn.
@@ -28,8 +29,11 @@ export function battleHint(save:SaveData,b:Battle):[string,string]{
     return [`${SPECIES[next.species].name}로 교대 · 한 턴 사용`,next.hp<=hit?'반격 후 기절 (HP 0)':`반격 후 HP ${next.hp-hit}/${next.maxHp}`];
   }
   if(b.menu==='moves'){
-    const move=pokemonMoves(active)[b.selected],rule=MOVE_RULES[move]?.rule;
+    const known=pokemonMoves(active),move=known[b.selected],rule=MOVE_RULES[move]?.rule;
     if(!move)return ['기억하고 있는 기술을 선택하세요',''];
+    if(!usablePp(active,known,b.selected))return anyUsablePp(active,known)
+      ?[`${move}의 PP가 남아 있지 않습니다`,'PP가 남은 다른 기술을 선택하세요']
+      :['쓸 수 있는 기술이 없습니다','확인하면 발버둥으로 싸웁니다'];
     const foe=enemyMove(b,active);
     const first=playerActsFirst(active,b.enemy,move,foe,()=>0);
     const last=playerActsFirst(active,b.enemy,move,foe,()=>0.999999);

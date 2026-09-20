@@ -47,14 +47,16 @@ owned = sorted({1,2,4,5,7,8,12,15,25,130,520} | {s['speciesId'] for p in pools f
 ids = set(owned) | {420,315,425,92,200,448,408,86,130}
 names = {int(r['move_id']):r['name'] for r in rows('move_names') if r['local_language_id']=='3'}
 types = {int(r['type_id']):r['name'] for r in rows('type_names') if r['local_language_id']=='3'}
-# Every exposed move has a runtime rule. Secondary status chances, crits, PP and
+# Every exposed move has a runtime rule. Secondary status chances, crits and
 # accuracy are intentionally not simulated; these damage moves use direct damage.
+# PP is exported from the same pinned moves.csv and consumed by the player's
+# party only; Struggle stays the unlimited fallback.
 damage = set('ice-shard pound poison-sting karate-chop gust wing-attack slam headbutt tackle scratch vine-whip bite ember water-gun bubble razor-leaf thunder-shock confusion psybeam quick-attack rock-throw slash spark astonish lick magical-leaf force-palm aerial-ace air-cutter bug-bite hyper-fang rapid-spin water-pulse shadow-ball'.split())
 rules = {s:'damage' for s in damage}
 rules.update({s:'drain' for s in ['absorb','mega-drain','leech-life','drain-punch']})
 rules.update({'growl':'attackDrop','charm':'attackDrop','tail-whip':'defenseDrop','leer':'defenseDrop','harden':'defenseUp','withdraw':'defenseUp','defense-curl':'defenseUp','protect':'protect','detect':'protect','teleport':'escape','splash':'nothing','stealth-rock':'hazard','grass-knot':'weightDamage','low-kick':'weightDamage','struggle':'struggle','dragon-rage':'fixedDamage','seismic-toss':'levelDamage'})
 move_rows = {int(r['id']):r for r in rows('moves') if r['identifier'] in rules}
-moves = {names[i]:{'id':i,'slug':r['identifier'],'type':types[int(r['type_id'])],'category':{1:'status',2:'physical',3:'special'}[int(r['damage_class_id'])],'power':int(r['power'] or 0),'priority':int(r['priority']),'rule':rules[r['identifier']]} for i,r in move_rows.items()}
+moves = {names[i]:{'id':i,'slug':r['identifier'],'type':types[int(r['type_id'])],'category':{1:'status',2:'physical',3:'special'}[int(r['damage_class_id'])],'power':int(r['power'] or 0),'pp':int(r['pp'] or 0),'priority':int(r['priority']),'rule':rules[r['identifier']]} for i,r in move_rows.items()}
 learn = {i:[] for i in ids}
 learnset_overrides = {114:14, 133:14, 279:14, 300:14, 315:14, 325:14, 328:14, 415:14, 451:14, 519:14, 520:14, 525:14, 527:14, 548:14, 572:14, 580:14, 588:14, 595:14, 597:14, 599:14, 616:14}  # BW2 acquisition for the park and Unova field rosters.
 tm = {i:[] for i in ids}
@@ -103,7 +105,7 @@ for r in rows('type_efficacy'):
     a,b=int(r['damage_type_id']),int(r['target_type_id'])
     if a in types and b in types and int(r['damage_factor'])!=100:
         chart.setdefault(types[a],{})[types[b]]=int(r['damage_factor'])/100
-out = {'referenceCommit':SHA,'learnsetVersion':'platinum','timePolicy':'day-only','limits':'Up to four selected moves; direct damage ignores secondary effects, accuracy and PP. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. First starter, complete Caterpie/Weedle level evolution lines and Pidove level-21 evolutions enabled.','pools':pools,'ownable':owned,'species':species,'moves':moves,'evolutions':evolutions,'typeChart':chart}
+out = {'referenceCommit':SHA,'learnsetVersion':'platinum','timePolicy':'day-only','limits':'Up to four selected moves; direct damage ignores secondary effects and accuracy. Each move carries its pinned PP; the player party consumes it and Pokemon Center rest restores it, while opposing Pokemon are not PP limited. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. First starter, complete Caterpie/Weedle level evolution lines and Pidove level-21 evolutions enabled.','pools':pools,'ownable':owned,'species':species,'moves':moves,'evolutions':evolutions,'typeChart':chart}
 manifest={'dataCommit':SHA,'learnsetVersionGroup':9,'sources':[],'sprites':[]}
 out['learnsetOverrides']={str(i):'black-2-white-2' for i in learnset_overrides if i in ids}
 out['limits']+=' Eevee, Skitty, Pidove, Tranquill, Petilil, Karrablast and Shelmet use Black 2/White 2 acquisition. Only Pidove to Tranquill is enabled among these evolution lines.'

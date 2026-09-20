@@ -24,8 +24,8 @@ export function openRoute211Trails(map:GameMap,side:'west'|'east'){
   // The adjacent row of each two-tile trail remains a dry return lane. Neither
   // patch touches the five-tile east-west main road or a warp/NPC/prop cell.
   // Regional MAP_POOLS bindings supply the supported Pt-derived encounter subsets.
-  for(const habitat of habitats)if(!map.terrain.some(t=>t.kind==='tallGrass'&&t.x===habitat.x&&t.y===habitat.y))
-    map.terrain.push({kind:'tallGrass',...habitat});
+  for(const habitat of habitats)if(!map.terrain?.some(t=>t.kind==='tallGrass'&&t.x===habitat.x&&t.y===habitat.y))
+    (map.terrain??=[]).push({kind:'tallGrass',...habitat});
 }
 
 export function isRoute211SideTrail(map:GameMap,x:number,y:number){

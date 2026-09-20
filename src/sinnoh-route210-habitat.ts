@@ -17,5 +17,5 @@ export function openRoute210Habitat(map:GameMap){
   map.walkable=rows.map(row=>row.join(''));
   // The existing map pool supplies Meditite/Machop and the capture origin.
   // Both the field grass renderer and minimap consume this same rectangle.
-  map.terrain.push({kind:'tallGrass',x:42,y:36,w:4,h:6});
+  (map.terrain??=[]).push({kind:'tallGrass',x:42,y:36,w:4,h:6});
 }

@@ -12,6 +12,7 @@ const MAP_POOLS:Record<string,{node:string;name:string}>={
   tour_sinnoh_route_202:{node:'S-R202-DAY',name:'신오 202번도로'},
   tour_sinnoh_route_203:{node:'S-R203-DAY',name:'신오 203번도로'},
   tour_oreburgh_gate_1f:{node:'S-OREBURGH-GATE-1F-PT',name:'무쇠게이트 1층'},
+  tour_oreburgh_mine:{node:'S-OREBURGH-MINE-PT',name:'무쇠탄갱 탐험층'},
   tour_castelia_sewers:{node:'U-CASTELIA-SEWERS',name:'구름하수도'},
   tour_castelia_park:{node:'U-CASTELIA-PARK-W2',name:'구름시티 공원'},
   tour_sinnoh_route_211_west:{node:'S-R211-WEST',name:'신오 211번도로 서부'},

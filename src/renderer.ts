@@ -75,6 +75,7 @@ import { forestBorderTrees } from './forest-border-art';
 import { DIRECTION_LABEL,tourPassageLabel } from './explore-navigation';
 import { Engine } from './engine';
 import { SPECIES, STARTERS,pokemonMoves } from './pokemon';
+import { maxPp, ppOf } from './move-pp';
 import type { Direction, Pokemon } from './types';
 import { buildTownArt,paintTallGrass,TOWN_BUILDINGS,paintBuilding } from './town';
 import { CITY_BUILDINGS,buildBadgeArt,paintCityBuilding } from './badge-maps';
@@ -336,7 +337,7 @@ export class Renderer {
     this.frame(c,ox-4,oy-4,m.width*scale+8,m.height*scale+8);
     for(let y=0;y<m.height;y++)for(let x=0;x<m.width;x++)this.rect(c,ox+x*scale,oy+y*scale,Math.ceil(scale),Math.ceil(scale),m.walkable[y][x]==='.'?'#d4d6b0':'#829c8b');
     // Show the same encounter patches used in the field, retaining safe paths.
-    for(const terrain of m.terrain){
+    for(const terrain of m.terrain??[]){
       if(terrain.kind!=='tallGrass')continue;
       const color=m.id==='tour_driftveil_drawbridge'?'#657786':(isCaveEncounterMap(m.id)||tourPlaceForMap(m.id)?.theme==='cave')?'#687784':'#66894b';
       for(let y=Math.max(0,terrain.y);y<Math.min(m.height,terrain.y+terrain.h);y++)for(let x=Math.max(0,terrain.x);x<Math.min(m.width,terrain.x+terrain.w);x++){
@@ -380,7 +381,7 @@ export class Renderer {
   menuLower(c:CanvasRenderingContext2D){this.topbar(c,'메뉴');const labels=['포켓몬','가방','트레이너','리포트','설정','닫기'];labels.forEach((label,i)=>{const x=9+(i%2)*124,y=36+Math.floor(i/2)*45;this.button(c,x,y,114,38,label,()=>{this.game.menuIndex=i;this.game.selectMenu(i)},this.game.menuIndex===i)});this.text(c,'방향키로 선택 · Z로 확인',128,177,'#687d73',8,'center')}
   starters(c:CanvasRenderingContext2D){const g=this.game;this.topbar(c,'첫 번째 파트너');this.text(c,'마음이 끌리는 몬스터볼을 선택하세요',128,37,INK,8,'center');STARTERS.forEach((id,i)=>{const x=7+i*83,selected=g.starterIndex===i;this.frame(c,x,57,77,92,selected?'#f0dfa6':'#f8f7e6');this.ball(c,x+38,78,7,selected);this.pokemon(c,id,x+8,81,.75);this.text(c,SPECIES[id].name,x+38,130,INK,10,'center');if(selected)this.text(c,'▼',x+35,48,'#b56f4c',8);this.hits.push({x,y:57,w:77,h:92,action:()=>{if(g.starterIndex===i)g.chooseStarter();else g.starterIndex=i}})});this.button(c,9,159,145,27,'Z  이 친구로 결정',()=>g.chooseStarter(),true);this.button(c,162,159,86,27,'X  돌아가기',()=>g.cancel())}
   party(c:CanvasRenderingContext2D){const g=this.game,healing=g.panel==='fieldHeal';this.topbar(c,healing?'상처약을 쓸 포켓몬':'함께하는 포켓몬');if(!g.save.party.length){this.frame(c,15,52,226,87);this.text(c,'아직 함께하는 포켓몬이 없어요.\n\n연구소에서 첫 친구를 만나 보세요!',128,68,INK,9,'center')}else{g.save.party.forEach((p,i)=>{const data=SPECIES[p.species],x=8+(i%2)*124,y=35+Math.floor(i/2)*41;this.frame(c,x,y,116,37,g.partyIndex===i?'#efe2ad':'#f4f5e7');this.pokemon(c,p.species,x+1,y-4,.55,p.shiny);this.text(c,data.name,x+44,y+7,INK,9);this.text(c,`Lv.${p.level}`,x+100,y+8,'#697e7a',7,'right');this.hp(c,x+45,y+22,60,p);this.hits.push({x,y,w:116,h:37,action:()=>{if(healing)g.useFieldPotion(i);else{g.partyIndex=i;g.panel='summary';g.summaryActionIndex=0;}}})});for(let i=g.save.party.length;i<6;i++){const x=8+(i%2)*124,y=35+Math.floor(i/2)*41;this.rect(c,x,y,116,37,'#c3d1c9');this.rect(c,x+2,y+2,112,33,'#cedad0');this.text(c,'—',x+58,y+12,'#9aaeaa',9,'center')}}this.text(c,healing?'남은 상처약 '+g.save.inventory.potions+'개':'포켓몬을 선택해 주세요',10,173,INK,8);this.back(c)}
-  moves(c:CanvasRenderingContext2D){const p=this.game.save.party[this.game.partyIndex];if(!p)return;this.topbar(c,'기억하고 있는 기술');pokemonMoves(p).forEach((m,i)=>{const x=8+(i%2)*124,y=32+Math.floor(i/2)*29;this.frame(c,x,y,116,25);this.text(c,m,x+9,y+8,INK,9)});this.text(c,growthPreview(p),128,96,'#345c49',8,'center');this.button(c,8,139,78,23,'선두로',()=>this.game.manageParty(0),this.game.summaryActionIndex===0);this.button(c,89,139,78,23,'상처약 '+this.game.save.inventory.potions,()=>this.game.manageParty(1),this.game.summaryActionIndex===1);this.button(c,170,139,78,23,'기술 배우기',()=>this.game.manageParty(2),this.game.summaryActionIndex===2);this.text(c,p.level===LEVEL_CAP?`현재 성장 한도 Lv.${LEVEL_CAP}`:`다음 레벨까지 ${nextLevelXp(p.level)-p.experience} EXP`,128,111,'#657a72',9,'center');this.text(c,'EXP',14,125,'#52758d',7);this.experience(c,37,127,203,p);if(this.game.save.party.length>1){this.button(c,8,164,68,23,'↑ 이전',()=>this.game.browseParty(-1));this.button(c,81,164,68,23,'↓ 다음',()=>this.game.browseParty(1));}this.back(c)}
+  moves(c:CanvasRenderingContext2D){const p=this.game.save.party[this.game.partyIndex];if(!p)return;this.topbar(c,'기억하고 있는 기술');const known=pokemonMoves(p);known.forEach((m,i)=>{const x=8+(i%2)*124,y=32+Math.floor(i/2)*29,max=maxPp(m),now=ppOf(p,known,i);this.frame(c,x,y,116,25);this.text(c,m,x+9,y+8,INK,9);if(max>0)this.text(c,`PP ${now}/${max}`,x+107,y+8,now?'#657b72':'#b4564b',8,'right')});this.text(c,growthPreview(p),128,96,'#345c49',8,'center');this.button(c,8,139,78,23,'선두로',()=>this.game.manageParty(0),this.game.summaryActionIndex===0);this.button(c,89,139,78,23,'상처약 '+this.game.save.inventory.potions,()=>this.game.manageParty(1),this.game.summaryActionIndex===1);this.button(c,170,139,78,23,'기술 배우기',()=>this.game.manageParty(2),this.game.summaryActionIndex===2);this.text(c,p.level===LEVEL_CAP?`현재 성장 한도 Lv.${LEVEL_CAP}`:`다음 레벨까지 ${nextLevelXp(p.level)-p.experience} EXP`,128,111,'#657a72',9,'center');this.text(c,'EXP',14,125,'#52758d',7);this.experience(c,37,127,203,p);if(this.game.save.party.length>1){this.button(c,8,164,68,23,'↑ 이전',()=>this.game.browseParty(-1));this.button(c,81,164,68,23,'↓ 다음',()=>this.game.browseParty(1));}this.back(c)}
   fieldHealTop(c:CanvasRenderingContext2D){
     const g=this.game,p=g.save.party[g.partyIndex];if(!p)return;
     this.rect(c,0,0,256,192,'#dce8e7');this.topbar(c,'포켓몬 회복');
@@ -488,7 +489,7 @@ export class Renderer {
     this.text(c,`${SPECIES[p.species].name}의 행동을 선택하세요`,128,36,INK,9,'center');
     const labels=b.menu==='moves'?pokemonMoves(p):b.menu==='bag'?[`몬스터볼 (${g.save.inventory.pokeBalls})`,`상처약 (${g.save.inventory.potions})`]:['싸운다','가방','포켓몬',b.kind!=='wild'?'도전 중단':'도망친다'];
     labels.forEach((label,i)=>{const x=8+(i%2)*124,y=54+Math.floor(i/2)*(b.menu==='moves'?36:47),action=()=>{b.selected=i;g.selectBattle()};
-      if(b.menu==='moves')this.moveButton(c,x,y,label,action,i===b.selected);else this.button(c,x,y,116,40,label,action,i===b.selected);
+      if(b.menu==='moves')this.moveButton(c,x,y,label,action,i===b.selected,{now:ppOf(p,labels,i),max:maxPp(label)});else this.button(c,x,y,116,40,label,action,i===b.selected);
     });
     if(b.menu==='actions')this.text(c,(b.kind==='wild'?(b.caughtBeforeBattle?'포획 기록 있음':'미포획')+' · ':'')+'경험치 받을 동료 '+experienceParticipants(g.save,b).length+'마리',128,149,'#657b72',8,'center');
     if(b.menu==='actions')this.text(c,'방향키로 선택 · Z로 확인',128,165,INK,9,'center');
@@ -498,7 +499,7 @@ export class Renderer {
       this.button(c,8,165,240,24,'X  행동 선택으로',()=>g.cancel());
     }
   }
-  moveButton(c:CanvasRenderingContext2D,x:number,y:number,move:string,action:()=>void,selected=false){this.frame(c,x,y,116,32,selected?'#f3df9f':'#fbf9e6');if(selected)this.rect(c,x+5,y+5,3,22,'#c2774d');this.text(c,move,x+13,y+11,INK,9);this.typeBadge(c,moveType(move)??'?',x+80,y+9);this.hits.push({x,y,w:116,h:32,action})}
+  moveButton(c:CanvasRenderingContext2D,x:number,y:number,move:string,action:()=>void,selected=false,pp?:{now:number;max:number}){const empty=!!pp&&pp.max>0&&pp.now===0;this.frame(c,x,y,116,32,selected?'#f3df9f':'#fbf9e6');if(selected)this.rect(c,x+5,y+5,3,22,'#c2774d');this.text(c,move,x+13,y+11,empty?'#9a8d84':INK,9);this.typeBadge(c,moveType(move)??'?',x+80,y+9);if(pp&&pp.max>0)this.text(c,`PP ${pp.now}/${pp.max}`,x+13,y+24,empty?'#b4564b':'#657b72',8);this.hits.push({x,y,w:116,h:32,action})}
   click(x:number,y:number){if(this.game.ferryJourney||this.game.transition||this.game.move)return;const hit=[...this.hits].reverse().find(h=>x>=h.x&&x<h.x+h.w&&y>=h.y&&y<h.y+h.h);if(hit){this.game.audio.play('confirm');hit.action()}}
 }
 

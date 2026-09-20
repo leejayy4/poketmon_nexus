@@ -43,6 +43,7 @@ import { getMap, getWorldOutdoors, ACTIVE_MAPS, canEnter } from './maps';
 import { TEXT } from './dialogues';
 import { newSave, parseSave, SAVE_KEY } from './save';
 import { grantPokemon, SPECIES, STARTERS, pokemonMoves } from './pokemon';
+import { restorePp } from './move-pp';
 import { GameAudio } from './audio';
 import { motherConversation, professorConversation } from './story';
 import { checkpoint } from './save-library';
@@ -246,7 +247,8 @@ export class Engine {
   assistant(){if(this.save.flags.pikachuReceived){this.say('연구원',['피카츄가 널 조금씩 믿는 것 같아.\n이 친구를 맡아 줘서 고마워!']);return}const count=Math.min(4,Number(this.save.flags.assistantTalks??0)+1);this.save.flags.assistantTalks=count;this.persist();if(count===1)this.say('연구원',['말을 안 듣는 포켓몬이 있어\n고민이야…']);else if(count===2)this.say('연구원',['이 녀석을 데려갈 트레이너가\n없으려나…']);else if(count===3)this.say('연구원',['…','피카츄도 사실은\n친구가 필요한 걸지도 모르겠어.']);else this.say('연구원',['네가 혹시 이 친구를\n데려가 주겠니?'],undefined,[{label:'피카츄를 데려간다',action:()=>this.receive(25)},{label:'조금 더 생각한다',action:()=>this.say('연구원',['괜찮아. 마음이 바뀌면\n다시 이야기해 줘.'])}]);}
   restore(save:SaveData){cancelSeafoamBoulderPush(this);cancelCinnabarEvacuationMotion(this);cancelFerryJourney(this);const canonical=worldMapId(save.map);if(canonical!==save.map)save={...save,map:canonical,player:{...worldSpawn(canonical)!,facing:'down'},healingPoint:worldMapId(save.healingPoint)};if(save.flags.exploration){save={...structuredClone(this.save),map:save.map,player:{...save.player},tourVisited:[...new Set([...(this.save.tourVisited??[]),...(save.tourVisited??[])])]};}save={...save,flags:{...save.flags}};delete save.flags.exploration;this.save=checkpoint(save);this.tourEvent=null;this.tourNpcId=undefined;this.caughtPreview=null;this.caughtBoxPreview=null;this.gymReward=null;this.confirmingBattleExit=false;this.defeatScene=null;this.recoveryPreview=false;this.battle=null;this.battleFrames=null;this.gymPreview=null;this.grassSteps=0;this.clearInput();this.move=null;this.transition=0;this.transitionWarp=null;this.dialogue=null;this.dialogueElapsed=0;this.panel='field';this.menuIndex=0;this.partyIndex=0;this.bagIndex=1;this.starterIndex=0;this.optionIndex=0;this.stepPhase=0;this.labelTime=2.6;this.toastTime=0;if(this.save.party.length&&this.save.party.every(p=>p.hp===0))this.returnHome();this.persist();}
 
-  healParty(){for(const p of this.save.party)p.hp=p.maxHp}
+  /** Center rest restores HP and PP together, as the series does. */
+  healParty(){for(const p of this.save.party){p.hp=p.maxHp;restorePp(p,pokemonMoves(p));}}
   returnHome(){cancelSeafoamBoulderPush(this);cancelCinnabarEvacuationMotion(this);cancelFerryJourney(this);this.defeatScene=null;this.recoveryPreview=false;this.battleFrames=null;this.battle=null;this.grassSteps=0;this.clearInput();this.move=null;this.transition=0;this.transitionWarp=null;this.save.map=worldMapId(this.save.healingPoint);this.save.healingPoint=this.save.map;this.save.player=this.save.map==='home'?{x:4,y:5,facing:'up'}:{...(worldSpawn(this.save.map)??{x:8,y:10}),facing:'up'};this.panel='field';this.healParty();this.labelTime=2.6;this.persist()}
   departure(){
     if(this.save.flags.departureCleared){this.say('이웃 도윤',['길은 이제 안전하게 지날 수 있단다.\n서쪽길 안내원에게 쉬어 가렴.']);return}

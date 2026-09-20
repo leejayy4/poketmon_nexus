@@ -4,7 +4,7 @@ import {rageGyaradosCalm,rageGyaradosCaught,RAGE_RECOVERY_FLAGS} from './rage-la
 import {MAHOGANY_TRANSMISSION_STOPPED} from './mahogany-transmitter';
 import {paintTownPokemon} from './explore-life-art';
 
-export function rageLakeGyaradosLayers(c:CanvasRenderingContext2D,map:GameMap,f:SaveData['flags'],images:Record<string,HTMLImageElement>):{depth:number;draw:()=>void}[]{
+export function rageLakeGyaradosLayers(c:CanvasRenderingContext2D,map:GameMap,f:SaveData['flags'],images:Record<string,HTMLImageElement|HTMLCanvasElement>):{depth:number;draw:()=>void}[]{
   if(map.id!=='tour_rage_lake'||!f[MAHOGANY_TRANSMISSION_STOPPED]||rageGyaradosCaught({flags:f}))return [];
   const calm=rageGyaradosCalm({flags:f}),x=(calm?36:43)*16,y=(calm?21:17)*16;
   return [{depth:(calm?24:20),draw:()=>{
@@ -16,7 +16,7 @@ export function rageLakeGyaradosLayers(c:CanvasRenderingContext2D,map:GameMap,f:
   }}];
 }
 
-export function paintRageLakeRecoveryFurnishing(c:CanvasRenderingContext2D,mapId:string,o:Furnishing,f:SaveData['flags'],images:Record<string,HTMLImageElement>):void{
+export function paintRageLakeRecoveryFurnishing(c:CanvasRenderingContext2D,mapId:string,o:Furnishing,f:SaveData['flags'],images:Record<string,HTMLImageElement|HTMLCanvasElement>):void{
   if(mapId!=='tour_rage_lake_home1'||!f[RAGE_RECOVERY_FLAGS.residents])return;
   if(o.event!=='rageLakeHomeReedTable'&&o.event!=='rageLakeHomeCompanionSeat')return;
   const x=o.x*16,y=o.y*16;c.save();c.beginPath();c.rect(x,y,o.w*16,o.h*16);c.clip();

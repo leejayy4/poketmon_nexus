@@ -4,7 +4,7 @@ import type { Furnishing } from './explore-interiors';
 import { createTrainerBattle } from './battle';
 import { maxHpAtLevel } from './growth';
 import { pokemonMoves } from './pokemon';
-import { trainerWinFlag } from './road-trainers';
+import { trainerWinFlag } from './trainer-flags';
 import { showTrainerPreparation } from './trainer-preparation';
 import { CINNABAR_CONTROL_SITE,CINNABAR_SITE_ARRIVAL,CINNABAR_SITE_PROTECTION,CINNABAR_SITE_EVACUATION } from './cinnabar-control-site';
 import { CINNABAR_RESCUE_STARTED,CINNABAR_RESCUE_ORDER } from './cinnabar-rescue-arrival';

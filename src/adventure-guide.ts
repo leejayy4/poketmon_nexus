@@ -25,7 +25,7 @@ import { CINNABAR_CONTROL_SITE,CINNABAR_SITE_ARRIVAL,CINNABAR_SITE_PROTECTION,CI
 import { CINNABAR_RESCUE_STARTED,CINNABAR_RESCUE_ORDER } from './cinnabar-rescue-arrival';
 import { SILPH_RECORDS_MAP } from './silph-records-room';
 import { SILPH_RECORDS_SECURED,SILPH_RECORDS_GUARD,SILPH_RECORDS_GUARD_EVENT,SILPH_RECORDS_ORIGINAL_EVENT } from './silph-records-story';
-import { trainerWinFlag } from './road-trainers';
+import { trainerWinFlag } from './trainer-flags';
 import { SILPH_DISCREPANCY_FLAG,SILPH_DISCREPANCY_MAP,SILPH_DISCREPANCY_EVENT } from './silph-discrepancy-story';
 import { SINNOH_DELIVERY_OBJECTIVES, meetsStoryCondition } from './data/story';
 import { worldMapId,isWorldCenter } from './unified-world';

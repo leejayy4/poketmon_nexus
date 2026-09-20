@@ -43,7 +43,7 @@ export function installJohtoRoute43(world:{places:Place[];maps:Record<TourId,Gam
 /** BW/BW2-style interpretation of the HGSS two-path woodland route. */
 export function paintJohtoRoute43(c:CanvasRenderingContext2D,map:GameMap):void{
   if(map.id!==JOHTO_ROUTE_43)return;
-  const grass=(x:number,y:number)=>map.terrain.some(t=>t.kind==='tallGrass'&&x>=t.x&&x<t.x+t.w&&y>=t.y&&y<t.y+t.h);
+  const grass=(x:number,y:number)=>map.terrain?.some(t=>t.kind==='tallGrass'&&x>=t.x&&x<t.x+t.w&&y>=t.y&&y<t.y+t.h);
   for(let y=0;y<map.height;y++)for(let x=0;x<map.width;x++){
     const px=x*16,py=y*16,walk=map.walkable[y]?.[x]==='.';
     if(!walk){

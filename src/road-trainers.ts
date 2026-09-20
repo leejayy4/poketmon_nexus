@@ -6,6 +6,7 @@ import type { Pokemon } from './types';
 import { createTrainerBattle } from './battle';
 import { pokemonMoves,SPECIES } from './pokemon';
 import { maxHpAtLevel } from './growth';
+import { trainerWinFlag } from './trainer-flags';
 import { getMap } from './maps';
 import { journeyConnection } from './journey-world';
 import { CELESTIC_ROUTE_BATTLE,celesticTrainerCode } from './sinnoh-celestic-battle';
@@ -264,7 +265,7 @@ const trainers:PracticeTrainer[]=[
   {map:'oreburgh_gym',event:'gymSwitchTrainer',id:'oreburgh-gym-switch',name:'체육관 연습생',reward:320,team:[[95,8],[396,7]],lesson:'switch'}
 ];
 export const ROAD_TRAINER_DATABASE=createCatalog('road trainers by map/event',trainers,t=>`${t.map}:${t.event}`);
-export const trainerWinFlag=(id:string)=>'trainerWon:'+id;
+export { trainerWinFlag };
 
 function gymLesson(lesson:'type'|'switch'):string[]{
   return lesson==='type'?[

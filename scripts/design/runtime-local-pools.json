@@ -83,22 +83,37 @@
       {
         "speciesId": 396,
         "weight": 35,
-        "levelChoices": [4, 6, 7]
+        "levelChoices": [
+          4,
+          6,
+          7
+        ]
       },
       {
         "speciesId": 399,
         "weight": 25,
-        "levelChoices": [4, 5, 6, 7]
+        "levelChoices": [
+          4,
+          5,
+          6,
+          7
+        ]
       },
       {
         "speciesId": 403,
         "weight": 25,
-        "levelChoices": [4, 5]
+        "levelChoices": [
+          4,
+          5
+        ]
       },
       {
         "speciesId": 63,
         "weight": 15,
-        "levelChoices": [4, 5]
+        "levelChoices": [
+          4,
+          5
+        ]
       }
     ],
     "source": {
@@ -122,17 +137,29 @@
       {
         "speciesId": 41,
         "weight": 50,
-        "levelChoices": [5, 6, 7, 8]
+        "levelChoices": [
+          5,
+          6,
+          7,
+          8
+        ]
       },
       {
         "speciesId": 54,
         "weight": 35,
-        "levelChoices": [5, 6, 7]
+        "levelChoices": [
+          5,
+          6,
+          7
+        ]
       },
       {
         "speciesId": 74,
         "weight": 15,
-        "levelChoices": [5, 7]
+        "levelChoices": [
+          5,
+          7
+        ]
       }
     ],
     "source": {
@@ -141,6 +168,54 @@
       "version": "platinum",
       "checked": "2026-09-15",
       "policy": "Pokemon Platinum Oreburgh Gate 1F standard cave encounters: Zubat 50% levels 5-8, Psyduck 35% levels 5-7, Geodude 15% levels 5 and 7. B1F, Surf, fishing, items and Rock Smash progression are excluded."
+    }
+  },
+  {
+    "id": "LOCAL-S-OREBURGH-MINE-PT",
+    "node": "S-OREBURGH-MINE-PT",
+    "levels": [
+      5,
+      9
+    ],
+    "method": "walk",
+    "condition": "always",
+    "slots": [
+      {
+        "speciesId": 74,
+        "weight": 65,
+        "levelChoices": [
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      {
+        "speciesId": 41,
+        "weight": 25,
+        "levelChoices": [
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "speciesId": 95,
+        "weight": 10,
+        "levelChoices": [
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    ],
+    "source": {
+      "file": "https://bulbapedia.bulbagarden.net/wiki/Oreburgh_Mine",
+      "crossCheck": "https://www.serebii.net/pokearth/sinnoh/4th/oreburghmine.shtml",
+      "version": "platinum",
+      "checked": "2026-09-20",
+      "policy": "Pokemon Platinum Oreburgh Mine upper explorable floor: Geodude 65% levels 5-8, Zubat 25% levels 5-7, Onix 10% levels 6-9, taken from Serebii Pokearth 1F which Bulbapedia labels B1F. The project has a single mine floor, so the deeper floor roster, Rock Smash progression, the original two Worker trainers, floor items and the Roark discovery scene are excluded. Bulbapedia lists Geodude 4-8 and Onix 6,8 for the same floor; the Serebii Platinum ranges are used and the difference is recorded."
     }
   },
   {

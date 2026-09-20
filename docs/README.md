@@ -1,5 +1,9 @@
 # 문서 안내
 
+> **2026-09-21 새 스토리 원고:** [본편 28장·32배지](NEXUS_STORY_COMPLETE.md) → [SQ16·EX20·생활 연작](NEXUS_POKEMON_CHRONICLES.md) → [고려 네 거점·4체육관](GORYEO_STORY_COMPLETE.md). [출처·요구사항 대응](NEXUS_STORY_SOURCE_LEDGER.md)에서 원작과 창작을 구분한다. 서사 내용은 이 원고가 기존 통합 서사의 지방 이동·배지·첫 리그 배치를 대체한다. 범위·완료 판정은 NEXUS_GOAL, 실제 구현은 STORY가 계속 담당한다. 문서 완결은 구현 완료가 아니다.
+
+> **장기 Goal · 2026-09-20 등록:** [NEXUS_GOAL](NEXUS_GOAL.md)이 Goal 범위·완료 판정·공통 시스템의 단일 대장이고, [스토리 기준 로드맵](STORY_AXIS_ROADMAP.md)이 장별 현황과 단계 순서를 관리한다. **네 지방 중 하나라도 필수 구현·검증이 남으면 Goal을 완료로 표시하지 않는다.**
+
 > **현행 구현 우선 기준:** [REGIONAL_IMPLEMENTATION_DIRECTIVES](REGIONAL_IMPLEMENTATION_DIRECTIVES.md)는 지방별 작업 선택·도시 산출물·기존 맵 보수의 필수 기준이다. 현재 QA는 중단이다. 날짜별 보고의 재개 문구를 운영 지시로 사용하지 않는다.
 
 2026-09-12 정리 기준. **포켓몬 넥서스는 Nintendo DS BW·BW2풍을 목표로 한다.** 현재 맵·스토리 구현을 지방→시티/마을 단위로 이어가며, 그래픽 전환 완료를 뜻하지 않는다. **사용자 재개 지시 전까지 모든 QA 중단**을 유지한다.
@@ -7,15 +11,18 @@
 ## 먼저 읽을 문서
 
 1. [작업 지침](../AGENTS.md)과 [상세 규칙](AGENTS.md): 실행·보존·QA 중단.
-2. [지방별 구현 지시](REGIONAL_IMPLEMENTATION_DIRECTIVES.md): 작업 선택·도시별 필수 산출물과 기존 맵 보수 우선순위. 이어 [현재 인계](CONTINUE_STATE.md)와 [배정 상태](PROJECT_STATE.md)에서 실제 도시와 쓰기 범위를 확인한다.
-3. [개발 기준](DEVELOPMENT.md)·[현재 스토리](STORY.md): 실제 코드/플래그/저장 계약과 구현 기록.
-4. [넥서스 통합 서사](NEXUS_STORY_MASTER.md)·[BW·BW2풍 기준](VISUAL_STYLE_BW_BW2.md): 채택된 목표. 해당 지방 설계와 맵·스토리 적용표를 이어 읽는다.
+2. [장기 Goal](NEXUS_GOAL.md)과 [스토리 기준 로드맵](STORY_AXIS_ROADMAP.md): 무엇을 완성이라 부르는지와 어떤 순서로 만드는지.
+3. [지방별 구현 지시](REGIONAL_IMPLEMENTATION_DIRECTIVES.md): 작업 선택·도시별 필수 산출물과 기존 맵 보수 우선순위. 이어 [현재 인계](CONTINUE_STATE.md)와 [배정 상태](PROJECT_STATE.md)에서 실제 도시와 쓰기 범위를 확인한다.
+4. [개발 기준](DEVELOPMENT.md)·[현재 스토리](STORY.md): 실제 코드/플래그/저장 계약과 구현 기록.
+5. [넥서스 통합 서사](NEXUS_STORY_MASTER.md)·[BW·BW2풍 기준](VISUAL_STYLE_BW_BW2.md): 채택된 목표. 해당 지방 설계와 맵·스토리 적용표를 이어 읽는다.
 
 ## 문서 책임과 충돌 해결
 
 | 판단할 내용 | 단일 기준 | 다른 문서와의 관계 |
 | --- | --- | --- |
 | 작업 실행·보존·QA | [루트 AGENTS](../AGENTS.md) → [상세 AGENTS](AGENTS.md) | 사용자 최신 지시가 우선. QA 중단 중 도시 완료 QA도 실행하지 않음 |
+| Goal 범위·완료 판정·공통 시스템 번호 | [NEXUS_GOAL](NEXUS_GOAL.md) | 네 지방 중 하나라도 필수 구현·검증이 남으면 완료로 표시하지 않음. 지방·도시 순서의 단일 대장 |
+| 장별 구현 현황·단계 순서·선행 조건 | [STORY_AXIS_ROADMAP](STORY_AXIS_ROADMAP.md) | CH00~CH10 기준의 진척 척도. NEXUS_GOAL과 충돌하면 NEXUS_GOAL을 따름 |
 | 지방별 구현 우선순위·산출물·자료 적용 | [REGIONAL_IMPLEMENTATION_DIRECTIVES](REGIONAL_IMPLEMENTATION_DIRECTIVES.md) | 지방별 작업에서 필수 적용. 아래 지리·서사·크기·데이터의 확정 계약은 각 담당 문서를 따름 |
 | 목표·도시 완료 조건·현재 기능 | [DEVELOPMENT](DEVELOPMENT.md)와 관련 코드 | 문서 수량·과거 PASS를 현재 완료 증거로 쓰지 않음 |
 | 시각·연출 목표 | [VISUAL_STYLE_BW_BW2](VISUAL_STYLE_BW_BW2.md) | 현재 목표는 BW·BW2. DP/Pt 원작·기존 자산·과거 화면 기록은 보존 |

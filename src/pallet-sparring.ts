@@ -2,11 +2,15 @@ import type { Engine } from './engine';
 import type { SaveData } from './types';
 import { battleTurn, createTrainerBattle, type BattleAction } from './battle';
 import { pokemonMoves, SPECIES } from './pokemon';
+import { restorePp } from './move-pp';
 
 export function createPracticeBattle(source:SaveData,attacker:number,target:number){
   if(attacker===target||!source.party[attacker]||!source.party[target])return null;
   const save=structuredClone(source),player=save.party[attacker],opponent=save.party[target];
-  player.hp=player.maxHp;opponent.hp=opponent.maxHp;save.party=[player];
+  // A simulation on a cloned save: both sides start at full HP and full PP.
+  player.hp=player.maxHp;opponent.hp=opponent.maxHp;
+  restorePp(player,pokemonMoves(player));restorePp(opponent,pokemonMoves(opponent));
+  save.party=[player];
   const battle=createTrainerBattle(save,{id:'pallet-simulation',name:'실험 상대',reward:0,team:[opponent]});
   if(!battle)return null;
   // No switches are offered, so no participants can be added later. This
