@@ -7,8 +7,10 @@ import { nexusStarterDefinition } from './nexus-starters';
 
 export const LEVEL_CAP=RUNTIME_RULES.levelCap;
 export const OWNABLE_SPECIES:number[]=DATA.ownable;
-export function minimumLevel(species:number){return nexusStarterDefinition(species)?.minimumLevel??([2,5,8].includes(species)?16:[1,4,7,25].includes(species)?5:species===399?3:1)}
-export function maxHpAtLevel(species:number,level:number){return SPECIES[species].hp+(level-minimumLevel(species))*3}
+export function minimumLevel(species:number){return nexusStarterDefinition(species)?.minimumLevel??([2,5,8].includes(species)?16:[1,4,7,25].includes(species)?5:species===399?2:1)}
+// The 201/202 pools include Lv.2 Bidoof. Ownership must accept that level,
+// while the historical 18 HP at Lv.3 remains the anchor for existing saves.
+export function maxHpAtLevel(species:number,level:number){const hpBaseLevel=species===399?3:minimumLevel(species);return SPECIES[species].hp+(level-hpBaseLevel)*3}
 export function nextLevelXp(level:number){return level*10}
 export interface GrowthStep { kind:'experience'|'level'|'evolution'|'move'; amount:number; before:Pokemon; after:Pokemon; move?:string }
 function learnNewGrowthMoves(p:Pokemon,previousMoves:string[],show:(page:string,kind:GrowthStep['kind'],before:Pokemon,move?:string)=>void){

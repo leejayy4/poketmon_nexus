@@ -10,6 +10,7 @@ import { handleSinnohClock } from './sinnoh-clock-story';
 import { JUBILIFE_CLOCK } from './sinnoh-clock-state';
 import { handleFirstJourneyArrival, handleFirstJourneyGate } from './first-journey-travel';
 import { handleNexusOpening } from './nexus-opening';
+import { handleNexusEarlyJourney } from './nexus-early-journey';
 
 type EventHandler = (game: Engine, event: string) => boolean;
 export interface FirstJourneyEventRegistration {
@@ -31,6 +32,8 @@ export const FIRST_JOURNEY_EVENTS = [
   { map: 'lab', event: 'pokeballs', handlers: [handleNexusOpening] },
   { map: 'lab', event: 'assistant', handlers: [handleNexusOpening] },
   { map: 'lab', event: 'eeveeResearcher', handlers: [handleNexusOpening] },
+  { map: 'tour_sandgem_center', event: 'tourExhibit2', handlers: [handleNexusEarlyJourney] },
+  { map: 'tour_sinnoh_route_202', event: 'route202Sign', handlers: [handleNexusEarlyJourney] },
   { map: 'tour_jubilife', event: JUBILIFE_CLOCK.event, handlers: [handleSinnohClock] },
   { map: 'tour_jubilife', event: 'researchGate', handlers: [handleFirstBadgeTown] },
   { map: 'tour_jubilife', event: 'jubilifeSouthGreeter', handlers: [handleFirstJourneyArrival] },

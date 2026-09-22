@@ -8,6 +8,7 @@ import { evolveAtLevelCap, gainExperience, LEVEL_CAP, minimumLevel, maxHpAtLevel
 import { gymTeam,gymById,type GymId } from './gyms';
 import { withParticle } from './korean-text';
 import { trackFieldPartners } from './field-partner-party';
+import { hasSandgemSupply } from './nexus-early-state';
 
 export interface TrainerBattleInfo {id:string;name:string;reward:number;team:Pokemon[]}
 export interface Battle {
@@ -258,7 +259,7 @@ export function battleTurn(save:SaveData,b:Battle,action:BattleAction,random:()=
     if(b.kind!=='wild')return rejectAction('다른 트레이너의 포켓몬은\n잡을 수 없다.');
     if(b.special&&!b.special.allowCapture)return rejectAction('지금은 포획보다\n상황을 가라앉히는 데 집중하자.');
     if(save.party.length>=6&&(save.box?.length??0)>=BOX_CAPACITY)return rejectAction('파티와 PC 박스가 가득 찼다.\n다른 행동을 선택하자.');
-    if(save.inventory.pokeBalls<=0)return rejectAction(`몬스터볼이 없다. ${save.badges.length?'마을 상점에서':'길 안내원에게'}\n도구를 보충받을 수 있다.`);
+    if(save.inventory.pokeBalls<=0)return rejectAction(hasSandgemSupply(save)?'몬스터볼이 없다.\n잔모래 센터 간호사에게 보충받자.':`몬스터볼이 없다. ${save.badges.length?'마을 상점에서':'길 안내원에게'}\n도구를 보충받을 수 있다.`);
     b.betweenOpponents=false;b.protectStreak=0;save.inventory.pokeBalls--;
     show('몬스터볼을 던졌다!');frames[frames.length-1].capture='throw';
     if(b.enemy.hp<=b.enemy.maxHp*POKE_BALL.effect.guaranteedHpRatio||random()<POKE_BALL.effect.baseChance){

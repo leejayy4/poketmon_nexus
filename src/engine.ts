@@ -50,10 +50,12 @@ import { updateNexusOpening,arriveNexusOpening,nexusDepartureReady } from './nex
 import { sayField } from './field-scene';
 import { handleFirstJourneyEvent } from './first-journey-events';
 import { meetNexusFirstRival,finishNexusFirstRivalBattle,NEXUS_FIRST_RIVAL_TRAINER } from './nexus-first-rival';
+import { applyNexusEarlyActors } from './nexus-early-state';
+import { recordNexusEarlyBattle,recordSandgemCare } from './nexus-early-journey';
 import { SaveSession } from './save-session';
 import { updateSinnohClock,watchingSinnohClock,cancelSinnohClock } from './sinnoh-clock-story';
 import { grantPokemon, SPECIES, pokemonMoves } from './pokemon';
-import { restorePp } from './move-pp';
+import { currentPp,maxPp,restorePp } from './move-pp';
 import { GameAudio } from './audio';
 import { motherConversation, professorConversation } from './story';
 import { checkpoint } from './save-library';
@@ -151,7 +153,7 @@ export class Engine {
     if(this.navigationCache?.key!==key)this.navigationCache={key,value:planTourNavigation(this.save,this.tourDestination,map,objective?.event??this.tourEvent??undefined,objective?.point,this.followingObjective?undefined:this.tourNpcId)};
     return this.navigationCache.value;
   }
-  get map(){return applyMahoganyPower(applySeafoamBoulder(applyMortarRescue(applyCinnabarEvacuation(this.roaming?.map??getMap(this.save.map,this.save.flags),this.save.flags),this.save.flags),this.save.flags),this.save.flags,mahoganyPowerPosition(this))}
+  get map(){return applyNexusEarlyActors(applyMahoganyPower(applySeafoamBoulder(applyMortarRescue(applyCinnabarEvacuation(this.roaming?.map??getMap(this.save.map,this.save.flags),this.save.flags),this.save.flags),this.save.flags),this.save.flags,mahoganyPowerPosition(this)),this.save)}
   get interactionHint(){
     if(this.move||this.locked)return null;
     const p=this.save.player,v=VECTOR[p.facing],x=p.x+v.x,y=p.y+v.y;
@@ -245,13 +247,14 @@ export class Engine {
   toggleSound(){const enabled=this.audio.toggle(),button=document.getElementById('sound');if(button){button.textContent=enabled?'소리 ON':'소리 OFF';button.setAttribute('aria-label',enabled?'소리 끄기':'소리 켜기');}return enabled;}
   selectOption(index:number){if(index===0){this.textSpeed=this.textSpeed===36?80:36;this.notice(this.textSpeed===80?'대화 속도: 빠르게':'대화 속도: 보통')}else if(index===1){this.toggleSound()}else sayField(this,'처음부터',['이전 리포트를 보관하고\n별도 리포트로 처음부터 시작할까요?'],undefined,[{label:'처음부터',action:()=>{if(!this.activateSave(this.freshSave()))this.say('리포트',['새 리포트를 시작하지 못했습니다.\n현재 모험은 그대로 유지됩니다.','모험 기록의 저장 안내를\n확인해 주세요.']);}},{label:'돌아가기',action:()=>{}}]);}
   interact(){const p=this.save.player,v=VECTOR[p.facing],x=p.x+v.x,y=p.y+v.y;const npc=this.map.npcs.find(n=>n.x===x&&n.y===y);if(npc){if(npc.id==='tourPokemon'&&this.roaming?.move)return;npc.facing=({up:'down',down:'up',left:'right',right:'left'} as const)[p.facing];this.event(npc.dialogue);return}const prop=this.map.props.find(q=>q.x===x&&q.y===y);if(prop){this.event(prop.dialogue);return}}
-  event(id:string){if(this.ferryJourney||(cinnabarEvacuationMoving(this)||seafoamBoulderPushing(this)))return;if(handleGymCart(this,id)||handleRoadTrainer(this,id)||handleFirstJourneyEvent(this,id)||handleCityActivity(this,id)||handleJourneyEvent(this,id))return;if(id==='tourHost'&&isWorldCenter(this.save.map))id='nurse';if(TOUR_MAPS[this.save.map as TourId]&&(id.startsWith('tour')||TOUR_RESIDENTS[this.save.map]?.some(n=>n.dialogue===id))){const pokemon=TOUR_POKEMON[this.save.map];if(pokemon&&id===pokemon.dialogue){this.say(pokemon.name,pokemon.pages);return}const resident=TOUR_RESIDENTS[this.save.map]?.find(n=>n.dialogue===id);if(resident){this.say(resident.name,resident.pages);return}const outdoors=getWorldOutdoors(this.map);const outdoor=outdoors?.objects.find(o=>o.event===id)??outdoors?.signs.find(o=>o.event===id);if(outdoor){this.say(outdoor.name,outdoor.pages);return}const room=TOUR_INTERIORS[this.save.map];const object=room?.objects.find(o=>o.event===id);if(object){this.say(object.name,object.pages);return}if(room&&id==='tourHost'){this.say(this.map.npcs[0].name,room.greeting);return}const p=tourPlaceForMap(this.save.map);if(id==='tourGuide'&&p&&outdoors?.signs.length){this.say(this.map.npcs.find(n=>n.dialogue==='tourGuide')?.name??'마을 안내원',[p.concept+'\n출구 표지와 같은 방향으로 걸어가세요.',...outdoors.signs.map(sign=>sign.pages[0])]);return}this.say(id==='tourHost'?'시설 안내원':'마을 안내',p?[id==='tourHouse'?'주민들이 사는 집입니다.\n센터와 주요 시설 안을 둘러볼 수 있어요.':p.concept+'\n이곳은 자유롭게 둘러볼 수 있어요.',...TOUR_NEIGHBORS(p.id).map(n=>{const q=placeById(n)!;return(q.region===p.region?'길을 따라 ':'지방 연결편: ')+q.name+'로 이동할 수 있어요.'})]:['새잎마을의 시작 구간이에요.\n서쪽 출구가 축복시티로 이어집니다.']);return}if(id==='mom'){if(introduceOpeningPartner(this))return;const pages=motherConversation(this.save);if(this.save.party.some(p=>p.hp<p.maxHp)){this.healParty();this.persist();pages.push('조금 쉬었다 가렴.\n포켓몬들이 모두 건강해졌단다.')}this.say('엄마',pages);return}
+  event(id:string){if(this.ferryJourney||(cinnabarEvacuationMoving(this)||seafoamBoulderPushing(this)))return;if(handleGymCart(this,id)||handleRoadTrainer(this,id)||handleFirstJourneyEvent(this,id)||handleCityActivity(this,id)||handleJourneyEvent(this,id))return;if(id==='tourHost'&&isWorldCenter(this.save.map))id='nurse';if(TOUR_MAPS[this.save.map as TourId]&&(id.startsWith('tour')||TOUR_RESIDENTS[this.save.map]?.some(n=>n.dialogue===id))){const pokemon=TOUR_POKEMON[this.save.map];if(pokemon&&id===pokemon.dialogue){this.say(pokemon.name,pokemon.pages);return}const resident=TOUR_RESIDENTS[this.save.map]?.find(n=>n.dialogue===id);if(resident){this.say(resident.name,resident.pages);return}const outdoors=getWorldOutdoors(this.map);const outdoor=outdoors?.objects.find(o=>o.event===id)??outdoors?.signs.find(o=>o.event===id);if(outdoor){this.say(outdoor.name,outdoor.pages);return}const room=TOUR_INTERIORS[this.save.map];const object=room?.objects.find(o=>o.event===id);if(object){this.say(object.name,object.pages);return}if(room&&id==='tourHost'){this.say(this.map.npcs[0].name,room.greeting);return}const p=tourPlaceForMap(this.save.map);if(id==='tourGuide'&&p&&outdoors?.signs.length){this.say(this.map.npcs.find(n=>n.dialogue==='tourGuide')?.name??'마을 안내원',[p.concept+'\n출구 표지와 같은 방향으로 걸어가세요.',...outdoors.signs.map(sign=>sign.pages[0])]);return}this.say(id==='tourHost'?'시설 안내원':'마을 안내',p?[id==='tourHouse'?'주민들이 사는 집입니다.\n센터와 주요 시설 안을 둘러볼 수 있어요.':p.concept+'\n이곳은 자유롭게 둘러볼 수 있어요.',...TOUR_NEIGHBORS(p.id).map(n=>{const q=placeById(n)!;return(q.region===p.region?'길을 따라 ':'지방 연결편: ')+q.name+'로 이동할 수 있어요.'})]:['새잎마을의 시작 구간이에요.\n서쪽 출구가 축복시티로 이어집니다.']);return}if(id==='mom'){if(introduceOpeningPartner(this))return;const pages=motherConversation(this.save);if(this.save.party.some(p=>{const moves=pokemonMoves(p);return p.hp<p.maxHp||currentPp(p,moves).some((pp,i)=>pp<maxPp(moves[i]));})){this.healParty();this.persist();pages.push('조금 쉬었다 가렴.\nHP와 기술 횟수가 모두 회복됐단다.')}this.say('엄마',pages);return}
     if(GYMS.some(g=>g.id===id)){this.challengeGym(id as GymId);return}
     if(sinnohEvent(this,id))return;
     if(id==='nurse'){
       if(isWorldCenter(this.save.map)&&this.save.party.length)this.save.healingPoint=this.save.map as SaveData['healingPoint'];
-      this.healParty();if(!this.save.badges.length)this.save.inventory.potions=Math.max(2,this.save.inventory.potions);this.persist();
-      this.say('간호사',[this.save.badges.length?'포켓몬들이 모두 건강해졌어요!\n필요한 도구는 상점에서 구입하세요.':'포켓몬들이 모두 건강해졌어요!\n상처약도 2개까지 보충했어요.', '모험 중 쓰러지면 여기로 데려올게요.\n언제든 편히 쉬러 오세요.']);return
+      this.healParty();if(!this.save.badges.length)this.save.inventory.potions=Math.max(2,this.save.inventory.potions);
+      const earlySupply=recordSandgemCare(this.save);this.persist();
+      this.say('간호사',[earlySupply?'HP와 기술 횟수가 모두 회복됐어요!\n몬스터볼 5개·상처약 2개까지 보충했어요.':this.save.badges.length?'포켓몬들이 모두 건강해졌어요!\n필요한 도구는 상점에서 구입하세요.':'포켓몬들이 모두 건강해졌어요!\n상처약도 2개까지 보충했어요.', '모험 중 쓰러지면 여기로 데려올게요.\n언제든 편히 쉬러 오세요.']);return
     }
     if(id==='gymGuide'&&this.save.map==='oreburgh_gym'){
       const save=this.save;
@@ -432,6 +435,7 @@ export class Engine {
     recordRoute203PartnerBattle(this.save,b,turn.outcome);
     recordOreburghGatePartnerBattle(this.save,b,turn.outcome);
     recordRoute20PartnerBattle(this.save,b,turn.outcome);
+    recordNexusEarlyBattle(this.save,b,turn);
     this.battleFanfare=turn.outcome==='caught'?'catch':turn.outcome==='won'?'victory':null;
     if(finishNexusFirstRivalBattle(this,b,turn))return;
     if(turn.outcome==='lost'){

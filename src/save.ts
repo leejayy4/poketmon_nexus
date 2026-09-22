@@ -10,6 +10,7 @@ import { GYMS } from './gyms';
 import { SINNOH_MAPS,SINNOH_STARTS,SINNOH_CENTERS } from './sinnoh-maps';
 import { isNexusCampaign, isNexusStarter } from './nexus-starters';
 import { DEFAULT_TRAINER, NEXUS_OPENING, validTrainerProfile } from './nexus-opening-state';
+import { validNexusEarlyState } from './nexus-early-state';
 export const SAVE_KEY='first-partner-save-v1';
 export type SaveReadFailure = 'invalid-json' | 'invalid-data' | 'unsupported-version' | 'future-version' | 'future-world';
 export type SaveReadResult =
@@ -95,6 +96,7 @@ function parseSupportedSave(raw:string):SaveData|null {
     const starters=owned.filter(p=>nexus?isNexusStarter(p.species):[1,2,4,5,7,8].includes(p.species)), pikachu=owned.filter(p=>p.species===25&&p.met!=='상록숲');
     if(starters.length>1||pikachu.length>1||Boolean(s.flags.starterReceived)!==Boolean(starters.length)||Boolean(s.flags.pikachuReceived)!==Boolean(pikachu.length)) return null;
     if(nexus){
+      if(!validNexusEarlyState(s))return null;
       for(const flag of [NEXUS_OPENING.profile,NEXUS_OPENING.broadcast,NEXUS_OPENING.postcards,NEXUS_OPENING.outside])if(s.flags[flag]!==undefined&&typeof s.flags[flag]!=='boolean')return null;
       const reply=s.flags[NEXUS_OPENING.reply];
       if(reply!==undefined&&(typeof reply!=='number'||!Number.isInteger(reply)||reply<1||reply>3))return null;

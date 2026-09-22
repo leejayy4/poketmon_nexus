@@ -43,10 +43,14 @@ import { TOUR_BUILDINGS,TOUR_INTERIORS,tourPlaceForMap,placeById } from './explo
 import { FLOOR_PARENTS } from './journey-world';
 import { isNexusCampaign } from './nexus-starters';
 import { NEXUS_OPENING } from './nexus-opening-state';
+import { NEXUS_EARLY, earlyPartners, hasSandgemSupply } from './nexus-early-state';
 
 export interface AdventureObjective {id:string;title:string;map:MapId;action:string;event?:string;point?:{x:number;y:number}}
 
 export function itemSupply(save:SaveData,item:keyof SaveData['inventory']):AdventureObjective|null{
+  if(item==='pokeBalls'&&hasSandgemSupply(save)&&['bedroom','home','town','lab','tour_sinnoh_route_201','tour_verity_lakefront','tour_lake_verity','tour_sandgem','tour_sandgem_center','tour_sandgem_lab','tour_sinnoh_route_202','tour_jubilife','tour_jubilife_center'].includes(save.map)){
+    return {id:'supply',map:'tour_sandgem_center',event:'nurse',title:'잔모래 포켓몬센터',action:'간호사에게 회복과 부족한 도구 보충을 부탁하자'};
+  }
   const queue:MapId[]=[worldMapId(save.map)],seen=new Set<MapId>(queue);
   const events=save.badges.length?['martClerk']:item==='pokeBalls'?['routeGuide']:['nurse','routeGuide','trailGuide'];
   for(let i=0;i<queue.length;i++){
@@ -75,7 +79,13 @@ export function adventureObjective(save:SaveData):AdventureObjective|null{
       const map=worldMapId(save.map),visits=save.tourVisited??[];
       // Optional lake visits, captures and rival wins never become travel gates.
       if(['town','home','lab','bedroom','tour_sinnoh_route_201','tour_verity_lakefront','tour_lake_verity'].includes(map)&&!visits.includes('tour_sandgem'))return {id:'nexus-sandgem',title:'201번도로 너머 잔모래마을',map:'tour_sandgem',action:'201번도로를 따라 동쪽으로 가자. 북서쪽 호숫길에도 들를 수 있다'};
-      if(['tour_sandgem','tour_sandgem_center','tour_sandgem_lab','tour_sinnoh_route_202'].includes(map)&&!visits.includes('tour_jubilife'))return {id:'nexus-jubilife',title:'202번도로에서 축복시티로',map:'tour_jubilife',event:'jubilifeSouthGreeter',action:'센터에서 쉬고 북쪽 202번도로로 가자. 풀밭과 트레이너는 선택해서 만나자'};
+      if(['tour_sandgem','tour_sandgem_center','tour_sandgem_lab','tour_sinnoh_route_202'].includes(map)&&!visits.includes('tour_jubilife')){
+        if(!f[NEXUS_EARLY.reunion])return {id:'nexus-reunion',title:'잔모래 센터에서 만난 친구',map:'tour_sandgem_center',event:'tourExhibit2',action:'센터 왼쪽 대기석의 유진과 이야기하자. 북쪽 길은 자유롭게 갈 수 있다'};
+        if(!f[NEXUS_EARLY.rested])return {id:'nexus-care',title:'다음 길을 위한 휴식',map:'tour_sandgem_center',event:'nurse',action:'간호사에게 HP·기술 횟수 회복과 몬스터볼 보충을 부탁하자'};
+        if(map==='tour_sandgem_center'&&earlyPartners(save).length&&!f[NEXUS_EARLY.reviewed])return {id:'nexus-partner-advice',title:'새 동료와 함께',map:'tour_sandgem_center',event:'tourExhibit2',action:'유진과 새 동료의 출전·교대·성장에 대해 이야기하자'};
+        if(!f[NEXUS_EARLY.lesson]&&!earlyPartners(save).length)return {id:'nexus-catch-intro',title:'풀밭의 새 친구',map:'tour_sinnoh_route_202',event:'route202Sign',action:'도로 표지에서 포획 안내를 읽어 보자. 잔모래 쪽 첫 풀밭은 길 동쪽, 축복시티는 북쪽이다'};
+        return {id:'nexus-jubilife',title:'202번도로에서 축복시티로',map:'tour_jubilife',event:'jubilifeSouthGreeter',action:'동쪽 첫 풀밭에서 동료를 만나거나 북쪽 축복시티로 가자. 회복·보급은 남쪽 잔모래 센터에서'};
+      }
     }
   }
   if(!save.party.length)return {id:'partner',event:'professor',title:'첫 파트너 만나기',map:'lab',action:'은솔박사에게 말을 걸자'};
