@@ -6,11 +6,11 @@ import { TownRoaming } from '../src/explore-roaming';
 import { TOUR_POKEMON,TOUR_MAPS,type TourId } from '../src/explore-world';
 import { tourMapMarkers,tourMarkerBounds } from '../src/explore-minimap';
 import { tourExitPath } from '../src/explore-navigation';
-import { parseSave } from '../src/save';
+import { newSave,parseSave } from '../src/save';
 import { encodeSave,decodeSave } from '../src/save-library';
 import { TOWN_REVISION } from '../src/town';
 const tick=(g:Engine,seconds:number)=>{for(let i=0;i<Math.ceil(seconds/.05);i++)g.update(.05);};
-function setup(id='tour_jubilife'){const g=new Engine();g.exploring=true;g.save=g.freshSave();g.exploreTo(id);return g;}
+function setup(id='tour_jubilife'){const g=new Engine();g.exploring=true;g.save=newSave();g.panel='field';g.exploreTo(id);return g;}
 
 for(const [id,n]of Object.entries(TOUR_POKEMON))test('Pokemon roams clear tiles without obstructing exits or markers: '+id,()=>{
     const anchor={x:n.x,y:n.y};

@@ -50,7 +50,7 @@ test('low-HP counter previews report at most the HP the selected Pokemon can los
 });
 
 test('counter playback and reload never apply damage or item use for a second time',()=>dom(()=>{
-  const g=new Engine();g.save=ready();g.save.party[0].hp=3;g.battle=createBattle(g.save);g.actBattle('potion');
+  const g=new Engine();g.save=ready();g.panel='field';g.save.party[0].hp=3;g.battle=createBattle(g.save);g.actBattle('potion');
   const committed=structuredClone(g.save),attack=g.dialogue!.pages.findIndex(p=>p.startsWith('야생 비버니의'));
   assert.equal(committed.party[0].hp,16);assert.equal(committed.inventory.potions,1);
   g.dialogue!.page=attack;assert.equal(g.battleFrame!.player.hp,20);

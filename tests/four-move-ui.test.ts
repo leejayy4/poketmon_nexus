@@ -1,3 +1,4 @@
+import { newSave } from '../src/save';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {Engine} from '../src/engine';
@@ -6,7 +7,7 @@ import {grantPokemon,pokemonMoves} from '../src/pokemon';
 import {createBattle} from './runtime-battle-fixture';
 
 function fixture(){
-  const g=new Engine();grantPokemon(g.save,4);const p=g.save.party[0];p.level=17;p.moves=['할퀴기','울음소리','불꽃세례','용의분노'];
+  const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,4);const p=g.save.party[0];p.level=17;p.moves=['할퀴기','울음소리','불꽃세례','용의분노'];
   const words:{text:string;x:number;y:number}[]=[];
   const context=new Proxy({}, {get:(_,key)=>key==='fillText'?(text:string,x:number,y:number)=>words.push({text,x,y}):()=>{}}) as CanvasRenderingContext2D;
   const canvas={getContext:()=>context} as HTMLCanvasElement;

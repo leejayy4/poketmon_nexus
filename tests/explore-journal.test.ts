@@ -7,7 +7,7 @@ import { markTourVisit,tourVisitSummary } from '../src/explore-journal';
 import { TOUR_MAPS,TOUR_INTERIORS,TOUR_SPAWNS,type TourId } from '../src/explore-world';
 import { PASSAGES } from '../src/journey-world';
 import { checkpoint,encodeSave,decodeSave,SaveLibrary } from '../src/save-library';
-function tour(){const g=new Engine();g.exploring=true;g.save=g.freshSave();return g}
+function tour(){const g=new Engine();g.exploring=true;g.save=newSave();g.panel='field';return g}
 function step(g:Engine,key:string){g.press(key);g.release(key);for(let i=0;i<20;i++)g.update(.04)}
 test('guidance does not record a visit; actual door arrivals and public travel do, once',()=>{
   const g=tour();g.setTourDestination('tour_jubilife');assert.deepEqual(g.save.tourVisited??[],[]);

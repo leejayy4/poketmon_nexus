@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Engine } from '../src/engine';
-import { parseSave } from '../src/save';
+import { newSave,parseSave } from '../src/save';
 import { TOUR_LAYOUTS } from '../src/explore-layouts';
 import { TOUR_PLANS,TOUR_BUILDINGS,TOUR_FEATURES,TOUR_MAPS,TOUR_OUTDOORS,TOUR_SPAWNS,type TourId } from '../src/explore-world';
 import { canStand } from '../src/maps';
@@ -30,7 +30,7 @@ test('six towns and five trails have distinct investigable arrangements while fa
 
 test('revision 10 plaza saves relocate only newly blocked positions and preserve visited interiors',()=>{
   for(const [id,x,y]of [['tour_jubilife',14,19],['tour_oreburgh',19,18],['tour_hearthome',14,19]] as const){
-    const g=new Engine();g.exploring=true;g.save=g.freshSave();g.exploreTo(id+'_center');g.exploreTo(id);
+    const g=new Engine();g.exploring=true;g.save=newSave();g.panel='field';g.exploreTo(id+'_center');g.exploreTo(id);
     const s=g.save;s.worldRevision=10;s.player={x,y,facing:'right'};s.steps=234;s.seconds=567;
     const loaded=parseSave(JSON.stringify(s))!;assert(loaded);assert.equal(loaded.worldRevision,TOWN_REVISION);assert.equal(loaded.map,id);
     assert.deepEqual(loaded.player,{...TOUR_SPAWNS[id],facing:'down'});assert.equal(loaded.steps,234);assert.equal(loaded.seconds,567);assert.deepEqual(loaded.tourVisited,s.tourVisited);
@@ -40,7 +40,7 @@ test('revision 10 plaza saves relocate only newly blocked positions and preserve
 
 test('wooden observation paths stay on reachable floor and revision 11 saves recover new scenery overlaps',()=>{
   for(const [id,x,y]of [['tour_eterna',14,18],['tour_pastoria',20,18],['tour_canalave',24,18]] as const){
-    const map=TOUR_MAPS[id],g=new Engine();g.exploring=true;g.save=g.freshSave();g.exploreTo(id+'_hall');g.exploreTo(id);
+    const map=TOUR_MAPS[id],g=new Engine();g.exploring=true;g.save=newSave();g.panel='field';g.exploreTo(id+'_hall');g.exploreTo(id);
     const s=g.save;s.worldRevision=11;s.player={x,y,facing:'right'};s.steps=345;s.seconds=678;
     const loaded=parseSave(JSON.stringify(s))!;assert(loaded);assert.equal(loaded.worldRevision,TOWN_REVISION);
     assert.deepEqual(loaded.player,{...TOUR_SPAWNS[id],facing:'down'});assert.equal(loaded.steps,345);assert.equal(loaded.seconds,678);assert.deepEqual(loaded.tourVisited,s.tourVisited);

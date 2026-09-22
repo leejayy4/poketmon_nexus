@@ -30,6 +30,7 @@ const evolutions = createCatalog('level evolutions', DATA.evolutions.map(data =>
 export const RUNTIME_DATABASE = Object.freeze({
   schemaVersion: 1,
   origin: RUNTIME_ORIGIN,
+  projectSpeciesOrigin: DATA.projectSpeciesOrigin,
   regions: REGIONS, species, moves, pools, evolutions,
   capabilities: Object.freeze({
     timePolicy: DATA.timePolicy,
@@ -45,4 +46,3 @@ export const RUNTIME_DATABASE = Object.freeze({
   },
   evolutionInto(speciesId: number) { return evolutions.all().find(row => row.to === speciesId); },
 });
-

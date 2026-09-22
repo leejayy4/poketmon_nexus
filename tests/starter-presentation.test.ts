@@ -9,7 +9,7 @@ import {newSave,parseSave} from '../src/save';
 import {maxHpAtLevel} from '../src/growth';
 
 function game(move='불꽃세례'){
-  const g=new Engine();g.save=newSave();grantPokemon(g.save,4);
+  const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,4);
   g.save.party[0].moves=[move,'울음소리'];g.battle=createBattle(g.save);return g;
 }
 function frames(move:string,target:'enemy'|'player'){

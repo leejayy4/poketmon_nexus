@@ -7,7 +7,7 @@ import {newSave,parseSave} from '../src/save';
 import {grantPokemon} from '../src/pokemon';
 
 function dom(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}}
-function game(){const g=new Engine();g.save=newSave();grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.inventory={pokeBalls:3,potions:2};g.save.money=123;g.save.map='oreburgh_gym';g.save.player={x:8,y:5,facing:'up'};g.battle=createBattle(g.save,'gym');g.battle!.selected=3;return g}
+function game(){const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.inventory={pokeBalls:3,potions:2};g.save.money=123;g.save.map='oreburgh_gym';g.save.player={x:8,y:5,facing:'up'};g.battle=createBattle(g.save,'gym');g.battle!.selected=3;return g}
 function finish(g:Engine){for(let i=0;g.dialogue&&i<70;i++)g.confirm();assert.equal(g.dialogue,null)}
 function choices(g:Engine){for(let i=0;i<20;i++){const d=g.dialogue!;if(d.page===d.pages.length-1&&d.shown>=d.pages[d.page].length)return;g.confirm()}assert.fail('choices missing')}
 function renderer(g:Engine){const ctx=new Proxy({}, {get:()=>()=>{}}) as CanvasRenderingContext2D,canvas={getContext:()=>ctx} as HTMLCanvasElement;return new Renderer(g,canvas,canvas)}

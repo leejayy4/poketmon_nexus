@@ -5,12 +5,12 @@ import { TOUR_MAPS } from '../src/explore-world';
 import { handleJourneyEvent,purchase,depositPokemon,withdrawPokemon } from '../src/journey-services';
 import { grantPokemon,SPECIES } from '../src/pokemon';
 import { wildPokemon } from '../src/runtime-encounters';
-import { parseSave } from '../src/save';
+import { newSave,parseSave } from '../src/save';
 import { neighborJourneyLabel } from '../src/neighbor-journey';
 import { handleRoadTrainer } from '../src/road-trainers';
 
 function prepared(){
-  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=g.freshSave();
+  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=newSave();g.panel='field';
   assert(grantPokemon(g.save,7));g.save.flags.departureCleared=true;
   const local=wildPokemon('tour_kanto_route_18',()=>0)!;g.save.party.push(local);
   g.save.pokedex!.seen.push(local.species);g.save.pokedex!.caught.push(local.species);

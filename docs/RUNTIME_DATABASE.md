@@ -39,7 +39,7 @@
 
 | 논리 대상 | 식별자와 필요한 정보 | 연결·지원 경계 |
 |---|---|---|
-| 종 | 전국번호, 기본 모습, 이름·타입·종족값·포획률·성장률·전설/환상 구분 | 습득·진화·서식지의 공통 부모. 실행은 선택 종만 추출 |
+| 종 | 숫자 종 ID(공식종은 전국번호), 기본 모습, 이름·타입·종족값·포획률·성장률·전설/환상 구분 | 습득·진화·서식지의 공통 부모. 실행은 선택 종만 추출 |
 | 모습·특성 | 종/모습 ID, 타입·능력치 차이, 특성 ID·슬롯 | 기본 모습 참고 중심. 출신 지방과 지역형은 별개이며 전체 폼/특성 효과는 미지원 |
 | 기술 | 숫자 ID, 이름·타입·분류·위력·명중·PP·우선도·대상·효과 | 정의와 실제 지원 효과를 분리. 같은 기술을 지방별로 재정의하지 않음 |
 | 습득 | 종/모습 + 기술 + 버전 + 방법 + 레벨/도구 | 배울 수 있음과 현재 배운 기술을 분리 |
@@ -83,7 +83,7 @@
 
 1. `docs/design-data/nexus-plan.json`과 고정 CSV, `docs/개발용_초안맵.md`·`docs/개발용_초안스토리.md`가 현재 설계 생성 입력이다.
 2. `scripts/design/build_databases.py`가 입력 표를 파싱하여 설계 JSON·개발용 DB 문서·출처 명세·`validation.json`을 만든다.
-3. `scripts/design/export-runtime-pokemon.py`가 설계 종·진화·선택 조우와 `scripts/design/runtime-local-pools.json`, 고정 CSV를 읽는다.
+3. `scripts/design/export-runtime-pokemon.py`가 설계 종·진화·선택 조우와 `scripts/design/runtime-local-pools.json`, 신규종 입력 `scripts/design/nexus-starters.json`, 고정 CSV를 읽는다.
 4. 실행 출력은 `src/runtime-pokemon-data.json`이며 출처 결과는 `public/assets/pokemon-runtime-sources.json`이다. `--assets`는 필요한 자산 취득 단계다.
 5. `src/data/runtime.ts`가 실행 JSON을 읽고 `pokemon.ts`, `growth.ts`, `battle.ts`, `runtime-encounters.ts` 등에 공통 뷰를 제공한다.
 
@@ -92,6 +92,14 @@
 수치·팀·배치 변경은 입력과 생성기에서 처리한다. 생성 설명도 렌더러 원본에서 고치며 결과 파일만 손으로 수정하지 않는다.
 전체 설계 변경은 설계 생성기, 실제 적용할 범위는 런타임 익스포터 순서로 다룬다. 문서 작업만으로 재생성하거나 다운로드하지 않는다.
 지역 풀의 `source` 존재만으로 출처 검증 완료라 하지 않는다. 원자료 버전·제외 종·조건·프로젝트 레벨 조정과 실제 바인딩을 함께 확인한다.
+
+### NEXUS 스타팅의 작성 입력
+
+[신규종 입력](../scripts/design/nexus-starters.json)의 세 첫 형태가 유일한 수정 원본이다. 900001 새록/900002 잿울/900003 포말이는 전국번호와 구분한 내부 ID이며 이름·풀/불꽃/물 타입·수치·외형은 잠정 제작안이다. 공식 자료나 최종 승인으로 표기하지 않는다.
+익스포터는 공식종 추출 뒤 프로젝트 종을 합쳐 `nexusStarterIds`·`projectSpecies`·버전 `nexus-first-journey-v1` 습득표를 생성한다. 기존 지원 기술의 PP/위력은 고정 CSV에서 공유하며 프로젝트 종 수치를 PokéAPI에 있다고 주장하지 않는다. 진화는 추가하지 않았다.
+Lv5 HP는 21/20/22이고 후속 HP/경험치 규칙은 기존 프로젝트 성장을 사용한다. 잿울의 안다리걸기 Lv11 등 실제 지원 기술만 사용하며 레벨 습득 후보와 네 칸 교체 UI를 구분한다.
+[자작 자산 출처](../public/assets/nexus-starters/provenance.json)와 [URL 공급](../src/nexus-starter-art.ts)은 세 종의 80×80 투명 SVG 앞/뒤 정지 시안을 제공한다. 기존종 PNG는 유지하며 공식 스프라이트 다운로드 경로에 신규 ID를 보내지 않는다.
+2026-09-22에는 기존 CSV 캐시로 `python scripts/design/export-runtime-pokemon.py --offline`을 실행해 결과와 출처 명세를 작성했다. `--assets`·다운로드·테스트·빌드·시각 QA는 실행하지 않았다. 생성 후 종83/소유허용77이며 기술55/풀73/진화8은 유지한다.
 
 ## 6. 조우·생태·획득
 

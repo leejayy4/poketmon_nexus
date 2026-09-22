@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" shape-rendering="crispEdges" role="img" aria-label="잿울 앞모습">
+  <title>잿울 — 불꽃 늑대 첫 형태, 앞모습 시안</title>
+  <path fill="#29272e" d="M53 43h8v-7h4V25h4v-7h5v10h3v15h-5v9H61v8h-6v12H44V60h-7v12H25V57h-5V42h8v-7h21v4h4z"/>
+  <path fill="#58525a" d="M30 39h18v4h9v4h11v-7h6v-6h-6v7h-4v7H54v9h-2v12h-5V56H34v13h-6V55h-5V45h7z"/>
+  <path fill="#79717a" d="M29 40h15v5h9v8H34v-5h-8v-4h3z"/>
+  <path fill="#aa5945" d="M23 45h9v7h4v7h-8v10h-3V55h-2zM49 56h4v13h-4z"/>
+  <path fill="#cf7850" d="M25 46h4v6h4v4h-6v-6h-2z"/>
+  <path fill="#e87836" d="M67 26h4v-5h1v9h3v10h-5v6h-5v-6h2z"/>
+  <path fill="#ffc263" d="M69 30h3v4h1v5h-4v4h-2v-8h2z"/>
+  <path fill="#fff0ab" d="M69 36h2v3h-2z"/>
+  <path fill="#29272e" d="M19 6h6v5h5v9h12v-7h5V6h6v6h4v25h-5v8h-8v4H26v-4h-9V30h3V17h-1z"/>
+  <path fill="#58525a" d="M22 9h1v5h4v11h17V16h5V9h2v7h3v18h-5v9h-8v3H28v-4h-8v-9h3V19h-1z"/>
+  <path fill="#79717a" d="M27 24h18v3h7v6h-6v7H29v-4h-7v-5h5z"/>
+  <path fill="#aa5945" d="M24 16h1v10h-2v-7h1zM49 17h3v8h-5v-4h2zM21 34h8v-3h4v8h9v-8h5v4h4v6h-8v5H28v-5h-7z"/>
+  <path fill="#e7bd8e" d="M25 37h20v5h-6v3H29v-4h-4z"/>
+  <path fill="#29272e" d="M28 29h6v7h-6zM43 28h6v7h-6zM29 37h7v4h-7zM36 43h5v2h-5z"/>
+  <path fill="#ffd583" d="M29 30h3v4h-3zM44 29h3v4h-3z"/>
+  <path fill="#fff3cd" d="M29 30h1v2h-1zM44 29h1v2h-1z"/>
+  <path fill="#aa5945" d="M34 20h5v3h4v3h-8v-3h-1z"/>
+  <path fill="#29272e" d="M29 67h5v2h-5zM47 67h5v2h-5z"/>
+</svg>

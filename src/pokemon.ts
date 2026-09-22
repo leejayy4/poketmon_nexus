@@ -2,6 +2,7 @@ import type { Pokemon, SaveData } from './types';
 import { RUNTIME_DATABASE, RUNTIME_SPECIES_DATA, RUNTIME_MOVE_DATA } from './data/runtime';
 import { RUNTIME_RULES } from './data/rules';
 import { resetSlotPp, validPokemonPp } from './move-pp';
+import { LEGACY_STARTERS, isNexusCampaign, nexusStarterDefinition, starterSpeciesFor } from './nexus-starters';
 export const SPECIES: Record<number, { name: string; genus: string; types: string[]; color: string; description: string; moves: string[]; hp: number }> = {
   406:{name:'꼬몽울',genus:'관장 파트너',types:['풀'],color:'#8796a2',description:'체육관에서 만나는 파트너.',moves:['흡수','방어'],hp:30},
   420:{name:'체리버',genus:'관장 파트너',types:['풀'],color:'#8796a2',description:'체육관에서 만나는 파트너.',moves:['몸통박치기','방어'],hp:30},
@@ -21,15 +22,16 @@ export const SPECIES: Record<number, { name: string; genus: string; types: strin
   7: { name: '꼬부기', genus: '꼬마거북포켓몬', types: ['물'], color: '#619abd', description: '단단한 등껍질을 지닌 친구.\n물속에서 헤엄치기를 좋아한다.', moves: ['몸통박치기', '꼬리흔들기'], hp: 20 },
   25: { name: '피카츄', genus: '쥐포켓몬', types: ['전기'], color: '#caaa35', description: '아직 사람을 조금 경계한다.\n천천히 서로를 알아가 보자.', moves: ['전기쇼크', '울음소리'], hp: 19 },
 };
-export const STARTERS = [7, 4, 1];
+/** Legacy selection order remains stable for existing campaigns. */
+export const STARTERS = [...LEGACY_STARTERS];
 export const RUNTIME_SPECIES=RUNTIME_SPECIES_DATA;
 export const MOVE_RULES=RUNTIME_MOVE_DATA;
 export const BOX_CAPACITY=RUNTIME_RULES.boxCapacity;
 export const MOVE_CAPACITY=RUNTIME_RULES.moveCapacity;
 export function pokemonSnapshot(p:Pokemon):Pokemon{return {...p,...(p.moves?{moves:[...p.moves]}:{}),...(p.pp?{pp:[...p.pp]}:{})};}
 for(const [key,data] of Object.entries(RUNTIME_SPECIES)){
-  const id=Number(key),old=SPECIES[id];
-  SPECIES[id]={name:data.name,genus:old?.genus??'여행의 동료',types:data.types,color:old?.color??'#8796a2',description:old?.description??'여행 중 만난 포켓몬.\n함께 싸우고 성장하는 동료다.',hp:old?.hp??({2:57,5:56,8:57}[id]??12+Math.floor(data.stats.hp/12)),moves:old?.moves??['발버둥','튀어오르기']};
+  const id=Number(key),old=SPECIES[id],project=nexusStarterDefinition(id);
+  SPECIES[id]={name:data.name,genus:project?.genus??old?.genus??'여행의 동료',types:data.types,color:project?.color??old?.color??'#8796a2',description:project?.description??old?.description??'여행 중 만난 포켓몬.\n함께 싸우고 성장하는 동료다.',hp:project?.initialHp??old?.hp??({2:57,5:56,8:57}[id]??12+Math.floor(data.stats.hp/12)),moves:project?[...project.initialMoves]:old?.moves??['발버둥','튀어오르기']};
 }
 function levelMoves(p:Pokemon):string[]{
   const visited=new Set<number>();
@@ -82,8 +84,12 @@ export function recordSeen(save:SaveData,species:number,caught=false){
   if(caught&&!save.pokedex.caught.includes(species))save.pokedex.caught.push(species);
 }
 export function grantPokemon(save: SaveData, species: number): boolean {
+  const nexus=isNexusCampaign(save);
   const flag = species === 25 ? 'pikachuReceived' : 'starterReceived';
-  if (![1,4,7,25].includes(species) || !SPECIES[species] || save.flags[flag] || save.party.length >= 6) return false;
+  const eligible=starterSpeciesFor(save).includes(species)||(!nexus&&species===25);
+  if (!eligible || !SPECIES[species] || save.flags[flag] || save.party.length >= 6) return false;
+  // A NEXUS introduction grants one first partner; it never replaces owned Pokemon.
+  if(nexus&&(save.party.length>0||(save.box?.length??0)>0))return false;
   if (species !== 25 && (save.flags.pikachuReceived || save.party.some(p=>p.species===25))) return false;
   const data = SPECIES[species];
   const pokemon: Pokemon = { species, level: 5, experience:0, hp: data.hp, maxHp: data.hp, nature: species === 25 ? '고집' : '성실', met: '새잎마을 · 포켓몬 연구소' };

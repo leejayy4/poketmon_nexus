@@ -1,3 +1,4 @@
+import { newSave } from '../src/save';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {paintCoronetGround,paintCoronetBoundary,paintCoronetPaths,paintCoronetBattleArena} from '../src/coronet-art';
@@ -66,7 +67,7 @@ test('exploration integration keeps rock footprints and terrain data while repla
 }));
 
 function arena(map:Parameters<typeof getMap>[0],clock=0){
-  const g=new Engine();grantPokemon(g.save,7);g.save.map=map;g.clock=clock;g.battle=createBattle(g.save)!;
+  const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.map=map;g.clock=clock;g.battle=createBattle(g.save)!;
   const paint=canvas(),r=new Renderer(g,paint.element,paint.element);return {g,r,...paint};
 }
 test('only mountain wild battles use the static rocky arena; other fields, cave and gyms keep their own arenas',()=>{

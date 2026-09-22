@@ -40,7 +40,7 @@ test('multiple levels and the cap have distinct detached steps and preserve the 
 });
 
 test('growth card identifies a reserve recipient while the upper battlefield retains the active Pokemon',()=>dom(()=>{
-  const g=new Engine();g.save=ready();g.save.party.push({species:399,level:3,hp:14,maxHp:18,experience:20,nature:'성실',met:'새잎 서쪽길'});g.battle=createBattle(g.save)!;g.battle.active=1;g.battle.participants=[0,1];g.battle.enemy.hp=1;g.actBattle('move0');
+  const g=new Engine();g.save=ready();g.panel='field';g.save.party.push({species:399,level:3,hp:14,maxHp:18,experience:20,nature:'성실',met:'새잎 서쪽길'});g.battle=createBattle(g.save)!;g.battle.active=1;g.battle.participants=[0,1];g.battle.enemy.hp=1;g.actBattle('move0');
   const words:string[]=[],ctx=new Proxy({}, {get:(_,k)=>k==='fillText'?(s:string)=>words.push(s):()=>{}}) as CanvasRenderingContext2D,canvas={getContext:()=>ctx} as HTMLCanvasElement,r=new Renderer(g,canvas,canvas);
   g.dialogue!.page=g.battleFrames!.findIndex(f=>f.growth?.kind==='level');r.lower();
   assert(words.includes('레벨 업!'));assert(words.includes('꼬부기'));assert(words.includes('파티 1'));assert(words.includes('Lv.5 → Lv.6'));assert(words.includes('최대 HP +3'));assert(!words.includes('싸운다'));
@@ -49,14 +49,14 @@ test('growth card identifies a reserve recipient while the upper battlefield ret
 }));
 
 test('gym growth completes before the next opponent and before a final badge reward',()=>dom(()=>{
-  for(const last of [false,true]){const g=new Engine();g.save=ready();g.battle=createBattle(g.save,'gym')!;if(last){g.battle.enemyIndex=2;g.battle.enemy=g.battle.opponents[2]}g.battle.enemy.hp=1;g.actBattle('move0');
+  for(const last of [false,true]){const g=new Engine();g.save=ready();g.panel='field';g.battle=createBattle(g.save,'gym')!;if(last){g.battle.enemyIndex=2;g.battle.enemy=g.battle.opponents[2]}g.battle.enemy.hp=1;g.actBattle('move0');
     const frames=g.battleFrames!,lastGrowth=frames.findLastIndex(f=>!!f.growth);assert(lastGrowth>=0);assert.equal(frames[lastGrowth+1].growth,undefined);
     if(last){assert(g.gymReward!.page>lastGrowth);g.dialogue!.page=g.gymReward!.page;assert(g.showingGymReward)}else{assert.equal(frames[lastGrowth].enemyIndex,0);assert.equal(frames[lastGrowth+1].enemyIndex,1)}
   }
 }));
 
 test('reload during growth retains final XP exactly once and clears presentation; no growth on escape or capture',()=>dom(()=>{
-  const g=new Engine();g.save=ready();g.battle=createBattle(g.save)!;g.battle.enemy.hp=1;g.actBattle('move0');g.dialogue!.page=g.battleFrames!.findIndex(f=>!!f.growth);
+  const g=new Engine();g.save=ready();g.panel='field';g.battle=createBattle(g.save)!;g.battle.enemy.hp=1;g.actBattle('move0');g.dialogue!.page=g.battleFrames!.findIndex(f=>!!f.growth);
   const saved=parseSave(JSON.stringify(g.save))!;assert(saved);assert.equal(saved.party[0].level,6);assert.equal(saved.party[0].experience,20);
   g.restore(saved);assert.equal(g.battleFrame,null);finish(g);assert.deepEqual(g.save.party,saved.party);
   for(const action of ['run','ball'] as const){const s=ready();s.inventory.pokeBalls=1;const b=createBattle(s)!;b.enemy.hp=1;const turn=battleTurn(s,b,action);assert(!turn.frames?.some(f=>f.growth));assert.equal(s.party[0].experience,40)}

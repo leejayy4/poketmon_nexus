@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Engine,VECTOR } from '../src/engine';
 import { planTourNavigation,tourExitPath,objectiveInteractionPath } from '../src/explore-navigation';
-import { parseSave } from '../src/save';
+import { newSave,parseSave } from '../src/save';
 import { grantPokemon,availableMoves,pokemonMoves,validPokemonMoves } from '../src/pokemon';
 import { createBattle,battleTurn } from '../src/battle';
 import { depositPokemon,withdrawPokemon } from '../src/journey-services';
@@ -29,7 +29,7 @@ test('Castelia city, Route 4 entrance and required interiors use the authored ta
 
 test('both garden species survive boxed capture, withdrawal and home move learning with provenance',()=>{
   for(const roll of [0,0.99]){
-    const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=g.freshSave();grantPokemon(g.save,7);
+    const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=newSave();g.panel='field';grantPokemon(g.save,7);
     g.save.flags.departureCleared=true;
     while(g.save.party.length<6)g.save.party.push(wildPokemon('tour_castelia',()=>0)!);
     g.save.map='tour_castelia';g.save.player={x:27,y:5,facing:'down'};g.save.inventory.pokeBalls=1;
@@ -59,7 +59,7 @@ test('both garden species survive boxed capture, withdrawal and home move learni
 });
 
 test('all harbor surfaces dispatch through player confirmation and retain optional records after reload',()=>{
-  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=g.freshSave();grantPokemon(g.save,7);
+  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=newSave();g.panel='field';grantPokemon(g.save,7);
   g.save.map='tour_castelia';g.save.player={x:14,y:30,facing:'down'};
   const unchanged=JSON.stringify({party:g.save.party,money:g.save.money,inventory:g.save.inventory,badges:g.save.badges});
   for(const name of ['서쪽 항만 수면','중앙 부두의 물결','동쪽 항만 전경']){
@@ -83,7 +83,7 @@ test('all harbor surfaces dispatch through player confirmation and retain option
 
 test('harbor sketch rejects a changed lead and persists one optional gallery selection',()=>{
   const g=new Engine();g.announce=()=>{};let writes=0;g.persist=()=>{writes++;return true;};
-  g.save=g.freshSave();grantPokemon(g.save,7);grantPokemon(g.save,25);g.save.map='tour_castelia';
+  g.save=newSave();g.panel='field';grantPokemon(g.save,7);grantPokemon(g.save,25);g.save.map='tour_castelia';
   const event=TOUR_OUTDOORS.tour_castelia.objects.find(o=>o.name==='서쪽 항만 수면')!.event;
   assert(handleCasteliaGallery(g,event));const stale=g.dialogue!.choices![0].action;
   g.save.party.reverse();stale();assert.equal(writes,0);assert.equal(g.save.flags.casteliaSketchWest,undefined);
@@ -99,7 +99,7 @@ test('harbor sketch rejects a changed lead and persists one optional gallery sel
 });
 
 test('Castelia homes, gallery and Route 4 entrance support engine walking and save restoration in one journey',()=>{
-  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=g.freshSave();
+  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=newSave();g.panel='field';
   grantPokemon(g.save,7);g.save.flags.departureCleared=true;
   g.save.map='tour_castelia';g.save.player={x:14,y:30,facing:'down'};
   const party=JSON.stringify(g.save.party);

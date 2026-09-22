@@ -42,7 +42,7 @@ test('new sprite files use pinned Platinum front/back assets with matching hashe
   }
 });
 test('coast capture updates the actual Pokedex habitat page and route guidance uses the runtime range',()=>{
-  const g=new Engine();g.save=ready();g.announce=()=>{};
+  const g=new Engine();g.save=ready();g.panel='field';g.announce=()=>{};
   for(let slot=0;slot<species.length;slot++){
     const p=monster(slot,0);g.save.pokedex!.seen.push(p.species);g.save.pokedex!.caught.push(p.species);
     const habitats=speciesHabitats(p.species);assert.deepEqual(habitats.map(h=>[h.name,h.minLevel,h.maxLevel]),[['갈색–블루 해안길',22,25],...([19,96].includes(p.species)?[['성도 34번도로',22,24]]:[])]);

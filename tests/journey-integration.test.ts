@@ -11,7 +11,7 @@ import { handleJourneyEvent } from '../src/journey-services';
 import { showMoveSchool } from '../src/move-school';
 import { itemSupply } from '../src/adventure-guide';
 
-function game(){const g=new Engine();g.save=newSave();grantPokemon(g.save,4);grantPokemon(g.save,25);g.save.flags.departureCleared=true;g.save.map='route_s01';g.random=()=>0;return g;}
+function game(){const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,4);grantPokemon(g.save,25);g.save.flags.departureCleared=true;g.save.map='route_s01';g.random=()=>0;return g;}
 function dom(run:()=>void){const previous=globalThis.document;globalThis.document={getElementById:()=>null} as unknown as Document;try{run();}finally{globalThis.document=previous;}}
 function choose(g:Engine,label:string){const choice=g.dialogue?.choices?.find(c=>c.label===label);assert(choice,label);g.dialogue=null;choice.action();}
 function finish(g:Engine){for(let i=0;i<300&&g.dialogue;i++){g.dialogue.shown=999;if(g.battlePresentation&&!g.battlePresentation.canAdvance)g.update(.05);else g.confirm();}}

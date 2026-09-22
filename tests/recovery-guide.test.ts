@@ -33,7 +33,7 @@ test('expanded port has its own working center even before the research ferry qu
 });
 
 test('escaping with critical HP shows recovery and actual route-guide healing restores the original objective',()=>dom(()=>{
-  const g=new Engine();g.exploring=false;g.save=ready();g.save.party[0].hp=8;g.save.inventory={pokeBalls:0,potions:0};g.battle=createBattle({...g.save,map:'route_s01'},'wild','roark',()=>0);
+  const g=new Engine();g.exploring=false;g.save=ready();g.panel='field';g.save.party[0].hp=8;g.save.inventory={pokeBalls:0,potions:0};g.battle=createBattle({...g.save,map:'route_s01'},'wild','roark',()=>0);
   assert.equal(adventureGuide(g.save)!.objective.id,'roark');g.actBattle('move1');finish(g);assert.equal(g.save.party[0].hp,4);
   g.actBattle('run');finish(g);assert(!g.battle);assert.equal(adventureGuide(g.save)!.objective.id,'recover');
   const flags=structuredClone(g.save.flags);g.event('routeGuide');finish(g);assert.equal(g.save.party[0].hp,20);assert.equal(g.save.inventory.potions,2);assert.equal(g.save.inventory.pokeBalls,5);
@@ -41,7 +41,7 @@ test('escaping with critical HP shows recovery and actual route-guide healing re
 }));
 
 test('saving a recovery state preserves badges and fainted HP; nursing restores both party and next badge guidance',()=>dom(()=>{
-  const g=new Engine();g.exploring=false;g.save=ready();g.save.badges=[GYMS[0].badge];g.save.keyItems=[GYMS[0].tm];g.save.map='tour_oreburgh_center';g.save.player={x:8,y:7,facing:'up'};
+  const g=new Engine();g.exploring=false;g.save=ready();g.panel='field';g.save.badges=[GYMS[0].badge];g.save.keyItems=[GYMS[0].tm];g.save.map='tour_oreburgh_center';g.save.player={x:8,y:7,facing:'up'};
   g.save.party.push({species:399,level:3,hp:0,maxHp:18,experience:12,nature:'성실',met:'새잎 서쪽길'});
   const saved=parseSave(JSON.stringify(g.save));assert(saved);g.restore(saved);assert.equal(adventureGuide(g.save)!.objective.id,'recover');assert.equal(g.save.party[1].hp,0);
   g.event('nurse');finish(g);assert.equal(adventureGuide(g.save)!.objective.id,'gardenia');assert.equal(g.save.party[1].experience,12);assert(g.save.party.every(p=>p.hp===p.maxHp));assert.equal(g.save.healingPoint,'tour_oreburgh_center');

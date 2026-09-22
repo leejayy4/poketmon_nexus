@@ -7,7 +7,7 @@ import {createBattle} from './runtime-battle-fixture';
 import {newSave,parseSave} from '../src/save';
 import {grantPokemon} from '../src/pokemon';
 function dom(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}}
-function game(){const g=new Engine();g.save=newSave();grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.inventory.potions=2;for(let i=1;i<6;i++)g.save.party.push({species:399,level:3,hp:i===1?2:i===2?0:18,maxHp:18,experience:0,nature:'성실',met:'새잎 서쪽길'});g.battle=createBattle(g.save);g.battle!.menu='party';return g}
+function game(){const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.inventory.potions=2;for(let i=1;i<6;i++)g.save.party.push({species:399,level:3,hp:i===1?2:i===2?0:18,maxHp:18,experience:0,nature:'성실',met:'새잎 서쪽길'});g.battle=createBattle(g.save);g.battle!.menu='party';return g}
 function renderer(g:Engine){const words:string[]=[],ctx=new Proxy({}, {get:(_,key)=>key==='fillText'?(s:string)=>words.push(s):()=>{}}) as CanvasRenderingContext2D,canvas={getContext:()=>ctx} as HTMLCanvasElement;return {words,r:new Renderer(g,canvas,canvas)}}
 function finish(g:Engine){for(let i=0;i<90&&g.dialogue;i++)g.confirm();assert(!g.dialogue)}
 test('six party slots show the selected Pokemon and HP without changing the party or active battler',()=>{

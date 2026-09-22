@@ -1,3 +1,4 @@
+import { newSave } from '../src/save';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {paintEternaGym,paintEternaGymInterior,paintEternaGymPlanters,paintEternaGymBattleArena} from '../src/eterna-gym-art';
@@ -68,7 +69,7 @@ test('exterior still fits the original house envelope and painting always restor
 });
 
 function arena(id:'roark'|'gardenia'|'fantina'|'maylene',clock=0){
-  const g=new Engine();grantPokemon(g.save,7);g.save.map=id==='gardenia'?'eterna_gym':'oreburgh_gym';g.clock=clock;g.battle=createBattle(g.save,'gym',id)!;
+  const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.map=id==='gardenia'?'eterna_gym':'oreburgh_gym';g.clock=clock;g.battle=createBattle(g.save,'gym',id)!;
   const paint=canvas(),r=new Renderer(g,paint.element,paint.element);return {g,r,...paint};
 }
 test('only Gardenia uses the static greenhouse battle background and stays inside the DS screen',()=>{

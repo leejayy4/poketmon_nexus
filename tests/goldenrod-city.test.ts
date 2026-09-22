@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Engine,VECTOR } from '../src/engine';
 import { planTourNavigation,tourExitPath } from '../src/explore-navigation';
-import { parseSave } from '../src/save';
+import { newSave,parseSave } from '../src/save';
 import { grantPokemon } from '../src/pokemon';
 import { TOUR_MAPS,TOUR_NEIGHBORS } from '../src/explore-world';
 import { journeyConnection } from '../src/journey-world';
@@ -19,7 +19,7 @@ test('Goldenrod and Saffron neighbor panels resolve the station corridor without
 
 test('radio upper floors use current party provenance, leave progress unchanged and reject stale navigation',()=>{
   for(const [map,event] of [['tour_goldenrod_hall_2f','tourDetail3_4'],['tour_goldenrod_hall_3f','tourDetail3_9']] as const){
-    const g=new Engine();g.announce=()=>{};g.save=g.freshSave();g.save.party=[wildPokemon('tour_route_34',()=>0.99)!];g.save.map=map;
+    const g=new Engine();g.announce=()=>{};g.save=newSave();g.panel='field';g.save.party=[wildPokemon('tour_route_34',()=>0.99)!];g.save.map=map;
     g.save.party[0].met='성도 34번도로';
     const before=JSON.stringify(g.save);
     assert(handleGoldenrodRadio(g,event));
@@ -31,7 +31,7 @@ test('radio upper floors use current party provenance, leave progress unchanged 
 });
 
 test('Route 34 notebook distinguishes same-species outsiders from local boxed companions',()=>{
-  const g=new Engine();g.save=g.freshSave();g.save.party=[wildPokemon('tour_route_34',()=>0.99)!];
+  const g=new Engine();g.save=newSave();g.panel='field';g.save.party=[wildPokemon('tour_route_34',()=>0.99)!];
   g.save.party[0].met='다른 도시';
   assert(route34RecordPages(g.save).some(page=>page.includes('현지 동료 없음')));
   g.save.party[0].met='성도 34번도로';g.save.box=[g.save.party.pop()!];
@@ -39,7 +39,7 @@ test('Route 34 notebook distinguishes same-species outsiders from local boxed co
 });
 
 test('station, radio floors, homes and Route 34 support engine walking and save restoration in one journey',()=>{
-  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=g.freshSave();
+  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=newSave();g.panel='field';
   grantPokemon(g.save,7);g.save.flags.departureCleared=true;
   g.save.map='tour_saffron';g.save.player={x:14,y:33,facing:'down'};
   const party=JSON.stringify(g.save.party);

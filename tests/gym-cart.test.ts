@@ -9,7 +9,7 @@ import { GYM_ROCKS } from '../src/badge-maps';
 import { handleGymCart, updateGymCart, gymCartView, gymCartMoving } from '../src/gym-cart';
 
 function dom(run:()=>void){const old=globalThis.document;globalThis.document={getElementById:()=>null} as unknown as Document;try{run();}finally{globalThis.document=old;}}
-function fixture(){const g=new Engine();g.save=newSave();grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.map='oreburgh_gym';g.save.player={x:8,y:13,facing:'up'};let writes=0;g.persist=()=>{writes++;return true;};return {g,get writes(){return writes;}};}
+function fixture(){const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.map='oreburgh_gym';g.save.player={x:8,y:13,facing:'up'};let writes=0;g.persist=()=>{writes++;return true;};return {g,get writes(){return writes;}};}
 function event(g:Engine,id:string){g.dialogue=null;assert(handleGymCart(g,'gymCart'+id));}
 function choose(g:Engine,index=0){const c=g.dialogue?.choices?.[index];assert(c);g.dialogue=null;c.action();}
 function send(g:Engine){event(g,'Launch');choose(g);assert(gymCartMoving(g));}

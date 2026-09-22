@@ -1,3 +1,4 @@
+import { newSave } from '../src/save';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Engine,VECTOR } from '../src/engine';
@@ -5,7 +6,7 @@ import { TOUR_INTERIORS,TOUR_MAPS,TOUR_SPAWNS,tourPlaceForMap,type TourId } from
 import { FLOOR_PARENTS } from '../src/journey-world';
 import { planTourNavigation,tourPassageLabel } from '../src/explore-navigation';
 
-function tour(id:TourId){const g=new Engine();g.exploring=true;g.save=g.freshSave();g.exploreTo(id);return g}
+function tour(id:TourId){const g=new Engine();g.exploring=true;g.save=newSave();g.panel='field';g.exploreTo(id);return g}
 function follow(g:Engine){
   const route=g.tourNavigation!,source=g.save.map;assert.equal(route.status,'walking');
   // The live guide recalculates around roaming Pokemon. Follow that displayed

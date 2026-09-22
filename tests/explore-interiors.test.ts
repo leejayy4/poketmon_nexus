@@ -7,7 +7,7 @@ import { newSave,parseSave } from '../src/save';
 import { TOWN_REVISION } from '../src/town';
 import { MART_ROOMS } from '../src/journey-world';
 
-function tour(){const g=new Engine();g.exploring=true;g.save=g.freshSave();return g}
+function tour(){const g=new Engine();g.exploring=true;g.save=newSave();g.panel='field';return g}
 function goldenrodChoice(id:string,event:string):string|undefined{
   if(id==='tour_goldenrod_station'&&event==='tourHost')return '라디오 타워 안내';
   if(id==='tour_goldenrod_hall'&&['tourHost','tourExhibit0'].includes(event))return '동료 소개 녹음';

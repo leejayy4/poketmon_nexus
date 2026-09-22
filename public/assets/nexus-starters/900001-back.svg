@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" shape-rendering="crispEdges" role="img" aria-label="새록 뒷모습">
+  <title>새록 — 풀 사슴 첫 형태, 뒷모습 시안</title>
+  <path fill="#303a2a" d="M21 42h8v-6h26v6h6v18h-4v12H47V59h-6v13H31V59h-5v13H16V58h5z"/>
+  <path fill="#8f6344" d="M24 45h31v-1h3v13h-4v12h-4V56h-12v13h-4V55H23v14h-4V58h5z"/>
+  <path fill="#c28b54" d="M25 40h27v6h6v8h-5v7H28v-7h-7v-7h4z"/>
+  <path fill="#e4b36b" d="M27 41h17v4h9v10H29v-5h-5v-5h3z"/>
+  <path fill="#f5d596" d="M32 55h15v6H32z"/>
+  <path fill="#303a2a" d="M12 12h8v3h8v5h25v-5h8v-3h8v9h-4v6h-9v13h-6v8H29v-5h-7V28h-6v-6h-4z"/>
+  <path fill="#438b4f" d="M15 15h5v3h7v7h-6v-3h-3v-3h-3zM56 20h6v-5h4v5h-4v4h-6z"/>
+  <path fill="#80b855" d="M15 15h5v3h4v3h-5v-3h-4zM62 15h4v3h-4v3h-4v-3h4z"/>
+  <path fill="#c28b54" d="M28 22h23v6h3v10h-6v7H31v-5h-6V27h3z"/>
+  <path fill="#e4b36b" d="M30 23h16v4h5v11h-9v5H31v-5h-3V27h2z"/>
+  <path fill="#8f6344" d="M48 29h5v9h-6v5h-5v-7h6z"/>
+  <path fill="#303a2a" d="M36 22v-7h-5V8h7v4h2V9h8v7h-6v6z"/>
+  <path fill="#438b4f" d="M33 10h3v4h3v6h-1v-6h-5zM41 12h5v2h-5z"/>
+  <path fill="#a1c85f" d="M33 10h3v2h-3zM42 11h4v2h-4z"/>
+  <path fill="#f5d596" d="M25 47h3v3h-3zM30 50h3v3h-3zM51 49h3v3h-3z"/>
+  <path fill="#303a2a" d="M34 51h9v-4h7v8h-4v5H34z"/>
+  <path fill="#438b4f" d="M37 53h8v-3h2v3h-4v4h-6z"/>
+  <path fill="#80b855" d="M37 53h6v2h-6z"/>
+  <path fill="#5f4937" d="M19 67h4v2h-4zM34 67h4v2h-4zM50 67h4v2h-4z"/>
+</svg>

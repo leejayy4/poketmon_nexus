@@ -2,7 +2,7 @@
   "referenceCommit": "d4f9a4af58ade123fbc0558f68b1c69daa97d9e4",
   "learnsetVersion": "platinum",
   "timePolicy": "day-only",
-  "limits": "Up to four selected moves; direct damage ignores secondary effects and accuracy. Each move carries its pinned PP; the player party consumes it and Pokemon Center rest restores it, while opposing Pokemon are not PP limited. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. First starter, complete Caterpie/Weedle level evolution lines and Pidove level-21 evolutions enabled. Eevee, Skitty, Pidove, Tranquill, Petilil, Karrablast and Shelmet use Black 2/White 2 acquisition. Only Pidove to Tranquill is enabled among these evolution lines.",
+  "limits": "Up to four selected moves; direct damage ignores secondary effects and accuracy. Each move carries its pinned PP; the player party consumes it and Pokemon Center rest restores it, while opposing Pokemon are not PP limited. Modern snapshot powers with Platinum acquisition. Struggle is the explicit fallback when no supported damaging move exists. First starter, complete Caterpie/Weedle level evolution lines and Pidove level-21 evolutions enabled. Eevee, Skitty, Pidove, Tranquill, Petilil, Karrablast and Shelmet use Black 2/White 2 acquisition. Only Pidove to Tranquill is enabled among these evolution lines. NEXUS starters use provisional project-authored first forms, stats and learnsets with supported source moves. No NEXUS starter evolutions are enabled.",
   "pools": [
     {
       "id": "ENC-001",
@@ -2688,7 +2688,10 @@
     595,
     597,
     599,
-    616
+    616,
+    900001,
+    900002,
+    900003
   ],
   "species": {
     "1": {
@@ -5324,6 +5327,156 @@
         }
       ],
       "tm": []
+    },
+    "900001": {
+      "name": "새록",
+      "types": [
+        "풀"
+      ],
+      "stats": {
+        "hp": 50,
+        "attack": 55,
+        "defense": 55,
+        "specialAttack": 45,
+        "specialDefense": 60,
+        "speed": 45
+      },
+      "weight": 72,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "몸통박치기"
+        },
+        {
+          "level": 1,
+          "move": "울음소리"
+        },
+        {
+          "level": 5,
+          "move": "덩굴채찍"
+        },
+        {
+          "level": 8,
+          "move": "흡수"
+        },
+        {
+          "level": 11,
+          "move": "전광석화"
+        },
+        {
+          "level": 15,
+          "move": "잎날가르기"
+        },
+        {
+          "level": 20,
+          "move": "방어"
+        },
+        {
+          "level": 24,
+          "move": "메가드레인"
+        }
+      ],
+      "tm": []
+    },
+    "900002": {
+      "name": "잿울",
+      "types": [
+        "불꽃"
+      ],
+      "stats": {
+        "hp": 45,
+        "attack": 60,
+        "defense": 40,
+        "specialAttack": 60,
+        "specialDefense": 40,
+        "speed": 65
+      },
+      "weight": 84,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "째려보기"
+        },
+        {
+          "level": 1,
+          "move": "할퀴기"
+        },
+        {
+          "level": 5,
+          "move": "불꽃세례"
+        },
+        {
+          "level": 7,
+          "move": "물기"
+        },
+        {
+          "level": 9,
+          "move": "전광석화"
+        },
+        {
+          "level": 11,
+          "move": "안다리걸기"
+        },
+        {
+          "level": 18,
+          "move": "돌떨구기"
+        },
+        {
+          "level": 24,
+          "move": "방어"
+        }
+      ],
+      "tm": []
+    },
+    "900003": {
+      "name": "포말이",
+      "types": [
+        "물"
+      ],
+      "stats": {
+        "hp": 55,
+        "attack": 40,
+        "defense": 60,
+        "specialAttack": 55,
+        "specialDefense": 60,
+        "speed": 40
+      },
+      "weight": 125,
+      "learnset": [
+        {
+          "level": 1,
+          "move": "막치기"
+        },
+        {
+          "level": 1,
+          "move": "울음소리"
+        },
+        {
+          "level": 5,
+          "move": "물대포"
+        },
+        {
+          "level": 8,
+          "move": "웅크리기"
+        },
+        {
+          "level": 12,
+          "move": "얼음뭉치"
+        },
+        {
+          "level": 16,
+          "move": "물의파동"
+        },
+        {
+          "level": 20,
+          "move": "방어"
+        },
+        {
+          "level": 24,
+          "move": "박치기"
+        }
+      ],
+      "tm": []
     }
   },
   "moves": {
@@ -6099,6 +6252,73 @@
     "595": "black-2-white-2",
     "597": "black-2-white-2",
     "599": "black-2-white-2",
-    "616": "black-2-white-2"
+    "616": "black-2-white-2",
+    "900001": "nexus-first-journey-v1",
+    "900002": "nexus-first-journey-v1",
+    "900003": "nexus-first-journey-v1"
+  },
+  "nexusStarterIds": [
+    900001,
+    900002,
+    900003
+  ],
+  "projectSpecies": {
+    "900001": {
+      "name": "새록",
+      "motif": "deer",
+      "genus": "새싹사슴포켓몬",
+      "color": "#79ad69",
+      "description": "어린 뿔에 새싹이 돋아 있다.\n낯선 길에서는 곁을 천천히 걷는다.",
+      "style": "차분한 풀의 동료. 덩굴채찍과 흡수로 꾸준히 싸운다.",
+      "minimumLevel": 5,
+      "initialHp": 21,
+      "initialMoves": [
+        "덩굴채찍",
+        "몸통박치기",
+        "울음소리"
+      ],
+      "designStatus": "provisional-project-design"
+    },
+    "900002": {
+      "name": "잿울",
+      "motif": "wolf",
+      "genus": "온기늑대포켓몬",
+      "color": "#d98555",
+      "description": "목덜미의 털에 온기를 품는다.\n동료가 부르면 가장 먼저 달려온다.",
+      "style": "재빠른 불꽃의 동료. 물기와 전광석화, 안다리걸기를 배운다.",
+      "minimumLevel": 5,
+      "initialHp": 20,
+      "initialMoves": [
+        "불꽃세례",
+        "할퀴기",
+        "째려보기"
+      ],
+      "designStatus": "provisional-project-design"
+    },
+    "900003": {
+      "name": "포말이",
+      "motif": "seal",
+      "genus": "물거품물범포켓몬",
+      "color": "#77b2cd",
+      "description": "수염 끝에 작은 물방울이 맺힌다.\n잔잔한 물결처럼 느긋한 친구다.",
+      "style": "튼튼한 물의 동료. 물대포와 웅크리기로 차근차근 싸운다.",
+      "minimumLevel": 5,
+      "initialHp": 22,
+      "initialMoves": [
+        "물대포",
+        "막치기",
+        "울음소리"
+      ],
+      "designStatus": "provisional-project-design"
+    }
+  },
+  "projectSpeciesOrigin": {
+    "kind": "project",
+    "source": "scripts/design/nexus-starters.json",
+    "reviewedOn": "2026-09-22",
+    "reference": "https://pokeapi.co/docs/v2",
+    "adopted": "Species stats, versioned move acquisition and move PP remain separate data. Existing supported moves and their PP are resolved through the repository's pinned PokeAPI CSV snapshot.",
+    "projectDecisions": "Names, first-form designs, types, stats, weight, acquisition levels and initial HP below are provisional NEXUS implementation designs. They are not official Pokemon species or user-approved final designs. Experience and HP growth retain the current project rules.",
+    "excluded": "No new move mechanics, abilities, evolution stages, canonical National Dex numbers or external sprite reuse are introduced."
   }
 }

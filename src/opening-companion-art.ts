@@ -1,14 +1,17 @@
 import type { Engine } from './engine';
 import type { Point,Direction } from './types';
 import { paintTownPokemon } from './explore-life-art';
+import { isNexusCampaign,isNexusStarter } from './nexus-starters';
+import { NEXUS_OPENING } from './nexus-opening-state';
 
 type Track={save:Engine['save'];species:number;move:Engine['move'];from:Point;to:Point;facing:Direction;steps:number};
 const tracks=new WeakMap<Engine,Track>();
 
 /** Presentation only: follow the player's previous tile, never reserve or move a save cell. */
 export function openingCompanionLayer(g:Engine,images:Record<string,HTMLImageElement|HTMLCanvasElement>){
-  const s=g.save,mon=s.party.find(p=>p.species===s.flags.openingWalkSpecies&&p.hp>0);
-  if(s.map!=='town'||!s.flags.openingPartnerIntroduced||s.flags.departureCleared||!mon||g.battle||g.transition){tracks.delete(g);return null;}
+  const s=g.save,nexusWalk=isNexusCampaign(s)&&s.flags[NEXUS_OPENING.outside];
+  const mon=s.party.find(p=>(nexusWalk?isNexusStarter(p.species):p.species===s.flags.openingWalkSpecies)&&p.hp>0);
+  if(s.map!=='town'||!s.flags.openingPartnerIntroduced&&!nexusWalk||s.flags.departureCleared||!mon||g.battle||g.transition){tracks.delete(g);return null;}
   const safe=(p:Point)=>g.map.walkable[p.y]?.[p.x]==='.'&&!g.map.warps.some(w=>w.x===p.x&&w.y===p.y)&&!g.map.npcs.some(n=>n.x===p.x&&n.y===p.y);
   let t=tracks.get(g);
   if(!t||t.save!==s||t.species!==mon.species||s.steps<t.steps||s.steps-t.steps>1){

@@ -3,11 +3,11 @@ import assert from 'node:assert/strict';
 import { TOUR_OUTDOORS,TOUR_MAPS,TOUR_SPAWNS,type TourId } from '../src/explore-world';
 import { canStand,getMap,getWorldOutdoors } from '../src/maps';
 import { Engine,VECTOR } from '../src/engine';
-import { parseSave } from '../src/save';
+import { newSave,parseSave } from '../src/save';
 import { TOWN_REVISION } from '../src/town';
 import { PASSAGES,TRANSIT_LINKS } from '../src/journey-world';
 import { passageSignPages } from '../src/encounter-guidance';
-function tour(id:string){const g=new Engine();g.exploring=true;g.save=g.freshSave();g.save.map=id as TourId;return g}
+function tour(id:string){const g=new Engine();g.exploring=true;g.save=newSave();g.panel='field';g.save.map=id as TourId;return g}
 test('original outdoor maps and added passages expose solid signs for actual exterior exits',()=>{
   assert.equal(Object.keys(TOUR_OUTDOORS).length,43+Object.keys(PASSAGES).length);
   for(const id of Object.keys(TOUR_OUTDOORS)){const outdoor=getWorldOutdoors(getMap(id as TourId))!;

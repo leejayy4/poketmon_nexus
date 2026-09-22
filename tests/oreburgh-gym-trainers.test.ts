@@ -15,7 +15,7 @@ const trainees=[
   {event:'gymSwitchTrainer',id:'oreburgh-gym-switch',reward:320,team:[95,396]},
 ];
 function dom(run:()=>void){const old=globalThis.document;globalThis.document={getElementById:()=>null} as unknown as Document;try{run();}finally{globalThis.document=old;}}
-function game(){const g=new Engine();g.save=newSave();grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.map='oreburgh_gym';g.save.player={x:8,y:13,facing:'up'};g.persist=()=>true;g.random=()=>0;return g;}
+function game(){const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.map='oreburgh_gym';g.save.player={x:8,y:13,facing:'up'};g.persist=()=>true;g.random=()=>0;return g;}
 function choose(g:Engine,label:string){const c=g.dialogue?.choices?.find(c=>c.label===label);assert(c,label);g.dialogue=null;c.action();}
 function finish(g:Engine){for(let i=0;i<500&&g.dialogue;i++){if(g.dialogue.choices){choose(g,g.dialogue.choices.at(-1)!.label);continue;}g.dialogue.shown=999;if(g.battlePresentation&&!g.battlePresentation.canAdvance)g.update(.05);else g.confirm();}assert.equal(g.dialogue,null);}
 function start(g:Engine,event:string){g.event(event);choose(g,'배틀한다');finish(g);assert.equal(g.battle?.kind,'trainer');}

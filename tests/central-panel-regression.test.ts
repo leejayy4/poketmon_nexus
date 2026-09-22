@@ -30,7 +30,7 @@ test('developer panel exception is reported once and does not interrupt later ga
   assert.equal(frames,4);assert.equal(reports,1);assert.equal(calls,1);
 });
 test('Route 202 entry completes the Jubilife fade and releases movement',()=>{
-  const game=new Engine();game.save=newSave();
+  const game=new Engine();game.save=newSave();game.panel='field';
   game.save.map='tour_sinnoh_route_202';game.save.player={x:14,y:2,facing:'up'};
   game.walk('up');for(let i=0;i<30;i++)game.update(.04);
   assert.equal(game.save.map,'tour_jubilife');assert.equal(game.transition,0);assert.equal(game.locked,false);

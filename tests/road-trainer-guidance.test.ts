@@ -10,7 +10,7 @@ import { handleRoadTrainer, trainerWinFlag } from '../src/road-trainers';
 
 function game(){
   const g=new Engine();
-  g.save=newSave();
+  g.save=newSave();g.panel='field';
   grantPokemon(g.save,4);
   g.save.flags.departureCleared=true;
   g.save.map='route_s01';

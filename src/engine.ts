@@ -43,10 +43,16 @@ import { planTourNavigation,type TourNavigation } from './explore-navigation';
 import type { Choice, Dialogue, Direction, Panel, SaveData, Point, MapId, Pokemon } from './types';
 import { getMap, getWorldOutdoors, ACTIVE_MAPS, canEnter } from './maps';
 import { TEXT } from './dialogues';
-import { newSave, SAVE_KEY } from './save';
+import { newNexusSave, SAVE_KEY } from './save';
+import { starterSpeciesFor,isNexusCampaign } from './nexus-starters';
+import { NEXUS_OPENING } from './nexus-opening-state';
+import { updateNexusOpening,arriveNexusOpening,nexusDepartureReady } from './nexus-opening';
+import { sayField } from './field-scene';
+import { handleFirstJourneyEvent } from './first-journey-events';
+import { meetNexusFirstRival,finishNexusFirstRivalBattle,NEXUS_FIRST_RIVAL_TRAINER } from './nexus-first-rival';
 import { SaveSession } from './save-session';
-import { handleSinnohClock,updateSinnohClock,watchingSinnohClock,cancelSinnohClock } from './sinnoh-clock-story';
-import { grantPokemon, SPECIES, STARTERS, pokemonMoves } from './pokemon';
+import { updateSinnohClock,watchingSinnohClock,cancelSinnohClock } from './sinnoh-clock-story';
+import { grantPokemon, SPECIES, pokemonMoves } from './pokemon';
 import { restorePp } from './move-pp';
 import { GameAudio } from './audio';
 import { motherConversation, professorConversation } from './story';
@@ -73,7 +79,7 @@ export class Engine {
   caughtPreview:number|null=null;
   caughtBoxPreview:Pokemon|null=null;
   get caughtPokemon(){return this.caughtBoxPreview??(this.caughtPreview===null?null:this.save.party[this.caughtPreview]);}
-  dialogueElapsed=0;
+  dialogueElapsed=0; sceneRevision=0;
   get battleEffect(){return this.dialogue&&this.dialogue.page<(this.battleFrames?.length??0)?battleEffect(this.battleFrame,this.dialogueElapsed):null}
   get captureMotion(){return this.dialogue&&this.dialogue.page<(this.battleFrames?.length??0)?captureMotion(this.battleFrame,this.dialogueElapsed):null}
   gymReward:{id:GymId;money:number;page:number}|null=null;
@@ -112,8 +118,10 @@ export class Engine {
     this.loaded=!!loaded;this.saveError=!this.saveStatus.writable;
     if(this.save.party.length&&this.save.party.every(p=>p.hp===0)){this.returnHome();this.notice('포켓몬이 건강을 되찾았습니다.');}
     if(this.saveError)this.notice(this.saveStatusMessage);
+    if(isNexusCampaign(this.save)&&!this.save.flags[NEXUS_OPENING.profile])this.panel='profile';
   }
-  freshSave(){return newSave()}
+  freshSave(){return newNexusSave()}
+  get starterChoices(){return starterSpeciesFor(this.save);}
   exploreTo(id:string){if(this.locked||this.move||this.transition)return;const point=id==='town'?{x:8,y:25}:TOUR_SPAWNS[id as TourId];if(!point)return;const save=structuredClone(this.save);save.map=id as SaveData['map'];save.player={...point,facing:'down'};this.restore(save);}
   fieldMap=false;followingObjective=false;
   tourDestination:MapId|null=null;
@@ -167,7 +175,7 @@ export class Engine {
     if(manual)this.say('리포트',saved?['지금까지의 모험을\n리포트에 기록했습니다!']:['리포트를 기록하지 못했습니다.\n이전 원본은 그대로 보관합니다.','모험 기록에서 저장 안내를 확인하고\n현재 진행을 파일로 보관해 주세요.']);
     return saved;
   }
-  say(speaker:string,pages:string[],after?:()=>void,choices?:Choice[]){this.dialogueElapsed=0;this.caughtPreview=null;this.caughtBoxPreview=null;this.gymReward=null;this.confirmingBattleExit=false;this.defeatScene=null;this.recoveryPreview=false;this.battleFrames=null;this.gymPreview=null;this.dialogue={speaker,pages,page:0,shown:0,selected:0,after,choices};this.clearInput();this.announce()}
+  say(speaker:string,pages:string[],after?:()=>void,choices?:Choice[]){this.sceneRevision++;this.dialogueElapsed=0;this.caughtPreview=null;this.caughtBoxPreview=null;this.gymReward=null;this.confirmingBattleExit=false;this.defeatScene=null;this.recoveryPreview=false;this.battleFrames=null;this.gymPreview=null;this.dialogue={speaker,pages,page:0,shown:0,selected:0,after,choices};this.clearInput();this.announce()}
   announce(){const el=document.getElementById('a11y');if(el&&this.dialogue)el.textContent=this.dialogue.speaker+' '+this.dialogue.pages[this.dialogue.page]}
   private soundedFrame:BattleFrame|null=null;
   private soundedResult:Battle|null=null;
@@ -193,14 +201,16 @@ export class Engine {
 
     if(this.transition>0){const old=this.transition;this.transition=Math.max(0,this.transition-dt);if(old>.18&&this.transition<=.18){this.transitionWarp?.();this.transitionWarp=null;}return}
     if(this.dialogue){this.dialogueElapsed+=dt;this.dialogue.shown+=dt*this.textSpeed;return}
-    if(this.move){this.move.elapsed+=dt;if(this.move.elapsed>=this.move.duration){const completedFrom={...this.move.from};this.save.player.x=this.move.to.x;this.save.player.y=this.move.to.y;this.move=null;this.save.steps++;this.stepPhase++;const warp=this.map.warps.find(w=>w.x===this.save.player.x&&w.y===this.save.player.y&&w.entry===this.save.player.facing);if(warp){this.clearInput();this.transition=.4;this.audio.play('door');this.transitionWarp=()=>{this.save.map=warp.to;this.save.player={...warp.spawn,facing:warp.facing};this.labelTime=2.6;this.grassSteps=0;this.persist()};return}if(stepMortarRescue(this,completedFrom))this.persist();if(stepOpeningWalk(this))return;this.onFieldStep();if(this.locked)return;
+    if(this.move){this.move.elapsed+=dt;if(this.move.elapsed>=this.move.duration){const completedFrom={...this.move.from};this.save.player.x=this.move.to.x;this.save.player.y=this.move.to.y;this.move=null;this.save.steps++;this.stepPhase++;const warp=this.map.warps.find(w=>w.x===this.save.player.x&&w.y===this.save.player.y&&w.entry===this.save.player.facing);if(warp){this.clearInput();this.transition=.4;this.audio.play('door');this.transitionWarp=()=>{const from=this.save.map;this.save.map=warp.to;this.save.player={...warp.spawn,facing:warp.facing};this.labelTime=2.6;this.grassSteps=0;arriveNexusOpening(this,from);this.persist()};return}if(stepMortarRescue(this,completedFrom))this.persist();if(stepOpeningWalk(this))return;this.onFieldStep();if(this.locked)return;
       const pending=this.pendingFieldAction;
       if(pending){this.clearInput();if(pending==='confirm')this.confirm();else if(pending==='cancel')this.cancel();else this.toggleFieldMap();return;}
     }}
+    if(updateNexusOpening(this))return;
     if(!this.battle&&this.panel==='field'&&!this.move){const direction=[...this.keys].reverse().map(k=>KEY_DIRECTION[k]).find(Boolean);if(direction)this.walk(direction)}
   }
   walk(direction:Direction){if(this.locked||this.move)return;this.save.player.facing=direction;const p=this.save.player,v=VECTOR[direction],to={x:p.x+v.x,y:p.y+v.y};if(canEnter(this.map,to.x,to.y,direction)){this.move={from:{x:p.x,y:p.y},to,elapsed:0,duration:this.keys.has('Shift')?.09:.16}}else if(this.bumpCooldown<=0){this.audio.play('bump');this.bumpCooldown=.3}}
   press(key:string,repeat=false){
+    if(this.panel==='profile')return;
     if(this.ferryJourney||gymCartMoving(this)||(cinnabarEvacuationMoving(this)||seafoamBoulderPushing(this)))return;
     if(this.transition>0)return;
     const direction=KEY_DIRECTION[key];
@@ -230,12 +240,12 @@ export class Engine {
     if(this.panel==='trainer'){showPokedex(this);return}
     if(this.panel==='options'){this.selectOption(this.optionIndex);return}
   }
-  cancel(){if(watchingSinnohClock(this)){cancelSinnohClock(this);return;}if(this.ferryJourney||gymCartMoving(this)||(cinnabarEvacuationMoving(this)||seafoamBoulderPushing(this)))return;if(this.deferFieldAction('cancel'))return;this.audio.play('menu');this.clearInput();if(this.dialogue&&this.battlePresentation){this.confirm();return}if(this.dialogue){const d=this.dialogue;if(d.choices){this.dialogue=null;d.choices[d.choices.length-1].action()}else this.confirm();return}if(this.battle){if(this.battle.betweenOpponents){if(this.battle.menu==='party'){this.battle.menu='between';this.battle.selected=1;}else{this.battle.betweenOpponents=false;this.battle.menu='actions';this.battle.selected=0;}return}if(this.battle.forcedSwitch){this.notice('다음에 싸울 포켓몬을 선택하세요.');return}if(this.battle.menu==='heal'){this.battle.menu='bag';this.battle.selected=1}else if(this.battle.menu!=='actions'){this.battle.selected=this.battle.menu==='bag'?1:this.battle.menu==='party'?2:0;this.battle.menu='actions';}else this.notice(this.battle.kind==='gym'?'중단하려면 도전 중단을 선택하세요.':'도망치려면 도망친다를 선택하세요.');return}if(this.panel==='field'){this.panel='menu';this.menuIndex=0}else if(this.panel==='starters'){this.panel='field';this.say('은솔박사',['천천히 생각해 보거라.\n마음이 정해지면 다시 말을 걸어라.'])}else if(this.panel==='fieldHeal'){this.panel='bag';this.bagIndex=1;}else if(this.panel==='summary')this.panel='party';else if(this.panel==='menu')this.panel='field';else this.panel='menu';}
+  cancel(){if(this.panel==='profile')return;if(watchingSinnohClock(this)){cancelSinnohClock(this);return;}if(this.ferryJourney||gymCartMoving(this)||(cinnabarEvacuationMoving(this)||seafoamBoulderPushing(this)))return;if(this.deferFieldAction('cancel'))return;this.audio.play('menu');this.clearInput();if(this.dialogue&&this.battlePresentation){this.confirm();return}if(this.dialogue){const d=this.dialogue;if(d.choices){this.dialogue=null;d.choices[d.choices.length-1].action()}else this.confirm();return}if(this.battle){if(this.battle.betweenOpponents){if(this.battle.menu==='party'){this.battle.menu='between';this.battle.selected=1;}else{this.battle.betweenOpponents=false;this.battle.menu='actions';this.battle.selected=0;}return}if(this.battle.forcedSwitch){this.notice('다음에 싸울 포켓몬을 선택하세요.');return}if(this.battle.menu==='heal'){this.battle.menu='bag';this.battle.selected=1}else if(this.battle.menu!=='actions'){this.battle.selected=this.battle.menu==='bag'?1:this.battle.menu==='party'?2:0;this.battle.menu='actions';}else this.notice(this.battle.kind==='gym'?'중단하려면 도전 중단을 선택하세요.':'도망치려면 도망친다를 선택하세요.');return}if(this.panel==='field'){this.panel='menu';this.menuIndex=0}else if(this.panel==='starters'){this.panel='field';this.say('은솔박사',['천천히 생각해 보거라.\n마음이 정해지면 다시 말을 걸어라.'])}else if(this.panel==='fieldHeal'){this.panel='bag';this.bagIndex=1;}else if(this.panel==='summary')this.panel='party';else if(this.panel==='menu')this.panel='field';else this.panel='menu';}
   selectMenu(index:number){this.clearInput();if(index===0){this.panel='party';this.partyIndex=0}else if(index===1){this.panel='bag';this.bagIndex=1;}else if(index===2)this.panel='trainer';else if(index===3)this.persist(true);else if(index===4)this.panel='options';else this.panel='field';}
   toggleSound(){const enabled=this.audio.toggle(),button=document.getElementById('sound');if(button){button.textContent=enabled?'소리 ON':'소리 OFF';button.setAttribute('aria-label',enabled?'소리 끄기':'소리 켜기');}return enabled;}
-  selectOption(index:number){if(index===0){this.textSpeed=this.textSpeed===36?80:36;this.notice(this.textSpeed===80?'대화 속도: 빠르게':'대화 속도: 보통')}else if(index===1){this.toggleSound()}else this.say('처음부터',['이전 리포트를 보관하고\n별도 리포트로 처음부터 시작할까요?'],undefined,[{label:'처음부터',action:()=>{if(!this.activateSave(this.freshSave()))this.say('리포트',['새 리포트를 시작하지 못했습니다.\n현재 모험은 그대로 유지됩니다.','모험 기록의 저장 안내를\n확인해 주세요.']);}},{label:'돌아가기',action:()=>{}}]);}
+  selectOption(index:number){if(index===0){this.textSpeed=this.textSpeed===36?80:36;this.notice(this.textSpeed===80?'대화 속도: 빠르게':'대화 속도: 보통')}else if(index===1){this.toggleSound()}else sayField(this,'처음부터',['이전 리포트를 보관하고\n별도 리포트로 처음부터 시작할까요?'],undefined,[{label:'처음부터',action:()=>{if(!this.activateSave(this.freshSave()))this.say('리포트',['새 리포트를 시작하지 못했습니다.\n현재 모험은 그대로 유지됩니다.','모험 기록의 저장 안내를\n확인해 주세요.']);}},{label:'돌아가기',action:()=>{}}]);}
   interact(){const p=this.save.player,v=VECTOR[p.facing],x=p.x+v.x,y=p.y+v.y;const npc=this.map.npcs.find(n=>n.x===x&&n.y===y);if(npc){if(npc.id==='tourPokemon'&&this.roaming?.move)return;npc.facing=({up:'down',down:'up',left:'right',right:'left'} as const)[p.facing];this.event(npc.dialogue);return}const prop=this.map.props.find(q=>q.x===x&&q.y===y);if(prop){this.event(prop.dialogue);return}}
-  event(id:string){if(this.ferryJourney||(cinnabarEvacuationMoving(this)||seafoamBoulderPushing(this)))return;if(this.save.map==='tour_jubilife'&&handleSinnohClock(this,id))return;if(handleGymCart(this,id)||handleRoadTrainer(this,id)||handleCityActivity(this,id)||handleJourneyEvent(this,id))return;if(id==='tourHost'&&isWorldCenter(this.save.map))id='nurse';if(TOUR_MAPS[this.save.map as TourId]&&(id.startsWith('tour')||TOUR_RESIDENTS[this.save.map]?.some(n=>n.dialogue===id))){const pokemon=TOUR_POKEMON[this.save.map];if(pokemon&&id===pokemon.dialogue){this.say(pokemon.name,pokemon.pages);return}const resident=TOUR_RESIDENTS[this.save.map]?.find(n=>n.dialogue===id);if(resident){this.say(resident.name,resident.pages);return}const outdoors=getWorldOutdoors(this.map);const outdoor=outdoors?.objects.find(o=>o.event===id)??outdoors?.signs.find(o=>o.event===id);if(outdoor){this.say(outdoor.name,outdoor.pages);return}const room=TOUR_INTERIORS[this.save.map];const object=room?.objects.find(o=>o.event===id);if(object){this.say(object.name,object.pages);return}if(room&&id==='tourHost'){this.say(this.map.npcs[0].name,room.greeting);return}const p=tourPlaceForMap(this.save.map);if(id==='tourGuide'&&p&&outdoors?.signs.length){this.say(this.map.npcs.find(n=>n.dialogue==='tourGuide')?.name??'마을 안내원',[p.concept+'\n출구 표지와 같은 방향으로 걸어가세요.',...outdoors.signs.map(sign=>sign.pages[0])]);return}this.say(id==='tourHost'?'시설 안내원':'마을 안내',p?[id==='tourHouse'?'주민들이 사는 집입니다.\n센터와 주요 시설 안을 둘러볼 수 있어요.':p.concept+'\n이곳은 자유롭게 둘러볼 수 있어요.',...TOUR_NEIGHBORS(p.id).map(n=>{const q=placeById(n)!;return(q.region===p.region?'길을 따라 ':'지방 연결편: ')+q.name+'로 이동할 수 있어요.'})]:['새잎마을의 시작 구간이에요.\n서쪽 출구가 축복시티로 이어집니다.']);return}if(id==='mom'){if(introduceOpeningPartner(this))return;const pages=motherConversation(this.save);if(this.save.party.some(p=>p.hp<p.maxHp)){this.healParty();this.persist();pages.push('조금 쉬었다 가렴.\n포켓몬들이 모두 건강해졌단다.')}this.say('엄마',pages);return}
+  event(id:string){if(this.ferryJourney||(cinnabarEvacuationMoving(this)||seafoamBoulderPushing(this)))return;if(handleGymCart(this,id)||handleRoadTrainer(this,id)||handleFirstJourneyEvent(this,id)||handleCityActivity(this,id)||handleJourneyEvent(this,id))return;if(id==='tourHost'&&isWorldCenter(this.save.map))id='nurse';if(TOUR_MAPS[this.save.map as TourId]&&(id.startsWith('tour')||TOUR_RESIDENTS[this.save.map]?.some(n=>n.dialogue===id))){const pokemon=TOUR_POKEMON[this.save.map];if(pokemon&&id===pokemon.dialogue){this.say(pokemon.name,pokemon.pages);return}const resident=TOUR_RESIDENTS[this.save.map]?.find(n=>n.dialogue===id);if(resident){this.say(resident.name,resident.pages);return}const outdoors=getWorldOutdoors(this.map);const outdoor=outdoors?.objects.find(o=>o.event===id)??outdoors?.signs.find(o=>o.event===id);if(outdoor){this.say(outdoor.name,outdoor.pages);return}const room=TOUR_INTERIORS[this.save.map];const object=room?.objects.find(o=>o.event===id);if(object){this.say(object.name,object.pages);return}if(room&&id==='tourHost'){this.say(this.map.npcs[0].name,room.greeting);return}const p=tourPlaceForMap(this.save.map);if(id==='tourGuide'&&p&&outdoors?.signs.length){this.say(this.map.npcs.find(n=>n.dialogue==='tourGuide')?.name??'마을 안내원',[p.concept+'\n출구 표지와 같은 방향으로 걸어가세요.',...outdoors.signs.map(sign=>sign.pages[0])]);return}this.say(id==='tourHost'?'시설 안내원':'마을 안내',p?[id==='tourHouse'?'주민들이 사는 집입니다.\n센터와 주요 시설 안을 둘러볼 수 있어요.':p.concept+'\n이곳은 자유롭게 둘러볼 수 있어요.',...TOUR_NEIGHBORS(p.id).map(n=>{const q=placeById(n)!;return(q.region===p.region?'길을 따라 ':'지방 연결편: ')+q.name+'로 이동할 수 있어요.'})]:['새잎마을의 시작 구간이에요.\n서쪽 출구가 축복시티로 이어집니다.']);return}if(id==='mom'){if(introduceOpeningPartner(this))return;const pages=motherConversation(this.save);if(this.save.party.some(p=>p.hp<p.maxHp)){this.healParty();this.persist();pages.push('조금 쉬었다 가렴.\n포켓몬들이 모두 건강해졌단다.')}this.say('엄마',pages);return}
     if(GYMS.some(g=>g.id===id)){this.challengeGym(id as GymId);return}
     if(sinnohEvent(this,id))return;
     if(id==='nurse'){
@@ -261,11 +271,31 @@ export class Engine {
     }
     if(id==='gatekeeper'){this.departure();return}
     if(id==='routeGuide'){this.healParty();if(!this.save.badges.length){this.save.inventory.pokeBalls=Math.max(5,this.save.inventory.pokeBalls);this.save.inventory.potions=Math.max(2,this.save.inventory.potions);}this.persist();this.say('길 안내원',['포켓몬들을 쉬게 해 줄게요.\n모두 건강해졌어요!', this.save.badges.length?'첫 배지까지의 무료 보급은 끝났어요.\n이제 마을 상점에서 도구를 준비하세요.':'몬스터볼 5개, 상처약 2개까지\n부족한 도구도 보충했어요.', ...routeCompanionPages(this.save.map), '힘들면 도망쳐도 괜찮아요.\n흙길을 따라 동쪽이 새잎마을이에요.']);return}
-    if(id==='professor'||id==='pokeballs'){const story=professorConversation(this.save);this.save.flags.professorMet=true;this.say('은솔박사',story.pages,()=>{this.save.flags.professorIntroHeard=true;if(story.offerStarter){this.panel='starters';this.starterIndex=0;}this.persist();});return}
+    if(id==='professor'||id==='pokeballs'){const save=this.save,story=professorConversation(save);save.flags.professorMet=true;sayField(this,'은솔박사',story.pages,()=>{save.flags.professorIntroHeard=true;if(story.offerStarter&&!save.flags.starterReceived&&!save.flags.pikachuReceived){this.panel='starters';this.starterIndex=0;}this.persist();});return}
     if(id==='assistant'){this.assistant();return}const text=TEXT[id];if(text)this.say(text.speaker,text.pages);
   }
-  chooseStarter(){const species=STARTERS[this.starterIndex],name=SPECIES[species].name;this.say('은솔박사',[`${name}! 이 포켓몬을\n너의 첫 파트너로 선택하겠니?`],undefined,[{label:'예',action:()=>{this.receive(species)}},{label:'아니요',action:()=>{this.panel='starters'}}]);}
-  receive(species:number){this.panel='field';if(!grantPokemon(this.save,species)){this.say('',['이미 함께하고 있는 친구입니다.']);return}this.audio.play('receive');this.persist();const name=SPECIES[species].name;this.say('',[`${withParticle(name,'과/와')} 친구가 되었다!`,`${withParticle(name,'이/가')} 파티에 등록되었다!\nX → 포켓몬에서 확인할 수 있다.`],()=>{if(species===25)this.say('연구원',['정말 고마워! 서두르지 말고\n이 친구의 마음을 알아가 줘.\n엄마에게도 소개하고 오렴.']);else this.say('은솔박사',['이제 너도 포켓몬 트레이너로구나!\n엄마에게 첫 파트너를 소개하고 오렴.'])});}
+  chooseStarter(){
+    if(this.panel!=='starters'||this.dialogue||this.battle||this.move||this.transition||this.save.map!=='lab')return;
+    const species=this.starterChoices[this.starterIndex];if(species===undefined)return;
+    const name=SPECIES[species].name,nexus=isNexusCampaign(this.save);
+    sayField(this,nexus?'연구원 하린':'은솔박사',[
+      nexus?`${name} 쪽으로 몸을 낮췄다.\n친구가 한 걸음 다가와 눈을 맞춘다.`:`${name}! 이 포켓몬을\n너의 첫 파트너로 선택하겠니?`,
+      ...(nexus?[`${withParticle(name,'과/와')} 함께 여행을 시작할까?`]:[]),
+    ],undefined,[{label:nexus?'함께 떠난다':'예',action:()=>this.receive(species)},{label:nexus?'조금 더 살펴본다':'아니요',action:()=>{this.panel='starters'}}]);
+  }
+  receive(species:number){
+    if(this.dialogue||this.battle||this.move||this.transition)return;
+    const save=this.save,nexus=isNexusCampaign(save);
+    if(nexus&&(save.map!=='lab'||!save.flags[NEXUS_OPENING.postcards]||!save.flags.professorIntroHeard||!this.starterChoices.includes(species)))return;
+    this.panel='field';
+    if(!grantPokemon(save,species)){this.say('',['이미 함께하고 있는 친구입니다.']);return}
+    this.audio.play('receive');this.persist();const name=SPECIES[species].name;
+    sayField(this,'',[`${withParticle(name,'과/와')} 친구가 되었다!`,`${withParticle(name,'이/가')} 파티에 등록되었다!\nX → 포켓몬에서 확인할 수 있다.`],()=>{
+      if(nexus)this.say('연구원 하린',['첫날부터 잘 맞는 팀이 될 필요는 없어.\n먼저 함께 연구소 밖으로 나가 보자.', '마을길을 걸으며 서로를 알아 가면 돼.\n엄마에게도 친구를 소개해 드리고.']);
+      else if(species===25)this.say('연구원',['정말 고마워! 서두르지 말고\n이 친구의 마음을 알아가 줘.\n엄마에게도 소개하고 오렴.']);
+      else this.say('은솔박사',['이제 너도 포켓몬 트레이너로구나!\n엄마에게 첫 파트너를 소개하고 오렴.']);
+    });
+  }
   assistant(){if(this.save.flags.pikachuReceived){this.say('연구원',['피카츄가 널 조금씩 믿는 것 같아.\n이 친구를 맡아 줘서 고마워!']);return}const count=Math.min(4,Number(this.save.flags.assistantTalks??0)+1);this.save.flags.assistantTalks=count;this.persist();if(count===1)this.say('연구원',['말을 안 듣는 포켓몬이 있어\n고민이야…']);else if(count===2)this.say('연구원',['이 녀석을 데려갈 트레이너가\n없으려나…']);else if(count===3)this.say('연구원',['…','피카츄도 사실은\n친구가 필요한 걸지도 모르겠어.']);else this.say('연구원',['네가 혹시 이 친구를\n데려가 주겠니?'],undefined,[{label:'피카츄를 데려간다',action:()=>this.receive(25)},{label:'조금 더 생각한다',action:()=>this.say('연구원',['괜찮아. 마음이 바뀌면\n다시 이야기해 줘.'])}]);}
   private prepareRestore(save:SaveData){
     const canonical=worldMapId(save.map);
@@ -286,18 +316,22 @@ export class Engine {
   restore(save:SaveData){this.applyRestore(this.prepareRestore(save));this.persist();}
   private applyRestore(save:SaveData){
     cancelSeafoamBoulderPush(this);cancelCinnabarEvacuationMotion(this);cancelFerryJourney(this);
-    this.save=save;this.tourEvent=null;this.tourNpcId=undefined;this.tourDestination=null;this.navigationCache=null;this.fieldMap=false;this.followingObjective=false;this.caughtPreview=null;this.caughtBoxPreview=null;this.gymReward=null;this.confirmingBattleExit=false;this.defeatScene=null;this.recoveryPreview=false;this.battle=null;this.battleFrames=null;this.gymPreview=null;this.grassSteps=0;this.clearInput();this.move=null;this.transition=0;this.transitionWarp=null;this.dialogue=null;this.dialogueElapsed=0;this.panel='field';this.menuIndex=0;this.partyIndex=0;this.bagIndex=1;this.starterIndex=0;this.optionIndex=0;this.stepPhase=0;this.labelTime=2.6;this.toastTime=0;
+    this.sceneRevision++;this.save=save;this.tourEvent=null;this.tourNpcId=undefined;this.tourDestination=null;this.navigationCache=null;this.fieldMap=false;this.followingObjective=false;this.caughtPreview=null;this.caughtBoxPreview=null;this.gymReward=null;this.confirmingBattleExit=false;this.defeatScene=null;this.recoveryPreview=false;this.battle=null;this.battleFrames=null;this.gymPreview=null;this.grassSteps=0;this.clearInput();this.move=null;this.transition=0;this.transitionWarp=null;this.dialogue=null;this.dialogueElapsed=0;this.panel='field';this.menuIndex=0;this.partyIndex=0;this.bagIndex=1;this.starterIndex=0;this.optionIndex=0;this.stepPhase=0;this.labelTime=2.6;this.toastTime=0;
     if(this.save.party.length&&this.save.party.every(p=>p.hp===0))this.returnHome();
+    if(isNexusCampaign(save)&&!save.flags[NEXUS_OPENING.profile])this.panel='profile';
   }
 
   /** Center rest restores HP and PP together, as the series does. */
   healParty(){for(const p of this.save.party){p.hp=p.maxHp;restorePp(p,pokemonMoves(p));}}
   returnHome(){cancelSeafoamBoulderPush(this);cancelCinnabarEvacuationMotion(this);cancelFerryJourney(this);this.defeatScene=null;this.recoveryPreview=false;this.battleFrames=null;this.battle=null;this.grassSteps=0;this.clearInput();this.move=null;this.transition=0;this.transitionWarp=null;this.save.map=worldMapId(this.save.healingPoint);this.save.healingPoint=this.save.map;this.save.player=this.save.map==='home'?{x:4,y:5,facing:'up'}:{...(worldSpawn(this.save.map)??{x:8,y:10}),facing:'up'};this.panel='field';this.healParty();this.labelTime=2.6;this.persist()}
   departure(){
-    if(this.save.flags.departureCleared){this.say('이웃 도윤',['길은 이제 안전하게 지날 수 있단다.\n서쪽길 안내원에게 쉬어 가렴.']);return}
+    if(this.save.map!=='town'||!nexusDepartureReady(this))return;
+    if(this.save.flags.departureCleared){if(meetNexusFirstRival(this))return;this.say('이웃 도윤',['길은 이제 안전하게 지날 수 있단다.\n201번도로를 따라 잔모래마을로 가렴.']);return}
     if(!this.save.party.some(p=>p.hp>0)){this.say('이웃 도윤',['서쪽길 정비가 끝났단다.\n하지만 혼자 나가면 위험해.', '건강한 포켓몬과 함께 오렴.\n첫 파트너는 연구소에서 만날 수 있어.']);return}
-    this.say('이웃 도윤',[this.save.flags.openingWalkCompleted?'집 앞에서 동료와 걸어 봤구나!\n이번에는 마을 밖 길도 함께 걸어 보렴.':'새 친구와 함께 왔구나!\n서쪽길 정비가 끝났단다.', '몬스터볼 5개와 상처약 2개를 줄게.\n서쪽길 안내원에게 쉬어 갈 수 있어.', '풀밭을 피해 흙길로 돌아와도 돼.\n자, 너희의 첫 모험을 시작해 보렴!'],()=>{
-      this.save.flags.departureCleared=true;this.save.inventory.pokeBalls=Math.min(999,this.save.inventory.pokeBalls+5);this.save.inventory.potions=Math.min(999,this.save.inventory.potions+2);this.persist();
+    const save=this.save;
+    sayField(this,'이웃 도윤',[this.save.flags.openingWalkCompleted?'집 앞에서 동료와 걸어 봤구나!\n이번에는 마을 밖 길도 함께 걸어 보렴.':'새 친구와 함께 왔구나!\n서쪽길 정비가 끝났단다.', '몬스터볼 5개와 상처약 2개를 줄게.\n잔모래마을 센터에서 쉬어 갈 수 있어.', '풀밭을 피해 흙길로 돌아와도 돼.\n자, 너희의 첫 모험을 시작해 보렴!'],()=>{
+      if(save.flags.departureCleared||!save.party.some(p=>p.hp>0))return;
+      save.flags.departureCleared=true;save.inventory.pokeBalls=Math.min(999,save.inventory.pokeBalls+5);save.inventory.potions=Math.min(999,save.inventory.potions+2);this.persist();meetNexusFirstRival(this);
     });
   }
   onFieldStep(){
@@ -338,7 +372,7 @@ export class Engine {
   requestBattleExit(){
     const b=this.battle;if(!b||b.result||this.dialogue||this.move||this.transition)return;
     if(b.kind==='wild'){this.actBattle('run');return;}
-    this.say('도전 중단',['중단하면 다음 도전은 처음부터야.\n얻은 경험치와 현재 HP는 유지돼.','이번 승리 보상은 받을 수 없어.\n도전을 중단할까?'],undefined,[
+    this.say('도전 중단',b.trainer?.id===NEXUS_FIRST_RIVAL_TRAINER?['승부를 잠깐 쉬고 동료들을 돌볼까?\nHP와 기술 횟수도 회복할 수 있어.', '다시 준비되면 도윤 아저씨 곁에서 만나자.\n첫 승부를 중단할까?']:['중단하면 다음 도전은 처음부터야.\n얻은 경험치와 현재 HP는 유지돼.','이번 승리 보상은 받을 수 없어.\n도전을 중단할까?'],undefined,[
       {label:'도전을 중단한다',action:()=>{this.confirmingBattleExit=false;if(this.battle===b)this.actBattle('run')}},
       {label:'계속 싸운다',action:()=>{this.confirmingBattleExit=false}}
     ]);
@@ -399,6 +433,7 @@ export class Engine {
     recordOreburghGatePartnerBattle(this.save,b,turn.outcome);
     recordRoute20PartnerBattle(this.save,b,turn.outcome);
     this.battleFanfare=turn.outcome==='caught'?'catch':turn.outcome==='won'?'victory':null;
+    if(finishNexusFirstRivalBattle(this,b,turn))return;
     if(turn.outcome==='lost'){
       // Commit a safe, healed checkpoint now; the remaining defeat scene is display only.
       this.returnHome();

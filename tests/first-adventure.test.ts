@@ -16,7 +16,7 @@ function encounter(g:Engine){g.save.player={x:17,y:6,facing:'right'};for(let i=0
 
 test('departure needs a healthy partner and completed guidance; all starter orders unlock only once',()=>ui(()=>{
   for(const ids of [[],[1],[4],[7],[25],[7,25]]){
-    const g=new Engine();g.save=newSave();g.save.map='town';g.save.player={x:4,y:15,facing:'left'};
+    const g=new Engine();g.save=newSave();g.panel='field';g.save.map='town';g.save.player={x:4,y:15,facing:'left'};
     for(const id of ids)grantPokemon(g.save,id);
     g.interact();assert(!g.save.flags.departureCleared);assert(!canStand(g.map,3,15));
     const before=parseSave(JSON.stringify(g.save))!;assert(!getMap('town',before.flags).warps.some(w=>w.to==='route_s01'));
@@ -26,11 +26,11 @@ test('departure needs a healthy partner and completed guidance; all starter orde
     g.event('gatekeeper');finish(g);assert.deepEqual(g.save.inventory,{pokeBalls:5,potions:2});
     const opened=parseSave(JSON.stringify(g.save))!;g.restore(before);assert(!canStand(g.map,3,15));g.restore(opened);assert(canStand(g.map,3,15));
   }
-  const g=new Engine();g.save=ready();g.save.flags.departureCleared=false;g.save.party[0].hp=0;g.event('gatekeeper');finish(g);assert.equal(g.save.flags.departureCleared,false);
+  const g=new Engine();g.save=ready();g.panel='field';g.save.flags.departureCleared=false;g.save.party[0].hp=0;g.event('gatekeeper');finish(g);assert.equal(g.save.flags.departureCleared,false);
 }));
 
 test('unlocked western threshold and route entrance work both ways, including transition checkpoints',()=>{
-  const g=new Engine();g.save=ready();g.save.map='town';g.save.player={x:4,y:15,facing:'left'};
+  const g=new Engine();g.save=ready();g.panel='field';g.save.map='town';g.save.player={x:4,y:15,facing:'left'};
   step(g,'ArrowLeft');step(g,'ArrowLeft');assert.equal(g.save.map,'route_s01');assert.deepEqual(g.save.player,{x:29,y:12,facing:'left'});
   step(g,'ArrowRight');assert.equal(g.save.map,'town');assert.deepEqual(g.save.player,{x:4,y:15,facing:'right'});
   g.save.player={x:2,y:15,facing:'left'};assert.equal(checkpoint(g.save).map,'route_s01');
@@ -38,7 +38,7 @@ test('unlocked western threshold and route entrance work both ways, including tr
 });
 
 test('safe road never encounters; six completed grass steps start battle and lock field movement',()=>ui(()=>{
-  const g=new Engine();g.save=ready();for(let i=0;i<16;i++)step(g,i%2?'ArrowRight':'ArrowLeft');assert.equal(g.battle,null);
+  const g=new Engine();g.save=ready();g.panel='field';for(let i=0;i<16;i++)step(g,i%2?'ArrowRight':'ArrowLeft');assert.equal(g.battle,null);
   encounter(g);const before={...g.save.player};g.press('ArrowUp');g.release('ArrowUp');assert.equal(g.move,null);assert.deepEqual(g.save.player,before);
   g.actBattle('run');finish(g);assert.equal(g.battle,null);assert.equal(g.grassSteps,0);step(g,'ArrowRight');assert.equal(g.battle,null);
 }));
@@ -70,18 +70,18 @@ test('support moves and potions change combat state with bounded effects',()=>{
 
 test('a fainted partner passes to the next healthy member; defeat recovers at home and persists',()=>ui(()=>{
   const s=ready();grantPokemon(s,25);s.party[0].hp=1;const b=createBattle(s)!;battleTurn(s,b,'move0');assert.equal(b.active,1);assert.equal(s.party[0].hp,0);
-  const g=new Engine();g.save=ready();g.save.party[0].hp=1;encounter(g);g.actBattle('move0');assert.equal(g.battle,null);assert.equal(g.save.map,'home');assert.equal(g.save.party[0].hp,g.save.party[0].maxHp);assert.equal(g.save.flags.departureCleared,true);assert(parseSave(JSON.stringify(g.save)));
+  const g=new Engine();g.save=ready();g.panel='field';g.save.party[0].hp=1;encounter(g);g.actBattle('move0');assert.equal(g.battle,null);assert.equal(g.save.map,'home');assert.equal(g.save.party[0].hp,g.save.party[0].maxHp);assert.equal(g.save.flags.departureCleared,true);assert(parseSave(JSON.stringify(g.save)));
   const dead=ready();dead.party[0].hp=0;g.restore(dead);assert.equal(g.save.map,'home');assert.equal(g.save.party[0].hp,20);
 }));
 
 test('mid-battle saves preserve settled HP and items; restoration cancels old battle and dialogue',()=>ui(()=>{
-  const g=new Engine();g.save=ready();encounter(g);const expected=g.save.party[0].hp-enemyDamage(g.battle!,g.battle!.enemyAttackDrop,g.save.party[0]);g.actBattle('move0');const saved=parseSave(JSON.stringify(g.save))!;assert.equal(saved.party[0].hp,expected);
+  const g=new Engine();g.save=ready();g.panel='field';encounter(g);const expected=g.save.party[0].hp-enemyDamage(g.battle!,g.battle!.enemyAttackDrop,g.save.party[0]);g.actBattle('move0');const saved=parseSave(JSON.stringify(g.save))!;assert.equal(saved.party[0].hp,expected);
   g.restore(saved);assert.equal(g.battle,null);assert.equal(g.dialogue,null);assert.equal(g.save.party[0].hp,expected);assert.equal(g.save.map,'route_s01');
   encounter(g);g.actBattle('run');g.restore(newSave());finish(g);assert.equal(g.save.map,'bedroom');assert.equal(g.save.party.length,0);
 }));
 
 test('guide and mother heal; guide replenishes only missing supplies without stacking rewards',()=>ui(()=>{
-  const g=new Engine();g.save=ready();g.save.party[0].hp=1;g.save.inventory={pokeBalls:0,potions:0};g.event('routeGuide');assert.equal(g.save.party[0].hp,20);assert.deepEqual(g.save.inventory,{pokeBalls:5,potions:2});finish(g);g.event('routeGuide');finish(g);assert.deepEqual(g.save.inventory,{pokeBalls:5,potions:2});
+  const g=new Engine();g.save=ready();g.panel='field';g.save.party[0].hp=1;g.save.inventory={pokeBalls:0,potions:0};g.event('routeGuide');assert.equal(g.save.party[0].hp,20);assert.deepEqual(g.save.inventory,{pokeBalls:5,potions:2});finish(g);g.event('routeGuide');finish(g);assert.deepEqual(g.save.inventory,{pokeBalls:5,potions:2});
   g.save.party[0].hp=1;g.event('mom');assert.equal(g.save.party[0].hp,20);assert(g.dialogue!.pages.join('').includes('건강'));
   finish(g);g.save.party.push({...createBattle(g.save)!.enemy});g.event('mom');assert(g.dialogue!.pages[0].includes('모험길'));
 }));

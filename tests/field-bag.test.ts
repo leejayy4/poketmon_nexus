@@ -12,7 +12,7 @@ function dom(run:()=>void){
   try{run();}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document');}
 }
 function ready(){
-  const g=new Engine();g.exploring=false;g.save=newSave();grantPokemon(g.save,7);
+  const g=new Engine();g.exploring=false;g.save=newSave();g.panel='field';grantPokemon(g.save,7);
   g.save.flags.departureCleared=true;
   for(let i=1;i<6;i++)g.save.party.push({species:399,level:3,experience:0,hp:i===2?0:i===1?3:18,maxHp:18,nature:'성실',met:'새잎 서쪽길'});
   g.save.inventory.potions=2;g.selectMenu(1);return g;

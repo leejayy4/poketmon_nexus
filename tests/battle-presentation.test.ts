@@ -35,13 +35,13 @@ test('fainting keeps the defeated Pokemon visible in status until automatic or c
 });
 
 test('advancing display dialogue never reapplies committed damage, items or XP and restore drops playback',()=>dom(()=>{
-  const g=new Engine();g.save=ready();g.battle=createBattle(g.save,'gym');g.battle!.enemy.hp=1;g.actBattle('move0');const before=structuredClone(g.save);assert.equal(g.battleFrame!.enemy.species,74);assert.equal(g.battle!.enemy.species,95);const snapshot=g.snapshot();snapshot.battleFrame!.enemy.hp=999;assert.equal(g.battleFrame!.enemy.hp,1);
+  const g=new Engine();g.save=ready();g.panel='field';g.battle=createBattle(g.save,'gym');g.battle!.enemy.hp=1;g.actBattle('move0');const before=structuredClone(g.save);assert.equal(g.battleFrame!.enemy.species,74);assert.equal(g.battle!.enemy.species,95);const snapshot=g.snapshot();snapshot.battleFrame!.enemy.hp=999;assert.equal(g.battleFrame!.enemy.hp,1);
   g.actBattle('move0');assert.deepEqual(g.save,before);finish(g);assert.equal(g.battleFrame,null);assert.equal(g.battleFrames,null);assert.deepEqual(g.save,before);
   g.actBattle('potion');const saved=parseSave(JSON.stringify(g.save))!;assert(saved);assert(!('battleFrames'in saved));g.restore(saved);assert.equal(g.battleFrame,null);assert.equal(g.battleFrames,null);assert.equal(g.battle,null);assert.deepEqual(g.save.party,saved.party);
 }));
 
 test('renderer hides future opponent and choices during playback and uses current data afterwards',()=>dom(()=>{
-  const g=new Engine();g.save=ready();g.battle=createBattle(g.save,'gym');g.battle!.enemy.hp=1;g.actBattle('move0');const words:string[]=[],drawn:unknown[]=[];
+  const g=new Engine();g.save=ready();g.panel='field';g.battle=createBattle(g.save,'gym');g.battle!.enemy.hp=1;g.actBattle('move0');const words:string[]=[],drawn:unknown[]=[];
   const context=new Proxy({}, {get:(_,key)=>key==='fillText'?(s:string)=>words.push(s):key==='drawImage'?(im:unknown)=>drawn.push(im):()=>{}}) as CanvasRenderingContext2D,canvas={getContext:()=>context} as HTMLCanvasElement,r=new Renderer(g,canvas,canvas);
   for(const id of [74,95])r.images['pokemon-'+id]={id} as unknown as HTMLImageElement;
   r.battleTop(context);r.lower();assert(words.includes('꼬마돌'));assert(!words.includes('롱스톤'));assert(!words.includes('교대한다'));assert(drawn.includes(r.images['pokemon-74']));assert(!drawn.includes(r.images['pokemon-95']));
@@ -50,6 +50,6 @@ test('renderer hides future opponent and choices during playback and uses curren
 }));
 
 test('rejected actions, a replaced dialogue and final battle completion leave no stale frame',()=>dom(()=>{
-  const g=new Engine();g.save=ready();g.battle=createBattle(g.save);g.actBattle('potion');assert.equal(g.battleFrames,null);finish(g);g.actBattle('move1');assert(g.battleFrame);g.say('리포트',['기록']);assert.equal(g.battleFrame,null);finish(g);
+  const g=new Engine();g.save=ready();g.panel='field';g.battle=createBattle(g.save);g.actBattle('potion');assert.equal(g.battleFrames,null);finish(g);g.actBattle('move1');assert(g.battleFrame);g.say('리포트',['기록']);assert.equal(g.battleFrame,null);finish(g);
   g.battle!.enemy.hp=1;g.actBattle('move0');assert(g.battleFrame);finish(g);assert.equal(g.battle,null);assert.equal(g.battleFrame,null);assert.equal(g.battleFrames,null);
 }));

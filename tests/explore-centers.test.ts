@@ -4,7 +4,7 @@ import sharp from 'sharp';
 import { TOUR_INTERIORS,TOUR_MAPS,TOUR_SPAWNS,type TourId } from '../src/explore-world';
 import { Engine } from '../src/engine';
 import { canStand } from '../src/maps';
-import { parseSave } from '../src/save';
+import { newSave,parseSave } from '../src/save';
 import { TOWN_REVISION } from '../src/town';
 import { CENTER_SAMPLES } from '../src/explore-center-art';
 import { spriteFrame } from '../src/sprites';
@@ -15,7 +15,7 @@ test('all 38 reception counters block walking and talk to the nurse from every f
   const old=Object.getOwnPropertyDescriptor(globalThis,'document');
   Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});
   try{for(const [id,r]of centers){
-    const g=new Engine();g.exploring=true;g.save=g.freshSave();g.save.map=id as TourId;
+    const g=new Engine();g.exploring=true;g.save=newSave();g.panel='field';g.save.map=id as TourId;
     const counter=r.reception!;assert.equal(g.map.npcs[0].sprite,'pokecenter_nurse');
     for(let x=counter.x;x<counter.x+counter.w;x++){
       assert(!canStand(g.map,x,counter.y),id);assert(canStand(g.map,x,counter.y+1),id);
@@ -28,7 +28,7 @@ test('all 38 reception counters block walking and talk to the nurse from every f
 });
 test('revision 15 counter and nurse saves migrate safely while valid room positions and progress survive',()=>{
   for(const [id,r]of centers){
-    const g=new Engine();g.exploring=true;const s=g.freshSave();s.map=id as TourId;s.worldRevision=15;
+    const s=newSave();s.map=id as TourId;s.worldRevision=15;
     s.steps=732;s.seconds=1400;s.tourVisited=[id.replace(/_center$/,'') as TourId,id as TourId];
     for(const p of [{x:r.reception!.x,y:r.reception!.y},r.host]){
       s.player={...p,facing:'left'};const loaded=parseSave(JSON.stringify(s));assert(loaded,id);

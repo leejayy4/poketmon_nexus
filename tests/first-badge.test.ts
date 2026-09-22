@@ -35,22 +35,22 @@ test('trainer capture is rejected without a turn; enemy change resets debuffs; r
   assert.equal(battleTurn(s,b,'run').outcome,'escaped');assert.deepEqual(s.badges,[]);assert.equal(s.money,0);
 });
 test('gym confirmation can cancel, accepts a healthy partner, and rejects no partner',()=>ui(()=>{
-  const g=new Engine();g.save=ready();g.event('roark');g.cancel();assert.equal(g.battle,null);assert.equal(g.dialogue,null);g.event('roark');finish(g);assert.equal(g.battle?.kind,'gym');
+  const g=new Engine();g.save=ready();g.panel='field';g.event('roark');g.cancel();assert.equal(g.battle,null);assert.equal(g.dialogue,null);g.event('roark');finish(g);assert.equal(g.battle?.kind,'gym');
   g.restore(newSave());g.event('roark');finish(g);assert.equal(g.battle,null);
 }));
 test('final knockout commits all rewards once before dialogue and survives reload/revisit',()=>ui(()=>{
-  const g=new Engine();g.save=ready();g.event('roark');finish(g);
+  const g=new Engine();g.save=ready();g.panel='field';g.event('roark');finish(g);
   for(let i=0;g.battle&&!g.battle.result&&i<40;i++){const p=g.save.party[g.battle.active];g.actBattle(p.hp<=10&&g.save.inventory.potions?'potion':'move0');if(!g.battle?.result)finish(g);}
   assert(g.dialogue);assert.deepEqual(g.save.badges,[FIRST_BADGE]);assert.deepEqual(g.save.keyItems,[FIRST_TM]);assert.equal(g.save.money,1440);
   const saved=parseSave(JSON.stringify(g.save))!;assert(saved);g.restore(saved);assert.equal(g.battle,null);g.event('roark');finish(g);assert.equal(g.battle,null);assert.equal(grantFirstBadge(g.save),false);assert.equal(g.save.money,1440);
 }));
 test('nurse sets a persistent recovery point; gym defeat recovers there without badge',()=>ui(()=>{
-  for(const map of ['tour_jubilife_center','tour_oreburgh_center'] as const){const g=new Engine();g.save=ready();g.save.map=map;g.save.player={x:8,y:7,facing:'up'};g.save.party[0].hp=1;g.save.inventory.potions=0;g.event('nurse');finish(g);assert.equal(g.save.healingPoint,map);assert.equal(g.save.party[0].hp,29);assert.equal(g.save.inventory.potions,2);
+  for(const map of ['tour_jubilife_center','tour_oreburgh_center'] as const){const g=new Engine();g.save=ready();g.panel='field';g.save.map=map;g.save.player={x:8,y:7,facing:'up'};g.save.party[0].hp=1;g.save.inventory.potions=0;g.event('nurse');finish(g);assert.equal(g.save.healingPoint,map);assert.equal(g.save.party[0].hp,29);assert.equal(g.save.inventory.potions,2);
     g.save.map='oreburgh_gym';g.save.player={x:8,y:5,facing:'up'};g.save.party[0].hp=1;g.event('roark');finish(g);g.battle!.turn=1;g.actBattle('move1');assert.equal(g.save.map,map);assert.deepEqual(g.save.player,{x:8,y:10,facing:'up'});assert.equal(g.save.party[0].hp,29);assert.deepEqual(g.save.badges,[]);assert(parseSave(JSON.stringify(g.save)));
   }
 }));
 test('reload during the second opponent keeps earned XP but cancels the challenge without rewards',()=>ui(()=>{
-  const g=new Engine();g.save=ready();g.battle=createBattle(g.save,'gym');g.battle!.enemy.hp=1;g.actBattle('move0');const saved=parseSave(JSON.stringify(g.save))!;assert.equal(saved.party[0].experience,50);g.restore(saved);assert.equal(g.battle,null);assert.deepEqual(g.save.badges,[]);g.event('roark');finish(g);assert.equal(g.battle?.enemy.species,74);
+  const g=new Engine();g.save=ready();g.panel='field';g.battle=createBattle(g.save,'gym');g.battle!.enemy.hp=1;g.actBattle('move0');const saved=parseSave(JSON.stringify(g.save))!;assert.equal(saved.party[0].experience,50);g.restore(saved);assert.equal(g.battle,null);assert.deepEqual(g.save.badges,[]);g.event('roark');finish(g);assert.equal(g.battle?.enemy.species,74);
 }));
 test('revision 4 save migration preserves party, inventory and flags while supplying new fields',()=>{
   const original=ready(7,5),raw:any=JSON.parse(JSON.stringify(original));raw.worldRevision=4;raw.map='route_s01';raw.player={x:3,y:12,facing:'left'};for(const k of ['badges','keyItems','money','healingPoint'])delete raw[k];delete raw.party[0].experience;
@@ -61,7 +61,7 @@ test('save validation rejects invalid growth, trainer-only ownership and inconsi
   for(const mutate of mutations){const s=ready();mutate(s);assert.equal(parseSave(JSON.stringify(s)),null)}
 });
 test('western route, expanded cities and both center/gym entrances round trip',()=>{
-  const g=new Engine();g.save=ready();
+  const g=new Engine();g.save=ready();g.panel='field';
   const sources=['route_s01','tour_jubilife','tour_oreburgh','tour_jubilife_center','tour_oreburgh_center','oreburgh_gym'] as const;
   for(const id of sources)for(const w of getMap(id,g.save.flags).warps){const v=VECTOR[w.entry];g.save.map=id;g.save.player={x:w.x-v.x,y:w.y-v.y,facing:w.entry};step(g,'Arrow'+w.entry[0].toUpperCase()+w.entry.slice(1));assert.equal(g.save.map,w.to);assert(parseSave(JSON.stringify(g.save)));}
 });

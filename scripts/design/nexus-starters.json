@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "designStatus": "provisional-project-design",
+  "learnsetVersion": "nexus-first-journey-v1",
+  "provenance": {
+    "kind": "project",
+    "source": "scripts/design/nexus-starters.json",
+    "reviewedOn": "2026-09-22",
+    "reference": "https://pokeapi.co/docs/v2",
+    "adopted": "Species stats, versioned move acquisition and move PP remain separate data. Existing supported moves and their PP are resolved through the repository's pinned PokeAPI CSV snapshot.",
+    "projectDecisions": "Names, first-form designs, types, stats, weight, acquisition levels and initial HP below are provisional NEXUS implementation designs. They are not official Pokemon species or user-approved final designs. Experience and HP growth retain the current project rules.",
+    "excluded": "No new move mechanics, abilities, evolution stages, canonical National Dex numbers or external sprite reuse are introduced."
+  },
+  "starters": [
+    {
+      "id": 900001,
+      "name": "새록",
+      "motif": "deer",
+      "types": ["풀"],
+      "stats": {"hp": 50, "attack": 55, "defense": 55, "specialAttack": 45, "specialDefense": 60, "speed": 45},
+      "weight": 72,
+      "genus": "새싹사슴포켓몬",
+      "color": "#79ad69",
+      "description": "어린 뿔에 새싹이 돋아 있다.\n낯선 길에서는 곁을 천천히 걷는다.",
+      "style": "차분한 풀의 동료. 덩굴채찍과 흡수로 꾸준히 싸운다.",
+      "minimumLevel": 5,
+      "initialHp": 21,
+      "initialMoves": ["vine-whip", "tackle", "growl"],
+      "learnset": [
+        {"level": 1, "move": "tackle"},
+        {"level": 1, "move": "growl"},
+        {"level": 5, "move": "vine-whip"},
+        {"level": 8, "move": "absorb"},
+        {"level": 11, "move": "quick-attack"},
+        {"level": 15, "move": "razor-leaf"},
+        {"level": 20, "move": "protect"},
+        {"level": 24, "move": "mega-drain"}
+      ],
+      "tm": []
+    },
+    {
+      "id": 900002,
+      "name": "잿울",
+      "motif": "wolf",
+      "types": ["불꽃"],
+      "stats": {"hp": 45, "attack": 60, "defense": 40, "specialAttack": 60, "specialDefense": 40, "speed": 65},
+      "weight": 84,
+      "genus": "온기늑대포켓몬",
+      "color": "#d98555",
+      "description": "목덜미의 털에 온기를 품는다.\n동료가 부르면 가장 먼저 달려온다.",
+      "style": "재빠른 불꽃의 동료. 물기와 전광석화, 안다리걸기를 배운다.",
+      "minimumLevel": 5,
+      "initialHp": 20,
+      "initialMoves": ["ember", "scratch", "leer"],
+      "learnset": [
+        {"level": 1, "move": "scratch"},
+        {"level": 1, "move": "leer"},
+        {"level": 5, "move": "ember"},
+        {"level": 7, "move": "bite"},
+        {"level": 9, "move": "quick-attack"},
+        {"level": 11, "move": "low-kick"},
+        {"level": 18, "move": "rock-throw"},
+        {"level": 24, "move": "protect"}
+      ],
+      "tm": []
+    },
+    {
+      "id": 900003,
+      "name": "포말이",
+      "motif": "seal",
+      "types": ["물"],
+      "stats": {"hp": 55, "attack": 40, "defense": 60, "specialAttack": 55, "specialDefense": 60, "speed": 40},
+      "weight": 125,
+      "genus": "물거품물범포켓몬",
+      "color": "#77b2cd",
+      "description": "수염 끝에 작은 물방울이 맺힌다.\n잔잔한 물결처럼 느긋한 친구다.",
+      "style": "튼튼한 물의 동료. 물대포와 웅크리기로 차근차근 싸운다.",
+      "minimumLevel": 5,
+      "initialHp": 22,
+      "initialMoves": ["water-gun", "pound", "growl"],
+      "learnset": [
+        {"level": 1, "move": "pound"},
+        {"level": 1, "move": "growl"},
+        {"level": 5, "move": "water-gun"},
+        {"level": 8, "move": "defense-curl"},
+        {"level": 12, "move": "ice-shard"},
+        {"level": 16, "move": "water-pulse"},
+        {"level": 20, "move": "protect"},
+        {"level": 24, "move": "headbutt"}
+      ],
+      "tm": []
+    }
+  ]
+}

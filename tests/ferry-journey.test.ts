@@ -9,7 +9,7 @@ import {FERRY_DURATION} from '../src/ferry-journey';
 
 function ui(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run();}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document');}}
 function ready(map:'tour_canalave'|'tour_vermilion'='tour_canalave'){
-  const g=new Engine();g.save=newSave();grantPokemon(g.save,1);g.save.flags.departureCleared=true;g.save.badges=GYMS.map(g=>g.badge);g.save.keyItems=GYMS.map(g=>g.tm);g.save.flags.observationCollected=true;g.save.flags.researchDelivered=true;
+  const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,1);g.save.flags.departureCleared=true;g.save.badges=GYMS.map(g=>g.badge);g.save.keyItems=GYMS.map(g=>g.tm);g.save.flags.observationCollected=true;g.save.flags.researchDelivered=true;
   if(map==='tour_vermilion')g.save.flags.ferryPass=true;
   g.save.map=map;g.save.player={...worldSpawn(map)!,facing:'down'};g.save.healingPoint='tour_veilstone_center';g.save.money=6060;g.save.inventory={pokeBalls:3,potions:10};return g;
 }

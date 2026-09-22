@@ -32,11 +32,11 @@ test('two-column navigation follows rows and columns including odd and full part
   assert.equal(gridSelection(1,5,'up'),3);assert.equal(gridSelection(4,5,'right'),4);assert.equal(gridSelection(4,5,'down'),0);
   assert.equal(gridSelection(5,6,'up'),3);assert.equal(gridSelection(1,6,'up'),5);
   assert.equal(gridSelection(0,1,'down'),0);assert.equal(gridSelection(0,2,'down'),0);
-  const g=new Engine();g.save=team();g.battle=createBattle(g.save);g.navigate('down');assert.equal(g.battle!.selected,2);
+  const g=new Engine();g.save=team();g.panel='field';g.battle=createBattle(g.save);g.navigate('down');assert.equal(g.battle!.selected,2);
   g.battle=null;g.panel='party';g.save.party.push({...g.save.party[1]});g.navigate('down');assert.equal(g.partyIndex,2);
 });
 test('X on action selection never ends a battle while submenu cancellation remains free',()=>{
-  for(const kind of ['wild','gym'] as const){const g=new Engine();g.save=team();g.battle=createBattle(g.save,kind);const before=structuredClone(g.save);
+  for(const kind of ['wild','gym'] as const){const g=new Engine();g.save=team();g.panel='field';g.battle=createBattle(g.save,kind);const before=structuredClone(g.save);
     g.cancel();assert(g.battle);assert.equal(g.battle.result,false);assert.equal(g.dialogue,null);assert.deepEqual(g.save,before);
     for(const menu of ['moves','bag','party'] as const){g.battle.menu=menu;g.cancel();assert.equal(g.battle.menu,'actions');assert.deepEqual(g.save,before);}
   }

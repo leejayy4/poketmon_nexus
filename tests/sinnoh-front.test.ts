@@ -43,7 +43,7 @@ test('each starter can lead a locally obtainable prepared party through all late
   }
 });
 test('gym order cannot be skipped and wins, reload and revisits do not duplicate rewards',()=>ui(()=>{
-  const g=new Engine();g.save=ready();g.event('maylene');finish(g);assert.equal(g.battle,null);assert(!awardGym(g.save,'maylene'));
+  const g=new Engine();g.save=ready();g.panel='field';g.event('maylene');finish(g);assert.equal(g.battle,null);assert(!awardGym(g.save,'maylene'));
   for(let stage=1;stage<4;stage++){
     prepare(g.save,stage);g.save.map=SINNOH_GYMS[stage-1];g.save.player={x:8,y:5,facing:'up'};g.healParty();g.save.inventory.potions=2;g.event(GYMS[stage].id);finish(g);
     for(let i=0;g.battle&&!g.battle.result&&i<60;i++){g.actBattle(strategy(g.save,g.battle));if(!g.battle?.result)finish(g)}
@@ -51,33 +51,33 @@ test('gym order cannot be skipped and wins, reload and revisits do not duplicate
   }assert.equal(g.save.money,8400);
 }));
 test('all new recovery centers persist and recover a gym defeat to a valid tile',()=>ui(()=>{
-  for(let i=0;i<3;i++){const g=new Engine();g.save=ready(7,15,3);g.save.map=worldMapId(SINNOH_CENTERS[i]);g.save.player={x:8,y:7,facing:'up'};g.event('nurse');finish(g);assert.equal(g.save.healingPoint,worldMapId(SINNOH_CENTERS[i]));g.save.map=SINNOH_GYMS[i];g.save.player={x:8,y:5,facing:'up'};g.save.party[0].hp=1;g.battle=createBattle(g.save,'gym',GYMS[i+1].id);g.actBattle('move0');assert.equal(g.save.map,worldMapId(SINNOH_CENTERS[i]));assert.equal(g.save.party[0].hp,g.save.party[0].maxHp);assert(parseSave(JSON.stringify(g.save)))}
+  for(let i=0;i<3;i++){const g=new Engine();g.save=ready(7,15,3);g.panel='field';g.save.map=worldMapId(SINNOH_CENTERS[i]);g.save.player={x:8,y:7,facing:'up'};g.event('nurse');finish(g);assert.equal(g.save.healingPoint,worldMapId(SINNOH_CENTERS[i]));g.save.map=SINNOH_GYMS[i];g.save.player={x:8,y:5,facing:'up'};g.save.party[0].hp=1;g.battle=createBattle(g.save,'gym',GYMS[i+1].id);g.actBattle('move0');assert.equal(g.save.map,worldMapId(SINNOH_CENTERS[i]));assert.equal(g.save.party[0].hp,g.save.party[0].maxHp);assert(parseSave(JSON.stringify(g.save)))}
 }));
 test('forest and mountain encounters follow their design pools, grant level XP and preserve location',()=>ui(()=>{
-  for(const map of ['tour_eterna_forest','tour_coronet'] as const){const g=new Engine();g.save=ready();g.save.map=map;g.save.player={x:4,y:10,facing:'right'};g.random=()=>0;
+  for(const map of ['tour_eterna_forest','tour_coronet'] as const){const g=new Engine();g.save=ready();g.panel='field';g.save.map=map;g.save.player={x:4,y:10,facing:'right'};g.random=()=>0;
     for(let i=0;i<6;i++)step(g,i%2?'ArrowLeft':'ArrowRight');const pool=encounterPool(map)!;assert.equal(g.battle?.enemy.level,pool.levels[0]);assert.equal(g.battle?.enemy.species,pool.slots[0].speciesId);finish(g);
     g.battle!.enemy.hp=1;const expected=structuredClone(g.save.party[0]);gainExperience(expected,pool.levels[0]*10);g.actBattle('move0');assert.deepEqual(g.save.party[0],expected);finish(g);
     const b=createRegionalBattle(g.save,'wild','roark',()=>0)!;b.enemy.hp=1;assert.equal(battleTurn(g.save,b,'ball').outcome,'caught');assert.equal(g.save.party[1].level,pool.levels[0]);assert.equal(g.save.party[1].met,MAPS[map].name);assert(parseSave(JSON.stringify(g.save)));
   }
 }));
 test('records require four badges and delivery completes once while world travel stays open',()=>ui(()=>{
-  const g=new Engine();g.save=ready();g.event('observation');finish(g);assert(!g.save.flags.observationCollected);g.save=ready(7,15,4);g.event('observation');assert.equal(g.save.flags.observationCollected,true);finish(g);g.event('researchGate');assert(!g.save.flags.researchDelivered);
+  const g=new Engine();g.save=ready();g.panel='field';g.event('observation');finish(g);assert(!g.save.flags.observationCollected);g.save=ready(7,15,4);g.event('observation');assert.equal(g.save.flags.observationCollected,true);finish(g);g.event('researchGate');assert(!g.save.flags.researchDelivered);
   const before=parseSave(JSON.stringify(g.save))!;g.restore(before);assert(g.map.warps.some(w=>w.to==='research_path'));g.event('researchGate');finish(g);assert.equal(g.save.flags.researchDelivered,true);assert(g.map.warps.some(w=>w.to==='research_path'));assert(g.map.warps.some(w=>w.to==='research_path'));
   const done=parseSave(JSON.stringify(g.save))!;g.restore(before);assert(!g.save.flags.researchDelivered);g.restore(done);assert(g.map.warps.some(w=>w.to==='research_path'));g.event('researchGate');finish(g);assert.equal(g.save.money,8400);
   g.event('observation');assert(g.dialogue?.pages.some(l=>l.includes('무사히 전달')));finish(g);
 }));
 test('Veilstone guide stops directing a completed observation delivery',()=>ui(()=>{
-  const g=new Engine();g.save=ready(7,15,4);g.save.map='tour_veilstone';g.save.flags.observationCollected=true;g.save.flags.researchDelivered=true;
+  const g=new Engine();g.save=ready(7,15,4);g.panel='field';g.save.map='tour_veilstone';g.save.flags.observationCollected=true;g.save.flags.researchDelivered=true;
   g.event('sinnohGuide');assert(g.dialogue?.pages.some(line=>line.includes('무사히 전달')));assert(!g.dialogue?.pages.some(line=>line.includes('관측 연구원을 만나세요')));finish(g);
   const restored=parseSave(JSON.stringify(g.save))!;g.restore(restored);g.event('sinnohGuide');assert(g.dialogue?.pages.some(line=>line.includes('새로운 소식')));finish(g);
 }));
 test('Sinnoh city guides do not direct the player to an already won gym',()=>ui(()=>{
-  const g=new Engine();g.save=ready(7,15,2);g.save.map='tour_eterna';g.event('sinnohGuide');assert(g.dialogue?.pages.some(line=>line.includes('멜리사에게 도전')));assert(!g.dialogue?.pages.some(line=>line.includes('먼저 유채')));finish(g);
+  const g=new Engine();g.save=ready(7,15,2);g.panel='field';g.save.map='tour_eterna';g.event('sinnohGuide');assert(g.dialogue?.pages.some(line=>line.includes('멜리사에게 도전')));assert(!g.dialogue?.pages.some(line=>line.includes('먼저 유채')));finish(g);
   g.save=ready(7,15,3);g.save.map='tour_hearthome';g.event('sinnohGuide');assert(g.dialogue?.pages.some(line=>line.includes('자두 체육관')));assert(!g.dialogue?.pages.some(line=>line.includes('이곳은 멜리사의')));finish(g);
   const restored=parseSave(JSON.stringify(g.save))!;g.restore(restored);g.event('sinnohGuide');assert(g.dialogue?.pages.some(line=>line.includes('자두 체육관')));finish(g);
 }));
 test('free ferry cancellation, outbound reload and return preserve party, supplies and funds',()=>ui(()=>{
-  const g=new Engine();g.save=ready(7,15,4);g.save.flags.observationCollected=true;g.save.flags.researchDelivered=true;g.save.map='tour_canalave';g.save.player={...worldSpawn('tour_canalave')!,facing:'down'};const party=JSON.stringify(g.save.party),inv={...g.save.inventory};g.event('ferry');g.cancel();assert.equal(g.save.map,'tour_canalave');assert(!g.save.flags.ferryPass);g.event('ferry');finish(g);assert.equal(g.save.map,'tour_canalave');for(let i=0;i<36;i++)g.update(.05);finish(g);assert.equal(g.save.map,'tour_vermilion');assert.equal(g.save.flags.ferryPass,true);g.restore(parseSave(JSON.stringify(g.save))!);g.event('ferry');finish(g);assert.equal(g.save.map,'tour_vermilion');for(let i=0;i<36;i++)g.update(.05);finish(g);assert.equal(g.save.map,'tour_canalave');assert.equal(JSON.stringify(g.save.party),party);assert.deepEqual(g.save.inventory,inv);assert.equal(g.save.money,8400);
+  const g=new Engine();g.save=ready(7,15,4);g.panel='field';g.save.flags.observationCollected=true;g.save.flags.researchDelivered=true;g.save.map='tour_canalave';g.save.player={...worldSpawn('tour_canalave')!,facing:'down'};const party=JSON.stringify(g.save.party),inv={...g.save.inventory};g.event('ferry');g.cancel();assert.equal(g.save.map,'tour_canalave');assert(!g.save.flags.ferryPass);g.event('ferry');finish(g);assert.equal(g.save.map,'tour_canalave');for(let i=0;i<36;i++)g.update(.05);finish(g);assert.equal(g.save.map,'tour_vermilion');assert.equal(g.save.flags.ferryPass,true);g.restore(parseSave(JSON.stringify(g.save))!);g.event('ferry');finish(g);assert.equal(g.save.map,'tour_vermilion');for(let i=0;i<36;i++)g.update(.05);finish(g);assert.equal(g.save.map,'tour_canalave');assert.equal(JSON.stringify(g.save.party),party);assert.deepEqual(g.save.inventory,inv);assert.equal(g.save.money,8400);
 }));
 test('revision 5 capped partners and first badge migrate without losing valid progress',()=>{
   const s=ready();s.worldRevision=5;s.party[0].experience=0;const loaded=parseSave(JSON.stringify(s))!;assert(loaded);assert.equal(loaded.worldRevision,TOWN_REVISION);assert.deepEqual(loaded.party,s.party);assert.deepEqual(loaded.badges,s.badges);gainExperience(loaded.party[0],150);assert.equal(loaded.party[0].level,16);assert(parseSave(JSON.stringify(loaded)));
@@ -87,6 +87,6 @@ test('save rejects skipped badges, missing TM, unearned records and invalid stor
 });
 test('every integrated story map warp executes with a legal arrival and checkpoint',()=>{
   const s=ready(7,15,4);s.flags.observationCollected=true;s.flags.researchDelivered=true;s.flags.ferryPass=true;
-  for(const m of [MAPS.jubilife,...Object.values(SINNOH_MAPS)].map(m=>getMap(worldMapId(m.id),s.flags)))for(const w of m.warps){const g=new Engine();g.save=structuredClone(s);g.save.map=m.id;const v={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]}[w.entry];g.save.player={x:w.x-v[0],y:w.y-v[1],facing:w.entry};assert(canStand(getMap(m.id,s.flags),g.save.player.x,g.save.player.y));step(g,'Arrow'+w.entry[0].toUpperCase()+w.entry.slice(1));assert.equal(g.save.map,w.to);assert.deepEqual(g.save.player,{...w.spawn,facing:w.facing});assert(parseSave(JSON.stringify(g.save)));}
+  for(const m of [MAPS.jubilife,...Object.values(SINNOH_MAPS)].map(m=>getMap(worldMapId(m.id),s.flags)))for(const w of m.warps){const g=new Engine();g.save=structuredClone(s);g.panel='field';g.save.map=m.id;const v={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]}[w.entry];g.save.player={x:w.x-v[0],y:w.y-v[1],facing:w.entry};assert(canStand(getMap(m.id,s.flags),g.save.player.x,g.save.player.y));step(g,'Arrow'+w.entry[0].toUpperCase()+w.entry.slice(1));assert.equal(g.save.map,w.to);assert.deepEqual(g.save.player,{...w.spawn,facing:w.facing});assert(parseSave(JSON.stringify(g.save)));}
   const closed=ready();assert.equal(checkpoint(closed).map,'tour_jubilife');
 });

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Engine } from '../src/engine';
-import { parseSave } from '../src/save';
+import { newSave,parseSave } from '../src/save';
 import { canStand } from '../src/maps';
 import { TOWN_REVISION } from '../src/town';
 import { COMPACT_PLACES } from '../src/explore-expansion';
@@ -28,7 +28,7 @@ test('all 35 towns expand while essential areas use their authored dimensions',(
 
 test('revision 12 saves recover blocked town positions and preserve valid positions and visits',()=>{
   for(const id of Object.keys(TOUR_PLANS) as TourId[]){
-    const plan=TOUR_PLANS[id],g=new Engine();g.exploring=true;g.save=g.freshSave();g.exploreTo(id+'_hall');g.exploreTo(id);
+    const plan=TOUR_PLANS[id],g=new Engine();g.exploring=true;g.save=newSave();g.panel='field';g.exploreTo(id+'_hall');g.exploreTo(id);
     const feature=plan.features.find(f=>f.x<28&&f.y<24)!;assert(feature,id);
     const s=g.save;s.worldRevision=12;s.player={x:feature.x,y:feature.y,facing:'right'};s.steps=432;s.seconds=765;
     assert(!canStand(TOUR_MAPS[id],s.player.x,s.player.y));

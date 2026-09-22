@@ -1,3 +1,4 @@
+import { newSave } from '../src/save';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {TOUR_MAPS} from '../src/explore-world';
@@ -93,7 +94,7 @@ test('wide and tall south maps fit the minimap and expose official-number exits'
 });
 
 test('Blackthorn and route travelers guide capture, optional battles and return without changing progress',()=>{
-  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=g.freshSave();assert(grantPokemon(g.save,7));g.save.flags.departureCleared=true;
+  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=newSave();g.panel='field';assert(grantPokemon(g.save,7));g.save.flags.departureCleared=true;
   g.save.map='tour_blackthorn';g.save.player={x:32,y:25,facing:'down'};const before=structuredClone(g.save);
   assert(handleBlackthornLife(g,'tourGuide'));const south=g.dialogue?.choices?.find(choice=>choice.label==='남쪽 산길');assert(south);south.action();assert.equal(g.tourNavigation?.destination,JOHTO_ROUTE_45);assert.deepEqual(g.save,before);
   g.setTourDestination(null);g.dialogue=null;g.save.map=JOHTO_ROUTE_45;g.save.player={x:20,y:48,facing:'up'};

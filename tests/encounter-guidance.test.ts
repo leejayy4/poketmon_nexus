@@ -11,7 +11,7 @@ import { encounterGuidance, routeCompanionPages } from '../src/encounter-guidanc
 
 function game(map: string) {
   const g = new Engine();
-  g.save = newSave();
+  g.save = newSave();g.panel='field';
   g.save.map = map as typeof g.save.map;
   g.save.flags.departureCleared = true;
   g.persist = () => true;

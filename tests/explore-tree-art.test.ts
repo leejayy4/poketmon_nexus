@@ -1,3 +1,4 @@
+import { newSave } from '../src/save';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Engine } from '../src/engine';
@@ -26,7 +27,7 @@ test('complete grove trees stay inside the blocked footprint except for the nort
 });
 
 test('world renderer paints trees in front of northern actors and behind southern actors without changing progress',()=>{
-  const g=new Engine();g.exploreTo('tour_eterna_forest');
+  const g=new Engine();g.save=newSave();g.panel='field';g.exploreTo('tour_eterna_forest');
   const draws:unknown[]=[];let tx=0,ty=0;const selected=groveTrees(TOUR_FEATURES[g.map.id].find(f=>f.kind==='grove'&&f.x===13&&f.y===11)!).at(-1)!;
   const context=new Proxy({}, {get:(_,key)=>key==='translate'?(x:number,y:number)=>{tx=x;ty=y}:key==='drawImage'?(im:unknown)=>{if(im!==tree||(tx===selected.x&&ty===selected.y))draws.push(im)}:()=>{}}) as CanvasRenderingContext2D;
   const canvas={getContext:()=>context} as unknown as HTMLCanvasElement,r=new Renderer(g,canvas,canvas);

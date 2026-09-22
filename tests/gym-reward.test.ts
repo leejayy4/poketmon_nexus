@@ -10,7 +10,7 @@ import {grantPokemon,teachMove} from '../src/pokemon';
 
 function dom(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}}
 function game(id:GymId='roark'){
-  const g=new Engine();g.save=newSave();grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.map='oreburgh_gym';g.save.player={x:8,y:5,facing:'up'};
+  const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.map='oreburgh_gym';g.save.player={x:8,y:5,facing:'up'};
   for(const gym of GYMS){if(gym.id===id)break;g.save.badges.push(gym.badge);g.save.keyItems.push(gym.tm);}
   if(id==='fantina'){g.save.party[0].level=16;g.save.party[0].hp=g.save.party[0].maxHp=53;teachMove(g.save,0,'물기',0);}g.battle=createBattle(g.save,'gym',id);g.battle!.enemyIndex=2;g.battle!.enemy=g.battle!.opponents[2];g.battle!.enemy.hp=1;return g;
 }

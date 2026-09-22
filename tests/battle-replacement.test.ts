@@ -37,10 +37,10 @@ test('healing or manually switching before fainting leads to the same free repla
   const t=ready();t.party[0].hp=20;t.party[1].hp=1;const fight=createBattle(t)!;battleTurn(t,fight,{switch:1});assert(fight.forcedSwitch);assert.equal(fight.active,1);battleTurn(t,fight,{switch:2});assert.equal(t.party[2].hp,18);
 });
 test('Engine opens replacement after dialogue, prevents cancellation bypass and safely restores saves',()=>dom(()=>{
-  const g=new Engine();g.exploring=false;g.save=ready();while(g.save.party.length<6)g.save.party.push({...g.save.party[1]});g.battle=createBattle(g.save);
+  const g=new Engine();g.exploring=false;g.save=ready();g.panel='field';while(g.save.party.length<6)g.save.party.push({...g.save.party[1]});g.battle=createBattle(g.save);
   g.actBattle('move0');const b=g.battle!;assert(b.forcedSwitch);assert.equal(b.menu,'party');const before=structuredClone(g.save);
   g.selectBattle();assert.deepEqual(g.save,before);finish(g);g.cancel();assert.equal(b.menu,'party');assert(b.forcedSwitch);
   g.navigate('down');g.navigate('down');assert.equal(b.selected,5);g.selectBattle();assert.equal(b.active,5);assert(!b.forcedSwitch);assert.equal(b.menu,'actions');assert.deepEqual(g.save,before);finish(g);
-  const waiting=new Engine();waiting.exploring=false;waiting.save=ready();waiting.battle=createBattle(waiting.save);waiting.actBattle('move0');
+  const waiting=new Engine();waiting.exploring=false;waiting.save=ready();waiting.panel='field';waiting.battle=createBattle(waiting.save);waiting.actBattle('move0');
   const saved=parseSave(JSON.stringify(waiting.save));assert(saved);waiting.restore(saved);assert.equal(waiting.battle,null);assert.equal(waiting.save.party[0].hp,0);assert.equal(createBattle(waiting.save)!.active,1);
 }));

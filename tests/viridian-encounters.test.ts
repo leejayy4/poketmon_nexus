@@ -55,7 +55,7 @@ test('all forest slots at both level limits capture into valid saves with their 
 });
 
 test('guide connects real encounters to safe travel and eight new Platinum sprites have verified provenance',()=>{
-  const g=new Engine();g.announce=()=>{};g.save.map=id;const before=structuredClone(g.save);g.event('viridianForestGuide');
+  const g=new Engine();g.save=newSave();g.panel='field';g.announce=()=>{};g.save.map=id;const before=structuredClone(g.save);g.event('viridianForestGuide');
   assert.deepEqual(g.dialogue?.pages,viridianForestGuidePages());assert.deepEqual(g.save,before);
   const pages=g.dialogue!.pages.join('\n');for(const text of ['회색시티','상록시티','흙길','캐터피·뿔충이','피카츄','20~24','센터'])assert(pages.includes(text));
   const manifest=JSON.parse(readFileSync('public/assets/pokemon-runtime-sources.json','utf8'));

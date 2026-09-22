@@ -25,7 +25,7 @@ test('one world reaches every active map from the bedroom after departure',()=>{
 
 test('four expanded city gym doors have reachable approaches and reciprocal safe exits',()=>{
   for(const [city,gym]of WORLD_GYMS){const map=getMap(city),door=worldGymDoor(city)!,warp=map.warps.find(w=>w.to===gym)!;assert.deepEqual({x:warp.x,y:warp.y},door);assert(!map.props.some(p=>p.x===door.x&&p.y===door.y));assert(tourExitPath(map,worldSpawn(city)!,warp).length>1);
-    const g=new Engine();g.save=ready();g.save.map=city;g.save.player={x:door.x,y:door.y+1,facing:'up'};const party=structuredClone(g.save.party);step(g,'ArrowUp');assert.equal(g.save.map,gym);const exit=g.map.warps[0],v=VECTOR[exit.entry];g.save.player={x:exit.x-v.x,y:exit.y-v.y,facing:exit.entry};step(g,'ArrowDown');assert.equal(g.save.map,city);assert.deepEqual(g.save.party,party);assert(parseSave(JSON.stringify(g.save)));
+    const g=new Engine();g.save=ready();g.panel='field';g.save.map=city;g.save.player={x:door.x,y:door.y+1,facing:'up'};const party=structuredClone(g.save.party);step(g,'ArrowUp');assert.equal(g.save.map,gym);const exit=g.map.warps[0],v=VECTOR[exit.entry];g.save.player={x:exit.x-v.x,y:exit.y-v.y,facing:exit.entry};step(g,'ArrowDown');assert.equal(g.save.map,city);assert.deepEqual(g.save.party,party);assert(parseSave(JSON.stringify(g.save)));
   }
 });
 
@@ -47,9 +47,9 @@ test('legacy exploration is merged once into main progress and its source storag
 });
 
 test('every expanded center heals the adventure party, supplies potions and becomes a safe return point',()=>ui(()=>{
-  for(const [id,room]of Object.entries(TOUR_INTERIORS).filter(([,room])=>room.style==='center')){const g=new Engine();g.save=ready();g.save.map=id as MapId;g.save.party[0].hp=0;g.save.inventory.potions=0;g.save.player={x:room.reception!.x,y:room.reception!.y+1,facing:'up'};g.confirm();assert.equal(g.dialogue?.speaker,'간호사');finish(g);assert.equal(g.save.healingPoint,id);assert.equal(g.save.party[0].hp,g.save.party[0].maxHp);assert.equal(g.save.inventory.potions,2);g.save.map='oreburgh_gym';g.save.party[0].hp=0;g.returnHome();assert.equal(g.save.map,id);assert(canStand(g.map,g.save.player.x,g.save.player.y));assert(parseSave(JSON.stringify(g.save)));}
+  for(const [id,room]of Object.entries(TOUR_INTERIORS).filter(([,room])=>room.style==='center')){const g=new Engine();g.save=ready();g.panel='field';g.save.map=id as MapId;g.save.party[0].hp=0;g.save.inventory.potions=0;g.save.player={x:room.reception!.x,y:room.reception!.y+1,facing:'up'};g.confirm();assert.equal(g.dialogue?.speaker,'간호사');finish(g);assert.equal(g.save.healingPoint,id);assert.equal(g.save.party[0].hp,g.save.party[0].maxHp);assert.equal(g.save.inventory.potions,2);g.save.map='oreburgh_gym';g.save.party[0].hp=0;g.returnHome();assert.equal(g.save.map,id);assert(canStand(g.map,g.save.player.x,g.save.player.y));assert(parseSave(JSON.stringify(g.save)));}
 }));
 
 test('graphic test travel can save at every active map without granting adventure progress',()=>{
-  for(const map of Object.values(ACTIVE_MAPS)){const g=new Engine();g.save=newSave();g.save.map=map.id;const p=worldSpawn(map.id)??map.warps.map(w=>({x:w.x-VECTOR[w.entry].x,y:w.y-VECTOR[w.entry].y})).find(p=>canStand(g.map,p.x,p.y))!;g.save.player={...p,facing:'down'};assert(parseSave(JSON.stringify(g.save)),map.id);assert.deepEqual(g.save.party,[]);assert.deepEqual(g.save.flags,{});}
+  for(const map of Object.values(ACTIVE_MAPS)){const g=new Engine();g.save=newSave();g.panel='field';g.save.map=map.id;const p=worldSpawn(map.id)??map.warps.map(w=>({x:w.x-VECTOR[w.entry].x,y:w.y-VECTOR[w.entry].y})).find(p=>canStand(g.map,p.x,p.y))!;g.save.player={...p,facing:'down'};assert(parseSave(JSON.stringify(g.save)),map.id);assert.deepEqual(g.save.party,[]);assert.deepEqual(g.save.flags,{});}
 });

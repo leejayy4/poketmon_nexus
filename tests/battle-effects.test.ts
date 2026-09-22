@@ -9,7 +9,7 @@ import {newSave,parseSave} from '../src/save';
 import {grantPokemon} from '../src/pokemon';
 
 function dom(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}}
-function game(){const g=new Engine();g.save=newSave();grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.inventory.potions=2;g.battle=createBattle(g.save);return g}
+function game(){const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.inventory.potions=2;g.battle=createBattle(g.save);return g}
 function next(g:Engine){const d=g.dialogue!;if(d.shown<d.pages[d.page].length)g.confirm();g.confirm()}
 function finish(g:Engine){for(let i=0;i<80&&g.dialogue;i++)g.confirm();assert.equal(g.dialogue,null)}
 

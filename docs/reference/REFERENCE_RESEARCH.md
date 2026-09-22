@@ -788,3 +788,11 @@ https://bulbapedia.bulbagarden.net/wiki/Castelia_City#Castelia_Park 본문·조�
 - **프로젝트 변경·소비:** `src/johto-dark-cave-east.ts`의 `tour_johto_dark_cave_east`64×56이45번 `(8,17)`↔동굴 `(32,1)`,46번 `(28,22)`↔동굴 `(52,54)`을 연결한다. 두 입구 주머니를 내부에서 분리해 각 도로로 귀환시키며, `paintJohtoDarkCaveEast`가 암벽·밝은 돌·거친 조우 바닥·중앙 물길을 실제 배경에 그린다. `LOCAL-J-DARK-CAVE-EAST`는 지원되는 주뱃·꼬마돌의 원작 동률을50/50, Lv.23~25로 공급하고 미지원 세 종은 대체하지 않는다. 내부 관통·원작 아이템·낚시·라디오·이동기술은 미적용이다.
 - **상태:** 코드와 생성 데이터 반영. QA 중단으로45/46번 입구 접근·워프·충돌·조우·포획·귀환·지도 바로 확인·필드/전투 화면·저장은 미검증이며 동굴·검은먹·무궁·성도 완료 근거가 아니다.
 - **상태:** 코드와 생성 데이터 반영. QA 중단으로 보행·워프·충돌·조우·포획·전투·귀환·저장·필드/전투 화면·조명·음향은 미검증이며 어둠의동굴·도라지·무궁·성도 완료 근거가 아니다.
+
+### 2026-09-22 초기 등록과 NEXUS 세 동료 도입
+
+- **등록 근거:** pret/pokeplatinum `main`의 [무쇠탄갱 B2F 이벤트](https://raw.githubusercontent.com/pret/pokeplatinum/main/res/field/events/events_oreburgh_mine_b2f.json)·[B2F 스크립트](https://raw.githubusercontent.com/pret/pokeplatinum/main/res/field/scripts/scripts_oreburgh_mine_b2f.s)와 대응 B1F 파일을 읽었다. 오브젝트의 LOCALID_ROARK가 script1에 연결되고 ScriptEntry가 대화/동작으로 이어지며 완료 효과가 장면과 구분되는 구조를 대조했다.
+- **채택/변경:** 첫 여정의 실제 MapId+event→기존 어댑터 등록과 완료 효과 분리를 채택했다. 지도 배치·저장 사실·대화 표현을 구분하고 도로 트레이너→등록→도시 폴백 순서를 보존했다. 원작 바위깨기/오브젝트 제거 순서나 의무 통행 잠금은 이식하지 않았다. 외부 코드 복사는 없다.
+- **데이터 근거:** [PokéAPI v2 문서](https://pokeapi.co/docs/v2)의 PokemonStat, PokemonMoveVersion, Move PP 구조를 읽었다. 종 능력치·버전별 습득·기술 PP 분리를 채택하고 기존 고정 CSV/지원 기술을 재사용했다. 신규 사슴/늑대/물범의 이름·수치·습득표는 `scripts/design/nexus-starters.json`의 프로젝트 잠정안이며 공식종 자료에서 가져오지 않았다.
+- **원고 적용:** CANON·본편1장·주요 장면의 챔피언 꿈, 가족 엽서, 하린의 기다림, 첫 동료와 바깥 걷기, 도윤/유진 만남을 재사용한 시작 공간에 연결했다. 첫 친선전 상대는 세 신규 타입 모두와 중립 관계인 기존 현지 비버니 Lv5로 정했다. 특정 원작 라이벌 스타팅 선택 규칙을 복제하지 않았고 유진의 최종 팀을 확정하지 않는다. 센터 동행 대신 현재는 도윤의 현장 응급 처치이며 잔모래 재회는 별도 남은 작업이다.
+- **제외/검증 경계:** 신규 외부 자산 취득 없이 자작 정지 SVG만 추가했다. 오프라인 실행 데이터 생성과 코드/문서 대조만 했으며 테스트·타입검사·빌드·브라우저·저장·시각/음향 QA는 실행하지 않았다.

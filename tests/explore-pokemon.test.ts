@@ -6,7 +6,7 @@ import { Engine,VECTOR } from '../src/engine';
 import { canStand } from '../src/maps';
 import { TOUR_POKEMON,TOUR_MAPS,TOUR_SPAWNS,type TourId } from '../src/explore-world';
 import { FIELD_POKEMON,fieldPokemonFrame,pokemonFacing } from '../src/explore-pokemon';
-import { parseSave } from '../src/save';
+import { newSave,parseSave } from '../src/save';
 import { TOWN_REVISION } from '../src/town';
 import type { Direction } from '../src/types';
 
@@ -23,7 +23,7 @@ test('35 town Pokemon cover eight DS field species with four reachable conversat
 test('all town Pokemon react from four directions repeatedly without changing ownership or progress',()=>{
   const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});
   try{for(const [id,n]of Object.entries(TOUR_POKEMON))for(const facing of Object.keys(VECTOR) as Direction[]){
-    const g=new Engine();g.exploring=true;g.save=g.freshSave();g.exploreTo(id);
+    const g=new Engine();g.exploring=true;g.save=newSave();g.panel='field';g.exploreTo(id);
     const v=VECTOR[facing];g.save.player={x:n.x-v.x,y:n.y-v.y,facing};const before=structuredClone(g.save);
     for(let repeat=0;repeat<2;repeat++){
       assert.equal(g.interactionHint,'Z 말걸기 · '+n.name);g.confirm();assert.equal(g.dialogue?.speaker,n.name);
@@ -36,7 +36,7 @@ test('all town Pokemon react from four directions repeatedly without changing ow
 
 test('revision 13 saves recover Pokemon overlaps and preserve visits, elapsed time and valid adjacent positions',()=>{
   for(const [id,n]of Object.entries(TOUR_POKEMON)){
-    const g=new Engine();g.exploring=true;g.save=g.freshSave();g.exploreTo(id);const s=g.save;
+    const g=new Engine();g.exploring=true;g.save=newSave();g.panel='field';g.exploreTo(id);const s=g.save;
     s.worldRevision=13;s.player={x:n.x,y:n.y,facing:'up'};s.steps=345;s.seconds=789;
     const loaded=parseSave(JSON.stringify(s))!;assert(loaded,id);assert.equal(loaded.worldRevision,TOWN_REVISION);
     assert.deepEqual(loaded.player,{...TOUR_SPAWNS[id as TourId],facing:'down'});assert.deepEqual(loaded.tourVisited,s.tourVisited);assert.equal(loaded.steps,345);assert.equal(loaded.seconds,789);

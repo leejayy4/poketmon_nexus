@@ -8,12 +8,14 @@ import { LEVEL_CAP, OWNABLE_SPECIES, minimumLevel, maxHpAtLevel, nextLevelXp } f
 import { TOUR_SPAWNS } from './explore-world';
 import { GYMS } from './gyms';
 import { SINNOH_MAPS,SINNOH_STARTS,SINNOH_CENTERS } from './sinnoh-maps';
+import { isNexusCampaign, isNexusStarter } from './nexus-starters';
+import { DEFAULT_TRAINER, NEXUS_OPENING, validTrainerProfile } from './nexus-opening-state';
 export const SAVE_KEY='first-partner-save-v1';
 export type SaveReadFailure = 'invalid-json' | 'invalid-data' | 'unsupported-version' | 'future-version' | 'future-world';
 export type SaveReadResult =
   | {kind:'missing'}
   | {kind:'rejected';reason:SaveReadFailure}
-  | {kind:'ready';save:SaveData;sourceVersion:1;sourceRevision:number;migrated:boolean};
+  | {kind:'ready';save:SaveData;sourceVersion:1|2;sourceRevision:number;migrated:boolean};
 
 // Version dispatch happens before any map projection or legacy defaults. All
 // migrations operate on a fresh JSON object; the caller retains the exact raw source.
@@ -23,23 +25,28 @@ export function inspectSave(raw:string|null):SaveReadResult {
   try{input=JSON.parse(raw);}catch{return {kind:'rejected',reason:'invalid-json'};}
   if(!input||typeof input!=='object'||Array.isArray(input))return {kind:'rejected',reason:'invalid-data'};
   const header=input as Record<string,unknown>;
-  if(typeof header.version==='number'&&header.version>1)return {kind:'rejected',reason:'future-version'};
-  if(header.version!==1)return {kind:'rejected',reason:'unsupported-version'};
+  if(typeof header.version==='number'&&header.version>2)return {kind:'rejected',reason:'future-version'};
+  if(header.version!==1&&header.version!==2)return {kind:'rejected',reason:'unsupported-version'};
   if(typeof header.worldRevision==='number'&&header.worldRevision>TOWN_REVISION)return {kind:'rejected',reason:'future-world'};
-  const save=parseVersion1(raw);
+  const save=parseSupportedSave(raw);
   if(!save)return {kind:'rejected',reason:'invalid-data'};
-  return {kind:'ready',save,sourceVersion:1,sourceRevision:typeof header.worldRevision==='number'?header.worldRevision:1,migrated:JSON.stringify(input)!==JSON.stringify(save)};
+  return {kind:'ready',save,sourceVersion:header.version,sourceRevision:typeof header.worldRevision==='number'?header.worldRevision:1,migrated:JSON.stringify(input)!==JSON.stringify(save)};
 }
 export function newSave():SaveData { return {version:1,worldRevision:TOWN_REVISION,map:'bedroom',player:{x:6,y:6,facing:'down'},flags:{},party:[],box:[],pokedex:{seen:[],caught:[]},inventory:{pokeBalls:0,potions:0},badges:[],keyItems:[],money:0,healingPoint:'home',steps:0,seconds:0}; }
+// Legacy factories/fixtures remain v1. Only an explicit new NEXUS game uses v2.
+export function newNexusSave():SaveData {return {...newSave(),version:2,campaign:'nexus',trainer:{...DEFAULT_TRAINER}};}
 export function parseSave(raw:string|null):SaveData|null {
   const result=inspectSave(raw);
   return result.kind==='ready'?result.save:null;
 }
-function parseVersion1(raw:string):SaveData|null {
+function parseSupportedSave(raw:string):SaveData|null {
   try {
     if(!raw) return null;
     const s=JSON.parse(raw) as SaveData;
     if(!s||typeof s!=='object'||(s.worldRevision!==undefined&&(!Number.isInteger(s.worldRevision)||s.worldRevision<1||s.worldRevision>TOWN_REVISION)))return null;
+    if(s.version===1&&(s.campaign!==undefined||s.trainer!==undefined))return null;
+    if(s.version===2&&(s.campaign!=='nexus'&&s.campaign!=='legacy'))return null;
+    if(s.version===2&&(s.campaign==='nexus'||s.trainer!==undefined)&&!validTrainerProfile(s.trainer))return null;
     const previousRevision=s.worldRevision??1;
     const originalMap=s.map,canonical=worldMapId(s.map);
     if(canonical!==originalMap&&(!s.player||!MAPS[originalMap]||!Number.isInteger(s.player.x)||!Number.isInteger(s.player.y)||s.player.x<0||s.player.y<0||s.player.x>=MAPS[originalMap].width||s.player.y>=MAPS[originalMap].height||!['up','down','left','right'].includes(s.player.facing)))return null;
@@ -54,7 +61,7 @@ function parseVersion1(raw:string):SaveData|null {
       if(Array.isArray(s.party))for(const p of s.party)if(p&&p.experience===undefined)p.experience=0;
     }
     // Retain progress when a former floor tile becomes an obstacle after map corrections.
-    if(s.version===1 && (s.worldRevision??1)<TOWN_REVISION){
+    if((s.worldRevision??1)<TOWN_REVISION){
       if(s.map==='town'&&(s.worldRevision??1)<2)s.player={x:8,y:25,facing:'down'};
       const base=MAPS[s.map]&&getMap(s.map,s.flags);
       // Roaming has never occupied a persistent save tile since revision 15.
@@ -65,7 +72,7 @@ function parseVersion1(raw:string):SaveData|null {
       }
       s.worldRevision=TOWN_REVISION;
     }
-    if(s.version!==1 || !MAPS[s.map] || !s.player || !Number.isInteger(s.player.x) || !Number.isInteger(s.player.y) || !canStand({...getMap(s.map,s.flags),npcs:getMap(s.map,s.flags).npcs.filter(n=>n.id!=='tourPokemon')},s.player.x,s.player.y) || !['up','down','left','right'].includes(s.player.facing)) return null;
+    if((s.version!==1&&s.version!==2) || !MAPS[s.map] || !s.player || !Number.isInteger(s.player.x) || !Number.isInteger(s.player.y) || !canStand({...getMap(s.map,s.flags),npcs:getMap(s.map,s.flags).npcs.filter(n=>n.id!=='tourPokemon')},s.player.x,s.player.y) || !['up','down','left','right'].includes(s.player.facing)) return null;
     const validPokemon=(p:Pokemon)=>Boolean(p)&&(p.shiny===undefined||typeof p.shiny==='boolean')&&Number.isInteger(p.species)&&OWNABLE_SPECIES.includes(p.species)&&Number.isInteger(p.level)&&p.level>=minimumLevel(p.species)&&p.level<=LEVEL_CAP&&p.maxHp===maxHpAtLevel(p.species,p.level)&&Number.isInteger(p.experience)&&p.experience>=0&&p.experience<(p.level===LEVEL_CAP?1:nextLevelXp(p.level))&&Number.isInteger(p.hp)&&p.hp>=0&&p.hp<=p.maxHp&&typeof p.nature==='string'&&p.nature.length<=20&&typeof p.met==='string'&&p.met.length<=100&&validPokemonMoves(p,Array.isArray(s.keyItems)?s.keyItems:[]);
     if(!Array.isArray(s.party)||s.party.length>6||s.party.some(p=>!validPokemon(p)))return null;
     if(s.box===undefined)s.box=[];
@@ -82,14 +89,28 @@ function parseVersion1(raw:string):SaveData|null {
     // Only the implemented forest capture provenance is separate from the
     // researcher's gift. Other legacy Pikachu records retain the gift checks.
     const wildPikachu=owned.filter(p=>p.species===25&&p.met==='상록숲');
-    const starters=owned.filter(p=>[1,2,4,5,7,8].includes(p.species)), pikachu=owned.filter(p=>p.species===25&&p.met!=='상록숲');
+    const nexus=isNexusCampaign(s);
+    if(!nexus&&owned.some(p=>isNexusStarter(p.species)))return null;
+    if(nexus&&owned.some(p=>[1,2,4,5,7,8].includes(p.species)||p.species===25&&p.met!=='상록숲'))return null;
+    const starters=owned.filter(p=>nexus?isNexusStarter(p.species):[1,2,4,5,7,8].includes(p.species)), pikachu=owned.filter(p=>p.species===25&&p.met!=='상록숲');
     if(starters.length>1||pikachu.length>1||Boolean(s.flags.starterReceived)!==Boolean(starters.length)||Boolean(s.flags.pikachuReceived)!==Boolean(pikachu.length)) return null;
+    if(nexus){
+      for(const flag of [NEXUS_OPENING.profile,NEXUS_OPENING.broadcast,NEXUS_OPENING.postcards,NEXUS_OPENING.outside])if(s.flags[flag]!==undefined&&typeof s.flags[flag]!=='boolean')return null;
+      const reply=s.flags[NEXUS_OPENING.reply];
+      if(reply!==undefined&&(typeof reply!=='number'||!Number.isInteger(reply)||reply<1||reply>3))return null;
+      if(Boolean(s.flags[NEXUS_OPENING.postcards])!==Boolean(reply))return null;
+      if(s.flags[NEXUS_OPENING.broadcast]&&!s.flags[NEXUS_OPENING.profile])return null;
+      if(s.flags[NEXUS_OPENING.postcards]&&!s.flags[NEXUS_OPENING.broadcast])return null;
+      if(starters.length&&!s.flags[NEXUS_OPENING.postcards])return null;
+      if(s.flags[NEXUS_OPENING.outside]&&!starters.length)return null;
+      if(s.flags.departureCleared&&!s.flags[NEXUS_OPENING.outside])return null;
+    }
     if(s.flags.exploration!==undefined&&typeof s.flags.exploration!=='boolean')return null;
     for(const key of ['cinnabarCliffObserved','cinnabarShoreObserved'])if(s.flags[key]!==undefined&&typeof s.flags[key]!=='boolean')return null;
 
     if(s.flags.exploration===true&&(owned.length||s.badges?.length||s.keyItems?.length||s.money!==0))return null;
     if(s.flags.departureCleared!==undefined&&typeof s.flags.departureCleared!=='boolean')return null;
-    if((wildPikachu.length||owned.some(p=>![1,2,4,5,7,8,25].includes(p.species)))&&s.flags.departureCleared!==true)return null;
+    if((wildPikachu.length||owned.some(p=>![1,2,4,5,7,8,25].includes(p.species)&&!(nexus&&isNexusStarter(p.species))))&&s.flags.departureCleared!==true)return null;
     if(s.flags.departureCleared===true&&!starters.length&&!pikachu.length)return null;
     if(!s.inventory||!['pokeBalls','potions'].every(key=>Number.isInteger(s.inventory[key as keyof typeof s.inventory])&&s.inventory[key as keyof typeof s.inventory]>=0&&s.inventory[key as keyof typeof s.inventory]<=999))return null;
     if(!Array.isArray(s.badges)||s.badges.length>4||s.badges.some((b,i)=>b!==GYMS[i].badge)||!Array.isArray(s.keyItems)||s.keyItems.length!==s.badges.length||s.keyItems.some((item,i)=>item!==GYMS[i].tm))return null;

@@ -63,7 +63,7 @@ test('city transitions use the moved southern mouth and preserve exact entry dir
   for(const map of chain)for(const w of map.warps.filter(w=>chain.some(area=>area.id===w.to))){
     assert(canStand(getMap(w.to),w.spawn.x,w.spawn.y));
     for(const direction of ['up','down','left','right'] as const)assert.equal(canEnter(map,w.x,w.y,direction),w.entry===direction);
-    const g=new Engine();g.save=ready();g.save.map=map.id;const v=VECTOR[w.entry];g.save.player={x:w.x-v.x,y:w.y-v.y,facing:w.entry};g.walk(w.entry);for(let i=0;i<20;i++)g.update(.05);assert.equal(g.save.map,w.to);assert.deepEqual(g.save.player,{...w.spawn,facing:w.facing});assert(parseSave(JSON.stringify(g.save)));
+    const g=new Engine();g.save=ready();g.panel='field';g.save.map=map.id;const v=VECTOR[w.entry];g.save.player={x:w.x-v.x,y:w.y-v.y,facing:w.entry};g.walk(w.entry);for(let i=0;i<20;i++)g.update(.05);assert.equal(g.save.map,w.to);assert.deepEqual(g.save.player,{...w.spawn,facing:w.facing});assert(parseSave(JSON.stringify(g.save)));
   }
   assert.equal(forest.warps.some(w=>w.x===10&&w.y===16),false);assert(canStand(forest,10,16));
 });
@@ -71,7 +71,7 @@ test('city transitions use the moved southern mouth and preserve exact entry dir
 test('new grass retains the existing six-species pool and creates actual forest encounters',()=>{
   const pool=encounterPool(id)!;assert.equal(pool.id,'ENC-004');assert.deepEqual(pool.levels,[10,14]);assert.deepEqual(pool.slots.map(s=>[s.speciesId,s.weight]),[[265,30],[266,25],[268,20],[406,12],[427,8],[415,5]]);assert(hasWildEncounters(id));
   const old=globalThis.document;globalThis.document={getElementById:()=>null} as unknown as Document;
-  try{for(const r of getMap(id).terrain!.slice(1)){const g=new Engine();g.save=ready();g.save.player={x:r.x,y:r.y,facing:'up'};g.random=()=>0;for(let i=0;i<6;i++)g.onFieldStep();assert.equal(g.battle?.enemy.species,265);assert.equal(g.battle?.enemy.level,10);}}finally{globalThis.document=old;}
+  try{for(const r of getMap(id).terrain!.slice(1)){const g=new Engine();g.save=ready();g.panel='field';g.save.player={x:r.x,y:r.y,facing:'up'};g.random=()=>0;for(let i=0;i<6;i++)g.onFieldStep();assert.equal(g.battle?.enemy.species,265);assert.equal(g.battle?.enemy.level,10);}}finally{globalThis.document=old;}
 });
 
 test('expanded art and minimap use the new dimensions and keep all authored geometry in bounds',()=>{

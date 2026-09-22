@@ -7,7 +7,7 @@ import { newSave,parseSave } from '../src/save';
 import { grantPokemon } from '../src/pokemon';
 
 function dom(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}}
-function game(home=false){const g=new Engine();g.save=newSave();grantPokemon(g.save,7);g.save.party[0].hp=1;g.save.party[0].experience=17;g.save.flags.departureCleared=true;g.save.map='oreburgh_gym';g.save.player={x:8,y:5,facing:'up'};g.save.healingPoint=home?'home':'tour_oreburgh_center';g.save.inventory={pokeBalls:3,potions:0};g.save.money=123;g.battle=createBattle(g.save,'gym');g.battle!.turn=1;return g}
+function game(home=false){const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.party[0].hp=1;g.save.party[0].experience=17;g.save.flags.departureCleared=true;g.save.map='oreburgh_gym';g.save.player={x:8,y:5,facing:'up'};g.save.healingPoint=home?'home':'tour_oreburgh_center';g.save.inventory={pokeBalls:3,potions:0};g.save.money=123;g.battle=createBattle(g.save,'gym');g.battle!.turn=1;return g}
 function recover(g:Engine){for(let i=0;g.defeatScene&&i<50;i++)g.confirm();assert(g.recoveryPreview);assert(g.dialogue)}
 function finish(g:Engine){for(let i=0;g.dialogue&&i<80;i++)g.confirm();assert.equal(g.dialogue,null)}
 

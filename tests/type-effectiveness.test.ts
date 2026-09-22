@@ -28,7 +28,7 @@ test('wild capture dialogue and playback label use the actual opponent species',
   const save=ready(1),battle=createBattle(save)!;
   save.inventory.pokeBalls=1;
   battle.enemy=opponent(7);battle.enemy.hp=Math.floor(battle.enemy.maxHp/2);
-  const game=new Engine();game.save=save;game.battle=battle;
+  const game=new Engine();game.save=save;game.panel='field';game.battle=battle;
   const words:string[]=[],context=new Proxy({}, {get:(_,key)=>key==='fillText'?(text:string)=>words.push(text):()=>{}}) as CanvasRenderingContext2D;
   const canvas={getContext:()=>context} as HTMLCanvasElement;
   new Renderer(game,canvas,canvas).battleLower(context);

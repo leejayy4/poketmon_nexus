@@ -6,7 +6,7 @@ import { Engine,VECTOR } from '../src/engine';
 import { MAPS,canStand,canEnter,getMap,getWorldOutdoors } from '../src/maps';
 import { newSave,parseSave } from '../src/save';
 import { encodeSave,decodeSave,checkpoint } from '../src/save-library';
-function tour(){const g=new Engine();g.save=g.freshSave();grantPokemon(g.save,7);g.save.flags.departureCleared=true;return g}
+function tour(){const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.flags.departureCleared=true;return g}
 function step(g:Engine,key:string){g.press(key);g.release(key);for(let i=0;i<20;i++)g.update(.04)}
 function ui(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}}
 test('all 43 exterior places and four regions form one connected walking graph',()=>{

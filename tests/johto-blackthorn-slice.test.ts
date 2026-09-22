@@ -4,11 +4,11 @@ import { Engine } from '../src/engine';
 import { TOUR_MAPS } from '../src/explore-world';
 import { handleBlackthornLife } from '../src/blackthorn-life';
 import { grantPokemon } from '../src/pokemon';
-import { parseSave } from '../src/save';
+import { newSave,parseSave } from '../src/save';
 import { wildPokemon } from '../src/runtime-encounters';
 
 function prepared(){
-  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=g.freshSave();
+  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=newSave();g.panel='field';
   assert(grantPokemon(g.save,7));const tangela=wildPokemon('tour_johto_route_44',()=>0);assert(tangela);g.save.party.push(tangela);
   g.save.flags.departureCleared=true;
   g.save.map='tour_blackthorn';g.save.player={x:32,y:25,facing:'right'};

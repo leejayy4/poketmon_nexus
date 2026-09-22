@@ -1,0 +1,17 @@
+{
+  "description": "Pokémon NEXUS 신규 스타팅 첫 형태의 비교 가능한 자작 픽셀 SVG 시안",
+  "created": "2026-09-22",
+  "source": "Original integer-grid SVG paths authored for this repository; no external image or sprite was traced or recolored.",
+  "reference": "docs/NEXUS_GOAL.md deer/wolf/seal direction and docs/VISUAL_STYLE_BW_BW2.md crisp pixels, consistent light and species silhouettes; not an original-game asset.",
+  "status": "provisional first-form design; static implementation only; visual QA paused",
+  "dimensions": [80, 80],
+  "groundAnchor": [40, 72],
+  "background": "transparent",
+  "framesPerDirection": 1,
+  "animation": "none; does not establish BW/BW2 battle animation acceptance",
+  "species": [
+    { "id": 900001, "draftName": "새록", "draftType": "풀", "concept": "leaf-eared tan deer with a forehead seedling", "front": "900001-front.svg", "back": "900001-back.svg" },
+    { "id": 900002, "draftName": "잿울", "draftType": "불꽃", "concept": "charcoal and rust wolf with an ember tail tuft", "front": "900002-front.svg", "back": "900002-back.svg" },
+    { "id": 900003, "draftName": "포말이", "draftType": "물", "concept": "cream and teal seal with flippers and a foam collar", "front": "900003-front.svg", "back": "900003-back.svg" }
+  ]
+}

@@ -1,6 +1,6 @@
 """Export the deliberately limited playable roster from design DB + pinned CSVs.
 
-Run: python -X utf8 scripts/design/export-runtime-pokemon.py [--assets]
+Run: python -X utf8 scripts/design/export-runtime-pokemon.py [--assets] [--offline]
 Acquisition levels use Platinum; power/type values use the existing DB snapshot.
 No chapter locks, night clock, fishing or unreleased evolution rules are inferred.
 """
@@ -22,6 +22,8 @@ SPRITE_SHA = '6e523c72bb714306c90912647e0b2ccc4fd2fff1'
 def rows(name):
     path = CACHE / (name + '.csv')
     if not path.exists():
+        if '--offline' in sys.argv:
+            raise FileNotFoundError(f'Pinned CSV missing in offline mode: {path}')
         path.write_bytes(urllib.request.urlopen(f'https://raw.githubusercontent.com/PokeAPI/pokeapi/{SHA}/data/v2/csv/{name}.csv', timeout=60).read())
     with path.open(encoding='utf8', newline='') as stream:
         yield from csv.DictReader(stream)
@@ -100,6 +102,47 @@ if missing:
         if i not in species_names or not species_types[i] or len(species_stats[i])!=6: raise RuntimeError(f'Incomplete pinned species data for {i}')
         species[i]={'name':species_names[i],'types':[name for _,name in sorted(species_types[i])],'stats':species_stats[i],'weight':weights[i],'learnset':sorted(learn[i],key=lambda r:(r['level'],r['move'])),'tm':sorted(tm[i])}
 evolutions = [{'from':r['from'],'to':r['to'],'level':int(r['sourceRule']['minimum_level'])} for r in read('evolutions') if (r['from'],r['to']) in [(1,2),(4,5),(7,8),(10,11),(13,14),(11,12),(14,15),(519,520)]]
+# Project-authored species use a dedicated ID range and supported source moves.
+# They never flow through National Dex CSV lookup or external sprite downloads.
+nexus_path = ROOT / 'scripts/design/nexus-starters.json'
+nexus = json.loads(nexus_path.read_text(encoding='utf8'))
+if nexus['schemaVersion'] != 1 or len(nexus['starters']) != 3:
+    raise ValueError('Expected three first-form NEXUS starter definitions in schema 1')
+project_species = {}
+move_names_by_slug = {data['slug']: name for name, data in moves.items()}
+stat_keys = {'hp', 'attack', 'defense', 'specialAttack', 'specialDefense', 'speed'}
+for starter in nexus['starters']:
+    i = starter['id']
+    if type(i) is not int or not 900000 <= i < 1000000 or i in species or i in project_species:
+        raise ValueError(f'Invalid or duplicate project species ID: {i}')
+    if set(starter['stats']) != stat_keys or any(type(v) is not int or v <= 0 for v in starter['stats'].values()):
+        raise ValueError(f'Incomplete project species stats: {i}')
+    if not starter['types'] or any(t not in types.values() for t in starter['types']):
+        raise ValueError(f'Unsupported project species type: {i}')
+    if starter['minimumLevel'] != 5 or type(starter['initialHp']) is not int or starter['initialHp'] <= 0:
+        raise ValueError(f'Invalid initial project starter growth: {i}')
+    if len(starter['initialMoves']) not in range(1, 5) or len(set(starter['initialMoves'])) != len(starter['initialMoves']):
+        raise ValueError(f'Invalid initial project starter moves: {i}')
+    learnset = []
+    for entry in starter['learnset']:
+        if type(entry['level']) is not int or not 1 <= entry['level'] <= 25 or entry['move'] not in move_names_by_slug:
+            raise ValueError(f'Unsupported project starter learnset: {i}: {entry}')
+        learnset.append({'level': entry['level'], 'move': move_names_by_slug[entry['move']]})
+    initial_moves = [move_names_by_slug[slug] for slug in starter['initialMoves']]
+    initial_learnset = {entry['move'] for entry in learnset if entry['level'] <= starter['minimumLevel']}
+    if any(move not in initial_learnset for move in initial_moves):
+        raise ValueError(f'Initial move is not legal at grant level: {i}')
+    if not any(moves[move]['type'] in starter['types'] and moves[move]['rule'] == 'damage' for move in initial_moves):
+        raise ValueError(f'Project starter needs a supported initial typed attack: {i}')
+    species[i] = {key: starter[key] for key in ('name', 'types', 'stats', 'weight')} | {
+        'learnset': sorted(learnset, key=lambda entry: (entry['level'], entry['move'])),
+        'tm': sorted(move_names_by_slug[slug] for slug in starter['tm']),
+    }
+    project_species[i] = {key: starter[key] for key in ('name', 'motif', 'genus', 'color', 'description', 'style', 'minimumLevel', 'initialHp')} | {
+        'initialMoves': initial_moves, 'designStatus': nexus['designStatus'],
+    }
+    owned.append(i)
+owned.sort()
 chart = {}
 for r in rows('type_efficacy'):
     a,b=int(r['damage_type_id']),int(r['target_type_id'])
@@ -109,9 +152,15 @@ out = {'referenceCommit':SHA,'learnsetVersion':'platinum','timePolicy':'day-only
 manifest={'dataCommit':SHA,'learnsetVersionGroup':9,'sources':[],'sprites':[]}
 out['learnsetOverrides']={str(i):'black-2-white-2' for i in learnset_overrides if i in ids}
 out['limits']+=' Eevee, Skitty, Pidove, Tranquill, Petilil, Karrablast and Shelmet use Black 2/White 2 acquisition. Only Pidove to Tranquill is enabled among these evolution lines.'
+out['nexusStarterIds'] = list(project_species)
+out['projectSpecies'] = project_species
+out['projectSpeciesOrigin'] = nexus['provenance']
+out['learnsetOverrides'].update({str(i): nexus['learnsetVersion'] for i in project_species})
+out['limits'] += ' NEXUS starters use provisional project-authored first forms, stats and learnsets with supported source moves. No NEXUS starter evolutions are enabled.'
 (ROOT/'src/runtime-pokemon-data.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
 manifest['learnsetVersionGroupOverrides']={str(i):v for i,v in learnset_overrides.items() if i in ids}
 manifest['sources'].append({'file':'scripts/design/runtime-local-pools.json','sha256':hashlib.sha256(local_pools.read_bytes()).hexdigest()})
+manifest['sources'].append({'file':'scripts/design/nexus-starters.json','sha256':hashlib.sha256(nexus_path.read_bytes()).hexdigest(),'kind':'project','designStatus':nexus['designStatus'],'speciesIds':list(project_species),'provenance':nexus['provenance']})
 for name in ['pokemon_moves','moves','move_names','type_names','type_efficacy','pokemon','pokemon_species_names','pokemon_types','pokemon_stats']:
     path=CACHE/(name+'.csv')
     manifest['sources'].append({'file':name+'.csv','url':f'https://raw.githubusercontent.com/PokeAPI/pokeapi/{SHA}/data/v2/csv/{name}.csv','sha256':hashlib.sha256(path.read_bytes()).hexdigest()})
@@ -126,7 +175,10 @@ if '--assets' in sys.argv:
         url=f'https://raw.githubusercontent.com/PokeAPI/sprites/{SPRITE_SHA}/sprites/pokemon/versions/{version}/{"back/" if back else ""}{"shiny/" if shiny else ""}{i}.png'
         path=ROOT/'public/assets'/filename
         # Existing assets belong to earlier work; retain them verbatim.
-        if not path.exists(): path.write_bytes(urllib.request.urlopen(url,timeout=60).read())
+        if not path.exists():
+            if '--offline' in sys.argv:
+                raise FileNotFoundError(f'Sprite missing in offline mode: {path}')
+            path.write_bytes(urllib.request.urlopen(url,timeout=60).read())
         return {'file':filename,'url':url,'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'processing':'Original PNG, existing assets preserved; see sources.json for preexisting artwork.'}
     with concurrent.futures.ThreadPoolExecutor(max_workers=6) as executor:
         manifest['sprites']=list(executor.map(sprite,[(i,b,False) for i in sorted(ids) for b in [False,True]]+[(130,b,True) for b in [False,True]]))

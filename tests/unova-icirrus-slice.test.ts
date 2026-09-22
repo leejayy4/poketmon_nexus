@@ -1,3 +1,4 @@
+import { newSave } from '../src/save';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Engine } from '../src/engine';
@@ -21,7 +22,7 @@ test('Unova Route 8 connects Icirrus, Moor and Tubeline with a safe main road',(
 });
 
 test('Icirrus city, Route 8, Moor and its tower approach share one local audio scene',()=>{
-  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=g.freshSave();
+  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=newSave();g.panel='field';
   for(const map of ['tour_icirrus','tour_icirrus_center','tour_unova_route_08','tour_icirrus_moor','tour_dragonspiral_approach'] as const){
     g.save.map=map;g.save.player={x:TOUR_MAPS[map].warps[0]?.spawn.x??3,y:TOUR_MAPS[map].warps[0]?.spawn.y??3,facing:'down'};g.update(0);
     assert.equal(g.audio.scene,'icirrus',map);
@@ -30,7 +31,7 @@ test('Icirrus city, Route 8, Moor and its tower approach share one local audio s
 });
 
 test('Dragonspiral grounds and public floors use their own scene beyond the Icirrus approach',()=>{
-  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=g.freshSave();
+  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=newSave();g.panel='field';
   g.save.map='tour_dragonspiral_approach';g.save.player={x:24,y:3,facing:'up'};g.update(0);assert.equal(g.audio.scene,'icirrus');
   for(const map of ['tour_dragonspiral','tour_dragonspiral_hall','tour_dragonspiral_hall_2f','tour_dragonspiral_hall_3f'] as const){
     g.save.map=map;g.save.player={x:TOUR_MAPS[map].warps[0]?.spawn.x??24,y:TOUR_MAPS[map].warps[0]?.spawn.y??44,facing:'up'};g.update(0);assert.equal(g.audio.scene,'dragonspiral',map);
@@ -50,7 +51,7 @@ test('Route 8 uses the sourced level-capped pool and optional trainer',()=>{
 });
 
 test('A level-capped starter and one Route 8 capture can clear the optional trainer',()=>{
-  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=g.freshSave();grantPokemon(g.save,7);
+  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=newSave();g.panel='field';grantPokemon(g.save,7);
   const starter=g.save.party[0];starter.level=25;starter.maxHp=maxHpAtLevel(starter.species,starter.level);starter.hp=starter.maxHp;starter.moves=pokemonMoves(starter);
   g.save.party.push(wildPokemon('tour_unova_route_08',()=>0)!);
   const trainer=ROAD_TRAINER_DATABASE.get('tour_unova_route_08:tourRouteEightTrainer')!;
@@ -62,7 +63,7 @@ test('A level-capped starter and one Route 8 capture can clear the optional trai
 });
 
 test('Moor companion observation persists in sequence without rewards or locks',()=>{
-  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=g.freshSave();grantPokemon(g.save,7);
+  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=newSave();g.panel='field';grantPokemon(g.save,7);
   g.save.map='tour_icirrus_moor';g.save.player={x:31,y:37,facing:'up'};
   assert.equal(handleJourneyEvent(g,'tourGuide'),true);g.dialogue!.choices![0].action();
   assert.equal(g.save.flags.icirrusMoorPartnerSpecies,7);
@@ -75,7 +76,7 @@ test('Moor companion observation persists in sequence without rewards or locks',
 });
 
 test('Dragonspiral approach offers optional companion ecology without changing travel or rewards',()=>{
-  const g=new Engine();g.announce=()=>{};let persisted=0;g.persist=()=>{persisted++;return true;};g.save=g.freshSave();grantPokemon(g.save,7);
+  const g=new Engine();g.announce=()=>{};let persisted=0;g.persist=()=>{persisted++;return true;};g.save=newSave();g.panel='field';grantPokemon(g.save,7);
   g.save.map='tour_dragonspiral_approach';g.save.player={x:34,y:12,facing:'right'};g.save.flags.icirrusMoorObservationCompleted=true;
   assert.equal(handleJourneyEvent(g,'tourGuide'),true);assert.match(g.dialogue!.pages.join('\n'),/갈대와 물새 흔적/);
   assert(g.dialogue!.choices?.some(c=>c.label==='해자 관찰 데크'));assert(g.dialogue!.choices?.some(c=>c.label==='용나선탑 기슭'));assert(g.dialogue!.choices?.some(c=>c.label==='설화시티 북문'));
@@ -95,7 +96,7 @@ test('Dragonspiral approach offers optional companion ecology without changing t
 });
 
 test('Route capture, trainer result and Moor record reach Icirrus guidance',()=>{
-  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=g.freshSave();grantPokemon(g.save,7);
+  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=newSave();g.panel='field';grantPokemon(g.save,7);
   const local=wildPokemon('tour_unova_route_08',()=>0)!;g.save.box=[local];
   g.save.flags['trainerWon:unova-route-8-practice']=true;g.save.flags.icirrusMoorObservationCompleted=true;
   g.save.map='tour_unova_route_08';
@@ -108,7 +109,7 @@ test('Route capture, trainer result and Moor record reach Icirrus guidance',()=>
 });
 
 test('Dragonspiral return record reaches Icirrus center, hall and north resident',()=>{
-  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=g.freshSave();grantPokemon(g.save,7);
+  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=newSave();g.panel='field';grantPokemon(g.save,7);
   Object.assign(g.save.flags,{dragonspiralApproachMoatObserved:true,dragonspiralApproachPartnerSpecies:7,dragonspiralBaseObserved:true,dragonspiralMasonryObserved:true,dragonspiralWindRecorded:true,dragonspiralPartnerSpecies:7});
   g.save.map='tour_icirrus_center';assert.equal(handleJourneyEvent(g,'tourIcirrusCenterGuide'),true);assert.match(g.dialogue!.pages.join('\n'),/공개 1~3층 관찰 완료 · 꼬부기/);assert(g.dialogue!.choices?.some(c=>c.label==='용나선탑 기록 다시 보기'));
   g.save.map='tour_icirrus_hall_3f';assert.equal(handleJourneyEvent(g,'tourIcirrusCompanionRest'),true);assert.match(g.dialogue!.pages.join('\n'),/3층에서 세 방향 바람/);
@@ -116,7 +117,7 @@ test('Dragonspiral return record reaches Icirrus center, hall and north resident
 });
 
 test('Icirrus homes turn wetland and tower travel into optional daily-life records',()=>{
-  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=g.freshSave();grantPokemon(g.save,7);
+  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=newSave();g.panel='field';grantPokemon(g.save,7);
   Object.assign(g.save.flags,{icirrusMoorObservationCompleted:true,icirrusWaterCompared:true,dragonspiralApproachMoatObserved:true,dragonspiralApproachPartnerSpecies:7,dragonspiralBaseObserved:true,dragonspiralMasonryObserved:true,dragonspiralWindRecorded:true,dragonspiralPartnerSpecies:7});
   const before={hp:g.save.party[0].hp,experience:g.save.party[0].experience,money:g.save.money,inventory:{...g.save.inventory}};
   g.save.map='tour_icirrus_home1';assert.equal(handleJourneyEvent(g,'tourIcirrusGearCare'),true);g.dialogue!.choices![0].action();assert.equal(g.save.flags.icirrusGearChecked,true);assert.equal(g.save.flags.icirrusGearSpecies,7);
@@ -127,14 +128,14 @@ test('Icirrus homes turn wetland and tower travel into optional daily-life recor
 });
 
 test('Icirrus mart separates supplies, recovery and the three local travel branches',()=>{
-  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=g.freshSave();grantPokemon(g.save,7);g.save.inventory={pokeBalls:4,potions:2};g.save.money=1600;
+  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.inventory={pokeBalls:4,potions:2};g.save.money=1600;
   g.save.map='tour_icirrus_mart';assert.equal(handleJourneyEvent(g,'tourIcirrusMartGuide'),true);
   assert.match(g.dialogue!.pages.join('\n'),/몬스터볼 4개 · 상처약 2개 · 소지금 1600원/);assert.match(g.dialogue!.pages.join('\n'),/상점이 아니라 설화시티 포켓몬센터/);
   assert.deepEqual(g.dialogue!.choices?.map(c=>c.label),['상점 카운터','8번도로 준비','설화의 습지 준비','용나선탑 준비','준비를 마친다']);
 });
 
 test('Tubeline companion inspection reaches Route 9 without rewards or travel locks',()=>{
-  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=g.freshSave();grantPokemon(g.save,7);g.save.map='tour_tubeline_bridge';g.save.player={x:41,y:11,facing:'up'};
+  const g=new Engine();g.announce=()=>{};g.persist=()=>true;g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.map='tour_tubeline_bridge';g.save.player={x:41,y:11,facing:'up'};
   const before={hp:g.save.party[0].hp,experience:g.save.party[0].experience,money:g.save.money,inventory:{...g.save.inventory}};
   assert.equal(handleJourneyEvent(g,'tourGuide'),true);g.dialogue!.choices![0].action();assert.equal(handleJourneyEvent(g,'tourTubelineWestFrame'),true);assert.equal(g.save.flags.tubelineWestFrameChecked,true);
   assert.equal(handleJourneyEvent(g,'tourTubelineEastFrame'),true);assert.equal(g.save.flags.tubelineCrossingChecked,true);

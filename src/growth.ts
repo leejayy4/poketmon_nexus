@@ -3,10 +3,11 @@ import type { Pokemon } from './types';
 import { SPECIES,availableMoves,pokemonMoves,pokemonSnapshot,MOVE_CAPACITY } from './pokemon';
 import { RUNTIME_DATA as DATA, RUNTIME_DATABASE } from './data/runtime';
 import { withParticle } from './korean-text';
+import { nexusStarterDefinition } from './nexus-starters';
 
 export const LEVEL_CAP=RUNTIME_RULES.levelCap;
 export const OWNABLE_SPECIES:number[]=DATA.ownable;
-export function minimumLevel(species:number){return [2,5,8].includes(species)?16:[1,4,7,25].includes(species)?5:species===399?3:1}
+export function minimumLevel(species:number){return nexusStarterDefinition(species)?.minimumLevel??([2,5,8].includes(species)?16:[1,4,7,25].includes(species)?5:species===399?3:1)}
 export function maxHpAtLevel(species:number,level:number){return SPECIES[species].hp+(level-minimumLevel(species))*3}
 export function nextLevelXp(level:number){return level*10}
 export interface GrowthStep { kind:'experience'|'level'|'evolution'|'move'; amount:number; before:Pokemon; after:Pokemon; move?:string }

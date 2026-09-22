@@ -7,6 +7,26 @@
       "sha256": "854416b02b11185a81bdfe3fd8ec2c37be862c98e2523c6269bb765c458d9a47"
     },
     {
+      "file": "scripts/design/nexus-starters.json",
+      "sha256": "617e13bf7dd729570deb2085a7a65b6785c7d721b67465f1649a89888092ffaf",
+      "kind": "project",
+      "designStatus": "provisional-project-design",
+      "speciesIds": [
+        900001,
+        900002,
+        900003
+      ],
+      "provenance": {
+        "kind": "project",
+        "source": "scripts/design/nexus-starters.json",
+        "reviewedOn": "2026-09-22",
+        "reference": "https://pokeapi.co/docs/v2",
+        "adopted": "Species stats, versioned move acquisition and move PP remain separate data. Existing supported moves and their PP are resolved through the repository's pinned PokeAPI CSV snapshot.",
+        "projectDecisions": "Names, first-form designs, types, stats, weight, acquisition levels and initial HP below are provisional NEXUS implementation designs. They are not official Pokemon species or user-approved final designs. Experience and HP growth retain the current project rules.",
+        "excluded": "No new move mechanics, abilities, evolution stages, canonical National Dex numbers or external sprite reuse are introduced."
+      }
+    },
+    {
       "file": "pokemon_moves.csv",
       "url": "https://raw.githubusercontent.com/PokeAPI/pokeapi/d4f9a4af58ade123fbc0558f68b1c69daa97d9e4/data/v2/csv/pokemon_moves.csv",
       "sha256": "22a807cef26891eeac0d0c900bd363e66baf421f7ee795bc7bc3e718f23b939e"

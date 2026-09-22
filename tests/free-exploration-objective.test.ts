@@ -54,6 +54,6 @@ test('unfinished story and critical recovery retain priority, and a fully visite
   assert.equal(goal.map,s.map);assert.match(goal.action,/지도에서/);assert(!goal.action.includes('왕복선'));assert.deepEqual(s,before);
 });
 test('Engine objective navigation refreshes when a newly recorded landmark changes its destination',()=>{
-  const g=new Engine();g.save=ready();g.followingObjective=true;assert.equal(g.tourNavigation?.destination,'tour_vermilion_hall');
+  const g=new Engine();g.save=ready();g.panel='field';g.followingObjective=true;assert.equal(g.tourNavigation?.destination,'tour_vermilion_hall');
   g.save.tourVisited=['tour_vermilion','tour_vermilion_hall'];assert.equal(g.tourNavigation?.destination,'tour_cerulean_hall');assert.equal(g.tourNavigation?.status,'walking');
 });

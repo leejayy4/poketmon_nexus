@@ -12,7 +12,7 @@ import { maxHpAtLevel } from '../src/growth';
 function ready(){const s=newSave();grantPokemon(s,7);Object.assign(s.party[0],{level:8,hp:29,maxHp:29});s.party.push({species:399,level:8,hp:33,maxHp:33,experience:0,nature:'성실',met:'새잎 서쪽길'});s.flags.departureCleared=true;s.map='oreburgh_gym';s.player={x:8,y:5,facing:'up'};return s}
 function dom(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}}
 function finish(g:Engine){for(let i=0;g.dialogue&&i<90;i++)g.confirm();assert(!g.dialogue)}
-function game(){const g=new Engine();g.save=ready();g.battle=createBattle(g.save,'gym');g.battle!.enemy.hp=1;return g}
+function game(){const g=new Engine();g.save=ready();g.panel='field';g.battle=createBattle(g.save,'gym');g.battle!.enemy.hp=1;return g}
 
 test('a gym knockout offers exactly one free healthy replacement and resets next-opponent participation',()=>{
   const s=ready(),b=createBattle(s,'gym')!;b.enemy.hp=1;b.enemyAttackDrop=2;b.enemyDefenseDrop=2;battleTurn(s,b,'move0');assert(b.betweenOpponents);assert.equal(b.enemy.species,95);assert.equal(b.enemyAttackDrop,0);assert.equal(b.enemyDefenseDrop,0);const earned=s.party[0].experience,before=structuredClone(s);assert.equal(earned,50);

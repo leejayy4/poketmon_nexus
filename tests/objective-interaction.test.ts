@@ -13,7 +13,7 @@ import {isWorldCenter,worldSpawn} from '../src/unified-world';
 import type {Direction,MapId} from '../src/types';
 
 function dom(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}}
-function game(map:MapId='oreburgh_gym'){const g=new Engine();g.save=newSave();grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.map=map;g.save.player={...(worldSpawn(map)??{x:8,y:14}),facing:'up'};return g}
+function game(map:MapId='oreburgh_gym'){const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.map=map;g.save.player={...(worldSpawn(map)??{x:8,y:14}),facing:'up'};return g}
 function step(g:Engine,dir:Direction){g.press('Arrow'+dir[0].toUpperCase()+dir.slice(1));g.release('Arrow'+dir[0].toUpperCase()+dir.slice(1));for(let i=0;i<12;i++)g.update(.04)}
 function follow(g:Engine){const route=g.tourNavigation!;for(let i=1;i<route.tiles.length;i++){const a=route.tiles[i-1],b=route.tiles[i],dir=(Object.keys(VECTOR) as Direction[]).find(d=>a.x+VECTOR[d].x===b.x&&a.y+VECTOR[d].y===b.y)!;step(g,dir);}return g.tourNavigation!}
 

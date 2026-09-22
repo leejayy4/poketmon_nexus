@@ -9,7 +9,7 @@ import {createBattle} from './runtime-battle-fixture';
 test('wild caught badge and text follow the battle snapshot without changing controls or save',()=>{
  const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});
  try{for(const kind of ['wild','gym'] as const)for(const caught of [false,true]){
-  const g=new Engine();g.save=newSave();grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.battle=createBattle(g.save,kind)!;g.battle.caughtBeforeBattle=caught;
+  const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.battle=createBattle(g.save,kind)!;g.battle.caughtBeforeBattle=caught;
   const words:string[]=[],balls:number[][]=[];const c=new Proxy({},{get:(_,key)=>key==='fillText'?(s:string)=>words.push(s):()=>{}}) as CanvasRenderingContext2D;
   const canvas={getContext:()=>c} as HTMLCanvasElement,r=new Renderer(g,canvas,canvas);r.ball=(_c,x,y,size)=>{balls.push([x,y,size??5]);};const save=structuredClone(g.save);
   r.battleTop(c);assert.equal(balls.some(([x,y,size])=>x===87&&y===28&&size===3),kind==='wild'&&caught);

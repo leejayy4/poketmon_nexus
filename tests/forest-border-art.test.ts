@@ -1,3 +1,4 @@
+import { newSave } from '../src/save';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {FOREST_BORDER_MAPS,forestBorderTrees,isForestBorder} from '../src/forest-border-art';
@@ -22,7 +23,7 @@ test('forest perimeter trees preserve every map and keep all exit tiles clear',(
 });
 
 test('live renderer puts southern perimeter trees in front of the player, keeps northern trees behind and preserves saves',()=>{
- const g=new Engine();g.exploreTo('tour_eterna_forest');g.save.player={x:9,y:15,facing:'down'};
+ const g=new Engine();g.save=newSave();g.panel='field';g.exploreTo('tour_eterna_forest');g.save.player={x:9,y:15,facing:'down'};
  const hero={height:512} as HTMLImageElement,tree={} as HTMLImageElement;
  const draws:{im:unknown,x:number,y:number}[]=[];let tx=0,ty=0;
  const context=new Proxy({}, {get:(_,key)=>key==='translate'?(x:number,y:number)=>{tx=x;ty=y}:key==='drawImage'?(im:unknown)=>draws.push({im,x:tx,y:ty}):()=>{}}) as CanvasRenderingContext2D;

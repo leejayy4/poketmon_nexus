@@ -49,12 +49,12 @@ test('guidance follows real interior exits and connecting maps; on arrival it na
 });
 
 test('research guidance updates only when the existing delivery dialogue actually completes',()=>dom(()=>{
-  const g=new Engine();g.exploring=false;g.save=newSave();grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.badges=GYMS.map(x=>x.badge);g.save.keyItems=GYMS.map(x=>x.tm);g.save.flags.observationCollected=true;
+  const g=new Engine();g.exploring=false;g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.badges=GYMS.map(x=>x.badge);g.save.keyItems=GYMS.map(x=>x.tm);g.save.flags.observationCollected=true;
   g.event('researchGate');assert.equal(adventureObjective(g.save)!.id,'research');finish(g);assert.equal(adventureObjective(g.save)!.id,'ferry');
 }));
 
 test('adventure interaction hints require a faced NPC or prop and disappear while busy',()=>dom(()=>{
-  const g=new Engine();g.exploring=false;g.save=newSave();g.save.map='home';g.save.player={x:4,y:5,facing:'up'};
+  const g=new Engine();g.exploring=false;g.save=newSave();g.panel='field';g.save.map='home';g.save.player={x:4,y:5,facing:'up'};
   assert.equal(g.interactionHint,'Z 말걸기 · 엄마');g.save.player.facing='down';assert.equal(g.interactionHint,null);
   g.save.player={x:6,y:5,facing:'up'};assert.equal(g.interactionHint,'Z 조사하기');
   g.panel='menu';assert.equal(g.interactionHint,null);g.panel='field';g.say('검사',['대화']);assert.equal(g.interactionHint,null);finish(g);

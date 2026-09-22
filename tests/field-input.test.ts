@@ -5,7 +5,7 @@ import { newSave } from '../src/save';
 import { grantPokemon } from '../src/pokemon';
 
 function ui(run:()=>void){const previous=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(previous)Object.defineProperty(globalThis,'document',previous);else Reflect.deleteProperty(globalThis,'document')}}
-function game(){const g=new Engine();g.save=newSave();return g;}
+function game(){const g=new Engine();g.save=newSave();g.panel='field';return g;}
 function settle(g:Engine){for(let i=0;i<20;i++)g.update(.04);}
 function finish(g:Engine){for(let i=0;g.dialogue&&i<80;i++)g.confirm();assert.equal(g.dialogue,null);}
 

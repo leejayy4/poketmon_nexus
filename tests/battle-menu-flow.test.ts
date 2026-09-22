@@ -9,7 +9,7 @@ import {createBattle} from './runtime-battle-fixture';
 function ready(){const s=newSave();grantPokemon(s,7);s.map='route_s01';s.player={x:8,y:14,facing:'down'};s.flags.departureCleared=true;s.inventory={pokeBalls:0,potions:2};s.party.push({species:399,level:3,hp:3,maxHp:18,experience:0,nature:'성실',met:'새잎 서쪽길'});return s;}
 function dom(run:()=>void){const previous=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{value:{getElementById:()=>null},configurable:true});try{run();}finally{if(previous)Object.defineProperty(globalThis,'document',previous);else Reflect.deleteProperty(globalThis,'document');}}
 function finish(g:Engine){for(let i=0;i<40&&g.dialogue;i++)g.confirm();assert(!g.dialogue);}
-function game(){const g=new Engine();g.exploring=false;g.save=ready();g.battle=createBattle(g.save);return g;}
+function game(){const g=new Engine();g.exploring=false;g.save=ready();g.panel='field';g.battle=createBattle(g.save);return g;}
 
 test('invalid healing, switching and catching preserve the menu and cursor for a retry',()=>dom(()=>{
   const g=game(),b=g.battle!;

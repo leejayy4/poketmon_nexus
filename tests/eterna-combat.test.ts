@@ -17,7 +17,7 @@ function win(g:Engine){
   assert(!g.battle||g.battle.result==='won');finish(g);
 }
 test('Eterna optional trainer cancellation, victory, restoration and repeat interaction preserve one-time reward',t=>{
-  const g=new Engine();t.mock.method(g,'announce',()=>{});g.save=eternaCombatFixture();
+  const g=new Engine();t.mock.method(g,'announce',()=>{});g.save=eternaCombatFixture();g.panel='field';
   const before=structuredClone(g.save);g.event('journeyWalker');g.cancel();assert.deepEqual(g.save,before);assert(!g.battle);
   g.event('journeyWalker');g.dialogue!.choices!.find(c=>c.label==='배틀한다')!.action();finish(g);
   assert.equal(g.battle?.enemy.species,406);win(g);
@@ -25,12 +25,12 @@ test('Eterna optional trainer cancellation, victory, restoration and repeat inte
   g.restore(parseSave(JSON.stringify(g.save))!);const money=g.save.money;g.event('journeyWalker');finish(g);assert(!g.battle);assert.equal(g.save.money,money);
 });
 test('Eterna trainer defeat restores the city center without granting victory',t=>{
-  const g=new Engine();t.mock.method(g,'announce',()=>{});g.save=eternaCombatFixture();g.save.party=g.save.party.slice(0,1);g.save.party[0].hp=1;
+  const g=new Engine();t.mock.method(g,'announce',()=>{});g.save=eternaCombatFixture();g.panel='field';g.save.party=g.save.party.slice(0,1);g.save.party[0].hp=1;
   g.event('journeyWalker');g.dialogue!.choices!.find(c=>c.label==='배틀한다')!.action();finish(g);g.actBattle('move1');finish(g);
   assert.equal(g.save.map,'tour_eterna_center');assert(!g.save.flags['trainerWon:eterna-forest-practice']);assert.equal(g.save.party[0].hp,g.save.party[0].maxHp);assert(parseSave(JSON.stringify(g.save)));
 });
 test('Prepared pre-Eterna party can challenge Gardenia without the optional trainer and preserves badge reward on reload',t=>{
-  const g=new Engine();t.mock.method(g,'announce',()=>{});g.save=eternaCombatFixture();g.save.map='eterna_gym';g.save.player={x:8,y:5,facing:'up'};
+  const g=new Engine();t.mock.method(g,'announce',()=>{});g.save=eternaCombatFixture();g.panel='field';g.save.map='eterna_gym';g.save.player={x:8,y:5,facing:'up'};
   g.event('gardenia');finish(g);assert.equal(g.battle?.gymId,'gardenia');win(g);
   assert(g.save.badges.includes('BADGE-GS02'));assert(g.save.keyItems.includes('TM-grass-knot'));assert(!g.save.flags['trainerWon:eterna-forest-practice']);
   g.restore(parseSave(JSON.stringify(g.save))!);const money=g.save.money;g.event('gardenia');finish(g);assert(!g.battle);assert.equal(g.save.money,money);

@@ -1,13 +1,15 @@
 import type { Engine } from './engine';
 import { SPECIES } from './pokemon';
 import { withParticle } from './korean-text';
+import { trainerName } from './nexus-opening-state';
+import { sayField } from './field-scene';
 
 export function introduceOpeningPartner(g:Engine):boolean{
   const save=g.save;
   if(save.map!=='home'||save.flags.departureCleared||save.flags.openingPartnerIntroduced||!save.party.length)return false;
   const mon=save.party[0],name=SPECIES[mon.species].name;
   g.healParty();g.persist();
-  g.say('엄마',[`이 친구가 ${name}구나.\n빛나래와 함께 와 줘서 반갑다!`,
+  sayField(g,'엄마',[`이 친구가 ${name}구나.\n${withParticle(trainerName(save),'과/와')} 함께 와 줘서\n반갑다!`,
     '밖으로 나갈 날을 기다렸지?\n처음부터 멀리 갈 필요는 없단다.',
     '집 앞에서 네 걸음만 천천히 걸어 보렴.\n그다음 서쪽 길목의 도윤 아저씨에게 가 보자.',
   ],()=>{

@@ -16,6 +16,6 @@ test('cave arena is selected by actual location without changing the outdoor are
 });
 test('cave sign and trainer help explain gravel encounters and safe passage',()=>{
  const pages=passageSignPages('tour_pass_jubilife_oreburgh','축복','무쇠');assert.match(pages.join(''),/자갈밭/);assert.match(pages.join(''),/안전/);
- const g=new Engine();g.save=newSave();grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.map='tour_pass_jubilife_oreburgh';g.announce=()=>{};const before=structuredClone(g.save);
+ const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.map='tour_pass_jubilife_oreburgh';g.announce=()=>{};const before=structuredClone(g.save);
  handleRoadTrainer(g,'journeyWalker');const c=g.dialogue!.choices!.find(c=>c.label==='도움말을 듣는다')!;g.dialogue=null;c.action();assert.match(g.dialogue!.pages.join(''),/자갈밭/);assert.doesNotMatch(g.dialogue!.pages.join(''),/풀밭/);assert.deepEqual(g.save,before);
 });

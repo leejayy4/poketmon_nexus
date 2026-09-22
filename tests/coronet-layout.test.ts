@@ -38,7 +38,7 @@ test('Hearthome uses the new south entry while Eterna and the lake retain their 
   const map=getMap(id);assert.deepEqual(map.warps.map(w=>[w.x,w.y,w.to,w.entry]),[[10,2,'tour_eterna','up'],[10,28,'tour_hearthome','down'],[18,9,'tour_lake','right']]);
   assert.deepEqual(getMap('tour_hearthome').warps.find(w=>w.to===id)!.spawn,{x:10,y:27});assert.deepEqual(getMap('tour_eterna').warps.find(w=>w.to===id)!.spawn,{x:10,y:3});assert.deepEqual(getMap('tour_lake').warps.find(w=>w.to===id)!.spawn,{x:17,y:9});
   for(const source of [map,getMap('tour_eterna'),getMap('tour_hearthome'),getMap('tour_lake')])for(const w of source.warps.filter(w=>source.id===id||w.to===id)){
-    const g=new Engine();g.save=ready();g.save.map=source.id;const v=VECTOR[w.entry];g.save.player={x:w.x-v.x,y:w.y-v.y,facing:w.entry};assert(canStand(source,g.save.player.x,g.save.player.y));for(const dir of ['up','down','left','right'] as const)assert.equal(canEnter(source,w.x,w.y,dir),dir===w.entry);g.walk(w.entry);for(let i=0;i<20;i++)g.update(.05);assert.equal(g.save.map,w.to);assert.deepEqual(g.save.player,{...w.spawn,facing:w.facing});assert(parseSave(JSON.stringify(g.save)));
+    const g=new Engine();g.save=ready();g.panel='field';g.save.map=source.id;const v=VECTOR[w.entry];g.save.player={x:w.x-v.x,y:w.y-v.y,facing:w.entry};assert(canStand(source,g.save.player.x,g.save.player.y));for(const dir of ['up','down','left','right'] as const)assert.equal(canEnter(source,w.x,w.y,dir),dir===w.entry);g.walk(w.entry);for(let i=0;i<20;i++)g.update(.05);assert.equal(g.save.map,w.to);assert.deepEqual(g.save.player,{...w.spawn,facing:w.facing});assert(parseSave(JSON.stringify(g.save)));
   }
   assert(canStand(map,10,16));assert(!map.warps.some(w=>w.y===16));
 });
@@ -47,8 +47,8 @@ test('both encounter patches use the unchanged S15 pool and the guide still heal
   const map=getMap(id),pool=encounterPool(id)!;assert.equal(pool.id,'ENC-016');assert.deepEqual(pool.levels,[13,17]);assert.deepEqual(pool.slots.map(s=>[s.speciesId,s.weight]),[[41,35],[74,25],[307,20],[173,15],[443,5]]);assert.deepEqual(map.terrain![0],{kind:'tallGrass',x:4,y:10,w:4,h:3});
   const old=globalThis.document;globalThis.document={getElementById:()=>null} as unknown as Document;
   try{
-    for(const r of map.terrain!){const g=new Engine();g.save=ready();g.save.player={x:r.x,y:r.y,facing:'up'};g.random=()=>0;for(let i=0;i<6;i++)g.onFieldStep();assert.equal(g.battle!.enemy.species,41);assert.equal(g.battle!.enemy.level,13);}
-    const g=new Engine();g.save=ready();g.save.party[0].hp=1;g.save.badges=['BADGE-GS01'];g.save.keyItems=['TM-stealth-rock'];g.save.inventory.potions=0;g.event('trailGuide');assert.equal(g.save.party[0].hp,g.save.party[0].maxHp);assert.equal(g.save.inventory.potions,0);assert.match(g.dialogue!.pages.join(''),/영원시티.*연고시티/s);assert.match(g.dialogue!.pages.join(''),/신오 호수/);
+    for(const r of map.terrain!){const g=new Engine();g.save=ready();g.panel='field';g.save.player={x:r.x,y:r.y,facing:'up'};g.random=()=>0;for(let i=0;i<6;i++)g.onFieldStep();assert.equal(g.battle!.enemy.species,41);assert.equal(g.battle!.enemy.level,13);}
+    const g=new Engine();g.save=ready();g.panel='field';g.save.party[0].hp=1;g.save.badges=['BADGE-GS01'];g.save.keyItems=['TM-stealth-rock'];g.save.inventory.potions=0;g.event('trailGuide');assert.equal(g.save.party[0].hp,g.save.party[0].maxHp);assert.equal(g.save.inventory.potions,0);assert.match(g.dialogue!.pages.join(''),/영원시티.*연고시티/s);assert.match(g.dialogue!.pages.join(''),/신오 호수/);
   }finally{globalThis.document=old;}
 });
 

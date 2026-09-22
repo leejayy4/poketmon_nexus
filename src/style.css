@@ -30,3 +30,19 @@
 .tour-atlas .tour-node.label-above span{top:auto;bottom:21px}
 .tour-atlas-key{display:flex;align-items:center;gap:5px;font-size:10px;margin:5px 0;color:#d1dbc1}
 .tour-atlas-key .city-key{color:#cb5d5d}.tour-atlas-key .nature-key{color:#517cba}.tour-atlas-key .visited-key{color:#a8d6a0}
+.nexus-profile{width:min(360px,calc(100vw - 36px));max-height:calc(100dvh - 36px);box-sizing:border-box;overflow:auto;padding:24px;border:3px solid #48675a;border-radius:12px;background:#f3f3e3;color:#243f38;font-family:inherit;word-break:keep-all}
+.nexus-profile::backdrop{background:#15271edb}
+.nexus-profile h2{margin:4px 0 22px;font-size:21px}
+.nexus-profile-kicker{margin:0;color:#527661;font-size:12px;letter-spacing:.08em}
+.nexus-profile form>label{display:block;margin-bottom:7px}
+.nexus-profile input[type=text],.nexus-profile input[name=trainerName]{box-sizing:border-box;width:100%;padding:12px;border:2px solid #839880;border-radius:6px;background:#fffef3;font:inherit;color:inherit}
+.nexus-profile fieldset{display:flex;gap:22px;margin:18px 0 8px;padding:12px;border:1px solid #a6b59b;border-radius:6px}
+.nexus-profile legend{padding:0 5px;font-size:14px}
+.nexus-profile fieldset label{display:flex;align-items:center;gap:5px}
+.nexus-profile input[type=radio]{accent-color:#416850}
+.nexus-profile button{width:100%;padding:13px;border:0;border-radius:7px;background:#356149;color:#fffde9;font:inherit;cursor:pointer}
+.nexus-profile-error{min-height:1.3em;margin:8px 0;font-size:12px;color:#a33434}
+.nexus-profile :focus-visible{outline:3px solid #bc863b;outline-offset:3px}
+.nexus-profile button.nexus-profile-reports{margin-top:9px;background:transparent;color:#356149;border:1px solid #839880}
+.nexus-profile-hint,.nexus-profile-protection{font-size:12px;line-height:1.6}
+.nexus-profile-protection{padding:9px;background:#ffe5c3;border-radius:5px}

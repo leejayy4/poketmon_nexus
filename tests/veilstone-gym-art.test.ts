@@ -1,3 +1,4 @@
+import { newSave } from '../src/save';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {paintVeilstoneGym,paintVeilstoneGymInterior,paintVeilstoneGymEquipment,paintVeilstoneGymBattleArena} from '../src/veilstone-gym-art';
@@ -71,7 +72,7 @@ test('the previously completed greenhouse and ghost hall keep their full interio
   }
 }));
 function arena(id:'roark'|'gardenia'|'fantina'|'maylene',clock=0){
-  const g=new Engine();grantPokemon(g.save,7);g.save.map=id==='maylene'?'veilstone_gym':id==='fantina'?'hearthome_gym':id==='gardenia'?'eterna_gym':'oreburgh_gym';g.clock=clock;g.battle=createBattle(g.save,'gym',id)!;
+  const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.map=id==='maylene'?'veilstone_gym':id==='fantina'?'hearthome_gym':id==='gardenia'?'eterna_gym':'oreburgh_gym';g.clock=clock;g.battle=createBattle(g.save,'gym',id)!;
   const paint=canvas(),r=new Renderer(g,paint.element,paint.element);return {g,r,...paint};
 }
 test('Maylene uses static dojo scenery and other leaders, mountain and outdoor battles retain their backgrounds',()=>{

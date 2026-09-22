@@ -10,7 +10,7 @@ import { getMap,ACTIVE_MAPS } from '../src/maps';
 import { tourMapMarkers,tourMarkerBounds } from '../src/explore-minimap';
 import { planTourNavigation,tourPassageLabel } from '../src/explore-navigation';
 
-function game(){const g=new Engine();g.save=newSave();grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.map='tour_oreburgh';g.save.player={...worldSpawn(g.save.map)!,facing:'down'};return g}
+function game(){const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.map='tour_oreburgh';g.save.player={...worldSpawn(g.save.map)!,facing:'down'};return g}
 function renderer(g:Engine){const context=new Proxy({}, {get:()=>()=>{}}) as CanvasRenderingContext2D,canvas={getContext:()=>context} as HTMLCanvasElement;return new Renderer(g,canvas,canvas)}
 function step(g:Engine,key:string){g.press(key);g.release(key);for(let i=0;i<20;i++)g.update(.04)}
 
@@ -34,7 +34,7 @@ test('objective guidance tracks the next badge and switches to recovery only whi
 });
 
 test('starter objective guides from the bedroom to the lab and respects the departure gate',()=>{
-  const g=new Engine();g.save=newSave();g.guideObjective();assert.deepEqual(g.tourNavigation?.maps,['bedroom','home','town','lab']);assert.equal(g.tourNavigation?.exit?.to,'home');assert.equal(planTourNavigation(g.save,'oreburgh_gym')?.status,'blocked');assert(tourMapMarkers(getMap('town')).some(m=>m.destination==='lab'));g.restore(game().save);assert.equal(g.tourNavigation?.destination,'oreburgh_gym');assert.equal(new Engine().followingObjective,false);
+  const g=new Engine();g.save=newSave();g.panel='field';g.guideObjective();assert.deepEqual(g.tourNavigation?.maps,['bedroom','home','town','lab']);assert.equal(g.tourNavigation?.exit?.to,'home');assert.equal(planTourNavigation(g.save,'oreburgh_gym')?.status,'blocked');assert(tourMapMarkers(getMap('town')).some(m=>m.destination==='lab'));g.restore(game().save);assert.equal(g.tourNavigation?.destination,'oreburgh_gym');assert.equal(new Engine().followingObjective,false);
 });
 
 test('active-world map markers fit their map and point to real doors or people',()=>{

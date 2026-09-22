@@ -9,7 +9,7 @@ import { maxHpAtLevel } from '../src/growth';
 
 function run(fn:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{fn();}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document');}}
 function game(multiple=false){
-  const g=new Engine();g.save=newSave();g.save.flags.departureCleared=true;grantPokemon(g.save,4);
+  const g=new Engine();g.save=newSave();g.panel='field';g.save.flags.departureCleared=true;grantPokemon(g.save,4);
   const p=g.save.party[0];p.level=6;p.hp=p.maxHp=maxHpAtLevel(4,6);p.experience=59;
   if(multiple)g.save.party.push({...p,moves:p.moves?[...p.moves]:undefined});
   g.persist=()=>true;return g;

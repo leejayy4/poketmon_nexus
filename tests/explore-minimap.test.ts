@@ -1,3 +1,4 @@
+import { newSave } from '../src/save';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Engine } from '../src/engine';
@@ -7,7 +8,7 @@ import { FLOOR_INFO } from '../src/journey-world';
 import { tourMapMarkers,tourMarkerBounds } from '../src/explore-minimap';
 
 function setup(){
-  const g=new Engine();g.exploring=true;g.save=g.freshSave();g.exploreTo('tour_jubilife');
+  const g=new Engine();g.exploring=true;g.save=newSave();g.panel='field';g.exploreTo('tour_jubilife');
   const context=new Proxy({}, {get:()=>()=>{}}) as CanvasRenderingContext2D;
   const canvas={getContext:()=>context} as unknown as HTMLCanvasElement;
   return {g,r:new Renderer(g,canvas,canvas)};

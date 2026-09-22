@@ -38,7 +38,7 @@ test('field potion heals at most 20, consumes exactly one, and does not revive o
   s.inventory.potions=0;s.party[0].hp=1;const empty=structuredClone(s);healFieldPokemon(s,0);assert.deepEqual(s,empty);
 });
 test('battle menu cancellation spends no turn and summary actions cannot mutate during dialogue or battle',()=>dom(()=>{
-  const g=new Engine();g.exploring=false;g.save=team();g.battle=createBattle({...g.save,map:'route_s01'},'wild','roark',()=>0);const initial=structuredClone(g.save);
+  const g=new Engine();g.exploring=false;g.save=team();g.panel='field';g.battle=createBattle({...g.save,map:'route_s01'},'wild','roark',()=>0);const initial=structuredClone(g.save);
   g.battle!.selected=2;g.selectBattle();assert.equal(g.battle!.menu,'party');g.cancel();assert.equal(g.battle!.menu,'actions');assert.deepEqual(g.save,initial);
   g.battle!.selected=1;g.selectBattle();assert.equal(g.battle!.menu,'bag');g.cancel();assert.equal(g.battle!.menu,'actions');assert.deepEqual(g.save,initial);
   g.panel='summary';g.partyIndex=1;g.manageParty(0);assert.deepEqual(g.save,initial);g.battle=null;

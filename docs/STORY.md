@@ -16,12 +16,12 @@
 
 | 묶음 | 확인한 코드·실행 경로 | 남은 제작·판정 경계 |
 | --- | --- | --- |
-| 출발·기존 첫 동료 | [시작 지도](../src/maps.ts), [수령 대화](../src/story.ts), [엄마 소개·첫걸음](../src/opening-first-walk.ts), [엔진](../src/engine.ts)에 기존 스타팅/피카츄·도윤 출발 분기 | 이름·외형 선택, 신규 스타팅, 엽서·풍향계·첫 유진전이 연결된 본편 1장 완성은 아님 |
+| 출발·첫 동료 | [새 도입](../src/nexus-opening.ts), [프로필](../src/nexus-profile.ts), [엄마 소개·첫걸음](../src/opening-first-walk.ts), [첫 유진전](../src/nexus-first-rival.ts), [이벤트 등록](../src/first-journey-events.ts) | 새 v2의 이름/옷·중계·엽서·신규 동료·첫걸음·도윤 보급/풍향계 대화·선택 친선전 연결. v1 기존 스타팅/피카츄 보존. 잔모래 센터 재회·최종 지리·본편 1장 자연 진행 수용은 남음 |
 | 시작 지리 | [초기 도로](../src/sinnoh-opening-route.ts), [호수](../src/sinnoh-canonical-lakes.ts), [통합 지도](../src/unified-world.ts)에 201·잔모래·202·축복 존재 | `town`은 아직 새잎마을. 호수·잔모래 실내 워프 보존 코드 반영, 양방향 보행과 회복 수용은 미검증 |
 | 세 초 | [배치·키](../src/sinnoh-clock-state.ts) → explore-world 설치, [관찰](../src/sinnoh-clock-story.ts) → Engine.event/update/confirm/cancel·Renderer 연결 | 축복의 관찰 장면만 연결·미검증. 영원 비교와 후속 기록 전달 helper는 미연결이며 본편 전체 증거 회수를 뜻하지 않음 |
 | 무쇠 강석 만남 | [만남](../src/oreburgh-roark-story.ts)·[상태](../src/oreburgh-roark-state.ts)와 지도/목표 소비 | 탄갱 만남과 체육관 선방문을 구분한 일부 코드. 도시 전체·본편 2장 완료 아님 |
 | 무쇠 동료 생활 | [탄갱 동료](../src/oreburgh-mine-companion.ts)의 관찰·전시관·반장 귀환 | 실제 동료를 다루는 재사용 후보. 생태 관찰 완료를 본편 사건 완료로 승격하지 않음 |
-| 첫 배지와 유진 | [첫 배지 장면](../src/oreburgh-first-badge.ts)·[상태](../src/oreburgh-first-badge-state.ts), `city-activities`·`adventure-guide`·`renderer`·엔진 승리 기록 연결 | 배지 관찰·현재 동료와 간식·다음 길 안내 코드 있음. 지역 조명 표현이며 전역 밤 구현·전체 자연 진행 검증은 아님 |
+| 첫 배지와 유진 | [첫 배지 장면](../src/oreburgh-first-badge.ts)·[상태](../src/oreburgh-first-badge-state.ts), `first-journey-events`·`adventure-guide`·`renderer`·엔진 승리 기록 연결 | 배지 관찰·현재 동료와 간식·다음 길 안내 코드 있음. 지역 조명 표현이며 전역 밤 구현·전체 자연 진행 검증은 아님 |
 | 기존 신오 진행 | [체육관](../src/gyms.ts)의 강석·유채·멜리사·자두와 [신오 대화](../src/sinnoh-story.ts)의 자료 회수·전달·조사선 | 기존 네 배지는 신오 중간 성과. 후반 네 배지·첫 리그·새 원고 3~6장 전체를 대신하지 않음 |
 | 관동 사건 | [실프 원본](../src/silph-records-story.ts), [홍련 대피](../src/cinnabar-evacuation.ts), [후속 연락](../src/cinnabar-aftermath.ts)과 목표 안내 | 실프·홍련 사건 일부 코드 있음. 관동 8배지·리그·파이리 장기 연작·새 원고 7~11장 전체 완료 아님 |
 | 성도 사건 | [금빛 조사](../src/goldenrod-nexus.ts), [분노의호수](../src/rage-lake-nexus.ts) 등 현장 기록·단계 모듈 | 기존 조사·구조 단계의 재사용 후보. 8배지·리그·세 성수·칠색조·루기아 본편 완성으로 세지 않음 |

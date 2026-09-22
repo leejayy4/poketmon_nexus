@@ -51,7 +51,7 @@ test('inspection distinguishes a missing key from corrupt and future documents',
   assert.deepEqual(inspectSave(''),{kind:'rejected',reason:'invalid-json'});
   assert.deepEqual(inspectSave('{'),{kind:'rejected',reason:'invalid-json'});
   assert.deepEqual(inspectSave('null'),{kind:'rejected',reason:'invalid-data'});
-  assert.deepEqual(inspectSave(JSON.stringify({...newSave(),version:2})),{kind:'rejected',reason:'future-version'});
+  assert.deepEqual(inspectSave(JSON.stringify({...newSave(),version:3})),{kind:'rejected',reason:'future-version'});
   assert.deepEqual(inspectSave(JSON.stringify({...newSave(),worldRevision:newSave().worldRevision!+1})),{kind:'rejected',reason:'future-world'});
   assert.equal(inspectSave(JSON.stringify(newSave())).kind,'ready');
 });
@@ -86,7 +86,7 @@ for(const [name,raw] of [
   ['empty string',''],
   ['invalid JSON','{truncated'],
   ['invalid shape','{}'],
-  ['future version',JSON.stringify({...newSave(),version:2})],
+  ['future version',JSON.stringify({...newSave(),version:3})],
   ['future world',JSON.stringify({...newSave(),worldRevision:999999})],
 ] as const){
   test(`${name} blocks automatic persistence and is retained exactly`,()=>{

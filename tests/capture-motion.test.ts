@@ -8,7 +8,7 @@ import {captureMotion} from '../src/battle-effect';
 import {newSave,parseSave} from '../src/save';
 import {grantPokemon} from '../src/pokemon';
 function dom(run:()=>void){const old=Object.getOwnPropertyDescriptor(globalThis,'document');Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});try{run()}finally{if(old)Object.defineProperty(globalThis,'document',old);else Reflect.deleteProperty(globalThis,'document')}}
-function game(){const g=new Engine();g.save=newSave();grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.inventory.pokeBalls=3;g.battle=createBattle(g.save);return g}
+function game(){const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.flags.departureCleared=true;g.save.inventory.pokeBalls=3;g.battle=createBattle(g.save);return g}
 function next(g:Engine){const d=g.dialogue!;if(d.shown<d.pages[d.page].length)g.confirm();g.confirm()}
 
 test('successful and failed throws share the same initial scene without revealing the result',()=>{

@@ -1,3 +1,4 @@
+import { speciesNumberLabel } from './nexus-starters';
 import { RUNTIME_DATABASE } from './data/runtime';
 import { RUNTIME_RULES } from './data/rules';
 import { BASIC_SHOP_ITEMS } from './data/items';
@@ -161,7 +162,7 @@ export function showPokedex(g:Engine,page=0,back:()=>void=()=>{}){
         ancestor=previous.from;
       }
     }
-    g.say('포켓몬도감',[`No.${String(id).padStart(3,'0')} ${p.name}\n${p.types.join(' / ')} · ${caught.has(id)?'잡은 포켓몬':'발견한 포켓몬'}`,p.description,
+    g.say('포켓몬도감',[`${speciesNumberLabel(id)} ${p.name}\n${p.types.join(' / ')} · ${caught.has(id)?'잡은 포켓몬':'발견한 포켓몬'}`,p.description,
       ...(habitats.length?habitats.map(h=>`야생 서식지\n${h.name}\nLv.${h.minLevel}~${h.maxLevel} · ${h.rarity}`):['야생 서식지 정보가 없다.']),
       ...evolutionPages,
     ],()=>{if(g.save===s&&!g.battle)showPokedex(g,page,back);});

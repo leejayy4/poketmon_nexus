@@ -10,7 +10,7 @@ test('both Cinnabar encounters recover a defeat to a saved and healed island cen
   const old=Object.getOwnPropertyDescriptor(globalThis,'document');
   Object.defineProperty(globalThis,'document',{configurable:true,value:{getElementById:()=>null}});
   try{for(const random of [()=>0,()=>.999]){
-    const g=new Engine();g.save=newSave();grantPokemon(g.save,1);
+    const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,1);
     g.save.flags.departureCleared=true;g.save.flags.cinnabarCliffObserved=true;g.save.flags.cinnabarShoreObserved=true;
     g.save.map='tour_cinnabar';g.save.player={x:9,y:31,facing:'left'};g.save.healingPoint='tour_cinnabar_center';
     g.save.party[0].hp=1;g.save.party[0].moves=['울음소리'];
@@ -27,7 +27,7 @@ test('both Cinnabar encounters recover a defeat to a saved and healed island cen
 });
 
 test('Cinnabar music covers interiors, routes, battle priority and restored exploration',()=>{
-  const g=new Engine();g.save=newSave();grantPokemon(g.save,1);g.save.flags.departureCleared=true;
+  const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,1);g.save.flags.departureCleared=true;
   for(const map of ['tour_cinnabar','tour_cinnabar_hall','tour_cinnabar_home1','tour_cinnabar_center'] as const){
     g.save.map=map;g.update(0);assert.equal(g.audio.scene,'cinnabar',map);
   }

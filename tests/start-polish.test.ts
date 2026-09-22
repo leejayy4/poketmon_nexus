@@ -24,7 +24,7 @@ test('mother recognizes every valid partner combination before and after reload 
     save.map = 'home'; save.player = {x:4,y:5,facing:'up'};
     for (const id of species) assert(grantPokemon(save,id));
     for (const state of [save, parseSave(JSON.stringify(save))!]) {
-      const game = new Engine(); game.save = state;
+      const game = new Engine(); game.save = state; game.panel = 'field';
       const before = JSON.stringify(game.save);
       for (let visit = 0; visit < 2; visit++) {
         game.interact();
@@ -61,7 +61,7 @@ test('every prop can be reached from the map entrance and investigated using nor
       assert(approach, `${map.id}: unreachable ${prop.dialogue} at ${prop.x},${prop.y}`);
       assert(!map.npcs.some(n=>n.x===prop.x&&n.y===prop.y), `${prop.dialogue}: NPC shadows interaction`);
       const [direction,v] = approach;
-      const game = new Engine(); game.save = {...newSave(),map:map.id,player:{x:start[0],y:start[1],facing:'down'}};
+      const game = new Engine(); game.save = {...newSave(),map:map.id,player:{x:start[0],y:start[1],facing:'down'}}; game.panel = 'field';
       for (const step of paths.get(`${prop.x-v.x},${prop.y-v.y}`)!) {
         game.press(({up:'ArrowUp',down:'ArrowDown',left:'ArrowLeft',right:'ArrowRight'})[step]);
         game.release(({up:'ArrowUp',down:'ArrowDown',left:'ArrowLeft',right:'ArrowRight'})[step]);

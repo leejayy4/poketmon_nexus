@@ -14,7 +14,7 @@ test('every door and stair requires the exact tile and approach direction',()=>{
       assert.equal(canEnter(map,w.x,w.y,dir),dir===w.entry,`${map.id}: ${dir}`);
       const v=VECTOR[dir],from={x:w.x-v.x,y:w.y-v.y};
       if(!canStand(map,from.x,from.y))continue;
-      const g=new Engine();g.save={...newSave(),map:map.id,player:{...from,facing:dir}};
+      const g=new Engine();g.save={...newSave(),map:map.id,player:{...from,facing:dir}};g.panel='field';
       g.walk(dir);settle(g);
       if(dir===w.entry){assert.equal(g.save.map,w.to);assert.deepEqual(g.save.player,{...w.spawn,facing:w.facing})}
       else{assert.equal(g.save.map,map.id);assert.deepEqual(g.save.player,{...from,facing:dir})}
@@ -22,7 +22,7 @@ test('every door and stair requires the exact tile and approach direction',()=>{
   }
 });
 test('walking parallel to the front of every town door never warps',()=>{
-  for(const w of MAPS.town.warps){const g=new Engine();g.save={...newSave(),map:'town',player:{x:w.x-1,y:w.y+1,facing:'right'}};g.walk('right');settle(g);g.walk('right');settle(g);assert.equal(g.save.map,'town');assert.equal(g.transition,0)}
+  for(const w of MAPS.town.warps){const g=new Engine();g.save={...newSave(),map:'town',player:{x:w.x-1,y:w.y+1,facing:'right'}};g.panel='field';g.walk('right');settle(g);g.walk('right');settle(g);assert.equal(g.save.map,'town');assert.equal(g.transition,0)}
 });
 test('lab annex floor and both new characters are reachable from the entrance',()=>{
   const m=MAPS.lab,seen=new Set<string>(),q=[[6,11]];

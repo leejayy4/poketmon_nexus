@@ -6,7 +6,8 @@ export interface NPC extends Point { id: string; name: string; sprite: string; f
 export interface Prop extends Point { dialogue: string }
 export interface GameMap { id: MapId; name: string; width: number; height: number; background: string; walkable: string[]; warps: Warp[]; npcs: NPC[]; props: Prop[]; reserved?:Point[]; terrain?: {kind:'tallGrass';x:number;y:number;w:number;h:number}[] }
 export interface Pokemon { species: number; level: number; hp: number; maxHp: number; experience:number; nature: string; met: string; moves?:string[]; pp?:number[]; shiny?:boolean }
-export interface SaveData { box?:Pokemon[]; pokedex?:{seen:number[];caught:number[]}; tourVisited?:import('./explore-world').TourId[]; version: 1; worldRevision?:number; map: MapId; player: Point & { facing: Direction }; flags: Record<string, boolean | number>; party: Pokemon[]; inventory:{pokeBalls:number;potions:number}; badges:string[]; keyItems:string[]; money:number; healingPoint:MapId; steps: number; seconds: number }
+export interface TrainerProfile { name:string; appearance:'blue'|'coral' }
+export interface SaveData { box?:Pokemon[]; pokedex?:{seen:number[];caught:number[]}; tourVisited?:import('./explore-world').TourId[]; version: 1|2; campaign?:'nexus'|'legacy'; trainer?:TrainerProfile; worldRevision?:number; map: MapId; player: Point & { facing: Direction }; flags: Record<string, boolean | number>; party: Pokemon[]; inventory:{pokeBalls:number;potions:number}; badges:string[]; keyItems:string[]; money:number; healingPoint:MapId; steps: number; seconds: number }
 export interface Choice { label: string; action: () => void }
 export interface Dialogue { speaker: string; pages: string[]; page: number; shown: number; choices?: Choice[]; selected: number; after?: () => void }
-export type Panel = 'field' | 'menu' | 'party' | 'summary' | 'bag' | 'fieldHeal' | 'trainer' | 'options' | 'starters';
+export type Panel = 'field' | 'menu' | 'party' | 'summary' | 'bag' | 'fieldHeal' | 'trainer' | 'options' | 'starters' | 'profile';

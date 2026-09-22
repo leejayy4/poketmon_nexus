@@ -1,3 +1,4 @@
+import { newSave } from '../src/save';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {paintHearthomeGym,paintHearthomeGymInterior,paintHearthomeGymPlinths,paintHearthomeGymBattleArena} from '../src/hearthome-gym-art';
@@ -79,7 +80,7 @@ test('Eterna exterior and interior and Veilstone room retain their own full draw
 }));
 
 function arena(id:'roark'|'gardenia'|'fantina'|'maylene',clock=0){
-  const g=new Engine();grantPokemon(g.save,7);g.save.map=id==='fantina'?'hearthome_gym':id==='gardenia'?'eterna_gym':id==='maylene'?'veilstone_gym':'oreburgh_gym';g.clock=clock;g.battle=createBattle(g.save,'gym',id)!;
+  const g=new Engine();g.save=newSave();g.panel='field';grantPokemon(g.save,7);g.save.map=id==='fantina'?'hearthome_gym':id==='gardenia'?'eterna_gym':id==='maylene'?'veilstone_gym':'oreburgh_gym';g.clock=clock;g.battle=createBattle(g.save,'gym',id)!;
   const paint=canvas(),r=new Renderer(g,paint.element,paint.element);return {g,r,...paint};
 }
 test('Fantina uses the static indoor arena while other leaders and mountain wild battles keep theirs',()=>{

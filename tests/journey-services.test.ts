@@ -32,7 +32,7 @@ test('PC rejects invalid indices, full storage and full parties without losing a
   for(const index of [-1,100,NaN,.5]){depositPokemon(s,index);withdrawPokemon(s,index);assert.equal(JSON.stringify(s),previous);}
 });
 test('shop and PC events require their real facility and pickups cannot be farmed',()=>{
-  const g=new Engine();g.save=ready();g.persist=()=>true;g.announce=()=>{};
+  const g=new Engine();g.save=ready();g.panel='field';g.persist=()=>true;g.announce=()=>{};
   assert.equal(handleJourneyEvent(g,'martClerk'),false);
   g.save.map=[...MART_ROOMS][0] as SaveData['map'];assert.equal(handleJourneyEvent(g,'martClerk'),true);assert.ok(g.dialogue?.choices?.some(c=>c.label.includes('몬스터볼')));
   g.save.map='tour_jubilife_center';handleJourneyEvent(g,'tourExhibit1');assert.ok(g.dialogue?.choices?.some(c=>c.label==='포켓몬 맡기기'));

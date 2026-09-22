@@ -44,7 +44,7 @@ test('reserve is healed before a fatal retaliation and can then replace the acti
   battleTurn(s,b,{potion:1});assert.equal(s.party[0].hp,0);assert.equal(s.party[1].hp,18);assert.equal(b.active,1);assert.deepEqual(b.participants,[0,1]);
 });
 test('bag opens target selection without spending a turn and cancellation returns through bag',()=>dom(()=>{
-  const g=new Engine();g.exploring=false;g.save=ready();g.battle=createBattle(g.save);const b=g.battle!;
+  const g=new Engine();g.exploring=false;g.save=ready();g.panel='field';g.battle=createBattle(g.save);const b=g.battle!;
   while(g.save.party.length<6)g.save.party.push({...g.save.party[1]});
   const before=structuredClone(g.save);b.menu='bag';b.selected=1;g.selectBattle();assert.equal(b.menu,'heal');assert.equal(b.selected,0);
   g.navigate('down');g.navigate('down');g.navigate('right');assert.equal(b.selected,5);assert.deepEqual(g.save,before);

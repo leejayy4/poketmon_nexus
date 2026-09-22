@@ -9,6 +9,7 @@ import {gainExperience,maxHpAtLevel,type GrowthStep} from '../src/growth';
 import {createBattle,createTrainerBattle,battleTurn,moveEffectiveness,techniqueDamage,playerDamage,enemyDamage} from '../src/battle';
 import type {Pokemon} from '../src/types';
 import {ACTIVE_MAPS} from '../src/maps';
+import {getNexusStarterSpriteUrl} from '../src/nexus-starter-art';
 const ready=(id=7)=>{const s=newSave();grantPokemon(s,id);s.flags.departureCleared=true;s.map='route_s01';s.player={x:29,y:12,facing:'left'};s.inventory.pokeBalls=10;return s;};
 const mon=(id:number,level=10):Pokemon=>({species:id,level,hp:maxHpAtLevel(id,level),maxHp:maxHpAtLevel(id,level),experience:0,nature:'성실',met:'검사'});
 
@@ -27,8 +28,31 @@ test('runtime encounter pools exactly preserve selected design slot weights, lev
   assert(!hasWildEncounters('tour_pass_veilstone_sunyshore'));assert.equal(wildPokemon('bedroom'),null);assert.equal(createBattle({...ready(),map:'bedroom'}),null);
 });
 
-test('every registered species has actual front and back PNG assets',()=>{
-  for(const id of Object.keys(SPECIES))for(const side of ['','back-']){const path=`public/assets/pokemon-${side}${id}.png`;assert(existsSync(path),path);assert.equal(readFileSync(path).subarray(1,4).toString(),'PNG');}
+test('every registered species has front and back assets in its documented format',()=>{
+  const provenance=JSON.parse(readFileSync('public/assets/nexus-starters/provenance.json','utf8'));
+  assert.deepEqual(provenance.dimensions,[80,80]);
+  assert.equal(provenance.background,'transparent');
+  assert.match(provenance.source,/Original integer-grid SVG paths authored for this repository/);
+  assert.match(provenance.status,/provisional first-form design/);
+  assert.deepEqual(provenance.species.map((entry:{id:number})=>entry.id),DATA.nexusStarterIds);
+  for(const id of Object.keys(SPECIES))for(const back of [false,true]){
+    const custom=getNexusStarterSpriteUrl(Number(id),back);
+    if(DATA.nexusStarterIds.includes(Number(id))){
+      assert(custom,`project sprite URL ${id}`);
+      const source=provenance.species.find((entry:{id:number})=>entry.id===Number(id));
+      assert(source,`project sprite provenance ${id}`);
+      assert.equal(custom,`/assets/nexus-starters/${source[back?'back':'front']}`);
+      const path='public'+custom;assert(existsSync(path),path);
+      const svg=readFileSync(path,'utf8');
+      assert.match(svg,/^<svg\b[^>]*xmlns="http:\/\/www\.w3\.org\/2000\/svg"/);
+      assert.match(svg,/<svg\b[^>]*width="80"[^>]*height="80"[^>]*viewBox="0 0 80 80"/);
+      assert(svg.includes(`<title>${SPECIES[Number(id)].name}`),`named sprite ${path}`);
+    }else{
+      assert.equal(custom,undefined,`source Pokemon retains its PNG route: ${id}`);
+      const path=`public/assets/pokemon-${back?'back-':''}${id}.png`;
+      assert(existsSync(path),path);assert.equal(readFileSync(path).subarray(1,4).toString(),'PNG');
+    }
+  }
 });
 
 test('all reachable wild slots can be captured, persisted and registered in the Pokedex',()=>{

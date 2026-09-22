@@ -60,7 +60,7 @@ test('a full moveset compares and replaces the fourth slot without creating a fi
 });
 
 test('battle cursor uses actual move count, remembers slot four, and cancel preserves it',()=>dom(()=>{
-  const g=new Engine();g.save=ready();g.save.party[0].moves=[...four];g.battle=createBattle(g.save,'gym')!;const b=g.battle;
+  const g=new Engine();g.save=ready();g.panel='field';g.save.party[0].moves=[...four];g.battle=createBattle(g.save,'gym')!;const b=g.battle;
   g.selectBattle();g.navigate('down');assert.equal(b.selected,2);g.navigate('right');assert.equal(b.selected,3);
   g.selectBattle();assert.equal(b.moveSelections[0],3);assert.equal(g.battleFrames![0].technique?.move,'용의분노');g.dialogue=null;g.battleFrames=null;
   b.menu='actions';b.selected=0;g.selectBattle();assert.equal(b.selected,3);g.cancel();g.selectBattle();assert.equal(b.selected,3);

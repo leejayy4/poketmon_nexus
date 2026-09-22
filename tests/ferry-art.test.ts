@@ -1,3 +1,4 @@
+import { newSave } from '../src/save';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {paintFerryJourney,ferryProgress,type FerryJourneyView} from '../src/ferry-art';
@@ -21,7 +22,7 @@ function bounded(rects:Rect[]){
   for(const r of rects){assert([r.x,r.y,r.w,r.h].every(Number.isInteger));assert(r.w>0&&r.h>0);assert(r.x>=0&&r.y>=0&&r.x+r.w<=256&&r.y+r.h<=192,JSON.stringify(r));}
 }
 function underway(outbound=true){
-  const g=new Engine();g.announce=()=>{};g.save.map=outbound?'tour_canalave':'tour_vermilion';g.save.flags.researchDelivered=true;
+  const g=new Engine();g.save=newSave();g.panel='field';g.announce=()=>{};g.save.map=outbound?'tour_canalave':'tour_vermilion';g.save.flags.researchDelivered=true;
   assert(startFerryJourney(g,outbound));
   const top=canvas(),bottom=canvas(),r=new Renderer(g,top.element,bottom.element);return {g,r,top,bottom};
 }

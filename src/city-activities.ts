@@ -3,9 +3,6 @@ import type { SaveData } from './types';
 import { createTourResidents } from './explore-residents';
 import { SPECIES } from './pokemon';
 import { gymById } from './gyms';
-import { handleFirstBadgeTown } from './first-badge-town';
-import { handleOreburghMineExhibition } from './oreburgh-mine-companion';
-import { handleOreburghFirstBadge } from './oreburgh-first-badge';
 import { handleNimbasaNexus,handleNimbasaNexusExhibit } from './nimbasa-nexus';
 import { handleDriftveilCity,handleDriftveilLedger } from './driftveil-nexus';
 import { handleMistraltonNexus } from './mistralton-nexus';
@@ -74,15 +71,12 @@ const activities: Activity[] = [
 
 /** True only for one of the two existing outdoor resident conversations. */
 export function handleCityActivity(game: Engine, id: string): boolean {
-  if(handleOreburghFirstBadge(game,id))return true;
-  if(handleOreburghMineExhibition(game,id))return true;
   if(handleJubilifeCityLearning(game,id))return true;
   if(handleJubilifePoketchCompany(game,id))return true;
   if(handleJubilifeDailyInteriors(game,id))return true;
   if(handleMistraltonNexus(game,id))return true;
   if(handleDriftveilCity(game,id)||handleDriftveilLedger(game,id))return true;
   if(handleNimbasaNexus(game,id)||handleNimbasaNexusExhibit(game,id))return true;
-  if (handleFirstBadgeTown(game, id)) return true;
   const activity = activities.find(a => a.map === game.save.map && a.event === id);
   if (!activity) return false;
   const resident = createTourResidents(activity.map).find(n => n.dialogue === id);

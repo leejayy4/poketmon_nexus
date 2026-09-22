@@ -11,7 +11,7 @@ test('Eterna clock owns one reachable investigation surface, not the wall survey
   assert.equal(owners.length,1);assert.equal(owners[0].event,event);
   assert.equal(map.props.filter(p=>p.x===x&&p.y===y).length,1);
   assert.equal(map.props.find(p=>p.x===x&&p.y===y)!.dialogue,event);assert(!canStand(map,x,y));
-  const g=new Engine();g.save=newSave();g.save.map=map.id;g.save.player={x,y:y+1,facing:'up'};
+  const g=new Engine();g.save=newSave();g.panel='field';g.save.map=map.id;g.save.player={x,y:y+1,facing:'up'};
   t.mock.method(g,'announce',()=>{});
   assert(canStand(map,x,y+1));assert.equal(g.interactionHint,'Z 조사 · 시계 관측 기록판');
   const before=structuredClone(g.save);g.confirm();assert.equal(g.dialogue?.speaker,owners[0].name);assert.deepEqual(g.dialogue?.pages,ETERNA_CLOCK_PAGES);assert.deepEqual(g.save,before);

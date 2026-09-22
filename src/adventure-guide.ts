@@ -41,6 +41,8 @@ import { ROUTE_NINE_JOURNEY,isRouteNinePartner } from './unova-route-nine-journe
 import { ROUTE_EIGHT_JOURNEY,isRouteEightPartner } from './unova-route-eight-journey';
 import { TOUR_BUILDINGS,TOUR_INTERIORS,tourPlaceForMap,placeById } from './explore-world';
 import { FLOOR_PARENTS } from './journey-world';
+import { isNexusCampaign } from './nexus-starters';
+import { NEXUS_OPENING } from './nexus-opening-state';
 
 export interface AdventureObjective {id:string;title:string;map:MapId;action:string;event?:string;point?:{x:number;y:number}}
 
@@ -57,7 +59,25 @@ export function itemSupply(save:SaveData,item:keyof SaveData['inventory']):Adven
 
 // Guidance reflects existing progression only; reading it never grants progress.
 export function adventureObjective(save:SaveData):AdventureObjective|null{
-
+  if(isNexusCampaign(save)){
+    const f=save.flags;
+    if(!f[NEXUS_OPENING.profile])return {id:'nexus-profile',title:'여행 준비',map:'bedroom',action:'이름과 여행 옷을 골라 보자'};
+    if(!f[NEXUS_OPENING.broadcast])return {id:'nexus-broadcast',title:'챔피언을 꿈꾸는 아침',map:'bedroom',event:'tv',action:'리그 중계를 보고 아래층으로 내려가자'};
+    if(!f[NEXUS_OPENING.postcards])return {id:'nexus-postcards',title:'엄마의 빈 엽서',map:'home',event:'mom',action:'아래층 엄마와 출발 인사를 나누자'};
+    if(f.starterReceived&&!f[NEXUS_OPENING.outside])return save.map==='lab'
+      ? {id:'nexus-first-step',title:'동료와 첫걸음',map:'town',point:{x:10,y:10},action:'연구소 남쪽 문으로 함께 나가 보자'}
+      : {id:'nexus-first-step-return',title:'동료와 첫걸음',map:'lab',action:'연구소에 들렀다가 남쪽 문으로 함께 나가 보자'};
+    if(f.starterReceived&&!f.departureCleared){
+      if(!f.openingPartnerIntroduced)return {id:'nexus-home',title:'새 친구 소개하기',map:'home',event:'mom',action:'엄마에게 동료를 소개하자. 서쪽 길목에서는 도윤이 기다린다'};
+      if(!f.openingWalkCompleted)return {id:'nexus-home-walk',title:'집 앞에서 맞추는 걸음',map:'town',point:{x:8,y:26},action:'집 앞길에서 네 걸음을 걸어 보자. 준비되면 도윤에게 가자'};
+    }
+    if(f.departureCleared&&!save.badges.length){
+      const map=worldMapId(save.map),visits=save.tourVisited??[];
+      // Optional lake visits, captures and rival wins never become travel gates.
+      if(['town','home','lab','bedroom','tour_sinnoh_route_201','tour_verity_lakefront','tour_lake_verity'].includes(map)&&!visits.includes('tour_sandgem'))return {id:'nexus-sandgem',title:'201번도로 너머 잔모래마을',map:'tour_sandgem',action:'201번도로를 따라 동쪽으로 가자. 북서쪽 호숫길에도 들를 수 있다'};
+      if(['tour_sandgem','tour_sandgem_center','tour_sandgem_lab','tour_sinnoh_route_202'].includes(map)&&!visits.includes('tour_jubilife'))return {id:'nexus-jubilife',title:'202번도로에서 축복시티로',map:'tour_jubilife',event:'jubilifeSouthGreeter',action:'센터에서 쉬고 북쪽 202번도로로 가자. 풀밭과 트레이너는 선택해서 만나자'};
+    }
+  }
   if(!save.party.length)return {id:'partner',event:'professor',title:'첫 파트너 만나기',map:'lab',action:'은솔박사에게 말을 걸자'};
   if(!save.flags.departureCleared)return {id:'departure',event:'gatekeeper',title:'모험 출발 준비',map:'town',action:'서쪽 입구의 도윤과 이야기하자'};
   const localMap=worldMapId(save.map),prepared=CELESTIC_ROUTE_BATTLE;
