@@ -9,8 +9,33 @@ import { TOUR_SPAWNS } from './explore-world';
 import { GYMS } from './gyms';
 import { SINNOH_MAPS,SINNOH_STARTS,SINNOH_CENTERS } from './sinnoh-maps';
 export const SAVE_KEY='first-partner-save-v1';
+export type SaveReadFailure = 'invalid-json' | 'invalid-data' | 'unsupported-version' | 'future-version' | 'future-world';
+export type SaveReadResult =
+  | {kind:'missing'}
+  | {kind:'rejected';reason:SaveReadFailure}
+  | {kind:'ready';save:SaveData;sourceVersion:1;sourceRevision:number;migrated:boolean};
+
+// Version dispatch happens before any map projection or legacy defaults. All
+// migrations operate on a fresh JSON object; the caller retains the exact raw source.
+export function inspectSave(raw:string|null):SaveReadResult {
+  if(raw===null)return {kind:'missing'};
+  let input:unknown;
+  try{input=JSON.parse(raw);}catch{return {kind:'rejected',reason:'invalid-json'};}
+  if(!input||typeof input!=='object'||Array.isArray(input))return {kind:'rejected',reason:'invalid-data'};
+  const header=input as Record<string,unknown>;
+  if(typeof header.version==='number'&&header.version>1)return {kind:'rejected',reason:'future-version'};
+  if(header.version!==1)return {kind:'rejected',reason:'unsupported-version'};
+  if(typeof header.worldRevision==='number'&&header.worldRevision>TOWN_REVISION)return {kind:'rejected',reason:'future-world'};
+  const save=parseVersion1(raw);
+  if(!save)return {kind:'rejected',reason:'invalid-data'};
+  return {kind:'ready',save,sourceVersion:1,sourceRevision:typeof header.worldRevision==='number'?header.worldRevision:1,migrated:JSON.stringify(input)!==JSON.stringify(save)};
+}
 export function newSave():SaveData { return {version:1,worldRevision:TOWN_REVISION,map:'bedroom',player:{x:6,y:6,facing:'down'},flags:{},party:[],box:[],pokedex:{seen:[],caught:[]},inventory:{pokeBalls:0,potions:0},badges:[],keyItems:[],money:0,healingPoint:'home',steps:0,seconds:0}; }
 export function parseSave(raw:string|null):SaveData|null {
+  const result=inspectSave(raw);
+  return result.kind==='ready'?result.save:null;
+}
+function parseVersion1(raw:string):SaveData|null {
   try {
     if(!raw) return null;
     const s=JSON.parse(raw) as SaveData;

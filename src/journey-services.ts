@@ -111,7 +111,8 @@ export function depositPokemon(s:CollectionSave,index:number):string{
 export function withdrawPokemon(s:CollectionSave,index:number):string{
   const p=s.box?.[index];if(!Number.isInteger(index)||!p)return '데려올 포켓몬을 선택해 주세요.';
   if(s.party.length>=6)return '파티가 가득 찼어요.\n먼저 한 마리를 맡겨 주세요.';
-  s.party.push(s.box!.splice(index,1)[0]);return `${withParticle(SPECIES[p.species].name,'이/가')} 파티로 돌아왔다!`;
+  const track=trackFieldPartners(s);
+  s.party.push(s.box!.splice(index,1)[0]);track();return `${withParticle(SPECIES[p.species].name,'이/가')} 파티로 돌아왔다!`;
 }
 function pcMenu(g:Engine){
   const s=g.save as CollectionSave;

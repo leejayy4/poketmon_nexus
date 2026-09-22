@@ -1,6 +1,8 @@
 import { SEAFOAM_B1_HABITAT_OBSERVED,SEAFOAM_B2_ICE_OBSERVED,SEAFOAM_FINDINGS_COMPARED } from './seafoam-ice-walk';
 import { NIMBASA_NEXUS } from './nimbasa-nexus';
 import { CELESTIC_ROUTE_BATTLE } from './sinnoh-celestic-battle';
+import { OREBURGH_ROARK } from './oreburgh-roark-state';
+import { OREBURGH_FIRST_BADGE } from './oreburgh-first-badge-state';
 import { DRIFTVEIL_NEXUS } from './driftveil-nexus';
 import { MISTRALTON_NEXUS } from './mistralton-nexus';
 import { ROUTE43_HOMEWARD_FLAGS,ROUTE43_HOMEWARD_EVENTS } from './johto-route-43-life';
@@ -70,8 +72,9 @@ export function adventureObjective(save:SaveData):AdventureObjective|null{
   }
   const oreburghJourneyMaps=['tour_jubilife','tour_sinnoh_route_203','tour_oreburgh_gate_1f','tour_oreburgh','tour_oreburgh_center','tour_oreburgh_hall','tour_oreburgh_mart','tour_oreburgh_home2','tour_oreburgh_mine'];
   if(!save.badges.includes(GYMS[0].badge)&&oreburghJourneyMaps.includes(localMap)&&!save.flags.oreburghGateArrivalReviewed)return explorationObjective(save);
-  if(!save.badges.includes(GYMS[0].badge)&&oreburghJourneyMaps.includes(localMap)&&save.flags.oreburghGateArrivalReviewed&&!save.flags.oreburghRoarkMineBriefed)return {id:'oreburgh-mine-roark',title:'탄갱에서 강석의 작업 확인',map:'tour_oreburgh_mine',event:'oreburghMineForeman',action:'남쪽 무쇠탄갱의 작업반장에게 강석의 작업과 체육관 도전을 물어보자'};
+  if(!save.badges.includes(GYMS[0].badge)&&oreburghJourneyMaps.includes(localMap)&&save.flags.oreburghGateArrivalReviewed&&!save.flags[OREBURGH_ROARK.met]&&!save.flags[OREBURGH_ROARK.gymMet])return {id:'oreburgh-mine-roark',title:'탄갱에서 강석 만나기',map:'tour_oreburgh_mine',event:OREBURGH_ROARK.event,action:'남쪽 무쇠탄갱에서 작업반장 옆 교대 자리를 살피는 강석과 이야기하자'};
   const next=GYMS.findIndex(g=>!save.badges.includes(g.badge));
+  if(save.badges.includes(GYMS[0].badge)&&['oreburgh_gym','tour_oreburgh','tour_oreburgh_center'].includes(localMap)&&!save.flags[OREBURGH_FIRST_BADGE.completed])return {id:'oreburgh-first-badge-evening',title:'最初のバッジを祝う'.replace('最初のバッジを祝う','첫 배지의 기쁨 나누기'),map:'tour_oreburgh',event:OREBURGH_FIRST_BADGE.event,action:'센터 앞 길에서 유진과 배지를 살펴보고 동료와 잠깐 쉬어 가자'};
   if(next>=0)return {id:GYMS[next].id,event:GYMS[next].id,title:GYMS[next].label+'에 도전',map:(['oreburgh_gym','eterna_gym','hearthome_gym','veilstone_gym'] as const)[next],action:`관장 ${withParticle(GYMS[next].name,'과/와')} 이야기하자`};
   const nextDelivery=SINNOH_DELIVERY_OBJECTIVES.all().find(row=>!meetsStoryCondition(save,row.complete));
   if(nextDelivery){const {complete,...objective}=nextDelivery;return objective;}

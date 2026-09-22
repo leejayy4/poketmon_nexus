@@ -4,6 +4,8 @@ import { createTourResidents } from './explore-residents';
 import { SPECIES } from './pokemon';
 import { gymById } from './gyms';
 import { handleFirstBadgeTown } from './first-badge-town';
+import { handleOreburghMineExhibition } from './oreburgh-mine-companion';
+import { handleOreburghFirstBadge } from './oreburgh-first-badge';
 import { handleNimbasaNexus,handleNimbasaNexusExhibit } from './nimbasa-nexus';
 import { handleDriftveilCity,handleDriftveilLedger } from './driftveil-nexus';
 import { handleMistraltonNexus } from './mistralton-nexus';
@@ -72,69 +74,14 @@ const activities: Activity[] = [
 
 /** True only for one of the two existing outdoor resident conversations. */
 export function handleCityActivity(game: Engine, id: string): boolean {
+  if(handleOreburghFirstBadge(game,id))return true;
+  if(handleOreburghMineExhibition(game,id))return true;
   if(handleJubilifeCityLearning(game,id))return true;
   if(handleJubilifePoketchCompany(game,id))return true;
   if(handleJubilifeDailyInteriors(game,id))return true;
   if(handleMistraltonNexus(game,id))return true;
   if(handleDriftveilCity(game,id)||handleDriftveilLedger(game,id))return true;
   if(handleNimbasaNexus(game,id)||handleNimbasaNexusExhibit(game,id))return true;
-  if (game.save.map === 'tour_oreburgh' && id === 'tourResident1') {
-    const species = Number(game.save.flags.oreburghMineWorkSpecies ?? 0);
-    const partner = game.save.party.find(p => p.species === species && p.hp > 0);
-    const completed = Boolean(game.save.flags.oreburghMineWorkComplete);
-    const hurt = game.save.party.filter(p => p.hp > 0 && p.hp < p.maxHp).length;
-    const fainted = game.save.party.filter(p => p.hp <= 0).length;
-    game.say('전시관 학생',[
-      completed && partner
-        ? `${SPECIES[partner.species].name}와 탄갱 레일과 광맥의 소리를 비교했군요!\n전시관 모형에서도 같은 길을 찾아볼 수 있어요.`
-        : partner
-        ? `${SPECIES[partner.species].name}와 탄갱 작업 확인 중이군요.\n레일을 먼저 보고 측면 광맥으로 가 보세요.`
-        : '광차 모형을 보러 왔어요.\n탄갱 작업반장에게 동료를 정하면 실제 레일과 비교할 수 있대요.',
-      game.save.party.length
-        ? `현재 파티 ${game.save.party.length}마리 · 부상 ${hurt} · 기절 ${fainted}`
-        : '현재 파티가 비어 있어요. 포켓몬센터 PC에서 동료를 편성할 수 있어요.',
-      '전시관과 탄갱 활동은 강석 도전이나 콜배지 조건이 아니에요.',
-    ]);
-    return true;
-  }
-  if (game.save.map === 'tour_oreburgh_hall' && (id === 'tourHost' || id.startsWith('tourExhibit'))) {
-    const species = Number(game.save.flags.oreburghMineWorkSpecies ?? 0);
-    const partner = game.save.party.find(p => p.species === species && p.hp > 0);
-    const rail = Boolean(game.save.flags.oreburghMineRailChecked);
-    const completed = Boolean(game.save.flags.oreburghMineWorkComplete);
-    const name = partner ? SPECIES[partner.species].name : null;
-    if (id === 'tourHost') {
-      game.say('광산 전시관 안내원',[
-        '무쇠탄갱의 광석층, 운반 레일, 작업 도구를 보존한 전시관입니다.',
-        completed && name
-          ? `${name}와 남긴 탄갱 작업 기록을 전시물과 비교해 보세요.`
-          : name
-          ? `${name}와 진행 중인 탄갱 확인을 마치면 전시 설명이 달라집니다.`
-          : '탄갱 작업반장에게 건강한 동료를 정한 뒤 돌아오면 실제 작업과 전시를 비교할 수 있습니다.',
-        '관람 기록은 체육관·배지·통행 조건이나 보상이 아닙니다.',
-      ]);
-      return true;
-    }
-    if (id === 'tourExhibit0') {
-      game.say('광석 표본',[completed && name
-        ? `${name}와 들었던 측면 광맥의 울림을 떠올리며 색과 결이 다른 표본을 비교했습니다.`
-        : '채굴 깊이에 따라 색과 결이 다른 광석과 석탄 표본이 놓여 있습니다.',
-        '표본을 가져가거나 아이템으로 얻지는 않습니다.']);
-      return true;
-    }
-    if (id === 'tourExhibit1') {
-      game.say('탄광 모형',[rail && name
-        ? `${name}와 확인한 광차 바퀴 자국과 대피 폭이 작은 모형에도 표시되어 있습니다.`
-        : '작은 광차와 작업로, 사람과 포켓몬이 비켜서는 공간을 한눈에 볼 수 있습니다.',
-        completed ? '측면 갱도가 본선으로 돌아오는 위치도 실제 작업 기록과 일치합니다.' : '실제 탄갱에서는 작업반장에게 동료를 정하고 레일부터 살펴볼 수 있습니다.']);
-      return true;
-    }
-    game.say('광부의 도구',[name
-      ? `${name}와 작업할 때 사용한 손짓·소리 신호가 그림으로 정리되어 있습니다.`
-      : '사람과 포켓몬이 함께 일할 때 쓰는 손짓·소리 신호가 도구 옆에 그려져 있습니다.',
-      '도구를 사용하거나 광석을 채취하는 기능은 없습니다.']);
-    return true;
-  }
   if (handleFirstBadgeTown(game, id)) return true;
   const activity = activities.find(a => a.map === game.save.map && a.event === id);
   if (!activity) return false;

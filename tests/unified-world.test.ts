@@ -42,7 +42,7 @@ test('legacy exploration is merged once into main progress and its source storag
   try{const main=ready();main.worldRevision=16;main.map='oreburgh';main.player={x:12,y:20,facing:'up'};awardGym(main,GYMS[0].id);const legacy=newSave();legacy.worldRevision=16;legacy.flags.exploration=true;legacy.map='tour_snowpoint';legacy.player={...TOUR_SPAWNS.tour_snowpoint,facing:'down'};legacy.tourVisited=['tour_snowpoint','tour_blackthorn'];const oldKey=key.replace(SAVE_KEY,SAVE_KEY+':explore'),raw=JSON.stringify(legacy);store.set(key,JSON.stringify(main));store.set(oldKey,raw);
     const g=new Engine();assert.equal(g.storageKey,key);assert.equal(g.save.map,'tour_oreburgh');assert.deepEqual(g.save.party,main.party);assert.deepEqual(g.save.badges,main.badges);assert(g.save.tourVisited?.includes('tour_blackthorn'));assert(!g.save.flags.exploration);g.persist();assert.equal(store.get(oldKey),raw);
     g.restore(newSave());const reset=new Engine();assert.equal(reset.save.map,'bedroom');assert(!reset.save.tourVisited?.includes('tour_blackthorn'));assert.equal(store.get(oldKey),raw);
-    store.delete(key);const onlyLegacy=new Engine();assert.equal(onlyLegacy.save.map,'tour_snowpoint');assert(!onlyLegacy.save.flags.exploration);assert.equal(onlyLegacy.save.party.length,0);assert(parseSave(JSON.stringify(onlyLegacy.save)));
+    store.delete(key);store.delete(key+':active');const onlyLegacy=new Engine();assert.equal(onlyLegacy.save.map,'tour_snowpoint');assert(!onlyLegacy.save.flags.exploration);assert.equal(onlyLegacy.save.party.length,0);assert(parseSave(JSON.stringify(onlyLegacy.save)));
   }finally{for(const [key,desc]of descriptors)if(desc)Object.defineProperty(globalThis,key,desc);else Reflect.deleteProperty(globalThis,key)}
 });
 

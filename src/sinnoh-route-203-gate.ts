@@ -1,6 +1,7 @@
 import type { GameMap } from './types';
 import type { Passage } from './journey-world';
 import type { Place,TourFeature,TourId } from './explore-world';
+import type { TourOutdoors } from './explore-outdoors';
 export const ROUTE_203='tour_sinnoh_route_203' as TourId,OREBURGH_GATE='tour_oreburgh_gate_1f' as TourId;
 const open=(r:string[][],x:number,y:number,w:number,h:number)=>{for(let j=y;j<y+h;j++)for(let i=x;i<x+w;i++)r[j][i]='.'};
 export function installSinnohRoute203Gate(a:{places:Place[];maps:Record<TourId,GameMap>;passages:Record<string,Passage>;passagePlaces:Record<string,Place>;spawns:Record<TourId,{x:number;y:number}>;features:Record<string,TourFeature[]>}){
@@ -8,10 +9,31 @@ export function installSinnohRoute203Gate(a:{places:Place[];maps:Record<TourId,G
  const jOut=maps[j.id].warps.find(w=>w.to===old)!,oOut=maps[o.id].warps.find(w=>w.to===old)!,oldOreburghDoor={x:oOut.x,y:oOut.y},oldJ=maps[old].warps.find(w=>w.to===j.id)!,oldO=maps[old].warps.find(w=>w.to===o.id)!;
  const r=Array.from({length:28},()=>Array<string>(64).fill('#'));open(r,1,12,15,5);open(r,13,8,15,9);open(r,25,7,6,13);open(r,28,16,17,5);open(r,42,11,6,10);open(r,45,9,18,5);open(r,18,21,15,4);
  features[ROUTE_203]=[{kind:'water',x:3,y:19,w:11,h:7,name:'203번도로 연못',description:'축복 동쪽 풀길 옆의 작은 연못이다.'},{kind:'rocks',x:34,y:5,w:9,h:8,name:'203번도로 바위턱',description:'무쇠게이트 가까이에서 길을 좁히는 바위턱이다.'},{kind:'grove',x:49,y:17,w:11,h:7,name:'게이트 앞 방풍림',description:'동굴 입구 앞에 남은 낮은 나무 띠다.'}];
- maps[ROUTE_203]={id:ROUTE_203,name:'신오 203번도로',width:64,height:28,background:ROUTE_203,walkable:r.map(x=>x.join('')),terrain:[{kind:'tallGrass',x:17,y:9,w:9,h:3},{kind:'tallGrass',x:19,y:21,w:9,h:3},{kind:'tallGrass',x:48,y:9,w:12,h:4}],warps:[{x:1,y:14,to:j.id,spawn:{...oldJ.spawn},entry:'left',facing:'left'},{x:62,y:11,to:OREBURGH_GATE,spawn:{x:3,y:20},entry:'right',facing:'right'}],npcs:[{id:'route203Walker',name:'203번도로 소년',sprite:'school_kid_m',x:29,y:18,facing:'up',dialogue:'route203Walker'}],props:[{x:5,y:10,dialogue:'route203Sign'},{x:57,y:7,dialogue:'route203Sign'}]};spawns[ROUTE_203]={x:3,y:14};
+ maps[ROUTE_203]={id:ROUTE_203,name:'신오 203번도로',width:64,height:28,background:ROUTE_203,walkable:r.map(x=>x.join('')),terrain:[{kind:'tallGrass',x:17,y:9,w:9,h:3},{kind:'tallGrass',x:19,y:21,w:9,h:3},{kind:'tallGrass',x:48,y:9,w:12,h:4}],warps:[{x:1,y:14,to:j.id,spawn:{...oldJ.spawn},entry:'left',facing:'left'},{x:62,y:11,to:OREBURGH_GATE,spawn:{x:3,y:20},entry:'right',facing:'right'}],npcs:[{id:'route203Walker',name:'203번도로 소년',sprite:'school_kid_m',x:29,y:18,facing:'up',dialogue:'route203Walker'}],props:[{x:5,y:11,dialogue:'route203Sign'},{x:57,y:8,dialogue:'route203Sign'}]};spawns[ROUTE_203]={x:3,y:14};
  const g=Array.from({length:40},()=>Array<string>(48).fill('#'));open(g,1,18,46,6);open(g,8,11,7,14);open(g,13,9,12,6);open(g,22,9,6,15);open(g,25,18,14,6);open(g,34,14,7,12);open(g,38,20,9,5);open(g,18,27,12,5);
+ // Reach the existing southern 1F habitat without opening the sealed B1F prop.
+ // The encounter-free north edge of the room leads west to that notice board.
+ open(g,27,23,3,5);
  features[OREBURGH_GATE]=[{kind:'rocks',x:4,y:5,w:10,h:10,name:'게이트 서쪽 암벽',description:'203번도로 빛이 사라지는 동굴 벽이다.'},{kind:'rocks',x:31,y:5,w:12,h:8,name:'무쇠 쪽 광석벽',description:'무쇠시티 가까이에서 광맥이 드러난 벽이다.'},{kind:'rocks',x:16,y:33,w:16,h:5,name:'선택 지하길 입구터',description:'B1F로 내려갈 수 있는 자리지만 현재 층은 열리지 않았다.'}];
- maps[OREBURGH_GATE]={id:OREBURGH_GATE,name:'무쇠게이트 1층',width:48,height:40,background:OREBURGH_GATE,walkable:g.map(x=>x.join('')),terrain:[{kind:'tallGrass',x:9,y:12,w:5,h:4},{kind:'tallGrass',x:35,y:14,w:5,h:4},{kind:'tallGrass',x:19,y:28,w:10,h:3}],warps:[{x:1,y:20,to:ROUTE_203,spawn:{x:60,y:11},entry:'left',facing:'left'},{x:46,y:22,to:o.id,spawn:{x:2,y:12},entry:'right',facing:'right'}],npcs:[{id:'oreburghGateWorker',name:'무쇠게이트 작업자',sprite:'worker',x:26,y:20,facing:'left',dialogue:'oreburghGateWorker'}],props:[{x:5,y:16,dialogue:'oreburghGateSign'},{x:20,y:26,dialogue:'oreburghGateBasementSign'},{x:42,y:18,dialogue:'oreburghGateSign'}]};spawns[OREBURGH_GATE]={x:3,y:20};
+ maps[OREBURGH_GATE]={id:OREBURGH_GATE,name:'무쇠게이트 1층',width:48,height:40,background:OREBURGH_GATE,walkable:g.map(x=>x.join('')),terrain:[{kind:'tallGrass',x:9,y:12,w:5,h:4},{kind:'tallGrass',x:35,y:14,w:5,h:4},{kind:'tallGrass',x:19,y:28,w:10,h:3}],warps:[{x:1,y:20,to:ROUTE_203,spawn:{x:60,y:11},entry:'left',facing:'left'},{x:46,y:22,to:o.id,spawn:{x:2,y:12},entry:'right',facing:'right'}],npcs:[{id:'oreburghGateWorker',name:'무쇠게이트 작업자',sprite:'worker',x:26,y:20,facing:'left',dialogue:'oreburghGateWorker'}],props:[{x:5,y:17,dialogue:'oreburghGateSign'},{x:20,y:26,dialogue:'oreburghGateBasementSign'},{x:42,y:19,dialogue:'oreburghGateSign'}]};spawns[OREBURGH_GATE]={x:3,y:20};
  const rp:Place={id:ROUTE_203,name:'신오 203번도로',region:'신오',theme:'forest',concept:'축복 동쪽 연못과 바위턱을 지나 게이트로 향하는 길',landmark:'203번도로 연못',x:2.5,y:5.5},gp:Place={id:OREBURGH_GATE,name:'무쇠게이트 1층',region:'신오',theme:'cave',concept:'203번도로와 무쇠시티를 잇는 조명 동굴',landmark:'광석 통과로',x:2.8,y:5.7};passagePlaces[ROUTE_203]=rp;passagePlaces[OREBURGH_GATE]=gp;passages[ROUTE_203]={id:ROUTE_203,a:j,b:gp,kind:'road',bend:7};passages[OREBURGH_GATE]={id:OREBURGH_GATE,a:rp,b:o,kind:'cave',bend:12};
  jOut.to=ROUTE_203;jOut.spawn={x:3,y:14};maps[o.id].walkable[oldOreburghDoor.y]=maps[o.id].walkable[oldOreburghDoor.y].slice(0,oldOreburghDoor.x)+'#'+maps[o.id].walkable[oldOreburghDoor.y].slice(oldOreburghDoor.x+1);Object.assign(oOut,{x:1,y:12,to:OREBURGH_GATE,spawn:{x:44,y:22},entry:'left',facing:'left'});maps[o.id].walkable[12]=maps[o.id].walkable[12].slice(0,1)+'.'+maps[o.id].walkable[12].slice(2);
+}
+
+/** Keep the visible signs and minimap markers on the actual interaction props. */
+export function route203GateOutdoors(map:GameMap):TourOutdoors|undefined{
+  if(map.id!==ROUTE_203&&map.id!==OREBURGH_GATE)return undefined;
+  const route=map.id===ROUTE_203,event=route?'route203Sign':'oreburghGateSign';
+  const name=route?'축복시티 · 무쇠게이트':'203번도로 · 무쇠시티';
+  const pages=route
+    ?['← 축복시티 · → 무쇠게이트 · 무쇠시티','연못과 바위턱을 지나 동굴 입구로 이어집니다.']
+    :['← 203번도로 · 축복시티 · → 무쇠시티','밝은 통과로와 광석벽을 따라가면 도시 입구가 나옵니다.'];
+  const signs:TourOutdoors['signs']=[];
+  for(const prop of map.props){
+    if(prop.dialogue!==event)continue;
+    const direction=prop.x<map.width/2?'left':'right';
+    const exit=map.warps.find(warp=>warp.entry===direction);
+    if(exit)signs.push({x:prop.x,y:prop.y,direction,destination:exit.to,name,event,pages:[...pages]});
+  }
+  return {objects:[],signs};
 }

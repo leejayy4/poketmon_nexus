@@ -10,12 +10,16 @@ import { SPECIES } from './pokemon';
 import { viridianForestGuidePages } from './encounter-guidance';
 import { ROUTE203_JOURNEY,isRoute203Partner } from './sinnoh-route203-journey';
 import { OREBURGH_GATE_JOURNEY,isOreburghGatePartner } from './oreburgh-gate-journey';
+import { handleOreburghRoark } from './oreburgh-roark-story';
+import { handleOreburghMineCompanion } from './oreburgh-mine-companion';
 const canonicalLakeEvents:Record<string,{key:string;name:string}>={
   verityLakeKeeper:{key:'verityLake',name:'진실호수'},valorLakeBodyKeeper:{key:'valorLakeBody',name:'입지호수'},acuityLakeBodyKeeper:{key:'acuityLakeBody',name:'예지호수'},
   verityLakeSign:{key:'verityLake',name:'진실호수'},valorLakeBodySign:{key:'valorLakeBody',name:'입지호수'},acuityLakeBodySign:{key:'acuityLakeBody',name:'예지호수'},
   verityLakeCaveSign:{key:'verityLake',name:'진실호수'},valorLakeBodyCaveSign:{key:'valorLakeBody',name:'입지호수'},acuityLakeBodyCaveSign:{key:'acuityLakeBody',name:'예지호수'},
 };
 export function sinnohEvent(g:Engine,id:string):boolean {
+  if(handleOreburghRoark(g,id))return true;
+  if(handleOreburghMineCompanion(g,id))return true;
   if(id==='viridianForestGuide'){g.say('길 안내원',viridianForestGuidePages());return true;}
   if(id==='sinnohGymGuide'){
     if(g.save.map==='eterna_gym'){g.say('체육관 안내원',gardeniaPreparationPages(g.save));return true;}
@@ -261,25 +265,6 @@ export function sinnohEvent(g:Engine,id:string):boolean {
   }
   if(id==='oreburghMineEntrance'){g.say('무쇠탄갱 입구',['도시 남쪽의 광석 작업장과 탐험층입니다.','선택 방문 장소이며 강석 도전·콜배지·도시 통행의 조건이 아닙니다.']);return true;}
   if(id==='oreburghMineSign'){g.say('무쇠탄갱 안전 표지',['운반 레일과 밝은 작업로를 따라가면 도시 출구로 돌아옵니다.','측면 갱도는 관찰 후 같은 본선으로 합류합니다.']);return true;}
-  if(id==='oreburghMineForeman'){
-    const species=Number(g.save.flags.oreburghMineWorkSpecies??0),done=Boolean(g.save.flags.oreburghMineWorkComplete);
-    const partner=g.save.party.find(mon=>mon.species===species&&mon.hp>0),healthy=g.save.party.map((mon,index)=>({mon,index})).filter(x=>x.mon.hp>0);
-    if(!g.save.flags.oreburghRoarkMineBriefed){g.save.flags.oreburghRoarkMineBriefed=true;g.persist();}
-    const roark='강석은 이곳의 작업 안전과 포켓몬 서식 구역을 확인한 뒤 동쪽 체육관으로 돌아갔습니다. 준비가 되면 도전할 수 있어요.';
-    if(done&&partner){g.say('무쇠탄갱 작업반장',[roark,`${SPECIES[partner.species].name}와 레일 폭과 광맥 울림을 모두 확인했군요.`,'이 작업 기록은 강석 도전·콜배지·통행 조건이나 보상과 관계없습니다.']);return true;}
-    if(!healthy.length){g.say('무쇠탄갱 작업반장',[roark,'건강한 파티 동료와 오면 작업로의 안전을 함께 확인할 수 있어요.','탄갱 출입과 도시 귀환은 이 활동을 하지 않아도 자유롭습니다.']);return true;}
-    g.say('무쇠탄갱 작업반장',[roark,partner?`${SPECIES[partner.species].name}와 작업 확인을 이어 갈 수 있어요.`:'운반 레일을 함께 살필 건강한 파티 동료를 골라 주세요.','먼저 운반 레일, 다음으로 측면 갱도 광맥을 살펴보세요.'],undefined,[...healthy.map(({mon,index})=>({label:`${SPECIES[mon.species].name} Lv.${mon.level}`,action:()=>{g.save.flags.oreburghMineWorkSpecies=mon.species;g.save.flags.oreburghMineRailChecked=false;g.save.flags.oreburghMineWorkComplete=false;g.persist();g.say('무쇠탄갱 작업반장',[`${index+1}번째 동료 ${SPECIES[mon.species].name}와 작업 확인을 시작합니다.`,'운반 레일의 빈 폭부터 살펴보세요.']);}})),{label:'다음에 돕는다',action:()=>{}}]);return true;
-  }
-  if(id==='oreburghMineRail'){
-    const species=Number(g.save.flags.oreburghMineWorkSpecies??0),partner=g.save.party.find(mon=>mon.species===species&&mon.hp>0);
-    if(!partner){g.say('탄갱 운반 레일',['작업반장에게 건강한 파티 동료를 먼저 정하면 레일의 빈 폭을 함께 확인할 수 있습니다.','광차를 조작하거나 보상을 얻는 기능은 없습니다.']);return true;}
-    g.save.flags.oreburghMineRailChecked=true;g.persist();g.say('탄갱 운반 레일',[`${SPECIES[partner.species].name}와 광차 바퀴 자국, 사람과 포켓몬이 비켜설 폭을 확인했습니다.`,'이제 측면 갱도 광맥에서 울림을 비교해 보세요.']);return true;
-  }
-  if(id==='oreburghMineSeam'){
-    const species=Number(g.save.flags.oreburghMineWorkSpecies??0),partner=g.save.party.find(mon=>mon.species===species&&mon.hp>0),rail=Boolean(g.save.flags.oreburghMineRailChecked);
-    if(!partner||!rail){g.say('측면 갱도 광맥',['작업반장에게 동료를 정하고 운반 레일의 안전 폭을 먼저 확인하세요.','광석을 채취하거나 아이템으로 가져가지는 않습니다.']);return true;}
-    g.save.flags.oreburghMineWorkComplete=true;g.persist();g.say('측면 갱도 광맥',[`${SPECIES[partner.species].name}와 레일 쪽 소리와 암반에서 돌아오는 울림을 비교했습니다.`,'작업 확인은 끝났지만 광석·아이템·돈·경험치·통행 조건은 바뀌지 않습니다.']);return true;
-  }
   if(id==='oreburghMineWorker'){g.say('포켓몬과 일하는 광부',['사람과 포켓몬이 소리와 손짓을 맞추며 광차 길을 관리해요.','원한다면 작업로 밖 공터에서 선택 배틀로 호흡을 맞춰 볼 수 있어요. 배틀과 관계없이 출구는 열려 있습니다.']);return true;}
   if(id==='lostTowerKeeper'){g.say('로스트타워 방문자',['사람과 포켓몬을 기억하며 조용히 각 층을 돌보고 있습니다.','특정 유령 사건이나 보상을 완료하는 장소는 아닙니다.']);return true;}
   if(id==='lostTowerMemorial'){g.say('로스트타워 추모석',['이름을 특정하지 않은 작은 꽃과 돌이 놓여 있습니다.','물건을 가져가거나 사건을 시작하지 않고 잠시 머물 수 있습니다.']);return true;}

@@ -1,4 +1,5 @@
 import { applyMahoganyPower } from './mahogany-power';
+import { applyOreburghRoark } from './oreburgh-roark-state';
 import { applySeafoamBoulder } from './seafoam-boulder';
 import { applyMortarRescue } from './mortar-rescue';
 import { applyCinnabarEvacuation } from './cinnabar-evacuation-state';
@@ -74,7 +75,7 @@ export function getMap(id:MapId,flags:SaveData['flags']={}):GameMap {
   let walkable=collected?map.walkable.map((row,y)=>y===collected.y?row.slice(0,collected.x)+'.'+row.slice(collected.x+1):row):map.walkable;
   let props=collected?map.props.filter(p=>p!==collected):map.props;
   if(id==='tour_chargestone_b1f'&&flags.chargestoneMainCrystalMoved===true){walkable=walkable.map((row,y)=>y===23?row.slice(0,25)+'.'+row.slice(26):row);props=props.filter(p=>p.dialogue!=='tourChargestoneMainCrystal');}
-  return applyMahoganyPower(applySeafoamBoulder(applyMortarRescue(applyCinnabarEvacuation({...map,walkable,
+  return applyOreburghRoark(applyMahoganyPower(applySeafoamBoulder(applyMortarRescue(applyCinnabarEvacuation({...map,walkable,
     props,warps:map.warps.filter(w=>!w.requiresFlag||flags[w.requiresFlag]===true),
-    npcs:map.npcs.map(n=>n.id==='gatekeeper'&&flags.departureCleared===true?{...n,x:4,y:14,facing:'down'}:n)},flags),flags),flags),flags);
+    npcs:map.npcs.map(n=>n.id==='gatekeeper'&&flags.departureCleared===true?{...n,x:4,y:14,facing:'down'}:n)},flags),flags),flags),flags),flags);
 }

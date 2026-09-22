@@ -1,4 +1,6 @@
 import { paintChargestoneBattleArena } from './chargestone-battle-art';
+import { paintJubilifeClock,watchingSinnohClock } from './sinnoh-clock-story';
+import { JUBILIFE_CLOCK } from './sinnoh-clock-state';
 import { paintUnovaRouteThirteenBattleArena } from './unova-route-thirteen-battle-art';
 import { paintUnovaRouteTwelveBattleArena } from './unova-route-twelve-battle-art';
 import { paintVillageBridgeBattleArena } from './village-bridge-battle-art';
@@ -61,6 +63,8 @@ import { fieldPotionPreview } from './team';
 import { experienceParticipants,moveType,opponentTrainerName } from './battle';
 import { battleHint } from './battle-hints';
 import { paintCenterFurnishing,paintCenterReception } from './explore-center-art';
+import { paintOreburghCenterFurnishing } from './oreburgh-city-art';
+import { oreburghFirstBadgeLayers } from './oreburgh-first-badge';
 import { minimapTravelMarkers,paintCelesticMinimapPaths } from './sinnoh-celestic-markers';
 import { paintTourFurnishing } from './explore-interior-art';
 import { paintCinnabarFurnishing } from './cinnabar-interior-art';
@@ -172,6 +176,8 @@ export class Renderer {
     }
     if(map.id==='town')for(let k=0;k<4;k++){this.rect(c,465+((k*19+Math.floor(g.clock*3))%78),237+(k%2)*17,7,1,'#a3d9ed')}
     const layers:{depth:number;draw:()=>void}[]=[];
+    if(map.id==='tour_jubilife')layers.push({depth:JUBILIFE_CLOCK.y+.9,draw:()=>paintJubilifeClock(c,g)});
+    layers.push(...oreburghFirstBadgeLayers(c,g,this.images));
     if(map.id===SEAFOAM_BOULDER_MAP){const rock=push?.rock??seafoamBoulderView(g.save.flags);layers.push({depth:rock.y+.9,draw:()=>paintSeafoamBoulder(c,g.save.flags,rock)});}
     layers.push(...rageLakeNexusLayers(c,map,g.save.flags));
     layers.push(...driftveilWorkLayers(c,map,g.save.flags));
@@ -221,7 +227,7 @@ export class Renderer {
     const gymDoor=worldGymDoor(map.id);if(gymDoor)layers.push({depth:gymDoor.y+.95,draw:()=>{this.rect(c,gymDoor.x*16-4,gymDoor.y*16-17,24,10,'#455877');this.text(c,'GYM',gymDoor.x*16+8,gymDoor.y*16-16,'#fff2cc',7,'center');}});
     const room=TOUR_INTERIORS[map.id];
     if(room?.style==='center'){
-      for(const o of room.objects)layers.push({depth:o.y+o.h-.1,draw:()=>paintCenterFurnishing(c,this.images,o)});
+      for(const o of room.objects)layers.push({depth:o.y+o.h-.1,draw:()=>{if(!paintOreburghCenterFurnishing(c,o))paintCenterFurnishing(c,this.images,o);}});
       layers.push({depth:room.reception!.y+.9,draw:()=>paintCenterReception(c,this.images,room)});
     }
     else if(room)for(const o of room.objects)layers.push({depth:o.y+o.h-.1,draw:()=>{if(!paintCasteliaProjectExhibit(c,map.id,o,g.save.flags)&&!paintCinnabarFurnishing(c,room,o,cinnabarCircuitPreview(g),g.clock)&&!paintIcirrusHallFurnishing(c,map.id,o,g.save)&&!paintIcirrusHomeFurnishing(c,map.id,o,g.save))paintTourFurnishing(c,this.images,room,o);paintCinnabarRescueFurnishing(c,o,g.save.flags);paintGoldenrodNexusFurnishing(c,map.id,o,g.save.flags,this.images);paintAzaleaWorkshopFurnishing(c,map.id,o,g.save.flags);paintRageLakeReliefFurnishing(c,map.id,o,g.save.flags);paintRageLakeRecoveryFurnishing(c,map.id,o,g.save.flags,this.images);paintMahoganyTransmitterFurnishing(c,map.id,o,g.save.flags);paintMahoganyPowerFurnishing(c,map.id,o,g.save.flags);paintEcruteakDisclosureFurnishing(c,map.id,o,g.save.flags);}});
@@ -250,7 +256,7 @@ export class Renderer {
   character(c:CanvasRenderingContext2D,name:string,x:number,y:number,dir:Direction,moving:boolean,walk?:{step:number;progress:number}){const g=this.game,image=this.images[name];const frame=spriteFrame(dir,moving,walk?.step??g.stepPhase,walk?.progress??(g.move?g.move.elapsed/g.move.duration:0),!walk&&g.keys.has('Shift'),image.height/32);c.fillStyle='#293d393d';c.beginPath();c.ellipse(Math.round(x),Math.round(y-2),6,2,0,0,Math.PI*2);c.fill();c.drawImage(image,0,frame*32,32,32,Math.round(x-16),Math.round(y-30),32,32)}
   eevee(c:CanvasRenderingContext2D,x:number,y:number){const t=this.game.clock,hop=Math.max(0,Math.sin(t*4))*3;const active=!this.game.dialogue;const frame=active?Math.floor(t*4)%2:0;c.fillStyle='#293d393d';c.beginPath();c.ellipse(x,y-2,6,2,0,0,Math.PI*2);c.fill();c.drawImage(this.images['eevee-play'],0,frame*32,32,32,x-16,Math.round(y-31-(active?hop:0)),32,32);}
   labTable(c:CanvasRenderingContext2D){this.rect(c,78,98,52,13,'#5b727a');this.rect(c,78,96,52,10,'#a9bbc5');this.rect(c,80,96,48,5,'#e2e3d3');this.rect(c,80,107,3,6,'#546873');this.rect(c,125,107,3,6,'#546873');if(!this.game.save.flags.starterReceived)for(let i=0;i<3;i++)this.ball(c,87+i*16,97,4);}
-  dialogue(c:CanvasRenderingContext2D,showChoices=true){const d=this.game.dialogue!;const page=d.pages[d.page];if(showChoices&&d.choices&&d.page===d.pages.length-1&&d.shown>=page.length){const max=Math.max(...d.choices.map(q=>q.label.length));const w=Math.max(80,max*10+30),h=d.choices.length*19+12;this.frame(c,250-w,128-h,w,h);d.choices.forEach((q,i)=>{this.text(c,q.label,268-w,134-h+i*19,INK,9);if(i===d.selected)this.text(c,'▶',256-w,134-h+i*19,'#b15b45',9)})}this.frame(c,3,132,250,57,'#fffef0');if(d.speaker){this.rect(c,12,126,d.speaker.length*9+14,14,'#415b66');this.text(c,d.speaker,19,128,'#fffde3',8)}this.text(c,page.slice(0,Math.floor(d.shown)),15,146,INK,10);if(d.shown>=page.length&&Math.floor(this.game.clock*3)%2===0)this.text(c,'▼',233,174,'#bd6957',9)}
+  dialogue(c:CanvasRenderingContext2D,showChoices=true){const d=this.game.dialogue!;const page=d.pages[d.page];if(showChoices&&d.choices&&d.page===d.pages.length-1&&d.shown>=page.length){const max=Math.max(...d.choices.map(q=>q.label.length));const w=Math.max(80,max*10+30),h=d.choices.length*19+12;this.frame(c,250-w,128-h,w,h);d.choices.forEach((q,i)=>{this.text(c,q.label,268-w,134-h+i*19,INK,9);if(i===d.selected)this.text(c,'▶',256-w,134-h+i*19,'#b15b45',9)})}this.frame(c,3,132,250,57,'#fffef0');if(d.speaker){this.rect(c,12,126,d.speaker.length*9+14,14,'#415b66');this.text(c,d.speaker,19,128,'#fffde3',8)}this.text(c,page.slice(0,Math.floor(d.shown)),15,146,INK,10);if(d.shown>=page.length&&!watchingSinnohClock(this.game)&&Math.floor(this.game.clock*3)%2===0)this.text(c,'▼',233,174,'#bd6957',9)}
   menuTop(c:CanvasRenderingContext2D){const labels=['포켓몬','가방','트레이너','리포트','설정','닫기'];this.frame(c,161,5,91,145);labels.forEach((label,i)=>{if(this.game.menuIndex===i){this.rect(c,167,12+i*22,79,21,'#e9deae');this.text(c,'▶',171,18+i*22,'#ad6351',8)}this.text(c,label,187,18+i*22,INK,10)})}
   starterTop(c:CanvasRenderingContext2D){const id=STARTERS[this.game.starterIndex],p=SPECIES[id];this.frame(c,14,19,228,153,'#edf1df');this.rect(c,20,25,216,19,'#547b7e');this.text(c,'함께할 포켓몬을 골라 주세요',128,29,'#fffdea',9,'center');this.pokemon(c,id,44,46,1);this.text(c,p.name,138,62,INK,13);this.text(c,p.genus,139,84,'#7c857a',8);this.typePills(c,p.types,138,102);this.text(c,p.description,128,134,INK,9,'center')}
   pokemon(c:CanvasRenderingContext2D,id:number,x:number,y:number,scale=1,shiny=false){c.drawImage(this.images['pokemon-'+(shiny&&id===130?'shiny-':'')+id],x,y,80*scale,80*scale)}
@@ -270,7 +276,7 @@ export class Renderer {
     this.rect(c,x+1,y+1,Math.round((w-2)*ratio),2,capped?'#a69b6a':'#599ecb');
   }
   lower(){const c=this.touch,g=this.game;this.hits=[];this.rect(c,0,0,W,H,'#e5e9d8');if(g.showingGymReward){this.gymRewardLower(c)}else if(g.showingCatch){this.catchLower(c)}else if(g.presentedBattle){this.battleLower(c)}else if(g.recoveryPreview&&g.dialogue){this.recovery(c)}else if(g.gymPreview&&g.dialogue){this.gymPreparation(c)}else if(g.panel==='field'||g.panel==='menu'){this.poketch(c);if(g.panel==='menu')this.menuLower(c)}else if(g.panel==='starters')this.starters(c);else if(g.panel==='party'||g.panel==='fieldHeal')this.party(c);else if(g.panel==='summary')this.moves(c);else if(g.panel==='bag')this.bag(c);else if(g.panel==='trainer')this.trainer(c);else if(g.panel==='options')this.options(c);
-    if(g.dialogue){this.hits=[];const d=g.dialogue;if(d.choices&&d.page===d.pages.length-1&&d.shown>=d.pages[d.page].length){const step=d.choices.length>4?25:29,start=Math.max(31,188-d.choices.length*step);this.rect(c,5,start-4,246,192-start,'#e5e9d8');d.choices.forEach((choice,i)=>this.button(c,12,start+i*step,232,step-4,choice.label,()=>{d.selected=i;g.confirm()},i===d.selected))}else {this.frame(c,8,151,240,33);this.text(c,'Z / Enter  다음 이야기',128,162,INK,9,'center');this.hits.push({x:0,y:0,w:256,h:192,action:()=>g.confirm()})}}
+    if(g.dialogue){this.hits=[];const d=g.dialogue;if(d.choices&&d.page===d.pages.length-1&&d.shown>=d.pages[d.page].length){const step=d.choices.length>4?25:29,start=Math.max(31,188-d.choices.length*step);this.rect(c,5,start-4,246,192-start,'#e5e9d8');d.choices.forEach((choice,i)=>this.button(c,12,start+i*step,232,step-4,choice.label,()=>{d.selected=i;g.confirm()},i===d.selected))}else {const watching=watchingSinnohClock(g);this.frame(c,8,151,240,33);this.text(c,watching?'X / Esc  그만 보기':'Z / Enter  다음 이야기',128,162,INK,9,'center');this.hits.push({x:0,y:0,w:256,h:192,action:()=>watching?g.cancel():g.confirm()})}}
   }
   topbar(c:CanvasRenderingContext2D,title:string){this.rect(c,0,0,256,27,'#527a80');this.text(c,title,13,9,'#fffce7',10);this.ball(c,240,13,5)}
   gymRewardTop(c:CanvasRenderingContext2D){
@@ -502,4 +508,3 @@ export class Renderer {
   moveButton(c:CanvasRenderingContext2D,x:number,y:number,move:string,action:()=>void,selected=false,pp?:{now:number;max:number}){const empty=!!pp&&pp.max>0&&pp.now===0;this.frame(c,x,y,116,32,selected?'#f3df9f':'#fbf9e6');if(selected)this.rect(c,x+5,y+5,3,22,'#c2774d');this.text(c,move,x+13,y+11,empty?'#9a8d84':INK,9);this.typeBadge(c,moveType(move)??'?',x+80,y+9);if(pp&&pp.max>0)this.text(c,`PP ${pp.now}/${pp.max}`,x+13,y+24,empty?'#b4564b':'#657b72',8);this.hits.push({x,y,w:116,h:32,action})}
   click(x:number,y:number){if(this.game.ferryJourney||this.game.transition||this.game.move)return;const hit=[...this.hits].reverse().find(h=>x>=h.x&&x<h.x+h.w&&y>=h.y&&y<h.y+h.h);if(hit){this.game.audio.play('confirm');hit.action()}}
 }
-

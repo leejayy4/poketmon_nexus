@@ -49,6 +49,7 @@ import { installSinnohRoute203Gate } from './sinnoh-route-203-gate';
 import { installSinnohOpeningRoute } from './sinnoh-opening-route';
 import { installJubilifeTrainerSchool } from './jubilife-trainer-school';
 import { installJubilifeCityLearning } from './jubilife-city-learning';
+import { installJubilifeClock } from './sinnoh-clock-state';
 import { installJubilifePoketchCompany } from './jubilife-poketch-company';
 import { installJubilifeDailyInteriors } from './jubilife-daily-interiors';
 import { installJubilifeWayfinding } from './jubilife-wayfinding';
@@ -59,6 +60,8 @@ import { CELESTIC_SHOP,installSinnohCelesticRoute } from './sinnoh-celestic-rout
 import { installCelesticTrace } from './sinnoh-celestic-trace';
 import { installSinnohCanonicalLakes } from './sinnoh-canonical-lakes';
 import { installOreburghMine } from './oreburgh-mine';
+import { installOreburghRoark } from './oreburgh-roark-state';
+import { installOreburghFirstBadge } from './oreburgh-first-badge-state';
 import { installOreburghInteriors } from './oreburgh-interiors';
 import { installOreburghWayfinding } from './oreburgh-wayfinding';
 import { installLostTower } from './lost-tower';
@@ -238,6 +241,7 @@ for(const [index,p]of PLACES.entries()){
 for(const p of PLACES)TOUR_OUTDOORS[p.id]=prepareTourOutdoors(p,TOUR_MAPS[p.id],TOUR_FEATURES[p.id],SHORT_TOURS.has(p.id),placeById);
 installJubilifeWayfinding(TOUR_MAPS.tour_jubilife,TOUR_OUTDOORS.tour_jubilife);
 installJubilifeCityLearning(TOUR_MAPS.tour_jubilife,TOUR_OUTDOORS.tour_jubilife);
+installJubilifeClock(TOUR_MAPS.tour_jubilife,TOUR_OUTDOORS.tour_jubilife);
 installIlexForestDetails(TOUR_MAPS.tour_ilex,TOUR_OUTDOORS.tour_ilex);
 installAzaleaDetails(TOUR_MAPS.tour_azalea,TOUR_OUTDOORS.tour_azalea);
 installVioletDetails(TOUR_MAPS.tour_violet,TOUR_OUTDOORS.tour_violet);
@@ -372,7 +376,9 @@ installCelesticTrace(TOUR_MAPS.tour_celestic_ruins,TOUR_INTERIORS.tour_celestic_
 MART_ROOMS.add(CELESTIC_SHOP);
 installSinnohCanonicalLakes({maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
 installOreburghMine({places:PLACES,maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
+installOreburghRoark(TOUR_MAPS.tour_oreburgh_mine);
 installOreburghWayfinding(TOUR_MAPS.tour_oreburgh,TOUR_OUTDOORS.tour_oreburgh);
+installOreburghFirstBadge(TOUR_MAPS.tour_oreburgh);
 installLostTower({maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES,floorInfo:FLOOR_INFO});
 installValleyWindworks({maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,features:TOUR_FEATURES});
 installCasteliaSewerPark({maps:TOUR_MAPS,passagePlaces:PASSAGE_PLACES,spawns:TOUR_SPAWNS,outdoors:TOUR_OUTDOORS});

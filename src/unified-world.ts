@@ -16,6 +16,14 @@ export function worldGymDoor(id:string){return WORLD_GYMS.some(([city])=>city===
 export function worldSpawn(id:MapId):Point|undefined{return TOUR_SPAWNS[worldMapId(id) as keyof typeof TOUR_SPAWNS];}
 export const isWorldCenter=(id:MapId)=>TOUR_INTERIORS[worldMapId(id)]?.style==='center';
 
+function upsertWarps(map:GameMap,...connections:GameMap['warps']){
+  for(const connection of connections){
+    const index=map.warps.findIndex(w=>w.x===connection.x&&w.y===connection.y&&w.entry===connection.entry);
+    if(index<0)map.warps.push(connection);
+    else map.warps[index]=connection;
+  }
+}
+
 // Keep graphic source maps intact; runtime joins them to the existing adventure.
 export function createUnifiedWorld(base:Record<MapId,GameMap>):Partial<Record<MapId,GameMap>>{
   const result:Partial<Record<MapId,GameMap>>={};
@@ -26,9 +34,10 @@ export function createUnifiedWorld(base:Record<MapId,GameMap>):Partial<Record<Ma
   const jubilife=edit('tour_jubilife'),entrance=jubilife.warps.find(w=>w.to==='town')!;entrance.to='route_s01';entrance.spawn={x:3,y:12};
   const town=edit('town'),departure=town.warps.find(w=>w.to==='route_s01')!;departure.to='tour_sinnoh_route_201';departure.spawn={x:3,y:15};
   const r201=edit('tour_sinnoh_route_201'),sandgem=edit('tour_sandgem'),r202=edit('tour_sinnoh_route_202'),r203=edit('tour_sinnoh_route_203'),oreburgh=edit('tour_oreburgh');
-  r201.warps=[{x:1,y:15,to:'town',spawn:{x:3,y:15},entry:'left',facing:'left'},{x:62,y:11,to:'tour_sandgem',spawn:{x:3,y:18},entry:'right',facing:'right'}];
-  sandgem.warps=[{x:2,y:18,to:'tour_sinnoh_route_201',spawn:{x:60,y:11},entry:'left',facing:'left'},{x:20,y:1,to:'tour_sinnoh_route_202',spawn:{x:14,y:61},entry:'up',facing:'up'}];
-  r202.warps=[{x:14,y:62,to:'tour_sandgem',spawn:{x:20,y:3},entry:'down',facing:'down'},{x:14,y:1,to:'tour_jubilife',spawn:{x:14,y:33},entry:'up',facing:'up'}];
+  // Join the main journey without discarding authored lake branches or room doors.
+  upsertWarps(r201,{x:1,y:15,to:'town',spawn:{x:3,y:15},entry:'left',facing:'left'},{x:62,y:11,to:'tour_sandgem',spawn:{x:3,y:18},entry:'right',facing:'right'});
+  upsertWarps(sandgem,{x:2,y:18,to:'tour_sinnoh_route_201',spawn:{x:60,y:11},entry:'left',facing:'left'},{x:20,y:1,to:'tour_sinnoh_route_202',spawn:{x:14,y:61},entry:'up',facing:'up'});
+  upsertWarps(r202,{x:14,y:62,to:'tour_sandgem',spawn:{x:20,y:3},entry:'down',facing:'down'},{x:14,y:1,to:'tour_jubilife',spawn:{x:14,y:33},entry:'up',facing:'up'});
   const route203Entrance=jubilife.warps.find(w=>w.to==='tour_sinnoh_route_203')!;
   Object.assign(entrance,{x:14,y:34,to:'tour_sinnoh_route_202',spawn:{x:14,y:3},entry:'down',facing:'down'});
   Object.assign(route203Entrance,{x:38,y:24,to:'tour_sinnoh_route_203',spawn:{x:3,y:14},entry:'right',facing:'right'});

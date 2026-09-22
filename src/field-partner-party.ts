@@ -1,9 +1,11 @@
 import type { SaveData } from './types';
 import { trackCherrygrovePartner } from './johto-cherrygrove-party';
+import { trackOreburghMinePartner } from './oreburgh-mine-companion';
 
 /** Follow the actual object during roster edits; species alone is not identity. */
 export function trackFieldPartners(save:SaveData):()=>void{
   const trackCare=trackCherrygrovePartner(save);
+  const trackMine=trackOreburghMinePartner(save);
   const records=[
     ...(!save.flags.nexusDriftveilLedgerPreserved?[{slot:'nexusDriftveilWorkPartnerSlot',species:'nexusDriftveilWorkPartner'}]:[]),
     ...(!save.flags.nexusRoute43ResidentFramesReturned?[{slot:'nexusRoute43ResidentFramesSlot',species:'nexusRoute43ResidentFramesSpecies'}]:[]),
@@ -35,6 +37,7 @@ export function trackFieldPartners(save:SaveData):()=>void{
   });
   return ()=>{
     trackCare();
+    trackMine();
     for(const record of records){
       if(!record.partner)continue;
       const next=save.party.indexOf(record.partner);
